@@ -12,7 +12,7 @@ public class Departamento {
     public Departamento(String nome) {
         this.nome = nome;
         this.nivel = 1;
-        this.funcionariosAtuais = 1; // Começa com 1
+        this.funcionariosAtuais = 1; // Começa com 1 pessoa
     }
 
     /**
@@ -39,10 +39,11 @@ public class Departamento {
             return;
         }
         
-        // Custo de contratação (Luvas/Agenciamento) - Opcional
+        // Exemplo de custo de contratação pontual (opcional, pode ser zero)
         // equipe.pagarDespesa(0.1); 
         
         funcionariosAtuais++;
+        System.out.println("Funcionário contratado para " + nome + ". Total: " + funcionariosAtuais);
     }
 
     public void demitirFuncionario() {
@@ -63,10 +64,11 @@ public class Departamento {
         if (equipe.getSaldoFinanceiro() >= custoUpgrade) {
             equipe.pagarDespesa(custoUpgrade);
             nivel++;
-            funcionariosAtuais = 1; // RESET DA EQUIPE (Regra do jogo)
+            funcionariosAtuais = 1; // RESET DA EQUIPE (Regra chave do jogo)
             System.out.println("Upgrade concluído! " + nome + " agora é Nível " + nivel);
+            System.out.println("Staff resetado para 1.");
         } else {
-            System.out.println("Saldo insuficiente para upgrade.");
+            System.out.println("Saldo insuficiente para upgrade. Necessário: " + custoUpgrade);
         }
     }
     

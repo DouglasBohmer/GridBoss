@@ -7,15 +7,13 @@ import java.util.List;
 public class Equipe {
     private String nome;
     private double saldoFinanceiro;
-    private int reputacao; // 0 a 100 (Define quem quer correr aqui)
-    
-    // Controle de Game Over
+    private int reputacao;
     private int anosConsecutivosNoVermelho = 0;
+    private Categoria categoriaAtual; // Referência para saber as regras
     
-    private Piloto piloto1;
-    private Piloto piloto2;
+    private List<Piloto> pilotosTitulares = new ArrayList<>();
+    private List<Piloto> pilotosReservas = new ArrayList<>();
     
-    // Lista de patrocinadores ativos no carro
     private List<Patrocinador> patrocinadoresAtivos = new ArrayList<>();
 
     public Equipe(String nome, double saldoInicial, int reputacao) {
@@ -24,42 +22,73 @@ public class Equipe {
         this.reputacao = reputacao;
     }
 
-    // --- MÉTODOS DE PATROCÍNIO ---
+    // --- CONTRATAÇÃO DE PILOTOS ---
+
+    public boolean contratarPiloto(Piloto piloto, double salario, double custoAssinatura, int meses, TipoContrato tipo) {
+        // 1. Verifica Limites da Categoria
+        if (categoriaAtual != null) {
+            if (tipo == TipoContrato.TITULAR && pilotosTitulares.size() >= categoriaAtual.getMaxTitulares()) {
+                System.out.println("Erro: Equipe já tem o máximo de titulares.");
+                return false;
+            }
+            if (tipo == TipoContrato.RESERVA && pilotosReservas.size() >= categoriaAtual.getMaxReservas()) {
+                System.out.println("Erro: Equipe já tem o máximo de reservas.");
+                return false;
+            }
+        }
+
+        // 2. Aplica Desconto de Promoção (Regra dos 50%)
+        double custoFinalAssinatura = custoAssinatura;
+        if (tipo == TipoContrato.TITULAR && piloto.isReservaDaEquipe(this)) {
+            custoFinalAssinatura = custoAssinatura * 0.5; // 50% de desconto
+            pilotosReservas.remove(piloto);
+        }
+
+        // 3. Pagamento e Assinatura
+        if (saldoFinanceiro >= custoFinalAssinatura) {
+            this.saldoFinanceiro -= custoFinalAssinatura;
+            
+            Contrato novoContrato = new Contrato(salario, meses, this, tipo);
+            piloto.assinarContrato(novoContrato);
+            
+            if (tipo == TipoContrato.TITULAR) {
+                pilotosTitulares.add(piloto);
+            } else {
+                pilotosReservas.add(piloto);
+            }
+            return true;
+        } else {
+            System.out.println("Erro: Saldo insuficiente.");
+            return false;
+        }
+    }
+
+    // --- MÉTODOS FINANCEIROS E PATROCÍNIO ---
 
     public void adicionarPatrocinador(Patrocinador p) {
-        // Regra de negócio: verificar se cabe mais (opcional)
         patrocinadoresAtivos.add(p);
-        // Recebe o valor de assinatura ("Luvas") imediatamente
         this.saldoFinanceiro += p.getValorAssinatura();
     }
 
-    public List<Patrocinador> getPatrocinadoresAtivos() {
-        return patrocinadoresAtivos;
-    }
-
-    // Remove quem já expirou (chamado pelo Service)
     public void limparPatrocinadoresVencidos() {
-        // Iterator é o jeito seguro de remover itens de uma lista enquanto percorre ela
         Iterator<Patrocinador> it = patrocinadoresAtivos.iterator();
         while (it.hasNext()) {
             Patrocinador p = it.next();
             if (p.expirou()) {
-                System.out.println("Contrato com " + p.getNome() + " encerrou.");
                 it.remove();
             }
         }
     }
     
-    // --- MÉTODOS FINANCEIROS ---
-
-    public void receberReceita(double valor) {
-        this.saldoFinanceiro += valor;
+    public void receberReceita(double valor) { 
+        this.saldoFinanceiro += valor; 
     }
-
-    public void pagarDespesa(double valor) {
-        this.saldoFinanceiro -= valor;
+    
+    public void pagarDespesa(double valor) { 
+        this.saldoFinanceiro -= valor; 
     }
-
+    
+    // Métodos exigidos pelo GestaoFinanceiraService
     public void incrementarAnosNoVermelho() {
         this.anosConsecutivosNoVermelho++;
     }
@@ -71,46 +100,25 @@ public class Equipe {
     public boolean verificarGameOver() {
         if (saldoFinanceiro < 0) {
             anosConsecutivosNoVermelho++;
-            if (anosConsecutivosNoVermelho >= 2) {
-                return true; // GAME OVER: Faliu de vez
-            }
+            if (anosConsecutivosNoVermelho >= 2) return true;
         } else {
-            anosConsecutivosNoVermelho = 0; // Recuperou, zera a contagem
+            anosConsecutivosNoVermelho = 0;
         }
-        return false; // Jogo segue
+        return false;
     }
 
-    // --- GETTERS E SETTERS (Essenciais para o Piloto funcionar) ---
+    // --- GETTERS E SETTERS ---
 
-    public String getNome() {
-        return nome;
-    }
-
-    public int getReputacao() {
-        return reputacao;
-    }
-
-    public double getSaldoFinanceiro() {
-        return saldoFinanceiro;
-    }
-
-    public int getAnosConsecutivosNoVermelho() {
-        return anosConsecutivosNoVermelho;
-    }
+    public String getNome() { return nome; }
+    public int getReputacao() { return reputacao; }
+    public double getSaldoFinanceiro() { return saldoFinanceiro; }
+    public int getAnosConsecutivosNoVermelho() { return anosConsecutivosNoVermelho; }
+    public List<Patrocinador> getPatrocinadoresAtivos() { return patrocinadoresAtivos; }
     
-    public Piloto getPiloto1() {
-        return piloto1;
-    }
-
-    public void setPiloto1(Piloto piloto1) {
-        this.piloto1 = piloto1;
-    }
-
-    public Piloto getPiloto2() {
-        return piloto2;
-    }
-
-    public void setPiloto2(Piloto piloto2) {
-        this.piloto2 = piloto2;
+    public List<Piloto> getPilotosTitulares() { return pilotosTitulares; }
+    public List<Piloto> getPilotosReservas() { return pilotosReservas; }
+    
+    public void setCategoriaAtual(Categoria categoriaAtual) {
+        this.categoriaAtual = categoriaAtual;
     }
 }

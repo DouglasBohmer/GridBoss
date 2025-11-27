@@ -1,19 +1,17 @@
 package modelos;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Piloto {
     private String nome;
     private String nacionalidade;
     private int idade;
-    
-    // Atributos de Habilidade
     private double overall; 
-    
-    // Contrato (Pode ser null se estiver desempregado)
-    private Contrato contratoAtual;
-    
-    // Exigência do piloto (0 a 100). 
-    // Ex: Verstappen exige equipe nota 90+. Drugovich aceita nota 40+.
     private int exigenciaMinimaDeEquipe; 
+    
+    // Lista de contratos (Pode ter 1 titular OU até 3 reservas)
+    private List<Contrato> contratosAtivos = new ArrayList<>();
 
     public Piloto(String nome, String pais, int idade, double overall, int exigenciaMinima) {
         this.nome = nome;
@@ -24,44 +22,90 @@ public class Piloto {
     }
 
     /**
-     * Simula a negociação com uma equipe.
-     * Retorna uma String com o resultado ("ACEITO" ou o motivo da recusa).
+     * Tenta contratar o piloto.
+     * @param ofertaSalarial Valor oferecido
+     * @param tipoVaga TITULAR ou RESERVA
      */
-    public String receberProposta(Equipe equipeInteressada, double ofertaSalarial) {
-        // 1. Verifica se a equipe tem reputação suficiente
-        // (Agora o método getReputacao() existe na classe Equipe)
+    public String receberProposta(Equipe equipeInteressada, double ofertaSalarial, TipoContrato tipoVaga) {
+        // 1. Verifica Reputação
         if (equipeInteressada.getReputacao() < this.exigenciaMinimaDeEquipe) {
-            return "RECUSADO: " + nome + " acha que a equipe " + equipeInteressada.getNome() + " não é competitiva o suficiente.";
-        }
-        
-        // 2. Se tiver contrato vigente, verifica se a equipe paga a multa
-        if (contratoAtual != null && !contratoAtual.expirou()) {
-            double multa = contratoAtual.calcularMultaRescisoria();
-            
-            // (Agora o método getSaldoFinanceiro() existe na classe Equipe)
-            if (equipeInteressada.getSaldoFinanceiro() < multa) {
-                return "RECUSADO: A equipe não tem dinheiro para pagar a multa de " + multa;
-            }
-            
-            // Se passar daqui, o jogador terá que confirmar o pagamento da multa na tela
-            return "ACEITO_CONDICIONAL: Requer pagamento de multa de " + multa;
+            return "RECUSADO: Reputação baixa.";
         }
 
-        // Se estiver livre e a equipe for boa
+        // 2. Verifica Conflitos de Contrato
+        if (tipoVaga == TipoContrato.TITULAR) {
+            if (isTitular()) {
+                // Se já é titular, tem que pagar multa para sair do atual
+                Contrato atual = getContratoTitular();
+                double multa = atual.calcularMultaRescisoria();
+                
+                // Regra: Se a equipe interessada for a mesma que ele é reserva (PROMOÇÃO)
+                if (isReservaDaEquipe(equipeInteressada)) {
+                    return "ACEITO_PROMOCAO"; 
+                }
+
+                if (equipeInteressada.getSaldoFinanceiro() < multa) {
+                    return "RECUSADO: Sem dinheiro para multa (" + multa + ")";
+                }
+                return "ACEITO_COM_MULTA: " + multa;
+            }
+        } else {
+            // Se for vaga de RESERVA
+            if (isTitular()) return "RECUSADO: Já sou titular em outra equipe.";
+            if (contratosAtivos.size() >= 3) return "RECUSADO: Já sou reserva de 3 equipes.";
+        }
+
         return "ACEITO";
     }
 
     public void assinarContrato(Contrato novoContrato) {
-        this.contratoAtual = novoContrato;
+        // Se for titular, limpa contratos anteriores (demissão do time antigo)
+        if (novoContrato.getTipo() == TipoContrato.TITULAR) {
+            contratosAtivos.clear(); 
+        }
+        contratosAtivos.add(novoContrato);
     }
 
-    // --- GETTERS ---
+    // --- Métodos Auxiliares ---
 
+    public boolean isTitular() {
+        for (Contrato c : contratosAtivos) {
+            if (c.getTipo() == TipoContrato.TITULAR) return true;
+        }
+        return false;
+    }
+    
+    public Contrato getContratoTitular() {
+        for (Contrato c : contratosAtivos) {
+            if (c.getTipo() == TipoContrato.TITULAR) return c;
+        }
+        return null;
+    }
+
+    // Método principal para pegar o contrato vigente (prioriza titular)
+    // Esse é o método que estava faltando e gerando erro no Service
+    public Contrato getContrato() {
+        if (contratosAtivos.isEmpty()) return null;
+        // Retorna o titular se tiver, senão o primeiro da lista
+        Contrato titular = getContratoTitular();
+        if (titular != null) return titular;
+        return contratosAtivos.get(0);
+    }
+
+    public boolean isReservaDaEquipe(Equipe e) {
+        for (Contrato c : contratosAtivos) {
+            if (c.getTipo() == TipoContrato.RESERVA && c.getEquipeAtual() == e) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    // Getters
     public String getNome() { return nome; }
     public String getNacionalidade() { return nacionalidade; }
     public int getIdade() { return idade; }
     public double getOverall() { return overall; }
-    public Contrato getContrato() { return contratoAtual; }
-    
     public void setOverall(double over) { this.overall = over; }
+    public List<Contrato> getContratos() { return contratosAtivos; }
 }

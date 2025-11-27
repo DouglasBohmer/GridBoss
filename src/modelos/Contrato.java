@@ -2,16 +2,17 @@ package modelos;
 
 public class Contrato {
     private double salarioMensal;
-    private int mesesRestantes; // Duração do contrato
+    private int mesesRestantes;
     private Equipe equipeAtual;
+    private TipoContrato tipo; // TITULAR ou RESERVA
 
-    public Contrato(double salarioMensal, int mesesDeDuracao, Equipe equipe) {
+    public Contrato(double salarioMensal, int mesesDeDuracao, Equipe equipe, TipoContrato tipo) {
         this.salarioMensal = salarioMensal;
         this.mesesRestantes = mesesDeDuracao;
         this.equipeAtual = equipe;
+        this.tipo = tipo;
     }
 
-    // Regra: Multa = Salário x Tempo Restante
     public double calcularMultaRescisoria() {
         return salarioMensal * mesesRestantes;
     }
@@ -28,4 +29,5 @@ public class Contrato {
 
     public double getSalarioMensal() { return salarioMensal; }
     public Equipe getEquipeAtual() { return equipeAtual; }
+    public TipoContrato getTipo() { return tipo; }
 }

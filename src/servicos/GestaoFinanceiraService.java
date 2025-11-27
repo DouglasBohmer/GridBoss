@@ -3,8 +3,6 @@ package servicos;
 import modelos.Equipe;
 import modelos.Patrocinador;
 import modelos.Piloto;
-import modelos.Contrato;
-
 import java.util.List;
 
 public class GestaoFinanceiraService {
@@ -17,15 +15,22 @@ public class GestaoFinanceiraService {
         double despesasTotais = 0;
         double receitasTotais = 0;
 
-        // 1. Pagar Salários de Pilotos
-        if (equipe.getPiloto1() != null) {
-            despesasTotais += equipe.getPiloto1().getContrato().getSalarioMensal();
+        // 1. Pagar Salários (Titulares)
+        for (Piloto p : equipe.getPilotosTitulares()) {
+             // Só paga se tiver contrato ativo
+             if (p.getContrato() != null) {
+                 despesasTotais += p.getContrato().getSalarioMensal();
+             }
         }
-        if (equipe.getPiloto2() != null) {
-            despesasTotais += equipe.getPiloto2().getContrato().getSalarioMensal();
+        
+        // 2. Pagar Salários (Reservas)
+        for (Piloto p : equipe.getPilotosReservas()) {
+             if (p.getContrato() != null) {
+                 despesasTotais += p.getContrato().getSalarioMensal();
+             }
         }
 
-        // 2. Receber Mensalidade dos Patrocinadores Ativos
+        // 3. Receber Mensalidade dos Patrocinadores Ativos
         for (Patrocinador patroc : equipe.getPatrocinadoresAtivos()) {
             receitasTotais += patroc.getValorMensal();
             // Lógica para reduzir duração do contrato
@@ -35,34 +40,38 @@ public class GestaoFinanceiraService {
         // Remove patrocinadores que acabaram de vencer
         equipe.limparPatrocinadoresVencidos();
 
-        // 3. Aplicar no Saldo
+        // 4. Aplicar no Saldo
         equipe.pagarDespesa(despesasTotais);
         equipe.receberReceita(receitasTotais);
 
-        System.out.println("Mês processado. Receitas: " + receitasTotais + " | Despesas: " + despesasTotais);
+        System.out.println("Mês processado para " + equipe.getNome());
+        System.out.println("Receitas: " + receitasTotais + " | Despesas: " + despesasTotais);
+        System.out.println("Saldo Atual: " + equipe.getSaldoFinanceiro());
     }
 
     /**
      * Processa prêmios de corrida (Bônus de patrocinadores).
-     * Deve ser chamado logo após a bandeirada final.
+     * @param posicoesChegada Lista com a posição final de CADA carro da equipe na corrida.
+     * Ex: Se tem 2 carros e chegaram em 1º e 5º, a lista deve conter [1, 5].
      */
-    public void processarPremiosDeCorrida(Equipe equipe, int posicaoPiloto1, int posicaoPiloto2) {
+    public void processarPremiosDeCorrida(Equipe equipe, List<Integer> posicoesChegada) {
         double premios = 0;
 
-        for (Patrocinador patroc : equipe.getPatrocinadoresAtivos()) {
-            // Verifica bônus para Piloto 1
-            premios += patroc.calcularPremioCorrida(posicaoPiloto1);
-            // Verifica bônus para Piloto 2
-            premios += patroc.calcularPremioCorrida(posicaoPiloto2);
-        }
+        // Para cada carro que correu...
+        for (int posicao : posicoesChegada) {
+            
+            // 1. Verifica Bônus de Patrocinadores (Paga por carro que atingiu a meta)
+            for (Patrocinador patroc : equipe.getPatrocinadoresAtivos()) {
+                premios += patroc.calcularPremioCorrida(posicao);
+            }
 
-        // Adiciona prêmio extra por posição (Regra do jogo: valor por chegada)
-        premios += calcularPremioPosicao(posicaoPiloto1);
-        premios += calcularPremioPosicao(posicaoPiloto2);
+            // 2. Adiciona prêmio da Organização da Corrida (Valor por chegada)
+            premios += calcularPremioPosicao(posicao);
+        }
 
         if (premios > 0) {
             equipe.receberReceita(premios);
-            System.out.println("Prêmios de Corrida recebidos: €" + premios);
+            System.out.println("Prêmios de Corrida recebidos: " + premios);
         }
     }
 
@@ -81,16 +90,16 @@ public class GestaoFinanceiraService {
      * Verifica se o jogo acabou (Game Over) no final do ano.
      * Retorna TRUE se a equipe faliu.
      */
-    public boolean processarFechamentoAnual(Equipe equipe) {
-        // 1. Receber prêmio da TV/Campeonato baseado na posição final da equipe
-        // (Aqui você passaria a posição real, coloquei 5º lugar como exemplo fixo)
-        double premioCampeonato = calcularPremioCampeonato(5); 
+    public boolean processarFechamentoAnual(Equipe equipe, int posicaoNoCampeonatoConstrutores) {
+        // 1. Receber prêmio da TV/Campeonato
+        double premioCampeonato = calcularPremioCampeonato(posicaoNoCampeonatoConstrutores); 
         equipe.receberReceita(premioCampeonato);
+        System.out.println("Prêmio de Campeonato recebido: " + premioCampeonato);
 
         // 2. Checagem de Falência (Regra de 1 ano de tolerância)
         if (equipe.getSaldoFinanceiro() < 0) {
             equipe.incrementarAnosNoVermelho();
-            System.out.println("ALERTA: A equipe fechou o ano no vermelho!");
+            System.out.println("ALERTA CRÍTICO: A equipe fechou o ano no vermelho!");
             
             if (equipe.getAnosConsecutivosNoVermelho() >= 2) {
                 return true; // GAME OVER
@@ -103,9 +112,9 @@ public class GestaoFinanceiraService {
     }
 
     private double calcularPremioCampeonato(int posicaoEquipe) {
-        // Exemplo: Campeão ganha 100M, último ganha 10M
-        // Pode ser lido de um arquivo JSON de regras depois
+        // Exemplo: Campeão ganha 100M, decai 5M por posição
         if (posicaoEquipe == 1) return 100.0;
-        return 100.0 - (posicaoEquipe * 5); 
+        double valor = 100.0 - (posicaoEquipe * 5);
+        return (valor > 0) ? valor : 0; // Não pode ser negativo
     }
 }

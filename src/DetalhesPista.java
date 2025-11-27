@@ -63,7 +63,6 @@ public class DetalhesPista extends JFrame {
 		BTVoltar = new JButton("Voltar");
 		BTVoltar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				
 				dispose();					
 			}
 		});

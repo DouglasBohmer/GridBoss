@@ -22,8 +22,7 @@ public class Dados {
 	public static String InauguracaoPista, LocalPista, TipoPista, CapacidadePista, ComprimentoPista, LayoutPista, LayoutPistaPQ, PaisPista;
 	
 	Selecionar_Equipe SelecionarEquipe = new Selecionar_Equipe();
-	
-	
+		
 	// INFOS SALVAS PRA COPIAR
 	
 	/*

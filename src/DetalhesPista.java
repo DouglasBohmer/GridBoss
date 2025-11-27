@@ -65,7 +65,6 @@ public class DetalhesPista extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				
 				dispose();					
-				
 			}
 		});
 		BTVoltar.setBounds(392, 662, 115, 23);

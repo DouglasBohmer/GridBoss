@@ -30,7 +30,7 @@ import java.util.Random;
 public class Selecionar_Categoria extends JFrame {
 
 	private JPanel contentPane;
-	public static String BT_Cate = "Fórmula 1", BT_Temp = "Temporada 2024", BT_Imagem = "/Imagens/Logo F1 Novo_OK.png";
+	public static String BT_Cate = "Fórmula 1", BT_Temp = "Temporada 2024",BT_Imagem = "/Imagens/Logo F1 Novo_OK.png";
 	private JRadioButton RB_F1;
 	private JRadioButton RB_Indy;
 	private JRadioButton RB_Nascar;
@@ -160,7 +160,7 @@ public class Selecionar_Categoria extends JFrame {
 		RB_F1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 
-				//setBT_Categoria("Fórmula 1");
+				setBT_Categoria("Fórmula 1");
 				BT_Cate = "Fórmula 1";
 				BT_Imagem = "/Imagens/Logo F1 Novo_OK.png";
 				
@@ -203,7 +203,7 @@ public class Selecionar_Categoria extends JFrame {
 		RB_Indy.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
-				//setBT_Categoria("Fórmula INDY");
+				setBT_Categoria("Fórmula INDY");
 				BT_Cate = "Fórmula INDY";
 				BT_Imagem = "/Imagens/Logo Indy_OK.png";
 				
@@ -235,7 +235,7 @@ public class Selecionar_Categoria extends JFrame {
 		RB_Nascar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
-				//setBT_Categoria("NASCAR");
+				setBT_Categoria("NASCAR");
 				BT_Cate = "NASCAR";
 				
 				BT_Imagem = "/Imagens/Logo Nascar_OK.png";
@@ -245,7 +245,6 @@ public class Selecionar_Categoria extends JFrame {
 				RandonNascar = random.nextInt(7);
 				
 				LB_Carro.setIcon(new ImageIcon(Selecionar_Categoria.class.getResource("/Imagens/Cup Series "+(RandonNascar+1)+".png")));
-				
 				LB_Logo.setIcon(new ImageIcon(Selecionar_Categoria.class.getResource("/Imagens/Logo Nascar_OK.png")));
 
 				CB_Lista_Temp.setModel(new DefaultComboBoxModel(new String[] {"Temporada 2024"}));

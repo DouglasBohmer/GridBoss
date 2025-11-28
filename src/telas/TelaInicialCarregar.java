@@ -98,7 +98,7 @@ public class TelaInicialCarregar extends JFrame {
 
         btnNovoJogo.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                //irParaSelecaoCategoria();
+                irParaSelecaoCategoria();
             }
         });
         contentPane.add(btnNovoJogo);
@@ -148,14 +148,14 @@ public class TelaInicialCarregar extends JFrame {
     }
 
     // --- AÇÕES ---
-/*
+
     private void irParaSelecaoCategoria() {
-        Selecionar_Categoria tela = new Selecionar_Categoria();
+        TelaSelecionarCategoria tela = new TelaSelecionarCategoria();
         tela.setVisible(true);
-        tela.setLocationRelativeTo(null);
-        this.dispose();
+        tela.setLocationRelativeTo(null); // Centraliza na tela
+        this.dispose(); // Fecha a tela de carregamento
     }
-*/
+
     private void carregarJogoAction() {
         JFileChooser fileChooser = new JFileChooser();
         fileChooser.setFileFilter(new javax.swing.filechooser.FileNameExtensionFilter("Save Game JSON", "json"));

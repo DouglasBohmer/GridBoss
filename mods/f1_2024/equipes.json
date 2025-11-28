@@ -1,0 +1,32 @@
+[
+  {
+    "nome": "Red Bull Racing",
+    "sede": "Milton Keynes, UK",
+    "saldoFinanceiro": 140.0,
+    "reputacao": 95,
+    "anosConsecutivosNoVermelho": 0,
+    "arquivos": {
+      "logo": "/resource/Equipe_F1_RBR.png",
+      "logoSvg": "/resource/Equipe_F1_RBR.svg",
+      "bandeiraSede": "/resource/Bandeira Reino Unido.png",
+      "bandeiraMotor": "/resource/Bandeira Japao.png",
+      "logoMotor": "/resource/Motor_HondaPQ.png"
+    },
+    "pilotosContratadosIDs": ["verstappen", "perez"]
+  },
+  {
+    "nome": "Scuderia Ferrari",
+    "sede": "Maranello, Itália",
+    "saldoFinanceiro": 135.0,
+    "reputacao": 98,
+    "anosConsecutivosNoVermelho": 0,
+    "arquivos": {
+      "logo": "/resource/Equipe_F1_Ferrari.png",
+      "logoSvg": "/resource/Equipe_F1_Ferrari.svg",
+      "bandeiraSede": "/resource/Bandeira Italia.png",
+      "bandeiraMotor": "/resource/Bandeira Italia.png",
+      "logoMotor": "/resource/Motor_FerrariPQ.png"
+    },
+    "pilotosContratadosIDs": ["leclerc", "sainz"]
+  }
+]

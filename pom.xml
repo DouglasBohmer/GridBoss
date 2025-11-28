@@ -9,7 +9,7 @@
   <packaging>jar</packaging>
   
   <name>Grid Boss</name>
-  <description>Simulador de gerenciamento de equipe de F1</description>
+  <description>Simulador de gerenciamento de equipe de F1, Indy e Nascar</description>
 
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -18,7 +18,19 @@
   </properties>
 
   <dependencies>
-    </dependencies>
+    <!-- Look and Feel Moderno (FlatLaf) -->
+    <dependency>
+      <groupId>com.formdev</groupId>
+      <artifactId>flatlaf</artifactId>
+      <version>3.2.5</version>
+    </dependency>
+    <!-- Pacote de Ícones SVG para FlatLaf (Preparando para o futuro) -->
+    <dependency>
+        <groupId>com.formdev</groupId>
+        <artifactId>flatlaf-extras</artifactId>
+        <version>3.2.5</version>
+    </dependency>
+  </dependencies>
 
   <build>
     <plugins>

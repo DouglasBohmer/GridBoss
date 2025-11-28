@@ -53,6 +53,7 @@ public class Inicial_Carregar extends JFrame {
 	 * Create the frame.
 	 */
 	public Inicial_Carregar() {
+		setIconImage(Toolkit.getDefaultToolkit().getImage(Inicial_Carregar.class.getResource("/resource/Icone16px.png")));
 		//setIconImage(Toolkit.getDefaultToolkit().getImage(Inicial_Carregar.class.getResource("/Imagens/Icone16px.png")));
 		setTitle("Motorsport Manager");
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
@@ -94,7 +95,7 @@ public class Inicial_Carregar extends JFrame {
 		lblNewLabel_1.setHorizontalAlignment(SwingConstants.CENTER);
 		
 		
-		lblNewLabel_1.setIcon(new ImageIcon(Inicial_Carregar.class.getResource("/Imagens/Banner F1_OK.png")));
+		lblNewLabel_1.setIcon(new ImageIcon(Inicial_Carregar.class.getResource("/resource/Banner F1_OK.png")));
 		lblNewLabel_1.setSize(100, 100);
 		lblNewLabel_1.setBounds(10, 56, 451, 170);
 		contentPane.add(lblNewLabel_1);
@@ -121,8 +122,13 @@ public class Inicial_Carregar extends JFrame {
 				
 			}
 		});
-		BT_SAIR.setBounds(10, 268, 85, 21);
+		BT_SAIR.setBounds(10, 268, 185, 21);
 		contentPane.add(BT_SAIR);
+		
+		JButton BT_Mods = new JButton("Adicionar Mods");
+		BT_Mods.setFont(new Font("Berlin Sans FB", Font.PLAIN, 11));
+		BT_Mods.setBounds(10, 236, 185, 21);
+		contentPane.add(BT_Mods);
 		
 	}
 	
@@ -450,7 +456,4 @@ public class Inicial_Carregar extends JFrame {
 			}
 		
 	}
-	
-	
-	
 }

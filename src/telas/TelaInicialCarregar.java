@@ -11,18 +11,19 @@ import java.io.File;
 public class TelaInicialCarregar extends JFrame {
 
     private JPanel contentPane;
-    public static File ArquivoCarregado;
+    public static File ArquivoCarregado; // Para uso futuro
 
     /**
      * Launch the application.
      */
     public static void main(String[] args) {
-        // Forçar tema CLARO (Light)
+        // Configuração do Tema (Claro)
         try {
             FlatLightLaf.setup();
-            UIManager.put("Button.arc", 10); // Arredondamento suave nos botões
+            // Ajustes opcionais para combinar com o estilo "compacto" do seu layout original
+            UIManager.put("Button.arc", 10); 
         } catch (Exception ex) {
-            System.err.println("Erro ao carregar tema.");
+            System.err.println("Erro ao iniciar FlatLaf");
         }
 
         EventQueue.invokeLater(new Runnable() {
@@ -30,7 +31,7 @@ public class TelaInicialCarregar extends JFrame {
                 try {
                     TelaInicialCarregar frame = new TelaInicialCarregar();
                     frame.setVisible(true);
-                    frame.setLocationRelativeTo(null);
+                    frame.setLocationRelativeTo(null); // Centraliza na tela
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
@@ -43,63 +44,70 @@ public class TelaInicialCarregar extends JFrame {
      */
     public TelaInicialCarregar() {
         setTitle("Grid Boss");
+        // Ajustei a altura (450) para caber os novos botões sem apertar
+        setBounds(100, 100, 487, 450); 
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        setResizable(false); // Mantém o tamanho fixo como no original
-        setBounds(100, 100, 977, 674); // Dimensões originais exatas
+        setResizable(false);
 
         contentPane = new JPanel();
         contentPane.setBackground(Color.WHITE);
         contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
-        contentPane.setLayout(null); // Layout absoluto para fidelidade total
+        contentPane.setLayout(null); // Layout Absoluto (Fiel ao original)
         setContentPane(contentPane);
 
-        // --- BANNER DO JOGO ---
-        JLabel lbBanner = new JLabel("");
-        lbBanner.setHorizontalAlignment(SwingConstants.CENTER);
-        lbBanner.setBounds(300, 77, 350, 160);
-        
-        try {
-            // PNG
-            lbBanner.setIcon(new ImageIcon(getClass().getResource("/resource/Banner Jogo.png")));
-            // SVG
-            // lbBanner.setIcon(new com.formdev.flatlaf.extras.FlatSVGIcon("resource/Banner Jogo.svg"));
-        } catch (Exception e) {
-            lbBanner.setText("GRID BOSS"); // Fallback se a imagem falhar
-            lbBanner.setFont(new Font("Arial", Font.BOLD, 40));
-        }
-        contentPane.add(lbBanner);
+        // --- TÍTULO ---
+        JLabel lblTitulo = new JLabel("GRID BOSS");
+        lblTitulo.setHorizontalAlignment(SwingConstants.CENTER);
+        lblTitulo.setFont(new Font("Berlin Sans FB", Font.PLAIN, 20));
+        lblTitulo.setBounds(10, 10, 451, 36);
+        contentPane.add(lblTitulo);
 
-        // --- BOTÃO: INICIAR NOVO JOGO ---
-        JButton btnNovoJogo = new JButton("Iniciar Novo Jogo");
-        btnNovoJogo.setFont(new Font("Segoe UI", Font.BOLD, 12)); // Fonte moderna mas tamanho original
-        btnNovoJogo.setBounds(365, 308, 225, 40);
+        // --- BANNER / IMAGEM ---
+        JLabel lblBanner = new JLabel("");
+        lblBanner.setHorizontalAlignment(SwingConstants.CENTER);
+        lblBanner.setVerticalAlignment(SwingConstants.BOTTOM);
+        lblBanner.setBounds(10, 56, 451, 170);
         
         try {
-            // PNG
-            btnNovoJogo.setIcon(new ImageIcon(getClass().getResource("/resource/IconeCorrida16px.png")));
-            // SVG
-            // btnNovoJogo.setIcon(new com.formdev.flatlaf.extras.FlatSVGIcon("resource/IconeCorrida16px.svg"));
-        } catch (Exception e) { }
+            // PNG (Original recuperado do seu código)
+            lblBanner.setIcon(new ImageIcon(getClass().getResource("/resource/Banner F1_OK.png")));
+            
+            // SVG (Futuro - Comentado)
+            // lblBanner.setIcon(new com.formdev.flatlaf.extras.FlatSVGIcon("resource/Banner F1_OK.svg"));
+        } catch (Exception e) {
+            // Se falhar, não quebra a tela
+        }
+        contentPane.add(lblBanner);
+
+        // --- BOTÕES ---
+        // Mantendo a largura (185) e altura (21) do seu original
+        // Centralizando matematicamente: (487 largura total - 185 botão) / 2 ~= 150 (X do seu código)
+        int btnX = 150;
+        int btnH = 25; // Aumentei levemente de 21 pra 25 pra caber melhor a fonte "Berlin" no FlatLaf
+        int startY = 240; // Começando logo abaixo do banner
+        int gap = 35;     // Espaço entre botões
+
+        // 1. INICIAR NOVO JOGO
+        JButton btnNovoJogo = new JButton("INICIAR NOVO JOGO");
+        btnNovoJogo.setFont(new Font("Berlin Sans FB", Font.PLAIN, 12));
+        btnNovoJogo.setBounds(btnX, startY, 185, btnH);
+        
+        // Ícones (Opcionais, adicionei placeholders caso queira usar)
+        // btnNovoJogo.setIcon(new ImageIcon(getClass().getResource("/resource/IconeCorrida16px.png")));
+        // btnNovoJogo.setIcon(new com.formdev.flatlaf.extras.FlatSVGIcon("resource/IconeCorrida16px.svg"));
 
         btnNovoJogo.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                irParaSelecaoCategoria();
+                //irParaSelecaoCategoria();
             }
         });
         contentPane.add(btnNovoJogo);
 
-        // --- BOTÃO: CARREGAR JOGO ---
-        JButton btnCarregar = new JButton("Carregar Jogo");
-        btnCarregar.setFont(new Font("Segoe UI", Font.BOLD, 12));
-        btnCarregar.setBounds(365, 359, 225, 40); // +51px de Y
+        // 2. CARREGAR JOGO
+        JButton btnCarregar = new JButton("CARREGAR JOGO SALVO");
+        btnCarregar.setFont(new Font("Berlin Sans FB", Font.PLAIN, 12));
+        btnCarregar.setBounds(btnX, startY + gap, 185, btnH);
         
-        try {
-            // PNG
-            btnCarregar.setIcon(new ImageIcon(getClass().getResource("/resource/Icone16px.png")));
-            // SVG
-            // btnCarregar.setIcon(new com.formdev.flatlaf.extras.FlatSVGIcon("resource/Icone16px.svg"));
-        } catch (Exception e) { }
-
         btnCarregar.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 carregarJogoAction();
@@ -107,71 +115,55 @@ public class TelaInicialCarregar extends JFrame {
         });
         contentPane.add(btnCarregar);
 
-        // --- BOTÃO: ADICIONAR MODS (NOVO) ---
-        JButton btnMods = new JButton("Adicionar Mods");
-        btnMods.setFont(new Font("Segoe UI", Font.BOLD, 12));
-        btnMods.setBounds(365, 410, 225, 40); // Inserido na sequência (+51px de Y)
+        // 3. ADICIONAR MODS (Novo)
+        JButton btnMods = new JButton("ADICIONAR MODS");
+        btnMods.setFont(new Font("Berlin Sans FB", Font.PLAIN, 12));
+        btnMods.setBounds(btnX, startY + (gap * 2), 185, btnH);
         
-        try {
-            // PNG (Reutilizando ícone de equipe que faz sentido para mods)
-            btnMods.setIcon(new ImageIcon(getClass().getResource("/resource/Icone24pxEquipe.png"))); 
-            // SVG
-            // btnMods.setIcon(new com.formdev.flatlaf.extras.FlatSVGIcon("resource/Icone24pxEquipe.svg").derive(16, 16));
-        } catch (Exception e) { }
-
         btnMods.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                JOptionPane.showMessageDialog(null, "Coloque os arquivos JSON na pasta /mods do jogo.");
+                JOptionPane.showMessageDialog(null, "Funcionalidade de Mods em breve!");
             }
         });
         contentPane.add(btnMods);
 
-        // --- BOTÃO: SAIR ---
-        JButton btnSair = new JButton("Sair");
-        btnSair.setFont(new Font("Segoe UI", Font.BOLD, 12));
-        btnSair.setBounds(365, 461, 225, 40); // Empurrado para baixo (+51px do botão de mods)
+        // 4. SAIR
+        JButton btnSair = new JButton("SAIR");
+        btnSair.setFont(new Font("Berlin Sans FB", Font.PLAIN, 12));
+        btnSair.setBounds(btnX, startY + (gap * 3), 185, btnH);
         
-        try {
-            // PNG
-            btnSair.setIcon(new ImageIcon(getClass().getResource("/resource/Icone16pxErro.png")));
-            // SVG
-            // btnSair.setIcon(new com.formdev.flatlaf.extras.FlatSVGIcon("resource/Icone16pxErro.svg"));
-        } catch (Exception e) { }
-
         btnSair.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 System.exit(0);
             }
         });
         contentPane.add(btnSair);
-
-        // --- RODAPÉ: VERSÃO ---
-        JLabel lbVersao = new JLabel("V 0.0.2");
-        lbVersao.setFont(new Font("Segoe UI", Font.PLAIN, 11));
-        lbVersao.setBounds(10, 610, 137, 14);
-        contentPane.add(lbVersao);
+        
+        // --- RODAPÉ ---
+        JLabel lblVersao = new JLabel("V 0.0.3");
+        lblVersao.setFont(new Font("Berlin Sans FB", Font.PLAIN, 10));
+        lblVersao.setForeground(Color.GRAY);
+        lblVersao.setBounds(10, 390, 100, 14);
+        contentPane.add(lblVersao);
     }
 
-    // --- MÉTODOS DE NAVEGAÇÃO ---
-
+    // --- AÇÕES ---
+/*
     private void irParaSelecaoCategoria() {
-        // SelecionarCategoria tela = new SelecionarCategoria();
-        // tela.setVisible(true);
-        // tela.setLocationRelativeTo(null);
-        // this.dispose();
-        JOptionPane.showMessageDialog(this, "Indo para Seleção de Categoria...");
+        Selecionar_Categoria tela = new Selecionar_Categoria();
+        tela.setVisible(true);
+        tela.setLocationRelativeTo(null);
+        this.dispose();
     }
-
+*/
     private void carregarJogoAction() {
         JFileChooser fileChooser = new JFileChooser();
-        // Filtra apenas arquivos JSON (formato novo)
-        fileChooser.setFileFilter(new javax.swing.filechooser.FileNameExtensionFilter("Arquivos de Save (.json)", "json"));
-        
+        fileChooser.setFileFilter(new javax.swing.filechooser.FileNameExtensionFilter("Save Game JSON", "json"));
         int retorno = fileChooser.showOpenDialog(this);
+        
         if (retorno == JFileChooser.APPROVE_OPTION) {
             ArquivoCarregado = fileChooser.getSelectedFile();
             JOptionPane.showMessageDialog(this, "Carregando: " + ArquivoCarregado.getName());
-            // Lógica de carregar via JSON entraria aqui
         }
     }
 }

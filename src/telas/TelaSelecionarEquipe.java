@@ -64,7 +64,8 @@ public class TelaSelecionarEquipe extends JFrame {
     }
 
     public TelaSelecionarEquipe() {
-        setTitle("Grid Boss - Selecionar Equipe");
+    	setIconImage(Toolkit.getDefaultToolkit().getImage(TelaSelecionarEquipe.class.getResource("/resource/Icone16px.png")));
+        setTitle("Grid Boss");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setBounds(100, 100, 586, 740);
         setResizable(false);
@@ -76,7 +77,7 @@ public class TelaSelecionarEquipe extends JFrame {
         setContentPane(contentPane);
 
         // --- CABEÇALHO ---
-        JLabel lblTitulo = new JLabel("MOTORSPORT MANAGER");
+        JLabel lblTitulo = new JLabel("GRID BOSS");
         lblTitulo.setFont(new Font("Berlin Sans FB", Font.PLAIN, 20));
         lblTitulo.setHorizontalAlignment(SwingConstants.CENTER);
         lblTitulo.setBounds(20, 11, 540, 26);

@@ -1,0 +1,326 @@
+[
+  {
+    "id": "hendrick",
+    "nome": "Hendrick Motorsports",
+    "sede": "Charlotte, NC",
+    "fundacao": 1984,
+    "orcamento": 40.0,
+    "motor": "Chevrolet",
+    "reputacao": 98,
+    "saldoFinanceiro": 40.0,
+    "arquivos": {
+      "logo": "/resource/NascarHendrick.png",
+      "logoSvg": "/resource/NascarHendrick.svg",
+      "bandeiraSede": "/resource/Bandeira Estados Unidos.png",
+      "bandeiraMotor": "/resource/Bandeira Estados Unidos.png",
+      "logoMotor": "/resource/Motor_ChevroletPQ.png"
+    },
+    "pilotosContratadosIDs": [
+      "Kyle Larson",
+      "Chase Elliott",
+      "William Byron",
+      "Alex Bowman"
+    ]
+  },
+  {
+    "id": "jgr",
+    "nome": "Joe Gibbs Racing",
+    "sede": "Huntersville, NC",
+    "fundacao": 1992,
+    "orcamento": 38.0,
+    "motor": "Toyota",
+    "reputacao": 95,
+    "saldoFinanceiro": 38.0,
+    "arquivos": {
+      "logo": "/resource/NascarJoeGibbs.png",
+      "logoSvg": "/resource/NascarJoeGibbs.svg",
+      "bandeiraSede": "/resource/Bandeira Estados Unidos.png",
+      "bandeiraMotor": "/resource/Bandeira Japao.png",
+      "logoMotor": "/resource/Motor_ToyotaPQ.png"
+    },
+    "pilotosContratadosIDs": [
+      "Denny Hamlin",
+      "Martin Truex Jr",
+      "Christopher Bell",
+      "Ty Gibbs"
+    ]
+  },
+  {
+    "id": "penske_nascar",
+    "nome": "Team Penske",
+    "sede": "Mooresville, NC",
+    "fundacao": 1966,
+    "orcamento": 35.0,
+    "motor": "Ford",
+    "reputacao": 95,
+    "saldoFinanceiro": 35.0,
+    "arquivos": {
+      "logo": "/resource/Equipe_Indy_Penske.png",
+      "logoSvg": "/resource/Equipe_Indy_Penske.svg",
+      "bandeiraSede": "/resource/Bandeira Estados Unidos.png",
+      "bandeiraMotor": "/resource/Bandeira Estados Unidos.png",
+      "logoMotor": "/resource/Motor_FordPQ.png"
+    },
+    "pilotosContratadosIDs": [
+      "Joey Logano",
+      "Ryan Blaney",
+      "Austin Cindric"
+    ]
+  },
+  {
+    "id": "23xi",
+    "nome": "23XI Racing",
+    "sede": "Mooresville, NC",
+    "fundacao": 2020,
+    "orcamento": 20.0,
+    "motor": "Toyota",
+    "reputacao": 85,
+    "saldoFinanceiro": 20.0,
+    "arquivos": {
+      "logo": "/resource/Nascar23XI.png",
+      "logoSvg": "/resource/Nascar23XI.svg",
+      "bandeiraSede": "/resource/Bandeira Estados Unidos.png",
+      "bandeiraMotor": "/resource/Bandeira Japao.png",
+      "logoMotor": "/resource/Motor_ToyotaPQ.png"
+    },
+    "pilotosContratadosIDs": [
+      "Tyler Reddick",
+      "Bubba Wallace"
+    ]
+  },
+  {
+    "id": "trackhouse",
+    "nome": "Trackhouse Racing",
+    "sede": "Concord, NC",
+    "fundacao": 2020,
+    "orcamento": 22.0,
+    "motor": "Chevrolet",
+    "reputacao": 85,
+    "saldoFinanceiro": 22.0,
+    "arquivos": {
+      "logo": "/resource/NascarTrackhouse.png",
+      "logoSvg": "/resource/NascarTrackhouse.svg",
+      "bandeiraSede": "/resource/Bandeira Estados Unidos.png",
+      "bandeiraMotor": "/resource/Bandeira Estados Unidos.png",
+      "logoMotor": "/resource/Motor_ChevroletPQ.png"
+    },
+    "pilotosContratadosIDs": [
+      "Ross Chastain",
+      "Daniel Suarez",
+      "Shane van Gisbergen"
+    ]
+  },
+  {
+    "id": "rfk",
+    "nome": "RFK Racing",
+    "sede": "Concord, NC",
+    "fundacao": 1988,
+    "orcamento": 25.0,
+    "motor": "Ford",
+    "reputacao": 88,
+    "saldoFinanceiro": 25.0,
+    "arquivos": {
+      "logo": "/resource/NascarRFK.png",
+      "logoSvg": "/resource/NascarRFK.svg",
+      "bandeiraSede": "/resource/Bandeira Estados Unidos.png",
+      "bandeiraMotor": "/resource/Bandeira Estados Unidos.png",
+      "logoMotor": "/resource/Motor_FordPQ.png"
+    },
+    "pilotosContratadosIDs": [
+      "Brad Keselowski",
+      "Chris Buescher"
+    ]
+  },
+  {
+    "id": "rcr",
+    "nome": "Richard Childress Racing",
+    "sede": "Welcome, NC",
+    "fundacao": 1969,
+    "orcamento": 28.0,
+    "motor": "Chevrolet",
+    "reputacao": 82,
+    "saldoFinanceiro": 28.0,
+    "arquivos": {
+      "logo": "/resource/NascarRCR.png",
+      "logoSvg": "/resource/NascarRCR.svg",
+      "bandeiraSede": "/resource/Bandeira Estados Unidos.png",
+      "bandeiraMotor": "/resource/Bandeira Estados Unidos.png",
+      "logoMotor": "/resource/Motor_ChevroletPQ.png"
+    },
+    "pilotosContratadosIDs": [
+      "Kyle Busch",
+      "Austin Dillon"
+    ]
+  },
+  {
+    "id": "stewarthaas",
+    "nome": "Stewart-Haas Racing",
+    "sede": "Kannapolis, NC",
+    "fundacao": 2002,
+    "orcamento": 25.0,
+    "motor": "Ford",
+    "reputacao": 75,
+    "saldoFinanceiro": 25.0,
+    "arquivos": {
+      "logo": "/resource/NascarStewartHaas.png",
+      "logoSvg": "/resource/NascarStewartHaas.svg",
+      "bandeiraSede": "/resource/Bandeira Estados Unidos.png",
+      "bandeiraMotor": "/resource/Bandeira Estados Unidos.png",
+      "logoMotor": "/resource/Motor_FordPQ.png"
+    },
+    "pilotosContratadosIDs": [
+      "Chase Briscoe",
+      "Josh Berry",
+      "Noah Gragson",
+      "Ryan Preece"
+    ]
+  },
+  {
+    "id": "spire",
+    "nome": "Spire Motorsports",
+    "sede": "Mooresville, NC",
+    "fundacao": 2018,
+    "orcamento": 15.0,
+    "motor": "Chevrolet",
+    "reputacao": 60,
+    "saldoFinanceiro": 15.0,
+    "arquivos": {
+      "logo": "/resource/NascarSpire.png",
+      "logoSvg": "/resource/NascarSpire.svg",
+      "bandeiraSede": "/resource/Bandeira Estados Unidos.png",
+      "bandeiraMotor": "/resource/Bandeira Estados Unidos.png",
+      "logoMotor": "/resource/Motor_ChevroletPQ.png"
+    },
+    "pilotosContratadosIDs": [
+      "Corey LaJoie",
+      "Zane Smith",
+      "Carson Hocevar"
+    ]
+  },
+  {
+    "id": "frontrow",
+    "nome": "Front Row Motorsports",
+    "sede": "Mooresville, NC",
+    "fundacao": 2004,
+    "orcamento": 18.0,
+    "motor": "Ford",
+    "reputacao": 70,
+    "saldoFinanceiro": 18.0,
+    "arquivos": {
+      "logo": "/resource/NascarFrontRow.png",
+      "logoSvg": "/resource/NascarFrontRow.svg",
+      "bandeiraSede": "/resource/Bandeira Estados Unidos.png",
+      "bandeiraMotor": "/resource/Bandeira Estados Unidos.png",
+      "logoMotor": "/resource/Motor_FordPQ.png"
+    },
+    "pilotosContratadosIDs": [
+      "Michael McDowell",
+      "Todd Gilliland"
+    ]
+  },
+  {
+    "id": "legacy",
+    "nome": "Legacy Motor Club",
+    "sede": "Statesville, NC",
+    "fundacao": 2021,
+    "orcamento": 20.0,
+    "motor": "Toyota",
+    "reputacao": 65,
+    "saldoFinanceiro": 20.0,
+    "arquivos": {
+      "logo": "/resource/NascarLegacy.png",
+      "logoSvg": "/resource/NascarLegacy.svg",
+      "bandeiraSede": "/resource/Bandeira Estados Unidos.png",
+      "bandeiraMotor": "/resource/Bandeira Japao.png",
+      "logoMotor": "/resource/Motor_ToyotaPQ.png"
+    },
+    "pilotosContratadosIDs": [
+      "Erik Jones",
+      "John Hunter Nemechek",
+      "Jimmie Johnson"
+    ]
+  },
+  {
+    "id": "jtg",
+    "nome": "JTG Daugherty Racing",
+    "sede": "Harrisburg, NC",
+    "fundacao": 1995,
+    "orcamento": 12.0,
+    "motor": "Chevrolet",
+    "reputacao": 60,
+    "saldoFinanceiro": 12.0,
+    "arquivos": {
+      "logo": "/resource/NascarJTG.png",
+      "logoSvg": "/resource/NascarJTG.svg",
+      "bandeiraSede": "/resource/Bandeira Estados Unidos.png",
+      "bandeiraMotor": "/resource/Bandeira Estados Unidos.png",
+      "logoMotor": "/resource/Motor_ChevroletPQ.png"
+    },
+    "pilotosContratadosIDs": [
+      "Ricky Stenhouse Jr"
+    ]
+  },
+  {
+    "id": "wood",
+    "nome": "Wood Brothers Racing",
+    "sede": "Mooresville, NC",
+    "fundacao": 1950,
+    "orcamento": 15.0,
+    "motor": "Ford",
+    "reputacao": 65,
+    "saldoFinanceiro": 15.0,
+    "arquivos": {
+      "logo": "/resource/NascarWoodBrothers.png",
+      "logoSvg": "/resource/NascarWoodBrothers.svg",
+      "bandeiraSede": "/resource/Bandeira Estados Unidos.png",
+      "bandeiraMotor": "/resource/Bandeira Estados Unidos.png",
+      "logoMotor": "/resource/Motor_FordPQ.png"
+    },
+    "pilotosContratadosIDs": [
+      "Harrison Burton"
+    ]
+  },
+  {
+    "id": "kaulig",
+    "nome": "Kaulig Racing",
+    "sede": "Welcome, NC",
+    "fundacao": 2016,
+    "orcamento": 18.0,
+    "motor": "Chevrolet",
+    "reputacao": 60,
+    "saldoFinanceiro": 18.0,
+    "arquivos": {
+      "logo": "/resource/NascarKaulig.png",
+      "logoSvg": "/resource/NascarKaulig.svg",
+      "bandeiraSede": "/resource/Bandeira Estados Unidos.png",
+      "bandeiraMotor": "/resource/Bandeira Estados Unidos.png",
+      "logoMotor": "/resource/Motor_ChevroletPQ.png"
+    },
+    "pilotosContratadosIDs": [
+      "AJ Allmendinger",
+      "Daniel Hemric",
+      "Shane van Gisbergen"
+    ]
+  },
+  {
+    "id": "rickware",
+    "nome": "Rick Ware Racing",
+    "sede": "Concord, NC",
+    "fundacao": 1998,
+    "orcamento": 10.0,
+    "motor": "Ford",
+    "reputacao": 50,
+    "saldoFinanceiro": 10.0,
+    "arquivos": {
+      "logo": "/resource/NascarRickWare.png",
+      "logoSvg": "/resource/NascarRickWare.svg",
+      "bandeiraSede": "/resource/Bandeira Estados Unidos.png",
+      "bandeiraMotor": "/resource/Bandeira Estados Unidos.png",
+      "logoMotor": "/resource/Motor_FordPQ.png"
+    },
+    "pilotosContratadosIDs": [
+      "Justin Haley",
+      "Kaz Grala"
+    ]
+  }
+]

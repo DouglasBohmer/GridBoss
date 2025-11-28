@@ -1,0 +1,264 @@
+[
+  {
+    "id": "penske",
+    "nome": "Team Penske",
+    "sede": "Mooresville, Carolina do Norte",
+    "fundacao": 1966,
+    "orcamento": 35.0,
+    "motor": "Chevrolet",
+    "reputacao": 95,
+    "saldoFinanceiro": 35.0,
+    "arquivos": {
+      "logo": "/resource/Equipe_Indy_Penske.png",
+      "logoSvg": "/resource/Equipe_Indy_Penske.svg",
+      "bandeiraSede": "/resource/Bandeira EUA.png",
+      "bandeiraMotor": "/resource/Bandeira Estados Unidos.png",
+      "logoMotor": "/resource/Motor_ChevroletPQ.png"
+    },
+    "pilotosContratadosIDs": [
+      "Josef Newgarden",
+      "Scott McLaughlin",
+      "Will Power"
+    ]
+  },
+  {
+    "id": "ganassi",
+    "nome": "Chip Ganassi Racing",
+    "sede": "Indianápolis, Indiana",
+    "fundacao": 1990,
+    "orcamento": 32.0,
+    "motor": "Honda",
+    "reputacao": 95,
+    "saldoFinanceiro": 32.0,
+    "arquivos": {
+      "logo": "/resource/Equipe_Indy_Chip Ganassi.png",
+      "logoSvg": "/resource/Equipe_Indy_Chip Ganassi.svg",
+      "bandeiraSede": "/resource/Bandeira EUA.png",
+      "bandeiraMotor": "/resource/Bandeira Japao.png",
+      "logoMotor": "/resource/Motor_HondaPQ.png"
+    },
+    "pilotosContratadosIDs": [
+      "Alex Palou",
+      "Scott Dixon",
+      "Marcus Armstrong",
+      "Linus Lundqvist",
+      "Kyffin Simpson"
+    ]
+  },
+  {
+    "id": "andretti",
+    "nome": "Andretti Global",
+    "sede": "Fishers, Indiana",
+    "fundacao": 1993,
+    "orcamento": 35.0,
+    "motor": "Honda",
+    "reputacao": 88,
+    "saldoFinanceiro": 35.0,
+    "arquivos": {
+      "logo": "/resource/Equipe_Indy_Andretti.png",
+      "logoSvg": "/resource/Equipe_Indy_Andretti.svg",
+      "bandeiraSede": "/resource/Bandeira EUA.png",
+      "bandeiraMotor": "/resource/Bandeira Japao.png",
+      "logoMotor": "/resource/Motor_HondaPQ.png"
+    },
+    "pilotosContratadosIDs": [
+      "Colton Herta",
+      "Kyle Kirkwood",
+      "Marcus Ericsson",
+      "Marco Andretti"
+    ]
+  },
+  {
+    "id": "mclaren_indy",
+    "nome": "Arrow McLaren",
+    "sede": "Indianápolis, Indiana",
+    "fundacao": 2001,
+    "orcamento": 25.0,
+    "motor": "Chevrolet",
+    "reputacao": 85,
+    "saldoFinanceiro": 25.0,
+    "arquivos": {
+      "logo": "/resource/Equipe_Indy_Arrow McLaren.png",
+      "logoSvg": "/resource/Equipe_Indy_Arrow McLaren.svg",
+      "bandeiraSede": "/resource/Bandeira EUA.png",
+      "bandeiraMotor": "/resource/Bandeira Estados Unidos.png",
+      "logoMotor": "/resource/Motor_ChevroletPQ.png"
+    },
+    "pilotosContratadosIDs": [
+      "Patricio O'Ward",
+      "Alexander Rossi",
+      "David Malukas",
+      "Kyle Larson"
+    ]
+  },
+  {
+    "id": "rahal",
+    "nome": "Rahal Letterman Lanigan Racing",
+    "sede": "Brownsburg, Indiana",
+    "fundacao": 1992,
+    "orcamento": 12.0,
+    "motor": "Honda",
+    "reputacao": 75,
+    "saldoFinanceiro": 12.0,
+    "arquivos": {
+      "logo": "/resource/Equipe_Indy_Rahal.png",
+      "logoSvg": "/resource/Equipe_Indy_Rahal.svg",
+      "bandeiraSede": "/resource/Bandeira EUA.png",
+      "bandeiraMotor": "/resource/Bandeira Japao.png",
+      "logoMotor": "/resource/Motor_HondaPQ.png"
+    },
+    "pilotosContratadosIDs": [
+      "Graham Rahal",
+      "Christian Lundgaard",
+      "Pietro Fittipaldi",
+      "Takuma Sato"
+    ]
+  },
+  {
+    "id": "meyer",
+    "nome": "Meyer Shank Racing",
+    "sede": "Pataskala, Ohio",
+    "fundacao": 2017,
+    "orcamento": 10.0,
+    "motor": "Honda",
+    "reputacao": 70,
+    "saldoFinanceiro": 10.0,
+    "arquivos": {
+      "logo": "/resource/Equipe_Indy_Meyer Shank.png",
+      "logoSvg": "/resource/Equipe_Indy_Meyer Shank.svg",
+      "bandeiraSede": "/resource/Bandeira EUA.png",
+      "bandeiraMotor": "/resource/Bandeira Japao.png",
+      "logoMotor": "/resource/Motor_HondaPQ.png"
+    },
+    "pilotosContratadosIDs": [
+      "Felix Rosenqvist",
+      "Tom Blomqvist",
+      "Helio Castroneves"
+    ]
+  },
+  {
+    "id": "edcarpenter",
+    "nome": "Ed Carpenter Racing",
+    "sede": "Indianápolis, Indiana",
+    "fundacao": 2012,
+    "orcamento": 8.0,
+    "motor": "Chevrolet",
+    "reputacao": 60,
+    "saldoFinanceiro": 8.0,
+    "arquivos": {
+      "logo": "/resource/Equipe_Indy_EdCarpterRacing.png",
+      "logoSvg": "/resource/Equipe_Indy_EdCarpterRacing.svg",
+      "bandeiraSede": "/resource/Bandeira EUA.png",
+      "bandeiraMotor": "/resource/Bandeira Estados Unidos.png",
+      "logoMotor": "/resource/Motor_ChevroletPQ.png"
+    },
+    "pilotosContratadosIDs": [
+      "Rinus VeeKay",
+      "Ed Carpenter"
+    ]
+  },
+  {
+    "id": "juncos",
+    "nome": "Juncos Hollinger Racing",
+    "sede": "Indianápolis, Indiana",
+    "fundacao": 2017,
+    "orcamento": 9.5,
+    "motor": "Chevrolet",
+    "reputacao": 55,
+    "saldoFinanceiro": 9.5,
+    "arquivos": {
+      "logo": "/resource/Equipe_Indy_Juncos.png",
+      "logoSvg": "/resource/Equipe_Indy_Juncos.svg",
+      "bandeiraSede": "/resource/Bandeira EUA.png",
+      "bandeiraMotor": "/resource/Bandeira Estados Unidos.png",
+      "logoMotor": "/resource/Motor_ChevroletPQ.png"
+    },
+    "pilotosContratadosIDs": [
+      "Romain Grosjean",
+      "Agustin Canapino"
+    ]
+  },
+  {
+    "id": "dalecoyne",
+    "nome": "Dale Coyne Racing",
+    "sede": "Plainfield, Illinois",
+    "fundacao": 1984,
+    "orcamento": 10.0,
+    "motor": "Honda",
+    "reputacao": 50,
+    "saldoFinanceiro": 10.0,
+    "arquivos": {
+      "logo": "/resource/Equipe_Indy_Dale Coyne.png",
+      "logoSvg": "/resource/Equipe_Indy_Dale Coyne.svg",
+      "bandeiraSede": "/resource/Bandeira EUA.png",
+      "bandeiraMotor": "/resource/Bandeira Japao.png",
+      "logoMotor": "/resource/Motor_HondaPQ.png"
+    },
+    "pilotosContratadosIDs": [
+      "Jack Harvey",
+      "Colin Braun"
+    ]
+  },
+  {
+    "id": "foyt",
+    "nome": "A. J. Foyt Racing",
+    "sede": "Waller, Texas",
+    "fundacao": 1965,
+    "orcamento": 11.0,
+    "motor": "Chevrolet",
+    "reputacao": 55,
+    "saldoFinanceiro": 11.0,
+    "arquivos": {
+      "logo": "/resource/Equipe_Indy_AJ Foyt.png",
+      "logoSvg": "/resource/Equipe_Indy_AJ Foyt.svg",
+      "bandeiraSede": "/resource/Bandeira EUA.png",
+      "bandeiraMotor": "/resource/Bandeira Estados Unidos.png",
+      "logoMotor": "/resource/Motor_ChevroletPQ.png"
+    },
+    "pilotosContratadosIDs": [
+      "Santino Ferrucci",
+      "Sting Ray Robb"
+    ]
+  },
+  {
+    "id": "dreyer",
+    "nome": "Dreyer & Reinbold Racing / Cusick Motorsports",
+    "sede": "Carmel, Indiana",
+    "fundacao": 1999,
+    "orcamento": 12.0,
+    "motor": "Chevrolet",
+    "reputacao": 50,
+    "saldoFinanceiro": 12.0,
+    "arquivos": {
+      "logo": "/resource/Equipe_Indy_Dreyer.png",
+      "logoSvg": "/resource/Equipe_Indy_Dreyer.svg",
+      "bandeiraSede": "/resource/Bandeira EUA.png",
+      "bandeiraMotor": "/resource/Bandeira Estados Unidos.png",
+      "logoMotor": "/resource/Motor_ChevroletPQ.png"
+    },
+    "pilotosContratadosIDs": [
+      "Ryan Hunter-Reay",
+      "Conor Daly"
+    ]
+  },
+  {
+    "id": "abel",
+    "nome": "Abel Motorsports",
+    "sede": "Indianápolis, Indiana",
+    "fundacao": 1972,
+    "orcamento": 12.0,
+    "motor": "Chevrolet",
+    "reputacao": 40,
+    "saldoFinanceiro": 12.0,
+    "arquivos": {
+      "logo": "/resource/Equipe_Indy_Abel.png",
+      "logoSvg": "/resource/Equipe_Indy_Abel.svg",
+      "bandeiraSede": "/resource/Bandeira EUA.png",
+      "bandeiraMotor": "/resource/Bandeira Estados Unidos.png",
+      "logoMotor": "/resource/Motor_ChevroletPQ.png"
+    },
+    "pilotosContratadosIDs": [
+      "Richard Chad 'RC' Enerson"
+    ]
+  }
+]

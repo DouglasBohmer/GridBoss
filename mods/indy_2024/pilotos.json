@@ -1,0 +1,274 @@
+[
+  {
+    "nome": "Alex Palou",
+    "nacionalidade": "Espanha",
+    "numero": 10,
+    "idade": 27,
+    "overall": 95.0,
+    "exigenciaMinimaDeEquipe": 90
+  },
+  {
+    "nome": "Scott Dixon",
+    "nacionalidade": "Nova Zelandia",
+    "numero": 9,
+    "idade": 44,
+    "overall": 94.0,
+    "exigenciaMinimaDeEquipe": 90
+  },
+  {
+    "nome": "Josef Newgarden",
+    "nacionalidade": "Estados Unidos",
+    "numero": 2,
+    "idade": 33,
+    "overall": 93.0,
+    "exigenciaMinimaDeEquipe": 90
+  },
+  {
+    "nome": "Will Power",
+    "nacionalidade": "Australia",
+    "numero": 12,
+    "idade": 43,
+    "overall": 91.0,
+    "exigenciaMinimaDeEquipe": 85
+  },
+  {
+    "nome": "Scott McLaughlin",
+    "nacionalidade": "Nova Zelandia",
+    "numero": 3,
+    "idade": 31,
+    "overall": 90.0,
+    "exigenciaMinimaDeEquipe": 85
+  },
+  {
+    "nome": "Patricio O'Ward",
+    "nacionalidade": "Mexico",
+    "numero": 5,
+    "idade": 25,
+    "overall": 90.0,
+    "exigenciaMinimaDeEquipe": 85
+  },
+  {
+    "nome": "Colton Herta",
+    "nacionalidade": "Estados Unidos",
+    "numero": 26,
+    "idade": 24,
+    "overall": 89.0,
+    "exigenciaMinimaDeEquipe": 80
+  },
+  {
+    "nome": "Kyle Kirkwood",
+    "nacionalidade": "Estados Unidos",
+    "numero": 27,
+    "idade": 25,
+    "overall": 86.0,
+    "exigenciaMinimaDeEquipe": 75
+  },
+  {
+    "nome": "Alexander Rossi",
+    "nacionalidade": "Estados Unidos",
+    "numero": 7,
+    "idade": 32,
+    "overall": 85.0,
+    "exigenciaMinimaDeEquipe": 75
+  },
+  {
+    "nome": "Marcus Ericsson",
+    "nacionalidade": "Suecia",
+    "numero": 28,
+    "idade": 33,
+    "overall": 84.0,
+    "exigenciaMinimaDeEquipe": 75
+  },
+  {
+    "nome": "Christian Lundgaard",
+    "nacionalidade": "Dinamarca",
+    "numero": 45,
+    "idade": 23,
+    "overall": 83.0,
+    "exigenciaMinimaDeEquipe": 70
+  },
+  {
+    "nome": "Felix Rosenqvist",
+    "nacionalidade": "Suecia",
+    "numero": 60,
+    "idade": 32,
+    "overall": 82.0,
+    "exigenciaMinimaDeEquipe": 70
+  },
+  {
+    "nome": "Romain Grosjean",
+    "nacionalidade": "Franca",
+    "numero": 77,
+    "idade": 38,
+    "overall": 81.0,
+    "exigenciaMinimaDeEquipe": 70
+  },
+  {
+    "nome": "Graham Rahal",
+    "nacionalidade": "Estados Unidos",
+    "numero": 15,
+    "idade": 35,
+    "overall": 80.0,
+    "exigenciaMinimaDeEquipe": 65
+  },
+  {
+    "nome": "Rinus VeeKay",
+    "nacionalidade": "Holanda",
+    "numero": 21,
+    "idade": 23,
+    "overall": 79.0,
+    "exigenciaMinimaDeEquipe": 60
+  },
+  {
+    "nome": "Santino Ferrucci",
+    "nacionalidade": "Estados Unidos",
+    "numero": 14,
+    "idade": 26,
+    "overall": 78.0,
+    "exigenciaMinimaDeEquipe": 50
+  },
+  {
+    "nome": "David Malukas",
+    "nacionalidade": "Estados Unidos",
+    "numero": 6,
+    "idade": 22,
+    "overall": 77.0,
+    "exigenciaMinimaDeEquipe": 50
+  },
+  {
+    "nome": "Marcus Armstrong",
+    "nacionalidade": "Nova Zelandia",
+    "numero": 11,
+    "idade": 24,
+    "overall": 77.0,
+    "exigenciaMinimaDeEquipe": 50
+  },
+  {
+    "nome": "Linus Lundqvist",
+    "nacionalidade": "Suecia",
+    "numero": 8,
+    "idade": 25,
+    "overall": 76.0,
+    "exigenciaMinimaDeEquipe": 40
+  },
+  {
+    "nome": "Agustin Canapino",
+    "nacionalidade": "Argentina",
+    "numero": 78,
+    "idade": 34,
+    "overall": 75.0,
+    "exigenciaMinimaDeEquipe": 40
+  },
+  {
+    "nome": "Helio Castroneves",
+    "nacionalidade": "Brasil",
+    "numero": 6,
+    "idade": 49,
+    "overall": 82.0,
+    "exigenciaMinimaDeEquipe": 60
+  },
+  {
+    "nome": "Pietro Fittipaldi",
+    "nacionalidade": "Brasil",
+    "numero": 30,
+    "idade": 28,
+    "overall": 74.0,
+    "exigenciaMinimaDeEquipe": 40
+  },
+  {
+    "nome": "Tom Blomqvist",
+    "nacionalidade": "Reino Unido",
+    "numero": 66,
+    "idade": 30,
+    "overall": 73.0,
+    "exigenciaMinimaDeEquipe": 30
+  },
+  {
+    "nome": "Ed Carpenter",
+    "nacionalidade": "Estados Unidos",
+    "numero": 20,
+    "idade": 43,
+    "overall": 72.0,
+    "exigenciaMinimaDeEquipe": 30
+  },
+  {
+    "nome": "Kyffin Simpson",
+    "nacionalidade": "Caima",
+    "numero": 4,
+    "idade": 19,
+    "overall": 68.0,
+    "exigenciaMinimaDeEquipe": 10
+  },
+  {
+    "nome": "Sting Ray Robb",
+    "nacionalidade": "Estados Unidos",
+    "numero": 41,
+    "idade": 22,
+    "overall": 65.0,
+    "exigenciaMinimaDeEquipe": 10
+  },
+  {
+    "nome": "Jack Harvey",
+    "nacionalidade": "Reino Unido",
+    "numero": 18,
+    "idade": 31,
+    "overall": 70.0,
+    "exigenciaMinimaDeEquipe": 20
+  },
+  {
+    "nome": "Colin Braun",
+    "nacionalidade": "Estados Unidos",
+    "numero": 51,
+    "idade": 35,
+    "overall": 70.0,
+    "exigenciaMinimaDeEquipe": 20
+  },
+  {
+    "nome": "Ryan Hunter-Reay",
+    "nacionalidade": "Estados Unidos",
+    "numero": 23,
+    "idade": 43,
+    "overall": 75.0,
+    "exigenciaMinimaDeEquipe": 40
+  },
+  {
+    "nome": "Conor Daly",
+    "nacionalidade": "Estados Unidos",
+    "numero": 24,
+    "idade": 32,
+    "overall": 74.0,
+    "exigenciaMinimaDeEquipe": 30
+  },
+  {
+    "nome": "Takuma Sato",
+    "nacionalidade": "Japao",
+    "numero": 75,
+    "idade": 47,
+    "overall": 76.0,
+    "exigenciaMinimaDeEquipe": 40
+  },
+  {
+    "nome": "Marco Andretti",
+    "nacionalidade": "Estados Unidos",
+    "numero": 98,
+    "idade": 37,
+    "overall": 73.0,
+    "exigenciaMinimaDeEquipe": 30
+  },
+  {
+    "nome": "Kyle Larson",
+    "nacionalidade": "Estados Unidos",
+    "numero": 17,
+    "idade": 31,
+    "overall": 85.0,
+    "exigenciaMinimaDeEquipe": 70
+  },
+  {
+    "nome": "Richard Chad 'RC' Enerson",
+    "nacionalidade": "Estados Unidos",
+    "numero": 50,
+    "idade": 27,
+    "overall": 68.0,
+    "exigenciaMinimaDeEquipe": 10
+  }
+]

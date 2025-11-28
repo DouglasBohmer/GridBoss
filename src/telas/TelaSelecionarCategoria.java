@@ -60,7 +60,7 @@ public class TelaSelecionarCategoria extends JFrame {
         modsDisponiveis = CarregadorJSON.escanearModsInstalados();
 
         setIconImage(Toolkit.getDefaultToolkit().getImage(TelaSelecionarCategoria.class.getResource("/resource/Icone16px.png")));
-        setTitle("Motorsport Manager");
+        setTitle("Grid Boss");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setBounds(100, 100, 501, 716);
         setResizable(false);
@@ -80,7 +80,7 @@ public class TelaSelecionarCategoria extends JFrame {
         contentPane.setLayout(null);
 
         // Título
-        JLabel lblTitulo = new JLabel("MOTORSPORT MANAGER");
+        JLabel lblTitulo = new JLabel("GRID BOSS");
         lblTitulo.setFont(new Font("Berlin Sans FB", Font.PLAIN, 20));
         lblTitulo.setHorizontalAlignment(SwingConstants.CENTER);
         lblTitulo.setBounds(25, 10, 460, 36);

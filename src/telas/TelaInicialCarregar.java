@@ -43,6 +43,7 @@ public class TelaInicialCarregar extends JFrame {
      * Create the frame.
      */
     public TelaInicialCarregar() {
+    	setIconImage(Toolkit.getDefaultToolkit().getImage(TelaInicialCarregar.class.getResource("/resource/Icone16px.png")));
         setTitle("Grid Boss");
         // Ajustei a altura (450) para caber os novos botões sem apertar
         setBounds(100, 100, 487, 450); 

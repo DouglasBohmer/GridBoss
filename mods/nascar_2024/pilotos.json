@@ -1,0 +1,306 @@
+[
+  {
+    "nome": "Kyle Larson",
+    "nacionalidade": "Estados Unidos",
+    "numero": 5,
+    "idade": 31,
+    "overall": 96.0,
+    "exigenciaMinimaDeEquipe": 90
+  },
+  {
+    "nome": "Chase Elliott",
+    "nacionalidade": "Estados Unidos",
+    "numero": 9,
+    "idade": 28,
+    "overall": 92.0,
+    "exigenciaMinimaDeEquipe": 90
+  },
+  {
+    "nome": "William Byron",
+    "nacionalidade": "Estados Unidos",
+    "numero": 24,
+    "idade": 26,
+    "overall": 94.0,
+    "exigenciaMinimaDeEquipe": 85
+  },
+  {
+    "nome": "Alex Bowman",
+    "nacionalidade": "Estados Unidos",
+    "numero": 48,
+    "idade": 31,
+    "overall": 85.0,
+    "exigenciaMinimaDeEquipe": 75
+  },
+  {
+    "nome": "Denny Hamlin",
+    "nacionalidade": "Estados Unidos",
+    "numero": 11,
+    "idade": 43,
+    "overall": 94.0,
+    "exigenciaMinimaDeEquipe": 90
+  },
+  {
+    "nome": "Martin Truex Jr",
+    "nacionalidade": "Estados Unidos",
+    "numero": 19,
+    "idade": 44,
+    "overall": 90.0,
+    "exigenciaMinimaDeEquipe": 85
+  },
+  {
+    "nome": "Christopher Bell",
+    "nacionalidade": "Estados Unidos",
+    "numero": 20,
+    "idade": 29,
+    "overall": 93.0,
+    "exigenciaMinimaDeEquipe": 85
+  },
+  {
+    "nome": "Ty Gibbs",
+    "nacionalidade": "Estados Unidos",
+    "numero": 54,
+    "idade": 21,
+    "overall": 84.0,
+    "exigenciaMinimaDeEquipe": 70
+  },
+  {
+    "nome": "Joey Logano",
+    "nacionalidade": "Estados Unidos",
+    "numero": 22,
+    "idade": 34,
+    "overall": 91.0,
+    "exigenciaMinimaDeEquipe": 85
+  },
+  {
+    "nome": "Ryan Blaney",
+    "nacionalidade": "Estados Unidos",
+    "numero": 12,
+    "idade": 30,
+    "overall": 92.0,
+    "exigenciaMinimaDeEquipe": 85
+  },
+  {
+    "nome": "Austin Cindric",
+    "nacionalidade": "Estados Unidos",
+    "numero": 2,
+    "idade": 25,
+    "overall": 80.0,
+    "exigenciaMinimaDeEquipe": 60
+  },
+  {
+    "nome": "Kyle Busch",
+    "nacionalidade": "Estados Unidos",
+    "numero": 8,
+    "idade": 39,
+    "overall": 90.0,
+    "exigenciaMinimaDeEquipe": 80
+  },
+  {
+    "nome": "Austin Dillon",
+    "nacionalidade": "Estados Unidos",
+    "numero": 3,
+    "idade": 34,
+    "overall": 78.0,
+    "exigenciaMinimaDeEquipe": 50
+  },
+  {
+    "nome": "Tyler Reddick",
+    "nacionalidade": "Estados Unidos",
+    "numero": 45,
+    "idade": 28,
+    "overall": 91.0,
+    "exigenciaMinimaDeEquipe": 80
+  },
+  {
+    "nome": "Bubba Wallace",
+    "nacionalidade": "Estados Unidos",
+    "numero": 23,
+    "idade": 30,
+    "overall": 83.0,
+    "exigenciaMinimaDeEquipe": 60
+  },
+  {
+    "nome": "Ross Chastain",
+    "nacionalidade": "Estados Unidos",
+    "numero": 1,
+    "idade": 31,
+    "overall": 88.0,
+    "exigenciaMinimaDeEquipe": 75
+  },
+  {
+    "nome": "Daniel Suarez",
+    "nacionalidade": "Mexico",
+    "numero": 99,
+    "idade": 32,
+    "overall": 82.0,
+    "exigenciaMinimaDeEquipe": 60
+  },
+  {
+    "nome": "Shane van Gisbergen",
+    "nacionalidade": "Nova Zelandia",
+    "numero": 97,
+    "idade": 35,
+    "overall": 81.0,
+    "exigenciaMinimaDeEquipe": 50
+  },
+  {
+    "nome": "Brad Keselowski",
+    "nacionalidade": "Estados Unidos",
+    "numero": 6,
+    "idade": 40,
+    "overall": 89.0,
+    "exigenciaMinimaDeEquipe": 75
+  },
+  {
+    "nome": "Chris Buescher",
+    "nacionalidade": "Estados Unidos",
+    "numero": 17,
+    "idade": 31,
+    "overall": 87.0,
+    "exigenciaMinimaDeEquipe": 70
+  },
+  {
+    "nome": "Josh Berry",
+    "nacionalidade": "Estados Unidos",
+    "numero": 4,
+    "idade": 33,
+    "overall": 79.0,
+    "exigenciaMinimaDeEquipe": 40
+  },
+  {
+    "nome": "Noah Gragson",
+    "nacionalidade": "Estados Unidos",
+    "numero": 10,
+    "idade": 25,
+    "overall": 78.0,
+    "exigenciaMinimaDeEquipe": 40
+  },
+  {
+    "nome": "Chase Briscoe",
+    "nacionalidade": "Estados Unidos",
+    "numero": 14,
+    "idade": 29,
+    "overall": 82.0,
+    "exigenciaMinimaDeEquipe": 60
+  },
+  {
+    "nome": "Ryan Preece",
+    "nacionalidade": "Estados Unidos",
+    "numero": 41,
+    "idade": 33,
+    "overall": 76.0,
+    "exigenciaMinimaDeEquipe": 40
+  },
+  {
+    "nome": "Michael McDowell",
+    "nacionalidade": "Estados Unidos",
+    "numero": 34,
+    "idade": 39,
+    "overall": 80.0,
+    "exigenciaMinimaDeEquipe": 50
+  },
+  {
+    "nome": "Todd Gilliland",
+    "nacionalidade": "Estados Unidos",
+    "numero": 38,
+    "idade": 24,
+    "overall": 75.0,
+    "exigenciaMinimaDeEquipe": 30
+  },
+  {
+    "nome": "John Hunter Nemechek",
+    "nacionalidade": "Estados Unidos",
+    "numero": 42,
+    "idade": 26,
+    "overall": 76.0,
+    "exigenciaMinimaDeEquipe": 30
+  },
+  {
+    "nome": "Erik Jones",
+    "nacionalidade": "Estados Unidos",
+    "numero": 43,
+    "idade": 27,
+    "overall": 81.0,
+    "exigenciaMinimaDeEquipe": 50
+  },
+  {
+    "nome": "Jimmie Johnson",
+    "nacionalidade": "Estados Unidos",
+    "numero": 84,
+    "idade": 48,
+    "overall": 79.0,
+    "exigenciaMinimaDeEquipe": 50
+  },
+  {
+    "nome": "Ricky Stenhouse Jr",
+    "nacionalidade": "Estados Unidos",
+    "numero": 47,
+    "idade": 36,
+    "overall": 78.0,
+    "exigenciaMinimaDeEquipe": 40
+  },
+  {
+    "nome": "Corey LaJoie",
+    "nacionalidade": "Estados Unidos",
+    "numero": 7,
+    "idade": 32,
+    "overall": 74.0,
+    "exigenciaMinimaDeEquipe": 20
+  },
+  {
+    "nome": "Zane Smith",
+    "nacionalidade": "Estados Unidos",
+    "numero": 71,
+    "idade": 25,
+    "overall": 73.0,
+    "exigenciaMinimaDeEquipe": 20
+  },
+  {
+    "nome": "Carson Hocevar",
+    "nacionalidade": "Estados Unidos",
+    "numero": 77,
+    "idade": 21,
+    "overall": 75.0,
+    "exigenciaMinimaDeEquipe": 20
+  },
+  {
+    "nome": "Harrison Burton",
+    "nacionalidade": "Estados Unidos",
+    "numero": 21,
+    "idade": 23,
+    "overall": 72.0,
+    "exigenciaMinimaDeEquipe": 20
+  },
+  {
+    "nome": "Daniel Hemric",
+    "nacionalidade": "Estados Unidos",
+    "numero": 31,
+    "idade": 33,
+    "overall": 73.0,
+    "exigenciaMinimaDeEquipe": 20
+  },
+  {
+    "nome": "AJ Allmendinger",
+    "nacionalidade": "Estados Unidos",
+    "numero": 16,
+    "idade": 42,
+    "overall": 82.0,
+    "exigenciaMinimaDeEquipe": 50
+  },
+  {
+    "nome": "Justin Haley",
+    "nacionalidade": "Estados Unidos",
+    "numero": 51,
+    "idade": 25,
+    "overall": 74.0,
+    "exigenciaMinimaDeEquipe": 20
+  },
+  {
+    "nome": "Kaz Grala",
+    "nacionalidade": "Estados Unidos",
+    "numero": 15,
+    "idade": 25,
+    "overall": 70.0,
+    "exigenciaMinimaDeEquipe": 10
+  }
+]

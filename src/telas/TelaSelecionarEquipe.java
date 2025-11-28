@@ -97,7 +97,7 @@ public class TelaSelecionarEquipe extends JFrame {
         cbListaEquipes = new JComboBox<>();
         cbListaEquipes.setModel(new DefaultComboBoxModel<>(new String[] {"-- CARREGANDO --"}));
         cbListaEquipes.setMaximumRowCount(15);
-        cbListaEquipes.setFont(new Font("Berlin Sans FB", Font.PLAIN, 13));
+        cbListaEquipes.setFont(new Font("Berlin Sans FB", Font.PLAIN, 15));
         cbListaEquipes.setBounds(20, 238, 540, 21);
         // Quando mudar o combobox, chama o método de atualizar a tela
         cbListaEquipes.addActionListener(e -> atualizarDadosNaTela());

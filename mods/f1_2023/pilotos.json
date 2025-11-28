@@ -1,0 +1,258 @@
+[
+  {
+    "nome": "Max Verstappen",
+    "nacionalidade": "Holanda",
+    "numero": 33,
+    "idade": 25,
+    "overall": 99.0,
+    "exigenciaMinimaDeEquipe": 90
+  },
+  {
+    "nome": "Sergio Perez",
+    "nacionalidade": "Mexico",
+    "numero": 11,
+    "idade": 33,
+    "overall": 87.0,
+    "exigenciaMinimaDeEquipe": 85
+  },
+  {
+    "nome": "Lewis Hamilton",
+    "nacionalidade": "Reino Unido",
+    "numero": 44,
+    "idade": 38,
+    "overall": 93.0,
+    "exigenciaMinimaDeEquipe": 90
+  },
+  {
+    "nome": "George Russell",
+    "nacionalidade": "Reino Unido",
+    "numero": 63,
+    "idade": 25,
+    "overall": 90.0,
+    "exigenciaMinimaDeEquipe": 85
+  },
+  {
+    "nome": "Charles Leclerc",
+    "nacionalidade": "Monaco",
+    "numero": 16,
+    "idade": 25,
+    "overall": 92.0,
+    "exigenciaMinimaDeEquipe": 90
+  },
+  {
+    "nome": "Carlos Sainz Jr",
+    "nacionalidade": "Espanha",
+    "numero": 55,
+    "idade": 28,
+    "overall": 89.0,
+    "exigenciaMinimaDeEquipe": 85
+  },
+  {
+    "nome": "Lando Norris",
+    "nacionalidade": "Reino Unido",
+    "numero": 4,
+    "idade": 23,
+    "overall": 90.0,
+    "exigenciaMinimaDeEquipe": 80
+  },
+  {
+    "nome": "Oscar Piastri",
+    "nacionalidade": "Australia",
+    "numero": 81,
+    "idade": 22,
+    "overall": 85.0,
+    "exigenciaMinimaDeEquipe": 70
+  },
+  {
+    "nome": "Fernando Alonso",
+    "nacionalidade": "Espanha",
+    "numero": 14,
+    "idade": 41,
+    "overall": 94.0,
+    "exigenciaMinimaDeEquipe": 80
+  },
+  {
+    "nome": "Lance Stroll",
+    "nacionalidade": "Canada",
+    "numero": 18,
+    "idade": 24,
+    "overall": 78.0,
+    "exigenciaMinimaDeEquipe": 60
+  },
+  {
+    "nome": "Pierre Gasly",
+    "nacionalidade": "Franca",
+    "numero": 10,
+    "idade": 27,
+    "overall": 83.0,
+    "exigenciaMinimaDeEquipe": 70
+  },
+  {
+    "nome": "Esteban Ocon",
+    "nacionalidade": "Franca",
+    "numero": 31,
+    "idade": 26,
+    "overall": 83.0,
+    "exigenciaMinimaDeEquipe": 70
+  },
+  {
+    "nome": "Alexander Albon",
+    "nacionalidade": "Tailandia",
+    "numero": 23,
+    "idade": 27,
+    "overall": 84.0,
+    "exigenciaMinimaDeEquipe": 60
+  },
+  {
+    "nome": "Logan Sargeant",
+    "nacionalidade": "EUA",
+    "numero": 2,
+    "idade": 22,
+    "overall": 70.0,
+    "exigenciaMinimaDeEquipe": 10
+  },
+  {
+    "nome": "Yuki Tsunoda",
+    "nacionalidade": "Japao",
+    "numero": 22,
+    "idade": 23,
+    "overall": 79.0,
+    "exigenciaMinimaDeEquipe": 50
+  },
+  {
+    "nome": "Daniel Ricciardo",
+    "nacionalidade": "Australia",
+    "numero": 3,
+    "idade": 33,
+    "overall": 81.0,
+    "exigenciaMinimaDeEquipe": 60
+  },
+  {
+    "nome": "Valtteri Bottas",
+    "nacionalidade": "Finlandia",
+    "numero": 77,
+    "idade": 33,
+    "overall": 82.0,
+    "exigenciaMinimaDeEquipe": 60
+  },
+  {
+    "nome": "Guanyu Zhou",
+    "nacionalidade": "China",
+    "numero": 24,
+    "idade": 24,
+    "overall": 77.0,
+    "exigenciaMinimaDeEquipe": 40
+  },
+  {
+    "nome": "Nico Hulkenberg",
+    "nacionalidade": "Alemanha",
+    "numero": 27,
+    "idade": 35,
+    "overall": 81.0,
+    "exigenciaMinimaDeEquipe": 50
+  },
+  {
+    "nome": "Kevin Magnussen",
+    "nacionalidade": "Dinamarca",
+    "numero": 20,
+    "idade": 30,
+    "overall": 79.0,
+    "exigenciaMinimaDeEquipe": 50
+  },
+  {
+    "nome": "Zane Maloney",
+    "nacionalidade": "Barbados",
+    "numero": 0,
+    "idade": 19,
+    "overall": 68.0,
+    "exigenciaMinimaDeEquipe": 10
+  },
+  {
+    "nome": "Théo Pourchaire",
+    "nacionalidade": "Franca",
+    "numero": 98,
+    "idade": 19,
+    "overall": 74.0,
+    "exigenciaMinimaDeEquipe": 20
+  },
+  {
+    "nome": "Liam Lawson",
+    "nacionalidade": "Nova Zelandia",
+    "numero": 40,
+    "idade": 21,
+    "overall": 76.0,
+    "exigenciaMinimaDeEquipe": 30
+  },
+  {
+    "nome": "Jack Doohan",
+    "nacionalidade": "Nova Zelandia",
+    "numero": 61,
+    "idade": 20,
+    "overall": 71.0,
+    "exigenciaMinimaDeEquipe": 20
+  },
+  {
+    "nome": "Robert Shwartzman",
+    "nacionalidade": "Israel",
+    "numero": 39,
+    "idade": 23,
+    "overall": 73.0,
+    "exigenciaMinimaDeEquipe": 30
+  },
+  {
+    "nome": "Antonio Giovinazzi",
+    "nacionalidade": "Italia",
+    "numero": 99,
+    "idade": 29,
+    "overall": 77.0,
+    "exigenciaMinimaDeEquipe": 40
+  },
+  {
+    "nome": "Felipe Drugovich",
+    "nacionalidade": "Brasil",
+    "numero": 34,
+    "idade": 23,
+    "overall": 74.0,
+    "exigenciaMinimaDeEquipe": 20
+  },
+  {
+    "nome": "Stoffel Vandoorne",
+    "nacionalidade": "Belgica",
+    "numero": 97,
+    "idade": 31,
+    "overall": 78.0,
+    "exigenciaMinimaDeEquipe": 40
+  },
+  {
+    "nome": "Pietro Fittipaldi",
+    "nacionalidade": "Brasil",
+    "numero": 51,
+    "idade": 27,
+    "overall": 72.0,
+    "exigenciaMinimaDeEquipe": 20
+  },
+  {
+    "nome": "Alex Palou",
+    "nacionalidade": "Espanha",
+    "numero": 99,
+    "idade": 26,
+    "overall": 79.0,
+    "exigenciaMinimaDeEquipe": 50
+  },
+  {
+    "nome": "Mick Schumacher",
+    "nacionalidade": "Alemanha",
+    "numero": 47,
+    "idade": 24,
+    "overall": 75.0,
+    "exigenciaMinimaDeEquipe": 30
+  },
+  {
+    "nome": "Sebastien Buemi",
+    "nacionalidade": "Suica",
+    "numero": 0,
+    "idade": 34,
+    "overall": 78.0,
+    "exigenciaMinimaDeEquipe": 40
+  }
+]

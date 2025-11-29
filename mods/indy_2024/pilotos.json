@@ -5,7 +5,18 @@
     "numero": 10,
     "idade": 27,
     "overall": 95.0,
-    "exigenciaMinimaDeEquipe": 90
+    "exigenciaMinimaDeEquipe": 90,
+    "ritmo": 96.0,
+    "experiencia": 85.0,
+    "agressividade": 80.0,
+    "fisico": 90.0,
+    "largada": 88.0,
+    "ultrapassagem": 92.0,
+    "defesa": 94.0,
+    "habilidadeChuva": 95.0,
+    "habilidadeRua": 95.0,
+    "habilidadeMisto": 98.0,
+    "habilidadeOval": 90.0
   },
   {
     "nome": "Scott Dixon",
@@ -13,7 +24,18 @@
     "numero": 9,
     "idade": 44,
     "overall": 94.0,
-    "exigenciaMinimaDeEquipe": 90
+    "exigenciaMinimaDeEquipe": 90,
+    "ritmo": 90.0,
+    "experiencia": 100.0,
+    "agressividade": 75.0,
+    "fisico": 85.0,
+    "largada": 85.0,
+    "ultrapassagem": 90.0,
+    "defesa": 95.0,
+    "habilidadeChuva": 98.0,
+    "habilidadeRua": 94.0,
+    "habilidadeMisto": 95.0,
+    "habilidadeOval": 96.0
   },
   {
     "nome": "Josef Newgarden",
@@ -21,7 +43,18 @@
     "numero": 2,
     "idade": 33,
     "overall": 93.0,
-    "exigenciaMinimaDeEquipe": 90
+    "exigenciaMinimaDeEquipe": 90,
+    "ritmo": 92.0,
+    "experiencia": 92.0,
+    "agressividade": 90.0,
+    "fisico": 92.0,
+    "largada": 90.0,
+    "ultrapassagem": 94.0,
+    "defesa": 92.0,
+    "habilidadeChuva": 80.0,
+    "habilidadeRua": 90.0,
+    "habilidadeMisto": 90.0,
+    "habilidadeOval": 99.0
   },
   {
     "nome": "Will Power",
@@ -29,7 +62,18 @@
     "numero": 12,
     "idade": 43,
     "overall": 91.0,
-    "exigenciaMinimaDeEquipe": 85
+    "exigenciaMinimaDeEquipe": 85,
+    "ritmo": 95.0,
+    "experiencia": 98.0,
+    "agressividade": 85.0,
+    "fisico": 85.0,
+    "largada": 88.0,
+    "ultrapassagem": 88.0,
+    "defesa": 90.0,
+    "habilidadeChuva": 92.0,
+    "habilidadeRua": 93.0,
+    "habilidadeMisto": 94.0,
+    "habilidadeOval": 88.0
   },
   {
     "nome": "Scott McLaughlin",
@@ -37,15 +81,37 @@
     "numero": 3,
     "idade": 31,
     "overall": 90.0,
-    "exigenciaMinimaDeEquipe": 85
+    "exigenciaMinimaDeEquipe": 85,
+    "ritmo": 92.0,
+    "experiencia": 80.0,
+    "agressividade": 85.0,
+    "fisico": 90.0,
+    "largada": 88.0,
+    "ultrapassagem": 88.0,
+    "defesa": 88.0,
+    "habilidadeChuva": 85.0,
+    "habilidadeRua": 90.0,
+    "habilidadeMisto": 92.0,
+    "habilidadeOval": 93.0
   },
   {
-    "nome": "Patricio O'Ward",
+    "nome": "Pato O'Ward",
     "nacionalidade": "Mexico",
     "numero": 5,
     "idade": 25,
     "overall": 90.0,
-    "exigenciaMinimaDeEquipe": 85
+    "exigenciaMinimaDeEquipe": 85,
+    "ritmo": 93.0,
+    "experiencia": 80.0,
+    "agressividade": 95.0,
+    "fisico": 90.0,
+    "largada": 88.0,
+    "ultrapassagem": 95.0,
+    "defesa": 85.0,
+    "habilidadeChuva": 88.0,
+    "habilidadeRua": 88.0,
+    "habilidadeMisto": 88.0,
+    "habilidadeOval": 96.0
   },
   {
     "nome": "Colton Herta",
@@ -53,7 +119,18 @@
     "numero": 26,
     "idade": 24,
     "overall": 89.0,
-    "exigenciaMinimaDeEquipe": 80
+    "exigenciaMinimaDeEquipe": 80,
+    "ritmo": 95.0,
+    "experiencia": 78.0,
+    "agressividade": 92.0,
+    "fisico": 90.0,
+    "largada": 90.0,
+    "ultrapassagem": 90.0,
+    "defesa": 80.0,
+    "habilidadeChuva": 92.0,
+    "habilidadeRua": 94.0,
+    "habilidadeMisto": 93.0,
+    "habilidadeOval": 75.0
   },
   {
     "nome": "Kyle Kirkwood",
@@ -61,7 +138,18 @@
     "numero": 27,
     "idade": 25,
     "overall": 86.0,
-    "exigenciaMinimaDeEquipe": 75
+    "exigenciaMinimaDeEquipe": 75,
+    "ritmo": 88.0,
+    "experiencia": 70.0,
+    "agressividade": 80.0,
+    "fisico": 88.0,
+    "largada": 85.0,
+    "ultrapassagem": 85.0,
+    "defesa": 85.0,
+    "habilidadeChuva": 85.0,
+    "habilidadeRua": 95.0,
+    "habilidadeMisto": 88.0,
+    "habilidadeOval": 70.0
   },
   {
     "nome": "Alexander Rossi",
@@ -69,7 +157,18 @@
     "numero": 7,
     "idade": 32,
     "overall": 85.0,
-    "exigenciaMinimaDeEquipe": 75
+    "exigenciaMinimaDeEquipe": 75,
+    "ritmo": 85.0,
+    "experiencia": 90.0,
+    "agressividade": 85.0,
+    "fisico": 88.0,
+    "largada": 85.0,
+    "ultrapassagem": 88.0,
+    "defesa": 85.0,
+    "habilidadeChuva": 85.0,
+    "habilidadeRua": 85.0,
+    "habilidadeMisto": 88.0,
+    "habilidadeOval": 88.0
   },
   {
     "nome": "Marcus Ericsson",
@@ -77,7 +176,18 @@
     "numero": 28,
     "idade": 33,
     "overall": 84.0,
-    "exigenciaMinimaDeEquipe": 75
+    "exigenciaMinimaDeEquipe": 75,
+    "ritmo": 82.0,
+    "experiencia": 88.0,
+    "agressividade": 80.0,
+    "fisico": 88.0,
+    "largada": 85.0,
+    "ultrapassagem": 85.0,
+    "defesa": 90.0,
+    "habilidadeChuva": 80.0,
+    "habilidadeRua": 88.0,
+    "habilidadeMisto": 85.0,
+    "habilidadeOval": 92.0
   },
   {
     "nome": "Christian Lundgaard",
@@ -85,7 +195,18 @@
     "numero": 45,
     "idade": 23,
     "overall": 83.0,
-    "exigenciaMinimaDeEquipe": 70
+    "exigenciaMinimaDeEquipe": 70,
+    "ritmo": 86.0,
+    "experiencia": 70.0,
+    "agressividade": 78.0,
+    "fisico": 85.0,
+    "largada": 85.0,
+    "ultrapassagem": 80.0,
+    "defesa": 85.0,
+    "habilidadeChuva": 85.0,
+    "habilidadeRua": 88.0,
+    "habilidadeMisto": 90.0,
+    "habilidadeOval": 65.0
   },
   {
     "nome": "Felix Rosenqvist",
@@ -93,7 +214,18 @@
     "numero": 60,
     "idade": 32,
     "overall": 82.0,
-    "exigenciaMinimaDeEquipe": 70
+    "exigenciaMinimaDeEquipe": 70,
+    "ritmo": 88.0,
+    "experiencia": 85.0,
+    "agressividade": 82.0,
+    "fisico": 85.0,
+    "largada": 80.0,
+    "ultrapassagem": 80.0,
+    "defesa": 80.0,
+    "habilidadeChuva": 80.0,
+    "habilidadeRua": 85.0,
+    "habilidadeMisto": 85.0,
+    "habilidadeOval": 78.0
   },
   {
     "nome": "Romain Grosjean",
@@ -101,7 +233,18 @@
     "numero": 77,
     "idade": 38,
     "overall": 81.0,
-    "exigenciaMinimaDeEquipe": 70
+    "exigenciaMinimaDeEquipe": 70,
+    "ritmo": 87.0,
+    "experiencia": 92.0,
+    "agressividade": 88.0,
+    "fisico": 82.0,
+    "largada": 85.0,
+    "ultrapassagem": 85.0,
+    "defesa": 75.0,
+    "habilidadeChuva": 85.0,
+    "habilidadeRua": 88.0,
+    "habilidadeMisto": 88.0,
+    "habilidadeOval": 60.0
   },
   {
     "nome": "Graham Rahal",
@@ -109,7 +252,18 @@
     "numero": 15,
     "idade": 35,
     "overall": 80.0,
-    "exigenciaMinimaDeEquipe": 65
+    "exigenciaMinimaDeEquipe": 65,
+    "ritmo": 78.0,
+    "experiencia": 95.0,
+    "agressividade": 75.0,
+    "fisico": 82.0,
+    "largada": 85.0,
+    "ultrapassagem": 80.0,
+    "defesa": 85.0,
+    "habilidadeChuva": 80.0,
+    "habilidadeRua": 82.0,
+    "habilidadeMisto": 82.0,
+    "habilidadeOval": 80.0
   },
   {
     "nome": "Rinus VeeKay",
@@ -117,7 +271,18 @@
     "numero": 21,
     "idade": 23,
     "overall": 79.0,
-    "exigenciaMinimaDeEquipe": 60
+    "exigenciaMinimaDeEquipe": 60,
+    "ritmo": 82.0,
+    "experiencia": 75.0,
+    "agressividade": 85.0,
+    "fisico": 85.0,
+    "largada": 82.0,
+    "ultrapassagem": 82.0,
+    "defesa": 78.0,
+    "habilidadeChuva": 80.0,
+    "habilidadeRua": 80.0,
+    "habilidadeMisto": 82.0,
+    "habilidadeOval": 78.0
   },
   {
     "nome": "Santino Ferrucci",
@@ -125,7 +290,18 @@
     "numero": 14,
     "idade": 26,
     "overall": 78.0,
-    "exigenciaMinimaDeEquipe": 50
+    "exigenciaMinimaDeEquipe": 50,
+    "ritmo": 76.0,
+    "experiencia": 75.0,
+    "agressividade": 88.0,
+    "fisico": 82.0,
+    "largada": 85.0,
+    "ultrapassagem": 85.0,
+    "defesa": 80.0,
+    "habilidadeChuva": 65.0,
+    "habilidadeRua": 70.0,
+    "habilidadeMisto": 72.0,
+    "habilidadeOval": 88.0
   },
   {
     "nome": "David Malukas",
@@ -133,7 +309,18 @@
     "numero": 6,
     "idade": 22,
     "overall": 77.0,
-    "exigenciaMinimaDeEquipe": 50
+    "exigenciaMinimaDeEquipe": 50,
+    "ritmo": 80.0,
+    "experiencia": 65.0,
+    "agressividade": 80.0,
+    "fisico": 85.0,
+    "largada": 80.0,
+    "ultrapassagem": 80.0,
+    "defesa": 75.0,
+    "habilidadeChuva": 70.0,
+    "habilidadeRua": 75.0,
+    "habilidadeMisto": 75.0,
+    "habilidadeOval": 85.0
   },
   {
     "nome": "Marcus Armstrong",
@@ -141,7 +328,18 @@
     "numero": 11,
     "idade": 24,
     "overall": 77.0,
-    "exigenciaMinimaDeEquipe": 50
+    "exigenciaMinimaDeEquipe": 50,
+    "ritmo": 78.0,
+    "experiencia": 65.0,
+    "agressividade": 75.0,
+    "fisico": 85.0,
+    "largada": 80.0,
+    "ultrapassagem": 78.0,
+    "defesa": 78.0,
+    "habilidadeChuva": 75.0,
+    "habilidadeRua": 82.0,
+    "habilidadeMisto": 82.0,
+    "habilidadeOval": 60.0
   },
   {
     "nome": "Linus Lundqvist",
@@ -149,7 +347,18 @@
     "numero": 8,
     "idade": 25,
     "overall": 76.0,
-    "exigenciaMinimaDeEquipe": 40
+    "exigenciaMinimaDeEquipe": 40,
+    "ritmo": 78.0,
+    "experiencia": 60.0,
+    "agressividade": 78.0,
+    "fisico": 85.0,
+    "largada": 80.0,
+    "ultrapassagem": 78.0,
+    "defesa": 75.0,
+    "habilidadeChuva": 75.0,
+    "habilidadeRua": 80.0,
+    "habilidadeMisto": 80.0,
+    "habilidadeOval": 65.0
   },
   {
     "nome": "Agustin Canapino",
@@ -157,7 +366,18 @@
     "numero": 78,
     "idade": 34,
     "overall": 75.0,
-    "exigenciaMinimaDeEquipe": 40
+    "exigenciaMinimaDeEquipe": 40,
+    "ritmo": 74.0,
+    "experiencia": 80.0,
+    "agressividade": 78.0,
+    "fisico": 80.0,
+    "largada": 80.0,
+    "ultrapassagem": 75.0,
+    "defesa": 75.0,
+    "habilidadeChuva": 75.0,
+    "habilidadeRua": 78.0,
+    "habilidadeMisto": 78.0,
+    "habilidadeOval": 65.0
   },
   {
     "nome": "Helio Castroneves",
@@ -165,7 +385,18 @@
     "numero": 6,
     "idade": 49,
     "overall": 82.0,
-    "exigenciaMinimaDeEquipe": 60
+    "exigenciaMinimaDeEquipe": 60,
+    "ritmo": 75.0,
+    "experiencia": 100.0,
+    "agressividade": 70.0,
+    "fisico": 70.0,
+    "largada": 85.0,
+    "ultrapassagem": 80.0,
+    "defesa": 85.0,
+    "habilidadeChuva": 75.0,
+    "habilidadeRua": 75.0,
+    "habilidadeMisto": 75.0,
+    "habilidadeOval": 95.0
   },
   {
     "nome": "Pietro Fittipaldi",
@@ -173,7 +404,18 @@
     "numero": 30,
     "idade": 28,
     "overall": 74.0,
-    "exigenciaMinimaDeEquipe": 40
+    "exigenciaMinimaDeEquipe": 40,
+    "ritmo": 73.0,
+    "experiencia": 75.0,
+    "agressividade": 72.0,
+    "fisico": 82.0,
+    "largada": 78.0,
+    "ultrapassagem": 74.0,
+    "defesa": 74.0,
+    "habilidadeChuva": 72.0,
+    "habilidadeRua": 75.0,
+    "habilidadeMisto": 75.0,
+    "habilidadeOval": 70.0
   },
   {
     "nome": "Tom Blomqvist",
@@ -181,7 +423,18 @@
     "numero": 66,
     "idade": 30,
     "overall": 73.0,
-    "exigenciaMinimaDeEquipe": 30
+    "exigenciaMinimaDeEquipe": 30,
+    "ritmo": 74.0,
+    "experiencia": 70.0,
+    "agressividade": 70.0,
+    "fisico": 85.0,
+    "largada": 75.0,
+    "ultrapassagem": 72.0,
+    "defesa": 72.0,
+    "habilidadeChuva": 75.0,
+    "habilidadeRua": 75.0,
+    "habilidadeMisto": 78.0,
+    "habilidadeOval": 55.0
   },
   {
     "nome": "Ed Carpenter",
@@ -189,7 +442,18 @@
     "numero": 20,
     "idade": 43,
     "overall": 72.0,
-    "exigenciaMinimaDeEquipe": 30
+    "exigenciaMinimaDeEquipe": 30,
+    "ritmo": 65.0,
+    "experiencia": 95.0,
+    "agressividade": 65.0,
+    "fisico": 70.0,
+    "largada": 75.0,
+    "ultrapassagem": 65.0,
+    "defesa": 75.0,
+    "habilidadeChuva": 50.0,
+    "habilidadeRua": 50.0,
+    "habilidadeMisto": 50.0,
+    "habilidadeOval": 88.0
   },
   {
     "nome": "Kyffin Simpson",
@@ -197,7 +461,18 @@
     "numero": 4,
     "idade": 19,
     "overall": 68.0,
-    "exigenciaMinimaDeEquipe": 10
+    "exigenciaMinimaDeEquipe": 10,
+    "ritmo": 68.0,
+    "experiencia": 50.0,
+    "agressividade": 70.0,
+    "fisico": 80.0,
+    "largada": 70.0,
+    "ultrapassagem": 68.0,
+    "defesa": 65.0,
+    "habilidadeChuva": 65.0,
+    "habilidadeRua": 68.0,
+    "habilidadeMisto": 68.0,
+    "habilidadeOval": 65.0
   },
   {
     "nome": "Sting Ray Robb",
@@ -205,7 +480,18 @@
     "numero": 41,
     "idade": 22,
     "overall": 65.0,
-    "exigenciaMinimaDeEquipe": 10
+    "exigenciaMinimaDeEquipe": 10,
+    "ritmo": 65.0,
+    "experiencia": 60.0,
+    "agressividade": 75.0,
+    "fisico": 80.0,
+    "largada": 70.0,
+    "ultrapassagem": 65.0,
+    "defesa": 65.0,
+    "habilidadeChuva": 60.0,
+    "habilidadeRua": 65.0,
+    "habilidadeMisto": 65.0,
+    "habilidadeOval": 68.0
   },
   {
     "nome": "Jack Harvey",
@@ -213,7 +499,18 @@
     "numero": 18,
     "idade": 31,
     "overall": 70.0,
-    "exigenciaMinimaDeEquipe": 20
+    "exigenciaMinimaDeEquipe": 20,
+    "ritmo": 70.0,
+    "experiencia": 80.0,
+    "agressividade": 70.0,
+    "fisico": 80.0,
+    "largada": 75.0,
+    "ultrapassagem": 70.0,
+    "defesa": 72.0,
+    "habilidadeChuva": 72.0,
+    "habilidadeRua": 72.0,
+    "habilidadeMisto": 72.0,
+    "habilidadeOval": 65.0
   },
   {
     "nome": "Colin Braun",
@@ -221,7 +518,18 @@
     "numero": 51,
     "idade": 35,
     "overall": 70.0,
-    "exigenciaMinimaDeEquipe": 20
+    "exigenciaMinimaDeEquipe": 20,
+    "ritmo": 70.0,
+    "experiencia": 85.0,
+    "agressividade": 68.0,
+    "fisico": 80.0,
+    "largada": 72.0,
+    "ultrapassagem": 70.0,
+    "defesa": 75.0,
+    "habilidadeChuva": 75.0,
+    "habilidadeRua": 70.0,
+    "habilidadeMisto": 72.0,
+    "habilidadeOval": 65.0
   },
   {
     "nome": "Ryan Hunter-Reay",
@@ -229,7 +537,18 @@
     "numero": 23,
     "idade": 43,
     "overall": 75.0,
-    "exigenciaMinimaDeEquipe": 40
+    "exigenciaMinimaDeEquipe": 40,
+    "ritmo": 72.0,
+    "experiencia": 98.0,
+    "agressividade": 70.0,
+    "fisico": 75.0,
+    "largada": 80.0,
+    "ultrapassagem": 75.0,
+    "defesa": 80.0,
+    "habilidadeChuva": 75.0,
+    "habilidadeRua": 75.0,
+    "habilidadeMisto": 75.0,
+    "habilidadeOval": 85.0
   },
   {
     "nome": "Conor Daly",
@@ -237,7 +556,18 @@
     "numero": 24,
     "idade": 32,
     "overall": 74.0,
-    "exigenciaMinimaDeEquipe": 30
+    "exigenciaMinimaDeEquipe": 30,
+    "ritmo": 72.0,
+    "experiencia": 85.0,
+    "agressividade": 75.0,
+    "fisico": 80.0,
+    "largada": 78.0,
+    "ultrapassagem": 75.0,
+    "defesa": 75.0,
+    "habilidadeChuva": 70.0,
+    "habilidadeRua": 70.0,
+    "habilidadeMisto": 70.0,
+    "habilidadeOval": 82.0
   },
   {
     "nome": "Takuma Sato",
@@ -245,7 +575,18 @@
     "numero": 75,
     "idade": 47,
     "overall": 76.0,
-    "exigenciaMinimaDeEquipe": 40
+    "exigenciaMinimaDeEquipe": 40,
+    "ritmo": 72.0,
+    "experiencia": 98.0,
+    "agressividade": 85.0,
+    "fisico": 75.0,
+    "largada": 80.0,
+    "ultrapassagem": 78.0,
+    "defesa": 75.0,
+    "habilidadeChuva": 70.0,
+    "habilidadeRua": 72.0,
+    "habilidadeMisto": 72.0,
+    "habilidadeOval": 88.0
   },
   {
     "nome": "Marco Andretti",
@@ -253,7 +594,18 @@
     "numero": 98,
     "idade": 37,
     "overall": 73.0,
-    "exigenciaMinimaDeEquipe": 30
+    "exigenciaMinimaDeEquipe": 30,
+    "ritmo": 70.0,
+    "experiencia": 90.0,
+    "agressividade": 70.0,
+    "fisico": 78.0,
+    "largada": 75.0,
+    "ultrapassagem": 70.0,
+    "defesa": 75.0,
+    "habilidadeChuva": 65.0,
+    "habilidadeRua": 68.0,
+    "habilidadeMisto": 68.0,
+    "habilidadeOval": 80.0
   },
   {
     "nome": "Kyle Larson",
@@ -261,7 +613,18 @@
     "numero": 17,
     "idade": 31,
     "overall": 85.0,
-    "exigenciaMinimaDeEquipe": 70
+    "exigenciaMinimaDeEquipe": 70,
+    "ritmo": 88.0,
+    "experiencia": 60.0,
+    "agressividade": 88.0,
+    "fisico": 90.0,
+    "largada": 82.0,
+    "ultrapassagem": 85.0,
+    "defesa": 82.0,
+    "habilidadeChuva": 60.0,
+    "habilidadeRua": 70.0,
+    "habilidadeMisto": 75.0,
+    "habilidadeOval": 92.0
   },
   {
     "nome": "Richard Chad 'RC' Enerson",
@@ -269,6 +632,17 @@
     "numero": 50,
     "idade": 27,
     "overall": 68.0,
-    "exigenciaMinimaDeEquipe": 10
+    "exigenciaMinimaDeEquipe": 10,
+    "ritmo": 65.0,
+    "experiencia": 55.0,
+    "agressividade": 68.0,
+    "fisico": 78.0,
+    "largada": 70.0,
+    "ultrapassagem": 65.0,
+    "defesa": 65.0,
+    "habilidadeChuva": 60.0,
+    "habilidadeRua": 65.0,
+    "habilidadeMisto": 65.0,
+    "habilidadeOval": 65.0
   }
 ]

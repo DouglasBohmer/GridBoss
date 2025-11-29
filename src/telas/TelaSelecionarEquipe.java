@@ -37,14 +37,12 @@ public class TelaSelecionarEquipe extends JFrame {
     private JTextField tfNomeDirigente;
 
     // --- DADOS CARREGADOS DO JSON ---
-    // Estas variáveis guardam o que veio do arquivo .json
     private List<Equipe> equipesDisponiveis = new ArrayList<>();
     private List<Piloto> todosPilotos = new ArrayList<>();
-    private Equipe equipeSelecionadaObj = null; // Guarda a equipe atual que o usuário clicou
+    private Equipe equipeSelecionadaObj = null; // Guarda o objeto real selecionado
 
     // Variáveis Globais
     public static String nomeDirigente;
-    private JLabel lblMotor_1;
 
     public static void main(String[] args) {
         try {
@@ -64,8 +62,7 @@ public class TelaSelecionarEquipe extends JFrame {
     }
 
     public TelaSelecionarEquipe() {
-    	setIconImage(Toolkit.getDefaultToolkit().getImage(TelaSelecionarEquipe.class.getResource("/resource/Icone16px.png")));
-        setTitle("Grid Boss");
+        setTitle("Grid Boss - Selecionar Equipe");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setBounds(100, 100, 586, 740);
         setResizable(false);
@@ -77,7 +74,7 @@ public class TelaSelecionarEquipe extends JFrame {
         setContentPane(contentPane);
 
         // --- CABEÇALHO ---
-        JLabel lblTitulo = new JLabel("GRID BOSS");
+        JLabel lblTitulo = new JLabel("MOTORSPORT MANAGER");
         lblTitulo.setFont(new Font("Berlin Sans FB", Font.PLAIN, 20));
         lblTitulo.setHorizontalAlignment(SwingConstants.CENTER);
         lblTitulo.setBounds(20, 11, 540, 26);
@@ -98,9 +95,8 @@ public class TelaSelecionarEquipe extends JFrame {
         cbListaEquipes = new JComboBox<>();
         cbListaEquipes.setModel(new DefaultComboBoxModel<>(new String[] {"-- CARREGANDO --"}));
         cbListaEquipes.setMaximumRowCount(15);
-        cbListaEquipes.setFont(new Font("Berlin Sans FB", Font.PLAIN, 15));
+        cbListaEquipes.setFont(new Font("Berlin Sans FB", Font.PLAIN, 13));
         cbListaEquipes.setBounds(20, 238, 540, 21);
-        // Quando mudar o combobox, chama o método de atualizar a tela
         cbListaEquipes.addActionListener(e -> atualizarDadosNaTela());
         contentPane.add(cbListaEquipes);
 
@@ -116,7 +112,7 @@ public class TelaSelecionarEquipe extends JFrame {
         for (int i = 0; i < 5; i++) {
             lblTitulos[i] = new JLabel("Piloto " + (i + 1));
             lblTitulos[i].setHorizontalAlignment(SwingConstants.CENTER);
-            lblTitulos[i].setFont(new Font("Berlin Sans FB", Font.PLAIN, 15));
+            lblTitulos[i].setFont(new Font("Berlin Sans FB", Font.PLAIN, 12));
             lblTitulos[i].setBounds(20, startY + (i * gapY), 91, 21);
             contentPane.add(lblTitulos[i]);
 
@@ -128,7 +124,7 @@ public class TelaSelecionarEquipe extends JFrame {
 
             lblNomes[i] = new JLabel("");
             lblNomes[i].setHorizontalAlignment(SwingConstants.CENTER);
-            lblNomes[i].setFont(new Font("Berlin Sans FB", Font.PLAIN, 15));
+            lblNomes[i].setFont(new Font("Berlin Sans FB", Font.PLAIN, 14));
             lblNomes[i].setBounds(166, startY + (i * gapY), 249, 21);
             contentPane.add(lblNomes[i]);
 
@@ -139,71 +135,67 @@ public class TelaSelecionarEquipe extends JFrame {
             lblBandeiras[i] = new JLabel("");
             lblBandeiras[i].setHorizontalAlignment(SwingConstants.CENTER);
             lblBandeiras[i].setBounds(528, startY + (i * gapY), 32, 21);
+            lblBandeiras[i].setBorder(BorderFactory.createLineBorder(Color.LIGHT_GRAY));
             contentPane.add(lblBandeiras[i]);
         }
 
         // --- DADOS DA EQUIPE (RODAPÉ) ---
-        /*
         criarLabelInfo("Sede/Fundação", 553);
         criarLabelInfo("Motor", 585);
         criarLabelInfo("Orçamento", 617);
-		*/
-	
+
         lblSede = new JLabel("");
         lblSede.setHorizontalAlignment(SwingConstants.CENTER);
-        lblSede.setFont(new Font("Berlin Sans FB", Font.PLAIN, 15));
+        lblSede.setFont(new Font("Berlin Sans FB", Font.PLAIN, 12));
         lblSede.setBounds(121, 553, 318, 21);
         contentPane.add(lblSede);
         
         lblAnoFundacao = new JLabel("");
-        lblAnoFundacao.setHorizontalAlignment(SwingConstants.CENTER);
-        lblAnoFundacao.setFont(new Font("Berlin Sans FB", Font.PLAIN, 15));
         lblAnoFundacao.setBounds(425, 553, 93, 21);
         contentPane.add(lblAnoFundacao);
         
         lblFlagSede = new JLabel("");
         lblFlagSede.setBounds(528, 553, 32, 21);
-        lblFlagSede.setHorizontalAlignment(SwingConstants.CENTER);
+        lblFlagSede.setBorder(BorderFactory.createLineBorder(Color.LIGHT_GRAY));
         contentPane.add(lblFlagSede);
 
         lblMotor = new JLabel("");
         lblMotor.setHorizontalAlignment(SwingConstants.CENTER);
-        lblMotor.setFont(new Font("Berlin Sans FB", Font.PLAIN, 15));
+        lblMotor.setFont(new Font("Berlin Sans FB", Font.PLAIN, 12));
         lblMotor.setBounds(121, 585, 318, 21);
         contentPane.add(lblMotor);
         
         lblLogoMotor = new JLabel("");
-        lblLogoMotor.setHorizontalAlignment(SwingConstants.CENTER);
         lblLogoMotor.setBounds(425, 585, 93, 21);
         contentPane.add(lblLogoMotor);
         
         lblFlagMotor = new JLabel("");
         lblFlagMotor.setBounds(528, 585, 32, 21);
-        lblFlagMotor.setHorizontalAlignment(SwingConstants.CENTER);
+        lblFlagMotor.setBorder(BorderFactory.createLineBorder(Color.LIGHT_GRAY));
         contentPane.add(lblFlagMotor);
 
         lblOrcamento = new JLabel("");
         lblOrcamento.setHorizontalAlignment(SwingConstants.CENTER);
-        lblOrcamento.setFont(new Font("Berlin Sans FB", Font.PLAIN, 15));
+        lblOrcamento.setFont(new Font("Berlin Sans FB", Font.PLAIN, 12));
         lblOrcamento.setBounds(121, 617, 318, 21);
         contentPane.add(lblOrcamento);
 
         // --- DIRIGENTE ---
-        JLabel lblAviso = new JLabel("Nome do Dirigente");
+        JLabel lblAviso = new JLabel("Digite o nome do seu dirigente de equipe");
         lblAviso.setHorizontalAlignment(SwingConstants.CENTER);
-        lblAviso.setFont(new Font("Berlin Sans FB", Font.PLAIN, 15));
-        lblAviso.setBounds(10, 645, 172, 21);
+        lblAviso.setFont(new Font("Berlin Sans FB", Font.PLAIN, 12));
+        lblAviso.setBounds(10, 645, 249, 21);
         contentPane.add(lblAviso);
 
         tfNomeDirigente = new JTextField("Douglas Bohmer");
         tfNomeDirigente.setHorizontalAlignment(SwingConstants.CENTER);
-        tfNomeDirigente.setFont(new Font("Berlin Sans FB", Font.PLAIN, 15));
+        tfNomeDirigente.setFont(new Font("Berlin Sans FB", Font.PLAIN, 12));
         tfNomeDirigente.setBounds(269, 645, 291, 21);
         contentPane.add(tfNomeDirigente);
 
         // BOTÕES
         JButton btnVoltar = new JButton("VOLTAR");
-        btnVoltar.setFont(new Font("Berlin Sans FB", Font.PLAIN, 15));
+        btnVoltar.setFont(new Font("Berlin Sans FB", Font.PLAIN, 12));
         btnVoltar.setBounds(10, 674, 172, 21);
         btnVoltar.addActionListener(e -> {
             TelaSelecionarCategoria tela = new TelaSelecionarCategoria();
@@ -214,44 +206,32 @@ public class TelaSelecionarEquipe extends JFrame {
         contentPane.add(btnVoltar);
 
         JButton btnComecar = new JButton("COMEÇAR JOGO");
-        btnComecar.setFont(new Font("Berlin Sans FB", Font.PLAIN, 15));
+        btnComecar.setFont(new Font("Berlin Sans FB", Font.PLAIN, 12));
         btnComecar.setBounds(388, 674, 172, 21);
         btnComecar.addActionListener(e -> iniciarJogo());
         contentPane.add(btnComecar);
-        
-        JLabel l = new JLabel("Sede/Fundação");
-        l.setHorizontalAlignment(SwingConstants.CENTER);
-        l.setFont(new Font("Berlin Sans FB", Font.PLAIN, 15));
-        l.setBounds(20, 553, 120, 21);
-        contentPane.add(l);
-        
-        JLabel l_1 = new JLabel("Orçamento");
-        l_1.setHorizontalAlignment(SwingConstants.CENTER);
-        l_1.setFont(new Font("Berlin Sans FB", Font.PLAIN, 15));
-        l_1.setBounds(20, 617, 120, 21);
-        contentPane.add(l_1);
-        
-        lblMotor_1 = new JLabel("Motor");
-        lblMotor_1.setHorizontalAlignment(SwingConstants.CENTER);
-        lblMotor_1.setFont(new Font("Berlin Sans FB", Font.PLAIN, 15));
-        lblMotor_1.setBounds(20, 585, 120, 21);
-        contentPane.add(lblMotor_1);
 
         // --- CARREGAR DADOS ---
         carregarDadosIniciais();
     }
 
+    private void criarLabelInfo(String texto, int y) {
+        JLabel l = new JLabel(texto);
+        l.setHorizontalAlignment(SwingConstants.CENTER);
+        l.setFont(new Font("Berlin Sans FB", Font.PLAIN, 12));
+        l.setBounds(20, y, 91, 21);
+        contentPane.add(l);
+    }
+
     // --- LÓGICA DE DADOS (JSON) ---
 
     private void carregarDadosIniciais() {
-        String cat = SessaoJogo.categoriaKey; // "f1", "indy", "nascar"
-        int ano = SessaoJogo.anoSelecionado;  // 2024
+        String cat = SessaoJogo.categoriaKey;
+        int ano = SessaoJogo.anoSelecionado;
         
         lblCategoriaBanner.setText(SessaoJogo.categoriaSelecionada + " - Temporada " + ano);
         carregarImagem(lblLogoCategoria, SessaoJogo.IMAGEM_SELECIONADA);
 
-        // 1. Carrega Pilotos e Equipes do JSON
-        // (Chama o CarregadorJSON que criamos antes)
         this.todosPilotos = CarregadorJSON.carregarPilotos(cat, ano);
         this.equipesDisponiveis = CarregadorJSON.carregarEquipes(cat, ano);
 
@@ -260,32 +240,24 @@ public class TelaSelecionarEquipe extends JFrame {
             return;
         }
 
-        // 2. Hidratar Equipes (Colocar os pilotos dentro das equipes)
         vincularPilotosAsEquipes();
 
-        // 3. Popular ComboBox com os nomes das equipes carregadas
         DefaultComboBoxModel<String> model = new DefaultComboBoxModel<>();
         for (Equipe eq : equipesDisponiveis) {
             model.addElement(eq.getNome());
         }
         cbListaEquipes.setModel(model);
         
-        // Força atualização da primeira
         if (model.getSize() > 0) cbListaEquipes.setSelectedIndex(0);
     }
 
-    /**
-     * Pega os IDs ("verstappen") do JSON da equipe e busca o objeto Piloto real.
-     */
     private void vincularPilotosAsEquipes() {
         for (Equipe eq : equipesDisponiveis) {
             List<String> idsContratados = eq.getPilotosContratadosIDs();
-            
             if (idsContratados != null) {
                 for (String idAlvo : idsContratados) {
                     Piloto pilotoEncontrado = buscarPilotoPorId(idAlvo);
                     if (pilotoEncontrado != null) {
-                        // Adiciona na equipe como Titular (Padrão do load)
                         eq.adicionarPilotoDoLoad(pilotoEncontrado, TipoContrato.TITULAR);
                     }
                 }
@@ -337,8 +309,10 @@ public class TelaSelecionarEquipe extends JFrame {
                 // Lógica de Título: Se for F1 e índice >= 2, é reserva
                 if (SessaoJogo.categoriaKey.contains("f1") && i >= 2) {
                     lblTitulos[i].setText("Reserva");
+                    lblTitulos[i].setForeground(Color.GRAY);
                 } else {
                     lblTitulos[i].setText("Piloto " + (i + 1));
+                    lblTitulos[i].setForeground(Color.BLACK);
                 }
 
                 lblNomes[i].setText(p.getNome());
@@ -371,18 +345,31 @@ public class TelaSelecionarEquipe extends JFrame {
         }
     }
 
+    // --- AÇÃO FINAL: IR PARA TELA PRINCIPAL ---
     private void iniciarJogo() {
+        // 1. Validação do Nome
         if (tfNomeDirigente.getText().trim().isEmpty()) {
-            JOptionPane.showMessageDialog(this, "Digite o nome do Dirigente!");
+            JOptionPane.showMessageDialog(this, "Digite o nome do Dirigente!", "Atenção", JOptionPane.WARNING_MESSAGE);
             return;
         }
+        
+        // 2. Validação da Equipe
+        if (equipeSelecionadaObj == null) {
+             JOptionPane.showMessageDialog(this, "Selecione uma equipe para continuar!", "Atenção", JOptionPane.WARNING_MESSAGE);
+             return;
+        }
+        
         nomeDirigente = tfNomeDirigente.getText();
         
-        JOptionPane.showMessageDialog(this, "Iniciando com " + equipeSelecionadaObj.getNome() + "\nDirigente: " + nomeDirigente);
+        // Feedback visual opcional
+        // JOptionPane.showMessageDialog(this, "Iniciando com " + equipeSelecionadaObj.getNome());
         
-        // AQUI VAI A TRANSIÇÃO PARA A TELA PRINCIPAL
-        // TelaPrincipal tela = new TelaPrincipal(equipeSelecionadaObj);
-        // tela.setVisible(true);
-        // dispose();
+        // 3. Transição
+        TelaPrincipal telaPrincipal = new TelaPrincipal(equipeSelecionadaObj);
+        telaPrincipal.setVisible(true);
+        telaPrincipal.setLocationRelativeTo(null);
+        
+        // Fecha esta tela para liberar memória
+        this.dispose();
     }
 }

@@ -4,6 +4,7 @@ import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import modelos.Equipe;
 import modelos.Piloto;
+import modelos.Pista;
 
 import java.io.File;
 import java.io.FileReader;
@@ -14,26 +15,20 @@ import java.util.*;
 
 public class CarregadorJSON {
 
-    // Define onde a pasta mods está. "." significa a raiz do projeto.
     private static final String CAMINHO_MODS = "mods/";
 
-    /**
-     * 1. ESCANEAR MODS
-     * Olha a pasta /mods e retorna um Mapa: "f1" -> ["2024", "2023"]
-     */
+    // ... (Métodos escanearModsInstalados, carregarEquipes, carregarPilotos iguais) ...
+    // Vou reescrever a classe toda para garantir que não falte nada
+    
     public static Map<String, List<String>> escanearModsInstalados() {
         Map<String, List<String>> modsEncontrados = new HashMap<>();
-        
-        // Inicializa chaves para evitar erro na tela
         modsEncontrados.put("f1", new ArrayList<>());
         modsEncontrados.put("indy", new ArrayList<>());
         modsEncontrados.put("nascar", new ArrayList<>());
 
         File pastaMods = new File(CAMINHO_MODS);
-        
         if (!pastaMods.exists()) {
-            pastaMods.mkdirs(); // Cria a pasta se não existir
-            System.out.println("Pasta 'mods' criada em: " + pastaMods.getAbsolutePath());
+            pastaMods.mkdirs();
             return modsEncontrados;
         }
 
@@ -42,14 +37,12 @@ public class CarregadorJSON {
 
         for (File arquivo : arquivos) {
             if (arquivo.isDirectory()) {
-                String nomePasta = arquivo.getName().toLowerCase(); // ex: "f1_2024"
-                
+                String nomePasta = arquivo.getName().toLowerCase();
                 if (nomePasta.contains("_")) {
                     String[] partes = nomePasta.split("_");
                     if (partes.length >= 2) {
-                        String categoria = partes[0]; // "f1"
-                        String ano = partes[1];       // "2024"
-                        
+                        String categoria = partes[0];
+                        String ano = partes[1];
                         if (modsEncontrados.containsKey(categoria)) {
                             modsEncontrados.get(categoria).add(ano);
                         }
@@ -57,47 +50,33 @@ public class CarregadorJSON {
                 }
             }
         }
-        
-        // Ordena os anos (Do mais novo para o mais velho)
-        for (List<String> anos : modsEncontrados.values()) {
-            anos.sort(Collections.reverseOrder());
-        }
-
+        for (List<String> anos : modsEncontrados.values()) anos.sort(Collections.reverseOrder());
         return modsEncontrados;
     }
 
-    /**
-     * 2. CARREGAR EQUIPES
-     * Lê o arquivo equipes.json
-     */
     public static List<Equipe> carregarEquipes(String categoria, int ano) {
-        String caminhoArquivo = CAMINHO_MODS + categoria.toLowerCase() + "_" + ano + "/equipes.json";
-        
-        try (Reader reader = new FileReader(caminhoArquivo, StandardCharsets.UTF_8)) {
-            Gson gson = new Gson();
-            Type tipoLista = new TypeToken<ArrayList<Equipe>>(){}.getType();
-            List<Equipe> lista = gson.fromJson(reader, tipoLista);
-            return lista;
-        } catch (Exception e) {
-            System.err.println("Erro ao carregar equipes (" + caminhoArquivo + "): " + e.getMessage());
-            return new ArrayList<>(); // Retorna lista vazia para não travar
-        }
+        String caminho = CAMINHO_MODS + categoria.toLowerCase() + "_" + ano + "/equipes.json";
+        return carregarLista(caminho, new TypeToken<ArrayList<Equipe>>(){}.getType());
     }
 
-    /**
-     * 3. CARREGAR PILOTOS (O método que estava faltando!)
-     * Lê o arquivo pilotos.json
-     */
     public static List<Piloto> carregarPilotos(String categoria, int ano) {
-        String caminhoArquivo = CAMINHO_MODS + categoria.toLowerCase() + "_" + ano + "/pilotos.json";
-        
-        try (Reader reader = new FileReader(caminhoArquivo, StandardCharsets.UTF_8)) {
+        String caminho = CAMINHO_MODS + categoria.toLowerCase() + "_" + ano + "/pilotos.json";
+        return carregarLista(caminho, new TypeToken<ArrayList<Piloto>>(){}.getType());
+    }
+
+    // NOVO MÉTODO: Carregar Calendário
+    public static List<Pista> carregarCalendario(String categoria, int ano) {
+        String caminho = CAMINHO_MODS + categoria.toLowerCase() + "_" + ano + "/calendario.json";
+        return carregarLista(caminho, new TypeToken<ArrayList<Pista>>(){}.getType());
+    }
+
+    // Método genérico para evitar repetição de código
+    private static <T> List<T> carregarLista(String caminho, Type tipo) {
+        try (Reader reader = new FileReader(caminho, StandardCharsets.UTF_8)) {
             Gson gson = new Gson();
-            Type tipoLista = new TypeToken<ArrayList<Piloto>>(){}.getType();
-            List<Piloto> lista = gson.fromJson(reader, tipoLista);
-            return lista;
+            return gson.fromJson(reader, tipo);
         } catch (Exception e) {
-            System.err.println("Erro ao carregar pilotos (" + caminhoArquivo + "): " + e.getMessage());
+            System.err.println("Erro ao carregar JSON (" + caminho + "): " + e.getMessage());
             return new ArrayList<>();
         }
     }

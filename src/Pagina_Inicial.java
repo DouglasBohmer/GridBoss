@@ -160,22 +160,22 @@ public class Pagina_Inicial extends JFrame {
 				
 				if(Categoria.BT_Cate.equals("Fórmula 1")) {
 					
-					LB_CategoriaEscolhida.setIcon(new ImageIcon(Selecionar_Categoria.class.getResource("/Imagens/Logo Novo_F1_OKPQ.png")));
-					//LB_CarrosCat.setIcon(new ImageIcon(Pagina_Inicial.class.getResource("/Imagens/Banner F1_OK.png")));
+					LB_CategoriaEscolhida.setIcon(new ImageIcon(Selecionar_Categoria.class.getResource("/resource/Logo Novo_F1_OKPQ.png")));
+					//LB_CarrosCat.setIcon(new ImageIcon(Pagina_Inicial.class.getResource("/resource/Banner F1_OK.png")));
 					LB_TipoPista.setForeground(new Color(0, 0, 0));
 					CriaCalendarioF1();
 					
 				} else if(Categoria.BT_Cate.equals("Fórmula INDY")) {
 					
-					LB_CategoriaEscolhida.setIcon(new ImageIcon(Selecionar_Categoria.class.getResource("/Imagens/Logo Indy_OKPQ.png")));
-					//LB_CarrosCat.setIcon(new ImageIcon(Pagina_Inicial.class.getResource("/Imagens/Banner F1_OK.png")));
+					LB_CategoriaEscolhida.setIcon(new ImageIcon(Selecionar_Categoria.class.getResource("/resource/Logo Indy_OKPQ.png")));
+					//LB_CarrosCat.setIcon(new ImageIcon(Pagina_Inicial.class.getResource("/resource/Banner F1_OK.png")));
 					LB_TipoPista.setForeground(new Color(0, 0, 255));
 					CriaCalendarioFIndy();
 					
 				} else if(Categoria.BT_Cate.equals("NASCAR")) {
 					
-					LB_CategoriaEscolhida.setIcon(new ImageIcon(Selecionar_Categoria.class.getResource("/Imagens/Logo Nascar_OKPQ.png")));
-					//LB_CarrosCat.setIcon(new ImageIcon(Pagina_Inicial.class.getResource("/Imagens/Talladega-1.jpg")));
+					LB_CategoriaEscolhida.setIcon(new ImageIcon(Selecionar_Categoria.class.getResource("/resource/Logo Nascar_OKPQ.png")));
+					//LB_CarrosCat.setIcon(new ImageIcon(Pagina_Inicial.class.getResource("/resource/Talladega-1.jpg")));
 					LB_LogoEquipe.setIcon(new ImageIcon(Selecionar_Categoria.class.getResource(""+SelecionarEquipe.LogoEquipeEscolhida)));
 					LB_TipoPista.setForeground(new Color(0, 0, 255));
 					CriaCalendarioNascar();
@@ -208,7 +208,7 @@ public class Pagina_Inicial extends JFrame {
 				
 			}
 		});
-		setIconImage(Toolkit.getDefaultToolkit().getImage(Selecionar_Equipe.class.getResource("/Imagens/Icone16px.png")));
+		setIconImage(Toolkit.getDefaultToolkit().getImage(Selecionar_Equipe.class.getResource("/resource/Icone16px.png")));
 		setTitle("Motorsport Manager");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 977, 674);
@@ -319,68 +319,68 @@ public class Pagina_Inicial extends JFrame {
 		Selecionar_Categoria Categoria = new Selecionar_Categoria();
 		
 		LB_LogoEquipe = new JLabel("");
-		LB_LogoEquipe.setIcon(new ImageIcon(Pagina_Inicial.class.getResource("/Imagens/Icone64pxErro.png")));
+		LB_LogoEquipe.setIcon(new ImageIcon(Pagina_Inicial.class.getResource("/resource/Icone64pxErro.png")));
 		LB_LogoEquipe.setHorizontalAlignment(SwingConstants.CENTER);
 		LB_LogoEquipe.setBackground(new Color(255, 255, 255));
 		LB_LogoEquipe.setBounds(10, 0, 200, 100);
 		contentPane.add(LB_LogoEquipe);
 		
 		LB_LogoMotorPQ = new JLabel("");
-		LB_LogoMotorPQ.setIcon(new ImageIcon(Pagina_Inicial.class.getResource("/Imagens/Icone16pxErro.png")));
+		LB_LogoMotorPQ.setIcon(new ImageIcon(Pagina_Inicial.class.getResource("/resource/Icone16pxErro.png")));
 		LB_LogoMotorPQ.setHorizontalAlignment(SwingConstants.CENTER);
 		LB_LogoMotorPQ.setBounds(270, 34, 45, 33);
 		contentPane.add(LB_LogoMotorPQ);
 		
 		LB_BandeiraSede = new JLabel("");
-		LB_BandeiraSede.setIcon(new ImageIcon(Pagina_Inicial.class.getResource("/Imagens/Icone16pxErro.png")));
+		LB_BandeiraSede.setIcon(new ImageIcon(Pagina_Inicial.class.getResource("/resource/Icone16pxErro.png")));
 		LB_BandeiraSede.setHorizontalAlignment(SwingConstants.CENTER);
 		LB_BandeiraSede.setBounds(210, 67, 65, 33);
 		contentPane.add(LB_BandeiraSede);
 		
 		LB_BandeiraEquipe = new JLabel("");
-		LB_BandeiraEquipe.setIcon(new ImageIcon(Pagina_Inicial.class.getResource("/Imagens/Icone16pxErro.png")));
+		LB_BandeiraEquipe.setIcon(new ImageIcon(Pagina_Inicial.class.getResource("/resource/Icone16pxErro.png")));
 		LB_BandeiraEquipe.setHorizontalAlignment(SwingConstants.CENTER);
 		LB_BandeiraEquipe.setBounds(210, 0, 65, 33);
 		contentPane.add(LB_BandeiraEquipe);
 		
 		LB_BandeiraMotor = new JLabel("");
-		LB_BandeiraMotor.setIcon(new ImageIcon(Pagina_Inicial.class.getResource("/Imagens/Icone16pxErro.png")));
+		LB_BandeiraMotor.setIcon(new ImageIcon(Pagina_Inicial.class.getResource("/resource/Icone16pxErro.png")));
 		LB_BandeiraMotor.setHorizontalAlignment(SwingConstants.CENTER);
 		LB_BandeiraMotor.setBounds(210, 34, 65, 33);
 		contentPane.add(LB_BandeiraMotor);
 		
 		LB_BandeiraP1 = new JLabel("");
-		LB_BandeiraP1.setIcon(new ImageIcon(Pagina_Inicial.class.getResource("/Imagens/Icone16pxErro.png")));
+		LB_BandeiraP1.setIcon(new ImageIcon(Pagina_Inicial.class.getResource("/resource/Icone16pxErro.png")));
 		LB_BandeiraP1.setHorizontalAlignment(SwingConstants.CENTER);
 		LB_BandeiraP1.setBounds(10, 135, 25, 25);
 		contentPane.add(LB_BandeiraP1);
 		
 		LB_BandeiraP2 = new JLabel("");
 		LB_BandeiraP2.setHorizontalAlignment(SwingConstants.CENTER);
-		LB_BandeiraP2.setIcon(new ImageIcon(Pagina_Inicial.class.getResource("/Imagens/Icone16pxErro.png")));
+		LB_BandeiraP2.setIcon(new ImageIcon(Pagina_Inicial.class.getResource("/resource/Icone16pxErro.png")));
 		LB_BandeiraP2.setBounds(10, 160, 25, 25);
 		contentPane.add(LB_BandeiraP2);
 		
 		LB_BandeiraP3 = new JLabel("");
-		LB_BandeiraP3.setIcon(new ImageIcon(Pagina_Inicial.class.getResource("/Imagens/Icone16pxErro.png")));
+		LB_BandeiraP3.setIcon(new ImageIcon(Pagina_Inicial.class.getResource("/resource/Icone16pxErro.png")));
 		LB_BandeiraP3.setHorizontalAlignment(SwingConstants.CENTER);
 		LB_BandeiraP3.setBounds(10, 185, 25, 25);
 		contentPane.add(LB_BandeiraP3);
 		
 		LB_BandeiraP4 = new JLabel("");
-		LB_BandeiraP4.setIcon(new ImageIcon(Pagina_Inicial.class.getResource("/Imagens/Icone16pxErro.png")));
+		LB_BandeiraP4.setIcon(new ImageIcon(Pagina_Inicial.class.getResource("/resource/Icone16pxErro.png")));
 		LB_BandeiraP4.setHorizontalAlignment(SwingConstants.CENTER);
 		LB_BandeiraP4.setBounds(10, 210, 25, 25);
 		contentPane.add(LB_BandeiraP4);
 		
 		LB_BandeiraP5 = new JLabel("");
-		LB_BandeiraP5.setIcon(new ImageIcon(Pagina_Inicial.class.getResource("/Imagens/Icone16pxErro.png")));
+		LB_BandeiraP5.setIcon(new ImageIcon(Pagina_Inicial.class.getResource("/resource/Icone16pxErro.png")));
 		LB_BandeiraP5.setHorizontalAlignment(SwingConstants.CENTER);
 		LB_BandeiraP5.setBounds(10, 235, 25, 25);
 		contentPane.add(LB_BandeiraP5);
 		
 		LB_CategoriaEscolhida = new JLabel("");
-		LB_CategoriaEscolhida.setIcon(new ImageIcon(Pagina_Inicial.class.getResource("/Imagens/Icone64pxErro.png")));
+		LB_CategoriaEscolhida.setIcon(new ImageIcon(Pagina_Inicial.class.getResource("/resource/Icone64pxErro.png")));
 		LB_CategoriaEscolhida.setHorizontalAlignment(SwingConstants.CENTER);
 		LB_CategoriaEscolhida.setBackground(Color.WHITE);
 		LB_CategoriaEscolhida.setBounds(487, 0, 215, 100);
@@ -672,7 +672,7 @@ public class Pagina_Inicial extends JFrame {
 		contentPane.add(BT_DetalhesPista);
 		
 		LB_BandeiraPista = new JLabel("");
-		LB_BandeiraPista.setIcon(new ImageIcon(Pagina_Inicial.class.getResource("/Imagens/Icone16pxErro.png")));
+		LB_BandeiraPista.setIcon(new ImageIcon(Pagina_Inicial.class.getResource("/resource/Icone16pxErro.png")));
 		LB_BandeiraPista.setHorizontalAlignment(SwingConstants.CENTER);
 		LB_BandeiraPista.setBounds(916, 147, 45, 33);
 		contentPane.add(LB_BandeiraPista);
@@ -688,7 +688,7 @@ public class Pagina_Inicial extends JFrame {
 		contentPane.add(tabbedPane);
 		
 		Tab_ClassicacaoPilotos = new JPanel();
-		tabbedPane.addTab("Classificação Pilotos", new ImageIcon(Pagina_Inicial.class.getResource("/Imagens/Icone24pxPiloto.png")), Tab_ClassicacaoPilotos, null);
+		tabbedPane.addTab("Classificação Pilotos", new ImageIcon(Pagina_Inicial.class.getResource("/resource/Icone24pxPiloto.png")), Tab_ClassicacaoPilotos, null);
 		Tab_ClassicacaoPilotos.setLayout(null);
 		
 		lblNewLabel_6 = new JLabel("Classificação de pilotos");
@@ -697,7 +697,7 @@ public class Pagina_Inicial extends JFrame {
 		Tab_ClassicacaoPilotos.add(lblNewLabel_6);
 		
 		Tab_ClassicacaoEquipes = new JPanel();
-		tabbedPane.addTab("Classificação Equipes", new ImageIcon(Pagina_Inicial.class.getResource("/Imagens/Icone24pxEquipe.png")), Tab_ClassicacaoEquipes, null);
+		tabbedPane.addTab("Classificação Equipes", new ImageIcon(Pagina_Inicial.class.getResource("/resource/Icone24pxEquipe.png")), Tab_ClassicacaoEquipes, null);
 		Tab_ClassicacaoEquipes.setLayout(null);
 		
 		lblNewLabel_5 = new JLabel("Classificação de equipes");
@@ -706,7 +706,7 @@ public class Pagina_Inicial extends JFrame {
 		Tab_ClassicacaoEquipes.add(lblNewLabel_5);
 		
 		panel = new JPanel();
-		tabbedPane.addTab("Resultados", new ImageIcon(Pagina_Inicial.class.getResource("/Imagens/Icone24pxTrofeu.png")), panel, null);
+		tabbedPane.addTab("Resultados", new ImageIcon(Pagina_Inicial.class.getResource("/resource/Icone24pxTrofeu.png")), panel, null);
 		panel.setLayout(null);
 		
 		lblNewLabel_7 = new JLabel("Resultados da temporada");
@@ -721,7 +721,7 @@ public class Pagina_Inicial extends JFrame {
 		contentPane.add(LB_NomeDirigente);
 		
 		LB_ImagemPista = new JLabel("");
-		LB_ImagemPista.setIcon(new ImageIcon(Pagina_Inicial.class.getResource("/Imagens/Icone64pxErro.png")));
+		LB_ImagemPista.setIcon(new ImageIcon(Pagina_Inicial.class.getResource("/resource/Icone64pxErro.png")));
 		LB_ImagemPista.setHorizontalAlignment(SwingConstants.CENTER);
 		LB_ImagemPista.setBounds(484, 147, 250, 203);
 		LB_ImagemPista.setBorder(BorderFactory.createLineBorder(Color.gray));
@@ -769,13 +769,13 @@ public class Pagina_Inicial extends JFrame {
 				dispose();
 			}
 		});
-		BT_DetalhesPista_1.setIcon(new ImageIcon(Pagina_Inicial.class.getResource("/Imagens/Icone24pxBandeiraDeChegada.png")));
+		BT_DetalhesPista_1.setIcon(new ImageIcon(Pagina_Inicial.class.getResource("/resource/Icone24pxBandeiraDeChegada.png")));
 		BT_DetalhesPista_1.setBounds(487, 573, 460, 33);
 		contentPane.add(BT_DetalhesPista_1);
 		
 		LB_CarrosCat = new JLabel("");
 		LB_CarrosCat.setVerticalAlignment(SwingConstants.TOP);
-		LB_CarrosCat.setIcon(new ImageIcon(Pagina_Inicial.class.getResource("/Imagens/Banner F1_OK.png")));
+		LB_CarrosCat.setIcon(new ImageIcon(Pagina_Inicial.class.getResource("/resource/Banner F1_OK.png")));
 		LB_CarrosCat.setHorizontalAlignment(SwingConstants.CENTER);
 		LB_CarrosCat.setBounds(486, 436, 464, 126);
 		contentPane.add(LB_CarrosCat);
@@ -787,7 +787,7 @@ public class Pagina_Inicial extends JFrame {
 		contentPane.add(LB_Orc);
 		
 		JLabel LB_BandeiraPista_1 = new JLabel("");
-		LB_BandeiraPista_1.setIcon(new ImageIcon(Pagina_Inicial.class.getResource("/Imagens/IconeEuro24px.png")));
+		LB_BandeiraPista_1.setIcon(new ImageIcon(Pagina_Inicial.class.getResource("/resource/IconeEuro24px.png")));
 		LB_BandeiraPista_1.setHorizontalAlignment(SwingConstants.CENTER);
 		LB_BandeiraPista_1.setBounds(906, 50, 45, 25);
 		contentPane.add(LB_BandeiraPista_1);
@@ -912,7 +912,7 @@ public class Pagina_Inicial extends JFrame {
 		LB_Orc.setText("€"+Dados.Orcamento+" milhões");
 		
 		LB_NomeP1.setText(""+SelecionarEquipe.NomePiloto1);
-		LB_BandeiraP1.setIcon(new ImageIcon(Selecionar_Categoria.class.getResource("/Imagens/Bandeira "+SelecionarEquipe.PaisPiloto1+".png")));
+		LB_BandeiraP1.setIcon(new ImageIcon(Selecionar_Categoria.class.getResource("/resource/Bandeira "+SelecionarEquipe.PaisPiloto1+".png")));
 		LB_NumP1.setText(""+SelecionarEquipe.NumeroPiloto1);
 	//	Born1.setText(""+SelecionarEquipe.NascimentoPiloto1);
 		LB_IdadeP1.setText(""+SelecionarEquipe.IdadePiloto1+" anos");
@@ -928,7 +928,7 @@ public class Pagina_Inicial extends JFrame {
 			LB_TempoContratoP1.setText("");
 		}else {
 			LB_NomeP2.setText(""+SelecionarEquipe.NomePiloto2);
-			LB_BandeiraP2.setIcon(new ImageIcon(Selecionar_Categoria.class.getResource("/Imagens/Bandeira "+SelecionarEquipe.PaisPiloto2+".png")));
+			LB_BandeiraP2.setIcon(new ImageIcon(Selecionar_Categoria.class.getResource("/resource/Bandeira "+SelecionarEquipe.PaisPiloto2+".png")));
 			LB_NumP2.setText(""+SelecionarEquipe.NumeroPiloto2);
 		//	Born2.setText(""+SelecionarEquipe.NascimentoPiloto2);
 			LB_IdadeP2.setText(""+SelecionarEquipe.IdadePiloto2+" anos");
@@ -946,7 +946,7 @@ public class Pagina_Inicial extends JFrame {
 			LB_TempoContratoP3.setText("");
 		}else {
 			LB_NomeP3.setText(""+SelecionarEquipe.NomePiloto3);
-			LB_BandeiraP3.setIcon(new ImageIcon(Selecionar_Categoria.class.getResource("/Imagens/Bandeira "+SelecionarEquipe.PaisPiloto3+".png")));
+			LB_BandeiraP3.setIcon(new ImageIcon(Selecionar_Categoria.class.getResource("/resource/Bandeira "+SelecionarEquipe.PaisPiloto3+".png")));
 			LB_NumP3.setText(""+SelecionarEquipe.NumeroPiloto3);
 		//	Born3.setText(""+SelecionarEquipe.NascimentoPiloto3);
 			LB_IdadeP3.setText(SelecionarEquipe.IdadePiloto3+" anos");
@@ -963,7 +963,7 @@ public class Pagina_Inicial extends JFrame {
 			LB_TempoContratoP4.setText("");
 		}else {
 			LB_NomeP4.setText(""+SelecionarEquipe.NomePiloto4);
-			LB_BandeiraP4.setIcon(new ImageIcon(Selecionar_Categoria.class.getResource("/Imagens/Bandeira "+SelecionarEquipe.PaisPiloto4+".png")));
+			LB_BandeiraP4.setIcon(new ImageIcon(Selecionar_Categoria.class.getResource("/resource/Bandeira "+SelecionarEquipe.PaisPiloto4+".png")));
 			LB_NumP4.setText(""+SelecionarEquipe.NumeroPiloto4);
 		//	Born4.setText(""+SelecionarEquipe.NascimentoPiloto4);
 			LB_IdadeP4.setText(""+SelecionarEquipe.IdadePiloto4+" anos");
@@ -980,7 +980,7 @@ public class Pagina_Inicial extends JFrame {
 			LB_TempoContratoP5.setText("");
 		}else {
 			LB_NomeP5.setText(""+SelecionarEquipe.NomePiloto5);
-			LB_BandeiraP5.setIcon(new ImageIcon(Selecionar_Categoria.class.getResource("/Imagens/Bandeira "+SelecionarEquipe.PaisPiloto5+".png")));
+			LB_BandeiraP5.setIcon(new ImageIcon(Selecionar_Categoria.class.getResource("/resource/Bandeira "+SelecionarEquipe.PaisPiloto5+".png")));
 			LB_NumP5.setText(""+SelecionarEquipe.NumeroPiloto5);
 		//	Born5.setText(""+SelecionarEquipe.NascimentoPiloto5);
 			LB_IdadeP5.setText(""+SelecionarEquipe.IdadePiloto5+" anos");

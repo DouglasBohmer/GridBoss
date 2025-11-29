@@ -1,58 +1,46 @@
 package modelos;
 
 public class Pista {
-    // --- DADOS BÁSICOS ---
-    private String nome;          // Ex: "Autódromo de Interlagos"
-    private String pais;          // Ex: "Brasil" (para a bandeira)
+    // --- DADOS DO JSON ---
+    private int rodada;           // Ex: 1
+    private String nome;          // Ex: "Grande Prêmio do Bahrein"
+    private String pais;          // Ex: "Bahrain"
     private TipoPista tipo;       // OVAL, MISTO, RUA...
-    private int qtdVoltas;        // Ex: 71
-    private double comprimentoKm; // Ex: 4.309 km
+    private int qtdVoltas;        // Ex: 57
+    private double comprimentoKm; // Ex: 5.412
     
-    // --- DADOS DE JOGABILIDADE (O "DNA" da Pista) ---
+    // --- JOGABILIDADE ---
+    private int dificuldadeUltrapassagem; // 0 a 100
+    private double relevanciaMotor;       // 0.0 a 1.0
+    private double relevanciaAerodinamica; // 0.0 a 1.0
     
-    /**
-     * Define o quão difícil é passar nesta pista (0 a 100).
-     * 0 = Muito Fácil (Daytona/Talladega - Ovais gigantes)
-     * 50 = Médio (Interlagos)
-     * 95 = Impossível (Mônaco)
-     */
-    private int dificuldadeUltrapassagem;
-    
-    /**
-     * Define se a pista favorece MOTOR ou AERODINÂMICA.
-     * Valor de 0.0 a 1.0.
-     * 1.0 = 100% Motor (Monza, Ovais rápidos).
-     * 0.0 = 100% Aerodinâmica (Mônaco, Hungaroring).
-     * 0.5 = Equilibrado.
-     */
-    private double relevanciaMotor; 
-    
-    /**
-     * Multiplicadores de consumo (Base = 1.0).
-     * Pistas abrasivas (Bahrein) podem ter 1.5.
-     * Pistas lisas (Sochi) podem ter 0.8.
-     */
     private double fatorDesgastePneu;
     private double fatorConsumoCombustivel;
-    
-    /**
-     * Chance base de acontecer um acidente por volta (0 a 100).
-     * Pistas de rua (paredes próximas) têm chance maior.
-     * Ovais curtos (tráfego intenso) também.
-     */
     private double chanceSafetyCar;
-    
-    /**
-     * Tempo médio perdido ao entrar e sair do box (sem contar a parada).
-     * Ex: 20 segundos.
-     */
     private double tempoPerdidoPitLane;
+    
+    // Objeto aninhado para imagens
+    private Arquivos arquivos;
 
-    // Construtor Completo
+    // --- CLASSE INTERNA PARA JSON ---
+    public static class Arquivos {
+        public String traçado;
+        public String traçadoSvg;
+        public String bandeira;
+        public String bandeiraSvg;
+    }
+
+    // Construtor vazio para o Gson
+    public Pista() {
+        this.arquivos = new Arquivos();
+    }
+
+    // Construtor completo (para testes manuais)
     public Pista(String nome, String pais, TipoPista tipo, int voltas, double km,
                  int dificuldadeUltra, double relevanciaMotor, 
                  double desgastePneu, double consumoComb, 
                  double chanceSC, double tempoPit) {
+        this();
         this.nome = nome;
         this.pais = pais;
         this.tipo = tipo;
@@ -60,29 +48,49 @@ public class Pista {
         this.comprimentoKm = km;
         this.dificuldadeUltrapassagem = dificuldadeUltra;
         this.relevanciaMotor = relevanciaMotor;
+        this.relevanciaAerodinamica = 1.0 - relevanciaMotor; // Cálculo automático padrão
         this.fatorDesgastePneu = desgastePneu;
         this.fatorConsumoCombustivel = consumoComb;
         this.chanceSafetyCar = chanceSC;
         this.tempoPerdidoPitLane = tempoPit;
     }
 
-    // --- MÉTODOS ÚTEIS PARA A CORRIDA ---
+    // --- MÉTODOS ÚTEIS ---
 
-    public double getRelevanciaAerodinamica() {
-        // Se motor é 0.7 (70%), Aero é o que sobra (0.3 ou 30%)
-        return 1.0 - relevanciaMotor;
+    public boolean isOval() {
+        if (tipo == null) return false;
+        return tipo.isOval(); // Usa o método do Enum TipoPista
     }
     
-    public boolean isOval() {
-        return tipo == TipoPista.OVAL_CURTO || tipo == TipoPista.OVAL_SPEEDWAY;
+    public boolean isRua() {
+        if (tipo == null) return false;
+        return tipo.isRua();
     }
 
-    // --- GETTERS ---
+    // --- GETTERS DE IMAGEM (Seguros) ---
+    
+    public String getCaminhoTracado() {
+        if (arquivos != null && arquivos.traçado != null) return arquivos.traçado;
+        return "/resource/Icone64pxErro.png";
+    }
+    
+    public String getCaminhoBandeira() {
+        if (arquivos != null && arquivos.bandeira != null) return arquivos.bandeira;
+        return "/resource/Bandeira BRANCA.png";
+    }
+
+    // --- GETTERS PADRÃO ---
+    public int getRodada() { return rodada; }
     public String getNome() { return nome; }
     public String getPais() { return pais; }
+    public TipoPista getTipo() { return tipo; }
     public int getQtdVoltas() { return qtdVoltas; }
+    public double getComprimentoKm() { return comprimentoKm; }
+    
     public int getDificuldadeUltrapassagem() { return dificuldadeUltrapassagem; }
     public double getRelevanciaMotor() { return relevanciaMotor; }
+    public double getRelevanciaAerodinamica() { return relevanciaAerodinamica; }
+    
     public double getFatorDesgastePneu() { return fatorDesgastePneu; }
     public double getFatorConsumoCombustivel() { return fatorConsumoCombustivel; }
     public double getChanceSafetyCar() { return chanceSafetyCar; }

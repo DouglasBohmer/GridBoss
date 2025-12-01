@@ -74,7 +74,7 @@ public class TelaSelecionarEquipe extends JFrame {
         setContentPane(contentPane);
 
         // --- CABEÇALHO ---
-        JLabel lblTitulo = new JLabel("MOTORSPORT MANAGER");
+        JLabel lblTitulo = new JLabel("GRID BOSS");
         lblTitulo.setFont(new Font("Berlin Sans FB", Font.PLAIN, 20));
         lblTitulo.setHorizontalAlignment(SwingConstants.CENTER);
         lblTitulo.setBounds(20, 11, 540, 26);
@@ -95,7 +95,7 @@ public class TelaSelecionarEquipe extends JFrame {
         cbListaEquipes = new JComboBox<>();
         cbListaEquipes.setModel(new DefaultComboBoxModel<>(new String[] {"-- CARREGANDO --"}));
         cbListaEquipes.setMaximumRowCount(15);
-        cbListaEquipes.setFont(new Font("Berlin Sans FB", Font.PLAIN, 13));
+        cbListaEquipes.setFont(new Font("Berlin Sans FB", Font.PLAIN, 16));
         cbListaEquipes.setBounds(20, 238, 540, 21);
         cbListaEquipes.addActionListener(e -> atualizarDadosNaTela());
         contentPane.add(cbListaEquipes);
@@ -112,7 +112,7 @@ public class TelaSelecionarEquipe extends JFrame {
         for (int i = 0; i < 5; i++) {
             lblTitulos[i] = new JLabel("Piloto " + (i + 1));
             lblTitulos[i].setHorizontalAlignment(SwingConstants.CENTER);
-            lblTitulos[i].setFont(new Font("Berlin Sans FB", Font.PLAIN, 12));
+            lblTitulos[i].setFont(new Font("Berlin Sans FB", Font.PLAIN, 15));
             lblTitulos[i].setBounds(20, startY + (i * gapY), 91, 21);
             contentPane.add(lblTitulos[i]);
 
@@ -124,7 +124,7 @@ public class TelaSelecionarEquipe extends JFrame {
 
             lblNomes[i] = new JLabel("");
             lblNomes[i].setHorizontalAlignment(SwingConstants.CENTER);
-            lblNomes[i].setFont(new Font("Berlin Sans FB", Font.PLAIN, 14));
+            lblNomes[i].setFont(new Font("Berlin Sans FB", Font.PLAIN, 15));
             lblNomes[i].setBounds(166, startY + (i * gapY), 249, 21);
             contentPane.add(lblNomes[i]);
 
@@ -135,7 +135,7 @@ public class TelaSelecionarEquipe extends JFrame {
             lblBandeiras[i] = new JLabel("");
             lblBandeiras[i].setHorizontalAlignment(SwingConstants.CENTER);
             lblBandeiras[i].setBounds(528, startY + (i * gapY), 32, 21);
-            lblBandeiras[i].setBorder(BorderFactory.createLineBorder(Color.LIGHT_GRAY));
+            //lblBandeiras[i].setBorder(BorderFactory.createLineBorder(Color.LIGHT_GRAY));
             contentPane.add(lblBandeiras[i]);
         }
 
@@ -146,7 +146,7 @@ public class TelaSelecionarEquipe extends JFrame {
 
         lblSede = new JLabel("");
         lblSede.setHorizontalAlignment(SwingConstants.CENTER);
-        lblSede.setFont(new Font("Berlin Sans FB", Font.PLAIN, 12));
+        lblSede.setFont(new Font("Berlin Sans FB", Font.PLAIN, 15));
         lblSede.setBounds(121, 553, 318, 21);
         contentPane.add(lblSede);
         
@@ -156,12 +156,12 @@ public class TelaSelecionarEquipe extends JFrame {
         
         lblFlagSede = new JLabel("");
         lblFlagSede.setBounds(528, 553, 32, 21);
-        lblFlagSede.setBorder(BorderFactory.createLineBorder(Color.LIGHT_GRAY));
+        lblFlagSede.setHorizontalAlignment(SwingConstants.CENTER);
         contentPane.add(lblFlagSede);
 
         lblMotor = new JLabel("");
         lblMotor.setHorizontalAlignment(SwingConstants.CENTER);
-        lblMotor.setFont(new Font("Berlin Sans FB", Font.PLAIN, 12));
+        lblMotor.setFont(new Font("Berlin Sans FB", Font.PLAIN, 15));
         lblMotor.setBounds(121, 585, 318, 21);
         contentPane.add(lblMotor);
         
@@ -171,31 +171,31 @@ public class TelaSelecionarEquipe extends JFrame {
         
         lblFlagMotor = new JLabel("");
         lblFlagMotor.setBounds(528, 585, 32, 21);
-        lblFlagMotor.setBorder(BorderFactory.createLineBorder(Color.LIGHT_GRAY));
+        lblFlagMotor.setHorizontalAlignment(SwingConstants.CENTER);
         contentPane.add(lblFlagMotor);
 
         lblOrcamento = new JLabel("");
         lblOrcamento.setHorizontalAlignment(SwingConstants.CENTER);
-        lblOrcamento.setFont(new Font("Berlin Sans FB", Font.PLAIN, 12));
+        lblOrcamento.setFont(new Font("Berlin Sans FB", Font.PLAIN, 15));
         lblOrcamento.setBounds(121, 617, 318, 21);
         contentPane.add(lblOrcamento);
 
         // --- DIRIGENTE ---
-        JLabel lblAviso = new JLabel("Digite o nome do seu dirigente de equipe");
+        JLabel lblAviso = new JLabel("Nome do Dirigente");
         lblAviso.setHorizontalAlignment(SwingConstants.CENTER);
-        lblAviso.setFont(new Font("Berlin Sans FB", Font.PLAIN, 12));
-        lblAviso.setBounds(10, 645, 249, 21);
+        lblAviso.setFont(new Font("Berlin Sans FB", Font.PLAIN, 15));
+        lblAviso.setBounds(10, 645, 172, 21);
         contentPane.add(lblAviso);
 
         tfNomeDirigente = new JTextField("Douglas Bohmer");
         tfNomeDirigente.setHorizontalAlignment(SwingConstants.CENTER);
-        tfNomeDirigente.setFont(new Font("Berlin Sans FB", Font.PLAIN, 12));
+        tfNomeDirigente.setFont(new Font("Berlin Sans FB", Font.PLAIN, 15));
         tfNomeDirigente.setBounds(269, 645, 291, 21);
         contentPane.add(tfNomeDirigente);
 
         // BOTÕES
         JButton btnVoltar = new JButton("VOLTAR");
-        btnVoltar.setFont(new Font("Berlin Sans FB", Font.PLAIN, 12));
+        btnVoltar.setFont(new Font("Berlin Sans FB", Font.PLAIN, 15));
         btnVoltar.setBounds(10, 674, 172, 21);
         btnVoltar.addActionListener(e -> {
             TelaSelecionarCategoria tela = new TelaSelecionarCategoria();
@@ -206,7 +206,7 @@ public class TelaSelecionarEquipe extends JFrame {
         contentPane.add(btnVoltar);
 
         JButton btnComecar = new JButton("COMEÇAR JOGO");
-        btnComecar.setFont(new Font("Berlin Sans FB", Font.PLAIN, 12));
+        btnComecar.setFont(new Font("Berlin Sans FB", Font.PLAIN, 15));
         btnComecar.setBounds(388, 674, 172, 21);
         btnComecar.addActionListener(e -> iniciarJogo());
         contentPane.add(btnComecar);
@@ -218,8 +218,8 @@ public class TelaSelecionarEquipe extends JFrame {
     private void criarLabelInfo(String texto, int y) {
         JLabel l = new JLabel(texto);
         l.setHorizontalAlignment(SwingConstants.CENTER);
-        l.setFont(new Font("Berlin Sans FB", Font.PLAIN, 12));
-        l.setBounds(20, y, 91, 21);
+        l.setFont(new Font("Berlin Sans FB", Font.PLAIN, 15));
+        l.setBounds(20, y, 120, 21);
         contentPane.add(l);
     }
 

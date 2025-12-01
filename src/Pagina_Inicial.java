@@ -319,38 +319,38 @@ public class Pagina_Inicial extends JFrame {
 		Selecionar_Categoria Categoria = new Selecionar_Categoria();
 		
 		LB_LogoEquipe = new JLabel("");
-		LB_LogoEquipe.setIcon(new ImageIcon(Pagina_Inicial.class.getResource("/resource/Icone64pxErro.png")));
+		LB_LogoEquipe.setIcon(new ImageIcon(Pagina_Inicial.class.getResource("/resource/Equipe_F1_McLaren.png")));
 		LB_LogoEquipe.setHorizontalAlignment(SwingConstants.CENTER);
 		LB_LogoEquipe.setBackground(new Color(255, 255, 255));
 		LB_LogoEquipe.setBounds(10, 0, 200, 100);
 		contentPane.add(LB_LogoEquipe);
 		
 		LB_LogoMotorPQ = new JLabel("");
-		LB_LogoMotorPQ.setIcon(new ImageIcon(Pagina_Inicial.class.getResource("/resource/Icone16pxErro.png")));
+		LB_LogoMotorPQ.setIcon(new ImageIcon(Pagina_Inicial.class.getResource("/resource/Motor_MercedesPQ.png")));
 		LB_LogoMotorPQ.setHorizontalAlignment(SwingConstants.CENTER);
 		LB_LogoMotorPQ.setBounds(270, 34, 45, 33);
 		contentPane.add(LB_LogoMotorPQ);
 		
 		LB_BandeiraSede = new JLabel("");
-		LB_BandeiraSede.setIcon(new ImageIcon(Pagina_Inicial.class.getResource("/resource/Icone16pxErro.png")));
+		LB_BandeiraSede.setIcon(new ImageIcon(Pagina_Inicial.class.getResource("/resource/Bandeira Reino Unido.png")));
 		LB_BandeiraSede.setHorizontalAlignment(SwingConstants.CENTER);
 		LB_BandeiraSede.setBounds(210, 67, 65, 33);
 		contentPane.add(LB_BandeiraSede);
 		
 		LB_BandeiraEquipe = new JLabel("");
-		LB_BandeiraEquipe.setIcon(new ImageIcon(Pagina_Inicial.class.getResource("/resource/Icone16pxErro.png")));
+		LB_BandeiraEquipe.setIcon(new ImageIcon(Pagina_Inicial.class.getResource("/resource/Bandeira Italia.png")));
 		LB_BandeiraEquipe.setHorizontalAlignment(SwingConstants.CENTER);
 		LB_BandeiraEquipe.setBounds(210, 0, 65, 33);
 		contentPane.add(LB_BandeiraEquipe);
 		
 		LB_BandeiraMotor = new JLabel("");
-		LB_BandeiraMotor.setIcon(new ImageIcon(Pagina_Inicial.class.getResource("/resource/Icone16pxErro.png")));
+		LB_BandeiraMotor.setIcon(new ImageIcon(Pagina_Inicial.class.getResource("/resource/Bandeira Alemanha.png")));
 		LB_BandeiraMotor.setHorizontalAlignment(SwingConstants.CENTER);
 		LB_BandeiraMotor.setBounds(210, 34, 65, 33);
 		contentPane.add(LB_BandeiraMotor);
 		
 		LB_BandeiraP1 = new JLabel("");
-		LB_BandeiraP1.setIcon(new ImageIcon(Pagina_Inicial.class.getResource("/resource/Icone16pxErro.png")));
+		LB_BandeiraP1.setIcon(new ImageIcon(Pagina_Inicial.class.getResource("/resource/Bandeira Holanda.png")));
 		LB_BandeiraP1.setHorizontalAlignment(SwingConstants.CENTER);
 		LB_BandeiraP1.setBounds(10, 135, 25, 25);
 		contentPane.add(LB_BandeiraP1);
@@ -380,28 +380,28 @@ public class Pagina_Inicial extends JFrame {
 		contentPane.add(LB_BandeiraP5);
 		
 		LB_CategoriaEscolhida = new JLabel("");
-		LB_CategoriaEscolhida.setIcon(new ImageIcon(Pagina_Inicial.class.getResource("/resource/Icone64pxErro.png")));
+		LB_CategoriaEscolhida.setIcon(new ImageIcon(Pagina_Inicial.class.getResource("/resource/Logo Novo_F1_OKPQ.png")));
 		LB_CategoriaEscolhida.setHorizontalAlignment(SwingConstants.CENTER);
 		LB_CategoriaEscolhida.setBackground(Color.WHITE);
 		LB_CategoriaEscolhida.setBounds(487, 0, 215, 100);
 		contentPane.add(LB_CategoriaEscolhida);
 		
-		LB_NomeEquipe = new JLabel("Equipe X");
+		LB_NomeEquipe = new JLabel("Equipe McLaren");
 		LB_NomeEquipe.setHorizontalAlignment(SwingConstants.CENTER);
 		LB_NomeEquipe.setBounds(275, 0, 200, 33);
 		contentPane.add(LB_NomeEquipe);
 		
-		LB_SedeEquipe = new JLabel("Sede X");
+		LB_SedeEquipe = new JLabel("Sede Reino Unido");
 		LB_SedeEquipe.setHorizontalAlignment(SwingConstants.CENTER);
 		LB_SedeEquipe.setBounds(275, 67, 200, 33);
 		contentPane.add(LB_SedeEquipe);
 		
-		LB_Motor = new JLabel("Motor X");
+		LB_Motor = new JLabel("Motor Mercedes");
 		LB_Motor.setHorizontalAlignment(SwingConstants.CENTER);
 		LB_Motor.setBounds(275, 34, 200, 33);
 		contentPane.add(LB_Motor);
 		
-		LB_Ano = new JLabel("Ano");
+		LB_Ano = new JLabel("Ano 2025");
 		LB_Ano.setFont(new Font("Arial Rounded MT Bold", Font.ITALIC, 12));
 		LB_Ano.setHorizontalAlignment(SwingConstants.CENTER);
 		LB_Ano.setBounds(700, 50, 100, 25);
@@ -419,7 +419,7 @@ public class Pagina_Inicial extends JFrame {
 		lblNewLabel_22.setBounds(10, 110, 465, 25);
 		contentPane.add(lblNewLabel_22);
 		
-		LB_NumP1 = new JLabel("#100");
+		LB_NumP1 = new JLabel("#33");
 		LB_NumP1.setHorizontalAlignment(SwingConstants.CENTER);
 		LB_NumP1.setBounds(35, 135, 35, 25);
 		contentPane.add(LB_NumP1);
@@ -444,7 +444,7 @@ public class Pagina_Inicial extends JFrame {
 		LB_NumP4.setBounds(35, 210, 35, 25);
 		contentPane.add(LB_NumP4);
 		
-		LB_NomeP1 = new JLabel("New label");
+		LB_NomeP1 = new JLabel("Max Verstappen");
 		LB_NomeP1.setFont(new Font("Arial Rounded MT Bold", Font.ITALIC, 14));
 		LB_NomeP1.setBounds(70, 135, 205, 25);
 		contentPane.add(LB_NomeP1);
@@ -578,7 +578,7 @@ public class Pagina_Inicial extends JFrame {
 		LB_VoltaPista.setBounds(744, 297, 205, 30);
 		contentPane.add(LB_VoltaPista);
 		
-		LB_LocalPista = new JLabel("1");
+		LB_LocalPista = new JLabel("Espanha, Cataluna");
 		LB_LocalPista.setForeground(new Color(0, 0, 0));
 		LB_LocalPista.setHorizontalAlignment(SwingConstants.LEFT);
 		LB_LocalPista.setFont(new Font("Arial Rounded MT Bold", Font.ITALIC, 12));
@@ -672,7 +672,7 @@ public class Pagina_Inicial extends JFrame {
 		contentPane.add(BT_DetalhesPista);
 		
 		LB_BandeiraPista = new JLabel("");
-		LB_BandeiraPista.setIcon(new ImageIcon(Pagina_Inicial.class.getResource("/resource/Icone16pxErro.png")));
+		LB_BandeiraPista.setIcon(new ImageIcon(Pagina_Inicial.class.getResource("/resource/Bandeira Espanha.png")));
 		LB_BandeiraPista.setHorizontalAlignment(SwingConstants.CENTER);
 		LB_BandeiraPista.setBounds(916, 147, 45, 33);
 		contentPane.add(LB_BandeiraPista);
@@ -721,7 +721,7 @@ public class Pagina_Inicial extends JFrame {
 		contentPane.add(LB_NomeDirigente);
 		
 		LB_ImagemPista = new JLabel("");
-		LB_ImagemPista.setIcon(new ImageIcon(Pagina_Inicial.class.getResource("/resource/Icone64pxErro.png")));
+		LB_ImagemPista.setIcon(new ImageIcon(Pagina_Inicial.class.getResource("/resource/CircuitoCatalunha2007.2022PQ.png")));
 		LB_ImagemPista.setHorizontalAlignment(SwingConstants.CENTER);
 		LB_ImagemPista.setBounds(484, 147, 250, 203);
 		LB_ImagemPista.setBorder(BorderFactory.createLineBorder(Color.gray));

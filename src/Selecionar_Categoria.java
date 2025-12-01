@@ -30,7 +30,7 @@ import java.util.Random;
 public class Selecionar_Categoria extends JFrame {
 
 	private JPanel contentPane;
-	public static String BT_Cate = "Fórmula 1", BT_Temp = "Temporada 2024",BT_Imagem = "/Imagens/Logo F1 Novo_OK.png";
+	public static String BT_Cate = "Fórmula 1", BT_Temp = "Temporada 2024",BT_Imagem = "/resource/Logo F1 Novo_OK.png";
 	private JRadioButton RB_F1;
 	private JRadioButton RB_Indy;
 	private JRadioButton RB_Nascar;
@@ -61,10 +61,10 @@ public class Selecionar_Categoria extends JFrame {
 				
 				RB_F1.isSelected();
 				BT_Cate = "Fórmula 1";
-				BT_Imagem = "/Imagens/Logo F1 Novo_OK.png";
+				BT_Imagem = "/resource/Logo F1 Novo_OK.png";
 			}
 		});
-		setIconImage(Toolkit.getDefaultToolkit().getImage(Selecionar_Categoria.class.getResource("/Imagens/Icone16px.png")));
+		setIconImage(Toolkit.getDefaultToolkit().getImage(Selecionar_Categoria.class.getResource("/resource/Icone16px.png")));
 		setTitle("Motorsport Manager");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 501, 716);
@@ -138,13 +138,13 @@ public class Selecionar_Categoria extends JFrame {
 		
 		JLabel LB_Carro = new JLabel("");
 		LB_Carro.setHorizontalAlignment(SwingConstants.CENTER);
-		LB_Carro.setIcon(new ImageIcon(Selecionar_Categoria.class.getResource("/Imagens/F1 1.png")));
+		LB_Carro.setIcon(new ImageIcon(Selecionar_Categoria.class.getResource("/resource/F1 1.png")));
 		LB_Carro.setSize(100, 100);
 		LB_Carro.setBounds(20, 214, 450, 274);
 		contentPane.add(LB_Carro);
 		
 		JLabel LB_Logo = new JLabel("");
-		LB_Logo.setIcon(new ImageIcon(Selecionar_Categoria.class.getResource("/Imagens/Logo F1 Novo_OK.png")));
+		LB_Logo.setIcon(new ImageIcon(Selecionar_Categoria.class.getResource("/resource/Logo F1 Novo_OK.png")));
 		LB_Logo.setHorizontalAlignment(SwingConstants.CENTER);
 		LB_Logo.setBounds(20, 56, 450, 148);
 		contentPane.add(LB_Logo);
@@ -162,15 +162,15 @@ public class Selecionar_Categoria extends JFrame {
 
 				setBT_Categoria("Fórmula 1");
 				BT_Cate = "Fórmula 1";
-				BT_Imagem = "/Imagens/Logo F1 Novo_OK.png";
+				BT_Imagem = "/resource/Logo F1 Novo_OK.png";
 				
 				int RandonF1;
 				Random random = new Random();
 				RandonF1 = random.nextInt(7);
 				//JOptionPane.showMessageDialog(null, ""+RandonF1);
 				
-				LB_Carro.setIcon(new ImageIcon(Selecionar_Categoria.class.getResource("/Imagens/F1 "+(RandonF1+1)+".png")));
-				LB_Logo.setIcon(new ImageIcon(Selecionar_Categoria.class.getResource("/Imagens/Logo F1 Novo_OK.png")));
+				LB_Carro.setIcon(new ImageIcon(Selecionar_Categoria.class.getResource("/resource/F1 "+(RandonF1+1)+".png")));
+				LB_Logo.setIcon(new ImageIcon(Selecionar_Categoria.class.getResource("/resource/Logo F1 Novo_OK.png")));
 				
 				/*
 				CB_Lista_Temp.setModel(new DefaultComboBoxModel(new String[] {"Temporada 2024", "Temporada 2023", "Temporada 2022", "Temporada 2021", 
@@ -205,14 +205,14 @@ public class Selecionar_Categoria extends JFrame {
 				
 				setBT_Categoria("Fórmula INDY");
 				BT_Cate = "Fórmula INDY";
-				BT_Imagem = "/Imagens/Logo Indy_OK.png";
+				BT_Imagem = "/resource/Logo Indy_OK.png";
 				
 				int RandonIndy;
 				Random random = new Random();
 				RandonIndy = random.nextInt(8);
 				
-				LB_Carro.setIcon(new ImageIcon(Selecionar_Categoria.class.getResource("/Imagens/Indy "+(RandonIndy+1)+".png")));
-				LB_Logo.setIcon(new ImageIcon(Selecionar_Categoria.class.getResource("/Imagens/Logo Indy_OK.png")));
+				LB_Carro.setIcon(new ImageIcon(Selecionar_Categoria.class.getResource("/resource/Indy "+(RandonIndy+1)+".png")));
+				LB_Logo.setIcon(new ImageIcon(Selecionar_Categoria.class.getResource("/resource/Logo Indy_OK.png")));
 				
 				CB_Lista_Temp.setModel(new DefaultComboBoxModel(new String[] {"Temporada 2024"}));
 				
@@ -238,14 +238,14 @@ public class Selecionar_Categoria extends JFrame {
 				setBT_Categoria("NASCAR");
 				BT_Cate = "NASCAR";
 				
-				BT_Imagem = "/Imagens/Logo Nascar_OK.png";
+				BT_Imagem = "/resource/Logo Nascar_OK.png";
 				
 				int RandonNascar;
 				Random random = new Random();
 				RandonNascar = random.nextInt(7);
 				
-				LB_Carro.setIcon(new ImageIcon(Selecionar_Categoria.class.getResource("/Imagens/Cup Series "+(RandonNascar+1)+".png")));
-				LB_Logo.setIcon(new ImageIcon(Selecionar_Categoria.class.getResource("/Imagens/Logo Nascar_OK.png")));
+				LB_Carro.setIcon(new ImageIcon(Selecionar_Categoria.class.getResource("/resource/Cup Series "+(RandonNascar+1)+".png")));
+				LB_Logo.setIcon(new ImageIcon(Selecionar_Categoria.class.getResource("/resource/Logo Nascar_OK.png")));
 
 				CB_Lista_Temp.setModel(new DefaultComboBoxModel(new String[] {"Temporada 2024"}));
 				

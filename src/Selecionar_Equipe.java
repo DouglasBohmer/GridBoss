@@ -111,7 +111,7 @@ public class Selecionar_Equipe extends JFrame {
 	 * Create the frame.
 	 */
 	public Selecionar_Equipe() {
-		setIconImage(Toolkit.getDefaultToolkit().getImage(Selecionar_Equipe.class.getResource("/Imagens/Icone16px.png")));
+		setIconImage(Toolkit.getDefaultToolkit().getImage(Selecionar_Equipe.class.getResource("/resource/Icone16px.png")));
 		setTitle("Motorsport Manager");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 586, 740);
@@ -235,7 +235,7 @@ public class Selecionar_Equipe extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				if (TF_NomeDirigente.getText().equals("")) {
 					
-					ImageIcon icon = new ImageIcon(Selecionar_Equipe.class.getResource("/Imagens/Icone64pxErro.png"));
+					ImageIcon icon = new ImageIcon(Selecionar_Equipe.class.getResource("/resource/Icone64pxErro.png"));
 				
 					JOptionPane.showMessageDialog(null, "Nome do dirigente está vázio! \n\nDigite um nome para continuar.\n"
 							+ ""+TF_NomeDirigente.getText(),"Falta de informação", 
@@ -489,7 +489,7 @@ public class Selecionar_Equipe extends JFrame {
 		TF_NomeDirigente.setColumns(10);
 		
 		LB_FlagMotor_1 = new JLabel("");
-		LB_FlagMotor_1.setIcon(new ImageIcon(Selecionar_Equipe.class.getResource("/Imagens/IconeEuro24px.png")));
+		LB_FlagMotor_1.setIcon(new ImageIcon(Selecionar_Equipe.class.getResource("/resource/IconeEuro24px.png")));
 		LB_FlagMotor_1.setHorizontalAlignment(SwingConstants.CENTER);
 		LB_FlagMotor_1.setBounds(449, 617, 111, 25);
 		contentPane.add(LB_FlagMotor_1);
@@ -1141,43 +1141,43 @@ public class Selecionar_Equipe extends JFrame {
 		
 		if(foto_carro.equals("Alfa Romeo")) {
 			
-			LB_Foto_Carro.setIcon(new ImageIcon(Selecionar_Equipe.class.getResource("/Imagens/2022 Alfa Romeo.jpg")));
+			LB_Foto_Carro.setIcon(new ImageIcon(Selecionar_Equipe.class.getResource("/resource/2022 Alfa Romeo.jpg")));
 			
 		}else if(foto_carro.equals("Red Bull Racing")) {
 			
-			LB_Foto_Carro.setIcon(new ImageIcon(Selecionar_Equipe.class.getResource("/Imagens/2022 RBR.jpg")));
+			LB_Foto_Carro.setIcon(new ImageIcon(Selecionar_Equipe.class.getResource("/resource/2022 RBR.jpg")));
 			
 		}else if(foto_carro.equals("Alpine")) {
 			
-			LB_Foto_Carro.setIcon(new ImageIcon(Selecionar_Equipe.class.getResource("/Imagens/2022 Alpine.jpg")));
+			LB_Foto_Carro.setIcon(new ImageIcon(Selecionar_Equipe.class.getResource("/resource/2022 Alpine.jpg")));
 			
 		}else if(foto_carro.equals("Ferrari")) {
 			
-			LB_Foto_Carro.setIcon(new ImageIcon(Selecionar_Equipe.class.getResource("/Imagens/2022 Ferrari.jpg")));
+			LB_Foto_Carro.setIcon(new ImageIcon(Selecionar_Equipe.class.getResource("/resource/2022 Ferrari.jpg")));
 			
 		}else if(foto_carro.equals("Williams")) {
 			
-			LB_Foto_Carro.setIcon(new ImageIcon(Selecionar_Equipe.class.getResource("/Imagens/2022 Williams.jpg")));
+			LB_Foto_Carro.setIcon(new ImageIcon(Selecionar_Equipe.class.getResource("/resource/2022 Williams.jpg")));
 			
 		}else if(foto_carro.equals("Alpha Tauri")) {
 			
-			LB_Foto_Carro.setIcon(new ImageIcon(Selecionar_Equipe.class.getResource("/Imagens/2022 Alpha Tauri.jpg")));
+			LB_Foto_Carro.setIcon(new ImageIcon(Selecionar_Equipe.class.getResource("/resource/2022 Alpha Tauri.jpg")));
 			
 		}else if(foto_carro.equals("Aston Martin")) {
 			
-			LB_Foto_Carro.setIcon(new ImageIcon(Selecionar_Equipe.class.getResource("/Imagens/2022 Aston Martin.jpg")));
+			LB_Foto_Carro.setIcon(new ImageIcon(Selecionar_Equipe.class.getResource("/resource/2022 Aston Martin.jpg")));
 			
 		}else if(foto_carro.equals("Haas")) {
 			
-			LB_Foto_Carro.setIcon(new ImageIcon(Selecionar_Equipe.class.getResource("/Imagens/2022 Haas.jpg")));
+			LB_Foto_Carro.setIcon(new ImageIcon(Selecionar_Equipe.class.getResource("/resource/2022 Haas.jpg")));
 			
 		}else if(foto_carro.equals("McLaren")) {
 			
-			LB_Foto_Carro.setIcon(new ImageIcon(Selecionar_Equipe.class.getResource("/Imagens/2022 McLAren.jpg")));
+			LB_Foto_Carro.setIcon(new ImageIcon(Selecionar_Equipe.class.getResource("/resource/2022 McLAren.jpg")));
 			
 		}else if(foto_carro.equals("Mercedes")) {
 			
-			LB_Foto_Carro.setIcon(new ImageIcon(Selecionar_Equipe.class.getResource("/Imagens/2022 Mercedes.jpg")));
+			LB_Foto_Carro.setIcon(new ImageIcon(Selecionar_Equipe.class.getResource("/resource/2022 Mercedes.jpg")));
 			
 		}
 	}
@@ -1188,43 +1188,43 @@ public class Selecionar_Equipe extends JFrame {
 		
 		if(foto_carro.equals("Alfa Romeo")) {
 			
-			LB_Foto_Carro.setIcon(new ImageIcon(Selecionar_Equipe.class.getResource("/Imagens/2021 Alfa Romeo.jpg")));
+			LB_Foto_Carro.setIcon(new ImageIcon(Selecionar_Equipe.class.getResource("/resource/2021 Alfa Romeo.jpg")));
 			
 		}else if(foto_carro.equals("Red Bull Racing")) {
 			
-			LB_Foto_Carro.setIcon(new ImageIcon(Selecionar_Equipe.class.getResource("/Imagens/2021 RBR.jpg")));
+			LB_Foto_Carro.setIcon(new ImageIcon(Selecionar_Equipe.class.getResource("/resource/2021 RBR.jpg")));
 			
 		}else if(foto_carro.equals("Alpine")) {
 			
-			LB_Foto_Carro.setIcon(new ImageIcon(Selecionar_Equipe.class.getResource("/Imagens/2021 Alpine.jpg")));
+			LB_Foto_Carro.setIcon(new ImageIcon(Selecionar_Equipe.class.getResource("/resource/2021 Alpine.jpg")));
 			
 		}else if(foto_carro.equals("Ferrari")) {
 			
-			LB_Foto_Carro.setIcon(new ImageIcon(Selecionar_Equipe.class.getResource("/Imagens/2021 Ferrari.jpg")));
+			LB_Foto_Carro.setIcon(new ImageIcon(Selecionar_Equipe.class.getResource("/resource/2021 Ferrari.jpg")));
 			
 		}else if(foto_carro.equals("Williams")) {
 			
-			LB_Foto_Carro.setIcon(new ImageIcon(Selecionar_Equipe.class.getResource("/Imagens/2021 Williams.jpg")));
+			LB_Foto_Carro.setIcon(new ImageIcon(Selecionar_Equipe.class.getResource("/resource/2021 Williams.jpg")));
 			
 		}else if(foto_carro.equals("Alpha Tauri")) {
 			
-			LB_Foto_Carro.setIcon(new ImageIcon(Selecionar_Equipe.class.getResource("/Imagens/2021 Alpha Tauri.jpg")));
+			LB_Foto_Carro.setIcon(new ImageIcon(Selecionar_Equipe.class.getResource("/resource/2021 Alpha Tauri.jpg")));
 			
 		}else if(foto_carro.equals("Aston Martin")) {
 			
-			LB_Foto_Carro.setIcon(new ImageIcon(Selecionar_Equipe.class.getResource("/Imagens/2021 Aston Martin.jpg")));
+			LB_Foto_Carro.setIcon(new ImageIcon(Selecionar_Equipe.class.getResource("/resource/2021 Aston Martin.jpg")));
 			
 		}else if(foto_carro.equals("Haas")) {
 			
-			LB_Foto_Carro.setIcon(new ImageIcon(Selecionar_Equipe.class.getResource("/Imagens/2021 Haas.jpg")));
+			LB_Foto_Carro.setIcon(new ImageIcon(Selecionar_Equipe.class.getResource("/resource/2021 Haas.jpg")));
 			
 		}else if(foto_carro.equals("McLaren")) {
 			
-			LB_Foto_Carro.setIcon(new ImageIcon(Selecionar_Equipe.class.getResource("/Imagens/2021 McLAren.jpg")));
+			LB_Foto_Carro.setIcon(new ImageIcon(Selecionar_Equipe.class.getResource("/resource/2021 McLAren.jpg")));
 			
 		}else if(foto_carro.equals("Mercedes")) {
 			
-			LB_Foto_Carro.setIcon(new ImageIcon(Selecionar_Equipe.class.getResource("/Imagens/2021 Mercedes.jpg")));
+			LB_Foto_Carro.setIcon(new ImageIcon(Selecionar_Equipe.class.getResource("/resource/2021 Mercedes.jpg")));
 			
 		}
 	}

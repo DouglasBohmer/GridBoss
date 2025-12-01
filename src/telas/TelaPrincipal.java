@@ -6,14 +6,12 @@ import modelos.Equipe;
 import modelos.Piloto;
 import modelos.Pista;
 import servicos.CampeonatoService;
-import modelos.TipoPista;
 
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
+import javax.swing.border.LineBorder;
 import javax.swing.border.TitledBorder;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.util.List;
 
 public class TelaPrincipal extends JFrame {
@@ -22,375 +20,411 @@ public class TelaPrincipal extends JFrame {
     
     // Dados do Jogo
     private Equipe equipeJogavel;
-    private CampeonatoService campeonato; // Controla o calendário
+    private CampeonatoService campeonato;
 
-    // --- COMPONENTES DA UI ---
+    // --- COMPONENTES GLOBAIS PARA ATUALIZAÇÃO ---
     
-    // Cabeçalho
-    private JLabel lblNomeEquipe;
-    private JLabel lblLogoEquipe;
-    private JLabel lblSaldo;
-    private JLabel lblDirigente;
-    private JLabel lblTemporadaInfo;
-
-    // Painel de Pilotos (Arrays para os 5 slots)
-    private JPanel[] panelSlots = new JPanel[5];
-    private JLabel[] lblPilotoFuncao = new JLabel[5]; // "Titular" ou "Reserva"
-    private JLabel[] lblPilotoNome = new JLabel[5];
-    private JLabel[] lblPilotoNumero = new JLabel[5];
-    private JLabel[] lblPilotoBandeira = new JLabel[5];
-    private JLabel[] lblPilotoOverall = new JLabel[5];
-
-    // Painel da Próxima Corrida
-    private JLabel lblNomeGP;
-    private JLabel lblImagemPista; // Traçado
+    // Vermelho (Equipe)
+    private JLabel lblNomeEquipe, lblSede, lblMotor, lblLogoEquipe;
+    private JLabel lblBandeiraSede, lblLogoMotor;
+    
+    // Cinza (Pilotos)
+    private JPanel panelListaPilotos; 
+    
+    // Verde (Campeonato)
+    private JTabbedPane tabCampeonato;
+    
+    // Azul (Jogador)
+    private JLabel lblNomeDirigente, lblSaldo, lblAnoTemporada;
+    
+    // Preto (Corrida)
+    private JLabel lblNomeGP, lblLocalPista, lblDadosPista, lblImagemPista;
     private JLabel lblBandeiraPaisPista;
-    private JLabel lblLocalPista;
-    private JLabel lblDadosPista1; // Voltas / Distância
-    private JLabel lblDadosPista2; // Tipo / Dificuldade
     
-    // Botões
+    // Rosa (Ação)
     private JButton btnIrParaCorrida;
 
-    /**
-     * Construtor Principal
-     */
     public TelaPrincipal(Equipe equipe) {
         this.equipeJogavel = equipe;
-        
-        // Inicializa o Campeonato (Lê o calendário do JSON)
         this.campeonato = new CampeonatoService(SessaoJogo.categoriaKey, SessaoJogo.anoSelecionado);
 
-        setTitle("Grid Boss - " + equipe.getNome());
+        setTitle("Grid Boss - Painel Principal");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        setBounds(100, 100, 1200, 800); // Um pouco maior para caber tudo no responsivo
-        setMinimumSize(new Dimension(1024, 768));
+        setBounds(50, 50, 1280, 768);
+        setMinimumSize(new Dimension(1024, 700));
         
-        // Configuração do Menu
-        JMenuBar menuBar = new JMenuBar();
-        setJMenuBar(menuBar);
-        JMenu mnJogo = new JMenu("Jogo");
-        menuBar.add(mnJogo);
-        JMenuItem mntmSalvar = new JMenuItem("Salvar Progresso");
-        mnJogo.add(mntmSalvar);
-        JMenuItem mntmSair = new JMenuItem("Sair para Menu");
-        mnJogo.add(mntmSair);
-
         contentPane = new JPanel();
         contentPane.setBackground(Color.WHITE);
-        contentPane.setBorder(new EmptyBorder(10, 10, 10, 10));
+        contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
         setContentPane(contentPane);
         
-        // Layout Responsivo Principal (GridBag)
-        contentPane.setLayout(new GridBagLayout());
-        GridBagConstraints gbc = new GridBagConstraints();
+        // Layout Principal: 2 Colunas (Esquerda e Direita)
+        contentPane.setLayout(new GridLayout(1, 2, 10, 0)); // 1 Linha, 2 Colunas, 10px gap
 
-        // --- 1. CABEÇALHO (Topo) ---
-        JPanel panelHeader = criarPainelCabecalho();
-        gbc.gridx = 0;
-        gbc.gridy = 0;
-        gbc.gridwidth = 2; // Ocupa toda a largura
-        gbc.weightx = 1.0;
-        gbc.weighty = 0.1; // 10% da altura
-        gbc.fill = GridBagConstraints.BOTH;
-        gbc.insets = new Insets(0, 0, 10, 0);
-        contentPane.add(panelHeader, gbc);
+        // --- COLUNA ESQUERDA (Vermelho, Cinza, Verde) ---
+        JPanel colunaEsquerda = new JPanel(new GridBagLayout());
+        colunaEsquerda.setOpaque(false);
+        GridBagConstraints gbcE = new GridBagConstraints();
+        gbcE.fill = GridBagConstraints.BOTH;
+        gbcE.weightx = 1.0;
+        gbcE.insets = new Insets(0, 0, 5, 0);
 
-        // --- 2. PAINEL ESQUERDO (Pilotos) ---
-        JPanel panelPilotos = criarPainelPilotos();
-        gbc.gridx = 0;
-        gbc.gridy = 1;
-        gbc.gridwidth = 1;
-        gbc.weightx = 0.4; // 40% da largura
-        gbc.weighty = 0.8; // 80% da altura
-        gbc.fill = GridBagConstraints.BOTH;
-        gbc.insets = new Insets(0, 0, 0, 10);
-        contentPane.add(panelPilotos, gbc);
+        // 1. Vermelho (Equipe) - Topo
+        JPanel panelVermelho = criarPainelVermelho();
+        gbcE.gridy = 0; gbcE.weighty = 0.25; // 25% da altura
+        colunaEsquerda.add(panelVermelho, gbcE);
 
-        // --- 3. PAINEL DIREITO (Próxima Corrida + Gestão) ---
-        JPanel panelDireito = new JPanel(new BorderLayout(0, 10));
-        panelDireito.setOpaque(false);
-        
-        // 3.1 Próxima Corrida
-        JPanel panelCorrida = criarPainelProximaCorrida();
-        panelDireito.add(panelCorrida, BorderLayout.CENTER);
-        
-        // 3.2 Botões de Ação (Embaixo)
-        JPanel panelBotoes = criarPainelBotoes();
-        panelDireito.add(panelBotoes, BorderLayout.SOUTH);
+        // 2. Cinza (Pilotos) - Meio
+        JPanel panelCinza = criarPainelCinza();
+        gbcE.gridy = 1; gbcE.weighty = 0.45; // 45% da altura (precisa de espaço pra 5 pilotos)
+        colunaEsquerda.add(panelCinza, gbcE);
 
-        gbc.gridx = 1;
-        gbc.gridy = 1;
-        gbc.weightx = 0.6; // 60% da largura
-        gbc.weighty = 0.8;
-        gbc.insets = new Insets(0, 0, 0, 0);
-        contentPane.add(panelDireito, gbc);
-        
-        // --- PREENCHER DADOS ---
-        atualizarDados();
+        // 3. Verde (Campeonato) - Baixo
+        JPanel panelVerde = criarPainelVerde();
+        gbcE.gridy = 2; gbcE.weighty = 0.30; // 30% da altura
+        gbcE.insets = new Insets(0, 0, 0, 0); // Remove margem inferior
+        colunaEsquerda.add(panelVerde, gbcE);
+
+        contentPane.add(colunaEsquerda);
+
+        // --- COLUNA DIREITA (Azul, Preto, Rosa) ---
+        JPanel colunaDireita = new JPanel(new GridBagLayout());
+        colunaDireita.setOpaque(false);
+        GridBagConstraints gbcD = new GridBagConstraints();
+        gbcD.fill = GridBagConstraints.BOTH;
+        gbcD.weightx = 1.0;
+        gbcD.insets = new Insets(0, 0, 5, 0);
+
+        // 4. Azul (Jogador) - Topo
+        JPanel panelAzul = criarPainelAzul();
+        gbcD.gridy = 0; gbcD.weighty = 0.15; // 15% da altura
+        colunaDireita.add(panelAzul, gbcD);
+
+        // 5. Preto (Próxima Corrida) - Meio
+        JPanel panelPreto = criarPainelPreto();
+        gbcD.gridy = 1; gbcD.weighty = 0.70; // 70% da altura (Mapa grande)
+        colunaDireita.add(panelPreto, gbcD);
+
+        // 6. Rosa (Ação) - Baixo
+        JPanel panelRosa = criarPainelRosa();
+        gbcD.gridy = 2; gbcD.weighty = 0.15; // 15% da altura
+        gbcD.insets = new Insets(0, 0, 0, 0);
+        colunaDireita.add(panelRosa, gbcD);
+
+        contentPane.add(colunaDireita);
+
+        // Preenche os dados
+        atualizarDadosNaTela();
     }
 
-    private JPanel criarPainelCabecalho() {
-        JPanel panel = new JPanel(new BorderLayout(20, 0));
-        panel.setBackground(Color.WHITE);
-        panel.setBorder(BorderFactory.createMatteBorder(0, 0, 2, 0, Color.LIGHT_GRAY));
+    // =============================================================================================
+    // MÉTODOS DE CRIAÇÃO DOS PAINÉIS (CORES ESPECÍFICAS)
+    // =============================================================================================
 
-        // Logo
+    /**
+     * VERMELHO - Dados da Equipe (Sede, Logo, Motor)
+     */
+    private JPanel criarPainelVermelho() {
+        JPanel panel = new JPanel(new BorderLayout(10, 0));
+        // Vermelho suave para fundo
+        panel.setBackground(new Color(255, 230, 230)); 
+        panel.setBorder(BorderFactory.createTitledBorder(
+            new LineBorder(Color.RED, 1), "DADOS DA EQUIPE", TitledBorder.LEFT, TitledBorder.TOP
+        ));
+
+        // Esquerda: Logo
         lblLogoEquipe = new JLabel();
-        lblLogoEquipe.setPreferredSize(new Dimension(120, 80));
         lblLogoEquipe.setHorizontalAlignment(SwingConstants.CENTER);
-        lblLogoEquipe.setBorder(BorderFactory.createLineBorder(Color.GRAY));
+        lblLogoEquipe.setPreferredSize(new Dimension(140, 100));
         panel.add(lblLogoEquipe, BorderLayout.WEST);
 
-        // Infos Centrais
-        JPanel pCenter = new JPanel(new GridLayout(2, 1));
-        pCenter.setOpaque(false);
+        // Centro: Infos em Grid
+        JPanel pInfos = new JPanel(new GridLayout(4, 1));
+        pInfos.setOpaque(false);
         
         lblNomeEquipe = new JLabel("Nome da Equipe");
-        lblNomeEquipe.setFont(new Font("Berlin Sans FB", Font.BOLD, 28));
-        pCenter.add(lblNomeEquipe);
+        lblNomeEquipe.setFont(new Font("Berlin Sans FB", Font.BOLD, 20));
         
-        lblDirigente = new JLabel("Chefe de Equipe: " + TelaSelecionarEquipe.nomeDirigente);
-        lblDirigente.setFont(new Font("Segoe UI", Font.ITALIC, 14));
-        pCenter.add(lblDirigente);
+        lblSede = new JLabel("Sede: Local");
+        lblSede.setFont(new Font("Segoe UI", Font.PLAIN, 14));
         
-        panel.add(pCenter, BorderLayout.CENTER);
+        lblMotor = new JLabel("Motor: Marca");
+        lblMotor.setFont(new Font("Segoe UI", Font.PLAIN, 14));
+        
+        pInfos.add(lblNomeEquipe);
+        pInfos.add(lblSede);
+        pInfos.add(lblMotor);
+        // pInfos.add(new JLabel("Fundação: " + equipeJogavel.getFundacao())); // Opcional
 
-        // Infos Financeiras e Data (Direita)
-        JPanel pRight = new JPanel(new GridLayout(2, 1));
-        pRight.setOpaque(false);
+        panel.add(pInfos, BorderLayout.CENTER);
+        
+        // Direita: Bandeiras pequenas
+        JPanel pFlags = new JPanel(new GridLayout(2, 1, 5, 5));
+        pFlags.setOpaque(false);
+        pFlags.setBorder(new EmptyBorder(10, 10, 10, 10));
+        
+        lblBandeiraSede = new JLabel();
+        lblLogoMotor = new JLabel(); // Usar como logo do motor pequeno
+        
+        pFlags.add(lblBandeiraSede);
+        pFlags.add(lblLogoMotor);
+        
+        panel.add(pFlags, BorderLayout.EAST);
+
+        return panel;
+    }
+
+    /**
+     * CINZA - Meus Pilotos (Lista com slots)
+     */
+    private JPanel criarPainelCinza() {
+        JPanel panel = new JPanel(new BorderLayout());
+        // Cinza claro
+        panel.setBackground(new Color(240, 240, 240));
+        panel.setBorder(BorderFactory.createTitledBorder(
+            new LineBorder(Color.GRAY, 1), "MEUS PILOTOS", TitledBorder.LEFT, TitledBorder.TOP
+        ));
+
+        panelListaPilotos = new JPanel();
+        panelListaPilotos.setLayout(new BoxLayout(panelListaPilotos, BoxLayout.Y_AXIS));
+        panelListaPilotos.setOpaque(false);
+
+        JScrollPane scroll = new JScrollPane(panelListaPilotos);
+        scroll.setOpaque(false);
+        scroll.getViewport().setOpaque(false);
+        scroll.setBorder(null);
+        
+        panel.add(scroll, BorderLayout.CENTER);
+        return panel;
+    }
+
+    /**
+     * VERDE - Dados do Campeonato (Abas com Tabelas)
+     */
+    private JPanel criarPainelVerde() {
+        JPanel panel = new JPanel(new BorderLayout());
+        // Verde suave
+        panel.setBackground(new Color(230, 255, 230));
+        panel.setBorder(BorderFactory.createTitledBorder(
+            new LineBorder(new Color(34, 139, 34), 1), "CLASSIFICAÇÃO", TitledBorder.LEFT, TitledBorder.TOP
+        ));
+
+        tabCampeonato = new JTabbedPane();
+        tabCampeonato.setFont(new Font("Segoe UI", Font.PLAIN, 12));
+        
+        // Placeholders para as tabelas (implementaremos a lógica de preencher depois)
+        JPanel pPilotos = new JPanel(); pPilotos.setOpaque(false); pPilotos.add(new JLabel("Tabela de Pilotos (Em Breve)"));
+        JPanel pEquipes = new JPanel(); pEquipes.setOpaque(false); pEquipes.add(new JLabel("Tabela de Construtores (Em Breve)"));
+        
+        tabCampeonato.addTab("Pilotos", pPilotos);
+        tabCampeonato.addTab("Equipes", pEquipes);
+        
+        panel.add(tabCampeonato, BorderLayout.CENTER);
+        return panel;
+    }
+
+    /**
+     * AZUL - Dados do Jogador (Dinheiro, Temporada)
+     */
+    private JPanel criarPainelAzul() {
+        JPanel panel = new JPanel(new GridLayout(2, 2)); // Grid 2x2
+        // Azul suave
+        panel.setBackground(new Color(230, 240, 255));
+        panel.setBorder(BorderFactory.createTitledBorder(
+            new LineBorder(Color.BLUE, 1), "DADOS DO JOGADOR", TitledBorder.LEFT, TitledBorder.TOP
+        ));
+
+        lblNomeDirigente = new JLabel("Dirigente");
+        lblNomeDirigente.setFont(new Font("Berlin Sans FB", Font.PLAIN, 18));
+        lblNomeDirigente.setHorizontalAlignment(SwingConstants.CENTER);
         
         lblSaldo = new JLabel("€ 0.0 M");
-        lblSaldo.setFont(new Font("Segoe UI", Font.BOLD, 22));
-        lblSaldo.setForeground(new Color(34, 139, 34)); // Verde
-        lblSaldo.setHorizontalAlignment(SwingConstants.RIGHT);
-        pRight.add(lblSaldo);
+        lblSaldo.setFont(new Font("Segoe UI", Font.BOLD, 20));
+        lblSaldo.setForeground(new Color(0, 100, 0)); // Verde escuro para dinheiro
+        lblSaldo.setHorizontalAlignment(SwingConstants.CENTER);
         
-        lblTemporadaInfo = new JLabel("Temporada " + SessaoJogo.anoSelecionado + " - Etapa 1/24");
-        lblTemporadaInfo.setFont(new Font("Berlin Sans FB", Font.PLAIN, 16));
-        lblTemporadaInfo.setHorizontalAlignment(SwingConstants.RIGHT);
-        pRight.add(lblTemporadaInfo);
+        lblAnoTemporada = new JLabel("Temporada 2024");
+        lblAnoTemporada.setFont(new Font("Segoe UI", Font.ITALIC, 14));
+        lblAnoTemporada.setHorizontalAlignment(SwingConstants.CENTER);
         
-        panel.add(pRight, BorderLayout.EAST);
-        
-        return panel;
-    }
-
-    private JPanel criarPainelPilotos() {
-        JPanel panel = new JPanel();
-        panel.setBackground(new Color(245, 245, 245));
-        panel.setBorder(BorderFactory.createTitledBorder(null, "PILOTOS & CONTRATOS", TitledBorder.DEFAULT_JUSTIFICATION, TitledBorder.DEFAULT_POSITION, new Font("Berlin Sans FB", Font.BOLD, 16)));
-        panel.setLayout(new BoxLayout(panel, BoxLayout.Y_AXIS));
-
-        // Cria os 5 slots fixos
-        for (int i = 0; i < 5; i++) {
-            JPanel slot = new JPanel(new BorderLayout(10, 5));
-            slot.setBackground(Color.WHITE);
-            slot.setBorder(BorderFactory.createCompoundBorder(
-                    BorderFactory.createEmptyBorder(5, 5, 5, 5),
-                    BorderFactory.createLineBorder(Color.LIGHT_GRAY)
-            ));
-            slot.setMaximumSize(new Dimension(Integer.MAX_VALUE, 85)); // Altura fixa
-
-            // Esquerda: Foto/Bandeira
-            lblPilotoBandeira[i] = new JLabel();
-            lblPilotoBandeira[i].setPreferredSize(new Dimension(50, 30));
-            lblPilotoBandeira[i].setHorizontalAlignment(SwingConstants.CENTER);
-            slot.add(lblPilotoBandeira[i], BorderLayout.WEST);
-
-            // Centro: Nome e Info
-            JPanel pInfo = new JPanel(new GridLayout(2, 1));
-            pInfo.setOpaque(false);
-            
-            lblPilotoNome[i] = new JLabel("Nome do Piloto");
-            lblPilotoNome[i].setFont(new Font("Berlin Sans FB", Font.PLAIN, 16));
-            
-            lblPilotoFuncao[i] = new JLabel("Titular");
-            lblPilotoFuncao[i].setFont(new Font("Segoe UI", Font.PLAIN, 12));
-            lblPilotoFuncao[i].setForeground(Color.GRAY);
-            
-            pInfo.add(lblPilotoNome[i]);
-            pInfo.add(lblPilotoFuncao[i]);
-            slot.add(pInfo, BorderLayout.CENTER);
-
-            // Direita: Número e Overall
-            JPanel pStats = new JPanel(new GridLayout(2, 1));
-            pStats.setOpaque(false);
-            
-            lblPilotoNumero[i] = new JLabel("#00");
-            lblPilotoNumero[i].setFont(new Font("Impact", Font.PLAIN, 20));
-            lblPilotoNumero[i].setHorizontalAlignment(SwingConstants.RIGHT);
-            
-            lblPilotoOverall[i] = new JLabel("OVR: 00");
-            lblPilotoOverall[i].setFont(new Font("Segoe UI", Font.BOLD, 12));
-            lblPilotoOverall[i].setHorizontalAlignment(SwingConstants.RIGHT);
-            
-            pStats.add(lblPilotoNumero[i]);
-            pStats.add(lblPilotoOverall[i]);
-            slot.add(pStats, BorderLayout.EAST);
-
-            panelSlots[i] = slot;
-            panel.add(slot);
-            panel.add(Box.createVerticalStrut(10)); // Espaço entre slots
-        }
-
-        // Botão Mercado (Opcional)
-        JButton btnMercado = new JButton("MERCADO DE PILOTOS");
-        btnMercado.setFont(new Font("Berlin Sans FB", Font.PLAIN, 14));
-        btnMercado.setAlignmentX(Component.CENTER_ALIGNMENT);
-        panel.add(Box.createVerticalGlue()); // Empurra para baixo
-        panel.add(btnMercado);
-        panel.add(Box.createVerticalStrut(10));
+        // Adiciona ao grid
+        panel.add(lblNomeDirigente);
+        panel.add(lblSaldo);
+        panel.add(lblAnoTemporada);
+        panel.add(new JLabel("")); // Espaço vazio ou outra info
 
         return panel;
     }
 
-    private JPanel criarPainelProximaCorrida() {
-        JPanel panel = new JPanel(new GridBagLayout());
-        panel.setBackground(Color.WHITE);
-        panel.setBorder(BorderFactory.createTitledBorder(null, "PRÓXIMO GRANDE PRÊMIO", TitledBorder.DEFAULT_JUSTIFICATION, TitledBorder.DEFAULT_POSITION, new Font("Berlin Sans FB", Font.BOLD, 16)));
+    /**
+     * PRETO - Dados da Próxima Corrida (Traçado, Info)
+     */
+    private JPanel criarPainelPreto() {
+        JPanel panel = new JPanel(new BorderLayout(0, 10));
+        // Cinza escuro/Preto para cabeçalho, fundo claro para conteúdo
+        panel.setBackground(Color.WHITE); 
+        panel.setBorder(BorderFactory.createTitledBorder(
+            new LineBorder(Color.BLACK, 2), "PRÓXIMA ETAPA", TitledBorder.CENTER, TitledBorder.TOP,
+            new Font("Segoe UI", Font.BOLD, 14), Color.BLACK
+        ));
 
-        GridBagConstraints gbc = new GridBagConstraints();
-        gbc.insets = new Insets(5, 10, 5, 10);
-
-        // 1. Nome e Bandeira do GP
-        JPanel pTitulo = new JPanel(new FlowLayout(FlowLayout.CENTER, 15, 0));
-        pTitulo.setOpaque(false);
+        // Topo: Bandeira e Nome
+        JPanel pTopo = new JPanel(new FlowLayout(FlowLayout.CENTER));
+        pTopo.setOpaque(false);
         lblBandeiraPaisPista = new JLabel();
         lblNomeGP = new JLabel("GP NOME");
-        lblNomeGP.setFont(new Font("Berlin Sans FB", Font.BOLD, 24));
-        pTitulo.add(lblBandeiraPaisPista);
-        pTitulo.add(lblNomeGP);
+        lblNomeGP.setFont(new Font("Berlin Sans FB", Font.BOLD, 22));
+        pTopo.add(lblBandeiraPaisPista);
+        pTopo.add(lblNomeGP);
+        panel.add(pTopo, BorderLayout.NORTH);
 
-        gbc.gridx = 0; gbc.gridy = 0; gbc.weightx = 1.0;
-        panel.add(pTitulo, gbc);
-
-        // 2. Imagem do Traçado (Grande)
+        // Centro: Imagem
         lblImagemPista = new JLabel();
         lblImagemPista.setHorizontalAlignment(SwingConstants.CENTER);
-        lblImagemPista.setPreferredSize(new Dimension(400, 250));
-        lblImagemPista.setBorder(BorderFactory.createLineBorder(new Color(240, 240, 240)));
-        
-        gbc.gridy = 1; gbc.weighty = 1.0; gbc.fill = GridBagConstraints.BOTH;
-        panel.add(lblImagemPista, gbc);
+        panel.add(lblImagemPista, BorderLayout.CENTER);
 
-        // 3. Informações Técnicas
-        JPanel pDados = new JPanel(new GridLayout(3, 1, 5, 5));
-        pDados.setOpaque(false);
+        // Baixo: Dados Técnicos
+        JPanel pBaixo = new JPanel(new GridLayout(2, 1));
+        pBaixo.setOpaque(false);
+        pBaixo.setBorder(new EmptyBorder(5, 10, 10, 10));
         
         lblLocalPista = new JLabel("Local: --");
-        lblLocalPista.setFont(new Font("Segoe UI", Font.PLAIN, 14));
         lblLocalPista.setHorizontalAlignment(SwingConstants.CENTER);
+        lblDadosPista = new JLabel("Dados: --");
+        lblDadosPista.setHorizontalAlignment(SwingConstants.CENTER);
         
-        lblDadosPista1 = new JLabel("Voltas: 00 | Distância: 0.0 km");
-        lblDadosPista1.setFont(new Font("Segoe UI", Font.PLAIN, 14));
-        lblDadosPista1.setHorizontalAlignment(SwingConstants.CENTER);
-        
-        lblDadosPista2 = new JLabel("Tipo: Misto | Dificuldade: 50/100");
-        lblDadosPista2.setFont(new Font("Segoe UI", Font.PLAIN, 14));
-        lblDadosPista2.setHorizontalAlignment(SwingConstants.CENTER);
-        
-        pDados.add(lblLocalPista);
-        pDados.add(lblDadosPista1);
-        pDados.add(lblDadosPista2);
-
-        gbc.gridy = 2; gbc.weighty = 0.0; gbc.fill = GridBagConstraints.HORIZONTAL;
-        panel.add(pDados, gbc);
+        pBaixo.add(lblLocalPista);
+        pBaixo.add(lblDadosPista);
+        panel.add(pBaixo, BorderLayout.SOUTH);
 
         return panel;
     }
-    
-    private JPanel criarPainelBotoes() {
-        JPanel panel = new JPanel(new GridLayout(1, 2, 20, 0));
-        panel.setOpaque(false);
-        panel.setPreferredSize(new Dimension(0, 60));
 
-        JButton btnFabrica = new JButton("FÁBRICA & DESENVOLVIMENTO");
-        btnFabrica.setFont(new Font("Berlin Sans FB", Font.BOLD, 14));
-        
+    /**
+     * ROSA - Botão de Ação + Logo
+     */
+    private JPanel criarPainelRosa() {
+        JPanel panel = new JPanel(new FlowLayout(FlowLayout.CENTER, 30, 20));
+        // Rosa suave
+        panel.setBackground(new Color(255, 230, 245));
+        panel.setBorder(BorderFactory.createLineBorder(Color.MAGENTA, 1));
+
         btnIrParaCorrida = new JButton("IR PARA O FIM DE SEMANA");
-        btnIrParaCorrida.setFont(new Font("Berlin Sans FB", Font.BOLD, 16));
-        btnIrParaCorrida.setBackground(new Color(34, 139, 34)); // Verde
+        btnIrParaCorrida.setFont(new Font("Berlin Sans FB", Font.BOLD, 18));
+        btnIrParaCorrida.setBackground(new Color(34, 139, 34));
         btnIrParaCorrida.setForeground(Color.WHITE);
-        
+        btnIrParaCorrida.setFocusPainted(false);
+        btnIrParaCorrida.setPreferredSize(new Dimension(300, 50));
         btnIrParaCorrida.addActionListener(e -> irParaCorrida());
-
-        try {
-            btnFabrica.setIcon(new ImageIcon(getClass().getResource("/resource/Icone24pxEquipe.png")));
-            btnIrParaCorrida.setIcon(new ImageIcon(getClass().getResource("/resource/Icone24pxBandeiraDeChegada.png")));
-        } catch (Exception e) {}
-
-        panel.add(btnFabrica);
-        panel.add(btnIrParaCorrida);
         
+        JLabel lblLogoGame = new JLabel("GRID BOSS");
+        lblLogoGame.setFont(new Font("Impact", Font.ITALIC, 28));
+        lblLogoGame.setForeground(Color.DARK_GRAY);
+
+        panel.add(btnIrParaCorrida);
+        panel.add(lblLogoGame);
+
         return panel;
     }
 
-    // --- LÓGICA DE DADOS ---
+    // =============================================================================================
+    // LÓGICA DE DADOS
+    // =============================================================================================
 
-    private void atualizarDados() {
-        // 1. Equipe
+    private void atualizarDadosNaTela() {
+        // --- 1. VERMELHO (Equipe) ---
         lblNomeEquipe.setText(equipeJogavel.getNome());
-        lblSaldo.setText(String.format("€ %.1f M", equipeJogavel.getSaldoFinanceiro()));
-        carregarImagem(lblLogoEquipe, equipeJogavel.getCaminhoLogo());
-
-        // 2. Pilotos (Listas)
-        List<Piloto> titulares = equipeJogavel.getPilotosTitulares();
-        List<Piloto> reservas = equipeJogavel.getPilotosReservas();
+        lblSede.setText("Sede: " + equipeJogavel.getSede());
+        lblMotor.setText("Motor: " + equipeJogavel.getMotor());
         
-        for (int i = 0; i < 5; i++) {
-            Piloto p = null;
-            String funcao = "";
-            
-            // Lógica de Exibição: Mostra Titulares, depois Reservas
-            if (i < titulares.size()) {
-                p = titulares.get(i);
-                funcao = "Piloto Titular " + (i+1);
-            } else if (i < titulares.size() + reservas.size()) {
-                p = reservas.get(i - titulares.size());
-                funcao = "Piloto Reserva";
-            }
-            
-            if (p != null) {
-                panelSlots[i].setVisible(true);
-                lblPilotoNome[i].setText(p.getNome());
-                lblPilotoFuncao[i].setText(funcao);
-                lblPilotoNumero[i].setText("#" + p.getNumero());
-                lblPilotoOverall[i].setText("OVR: " + (int)p.getOverall());
-                carregarImagem(lblPilotoBandeira[i], "/resource/Bandeira " + p.getNacionalidade() + ".png");
-                
-                // Destaque para titular vs reserva
-                if (funcao.contains("Reserva")) {
-                    lblPilotoNome[i].setForeground(Color.GRAY);
-                } else {
-                    lblPilotoNome[i].setForeground(Color.BLACK);
-                }
-            } else {
-                panelSlots[i].setVisible(false); // Esconde slot vazio
-            }
-        }
+        carregarImagem(lblLogoEquipe, equipeJogavel.getCaminhoLogo(), 120, 80);
+        carregarImagem(lblBandeiraSede, equipeJogavel.getCaminhoBandeiraSede(), 40, 25);
+        carregarImagem(lblLogoMotor, equipeJogavel.getCaminhoLogoMotor(), 40, 25);
 
-        // 3. Calendário (Próxima Corrida)
+        // --- 2. CINZA (Pilotos) ---
+        atualizarListaPilotos();
+
+        // --- 3. VERDE (Campeonato) ---
+        // (Aqui atualizaríamos as tabelas no futuro)
+
+        // --- 4. AZUL (Jogador) ---
+        lblNomeDirigente.setText("Chefe: " + TelaSelecionarEquipe.nomeDirigente);
+        lblSaldo.setText(String.format("€ %.1f M", equipeJogavel.getSaldoFinanceiro()));
+        lblAnoTemporada.setText("Temporada " + SessaoJogo.anoSelecionado);
+
+        // --- 5. PRETO (Pista) ---
         Pista pista = campeonato.getPistaAtual();
         if (pista != null) {
             lblNomeGP.setText(pista.getNome());
-            lblLocalPista.setText("Local: " + pista.getPais());
+            lblLocalPista.setText(pista.getPais());
             
-            String tipoStr = pista.getTipo().toString().replace("_", " ");
-            lblDadosPista1.setText(pista.getQtdVoltas() + " Voltas  |  " + pista.getComprimentoKm() + " km");
-            lblDadosPista2.setText(tipoStr + "  |  Dif. Ultrapassagem: " + pista.getDificuldadeUltrapassagem() + "/100");
+            // Texto formatado com HTML para quebra de linha se necessário
+            String dados = String.format("<html><center>%d Voltas • %.1f km<br>%s</center></html>", 
+                    pista.getQtdVoltas(), pista.getComprimentoKm(), pista.getTipo());
+            lblDadosPista.setText(dados);
             
-            lblTemporadaInfo.setText("Temporada " + SessaoJogo.anoSelecionado + " - Etapa " + campeonato.getNumeroEtapaAtual() + "/" + campeonato.getTotalEtapas());
-            
-            carregarImagem(lblImagemPista, pista.getCaminhoTracado());
-            carregarImagem(lblBandeiraPaisPista, pista.getCaminhoBandeira());
+            carregarImagem(lblBandeiraPaisPista, pista.getCaminhoBandeira(), 40, 25);
+            carregarImagem(lblImagemPista, pista.getCaminhoTracado(), 350, 200);
         } else {
-            lblNomeGP.setText("TEMPORADA ENCERRADA");
+            lblNomeGP.setText("FIM DE TEMPORADA");
             btnIrParaCorrida.setEnabled(false);
         }
     }
 
-    private void carregarImagem(JLabel lbl, String path) {
+    private void atualizarListaPilotos() {
+        panelListaPilotos.removeAll(); 
+        
+        List<Piloto> titulares = equipeJogavel.getPilotosTitulares();
+        List<Piloto> reservas = equipeJogavel.getPilotosReservas();
+        
+        // Adiciona Titulares
+        for (Piloto p : titulares) {
+            panelListaPilotos.add(criarCardPiloto(p, "Titular", new Color(255, 255, 255)));
+            panelListaPilotos.add(Box.createVerticalStrut(5));
+        }
+        
+        // Adiciona Reservas
+        for (Piloto p : reservas) {
+            panelListaPilotos.add(criarCardPiloto(p, "Reserva", new Color(240, 240, 240))); 
+            panelListaPilotos.add(Box.createVerticalStrut(5));
+        }
+        
+        panelListaPilotos.revalidate();
+        panelListaPilotos.repaint();
+    }
+
+    /**
+     * Cria um slot visual para o piloto no painel cinza
+     */
+    private JPanel criarCardPiloto(Piloto p, String funcao, Color bg) {
+        JPanel card = new JPanel(new BorderLayout(10, 0));
+        card.setBackground(bg);
+        card.setBorder(BorderFactory.createCompoundBorder(
+            BorderFactory.createLineBorder(Color.LIGHT_GRAY),
+            BorderFactory.createEmptyBorder(5, 5, 5, 5)
+        ));
+        card.setMaximumSize(new Dimension(Integer.MAX_VALUE, 65)); 
+
+        // Esquerda: Bandeira e Foto (se tivesse)
+        JLabel lblFlag = new JLabel();
+        carregarImagem(lblFlag, "/resource/Bandeira " + p.getNacionalidade() + ".png", 30, 20);
+        card.add(lblFlag, BorderLayout.WEST);
+
+        // Centro: Nome e Contrato
+        JLabel lblNome = new JLabel("<html><b>" + p.getNome() + "</b><br><font size='2' color='#555555'>Contrato: " + (funcao) + "</font></html>");
+        lblNome.setFont(new Font("Segoe UI", Font.PLAIN, 13));
+        card.add(lblNome, BorderLayout.CENTER);
+
+        // Direita: Número
+        JLabel lblNum = new JLabel("#" + p.getNumero());
+        lblNum.setFont(new Font("Impact", Font.PLAIN, 20));
+        lblNum.setForeground(Color.DARK_GRAY);
+        card.add(lblNum, BorderLayout.EAST);
+
+        return card;
+    }
+
+    private void carregarImagem(JLabel lbl, String path, int w, int h) {
         try {
             if (path != null && !path.isEmpty()) {
                 if (!path.startsWith("/")) path = "/" + path;
@@ -398,33 +432,15 @@ public class TelaPrincipal extends JFrame {
                 path = path.replace("//", "/");
                 
                 ImageIcon icon = new ImageIcon(getClass().getResource(path));
-                // Redimensiona bandeirinhas pequenas
-                if (path.contains("Bandeira") && icon.getIconWidth() > 50) {
-                    Image img = icon.getImage().getScaledInstance(40, 25, Image.SCALE_SMOOTH);
-                    icon = new ImageIcon(img);
-                }
-                // Redimensiona traçados se forem muito grandes
-                if (path.contains("Circuito") && icon.getIconWidth() > 400) {
-                    Image img = icon.getImage().getScaledInstance(380, 200, Image.SCALE_SMOOTH);
-                    icon = new ImageIcon(img);
-                }
-                
-                lbl.setIcon(icon);
-            } else {
-                lbl.setIcon(null);
+                Image img = icon.getImage().getScaledInstance(w, h, Image.SCALE_SMOOTH);
+                lbl.setIcon(new ImageIcon(img));
             }
         } catch (Exception e) {
             lbl.setIcon(null);
         }
     }
-    
+
     private void irParaCorrida() {
-        // Aqui abriremos a TelaCorrida (que criaremos depois)
-        JOptionPane.showMessageDialog(this, "Carregando simulação para " + lblNomeGP.getText() + "...");
-        
-        // Lógica futura:
-        // TelaCorrida corrida = new TelaCorrida(equipeJogavel, campeonato.getPistaAtual());
-        // corrida.setVisible(true);
-        // dispose();
+        JOptionPane.showMessageDialog(this, "Carregando corrida em " + lblLocalPista.getText() + "...");
     }
 }

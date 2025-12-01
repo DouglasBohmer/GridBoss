@@ -54,7 +54,6 @@ public class Pagina_Inicial extends JFrame {
 	public static JLabel LB_LogoEquipe;
 	public static JLabel LB_LogoMotorPQ;
 	public static JLabel LB_BandeiraMotor;
-	public static JLabel LB_BandeiraEquipe;
 	public static JLabel LB_BandeiraSede;
 	public static JLabel LB_BandeiraP1;
 	public static JLabel LB_BandeiraP2;
@@ -62,7 +61,6 @@ public class Pagina_Inicial extends JFrame {
 	public static JLabel LB_BandeiraP4;
 	public static JLabel LB_BandeiraP5;
 	public static JLabel LB_CategoriaEscolhida;
-	public static JLabel LB_NomeEquipe;
 	public static JLabel LB_SedeEquipe;
 	public static JLabel LB_Motor;
 	public static JLabel LB_Ano;
@@ -337,12 +335,6 @@ public class Pagina_Inicial extends JFrame {
 		LB_BandeiraSede.setBounds(210, 67, 65, 33);
 		contentPane.add(LB_BandeiraSede);
 		
-		LB_BandeiraEquipe = new JLabel("");
-		LB_BandeiraEquipe.setIcon(new ImageIcon(Pagina_Inicial.class.getResource("/resource/Bandeira Italia.png")));
-		LB_BandeiraEquipe.setHorizontalAlignment(SwingConstants.CENTER);
-		LB_BandeiraEquipe.setBounds(210, 0, 65, 33);
-		contentPane.add(LB_BandeiraEquipe);
-		
 		LB_BandeiraMotor = new JLabel("");
 		LB_BandeiraMotor.setIcon(new ImageIcon(Pagina_Inicial.class.getResource("/resource/Bandeira Alemanha.png")));
 		LB_BandeiraMotor.setHorizontalAlignment(SwingConstants.CENTER);
@@ -385,11 +377,6 @@ public class Pagina_Inicial extends JFrame {
 		LB_CategoriaEscolhida.setBackground(Color.WHITE);
 		LB_CategoriaEscolhida.setBounds(487, 0, 215, 100);
 		contentPane.add(LB_CategoriaEscolhida);
-		
-		LB_NomeEquipe = new JLabel("Equipe McLaren");
-		LB_NomeEquipe.setHorizontalAlignment(SwingConstants.CENTER);
-		LB_NomeEquipe.setBounds(275, 0, 200, 33);
-		contentPane.add(LB_NomeEquipe);
 		
 		LB_SedeEquipe = new JLabel("Sede Reino Unido");
 		LB_SedeEquipe.setHorizontalAlignment(SwingConstants.CENTER);

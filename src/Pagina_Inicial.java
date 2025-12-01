@@ -6,6 +6,7 @@ import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+import javax.swing.AbstractButton;
 import javax.swing.BorderFactory;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -118,6 +119,8 @@ public class Pagina_Inicial extends JFrame {
 	private JLabel LB_CarrosCat;
 	int confirmacao =1;
 	public static JLabel LB_Orc;
+	private static AbstractButton LB_NomeEquipe;
+	private static JOptionPane LB_BandeiraEquipe;
 
 	/**
 	 * Launch the application.
@@ -209,7 +212,7 @@ public class Pagina_Inicial extends JFrame {
 		setIconImage(Toolkit.getDefaultToolkit().getImage(Selecionar_Equipe.class.getResource("/resource/Icone16px.png")));
 		setTitle("Motorsport Manager");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 977, 674);
+		setBounds(100, 100, 1135, 674);
 		setResizable(false);
 		
 		JMenuBar menuBar = new JMenuBar();
@@ -320,25 +323,25 @@ public class Pagina_Inicial extends JFrame {
 		LB_LogoEquipe.setIcon(new ImageIcon(Pagina_Inicial.class.getResource("/resource/Equipe_F1_McLaren.png")));
 		LB_LogoEquipe.setHorizontalAlignment(SwingConstants.CENTER);
 		LB_LogoEquipe.setBackground(new Color(255, 255, 255));
-		LB_LogoEquipe.setBounds(10, 0, 200, 100);
+		LB_LogoEquipe.setBounds(10, 0, 200, 96);
 		contentPane.add(LB_LogoEquipe);
 		
 		LB_LogoMotorPQ = new JLabel("");
 		LB_LogoMotorPQ.setIcon(new ImageIcon(Pagina_Inicial.class.getResource("/resource/Motor_MercedesPQ.png")));
 		LB_LogoMotorPQ.setHorizontalAlignment(SwingConstants.CENTER);
-		LB_LogoMotorPQ.setBounds(270, 34, 45, 33);
+		LB_LogoMotorPQ.setBounds(285, 11, 45, 33);
 		contentPane.add(LB_LogoMotorPQ);
 		
 		LB_BandeiraSede = new JLabel("");
 		LB_BandeiraSede.setIcon(new ImageIcon(Pagina_Inicial.class.getResource("/resource/Bandeira Reino Unido.png")));
 		LB_BandeiraSede.setHorizontalAlignment(SwingConstants.CENTER);
-		LB_BandeiraSede.setBounds(210, 67, 65, 33);
+		LB_BandeiraSede.setBounds(210, 55, 65, 33);
 		contentPane.add(LB_BandeiraSede);
 		
 		LB_BandeiraMotor = new JLabel("");
 		LB_BandeiraMotor.setIcon(new ImageIcon(Pagina_Inicial.class.getResource("/resource/Bandeira Alemanha.png")));
 		LB_BandeiraMotor.setHorizontalAlignment(SwingConstants.CENTER);
-		LB_BandeiraMotor.setBounds(210, 34, 65, 33);
+		LB_BandeiraMotor.setBounds(210, 11, 65, 33);
 		contentPane.add(LB_BandeiraMotor);
 		
 		LB_BandeiraP1 = new JLabel("");
@@ -375,35 +378,35 @@ public class Pagina_Inicial extends JFrame {
 		LB_CategoriaEscolhida.setIcon(new ImageIcon(Pagina_Inicial.class.getResource("/resource/Logo Novo_F1_OKPQ.png")));
 		LB_CategoriaEscolhida.setHorizontalAlignment(SwingConstants.CENTER);
 		LB_CategoriaEscolhida.setBackground(Color.WHITE);
-		LB_CategoriaEscolhida.setBounds(487, 0, 215, 100);
+		LB_CategoriaEscolhida.setBounds(640, 0, 228, 100);
 		contentPane.add(LB_CategoriaEscolhida);
 		
-		LB_SedeEquipe = new JLabel("Sede Reino Unido");
+		LB_SedeEquipe = new JLabel("Reino Unido");
 		LB_SedeEquipe.setHorizontalAlignment(SwingConstants.CENTER);
-		LB_SedeEquipe.setBounds(275, 67, 200, 33);
+		LB_SedeEquipe.setBounds(340, 55, 118, 33);
 		contentPane.add(LB_SedeEquipe);
 		
 		LB_Motor = new JLabel("Motor Mercedes");
 		LB_Motor.setHorizontalAlignment(SwingConstants.CENTER);
-		LB_Motor.setBounds(275, 34, 200, 33);
+		LB_Motor.setBounds(340, 11, 120, 33);
 		contentPane.add(LB_Motor);
 		
 		LB_Ano = new JLabel("Ano 2025");
 		LB_Ano.setFont(new Font("Arial Rounded MT Bold", Font.ITALIC, 12));
 		LB_Ano.setHorizontalAlignment(SwingConstants.CENTER);
-		LB_Ano.setBounds(700, 50, 100, 25);
+		LB_Ano.setBounds(866, 50, 100, 25);
 		contentPane.add(LB_Ano);
 		
 		LB_Temporada = new JLabel("Temporada 1, Etapa 1/4");
 		LB_Temporada.setFont(new Font("Arial Rounded MT Bold", Font.ITALIC, 12));
 		LB_Temporada.setHorizontalAlignment(SwingConstants.CENTER);
-		LB_Temporada.setBounds(700, 75, 250, 25);
+		LB_Temporada.setBounds(866, 75, 250, 25);
 		contentPane.add(LB_Temporada);
 		
 		lblNewLabel_22 = new JLabel("MEUS PILOTOS");
 		lblNewLabel_22.setFont(new Font("Arial Narrow", Font.BOLD, 14));
 		lblNewLabel_22.setHorizontalAlignment(SwingConstants.CENTER);
-		lblNewLabel_22.setBounds(10, 110, 465, 25);
+		lblNewLabel_22.setBounds(12, 99, 618, 25);
 		contentPane.add(lblNewLabel_22);
 		
 		LB_NumP1 = new JLabel("#33");
@@ -520,56 +523,56 @@ public class Pagina_Inicial extends JFrame {
 		LB_PistaEtapas.setForeground(new Color(0, 0, 0));
 		LB_PistaEtapas.setHorizontalAlignment(SwingConstants.CENTER);
 		LB_PistaEtapas.setFont(new Font("Arial Narrow", Font.BOLD, 14));
-		LB_PistaEtapas.setBounds(484, 111, 465, 25);
+		LB_PistaEtapas.setBounds(640, 107, 465, 25);
 		contentPane.add(LB_PistaEtapas);
 		
 		LB_CapacidadePista = new JLabel("1");
 		LB_CapacidadePista.setForeground(new Color(0, 0, 0));
 		LB_CapacidadePista.setFont(new Font("Arial Rounded MT Bold", Font.ITALIC, 12));
 		LB_CapacidadePista.setHorizontalAlignment(SwingConstants.LEFT);
-		LB_CapacidadePista.setBounds(744, 327, 205, 30);
+		LB_CapacidadePista.setBounds(900, 323, 205, 30);
 		contentPane.add(LB_CapacidadePista);
 		
 		LB_InauguracaoPista = new JLabel("1");
 		LB_InauguracaoPista.setForeground(new Color(0, 0, 0));
 		LB_InauguracaoPista.setHorizontalAlignment(SwingConstants.LEFT);
 		LB_InauguracaoPista.setFont(new Font("Arial Rounded MT Bold", Font.ITALIC, 12));
-		LB_InauguracaoPista.setBounds(744, 207, 205, 30);
+		LB_InauguracaoPista.setBounds(900, 203, 205, 30);
 		contentPane.add(LB_InauguracaoPista);
 		
 		LB_TipoPista = new JLabel("1");
 		LB_TipoPista.setForeground(new Color(0, 0, 0));
 		LB_TipoPista.setHorizontalAlignment(SwingConstants.LEFT);
 		LB_TipoPista.setFont(new Font("Arial Rounded MT Bold", Font.ITALIC, 12));
-		LB_TipoPista.setBounds(744, 177, 205, 30);
+		LB_TipoPista.setBounds(900, 173, 205, 30);
 		contentPane.add(LB_TipoPista);
 		
 		LB_CurvaPista = new JLabel("1");
 		LB_CurvaPista.setForeground(new Color(0, 0, 0));
 		LB_CurvaPista.setHorizontalAlignment(SwingConstants.LEFT);
 		LB_CurvaPista.setFont(new Font("Arial Rounded MT Bold", Font.ITALIC, 12));
-		LB_CurvaPista.setBounds(744, 237, 205, 30);
+		LB_CurvaPista.setBounds(900, 233, 205, 30);
 		contentPane.add(LB_CurvaPista);
 		
 		LB_ComprimentoPista = new JLabel("1");
 		LB_ComprimentoPista.setForeground(new Color(0, 0, 0));
 		LB_ComprimentoPista.setHorizontalAlignment(SwingConstants.LEFT);
 		LB_ComprimentoPista.setFont(new Font("Arial Rounded MT Bold", Font.ITALIC, 12));
-		LB_ComprimentoPista.setBounds(744, 267, 205, 30);
+		LB_ComprimentoPista.setBounds(900, 263, 205, 30);
 		contentPane.add(LB_ComprimentoPista);
 		
 		LB_VoltaPista = new JLabel("1");
 		LB_VoltaPista.setForeground(new Color(0, 0, 0));
 		LB_VoltaPista.setHorizontalAlignment(SwingConstants.LEFT);
 		LB_VoltaPista.setFont(new Font("Arial Rounded MT Bold", Font.ITALIC, 12));
-		LB_VoltaPista.setBounds(744, 297, 205, 30);
+		LB_VoltaPista.setBounds(900, 293, 205, 30);
 		contentPane.add(LB_VoltaPista);
 		
 		LB_LocalPista = new JLabel("Espanha, Cataluna");
 		LB_LocalPista.setForeground(new Color(0, 0, 0));
 		LB_LocalPista.setHorizontalAlignment(SwingConstants.LEFT);
 		LB_LocalPista.setFont(new Font("Arial Rounded MT Bold", Font.ITALIC, 12));
-		LB_LocalPista.setBounds(744, 147, 180, 30);
+		LB_LocalPista.setBounds(900, 143, 180, 30);
 		contentPane.add(LB_LocalPista);
 		
 		BT_EtapaAnt = new JButton("Etapa Anterior");
@@ -607,7 +610,7 @@ public class Pagina_Inicial extends JFrame {
 
 			}
 		});
-		BT_EtapaAnt.setBounds(487, 368, 225, 23);
+		BT_EtapaAnt.setBounds(643, 364, 225, 23);
 		contentPane.add(BT_EtapaAnt);
 		
 		BT_EtapaProxima = new JButton("Próxima Etapa");
@@ -643,7 +646,7 @@ public class Pagina_Inicial extends JFrame {
 				
 			}
 		});
-		BT_EtapaProxima.setBounds(722, 368, 225, 23);
+		BT_EtapaProxima.setBounds(878, 364, 225, 23);
 		contentPane.add(BT_EtapaProxima);
 		
 		BT_DetalhesPista = new JButton("Ver Traçado Detalhado");
@@ -655,23 +658,23 @@ public class Pagina_Inicial extends JFrame {
 				DetalhePista.setLocationRelativeTo(null);
 			}
 		});
-		BT_DetalhesPista.setBounds(487, 402, 225, 23);
+		BT_DetalhesPista.setBounds(643, 398, 225, 23);
 		contentPane.add(BT_DetalhesPista);
 		
 		LB_BandeiraPista = new JLabel("");
 		LB_BandeiraPista.setIcon(new ImageIcon(Pagina_Inicial.class.getResource("/resource/Bandeira Espanha.png")));
 		LB_BandeiraPista.setHorizontalAlignment(SwingConstants.CENTER);
-		LB_BandeiraPista.setBounds(916, 147, 45, 33);
+		LB_BandeiraPista.setBounds(1072, 143, 45, 33);
 		contentPane.add(LB_BandeiraPista);
 		
 		LB_Classificacoes = new JLabel("CLASSIFICAÇÃO DOS CAMPEONATOS APÓS X ETAPAS");
 		LB_Classificacoes.setHorizontalAlignment(SwingConstants.CENTER);
 		LB_Classificacoes.setFont(new Font("Arial Narrow", Font.BOLD, 14));
-		LB_Classificacoes.setBounds(10, 271, 465, 25);
+		LB_Classificacoes.setBounds(10, 271, 620, 25);
 		contentPane.add(LB_Classificacoes);
 		
 		tabbedPane = new JTabbedPane(JTabbedPane.TOP);
-		tabbedPane.setBounds(10, 307, 465, 299);
+		tabbedPane.setBounds(10, 307, 620, 299);
 		contentPane.add(tabbedPane);
 		
 		Tab_ClassicacaoPilotos = new JPanel();
@@ -704,13 +707,13 @@ public class Pagina_Inicial extends JFrame {
 		LB_NomeDirigente = new JLabel("Nome Dirigente");
 		LB_NomeDirigente.setFont(new Font("Arial Narrow", Font.BOLD | Font.ITALIC, 18));
 		LB_NomeDirigente.setHorizontalAlignment(SwingConstants.CENTER);
-		LB_NomeDirigente.setBounds(712, 0, 239, 49);
+		LB_NomeDirigente.setBounds(878, 0, 239, 49);
 		contentPane.add(LB_NomeDirigente);
 		
 		LB_ImagemPista = new JLabel("");
 		LB_ImagemPista.setIcon(new ImageIcon(Pagina_Inicial.class.getResource("/resource/CircuitoCatalunha2007.2022PQ.png")));
 		LB_ImagemPista.setHorizontalAlignment(SwingConstants.CENTER);
-		LB_ImagemPista.setBounds(484, 147, 250, 203);
+		LB_ImagemPista.setBounds(640, 143, 250, 203);
 		LB_ImagemPista.setBorder(BorderFactory.createLineBorder(Color.gray));
 		contentPane.add(LB_ImagemPista);
 		
@@ -742,7 +745,7 @@ public class Pagina_Inicial extends JFrame {
 				*/
 			}
 		});
-		BT_VoltarAtual.setBounds(722, 402, 225, 23);
+		BT_VoltarAtual.setBounds(878, 398, 225, 23);
 		contentPane.add(BT_VoltarAtual);
 		
 		JButton BT_DetalhesPista_1 = new JButton("IR PARA A CORRIDA!");
@@ -757,27 +760,57 @@ public class Pagina_Inicial extends JFrame {
 			}
 		});
 		BT_DetalhesPista_1.setIcon(new ImageIcon(Pagina_Inicial.class.getResource("/resource/Icone24pxBandeiraDeChegada.png")));
-		BT_DetalhesPista_1.setBounds(487, 573, 460, 33);
+		BT_DetalhesPista_1.setBounds(643, 569, 460, 33);
 		contentPane.add(BT_DetalhesPista_1);
 		
 		LB_CarrosCat = new JLabel("");
 		LB_CarrosCat.setVerticalAlignment(SwingConstants.TOP);
 		LB_CarrosCat.setIcon(new ImageIcon(Pagina_Inicial.class.getResource("/resource/Banner F1_OK.png")));
 		LB_CarrosCat.setHorizontalAlignment(SwingConstants.CENTER);
-		LB_CarrosCat.setBounds(486, 436, 464, 126);
+		LB_CarrosCat.setBounds(642, 432, 464, 126);
 		contentPane.add(LB_CarrosCat);
 		
 		LB_Orc = new JLabel("€ milhões");
 		LB_Orc.setHorizontalAlignment(SwingConstants.CENTER);
 		LB_Orc.setFont(new Font("Arial Rounded MT Bold", Font.ITALIC, 12));
-		LB_Orc.setBounds(804, 50, 100, 25);
+		LB_Orc.setBounds(970, 50, 100, 25);
 		contentPane.add(LB_Orc);
 		
 		JLabel LB_BandeiraPista_1 = new JLabel("");
 		LB_BandeiraPista_1.setIcon(new ImageIcon(Pagina_Inicial.class.getResource("/resource/IconeEuro24px.png")));
 		LB_BandeiraPista_1.setHorizontalAlignment(SwingConstants.CENTER);
-		LB_BandeiraPista_1.setBounds(906, 50, 45, 25);
+		LB_BandeiraPista_1.setBounds(1072, 50, 45, 25);
 		contentPane.add(LB_BandeiraPista_1);
+		
+		JLabel LB_Status = new JLabel("Piloto 1");
+		LB_Status.setHorizontalAlignment(SwingConstants.CENTER);
+		LB_Status.setFont(new Font("Arial Rounded MT Bold", Font.ITALIC, 12));
+		LB_Status.setBounds(485, 135, 145, 25);
+		contentPane.add(LB_Status);
+		
+		JLabel LB_Status_1 = new JLabel("Piloto 2");
+		LB_Status_1.setHorizontalAlignment(SwingConstants.CENTER);
+		LB_Status_1.setFont(new Font("Arial Rounded MT Bold", Font.ITALIC, 12));
+		LB_Status_1.setBounds(485, 160, 145, 25);
+		contentPane.add(LB_Status_1);
+		
+		JLabel LB_Status_2 = new JLabel("Piloto 3/Reserva 1");
+		LB_Status_2.setHorizontalAlignment(SwingConstants.CENTER);
+		LB_Status_2.setFont(new Font("Arial Rounded MT Bold", Font.ITALIC, 12));
+		LB_Status_2.setBounds(485, 185, 145, 25);
+		contentPane.add(LB_Status_2);
+		
+		JLabel LB_Status_1_1 = new JLabel("Piloto 4/Reserva 2");
+		LB_Status_1_1.setHorizontalAlignment(SwingConstants.CENTER);
+		LB_Status_1_1.setFont(new Font("Arial Rounded MT Bold", Font.ITALIC, 12));
+		LB_Status_1_1.setBounds(485, 210, 145, 25);
+		contentPane.add(LB_Status_1_1);
+		
+		JLabel LB_Status_1_1_1 = new JLabel("Piloto 5/Reserva 3");
+		LB_Status_1_1_1.setHorizontalAlignment(SwingConstants.CENTER);
+		LB_Status_1_1_1.setFont(new Font("Arial Rounded MT Bold", Font.ITALIC, 12));
+		LB_Status_1_1_1.setBounds(485, 235, 145, 25);
+		contentPane.add(LB_Status_1_1_1);
 		
 	}
 	

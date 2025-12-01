@@ -50,7 +50,9 @@ public class Equipe {
         public String bandeiraSede;
         public String bandeiraSedeSvg;
         public String bandeiraMotor;
-        public String logoMotor; // Logo Pequena do motor
+        public String bandeiraMotorSvg;
+        public String logoMotor;
+        public String logoMotorSvg; // Logo Pequena do motor
     }
 
     // --- MÉTODOS DE CONTRATAÇÃO (Lógica do Jogo) ---

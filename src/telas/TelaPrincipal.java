@@ -22,11 +22,19 @@ public class TelaPrincipal extends JFrame {
     private Equipe equipeJogavel;
     private CampeonatoService campeonato;
 
-    // --- COMPONENTES GLOBAIS PARA ATUALIZAÇÃO ---
+    // --- COMPONENTES GLOBAIS (Precisam ser acessados no atualizarDados) ---
     
     // Vermelho (Equipe)
-    private JLabel lblNomeEquipe, lblSede, lblMotor, lblLogoEquipe;
-    private JLabel lblBandeiraSede, lblLogoMotor;
+    private JLabel lblNomeEquipe;
+    private JLabel lblSedeText; // Texto da sede
+    private JLabel lblMotorText; // Texto do motor
+    private JLabel lblLogoEquipe;
+    
+    // Ícones pequenos do painel vermelho
+    private JLabel lblIconePaisEquipe; // Bandeira linha 1
+    private JLabel lblIconeBandeiraMotor; // Bandeira linha 2
+    private JLabel lblIconeLogoMotor;     // Logo linha 2
+    private JLabel lblIconeBandeiraSede;  // Bandeira linha 3
     
     // Cinza (Pilotos)
     private JPanel panelListaPilotos; 
@@ -58,10 +66,10 @@ public class TelaPrincipal extends JFrame {
         contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
         setContentPane(contentPane);
         
-        // Layout Principal: 2 Colunas (Esquerda e Direita)
-        contentPane.setLayout(new GridLayout(1, 2, 10, 0)); // 1 Linha, 2 Colunas, 10px gap
+        // Layout Principal: 2 Colunas
+        contentPane.setLayout(new GridLayout(1, 2, 10, 0));
 
-        // --- COLUNA ESQUERDA (Vermelho, Cinza, Verde) ---
+        // --- COLUNA ESQUERDA ---
         JPanel colunaEsquerda = new JPanel(new GridBagLayout());
         colunaEsquerda.setOpaque(false);
         GridBagConstraints gbcE = new GridBagConstraints();
@@ -69,25 +77,25 @@ public class TelaPrincipal extends JFrame {
         gbcE.weightx = 1.0;
         gbcE.insets = new Insets(0, 0, 5, 0);
 
-        // 1. Vermelho (Equipe) - Topo
+        // 1. Vermelho (Equipe)
         JPanel panelVermelho = criarPainelVermelho();
-        gbcE.gridy = 0; gbcE.weighty = 0.25; // 25% da altura
+        gbcE.gridy = 0; gbcE.weighty = 0.25; 
         colunaEsquerda.add(panelVermelho, gbcE);
 
-        // 2. Cinza (Pilotos) - Meio
+        // 2. Cinza (Pilotos)
         JPanel panelCinza = criarPainelCinza();
-        gbcE.gridy = 1; gbcE.weighty = 0.45; // 45% da altura (precisa de espaço pra 5 pilotos)
+        gbcE.gridy = 1; gbcE.weighty = 0.45;
         colunaEsquerda.add(panelCinza, gbcE);
 
-        // 3. Verde (Campeonato) - Baixo
+        // 3. Verde (Campeonato)
         JPanel panelVerde = criarPainelVerde();
-        gbcE.gridy = 2; gbcE.weighty = 0.30; // 30% da altura
-        gbcE.insets = new Insets(0, 0, 0, 0); // Remove margem inferior
+        gbcE.gridy = 2; gbcE.weighty = 0.30;
+        gbcE.insets = new Insets(0, 0, 0, 0);
         colunaEsquerda.add(panelVerde, gbcE);
 
         contentPane.add(colunaEsquerda);
 
-        // --- COLUNA DIREITA (Azul, Preto, Rosa) ---
+        // --- COLUNA DIREITA ---
         JPanel colunaDireita = new JPanel(new GridBagLayout());
         colunaDireita.setOpaque(false);
         GridBagConstraints gbcD = new GridBagConstraints();
@@ -95,19 +103,19 @@ public class TelaPrincipal extends JFrame {
         gbcD.weightx = 1.0;
         gbcD.insets = new Insets(0, 0, 5, 0);
 
-        // 4. Azul (Jogador) - Topo
+        // 4. Azul (Jogador)
         JPanel panelAzul = criarPainelAzul();
-        gbcD.gridy = 0; gbcD.weighty = 0.15; // 15% da altura
+        gbcD.gridy = 0; gbcD.weighty = 0.15;
         colunaDireita.add(panelAzul, gbcD);
 
-        // 5. Preto (Próxima Corrida) - Meio
+        // 5. Preto (Corrida)
         JPanel panelPreto = criarPainelPreto();
-        gbcD.gridy = 1; gbcD.weighty = 0.70; // 70% da altura (Mapa grande)
+        gbcD.gridy = 1; gbcD.weighty = 0.70;
         colunaDireita.add(panelPreto, gbcD);
 
-        // 6. Rosa (Ação) - Baixo
+        // 6. Rosa (Ação)
         JPanel panelRosa = criarPainelRosa();
-        gbcD.gridy = 2; gbcD.weighty = 0.15; // 15% da altura
+        gbcD.gridy = 2; gbcD.weighty = 0.15;
         gbcD.insets = new Insets(0, 0, 0, 0);
         colunaDireita.add(panelRosa, gbcD);
 
@@ -118,68 +126,108 @@ public class TelaPrincipal extends JFrame {
     }
 
     // =============================================================================================
-    // MÉTODOS DE CRIAÇÃO DOS PAINÉIS (CORES ESPECÍFICAS)
+    // MÉTODOS DE CRIAÇÃO DOS PAINÉIS
     // =============================================================================================
 
     /**
-     * VERMELHO - Dados da Equipe (Sede, Logo, Motor)
+     * VERMELHO - Dados da Equipe (Corrigido para evitar NullPointer)
      */
     private JPanel criarPainelVermelho() {
-        JPanel panel = new JPanel(new BorderLayout(10, 0));
-        // Vermelho suave para fundo
+        JPanel panel = new JPanel(new GridBagLayout());
         panel.setBackground(new Color(255, 230, 230)); 
         panel.setBorder(BorderFactory.createTitledBorder(
             new LineBorder(Color.RED, 1), "DADOS DA EQUIPE", TitledBorder.LEFT, TitledBorder.TOP
         ));
 
-        // Esquerda: Logo
+        GridBagConstraints gbc = new GridBagConstraints();
+        gbc.insets = new Insets(5, 10, 5, 10);
+        gbc.fill = GridBagConstraints.BOTH;
+
+        // --- 1. INICIALIZAÇÃO DAS VARIÁVEIS GLOBAIS ---
+        // (Isso evita o erro NullPointerException)
         lblLogoEquipe = new JLabel();
         lblLogoEquipe.setHorizontalAlignment(SwingConstants.CENTER);
-        lblLogoEquipe.setPreferredSize(new Dimension(140, 100));
-        panel.add(lblLogoEquipe, BorderLayout.WEST);
+        lblLogoEquipe.setPreferredSize(new Dimension(200, 100));
+        lblLogoEquipe.setBorder(BorderFactory.createLineBorder(new Color(0,0,0,50)));
 
-        // Centro: Infos em Grid
-        JPanel pInfos = new JPanel(new GridLayout(4, 1));
-        pInfos.setOpaque(false);
-        
-        lblNomeEquipe = new JLabel("Nome da Equipe");
+        lblNomeEquipe = new JLabel("Nome Equipe");
         lblNomeEquipe.setFont(new Font("Berlin Sans FB", Font.BOLD, 20));
         
-        lblSede = new JLabel("Sede: Local");
-        lblSede.setFont(new Font("Segoe UI", Font.PLAIN, 14));
+        lblMotorText = new JLabel("Motor");
+        lblMotorText.setFont(new Font("Segoe UI", Font.PLAIN, 14));
         
-        lblMotor = new JLabel("Motor: Marca");
-        lblMotor.setFont(new Font("Segoe UI", Font.PLAIN, 14));
-        
-        pInfos.add(lblNomeEquipe);
-        pInfos.add(lblSede);
-        pInfos.add(lblMotor);
-        // pInfos.add(new JLabel("Fundação: " + equipeJogavel.getFundacao())); // Opcional
+        lblSedeText = new JLabel("Sede");
+        lblSedeText.setFont(new Font("Segoe UI", Font.PLAIN, 14));
 
-        panel.add(pInfos, BorderLayout.CENTER);
+        // Inicializa os ícones
+        lblIconePaisEquipe = new JLabel();
+        lblIconeBandeiraMotor = new JLabel();
+        lblIconeLogoMotor = new JLabel();
+        lblIconeBandeiraSede = new JLabel();
+
+        // --- 2. MONTAGEM DO LAYOUT ---
         
-        // Direita: Bandeiras pequenas
-        JPanel pFlags = new JPanel(new GridLayout(2, 1, 5, 5));
-        pFlags.setOpaque(false);
-        pFlags.setBorder(new EmptyBorder(10, 10, 10, 10));
+        // Esquerda: Logo Grande
+        gbc.gridx = 0; 
+        gbc.gridy = 0; 
+        gbc.gridheight = 3; 
+        gbc.weightx = 0.4;
+        panel.add(lblLogoEquipe, gbc);
+
+        // Direita: Painel com 3 linhas
+        JPanel pDireita = new JPanel(new GridLayout(3, 1, 0, 5));
+        pDireita.setOpaque(false);
         
-        lblBandeiraSede = new JLabel();
-        lblLogoMotor = new JLabel(); // Usar como logo do motor pequeno
+        // Linha 1: [Bandeira] Nome Equipe
+        JPanel pLinha1 = montarLinhaVisual(lblIconePaisEquipe, null, lblNomeEquipe);
         
-        pFlags.add(lblBandeiraSede);
-        pFlags.add(lblLogoMotor);
+        // Linha 2: [BandeiraMotor] [LogoMotor] Texto Motor
+        JPanel pLinha2 = montarLinhaVisual(lblIconeBandeiraMotor, lblIconeLogoMotor, lblMotorText);
         
-        panel.add(pFlags, BorderLayout.EAST);
+        // Linha 3: [BandeiraSede] Texto Sede
+        JPanel pLinha3 = montarLinhaVisual(lblIconeBandeiraSede, null, lblSedeText);
+
+        pDireita.add(pLinha1);
+        pDireita.add(pLinha2);
+        pDireita.add(pLinha3);
+
+        gbc.gridx = 1; 
+        gbc.gridy = 0; 
+        gbc.gridheight = 3;
+        gbc.weightx = 0.6;
+        panel.add(pDireita, gbc);
 
         return panel;
     }
 
     /**
-     * CINZA - Meus Pilotos (Lista com slots)
+     * Método Auxiliar para montar visualmente uma linha com ícones e texto
      */
+    private JPanel montarLinhaVisual(JLabel icon1, JLabel icon2, JLabel textLabel) {
+        JPanel p = new JPanel(new FlowLayout(FlowLayout.LEFT, 10, 0));
+        p.setOpaque(false);
+        
+        // Configura e adiciona Icone 1
+        icon1.setPreferredSize(new Dimension(45, 30));
+        icon1.setHorizontalAlignment(SwingConstants.CENTER);
+        icon1.setBorder(BorderFactory.createLineBorder(Color.LIGHT_GRAY));
+        p.add(icon1);
+        
+        // Configura e adiciona Icone 2 (Se existir)
+        if (icon2 != null) {
+            icon2.setPreferredSize(new Dimension(35, 30));
+            icon2.setHorizontalAlignment(SwingConstants.CENTER);
+            p.add(icon2);
+        }
+        
+        // Adiciona Texto
+        p.add(textLabel);
+        
+        return p;
+    }
+
     private JPanel criarPainelCinza() {
         JPanel panel = new JPanel(new BorderLayout());
-        // Cinza claro
         panel.setBackground(new Color(240, 240, 240));
         panel.setBorder(BorderFactory.createTitledBorder(
             new LineBorder(Color.GRAY, 1), "MEUS PILOTOS", TitledBorder.LEFT, TitledBorder.TOP
@@ -198,12 +246,8 @@ public class TelaPrincipal extends JFrame {
         return panel;
     }
 
-    /**
-     * VERDE - Dados do Campeonato (Abas com Tabelas)
-     */
     private JPanel criarPainelVerde() {
         JPanel panel = new JPanel(new BorderLayout());
-        // Verde suave
         panel.setBackground(new Color(230, 255, 230));
         panel.setBorder(BorderFactory.createTitledBorder(
             new LineBorder(new Color(34, 139, 34), 1), "CLASSIFICAÇÃO", TitledBorder.LEFT, TitledBorder.TOP
@@ -212,7 +256,6 @@ public class TelaPrincipal extends JFrame {
         tabCampeonato = new JTabbedPane();
         tabCampeonato.setFont(new Font("Segoe UI", Font.PLAIN, 12));
         
-        // Placeholders para as tabelas (implementaremos a lógica de preencher depois)
         JPanel pPilotos = new JPanel(); pPilotos.setOpaque(false); pPilotos.add(new JLabel("Tabela de Pilotos (Em Breve)"));
         JPanel pEquipes = new JPanel(); pEquipes.setOpaque(false); pEquipes.add(new JLabel("Tabela de Construtores (Em Breve)"));
         
@@ -223,12 +266,8 @@ public class TelaPrincipal extends JFrame {
         return panel;
     }
 
-    /**
-     * AZUL - Dados do Jogador (Dinheiro, Temporada)
-     */
     private JPanel criarPainelAzul() {
-        JPanel panel = new JPanel(new GridLayout(2, 2)); // Grid 2x2
-        // Azul suave
+        JPanel panel = new JPanel(new GridLayout(2, 2));
         panel.setBackground(new Color(230, 240, 255));
         panel.setBorder(BorderFactory.createTitledBorder(
             new LineBorder(Color.BLUE, 1), "DADOS DO JOGADOR", TitledBorder.LEFT, TitledBorder.TOP
@@ -240,35 +279,29 @@ public class TelaPrincipal extends JFrame {
         
         lblSaldo = new JLabel("€ 0.0 M");
         lblSaldo.setFont(new Font("Segoe UI", Font.BOLD, 20));
-        lblSaldo.setForeground(new Color(0, 100, 0)); // Verde escuro para dinheiro
+        lblSaldo.setForeground(new Color(0, 100, 0));
         lblSaldo.setHorizontalAlignment(SwingConstants.CENTER);
         
         lblAnoTemporada = new JLabel("Temporada 2024");
         lblAnoTemporada.setFont(new Font("Segoe UI", Font.ITALIC, 14));
         lblAnoTemporada.setHorizontalAlignment(SwingConstants.CENTER);
         
-        // Adiciona ao grid
         panel.add(lblNomeDirigente);
         panel.add(lblSaldo);
         panel.add(lblAnoTemporada);
-        panel.add(new JLabel("")); // Espaço vazio ou outra info
+        panel.add(new JLabel("")); 
 
         return panel;
     }
 
-    /**
-     * PRETO - Dados da Próxima Corrida (Traçado, Info)
-     */
     private JPanel criarPainelPreto() {
         JPanel panel = new JPanel(new BorderLayout(0, 10));
-        // Cinza escuro/Preto para cabeçalho, fundo claro para conteúdo
         panel.setBackground(Color.WHITE); 
         panel.setBorder(BorderFactory.createTitledBorder(
             new LineBorder(Color.BLACK, 2), "PRÓXIMA ETAPA", TitledBorder.CENTER, TitledBorder.TOP,
             new Font("Segoe UI", Font.BOLD, 14), Color.BLACK
         ));
 
-        // Topo: Bandeira e Nome
         JPanel pTopo = new JPanel(new FlowLayout(FlowLayout.CENTER));
         pTopo.setOpaque(false);
         lblBandeiraPaisPista = new JLabel();
@@ -278,12 +311,10 @@ public class TelaPrincipal extends JFrame {
         pTopo.add(lblNomeGP);
         panel.add(pTopo, BorderLayout.NORTH);
 
-        // Centro: Imagem
         lblImagemPista = new JLabel();
         lblImagemPista.setHorizontalAlignment(SwingConstants.CENTER);
         panel.add(lblImagemPista, BorderLayout.CENTER);
 
-        // Baixo: Dados Técnicos
         JPanel pBaixo = new JPanel(new GridLayout(2, 1));
         pBaixo.setOpaque(false);
         pBaixo.setBorder(new EmptyBorder(5, 10, 10, 10));
@@ -300,12 +331,8 @@ public class TelaPrincipal extends JFrame {
         return panel;
     }
 
-    /**
-     * ROSA - Botão de Ação + Logo
-     */
     private JPanel criarPainelRosa() {
         JPanel panel = new JPanel(new FlowLayout(FlowLayout.CENTER, 30, 20));
-        // Rosa suave
         panel.setBackground(new Color(255, 230, 245));
         panel.setBorder(BorderFactory.createLineBorder(Color.MAGENTA, 1));
 
@@ -333,19 +360,27 @@ public class TelaPrincipal extends JFrame {
 
     private void atualizarDadosNaTela() {
         // --- 1. VERMELHO (Equipe) ---
+        // Atualiza Textos
         lblNomeEquipe.setText(equipeJogavel.getNome());
-        lblSede.setText("Sede: " + equipeJogavel.getSede());
-        lblMotor.setText("Motor: " + equipeJogavel.getMotor());
+        lblSedeText.setText("Sede: " + equipeJogavel.getSede());
+        lblMotorText.setText("Motor: " + equipeJogavel.getMotor());
         
-        carregarImagem(lblLogoEquipe, equipeJogavel.getCaminhoLogo(), 120, 80);
-        carregarImagem(lblBandeiraSede, equipeJogavel.getCaminhoBandeiraSede(), 40, 25);
-        carregarImagem(lblLogoMotor, equipeJogavel.getCaminhoLogoMotor(), 40, 25);
+        // Atualiza Imagens (Logo Grande)
+        carregarImagem(lblLogoEquipe, equipeJogavel.getCaminhoLogo(), 180, 100);
+        
+        // Atualiza Ícones Pequenos (Linhas)
+        // Linha 1: Usando bandeira da sede como país da equipe por enquanto
+        carregarImagem(lblIconePaisEquipe, equipeJogavel.getCaminhoBandeiraSede(), 40, 25);
+        
+        // Linha 2: Bandeira e Logo do Motor
+        carregarImagem(lblIconeBandeiraMotor, equipeJogavel.getCaminhoBandeiraMotor(), 40, 25);
+        carregarImagem(lblIconeLogoMotor, equipeJogavel.getCaminhoLogoMotor(), 30, 30);
+        
+        // Linha 3: Bandeira Sede
+        carregarImagem(lblIconeBandeiraSede, equipeJogavel.getCaminhoBandeiraSede(), 40, 25);
 
         // --- 2. CINZA (Pilotos) ---
         atualizarListaPilotos();
-
-        // --- 3. VERDE (Campeonato) ---
-        // (Aqui atualizaríamos as tabelas no futuro)
 
         // --- 4. AZUL (Jogador) ---
         lblNomeDirigente.setText("Chefe: " + TelaSelecionarEquipe.nomeDirigente);
@@ -358,7 +393,6 @@ public class TelaPrincipal extends JFrame {
             lblNomeGP.setText(pista.getNome());
             lblLocalPista.setText(pista.getPais());
             
-            // Texto formatado com HTML para quebra de linha se necessário
             String dados = String.format("<html><center>%d Voltas • %.1f km<br>%s</center></html>", 
                     pista.getQtdVoltas(), pista.getComprimentoKm(), pista.getTipo());
             lblDadosPista.setText(dados);
@@ -377,13 +411,11 @@ public class TelaPrincipal extends JFrame {
         List<Piloto> titulares = equipeJogavel.getPilotosTitulares();
         List<Piloto> reservas = equipeJogavel.getPilotosReservas();
         
-        // Adiciona Titulares
         for (Piloto p : titulares) {
             panelListaPilotos.add(criarCardPiloto(p, "Titular", new Color(255, 255, 255)));
             panelListaPilotos.add(Box.createVerticalStrut(5));
         }
         
-        // Adiciona Reservas
         for (Piloto p : reservas) {
             panelListaPilotos.add(criarCardPiloto(p, "Reserva", new Color(240, 240, 240))); 
             panelListaPilotos.add(Box.createVerticalStrut(5));
@@ -393,9 +425,6 @@ public class TelaPrincipal extends JFrame {
         panelListaPilotos.repaint();
     }
 
-    /**
-     * Cria um slot visual para o piloto no painel cinza
-     */
     private JPanel criarCardPiloto(Piloto p, String funcao, Color bg) {
         JPanel card = new JPanel(new BorderLayout(10, 0));
         card.setBackground(bg);
@@ -405,17 +434,14 @@ public class TelaPrincipal extends JFrame {
         ));
         card.setMaximumSize(new Dimension(Integer.MAX_VALUE, 65)); 
 
-        // Esquerda: Bandeira e Foto (se tivesse)
         JLabel lblFlag = new JLabel();
         carregarImagem(lblFlag, "/resource/Bandeira " + p.getNacionalidade() + ".png", 30, 20);
         card.add(lblFlag, BorderLayout.WEST);
 
-        // Centro: Nome e Contrato
         JLabel lblNome = new JLabel("<html><b>" + p.getNome() + "</b><br><font size='2' color='#555555'>Contrato: " + (funcao) + "</font></html>");
         lblNome.setFont(new Font("Segoe UI", Font.PLAIN, 13));
         card.add(lblNome, BorderLayout.CENTER);
 
-        // Direita: Número
         JLabel lblNum = new JLabel("#" + p.getNumero());
         lblNum.setFont(new Font("Impact", Font.PLAIN, 20));
         lblNum.setForeground(Color.DARK_GRAY);
@@ -432,8 +458,14 @@ public class TelaPrincipal extends JFrame {
                 path = path.replace("//", "/");
                 
                 ImageIcon icon = new ImageIcon(getClass().getResource(path));
-                Image img = icon.getImage().getScaledInstance(w, h, Image.SCALE_SMOOTH);
-                lbl.setIcon(new ImageIcon(img));
+                if (icon.getIconWidth() > 0) { // Verifica se carregou
+                    Image img = icon.getImage().getScaledInstance(w, h, Image.SCALE_SMOOTH);
+                    lbl.setIcon(new ImageIcon(img));
+                } else {
+                    lbl.setIcon(null); 
+                }
+            } else {
+                lbl.setIcon(null);
             }
         } catch (Exception e) {
             lbl.setIcon(null);

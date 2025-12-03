@@ -152,6 +152,8 @@ public class TelaSelecionarEquipe extends JFrame {
         
         lblAnoFundacao = new JLabel("");
         lblAnoFundacao.setBounds(425, 553, 93, 21);
+        lblAnoFundacao.setHorizontalAlignment(SwingConstants.CENTER);
+        lblAnoFundacao.setFont(new Font("Berlin Sans FB", Font.PLAIN, 15));
         contentPane.add(lblAnoFundacao);
         
         lblFlagSede = new JLabel("");
@@ -167,6 +169,7 @@ public class TelaSelecionarEquipe extends JFrame {
         
         lblLogoMotor = new JLabel("");
         lblLogoMotor.setBounds(425, 585, 93, 21);
+        lblLogoMotor.setHorizontalAlignment(SwingConstants.CENTER);
         contentPane.add(lblLogoMotor);
         
         lblFlagMotor = new JLabel("");

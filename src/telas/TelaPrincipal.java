@@ -139,6 +139,7 @@ public class TelaPrincipal extends JFrame {
             nova.setVisible(true);
             nova.setLocationRelativeTo(null);
             dispose();
+            
         });
         Menu_Geral.add(MenuItem_NovoJogo);
         Menu_Geral.add(new JMenuItem("Salvar Jogo"));

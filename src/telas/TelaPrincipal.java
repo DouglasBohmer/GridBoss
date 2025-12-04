@@ -182,7 +182,7 @@ public class TelaPrincipal extends JFrame {
         
         LB_Motor = new JLabel("Motor");
         LB_Motor.setHorizontalAlignment(SwingConstants.CENTER);
-        LB_Motor.setBounds(285, 11, 120, 33);
+        LB_Motor.setBounds(220, 11, 185, 33);
         contentPane.add(LB_Motor);
 
         LB_BandeiraSede = new JLabel("");
@@ -192,7 +192,7 @@ public class TelaPrincipal extends JFrame {
 
         LB_SedeEquipe = new JLabel("Sede");
         LB_SedeEquipe.setHorizontalAlignment(SwingConstants.CENTER);
-        LB_SedeEquipe.setBounds(285, 55, 118, 33);
+        LB_SedeEquipe.setBounds(220, 55, 183, 33);
         contentPane.add(LB_SedeEquipe);
 
         // === INFO JOGO ===

@@ -16,9 +16,6 @@ import java.util.*;
 public class CarregadorJSON {
 
     private static final String CAMINHO_MODS = "mods/";
-
-    // ... (Métodos escanearModsInstalados, carregarEquipes, carregarPilotos iguais) ...
-    // Vou reescrever a classe toda para garantir que não falte nada
     
     public static Map<String, List<String>> escanearModsInstalados() {
         Map<String, List<String>> modsEncontrados = new HashMap<>();

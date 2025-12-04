@@ -2,17 +2,18 @@ package modelos;
 
 public class Pista {
     // --- DADOS DO JSON ---
-    private int rodada;           // Ex: 1
-    private String nome;          // Ex: "Grande Prêmio do Bahrein"
-    private String pais;          // Ex: "Bahrain"
-    private TipoPista tipo;       // OVAL, MISTO, RUA...
-    private int qtdVoltas;        // Ex: 57
-    private double comprimentoKm; // Ex: 5.412
+    private int rodada;           
+    private String nome;          
+    private String etapa;         
+    private String pais;          
+    private TipoPista tipo;       
+    private int qtdVoltas;        
+    private double comprimentoKm; 
     
     // --- JOGABILIDADE ---
-    private int dificuldadeUltrapassagem; // 0 a 100
-    private double relevanciaMotor;       // 0.0 a 1.0
-    private double relevanciaAerodinamica; // 0.0 a 1.0
+    private int dificuldadeUltrapassagem; 
+    private double relevanciaMotor;       
+    private double relevanciaAerodinamica; 
     
     private double fatorDesgastePneu;
     private double fatorConsumoCombustivel;
@@ -22,7 +23,6 @@ public class Pista {
     // Objeto aninhado para imagens
     private Arquivos arquivos;
 
-    // --- CLASSE INTERNA PARA JSON ---
     public static class Arquivos {
         public String traçado;
         public String traçadoSvg;
@@ -30,58 +30,26 @@ public class Pista {
         public String bandeiraSvg;
     }
 
-    // Construtor vazio para o Gson
     public Pista() {
         this.arquivos = new Arquivos();
     }
 
-    // Construtor completo (para testes manuais)
-    public Pista(String nome, String pais, TipoPista tipo, int voltas, double km,
-                 int dificuldadeUltra, double relevanciaMotor, 
-                 double desgastePneu, double consumoComb, 
-                 double chanceSC, double tempoPit) {
+    // Construtor completo atualizado (sem fasePlayoff, pois vai no nome)
+    public Pista(int rodada, String nome, String etapa, String pais, TipoPista tipo, int voltas, double km) {
         this();
+        this.rodada = rodada;
         this.nome = nome;
+        this.etapa = etapa;
         this.pais = pais;
         this.tipo = tipo;
         this.qtdVoltas = voltas;
         this.comprimentoKm = km;
-        this.dificuldadeUltrapassagem = dificuldadeUltra;
-        this.relevanciaMotor = relevanciaMotor;
-        this.relevanciaAerodinamica = 1.0 - relevanciaMotor; // Cálculo automático padrão
-        this.fatorDesgastePneu = desgastePneu;
-        this.fatorConsumoCombustivel = consumoComb;
-        this.chanceSafetyCar = chanceSC;
-        this.tempoPerdidoPitLane = tempoPit;
     }
 
-    // --- MÉTODOS ÚTEIS ---
-
-    public boolean isOval() {
-        if (tipo == null) return false;
-        return tipo.isOval(); // Usa o método do Enum TipoPista
-    }
-    
-    public boolean isRua() {
-        if (tipo == null) return false;
-        return tipo.isRua();
-    }
-
-    // --- GETTERS DE IMAGEM (Seguros) ---
-    
-    public String getCaminhoTracado() {
-        if (arquivos != null && arquivos.traçado != null) return arquivos.traçado;
-        return "/resource/Icone64pxErro.png";
-    }
-    
-    public String getCaminhoBandeira() {
-        if (arquivos != null && arquivos.bandeira != null) return arquivos.bandeira;
-        return "/resource/Bandeira BRANCA.png";
-    }
-
-    // --- GETTERS PADRÃO ---
+    // --- GETTERS ---
     public int getRodada() { return rodada; }
     public String getNome() { return nome; }
+    public String getEtapa() { return etapa; } // Novo Getter
     public String getPais() { return pais; }
     public TipoPista getTipo() { return tipo; }
     public int getQtdVoltas() { return qtdVoltas; }
@@ -95,4 +63,24 @@ public class Pista {
     public double getFatorConsumoCombustivel() { return fatorConsumoCombustivel; }
     public double getChanceSafetyCar() { return chanceSafetyCar; }
     public double getTempoPerdidoPitLane() { return tempoPerdidoPitLane; }
+
+    public String getCaminhoTracado() {
+        if (arquivos != null && arquivos.traçado != null) return arquivos.traçado;
+        return "/resource/Icone64pxErro.png";
+    }
+    
+    public String getCaminhoBandeira() {
+        if (arquivos != null && arquivos.bandeira != null) return arquivos.bandeira;
+        return "/resource/Bandeira BRANCA.png";
+    }
+    
+    public boolean isOval() {
+        if (tipo == null) return false;
+        return tipo.isOval();
+    }
+    
+    public boolean isRua() {
+        if (tipo == null) return false;
+        return tipo.isRua();
+    }
 }

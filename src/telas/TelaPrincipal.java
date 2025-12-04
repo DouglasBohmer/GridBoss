@@ -1,5 +1,6 @@
 package telas;
 
+import dados.CarregadorJSON;
 import dados.SessaoJogo;
 import modelos.Equipe;
 import modelos.Piloto;
@@ -9,8 +10,14 @@ import modelos.TipoPista;
 
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
+import javax.swing.table.DefaultTableCellRenderer;
+import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableColumnModel;
 import java.awt.*;
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
+import java.text.Normalizer;
 
 public class TelaPrincipal extends JFrame {
 
@@ -20,98 +27,57 @@ public class TelaPrincipal extends JFrame {
     private Equipe equipeJogavel;
     private CampeonatoService campeonato;
     
-    // Controle de Navegação Visual (separado da etapa real do save)
     private int indiceEtapaVisual = 0; 
 
     // --- COMPONENTES VISUAIS ---
-    
-    // Topo Esquerdo (Equipe)
-    private JLabel LB_LogoEquipe;
-    private JLabel LB_LogoMotorPQ;
-    private JLabel LB_BandeiraMotor;
-    private JLabel LB_Motor;
-    private JLabel LB_BandeiraSede;
-    private JLabel LB_SedeEquipe;
+    private JLabel LB_LogoEquipe, LB_LogoMotorPQ, LB_BandeiraMotor, LB_Motor, LB_BandeiraSede, LB_SedeEquipe;
+    private JLabel LB_CategoriaEscolhida, LB_NomeDirigente, LB_Ano, LB_Temporada, LB_Orc, LB_IconeDinheiro;
 
-    // Topo Direito (Info Jogo)
-    private JLabel LB_CategoriaEscolhida;
-    private JLabel LB_NomeDirigente;
-    private JLabel LB_Ano;
-    private JLabel LB_Temporada;
-    private JLabel LB_Orc;
-    private JLabel LB_IconeDinheiro;
-
-    // Pilotos
     private JLabel lblTituloPilotos;
-    // P1
     private JLabel LB_BandeiraP1, LB_NumP1, LB_NomeP1, LB_IdadeP1, LB_TempoContratoP1, LB_StatusP1, LB_Over_P1;
-    // P2
     private JLabel LB_BandeiraP2, LB_NumP2, LB_NomeP2, LB_IdadeP2, LB_TempoContratoP2, LB_StatusP2, LB_Over_P2;
-    // P3
     private JLabel LB_BandeiraP3, LB_NumP3, LB_NomeP3, LB_IdadeP3, LB_TempoContratoP3, LB_StatusP3, LB_Over_P3;
-    // P4
     private JLabel LB_BandeiraP4, LB_NumP4, LB_NomeP4, LB_IdadeP4, LB_TempoContratoP4, LB_StatusP4, LB_Over_P4;
-    // P5
     private JLabel LB_BandeiraP5, LB_NumP5, LB_NomeP5, LB_IdadeP5, LB_TempoContratoP5, LB_StatusP5, LB_Over_P5;
 
-    // Centro/Direita (Pista e Calendário)
-    private JLabel LB_PistaEtapas;
-    private JLabel LB_ImagemPista;
-    private JLabel LB_BandeiraPista;
-    private JLabel LB_LocalPista; 
-    
-    // Dados Técnicos da Pista
-    private JLabel LB_TipoPista;
-    private JLabel LB_NomeEtapa;
-    private JLabel LB_DesgastePneu;
-    private JLabel LB_ComprimentoPista;
-    private JLabel LB_VoltaPista;
+    private JLabel LB_PistaEtapas, LB_ImagemPista, LB_BandeiraPista, LB_LocalPista; 
+    private JLabel LB_TipoPista, LB_NomeEtapa, LB_DesgastePneu, LB_ComprimentoPista, LB_VoltaPista;
 
-    // Botões e Abas
-    private JButton BT_EtapaAnt;
-    private JButton BT_EtapaProxima;
-    private JButton BT_DetalhesPista;
-    private JButton BT_VoltarAtual;
-    private JButton BT_IrParaCorrida;
+    private JButton BT_EtapaAnt, BT_EtapaProxima, BT_DetalhesPista, BT_VoltarAtual, BT_IrParaCorrida;
     
     private JLabel LB_Classificacoes;
     private JTabbedPane tabbedPane;
+    
+    // Tabelas
+    private JTable tabelaPilotos;
+    private JTable tabelaConstrutores;
+    
     private JLabel LB_CarrosCat;
 
-    /**
-     * Launch the application.
-     */
     public static void main(String[] args) {
-        EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                try {
-                    TelaPrincipal frame = new TelaPrincipal(new Equipe("Teste", 100, 50));
-                    frame.setVisible(true);
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
+        EventQueue.invokeLater(() -> {
+            try {
+                TelaPrincipal frame = new TelaPrincipal(new Equipe("Teste", 100, 50));
+                frame.setVisible(true);
+            } catch (Exception e) {
+                e.printStackTrace();
             }
         });
     }
 
-    /**
-     * Create the frame.
-     */
     public TelaPrincipal(Equipe equipe) {
         this.equipeJogavel = equipe;
         this.campeonato = new CampeonatoService(SessaoJogo.categoriaKey, SessaoJogo.anoSelecionado);
         
-        // Inicializa o índice visual com a etapa atual do jogo
         this.indiceEtapaVisual = this.campeonato.getNumeroEtapaAtual() - 1; 
         if (this.indiceEtapaVisual < 0) this.indiceEtapaVisual = 0;
 
         setTitle("Motorsport Manager - Grid Boss");
         setIconImage(Toolkit.getDefaultToolkit().getImage(TelaPrincipal.class.getResource("/resource/Icone16px.png")));
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        setBounds(100, 100, 1235, 674);
+        setBounds(100, 100, 1235, 700); 
         setResizable(false);
 
-        // MENU BAR
         criarMenu();
 
         contentPane = new JPanel();
@@ -138,7 +104,6 @@ public class TelaPrincipal extends JFrame {
             nova.setVisible(true);
             nova.setLocationRelativeTo(null);
             dispose();
-            
         });
         Menu_Geral.add(MenuItem_NovoJogo);
         Menu_Geral.add(new JMenuItem("Salvar Jogo"));
@@ -237,50 +202,14 @@ public class TelaPrincipal extends JFrame {
         lblTituloPilotos.setBounds(12, 99, 618, 25);
         contentPane.add(lblTituloPilotos);
 
-        // P1
-        LB_BandeiraP1 = new JLabel(""); LB_BandeiraP1.setHorizontalAlignment(SwingConstants.CENTER); LB_BandeiraP1.setBounds(10, 135, 25, 25); contentPane.add(LB_BandeiraP1);
-        LB_NumP1 = new JLabel("#1"); LB_NumP1.setHorizontalAlignment(SwingConstants.CENTER); LB_NumP1.setBounds(35, 135, 35, 25); contentPane.add(LB_NumP1);
-        LB_NomeP1 = new JLabel("Piloto 1"); LB_NomeP1.setFont(new Font("Arial Rounded MT Bold", Font.ITALIC, 14)); LB_NomeP1.setBounds(70, 135, 205, 25); contentPane.add(LB_NomeP1);
-        LB_IdadeP1 = new JLabel("Anos"); LB_IdadeP1.setFont(new Font("Arial Rounded MT Bold", Font.ITALIC, 12)); LB_IdadeP1.setHorizontalAlignment(SwingConstants.CENTER); LB_IdadeP1.setBounds(275, 135, 50, 25); contentPane.add(LB_IdadeP1);
-        LB_Over_P1 = new JLabel("Ovr 0"); LB_Over_P1.setFont(new Font("Arial Rounded MT Bold", Font.ITALIC, 12)); LB_Over_P1.setHorizontalAlignment(SwingConstants.CENTER); LB_Over_P1.setBounds(335, 135, 80, 25); contentPane.add(LB_Over_P1);
-        LB_TempoContratoP1 = new JLabel("Contrato"); LB_TempoContratoP1.setFont(new Font("Arial Rounded MT Bold", Font.ITALIC, 12)); LB_TempoContratoP1.setHorizontalAlignment(SwingConstants.CENTER); LB_TempoContratoP1.setBounds(415, 135, 134, 25); contentPane.add(LB_TempoContratoP1);
-        LB_StatusP1 = new JLabel("Piloto 1"); LB_StatusP1.setFont(new Font("Arial Rounded MT Bold", Font.ITALIC, 12)); LB_StatusP1.setHorizontalAlignment(SwingConstants.CENTER); LB_StatusP1.setBounds(550, 135, 80, 25); contentPane.add(LB_StatusP1);
-
-        // P2
-        LB_BandeiraP2 = new JLabel(""); LB_BandeiraP2.setHorizontalAlignment(SwingConstants.CENTER); LB_BandeiraP2.setBounds(10, 160, 25, 25); contentPane.add(LB_BandeiraP2);
-        LB_NumP2 = new JLabel("#2"); LB_NumP2.setHorizontalAlignment(SwingConstants.CENTER); LB_NumP2.setBounds(35, 160, 35, 25); contentPane.add(LB_NumP2);
-        LB_NomeP2 = new JLabel("Piloto 2"); LB_NomeP2.setFont(new Font("Arial Rounded MT Bold", Font.ITALIC, 14)); LB_NomeP2.setBounds(70, 160, 205, 25); contentPane.add(LB_NomeP2);
-        LB_IdadeP2 = new JLabel("Anos"); LB_IdadeP2.setFont(new Font("Arial Rounded MT Bold", Font.ITALIC, 12)); LB_IdadeP2.setHorizontalAlignment(SwingConstants.CENTER); LB_IdadeP2.setBounds(275, 160, 50, 25); contentPane.add(LB_IdadeP2);
-        LB_Over_P2 = new JLabel("Ovr 0"); LB_Over_P2.setFont(new Font("Arial Rounded MT Bold", Font.ITALIC, 12)); LB_Over_P2.setHorizontalAlignment(SwingConstants.CENTER); LB_Over_P2.setBounds(335, 160, 80, 25); contentPane.add(LB_Over_P2);
-        LB_TempoContratoP2 = new JLabel("Contrato"); LB_TempoContratoP2.setFont(new Font("Arial Rounded MT Bold", Font.ITALIC, 12)); LB_TempoContratoP2.setHorizontalAlignment(SwingConstants.CENTER); LB_TempoContratoP2.setBounds(415, 160, 134, 25); contentPane.add(LB_TempoContratoP2);
-        LB_StatusP2 = new JLabel("Piloto 2"); LB_StatusP2.setFont(new Font("Arial Rounded MT Bold", Font.ITALIC, 12)); LB_StatusP2.setHorizontalAlignment(SwingConstants.CENTER); LB_StatusP2.setBounds(550, 160, 80, 25); contentPane.add(LB_StatusP2);
-
-        // P3
-        LB_BandeiraP3 = new JLabel(""); LB_BandeiraP3.setHorizontalAlignment(SwingConstants.CENTER); LB_BandeiraP3.setBounds(10, 185, 25, 25); contentPane.add(LB_BandeiraP3);
-        LB_NumP3 = new JLabel("#3"); LB_NumP3.setHorizontalAlignment(SwingConstants.CENTER); LB_NumP3.setBounds(35, 185, 35, 25); contentPane.add(LB_NumP3);
-        LB_NomeP3 = new JLabel("Piloto 3"); LB_NomeP3.setFont(new Font("Arial Rounded MT Bold", Font.ITALIC, 14)); LB_NomeP3.setBounds(70, 185, 205, 25); contentPane.add(LB_NomeP3);
-        LB_IdadeP3 = new JLabel("Anos"); LB_IdadeP3.setFont(new Font("Arial Rounded MT Bold", Font.ITALIC, 12)); LB_IdadeP3.setHorizontalAlignment(SwingConstants.CENTER); LB_IdadeP3.setBounds(275, 185, 50, 25); contentPane.add(LB_IdadeP3);
-        LB_Over_P3 = new JLabel("Ovr 0"); LB_Over_P3.setFont(new Font("Arial Rounded MT Bold", Font.ITALIC, 12)); LB_Over_P3.setHorizontalAlignment(SwingConstants.CENTER); LB_Over_P3.setBounds(335, 185, 80, 25); contentPane.add(LB_Over_P3);
-        LB_TempoContratoP3 = new JLabel("Contrato"); LB_TempoContratoP3.setFont(new Font("Arial Rounded MT Bold", Font.ITALIC, 12)); LB_TempoContratoP3.setHorizontalAlignment(SwingConstants.CENTER); LB_TempoContratoP3.setBounds(415, 185, 134, 25); contentPane.add(LB_TempoContratoP3);
-        LB_StatusP3 = new JLabel("Piloto 3"); LB_StatusP3.setFont(new Font("Arial Rounded MT Bold", Font.ITALIC, 12)); LB_StatusP3.setHorizontalAlignment(SwingConstants.CENTER); LB_StatusP3.setBounds(550, 185, 80, 25); contentPane.add(LB_StatusP3);
-
-        // P4
-        LB_BandeiraP4 = new JLabel(""); LB_BandeiraP4.setHorizontalAlignment(SwingConstants.CENTER); LB_BandeiraP4.setBounds(10, 210, 25, 25); contentPane.add(LB_BandeiraP4);
-        LB_NumP4 = new JLabel("#4"); LB_NumP4.setHorizontalAlignment(SwingConstants.CENTER); LB_NumP4.setBounds(35, 210, 35, 25); contentPane.add(LB_NumP4);
-        LB_NomeP4 = new JLabel("Piloto 4"); LB_NomeP4.setFont(new Font("Arial Rounded MT Bold", Font.ITALIC, 14)); LB_NomeP4.setBounds(70, 210, 205, 25); contentPane.add(LB_NomeP4);
-        LB_IdadeP4 = new JLabel("Anos"); LB_IdadeP4.setFont(new Font("Arial Rounded MT Bold", Font.ITALIC, 12)); LB_IdadeP4.setHorizontalAlignment(SwingConstants.CENTER); LB_IdadeP4.setBounds(275, 210, 50, 25); contentPane.add(LB_IdadeP4);
-        LB_Over_P4 = new JLabel("Ovr 0"); LB_Over_P4.setFont(new Font("Arial Rounded MT Bold", Font.ITALIC, 12)); LB_Over_P4.setHorizontalAlignment(SwingConstants.CENTER); LB_Over_P4.setBounds(335, 210, 80, 25); contentPane.add(LB_Over_P4);
-        LB_TempoContratoP4 = new JLabel("Contrato"); LB_TempoContratoP4.setFont(new Font("Arial Rounded MT Bold", Font.ITALIC, 12)); LB_TempoContratoP4.setHorizontalAlignment(SwingConstants.CENTER); LB_TempoContratoP4.setBounds(415, 210, 134, 25); contentPane.add(LB_TempoContratoP4);
-        LB_StatusP4 = new JLabel("Piloto 4"); LB_StatusP4.setFont(new Font("Arial Rounded MT Bold", Font.ITALIC, 12)); LB_StatusP4.setHorizontalAlignment(SwingConstants.CENTER); LB_StatusP4.setBounds(550, 210, 80, 25); contentPane.add(LB_StatusP4);
-
-        // P5
-        LB_BandeiraP5 = new JLabel(""); LB_BandeiraP5.setHorizontalAlignment(SwingConstants.CENTER); LB_BandeiraP5.setBounds(10, 235, 25, 25); contentPane.add(LB_BandeiraP5);
-        LB_NumP5 = new JLabel("#5"); LB_NumP5.setHorizontalAlignment(SwingConstants.CENTER); LB_NumP5.setBounds(35, 235, 35, 25); contentPane.add(LB_NumP5);
-        LB_NomeP5 = new JLabel("Piloto 5"); LB_NomeP5.setFont(new Font("Arial Rounded MT Bold", Font.ITALIC, 14)); LB_NomeP5.setBounds(70, 235, 205, 25); contentPane.add(LB_NomeP5);
-        LB_IdadeP5 = new JLabel("Anos"); LB_IdadeP5.setFont(new Font("Arial Rounded MT Bold", Font.ITALIC, 12)); LB_IdadeP5.setHorizontalAlignment(SwingConstants.CENTER); LB_IdadeP5.setBounds(275, 235, 50, 25); contentPane.add(LB_IdadeP5);
-        LB_Over_P5 = new JLabel("Ovr 0"); LB_Over_P5.setFont(new Font("Arial Rounded MT Bold", Font.ITALIC, 12)); LB_Over_P5.setHorizontalAlignment(SwingConstants.CENTER); LB_Over_P5.setBounds(335, 235, 80, 25); contentPane.add(LB_Over_P5);
-        LB_TempoContratoP5 = new JLabel("Contrato"); LB_TempoContratoP5.setFont(new Font("Arial Rounded MT Bold", Font.ITALIC, 12)); LB_TempoContratoP5.setHorizontalAlignment(SwingConstants.CENTER); LB_TempoContratoP5.setBounds(415, 235, 134, 25); contentPane.add(LB_TempoContratoP5);
-        LB_StatusP5 = new JLabel("Piloto 5"); LB_StatusP5.setFont(new Font("Arial Rounded MT Bold", Font.ITALIC, 12)); LB_StatusP5.setHorizontalAlignment(SwingConstants.CENTER); LB_StatusP5.setBounds(550, 235, 80, 25); contentPane.add(LB_StatusP5);
+        // Labels dos 5 Slots
+        LB_BandeiraP1 = criarLabel(10, 135, 25, 25); LB_NumP1 = criarLabel(35, 135, 35, 25); LB_NomeP1 = criarLabel(70, 135, 205, 25); LB_IdadeP1 = criarLabel(275, 135, 50, 25); LB_Over_P1 = criarLabel(335, 135, 80, 25); LB_TempoContratoP1 = criarLabel(415, 135, 134, 25); LB_StatusP1 = criarLabel(550, 135, 80, 25);
+        LB_BandeiraP2 = criarLabel(10, 160, 25, 25); LB_NumP2 = criarLabel(35, 160, 35, 25); LB_NomeP2 = criarLabel(70, 160, 205, 25); LB_IdadeP2 = criarLabel(275, 160, 50, 25); LB_Over_P2 = criarLabel(335, 160, 80, 25); LB_TempoContratoP2 = criarLabel(415, 160, 134, 25); LB_StatusP2 = criarLabel(550, 160, 80, 25);
+        LB_BandeiraP3 = criarLabel(10, 185, 25, 25); LB_NumP3 = criarLabel(35, 185, 35, 25); LB_NomeP3 = criarLabel(70, 185, 205, 25); LB_IdadeP3 = criarLabel(275, 185, 50, 25); LB_Over_P3 = criarLabel(335, 185, 80, 25); LB_TempoContratoP3 = criarLabel(415, 185, 134, 25); LB_StatusP3 = criarLabel(550, 185, 80, 25);
+        LB_BandeiraP4 = criarLabel(10, 210, 25, 25); LB_NumP4 = criarLabel(35, 210, 35, 25); LB_NomeP4 = criarLabel(70, 210, 205, 25); LB_IdadeP4 = criarLabel(275, 210, 50, 25); LB_Over_P4 = criarLabel(335, 210, 80, 25); LB_TempoContratoP4 = criarLabel(415, 210, 134, 25); LB_StatusP4 = criarLabel(550, 210, 80, 25);
+        LB_BandeiraP5 = criarLabel(10, 235, 25, 25); LB_NumP5 = criarLabel(35, 235, 35, 25); LB_NomeP5 = criarLabel(70, 235, 205, 25); LB_IdadeP5 = criarLabel(275, 235, 50, 25); LB_Over_P5 = criarLabel(335, 235, 80, 25); LB_TempoContratoP5 = criarLabel(415, 235, 134, 25); LB_StatusP5 = criarLabel(550, 235, 80, 25);
+        
+        configurarFontesPilotos();
 
         // === CALENDÁRIO / PISTA ===
         LB_PistaEtapas = new JLabel("CALENDÁRIO, ETAPA 1/1");
@@ -374,38 +303,56 @@ public class TelaPrincipal extends JFrame {
         contentPane.add(LB_Classificacoes);
 
         tabbedPane = new JTabbedPane(JTabbedPane.TOP);
-        tabbedPane.setBounds(10, 307, 620, 299);
+        tabbedPane.setBounds(10, 307, 620, 332);
         contentPane.add(tabbedPane);
         
-        JPanel pnlPilotos = new JPanel(null);
-        pnlPilotos.add(new JLabel("Tabela de Pilotos aqui..."));
-        tabbedPane.addTab("Classificação Pilotos", new ImageIcon(getClass().getResource("/resource/Icone24pxPiloto.png")), pnlPilotos);
+        // --- TABELA DE PILOTOS ---
+        tabelaPilotos = new JTable();
+        tabelaPilotos.setRowHeight(35);
+        JScrollPane scrollPilotos = new JScrollPane(tabelaPilotos);
+        tabbedPane.addTab("Classificação Pilotos", new ImageIcon(getClass().getResource("/resource/Icone24pxPiloto.png")), scrollPilotos);
         
-        JPanel pnlEquipes = new JPanel(null);
-        tabbedPane.addTab("Classificação Equipes", new ImageIcon(getClass().getResource("/resource/Icone24pxEquipe.png")), pnlEquipes);
+        // --- TABELA DE CONSTRUTORES ---
+        tabelaConstrutores = new JTable();
+        tabelaConstrutores.setRowHeight(40);
+        JScrollPane scrollConstrutores = new JScrollPane(tabelaConstrutores);
+        tabbedPane.addTab("Classificação Equipes", new ImageIcon(getClass().getResource("/resource/Icone24pxEquipe.png")), scrollConstrutores);
         
         JPanel pnlResultados = new JPanel(null);
         tabbedPane.addTab("Resultados", new ImageIcon(getClass().getResource("/resource/Icone24pxTrofeu.png")), pnlResultados);
 
         // === RODAPÉ ===
         LB_CarrosCat = new JLabel("");
+        LB_CarrosCat.setVerticalAlignment(SwingConstants.BOTTOM);
+        LB_CarrosCat.setIcon(new ImageIcon(TelaPrincipal.class.getResource("/resource/Banner F1_OK.png")));
         LB_CarrosCat.setHorizontalAlignment(SwingConstants.CENTER);
-        LB_CarrosCat.setVerticalAlignment(SwingConstants.TOP);
-        LB_CarrosCat.setBounds(642, 432, 567, 126);
+        LB_CarrosCat.setBounds(642, 432, 567, 163);
         contentPane.add(LB_CarrosCat);
 
         BT_IrParaCorrida = new JButton("IR PARA A CORRIDA!");
         BT_IrParaCorrida.setFont(new Font("Arial", Font.BOLD, 16));
         BT_IrParaCorrida.setIcon(new ImageIcon(getClass().getResource("/resource/Icone24pxBandeiraDeChegada.png")));
-        BT_IrParaCorrida.setBounds(643, 569, 566, 33);
+        BT_IrParaCorrida.setBounds(643, 606, 566, 33);
         BT_IrParaCorrida.addActionListener(e -> irParaCorrida());
         contentPane.add(BT_IrParaCorrida);
+    }
+    
+    private JLabel criarLabel(int x, int y, int w, int h) {
+        JLabel lb = new JLabel("");
+        lb.setBounds(x, y, w, h);
+        contentPane.add(lb);
+        return lb;
+    }
+    
+    private void configurarFontesPilotos() {
+        Font fontNome = new Font("Arial Rounded MT Bold", Font.ITALIC, 14);
+        LB_NomeP1.setFont(fontNome); LB_NomeP2.setFont(fontNome); LB_NomeP3.setFont(fontNome); LB_NomeP4.setFont(fontNome); LB_NomeP5.setFont(fontNome);
     }
 
     private void atualizarDados() {
         if (equipeJogavel == null) return;
 
-        // Equipe
+        // Equipe Info
         LB_SedeEquipe.setText(equipeJogavel.getSede());
         LB_Motor.setText("Motor " + equipeJogavel.getMotor());
         LB_Orc.setText(String.format("€ %.1f milhões", equipeJogavel.getSaldoFinanceiro()));
@@ -417,6 +364,7 @@ public class TelaPrincipal extends JFrame {
         carregarImagem(LB_LogoMotorPQ, equipeJogavel.getCaminhoLogoMotor());
         carregarImagem(LB_BandeiraSede, equipeJogavel.getCaminhoBandeiraSede());
 
+        // Banners
         if (SessaoJogo.categoriaKey.contains("f1")) {
             carregarImagem(LB_CategoriaEscolhida, "/resource/Logo Novo_F1_OKPQ.png");
             carregarImagem(LB_CarrosCat, "/resource/Banner F1_OK.png");
@@ -431,18 +379,20 @@ public class TelaPrincipal extends JFrame {
             LB_TipoPista.setForeground(Color.BLUE);
         }
 
-        // Pilotos
-        List<Piloto> pilotos = equipeJogavel.getPilotosTitulares();
-        pilotos.addAll(equipeJogavel.getPilotosReservas());
+        // Labels dos Pilotos (Canto Esquerdo)
+        List<Piloto> pilotosEquipe = equipeJogavel.getPilotosTitulares();
+        pilotosEquipe.addAll(equipeJogavel.getPilotosReservas());
 
-        // Agora passamos as JLabels do Overall (LB_Over_P1, P2...)
-        atualizarSlotPiloto(0, pilotos, LB_NomeP1, LB_NumP1, LB_IdadeP1, LB_TempoContratoP1, LB_BandeiraP1, LB_StatusP1, LB_Over_P1);
-        atualizarSlotPiloto(1, pilotos, LB_NomeP2, LB_NumP2, LB_IdadeP2, LB_TempoContratoP2, LB_BandeiraP2, LB_StatusP2, LB_Over_P2);
-        atualizarSlotPiloto(2, pilotos, LB_NomeP3, LB_NumP3, LB_IdadeP3, LB_TempoContratoP3, LB_BandeiraP3, LB_StatusP3, LB_Over_P3);
-        atualizarSlotPiloto(3, pilotos, LB_NomeP4, LB_NumP4, LB_IdadeP4, LB_TempoContratoP4, LB_BandeiraP4, LB_StatusP4, LB_Over_P4);
-        atualizarSlotPiloto(4, pilotos, LB_NomeP5, LB_NumP5, LB_IdadeP5, LB_TempoContratoP5, LB_BandeiraP5, LB_StatusP5, LB_Over_P5);
+        atualizarSlotPiloto(0, pilotosEquipe, LB_NomeP1, LB_NumP1, LB_IdadeP1, LB_TempoContratoP1, LB_BandeiraP1, LB_StatusP1, LB_Over_P1);
+        atualizarSlotPiloto(1, pilotosEquipe, LB_NomeP2, LB_NumP2, LB_IdadeP2, LB_TempoContratoP2, LB_BandeiraP2, LB_StatusP2, LB_Over_P2);
+        atualizarSlotPiloto(2, pilotosEquipe, LB_NomeP3, LB_NumP3, LB_IdadeP3, LB_TempoContratoP3, LB_BandeiraP3, LB_StatusP3, LB_Over_P3);
+        atualizarSlotPiloto(3, pilotosEquipe, LB_NomeP4, LB_NumP4, LB_IdadeP4, LB_TempoContratoP4, LB_BandeiraP4, LB_StatusP4, LB_Over_P4);
+        atualizarSlotPiloto(4, pilotosEquipe, LB_NomeP5, LB_NumP5, LB_IdadeP5, LB_TempoContratoP5, LB_BandeiraP5, LB_StatusP5, LB_Over_P5);
 
         atualizarCalendarioUI();
+        
+        // Popula as tabelas com TODOS os dados
+        preencherTabelas();
     }
 
     private void atualizarSlotPiloto(int index, List<Piloto> lista, JLabel lbNome, JLabel lbNum, JLabel lbIdade, JLabel lbContrato, JLabel lbFlag, JLabel lbStatus, JLabel lbOver) {
@@ -452,59 +402,205 @@ public class TelaPrincipal extends JFrame {
             lbNum.setText("#" + p.getNumero());
             lbIdade.setText(p.getIdade() + " anos");
             lbContrato.setText("Contrato Ativo");
-            lbOver.setText("Ovr " + p.getOverall()); // Define o valor do Overall vindo do Piloto
+            lbOver.setText("Ovr " + (int)p.getOverall());
             
             carregarImagem(lbFlag, "/resource/Bandeira " + p.getNacionalidade() + ".png");
             
-            // Força visibilidade
-            lbNome.setVisible(true);
-            lbNum.setVisible(true);
-            lbIdade.setVisible(true);
-            lbContrato.setVisible(true);
-            lbFlag.setVisible(true);
-            lbStatus.setVisible(true);
-            lbOver.setVisible(true);
+            lbNome.setVisible(true); lbNum.setVisible(true); lbIdade.setVisible(true);
+            lbContrato.setVisible(true); lbFlag.setVisible(true); lbStatus.setVisible(true); lbOver.setVisible(true);
 
-            // Regra de Cor e Texto: F1 tem Reserva a partir do 3º (index 2). Indy/Nascar todos titulares.
             boolean isF1 = SessaoJogo.categoriaKey.toLowerCase().contains("f1");
             boolean isReserva = isF1 && index >= 2;
 
             if (isReserva) {
                 Color corReserva = Color.GRAY;
-                lbNome.setForeground(corReserva);
-                lbNum.setForeground(corReserva);
-                lbIdade.setForeground(corReserva);
-                lbContrato.setForeground(corReserva);
-                lbStatus.setForeground(corReserva);
-                lbOver.setForeground(corReserva);
-                // Ex: index 2 vira "Reserva 1"
+                lbNome.setForeground(corReserva); lbNum.setForeground(corReserva);
+                lbIdade.setForeground(corReserva); lbContrato.setForeground(corReserva);
+                lbStatus.setForeground(corReserva); lbOver.setForeground(corReserva);
                 lbStatus.setText("Reserva " + (index - 1));
             } else {
                 Color corTitular = Color.BLACK;
-                lbNome.setForeground(corTitular);
-                lbNum.setForeground(corTitular);
-                lbIdade.setForeground(corTitular);
-                lbContrato.setForeground(corTitular);
-                lbStatus.setForeground(corTitular);
-                lbOver.setForeground(corTitular);
-                // Ex: index 0 vira "Piloto 1"
+                lbNome.setForeground(corTitular); lbNum.setForeground(corTitular);
+                lbIdade.setForeground(corTitular); lbContrato.setForeground(corTitular);
+                lbStatus.setForeground(corTitular); lbOver.setForeground(corTitular);
                 lbStatus.setText("Piloto " + (index + 1));
             }
         } else {
-            // Sem piloto nessa vaga: Esconde a linha toda
-            lbNome.setVisible(false);
-            lbNum.setVisible(false);
-            lbIdade.setVisible(false);
-            lbContrato.setVisible(false);
-            lbFlag.setVisible(false);
-            lbStatus.setVisible(false);
-            lbOver.setVisible(false);
+            lbNome.setVisible(false); lbNum.setVisible(false); lbIdade.setVisible(false);
+            lbContrato.setVisible(false); lbFlag.setVisible(false); lbStatus.setVisible(false); lbOver.setVisible(false);
+        }
+    }
+
+    // --- MÉTODOS DE TABELA (CORRIGIDOS) ---
+
+    private void preencherTabelas() {
+        // TABELA DE PILOTOS (Sem Logo de Equipe)
+        String[] colunasPilotos = {"Pos", "País", "Piloto", "Equipe", "Pts", "Diff", "Vit", "Pód", "Poles"};
+        
+        DefaultTableModel modelPilotos = new DefaultTableModel(colunasPilotos, 0) {
+            @Override
+            public Class<?> getColumnClass(int columnIndex) {
+                if (columnIndex == 1) return ImageIcon.class; 
+                return Object.class;
+            }
+            @Override
+            public boolean isCellEditable(int row, int column) { return false; }
+        };
+
+        // 1. Carregar Dados Globais
+        List<Equipe> todasEquipes = CarregadorJSON.carregarEquipes(SessaoJogo.categoriaKey, SessaoJogo.anoSelecionado);
+        List<Piloto> todosPilotos = CarregadorJSON.carregarPilotos(SessaoJogo.categoriaKey, SessaoJogo.anoSelecionado);
+        
+        boolean isF1 = SessaoJogo.categoriaKey.toLowerCase().contains("f1");
+        List<Piloto> pilotosGrid = new ArrayList<>();
+
+        // 2. Associar Pilotos às Equipes e Filtrar
+        for (Equipe eq : todasEquipes) {
+            List<String> ids = eq.getPilotosContratadosIDs();
+            if (ids == null) continue;
+
+            for (int i = 0; i < ids.size(); i++) {
+                // REGRA DE FILTRO: Na F1, apenas os 2 primeiros (0 e 1) entram na tabela
+                if (isF1 && i >= 2) continue; 
+
+                String idProcurado = ids.get(i);
+                Piloto pilotoEncontrado = buscarPilotoNaLista(todosPilotos, idProcurado);
+
+                if (pilotoEncontrado != null) {
+                    // "Hack": Como Piloto não tem o campo equipe, setamos o nome aqui para exibir na tabela
+                    // Isso não salva no JSON, é apenas em tempo de execução na memória para exibição
+                    // (Requer adicionar setNomeEquipe na classe Piloto ou usar um wrapper,
+                    //  aqui estou assumindo que a tabela vai usar o valor direto na linha)
+                    
+                    // Adicionar à lista final com a referência da equipe
+                    // Vou criar um objeto anônimo ou adicionar direto na row
+                    
+                    ImageIcon flag = obterIcone("/resource/Bandeira " + pilotoEncontrado.getNacionalidade() + ".png");
+                    String pilotoTexto = "#" + pilotoEncontrado.getNumero() + " - " + pilotoEncontrado.getNome();
+                    
+                    // Adiciona direto no modelo
+                    modelPilotos.addRow(new Object[]{
+                        0, // Pos (será ajustado depois)
+                        flag,
+                        pilotoTexto,
+                        eq.getNome(), // Nome da Equipe
+                        0, // Pontos (0 no inicio)
+                        0, // Diff
+                        0, 0, 0
+                    });
+                }
+            }
+        }
+        
+        // Ajustar Posições na Tabela (1, 2, 3...)
+        for(int i=0; i<modelPilotos.getRowCount(); i++) {
+            modelPilotos.setValueAt(i+1, i, 0);
+        }
+
+        tabelaPilotos.setModel(modelPilotos);
+        
+        // Renderização e Larguras
+        CentralizadoRenderer centerRenderer = new CentralizadoRenderer();
+        for (int i = 0; i < tabelaPilotos.getColumnCount(); i++) {
+            tabelaPilotos.getColumnModel().getColumn(i).setCellRenderer(centerRenderer);
+        }
+
+        tabelaPilotos.getColumnModel().getColumn(0).setPreferredWidth(30);  // Pos
+        tabelaPilotos.getColumnModel().getColumn(1).setPreferredWidth(40);  // Bandeira
+        tabelaPilotos.getColumnModel().getColumn(2).setPreferredWidth(200); // Piloto (Maior)
+        tabelaPilotos.getColumnModel().getColumn(3).setPreferredWidth(150); // Equipe
+        tabelaPilotos.getColumnModel().getColumn(4).setPreferredWidth(35);  // Pts
+        tabelaPilotos.getColumnModel().getColumn(5).setPreferredWidth(35);  // Diff
+        tabelaPilotos.getColumnModel().getColumn(6).setPreferredWidth(30);  // Vit
+        tabelaPilotos.getColumnModel().getColumn(7).setPreferredWidth(30);  // Pod
+        tabelaPilotos.getColumnModel().getColumn(8).setPreferredWidth(30);  // Poles
+
+        // --- 2. TABELA DE CONSTRUTORES (Sem Logo, conforme pedido) ---
+        String[] colunasEquipes = {"Pos", "País", "Equipe", "Pts", "Diff", "Vit", "Pód", "Poles"};
+        
+        DefaultTableModel modelEquipes = new DefaultTableModel(colunasEquipes, 0) {
+            @Override
+            public Class<?> getColumnClass(int columnIndex) {
+                if (columnIndex == 1) return ImageIcon.class; // País
+                return Object.class;
+            }
+            @Override
+            public boolean isCellEditable(int row, int column) { return false; }
+        };
+
+        // Ordenar equipes por reputação ou nome (já que pontos são 0)
+        // Collections.sort(todasEquipes, ...);
+
+        int posE = 1;
+        for (Equipe eq : todasEquipes) {
+            ImageIcon flag = obterIcone(eq.getCaminhoBandeiraSede());
+            
+            modelEquipes.addRow(new Object[]{
+                posE++,
+                flag,
+                eq.getNome(),
+                0, 0, 0, 0, 0
+            });
+        }
+
+        tabelaConstrutores.setModel(modelEquipes);
+        for (int i = 0; i < tabelaConstrutores.getColumnCount(); i++) {
+            tabelaConstrutores.getColumnModel().getColumn(i).setCellRenderer(centerRenderer);
+        }
+        
+        tabelaConstrutores.getColumnModel().getColumn(0).setPreferredWidth(30);
+        tabelaConstrutores.getColumnModel().getColumn(1).setPreferredWidth(40);
+        tabelaConstrutores.getColumnModel().getColumn(2).setPreferredWidth(200); // Equipe Maior
+        tabelaConstrutores.getColumnModel().getColumn(3).setPreferredWidth(35);
+        tabelaConstrutores.getColumnModel().getColumn(4).setPreferredWidth(35);
+    }
+    
+    // Método para achar o piloto na lista global pelo "ID" (Nome normalizado)
+    private Piloto buscarPilotoNaLista(List<Piloto> lista, String idDaEquipe) {
+        // Normaliza o ID da equipe (ex: "maxverstappen")
+        String idBusca = normalizarTexto(idDaEquipe);
+        
+        for (Piloto p : lista) {
+            // Tenta criar um ID a partir do nome do piloto (ex: "Max Verstappen" -> "maxverstappen")
+            String nomeNormalizado = normalizarTexto(p.getNome());
+            
+            // Verifica:
+            // 1. Igualdade exata
+            // 2. Se o ID contém o nome (ex: id="verstappen", nome="maxverstappen" - vice versa)
+            if (idBusca.equals(nomeNormalizado) || nomeNormalizado.contains(idBusca) || idBusca.contains(nomeNormalizado)) {
+                return p;
+            }
+        }
+        return null;
+    }
+    
+    // Helper para remover acentos, espaços e deixar minúsculo
+    private String normalizarTexto(String texto) {
+        if (texto == null) return "";
+        String n = Normalizer.normalize(texto, Normalizer.Form.NFD);
+        n = n.replaceAll("[^\\p{ASCII}]", ""); // Remove acentos
+        return n.toLowerCase().replace(" ", "").trim();
+    }
+    
+    static class CentralizadoRenderer extends DefaultTableCellRenderer {
+        @Override
+        public Component getTableCellRendererComponent(JTable table, Object value, boolean isSelected, boolean hasFocus, int row, int column) {
+            super.getTableCellRendererComponent(table, value, isSelected, hasFocus, row, column);
+            setHorizontalAlignment(SwingConstants.CENTER);
+            setVerticalAlignment(SwingConstants.CENTER);
+            if (value instanceof ImageIcon) {
+                setIcon((ImageIcon) value);
+                setText(""); 
+            } else {
+                setIcon(null);
+                setText(value != null ? value.toString() : "");
+            }
+            return this;
         }
     }
 
     private void atualizarCalendarioUI() {
         Pista pistaVisual = buscarPistaPorIndice(indiceEtapaVisual);
-        
         int etapaReal = campeonato.getNumeroEtapaAtual();
         int total = campeonato.getTotalEtapas();
         int etapaVisualNumero = indiceEtapaVisual + 1;
@@ -513,24 +609,19 @@ public class TelaPrincipal extends JFrame {
         LB_Temporada.setText("Temporada 1, Etapa Atual: " + etapaReal + "/" + total);
 
         if (pistaVisual != null) {
-            // VERIFICAÇÃO DE CATEGORIA
             boolean isIndyOrNascar = SessaoJogo.categoriaKey.contains("indy") || SessaoJogo.categoriaKey.contains("nascar");
             
-            // 1. LINHA TOPO (LOCAL) + BANDEIRA
             if (isIndyOrNascar) {
-                // Indy/NASCAR: Mostra o NOME DA PISTA (Ex: Daytona)
                 LB_LocalPista.setText(pistaVisual.getNome());
             } else {
-                // F1: Mostra o PAÍS (Ex: Bahrain)
                 LB_LocalPista.setText(pistaVisual.getPais());
             }
             carregarImagem(LB_BandeiraPista, "/resource/Bandeira " + pistaVisual.getPais() + ".png");
 
-            // 2. LINHA MEIO (TIPO DE PISTA - Convertido para PT-BR Amigável)
             String tipoTexto = "Misto";
             if (pistaVisual.getTipo() != null) {
                 switch (pistaVisual.getTipo()) {
-                    case MISTO_PERMANENTE: tipoTexto = "Autódromo Permanente"; break; // Alterado conforme pedido
+                    case MISTO_PERMANENTE: tipoTexto = "Autódromo Permanente"; break;
                     case RUA_TEMPORARIO:   tipoTexto = "Circuito de Rua"; break;
                     case ROVAL:            tipoTexto = "Roval"; break;
                     case OVAL_CURTO:       tipoTexto = "Short Track"; break;
@@ -541,29 +632,18 @@ public class TelaPrincipal extends JFrame {
             }
             LB_TipoPista.setText(tipoTexto);
 
-            // 3. LINHA BAIXO (NOME ETAPA / GP)
             if (isIndyOrNascar) {
-                // Indy/NASCAR: Mostra o NOME DA ETAPA (Ex: Daytona 500)
                 LB_NomeEtapa.setText(pistaVisual.getEtapa());
             } else {
-                // F1: Mostra o NOME DA PISTA/GP que está na variável 'nome' do JSON (Ex: Grande Prêmio do Bahrein)
                 LB_NomeEtapa.setText(pistaVisual.getNome());
             }
 
-            // DEMAIS DADOS (COMUNS)
             LB_VoltaPista.setText(pistaVisual.getQtdVoltas() + " voltas");
-
-            String unidade = "km";
-            if (isIndyOrNascar) {
-                unidade = "milhas";
-            }
+            String unidade = isIndyOrNascar ? "milhas" : "km";
             LB_ComprimentoPista.setText(pistaVisual.getComprimentoKm() + " " + unidade);
 
             double desgaste = pistaVisual.getFatorDesgastePneu();
-            String desgasteTexto;
-            if (desgaste < 1.0) desgasteTexto = "Baixo";
-            else if (desgaste <= 1.5) desgasteTexto = "Médio";
-            else desgasteTexto = "Alto";
+            String desgasteTexto = (desgaste < 1.0) ? "Baixo" : (desgaste <= 1.5) ? "Médio" : "Alto";
             LB_DesgastePneu.setText("Desgaste Pneu: " + desgasteTexto);
 
             String caminhoImagem = "/resource/Icone64pxErro.png";
@@ -580,7 +660,7 @@ public class TelaPrincipal extends JFrame {
     
     private Pista buscarPistaPorIndice(int index) {
         try {
-            List<Pista> todas = dados.CarregadorJSON.carregarCalendario(SessaoJogo.categoriaKey, SessaoJogo.anoSelecionado);
+            List<Pista> todas = CarregadorJSON.carregarCalendario(SessaoJogo.categoriaKey, SessaoJogo.anoSelecionado);
             if (index >= 0 && index < todas.size()) {
                 return todas.get(index);
             }
@@ -596,22 +676,24 @@ public class TelaPrincipal extends JFrame {
     }
 
     private void carregarImagem(JLabel lbl, String path) {
+        ImageIcon icon = obterIcone(path);
+        if (icon != null) lbl.setIcon(icon);
+        else lbl.setIcon(null);
+    }
+    
+    private ImageIcon obterIcone(String path) {
         try {
             if (path != null && !path.isEmpty()) {
                 if (!path.startsWith("/")) path = "/" + path;
                 if (!path.startsWith("/resource")) path = "/resource" + path;
                 path = path.replace("//", "/");
-                
                 java.net.URL imgUrl = getClass().getResource(path);
-                if (imgUrl != null) {
-                    lbl.setIcon(new ImageIcon(imgUrl));
-                } else {
-                    lbl.setIcon(null);
-                }
+                if (imgUrl != null) return new ImageIcon(imgUrl);
             }
         } catch (Exception e) {
-            lbl.setIcon(null);
+            e.printStackTrace();
         }
+        return null;
     }
 
     private void irParaCorrida() {

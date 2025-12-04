@@ -56,7 +56,7 @@
     "arquivos": {
       "logo": "/resource/Equipe_F1_Alpine.png",
       "logoSvg": "/resource/Equipe_F1_Alpine.svg",
-      "bandeiraSede": "/resource/Bandeira Reino Unido.png",
+      "bandeiraSede": "/resource/Bandeira Franca.png",
       "bandeiraMotor": "/resource/Bandeira Franca.png",
       "logoMotor": "/resource/Motor_RenaultPQ.png"
     },
@@ -213,7 +213,7 @@
     "arquivos": {
       "logo": "/resource/Equipe_F1_Mercedes.png",
       "logoSvg": "/resource/Equipe_F1_Mercedes.svg",
-      "bandeiraSede": "/resource/Bandeira Reino Unido.png",
+      "bandeiraSede": "/resource/Bandeira Alemanha.png",
       "bandeiraMotor": "/resource/Bandeira Alemanha.png",
       "logoMotor": "/resource/Motor_MercedesPQ.png"
     },

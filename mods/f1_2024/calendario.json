@@ -1,7 +1,7 @@
 [
   {
     "rodada": 1,
-    "nome": "Grande Prêmio do Bahrein",
+    "nome": "Formula 1 Gulf Air Bahrain Grand Prix",
     "pais": "Bahrain",
     "tipo": "MISTO_PERMANENTE",
     "qtdVoltas": 57,
@@ -22,7 +22,7 @@
   },
   {
     "rodada": 2,
-    "nome": "Grande Prêmio da Arábia Saudita",
+    "nome": "Formula 1 STC Saudi Arabian Grand Prix",
     "pais": "Arabia Saudita",
     "tipo": "RUA_TEMPORARIO",
     "qtdVoltas": 50,
@@ -43,7 +43,7 @@
   },
   {
     "rodada": 3,
-    "nome": "Grande Prêmio da Austrália",
+    "nome": "Formula 1 Rolex Australian Grand Prix",
     "pais": "Australia",
     "tipo": "RUA_TEMPORARIO",
     "qtdVoltas": 58,
@@ -64,7 +64,7 @@
   },
   {
     "rodada": 4,
-    "nome": "Grande Prêmio do Japão",
+    "nome": "Formula 1 MSC Cruises Japanese Grand Prix",
     "pais": "Japao",
     "tipo": "MISTO_PERMANENTE",
     "qtdVoltas": 53,
@@ -85,7 +85,7 @@
   },
   {
     "rodada": 5,
-    "nome": "Grande Prêmio da China",
+    "nome": "Formula 1 Lenovo Chinese Grand Prix",
     "pais": "China",
     "tipo": "MISTO_PERMANENTE",
     "qtdVoltas": 56,
@@ -106,7 +106,7 @@
   },
   {
     "rodada": 6,
-    "nome": "Grande Prêmio de Miami",
+    "nome": "Formula 1 Crypto.com Miami Grand Prix",
     "pais": "EUA",
     "tipo": "RUA_TEMPORARIO",
     "qtdVoltas": 57,
@@ -127,7 +127,7 @@
   },
   {
     "rodada": 7,
-    "nome": "Grande Prêmio da Emília-Romanha",
+    "nome": "<html>Formula 1 MSC Cruises Gran Premio del Made in Italy e dell'Emilia-Romagna</html>",
     "pais": "Italia",
     "tipo": "MISTO_PERMANENTE",
     "qtdVoltas": 63,
@@ -148,7 +148,7 @@
   },
   {
     "rodada": 8,
-    "nome": "Grande Prêmio de Mônaco",
+    "nome": "Formula 1 Grand Prix de Monaco",
     "pais": "Monaco",
     "tipo": "RUA_TEMPORARIO",
     "qtdVoltas": 78,
@@ -169,7 +169,7 @@
   },
   {
     "rodada": 9,
-    "nome": "Grande Prêmio do Canadá",
+    "nome": "Formula 1 AWS Grand Prix du Canada",
     "pais": "Canada",
     "tipo": "MISTO_PERMANENTE",
     "qtdVoltas": 70,
@@ -190,7 +190,7 @@
   },
   {
     "rodada": 10,
-    "nome": "Grande Prêmio da Espanha",
+    "nome": "Formula 1 Aramco Gran Premio de España",
     "pais": "Espanha",
     "tipo": "MISTO_PERMANENTE",
     "qtdVoltas": 66,
@@ -211,7 +211,7 @@
   },
   {
     "rodada": 11,
-    "nome": "Grande Prêmio da Áustria",
+    "nome": "Formula 1 Qatar Airways Austrian Grand Prix",
     "pais": "Austria",
     "tipo": "MISTO_PERMANENTE",
     "qtdVoltas": 71,
@@ -232,7 +232,7 @@
   },
   {
     "rodada": 12,
-    "nome": "Grande Prêmio da Grã-Bretanha",
+    "nome": "Formula 1 Qatar Airways British Grand Prix",
     "pais": "Reino Unido",
     "tipo": "MISTO_PERMANENTE",
     "qtdVoltas": 52,
@@ -253,7 +253,7 @@
   },
   {
     "rodada": 13,
-    "nome": "Grande Prêmio da Hungria",
+    "nome": "Formula 1 Hungarian Grand Prix",
     "pais": "Hungria",
     "tipo": "MISTO_PERMANENTE",
     "qtdVoltas": 70,
@@ -274,7 +274,7 @@
   },
   {
     "rodada": 14,
-    "nome": "Grande Prêmio da Bélgica",
+    "nome": "Formula 1 Rolex Belgian Grand Prix",
     "pais": "Belgica",
     "tipo": "MISTO_PERMANENTE",
     "qtdVoltas": 44,
@@ -295,7 +295,7 @@
   },
   {
     "rodada": 15,
-    "nome": "Grande Prêmio da Holanda",
+    "nome": "Formula 1 Heineken Dutch Grand Prix",
     "pais": "Holanda",
     "tipo": "MISTO_PERMANENTE",
     "qtdVoltas": 72,
@@ -316,7 +316,7 @@
   },
   {
     "rodada": 16,
-    "nome": "Grande Prêmio da Itália",
+    "nome": "Formula 1 Pirelli Gran Premio d'Italia",
     "pais": "Italia",
     "tipo": "MISTO_PERMANENTE",
     "qtdVoltas": 53,
@@ -337,7 +337,7 @@
   },
   {
     "rodada": 17,
-    "nome": "Grande Prêmio do Azerbaijão",
+    "nome": "Formula 1 Qatar Airways Azerbaijan Grand Prix",
     "pais": "Azerbaijao",
     "tipo": "RUA_TEMPORARIO",
     "qtdVoltas": 51,
@@ -358,7 +358,7 @@
   },
   {
     "rodada": 18,
-    "nome": "Grande Prêmio de Singapura",
+    "nome": "Formula 1 Singapore Airlines Singapore Grand Prix",
     "pais": "Singapura",
     "tipo": "RUA_TEMPORARIO",
     "qtdVoltas": 62,
@@ -379,7 +379,7 @@
   },
   {
     "rodada": 19,
-    "nome": "Grande Prêmio dos EUA",
+    "nome": "Formula 1 Pirelli United States Grand Prix",
     "pais": "EUA",
     "tipo": "MISTO_PERMANENTE",
     "qtdVoltas": 56,
@@ -400,7 +400,7 @@
   },
   {
     "rodada": 20,
-    "nome": "Grande Prêmio da Cidade do México",
+    "nome": "Formula 1 Gran Premio de la Ciudad de México",
     "pais": "Mexico",
     "tipo": "MISTO_PERMANENTE",
     "qtdVoltas": 71,
@@ -421,7 +421,7 @@
   },
   {
     "rodada": 21,
-    "nome": "Grande Prêmio de São Paulo",
+    "nome": "Formula 1 Lenovo Grande Prêmio de São Paulo",
     "pais": "Brasil",
     "tipo": "MISTO_PERMANENTE",
     "qtdVoltas": 71,
@@ -442,7 +442,7 @@
   },
   {
     "rodada": 22,
-    "nome": "Grande Prêmio de Las Vegas",
+    "nome": "Formula 1 Heineken Silver Las Vegas Grand Prix",
     "pais": "EUA",
     "tipo": "RUA_TEMPORARIO",
     "qtdVoltas": 50,
@@ -463,7 +463,7 @@
   },
   {
     "rodada": 23,
-    "nome": "Grande Prêmio do Catar",
+    "nome": "Formula 1 Qatar Airways Qatar Grand Prix",
     "pais": "Qatar",
     "tipo": "MISTO_PERMANENTE",
     "qtdVoltas": 57,
@@ -484,7 +484,7 @@
   },
   {
     "rodada": 24,
-    "nome": "Grande Prêmio de Abu Dhabi",
+    "nome": "Formula 1 Etihad Airways Abu Dhabi Grand Prix",
     "pais": "Emirados Arabes Unidos",
     "tipo": "MISTO_PERMANENTE",
     "qtdVoltas": 58,

@@ -62,6 +62,7 @@ public class TelaSelecionarEquipe extends JFrame {
     }
 
     public TelaSelecionarEquipe() {
+    	setIconImage(Toolkit.getDefaultToolkit().getImage(TelaSelecionarEquipe.class.getResource("/resource/Icone16px.png")));
         setTitle("Grid Boss - Selecionar Equipe");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setBounds(100, 100, 586, 740);

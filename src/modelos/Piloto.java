@@ -11,6 +11,12 @@ public class Piloto {
     private double overall; 
     private int exigenciaMinimaDeEquipe; 
     
+    // --- ESTATÍSTICAS DA TEMPORADA (Adicionadas) ---
+    private int pontos;
+    private int vitorias;
+    private int podios;
+    private int poles;
+    
     // --- ESTATÍSTICAS DETALHADAS (0 a 100) ---
     private double ritmo;          
     private double experiencia;    
@@ -26,6 +32,9 @@ public class Piloto {
     private double habilidadeMisto; // Interlagos, Spa (Padrão F1)
     private double habilidadeOval;  // Indianápolis, Daytona (Padrão Indy/Nascar)
     
+    // Campo auxiliar para exibição em tabelas (não salvo no JSON)
+    private transient String nomeEquipeAtual;
+
     private List<Contrato> contratosAtivos;
 
     // --- CONSTRUTOR PADRÃO (Necessário para o Gson) ---
@@ -33,7 +42,7 @@ public class Piloto {
         this.contratosAtivos = new ArrayList<>();
     }
 
-    // Construtor completo atualizado
+    // Construtor completo
     public Piloto(String nome, String pais, int numero, int idade, double overall, int exigencia) {
         this(); 
         this.nome = nome;
@@ -104,7 +113,7 @@ public class Piloto {
         return false;
     }
 
-    // --- GETTERS ---
+    // --- GETTERS E SETTERS ---
     public String getNome() { return nome; }
     public String getNacionalidade() { return nacionalidade; }
     public int getNumero() { return numero; }
@@ -113,6 +122,27 @@ public class Piloto {
     public void setOverall(double over) { this.overall = over; }
     public List<Contrato> getContratos() { return contratosAtivos; }
     
+    // Stats da Temporada
+    public int getPontos() { return pontos; }
+    public void setPontos(int pontos) { this.pontos = pontos; }
+    public void adicionarPontos(int pontos) { this.pontos += pontos; }
+
+    public int getVitorias() { return vitorias; }
+    public void setVitorias(int vitorias) { this.vitorias = vitorias; }
+    public void adicionarVitoria() { this.vitorias++; }
+
+    public int getPodios() { return podios; }
+    public void setPodios(int podios) { this.podios = podios; }
+    public void adicionarPodio() { this.podios++; }
+
+    public int getPoles() { return poles; }
+    public void setPoles(int poles) { this.poles = poles; }
+    public void adicionarPole() { this.poles++; }
+    
+    // Setter Auxiliar para Tabela
+    public void setNomeEquipeAtual(String nome) { this.nomeEquipeAtual = nome; }
+    public String getNomeEquipeAtual() { return nomeEquipeAtual; }
+
     // Stats de Corrida
     public double getRitmo() { return ritmo; }
     public double getExperiencia() { return experiencia; }

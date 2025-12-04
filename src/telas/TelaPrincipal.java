@@ -16,6 +16,7 @@ import javax.swing.table.TableColumnModel;
 import java.awt.*;
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 import java.text.Normalizer;
 
@@ -202,7 +203,7 @@ public class TelaPrincipal extends JFrame {
         lblTituloPilotos.setBounds(12, 99, 618, 25);
         contentPane.add(lblTituloPilotos);
 
-        // Labels dos 5 Slots
+        // P1 a P5
         LB_BandeiraP1 = criarLabel(10, 135, 25, 25); LB_NumP1 = criarLabel(35, 135, 35, 25); LB_NomeP1 = criarLabel(70, 135, 205, 25); LB_IdadeP1 = criarLabel(275, 135, 50, 25); LB_Over_P1 = criarLabel(335, 135, 80, 25); LB_TempoContratoP1 = criarLabel(415, 135, 134, 25); LB_StatusP1 = criarLabel(550, 135, 80, 25);
         LB_BandeiraP2 = criarLabel(10, 160, 25, 25); LB_NumP2 = criarLabel(35, 160, 35, 25); LB_NomeP2 = criarLabel(70, 160, 205, 25); LB_IdadeP2 = criarLabel(275, 160, 50, 25); LB_Over_P2 = criarLabel(335, 160, 80, 25); LB_TempoContratoP2 = criarLabel(415, 160, 134, 25); LB_StatusP2 = criarLabel(550, 160, 80, 25);
         LB_BandeiraP3 = criarLabel(10, 185, 25, 25); LB_NumP3 = criarLabel(35, 185, 35, 25); LB_NomeP3 = criarLabel(70, 185, 205, 25); LB_IdadeP3 = criarLabel(275, 185, 50, 25); LB_Over_P3 = criarLabel(335, 185, 80, 25); LB_TempoContratoP3 = criarLabel(415, 185, 134, 25); LB_StatusP3 = criarLabel(550, 185, 80, 25);
@@ -375,7 +376,7 @@ public class TelaPrincipal extends JFrame {
             LB_TipoPista.setForeground(Color.BLUE);
         } else {
             carregarImagem(LB_CategoriaEscolhida, "/resource/Logo Nascar_OKPQ.png");
-            carregarImagem(LB_CarrosCat, "/resource/Cup Series.png");
+            carregarImagem(LB_CarrosCat, "/resource/Banner F1_OK.png");
             LB_TipoPista.setForeground(Color.BLUE);
         }
 
@@ -431,91 +432,111 @@ public class TelaPrincipal extends JFrame {
         }
     }
 
-    // --- MÉTODOS DE TABELA (CORRIGIDOS) ---
-
     private void preencherTabelas() {
-        // TABELA DE PILOTOS (Sem Logo de Equipe)
-        String[] colunasPilotos = {"Pos", "País", "Piloto", "Equipe", "Pts", "Diff", "Vit", "Pód", "Poles"};
+        // ------------------------------------------------------------------------
+        // 1. TABELA DE PILOTOS
+        // Colunas: Pos, País, Nº, Piloto, Equipe, Pts, Diff, Vit, Pód, Poles
+        // ------------------------------------------------------------------------
+        String[] colunasPilotos = {"Pos", "País", "Nº", "Piloto", "Equipe", "Pts", "Diff", "Vit", "Pód", "Poles"};
         
         DefaultTableModel modelPilotos = new DefaultTableModel(colunasPilotos, 0) {
             @Override
             public Class<?> getColumnClass(int columnIndex) {
-                if (columnIndex == 1) return ImageIcon.class; 
+                if (columnIndex == 1) return ImageIcon.class; // Apenas País é imagem
                 return Object.class;
             }
             @Override
             public boolean isCellEditable(int row, int column) { return false; }
         };
 
-        // 1. Carregar Dados Globais
+        // Carregar TODOS os dados do Mod/Temporada
         List<Equipe> todasEquipes = CarregadorJSON.carregarEquipes(SessaoJogo.categoriaKey, SessaoJogo.anoSelecionado);
         List<Piloto> todosPilotos = CarregadorJSON.carregarPilotos(SessaoJogo.categoriaKey, SessaoJogo.anoSelecionado);
         
         boolean isF1 = SessaoJogo.categoriaKey.toLowerCase().contains("f1");
         List<Piloto> pilotosGrid = new ArrayList<>();
 
-        // 2. Associar Pilotos às Equipes e Filtrar
+        // Cruzamento de Dados: Equipe -> IDs -> Objetos Piloto
         for (Equipe eq : todasEquipes) {
             List<String> ids = eq.getPilotosContratadosIDs();
             if (ids == null) continue;
 
             for (int i = 0; i < ids.size(); i++) {
-                // REGRA DE FILTRO: Na F1, apenas os 2 primeiros (0 e 1) entram na tabela
+                // REGRA F1: Apenas os 2 primeiros (titulares) aparecem na tabela
                 if (isF1 && i >= 2) continue; 
 
                 String idProcurado = ids.get(i);
                 Piloto pilotoEncontrado = buscarPilotoNaLista(todosPilotos, idProcurado);
 
                 if (pilotoEncontrado != null) {
-                    // "Hack": Como Piloto não tem o campo equipe, setamos o nome aqui para exibir na tabela
-                    // Isso não salva no JSON, é apenas em tempo de execução na memória para exibição
-                    // (Requer adicionar setNomeEquipe na classe Piloto ou usar um wrapper,
-                    //  aqui estou assumindo que a tabela vai usar o valor direto na linha)
-                    
-                    // Adicionar à lista final com a referência da equipe
-                    // Vou criar um objeto anônimo ou adicionar direto na row
-                    
-                    ImageIcon flag = obterIcone("/resource/Bandeira " + pilotoEncontrado.getNacionalidade() + ".png");
-                    String pilotoTexto = "#" + pilotoEncontrado.getNumero() + " - " + pilotoEncontrado.getNome();
-                    
-                    // Adiciona direto no modelo
-                    modelPilotos.addRow(new Object[]{
-                        0, // Pos (será ajustado depois)
-                        flag,
-                        pilotoTexto,
-                        eq.getNome(), // Nome da Equipe
-                        0, // Pontos (0 no inicio)
-                        0, // Diff
-                        0, 0, 0
-                    });
+                    // Vincula o nome da equipe ao piloto para exibição
+                    pilotoEncontrado.setNomeEquipeAtual(eq.getNome());
+                    pilotosGrid.add(pilotoEncontrado);
                 }
             }
         }
         
-        // Ajustar Posições na Tabela (1, 2, 3...)
-        for(int i=0; i<modelPilotos.getRowCount(); i++) {
-            modelPilotos.setValueAt(i+1, i, 0);
+        // ORDENAÇÃO: Pontos > Vitórias > Pódios > Nome
+        Collections.sort(pilotosGrid, new Comparator<Piloto>() {
+            @Override
+            public int compare(Piloto p1, Piloto p2) {
+                if (p1.getPontos() != p2.getPontos()) return Integer.compare(p2.getPontos(), p1.getPontos());
+                if (p1.getVitorias() != p2.getVitorias()) return Integer.compare(p2.getVitorias(), p1.getVitorias());
+                if (p1.getPodios() != p2.getPodios()) return Integer.compare(p2.getPodios(), p1.getPodios());
+                return p1.getNome().compareToIgnoreCase(p2.getNome());
+            }
+        });
+
+        // Preenchimento das Linhas
+        int posP = 1;
+        int pontosLiderP = (pilotosGrid.isEmpty()) ? 0 : pilotosGrid.get(0).getPontos();
+
+        for (Piloto p : pilotosGrid) {
+            ImageIcon flag = obterIcone("/resource/Bandeira " + p.getNacionalidade() + ".png");
+            int diff = pontosLiderP - p.getPontos();
+            
+            modelPilotos.addRow(new Object[]{
+                posP++, 
+                flag, 
+                p.getNumero(),          // Coluna Nº isolada
+                p.getNome(),            // Apenas o nome
+                p.getNomeEquipeAtual(), // Nome da Equipe
+                p.getPontos(), 
+                diff, 
+                p.getVitorias(), 
+                p.getPodios(), 
+                p.getPoles()
+            });
         }
 
         tabelaPilotos.setModel(modelPilotos);
         
-        // Renderização e Larguras
+        // Configuração de Renderers (Alinhamento)
         CentralizadoRenderer centerRenderer = new CentralizadoRenderer();
+        EsquerdaRenderer leftRenderer = new EsquerdaRenderer();
+        
         for (int i = 0; i < tabelaPilotos.getColumnCount(); i++) {
-            tabelaPilotos.getColumnModel().getColumn(i).setCellRenderer(centerRenderer);
+            // Piloto (3) e Equipe (4) alinhados à Esquerda. O resto Centralizado.
+            if (i == 3 || i == 4) tabelaPilotos.getColumnModel().getColumn(i).setCellRenderer(leftRenderer);
+            else tabelaPilotos.getColumnModel().getColumn(i).setCellRenderer(centerRenderer);
         }
 
+        // Configuração de Larguras (Pixels)
         tabelaPilotos.getColumnModel().getColumn(0).setPreferredWidth(30);  // Pos
-        tabelaPilotos.getColumnModel().getColumn(1).setPreferredWidth(40);  // Bandeira
-        tabelaPilotos.getColumnModel().getColumn(2).setPreferredWidth(200); // Piloto (Maior)
-        tabelaPilotos.getColumnModel().getColumn(3).setPreferredWidth(150); // Equipe
-        tabelaPilotos.getColumnModel().getColumn(4).setPreferredWidth(35);  // Pts
-        tabelaPilotos.getColumnModel().getColumn(5).setPreferredWidth(35);  // Diff
-        tabelaPilotos.getColumnModel().getColumn(6).setPreferredWidth(30);  // Vit
-        tabelaPilotos.getColumnModel().getColumn(7).setPreferredWidth(30);  // Pod
-        tabelaPilotos.getColumnModel().getColumn(8).setPreferredWidth(30);  // Poles
+        tabelaPilotos.getColumnModel().getColumn(1).setPreferredWidth(40);  // País
+        tabelaPilotos.getColumnModel().getColumn(2).setPreferredWidth(30);  // Nº (Compacto)
+        tabelaPilotos.getColumnModel().getColumn(3).setPreferredWidth(170); // Piloto (Largo)
+        tabelaPilotos.getColumnModel().getColumn(4).setPreferredWidth(150); // Equipe
+        tabelaPilotos.getColumnModel().getColumn(5).setPreferredWidth(50);  // Pts
+        tabelaPilotos.getColumnModel().getColumn(6).setPreferredWidth(50);  // Diff
+        tabelaPilotos.getColumnModel().getColumn(7).setPreferredWidth(50);  // Vit
+        tabelaPilotos.getColumnModel().getColumn(8).setPreferredWidth(50);  // Pod
+        tabelaPilotos.getColumnModel().getColumn(9).setPreferredWidth(50);  // Poles
 
-        // --- 2. TABELA DE CONSTRUTORES (Sem Logo, conforme pedido) ---
+        // ------------------------------------------------------------------------
+        // 2. TABELA DE CONSTRUTORES
+        // Colunas: Pos, País, Equipe, Pts, Diff, Vit, Pód, Poles (Sem Logo)
+        // ------------------------------------------------------------------------
         String[] colunasEquipes = {"Pos", "País", "Equipe", "Pts", "Diff", "Vit", "Pód", "Poles"};
         
         DefaultTableModel modelEquipes = new DefaultTableModel(colunasEquipes, 0) {
@@ -528,45 +549,60 @@ public class TelaPrincipal extends JFrame {
             public boolean isCellEditable(int row, int column) { return false; }
         };
 
-        // Ordenar equipes por reputação ou nome (já que pontos são 0)
-        // Collections.sort(todasEquipes, ...);
+        // Ordenação
+        Collections.sort(todasEquipes, new Comparator<Equipe>() {
+            @Override
+            public int compare(Equipe e1, Equipe e2) {
+                if (e1.getPontos() != e2.getPontos()) return Integer.compare(e2.getPontos(), e1.getPontos());
+                if (e1.getVitorias() != e2.getVitorias()) return Integer.compare(e2.getVitorias(), e1.getVitorias());
+                if (e1.getPodios() != e2.getPodios()) return Integer.compare(e2.getPodios(), e1.getPodios());
+                return e1.getNome().compareToIgnoreCase(e2.getNome());
+            }
+        });
 
         int posE = 1;
+        int pontosLiderE = (todasEquipes.isEmpty()) ? 0 : todasEquipes.get(0).getPontos();
+
         for (Equipe eq : todasEquipes) {
             ImageIcon flag = obterIcone(eq.getCaminhoBandeiraSede());
-            
+            int diff = pontosLiderE - eq.getPontos();
+
             modelEquipes.addRow(new Object[]{
-                posE++,
-                flag,
+                posE++, 
+                flag, 
                 eq.getNome(),
-                0, 0, 0, 0, 0
+                eq.getPontos(), 
+                diff, 
+                eq.getVitorias(), 
+                eq.getPodios(), 
+                eq.getPoles()
             });
         }
 
         tabelaConstrutores.setModel(modelEquipes);
+        
         for (int i = 0; i < tabelaConstrutores.getColumnCount(); i++) {
-            tabelaConstrutores.getColumnModel().getColumn(i).setCellRenderer(centerRenderer);
+            // Equipe (2) alinhada à Esquerda
+            if (i == 2) tabelaConstrutores.getColumnModel().getColumn(i).setCellRenderer(leftRenderer);
+            else tabelaConstrutores.getColumnModel().getColumn(i).setCellRenderer(centerRenderer);
         }
         
-        tabelaConstrutores.getColumnModel().getColumn(0).setPreferredWidth(30);
-        tabelaConstrutores.getColumnModel().getColumn(1).setPreferredWidth(40);
-        tabelaConstrutores.getColumnModel().getColumn(2).setPreferredWidth(200); // Equipe Maior
-        tabelaConstrutores.getColumnModel().getColumn(3).setPreferredWidth(35);
-        tabelaConstrutores.getColumnModel().getColumn(4).setPreferredWidth(35);
+        // Larguras Equipes
+        tabelaConstrutores.getColumnModel().getColumn(0).setPreferredWidth(30); // Pos
+        tabelaConstrutores.getColumnModel().getColumn(1).setPreferredWidth(40); // País
+        tabelaConstrutores.getColumnModel().getColumn(2).setPreferredWidth(200); // Equipe
+        tabelaConstrutores.getColumnModel().getColumn(3).setPreferredWidth(50); // Pts
+        tabelaConstrutores.getColumnModel().getColumn(4).setPreferredWidth(50); // Diff
+        tabelaConstrutores.getColumnModel().getColumn(5).setPreferredWidth(50); // Vit
+        tabelaConstrutores.getColumnModel().getColumn(6).setPreferredWidth(50); // Pod
+        tabelaConstrutores.getColumnModel().getColumn(7).setPreferredWidth(50); // Poles
     }
     
-    // Método para achar o piloto na lista global pelo "ID" (Nome normalizado)
     private Piloto buscarPilotoNaLista(List<Piloto> lista, String idDaEquipe) {
-        // Normaliza o ID da equipe (ex: "maxverstappen")
         String idBusca = normalizarTexto(idDaEquipe);
-        
         for (Piloto p : lista) {
-            // Tenta criar um ID a partir do nome do piloto (ex: "Max Verstappen" -> "maxverstappen")
             String nomeNormalizado = normalizarTexto(p.getNome());
-            
-            // Verifica:
-            // 1. Igualdade exata
-            // 2. Se o ID contém o nome (ex: id="verstappen", nome="maxverstappen" - vice versa)
+            // Tenta casar ID com Nome (ex: "verstappen" com "Max Verstappen")
             if (idBusca.equals(nomeNormalizado) || nomeNormalizado.contains(idBusca) || idBusca.contains(nomeNormalizado)) {
                 return p;
             }
@@ -574,11 +610,10 @@ public class TelaPrincipal extends JFrame {
         return null;
     }
     
-    // Helper para remover acentos, espaços e deixar minúsculo
     private String normalizarTexto(String texto) {
         if (texto == null) return "";
         String n = Normalizer.normalize(texto, Normalizer.Form.NFD);
-        n = n.replaceAll("[^\\p{ASCII}]", ""); // Remove acentos
+        n = n.replaceAll("[^\\p{ASCII}]", "");
         return n.toLowerCase().replace(" ", "").trim();
     }
     
@@ -594,6 +629,23 @@ public class TelaPrincipal extends JFrame {
             } else {
                 setIcon(null);
                 setText(value != null ? value.toString() : "");
+            }
+            return this;
+        }
+    }
+
+    static class EsquerdaRenderer extends DefaultTableCellRenderer {
+        @Override
+        public Component getTableCellRendererComponent(JTable table, Object value, boolean isSelected, boolean hasFocus, int row, int column) {
+            super.getTableCellRendererComponent(table, value, isSelected, hasFocus, row, column);
+            setHorizontalAlignment(SwingConstants.LEFT);
+            setVerticalAlignment(SwingConstants.CENTER);
+            if (value instanceof ImageIcon) {
+                setIcon((ImageIcon) value);
+                setText("");
+            } else {
+                setIcon(null);
+                setText(value != null ? "  " + value.toString() : ""); // Espaçamento para não colar na borda
             }
             return this;
         }

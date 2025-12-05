@@ -48,4 +48,9 @@ public class CampeonatoService {
     public int getTotalEtapas() {
         return calendario.size();
     }
+
+    // --- NOVO MÉTODO PARA ACESSO EXTERNO ---
+    public List<Pista> getCalendario() {
+        return calendario;
+    }
 }

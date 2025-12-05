@@ -2,6 +2,7 @@ package telas;
 
 import com.formdev.flatlaf.FlatLightLaf;
 import dados.CarregadorJSON;
+import dados.DadosDoJogo; // Importado
 import dados.SessaoJogo;
 import modelos.Equipe;
 import modelos.Piloto;
@@ -10,8 +11,8 @@ import modelos.TipoContrato;
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 import java.awt.*;
-import java.util.List;
 import java.util.ArrayList;
+import java.util.List;
 
 public class TelaSelecionarEquipe extends JFrame {
 
@@ -36,12 +37,12 @@ public class TelaSelecionarEquipe extends JFrame {
     
     private JTextField tfNomeDirigente;
 
-    // --- DADOS CARREGADOS DO JSON ---
+    // --- DADOS CARREGADOS DO JSON (Apenas para visualização nesta tela) ---
     private List<Equipe> equipesDisponiveis = new ArrayList<>();
     private List<Piloto> todosPilotos = new ArrayList<>();
-    private Equipe equipeSelecionadaObj = null; // Guarda o objeto real selecionado
+    private Equipe equipeSelecionadaObj = null; 
 
-    // Variáveis Globais
+    // Variáveis Globais (Mantidas por compatibilidade, mas o ideal é usar DadosDoJogo)
     public static String nomeDirigente;
 
     public static void main(String[] args) {
@@ -135,7 +136,6 @@ public class TelaSelecionarEquipe extends JFrame {
             lblBandeiras[i] = new JLabel("");
             lblBandeiras[i].setHorizontalAlignment(SwingConstants.CENTER);
             lblBandeiras[i].setBounds(528, startY + (i * gapY), 32, 21);
-            //lblBandeiras[i].setBorder(BorderFactory.createLineBorder(Color.LIGHT_GRAY));
             contentPane.add(lblBandeiras[i]);
         }
 
@@ -226,7 +226,7 @@ public class TelaSelecionarEquipe extends JFrame {
         contentPane.add(l);
     }
 
-    // --- LÓGICA DE DADOS (JSON) ---
+    // --- LÓGICA DE DADOS (Visualização apenas) ---
 
     private void carregarDadosIniciais() {
         String cat = SessaoJogo.categoriaKey;
@@ -235,6 +235,7 @@ public class TelaSelecionarEquipe extends JFrame {
         lblCategoriaBanner.setText(SessaoJogo.categoriaSelecionada + " - Temporada " + ano);
         carregarImagem(lblLogoCategoria, SessaoJogo.IMAGEM_SELECIONADA);
 
+        // Carrega dados locais APENAS para popular o combobox e mostrar na tela
         this.todosPilotos = CarregadorJSON.carregarPilotos(cat, ano);
         this.equipesDisponiveis = CarregadorJSON.carregarEquipes(cat, ano);
 
@@ -243,7 +244,7 @@ public class TelaSelecionarEquipe extends JFrame {
             return;
         }
 
-        vincularPilotosAsEquipes();
+        vincularPilotosAsEquipesLocal();
 
         DefaultComboBoxModel<String> model = new DefaultComboBoxModel<>();
         for (Equipe eq : equipesDisponiveis) {
@@ -254,12 +255,12 @@ public class TelaSelecionarEquipe extends JFrame {
         if (model.getSize() > 0) cbListaEquipes.setSelectedIndex(0);
     }
 
-    private void vincularPilotosAsEquipes() {
+    private void vincularPilotosAsEquipesLocal() {
         for (Equipe eq : equipesDisponiveis) {
             List<String> idsContratados = eq.getPilotosContratadosIDs();
             if (idsContratados != null) {
                 for (String idAlvo : idsContratados) {
-                    Piloto pilotoEncontrado = buscarPilotoPorId(idAlvo);
+                    Piloto pilotoEncontrado = buscarPilotoPorIdLocal(idAlvo);
                     if (pilotoEncontrado != null) {
                         eq.adicionarPilotoDoLoad(pilotoEncontrado, TipoContrato.TITULAR);
                     }
@@ -268,7 +269,7 @@ public class TelaSelecionarEquipe extends JFrame {
         }
     }
 
-    private Piloto buscarPilotoPorId(String id) {
+    private Piloto buscarPilotoPorIdLocal(String id) {
         for (Piloto p : todosPilotos) {
             if (p.getNome().equalsIgnoreCase(id)) {
                 return p;
@@ -294,22 +295,17 @@ public class TelaSelecionarEquipe extends JFrame {
         carregarImagem(lblFlagMotor, eq.getCaminhoBandeiraMotor());
         carregarImagem(lblLogoMotor, eq.getCaminhoLogoMotor());
 
-        // Preenche Pilotos
         List<Piloto> titulares = eq.getPilotosTitulares();
         
         for (int i = 0; i < 5; i++) {
-            // Lógica para ESCONDER ou MOSTRAR slots
             if (i < titulares.size()) {
-                // Piloto existe neste slot -> MOSTRAR
                 Piloto p = titulares.get(i);
-                
                 lblTitulos[i].setVisible(true);
                 lblNomes[i].setVisible(true);
                 lblNumeros[i].setVisible(true);
                 lblBandeiras[i].setVisible(true);
                 lblIdades[i].setVisible(true);
 
-                // Lógica de Título: Se for F1 e índice >= 2, é reserva
                 if (SessaoJogo.categoriaKey.contains("f1") && i >= 2) {
                     lblTitulos[i].setText("Reserva");
                     lblTitulos[i].setForeground(Color.GRAY);
@@ -322,7 +318,6 @@ public class TelaSelecionarEquipe extends JFrame {
                 lblNumeros[i].setText("#" + p.getNumero());
                 carregarImagem(lblBandeiras[i], "/resource/Bandeira " + p.getNacionalidade() + ".png");
             } else {
-                // Slot vazio -> ESCONDER TUDO
                 lblTitulos[i].setVisible(false);
                 lblNomes[i].setVisible(false);
                 lblNumeros[i].setVisible(false);
@@ -338,7 +333,6 @@ public class TelaSelecionarEquipe extends JFrame {
                 if (!path.startsWith("/")) path = "/" + path;
                 if (!path.startsWith("/resource")) path = "/resource" + path;
                 path = path.replace("//", "/");
-                
                 lbl.setIcon(new ImageIcon(getClass().getResource(path)));
             } else {
                 lbl.setIcon(null);
@@ -348,31 +342,38 @@ public class TelaSelecionarEquipe extends JFrame {
         }
     }
 
-    // --- AÇÃO FINAL: IR PARA TELA PRINCIPAL ---
+    // --- AÇÃO FINAL: INICIAR O JOGO DE VERDADE ---
     private void iniciarJogo() {
-        // 1. Validação do Nome
         if (tfNomeDirigente.getText().trim().isEmpty()) {
             JOptionPane.showMessageDialog(this, "Digite o nome do Dirigente!", "Atenção", JOptionPane.WARNING_MESSAGE);
             return;
         }
         
-        // 2. Validação da Equipe
         if (equipeSelecionadaObj == null) {
              JOptionPane.showMessageDialog(this, "Selecione uma equipe para continuar!", "Atenção", JOptionPane.WARNING_MESSAGE);
              return;
         }
         
-        nomeDirigente = tfNomeDirigente.getText();
+        String nomeDirigenteInput = tfNomeDirigente.getText();
+        String nomeEquipeEscolhida = equipeSelecionadaObj.getNome(); // Guardamos o nome, não o objeto
         
-        // Feedback visual opcional
-        // JOptionPane.showMessageDialog(this, "Iniciando com " + equipeSelecionadaObj.getNome());
+        // 1. CRIAÇÃO DO "MUNDO" (DADOS GLOBAIS)
+        // Aqui carregamos tudo do zero de forma limpa na memória definitiva
+        DadosDoJogo dados = new DadosDoJogo(SessaoJogo.categoriaKey, SessaoJogo.anoSelecionado);
         
-        // 3. Transição
-        TelaPrincipal telaPrincipal = new TelaPrincipal(equipeSelecionadaObj);
+        // 2. CONFIGURA O JOGADOR DENTRO DESSE MUNDO
+        dados.definirEquipeDoJogador(nomeEquipeEscolhida, nomeDirigenteInput);
+        
+        if (dados.getEquipeDoJogador() == null) {
+            JOptionPane.showMessageDialog(this, "Erro Crítico: Equipe selecionada não encontrada no carregamento global.");
+            return;
+        }
+
+        // 3. TRANSIÇÃO PASSANDO O MUNDO INTEIRO
+        TelaPrincipal telaPrincipal = new TelaPrincipal(dados);
         telaPrincipal.setVisible(true);
         telaPrincipal.setLocationRelativeTo(null);
         
-        // Fecha esta tela para liberar memória
         this.dispose();
     }
 }

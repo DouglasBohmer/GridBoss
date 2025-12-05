@@ -1,20 +1,18 @@
 package telas;
 
 import dados.CarregadorJSON;
+import dados.DadosDoJogo; // Importado
 import dados.SessaoJogo;
 import modelos.Equipe;
 import modelos.Piloto;
 import modelos.Pista;
 import servicos.CampeonatoService;
-import modelos.TipoPista;
 
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
-import javax.swing.table.TableColumnModel;
 import java.awt.*;
-import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
@@ -24,7 +22,10 @@ public class TelaPrincipal extends JFrame {
 
     private JPanel contentPane;
 
-    // --- DADOS DO JOGO ---
+    // --- DADOS DO JOGO (Agora centralizados) ---
+    private DadosDoJogo dadosDoJogo;
+    
+    // Atalhos para facilitar o código (apontam para dentro de dadosDoJogo)
     private Equipe equipeJogavel;
     private CampeonatoService campeonato;
     
@@ -55,20 +56,11 @@ public class TelaPrincipal extends JFrame {
     
     private JLabel LB_CarrosCat;
 
-    public static void main(String[] args) {
-        EventQueue.invokeLater(() -> {
-            try {
-                TelaPrincipal frame = new TelaPrincipal(new Equipe("Teste", 100, 50));
-                frame.setVisible(true);
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
-        });
-    }
-
-    public TelaPrincipal(Equipe equipe) {
-        this.equipeJogavel = equipe;
-        this.campeonato = new CampeonatoService(SessaoJogo.categoriaKey, SessaoJogo.anoSelecionado);
+    // Construtor principal modificado
+    public TelaPrincipal(DadosDoJogo dados) {
+        this.dadosDoJogo = dados;
+        this.equipeJogavel = dados.getEquipeDoJogador();
+        this.campeonato = dados.getCampeonato();
         
         this.indiceEtapaVisual = this.campeonato.getNumeroEtapaAtual() - 1; 
         if (this.indiceEtapaVisual < 0) this.indiceEtapaVisual = 0;
@@ -357,7 +349,7 @@ public class TelaPrincipal extends JFrame {
         LB_SedeEquipe.setText(equipeJogavel.getSede());
         LB_Motor.setText("Motor " + equipeJogavel.getMotor());
         LB_Orc.setText(String.format("€ %.1f milhões", equipeJogavel.getSaldoFinanceiro()));
-        LB_NomeDirigente.setText(TelaSelecionarEquipe.nomeDirigente);
+        LB_NomeDirigente.setText(dadosDoJogo.getNomeDoDirigente());
         LB_Ano.setText("Ano " + SessaoJogo.anoSelecionado);
         
         carregarImagem(LB_LogoEquipe, equipeJogavel.getCaminhoLogo());
@@ -380,7 +372,6 @@ public class TelaPrincipal extends JFrame {
             LB_TipoPista.setForeground(Color.BLUE);
         }
 
-        // Labels dos Pilotos (Canto Esquerdo)
         List<Piloto> pilotosEquipe = equipeJogavel.getPilotosTitulares();
         pilotosEquipe.addAll(equipeJogavel.getPilotosReservas());
 
@@ -391,8 +382,6 @@ public class TelaPrincipal extends JFrame {
         atualizarSlotPiloto(4, pilotosEquipe, LB_NomeP5, LB_NumP5, LB_IdadeP5, LB_TempoContratoP5, LB_BandeiraP5, LB_StatusP5, LB_Over_P5);
 
         atualizarCalendarioUI();
-        
-        // Popula as tabelas com TODOS os dados
         preencherTabelas();
     }
 
@@ -433,50 +422,40 @@ public class TelaPrincipal extends JFrame {
     }
 
     private void preencherTabelas() {
-        // ------------------------------------------------------------------------
-        // 1. TABELA DE PILOTOS
-        // Colunas: Pos, País, Nº, Piloto, Equipe, Pts, Diff, Vit, Pód, Poles
-        // ------------------------------------------------------------------------
+        // --- 1. TABELA DE PILOTOS ---
         String[] colunasPilotos = {"Pos", "País", "Nº", "Piloto", "Equipe", "Pts", "Diff", "Vit", "Pód", "Poles"};
         
         DefaultTableModel modelPilotos = new DefaultTableModel(colunasPilotos, 0) {
             @Override
             public Class<?> getColumnClass(int columnIndex) {
-                if (columnIndex == 1) return ImageIcon.class; // Apenas País é imagem
+                if (columnIndex == 1) return ImageIcon.class; 
                 return Object.class;
             }
             @Override
             public boolean isCellEditable(int row, int column) { return false; }
         };
 
-        // Carregar TODOS os dados do Mod/Temporada
-        List<Equipe> todasEquipes = CarregadorJSON.carregarEquipes(SessaoJogo.categoriaKey, SessaoJogo.anoSelecionado);
-        List<Piloto> todosPilotos = CarregadorJSON.carregarPilotos(SessaoJogo.categoriaKey, SessaoJogo.anoSelecionado);
+        // AGORA USAMOS OS DADOS VIVOS (onde os pontos serão somados)
+        List<Equipe> todasEquipes = dadosDoJogo.getTodasAsEquipes();
         
+        // A lógica de extração de pilotos para o grid é igual, mas baseada nos objetos vivos
+        java.util.List<Piloto> pilotosGrid = new java.util.ArrayList<>();
         boolean isF1 = SessaoJogo.categoriaKey.toLowerCase().contains("f1");
-        List<Piloto> pilotosGrid = new ArrayList<>();
 
-        // Cruzamento de Dados: Equipe -> IDs -> Objetos Piloto
         for (Equipe eq : todasEquipes) {
-            List<String> ids = eq.getPilotosContratadosIDs();
-            if (ids == null) continue;
-
-            for (int i = 0; i < ids.size(); i++) {
-                // REGRA F1: Apenas os 2 primeiros (titulares) aparecem na tabela
-                if (isF1 && i >= 2) continue; 
-
-                String idProcurado = ids.get(i);
-                Piloto pilotoEncontrado = buscarPilotoNaLista(todosPilotos, idProcurado);
-
-                if (pilotoEncontrado != null) {
-                    // Vincula o nome da equipe ao piloto para exibição
-                    pilotoEncontrado.setNomeEquipeAtual(eq.getNome());
-                    pilotosGrid.add(pilotoEncontrado);
-                }
+            // Como já rodamos "vincularPilotosAsEquipes" no DadosDoJogo, 
+            // podemos pegar direto a lista de objetos, sem buscar por ID!
+            List<Piloto> titulares = eq.getPilotosTitulares();
+            
+            for (int i = 0; i < titulares.size(); i++) {
+                if (isF1 && i >= 2) continue; // F1 só mostra 2
+                
+                Piloto p = titulares.get(i);
+                p.setNomeEquipeAtual(eq.getNome()); // Garante nome atualizado
+                pilotosGrid.add(p);
             }
         }
         
-        // ORDENAÇÃO: Pontos > Vitórias > Pódios > Nome
         Collections.sort(pilotosGrid, new Comparator<Piloto>() {
             @Override
             public int compare(Piloto p1, Piloto p2) {
@@ -487,7 +466,6 @@ public class TelaPrincipal extends JFrame {
             }
         });
 
-        // Preenchimento das Linhas
         int posP = 1;
         int pontosLiderP = (pilotosGrid.isEmpty()) ? 0 : pilotosGrid.get(0).getPontos();
 
@@ -498,9 +476,9 @@ public class TelaPrincipal extends JFrame {
             modelPilotos.addRow(new Object[]{
                 posP++, 
                 flag, 
-                p.getNumero(),          // Coluna Nº isolada
-                p.getNome(),            // Apenas o nome
-                p.getNomeEquipeAtual(), // Nome da Equipe
+                p.getNumero(),          
+                p.getNome(),            
+                p.getNomeEquipeAtual(), 
                 p.getPontos(), 
                 diff, 
                 p.getVitorias(), 
@@ -511,45 +489,39 @@ public class TelaPrincipal extends JFrame {
 
         tabelaPilotos.setModel(modelPilotos);
         
-        // Configuração de Renderers (Alinhamento)
         CentralizadoRenderer centerRenderer = new CentralizadoRenderer();
         EsquerdaRenderer leftRenderer = new EsquerdaRenderer();
         
         for (int i = 0; i < tabelaPilotos.getColumnCount(); i++) {
-            // Piloto (3) e Equipe (4) alinhados à Esquerda. O resto Centralizado.
             if (i == 3 || i == 4) tabelaPilotos.getColumnModel().getColumn(i).setCellRenderer(leftRenderer);
             else tabelaPilotos.getColumnModel().getColumn(i).setCellRenderer(centerRenderer);
         }
 
-        // Configuração de Larguras (Pixels)
-        tabelaPilotos.getColumnModel().getColumn(0).setPreferredWidth(30);  // Pos
-        tabelaPilotos.getColumnModel().getColumn(1).setPreferredWidth(40);  // País
-        tabelaPilotos.getColumnModel().getColumn(2).setPreferredWidth(30);  // Nº (Compacto)
-        tabelaPilotos.getColumnModel().getColumn(3).setPreferredWidth(170); // Piloto (Largo)
-        tabelaPilotos.getColumnModel().getColumn(4).setPreferredWidth(150); // Equipe
-        tabelaPilotos.getColumnModel().getColumn(5).setPreferredWidth(50);  // Pts
-        tabelaPilotos.getColumnModel().getColumn(6).setPreferredWidth(50);  // Diff
-        tabelaPilotos.getColumnModel().getColumn(7).setPreferredWidth(50);  // Vit
-        tabelaPilotos.getColumnModel().getColumn(8).setPreferredWidth(50);  // Pod
-        tabelaPilotos.getColumnModel().getColumn(9).setPreferredWidth(50);  // Poles
+        tabelaPilotos.getColumnModel().getColumn(0).setPreferredWidth(30);
+        tabelaPilotos.getColumnModel().getColumn(1).setPreferredWidth(40);
+        tabelaPilotos.getColumnModel().getColumn(2).setPreferredWidth(30);
+        tabelaPilotos.getColumnModel().getColumn(3).setPreferredWidth(170);
+        tabelaPilotos.getColumnModel().getColumn(4).setPreferredWidth(150);
+        tabelaPilotos.getColumnModel().getColumn(5).setPreferredWidth(50);
+        tabelaPilotos.getColumnModel().getColumn(6).setPreferredWidth(50);
+        tabelaPilotos.getColumnModel().getColumn(7).setPreferredWidth(50);
+        tabelaPilotos.getColumnModel().getColumn(8).setPreferredWidth(50);
+        tabelaPilotos.getColumnModel().getColumn(9).setPreferredWidth(50);
 
-        // ------------------------------------------------------------------------
-        // 2. TABELA DE CONSTRUTORES
-        // Colunas: Pos, País, Equipe, Pts, Diff, Vit, Pód, Poles (Sem Logo)
-        // ------------------------------------------------------------------------
+        // --- 2. TABELA DE CONSTRUTORES ---
         String[] colunasEquipes = {"Pos", "País", "Equipe", "Pts", "Diff", "Vit", "Pód", "Poles"};
         
         DefaultTableModel modelEquipes = new DefaultTableModel(colunasEquipes, 0) {
             @Override
             public Class<?> getColumnClass(int columnIndex) {
-                if (columnIndex == 1) return ImageIcon.class; // País
+                if (columnIndex == 1) return ImageIcon.class; 
                 return Object.class;
             }
             @Override
             public boolean isCellEditable(int row, int column) { return false; }
         };
 
-        // Ordenação
+        // Ordenamos a lista de equipes VIVA
         Collections.sort(todasEquipes, new Comparator<Equipe>() {
             @Override
             public int compare(Equipe e1, Equipe e2) {
@@ -582,41 +554,21 @@ public class TelaPrincipal extends JFrame {
         tabelaConstrutores.setModel(modelEquipes);
         
         for (int i = 0; i < tabelaConstrutores.getColumnCount(); i++) {
-            // Equipe (2) alinhada à Esquerda
             if (i == 2) tabelaConstrutores.getColumnModel().getColumn(i).setCellRenderer(leftRenderer);
             else tabelaConstrutores.getColumnModel().getColumn(i).setCellRenderer(centerRenderer);
         }
         
-        // Larguras Equipes
-        tabelaConstrutores.getColumnModel().getColumn(0).setPreferredWidth(30); // Pos
-        tabelaConstrutores.getColumnModel().getColumn(1).setPreferredWidth(40); // País
-        tabelaConstrutores.getColumnModel().getColumn(2).setPreferredWidth(200); // Equipe
-        tabelaConstrutores.getColumnModel().getColumn(3).setPreferredWidth(50); // Pts
-        tabelaConstrutores.getColumnModel().getColumn(4).setPreferredWidth(50); // Diff
-        tabelaConstrutores.getColumnModel().getColumn(5).setPreferredWidth(50); // Vit
-        tabelaConstrutores.getColumnModel().getColumn(6).setPreferredWidth(50); // Pod
-        tabelaConstrutores.getColumnModel().getColumn(7).setPreferredWidth(50); // Poles
+        tabelaConstrutores.getColumnModel().getColumn(0).setPreferredWidth(30);
+        tabelaConstrutores.getColumnModel().getColumn(1).setPreferredWidth(40);
+        tabelaConstrutores.getColumnModel().getColumn(2).setPreferredWidth(200);
+        tabelaConstrutores.getColumnModel().getColumn(3).setPreferredWidth(50);
+        tabelaConstrutores.getColumnModel().getColumn(4).setPreferredWidth(50);
+        tabelaConstrutores.getColumnModel().getColumn(5).setPreferredWidth(50);
+        tabelaConstrutores.getColumnModel().getColumn(6).setPreferredWidth(50);
+        tabelaConstrutores.getColumnModel().getColumn(7).setPreferredWidth(50);
     }
     
-    private Piloto buscarPilotoNaLista(List<Piloto> lista, String idDaEquipe) {
-        String idBusca = normalizarTexto(idDaEquipe);
-        for (Piloto p : lista) {
-            String nomeNormalizado = normalizarTexto(p.getNome());
-            // Tenta casar ID com Nome (ex: "verstappen" com "Max Verstappen")
-            if (idBusca.equals(nomeNormalizado) || nomeNormalizado.contains(idBusca) || idBusca.contains(nomeNormalizado)) {
-                return p;
-            }
-        }
-        return null;
-    }
-    
-    private String normalizarTexto(String texto) {
-        if (texto == null) return "";
-        String n = Normalizer.normalize(texto, Normalizer.Form.NFD);
-        n = n.replaceAll("[^\\p{ASCII}]", "");
-        return n.toLowerCase().replace(" ", "").trim();
-    }
-    
+    // --- Renderers mantidos iguais (Inner Classes) ---
     static class CentralizadoRenderer extends DefaultTableCellRenderer {
         @Override
         public Component getTableCellRendererComponent(JTable table, Object value, boolean isSelected, boolean hasFocus, int row, int column) {
@@ -645,7 +597,7 @@ public class TelaPrincipal extends JFrame {
                 setText("");
             } else {
                 setIcon(null);
-                setText(value != null ? "  " + value.toString() : ""); // Espaçamento para não colar na borda
+                setText(value != null ? "  " + value.toString() : "");
             }
             return this;
         }
@@ -712,9 +664,15 @@ public class TelaPrincipal extends JFrame {
     
     private Pista buscarPistaPorIndice(int index) {
         try {
-            List<Pista> todas = CarregadorJSON.carregarCalendario(SessaoJogo.categoriaKey, SessaoJogo.anoSelecionado);
-            if (index >= 0 && index < todas.size()) {
-                return todas.get(index);
+            // Aqui podemos pegar do campeonato VIVO em vez de carregar do JSON
+            List<Pista> todas = campeonato.getCalendario(); // Assumindo que você adicione getCalendario no service depois
+            // Se não tiver getCalendario público, use o carregador por enquanto (não quebra o estado, pois pista é estática)
+            // Mas o ideal é: return dadosDoJogo.getCampeonato().getCalendario().get(index);
+            
+            // Fallback temporário seguro:
+            List<Pista> fallback = CarregadorJSON.carregarCalendario(SessaoJogo.categoriaKey, SessaoJogo.anoSelecionado);
+            if (index >= 0 && index < fallback.size()) {
+                return fallback.get(index);
             }
         } catch (Exception e) {
             e.printStackTrace();

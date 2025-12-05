@@ -64,6 +64,9 @@ public class CarroDeCorrida {
     public double getDesgastePneus() { return desgastePneus; }
     public double getCombustivel() { return combustivel; }
     public ModoPilotagem getModo() { return modoAtual; }
+    public void adicionarCombustivel(double qtd) {
+        this.combustivel += qtd;
+    }
     
     // Auxiliar para ordenação (quem tem menor tempo está na frente)
     public Double getTempoParaOrdenacao() {

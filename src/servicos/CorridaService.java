@@ -14,9 +14,7 @@ public class CorridaService {
     private boolean safetyCarNaPista = false;
     private int voltaAtual = 0;
     
-    // Agora usamos a lista de CARROS, não de pilotos puros
     private List<CarroDeCorrida> grid = new ArrayList<>();
-    
     private Random random = new Random();
 
     // --- SETUP ---
@@ -26,26 +24,23 @@ public class CorridaService {
         this.voltaAtual = 0;
         this.safetyCarNaPista = false;
         
-        // 1. Converter Pilotos em Carros de Corrida
         grid.clear();
         for (Piloto p : pilotosInscritos) {
             CarroDeCorrida carro = new CarroDeCorrida(p);
-            // Configuração inicial (Tanque cheio para F1 s/ reabastecimento, etc)
-            // Futuramente leremos isso da regra do ano
+            // Configuração inicial: Tanque cheio (ex: 110kg para F1)
+            // Futuramente isso pode vir de uma regra da Categoria
+            carro.adicionarCombustivel(110.0); 
             grid.add(carro); 
         }
         
-        // 2. Definir Clima
         gerarClimaInicial();
-        
-        System.out.println("Grid formado com " + grid.size() + " carros.");
+        //System.out.println("Grid formado com " + grid.size() + " carros para " + pista.getNome());
     }
 
     private void gerarClimaInicial() {
         if (pistaAtual.isOval()) {
-            this.climaAtual = Clima.ENSOLARADO; // Regra de Ouro
+            this.climaAtual = Clima.ENSOLARADO; // Regra de Ouro: Ovais não correm na chuva
         } else {
-            // Sorteio simples
             int r = random.nextInt(100);
             if (r < 70) climaAtual = Clima.ENSOLARADO;
             else if (r < 90) climaAtual = Clima.NUBLADO;
@@ -62,7 +57,7 @@ public class CorridaService {
         verificarSafetyCar();
 
         for (CarroDeCorrida carro : grid) {
-            // 1. Calcular Tempo da Volta
+            // 1. Calcular Tempo da Volta (FÍSICA AVANÇADA)
             double tempo = calcularTempoFisica(carro);
             
             // 2. Adicionar ao total
@@ -75,75 +70,110 @@ public class CorridaService {
             }
         }
 
-        // 4. Reordenar o Grid (Quem tem menor tempo total fica em 1º)
+        // 4. Reordenar o Grid (Menor tempo total = Líder)
         grid.sort(Comparator.comparingDouble(CarroDeCorrida::getTempoParaOrdenacao));
-        
-        // 5. Tentar Ultrapassagens (Simulação visual na lista)
-        // Como já ordenamos por tempo, a "ultrapassagem" física já aconteceu.
-        // A lógica de "chance de ultrapassar" entra para impedir que um carro
-        // muito rápido passe em Mônaco só porque tem tempo menor.
-        aplicarBloqueioDePista();
     }
 
-    // --- FÍSICA ---
+    // --- FÍSICA (A MÁGICA ACONTECE AQUI) ---
 
     private double calcularTempoFisica(CarroDeCorrida carro) {
-        if (safetyCarNaPista) return 120.0; // Tempo lento igual para todos
+        if (safetyCarNaPista) return pistaAtual.getTempoBase() * 1.4; // 40% mais lento sob SC
 
-        // Base da pista (ex: 90s)
-        double tempo = 90.0; 
+        Equipe equipe = carro.getEquipe();
+        Piloto piloto = carro.getPiloto();
+        Motor motor = equipe.getMotorObjeto(); // Pega o motor real (com atributos)
+
+        // 1. PERFORMANCE DO CARRO (0 a 100)
+        double forcaMotor = 50.0; // Valor padrão se não tiver motor
+        double dirigibilidadeMotor = 50.0;
         
-        // Fator Carro (Equipe)
-        if (carro.getEquipe() != null) {
-            // Quanto maior a reputação/nível, menor o tempo
-            double forcaCarro = carro.getEquipe().getReputacao() / 100.0; 
-            tempo -= (forcaCarro * 2.0); // Tira até 2s
+        if (motor != null) {
+            // Converte escala 1-5 para 20-100
+            forcaMotor = motor.getPotencia() * 20.0;
+            dirigibilidadeMotor = motor.getDirigibilidade() * 20.0;
         }
         
-        // Fator Piloto
-        double forcaPiloto = carro.getPiloto().getOverall() / 100.0;
-        tempo -= (forcaPiloto * 1.5); // Tira até 1.5s
-        
-        // Fator Pneu (Desgaste aumenta o tempo)
-        double desgaste = (100.0 - carro.getDesgastePneus()) / 100.0; // 0.0 a 1.0 de uso
-        tempo += (desgaste * 3.0); // Pneu careca adiciona 3s
-        
-        // Fator Modo de Pilotagem (Agressivo tira tempo)
-        // Ex: NEUTRO (1.0) -> tempo igual
-        // Ex: AGRESSIVO (1.1) -> Se base é 90, tira tempo? Não, Agressivo é MAIS RÁPIDO.
-        // Então na nossa classe ModoPilotagem, "1.1" de velocidade deve reduzir o tempo.
-        // Fórmula: Tempo / Fator
-        tempo = tempo / carro.getModo().getFatorVelocidade();
+        // Aero e Chassi (Escala 1-5 -> 20-100)
+        double forcaAero = equipe.getNivelAero() * 20.0;
+        double forcaChassi = equipe.getNivelChassi() * 20.0;
 
-        return tempo;
-    }
+        // Ponderação pela Pista
+        double relMotor = pistaAtual.getRelevanciaMotor();       // ex: 0.9 em Monza
+        double relAero = pistaAtual.getRelevanciaAerodinamica(); // ex: 0.1 em Monza
+        double relMecanica = 1.0 - relMotor - relAero;           // O que sobra é aderência mecânica/chassi
 
-    /**
-     * Simula a dificuldade de passar. Se a pista for travada,
-     * devolve posições para quem não conseguiu passar "na marra".
-     */
-    private void aplicarBloqueioDePista() {
-        int dificuldade = pistaAtual.getDificuldadeUltrapassagem(); // 0 a 100
+        double desempenhoCarro = (forcaMotor * relMotor) + 
+                                 (forcaAero * relAero) + 
+                                 (forcaChassi * relMecanica * 0.5) + 
+                                 (dirigibilidadeMotor * relMecanica * 0.5);
+
+        // 2. PERFORMANCE DO PILOTO (0 a 100)
+        double habilidadePiloto = piloto.getRitmo(); // Base
         
-        // Se a pista for difícil (ex: Mônaco 95), podemos desfazer trocas de posição
-        // se a diferença de tempo for pequena demais.
-        // (Lógica complexa para refinar depois, por enquanto deixamos o tempo ditar)
+        // Bônus de Terreno
+        if (climaAtual == Clima.CHUVA_FORTE || climaAtual == Clima.CHUVA_LEVE) {
+            // Na chuva, habilidade conta MUITO (média entre ritmo e chuva)
+            habilidadePiloto = (habilidadePiloto + piloto.getHabilidadeChuva()) / 2.0;
+        } else {
+            // No seco, verifica tipo de pista
+            switch (pistaAtual.getTipo()) {
+                case RUA_TEMPORARIO:
+                    habilidadePiloto = (habilidadePiloto * 0.7) + (piloto.getHabilidadeRua() * 0.3);
+                    break;
+                case OVAL_CURTO:
+                case OVAL_SPEEDWAY:
+                case SUPERSPEEDWAY:
+                    habilidadePiloto = (habilidadePiloto * 0.6) + (piloto.getHabilidadeOval() * 0.4);
+                    break;
+                default: // Misto
+                    habilidadePiloto = (habilidadePiloto * 0.8) + (piloto.getHabilidadeMisto() * 0.2);
+            }
+        }
+        
+        // Experiência ajuda a manter a constância (reduz erros)
+        double fatorExperiencia = piloto.getExperiencia() / 200.0; // Pequeno bônus (0 a 0.5s)
+
+        // 3. FÓRMULA FINAL DO TEMPO
+        // Performance Total (60% Carro, 40% Piloto - F1 é muito carro dependente)
+        double performanceTotal = (desempenhoCarro * 0.65) + (habilidadePiloto * 0.35);
+        
+        // O tempo base é para uma performance "Média" (~75).
+        // Se a performance for 90, ganha tempo. Se for 50, perde tempo.
+        double deltaPerformance = (75.0 - performanceTotal) * 0.15; // 0.15s por ponto de diferença
+        
+        // Fatores Dinâmicos
+        double penalidadePneu = (100.0 - carro.getDesgastePneus()) * 0.05; // Pneu gasto = +tempo
+        double penalidadeCombustivel = carro.getCombustivel() * 0.03;      // Tanque cheio = +tempo
+        
+        double tempoFinal = pistaAtual.getTempoBase() 
+                            + deltaPerformance 
+                            + penalidadePneu 
+                            + penalidadeCombustivel 
+                            - fatorExperiencia;
+
+        // Variação Aleatória (Erro humano/Vento) - +/- 0.3s
+        tempoFinal += (random.nextDouble() - 0.5) * 0.6;
+
+        return tempoFinal;
     }
 
     private void verificarSafetyCar() {
-        // Lógica de acidente aleatório
         if (safetyCarNaPista) {
             if (random.nextInt(100) < 20) safetyCarNaPista = false; // 20% chance de sair
         } else {
-            double chance = pistaAtual.getChanceSafetyCar(); // ex: 5%
-            if (random.nextDouble() * 100 < chance) {
+            // Chance baseada na pista + Clima ruim aumenta chance
+            double chance = pistaAtual.getChanceSafetyCar(); 
+            if (climaAtual == Clima.CHUVA_LEVE) chance *= 1.5;
+            if (climaAtual == Clima.CHUVA_FORTE) chance *= 2.0;
+            
+            // Rolagem de dado (ex: chance 5% -> precisa tirar < 5 em 10000 para ser raro por volta)
+            if (random.nextDouble() * 100 < (chance / 10.0)) { 
                 safetyCarNaPista = true;
                 System.out.println("SAFETY CAR DEPLOYED!");
             }
         }
     }
 
-    // Getters para a Tela
     public List<CarroDeCorrida> getGrid() { return grid; }
     public int getVoltaAtual() { return voltaAtual; }
     public Clima getClima() { return climaAtual; }

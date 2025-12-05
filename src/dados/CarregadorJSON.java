@@ -19,6 +19,8 @@ public class CarregadorJSON {
     
     public static Map<String, List<String>> escanearModsInstalados() {
         Map<String, List<String>> modsEncontrados = new HashMap<>();
+        
+        // Inicializa os padrões para garantir que a UI não quebre
         modsEncontrados.put("f1", new ArrayList<>());
         modsEncontrados.put("indy", new ArrayList<>());
         modsEncontrados.put("nascar", new ArrayList<>());
@@ -35,19 +37,35 @@ public class CarregadorJSON {
         for (File arquivo : arquivos) {
             if (arquivo.isDirectory()) {
                 String nomePasta = arquivo.getName().toLowerCase();
+                
+                // Valida se a pasta tem o formato "nome_ano"
                 if (nomePasta.contains("_")) {
                     String[] partes = nomePasta.split("_");
+                    
+                    // Garante que a divisão funcionou e tem pelo menos 2 partes
                     if (partes.length >= 2) {
-                        String categoria = partes[0];
-                        String ano = partes[1];
-                        if (modsEncontrados.containsKey(categoria)) {
-                            modsEncontrados.get(categoria).add(ano);
+                        String categoria = partes[0]; // ex: "wec"
+                        String ano = partes[1];       // ex: "2023"
+                        
+                        // --- ALTERAÇÃO PRINCIPAL AQUI ---
+                        // Antes: Só adicionava se a chave já existisse (f1, indy, nascar)
+                        // Agora: Se não existir, cria a nova categoria na hora
+                        
+                        if (!modsEncontrados.containsKey(categoria)) {
+                            modsEncontrados.put(categoria, new ArrayList<>());
                         }
+                        
+                        modsEncontrados.get(categoria).add(ano);
                     }
                 }
             }
         }
-        for (List<String> anos : modsEncontrados.values()) anos.sort(Collections.reverseOrder());
+        
+        // Ordena os anos de forma decrescente para todas as categorias encontradas
+        for (List<String> anos : modsEncontrados.values()) {
+            anos.sort(Collections.reverseOrder());
+        }
+        
         return modsEncontrados;
     }
 
@@ -82,6 +100,4 @@ public class CarregadorJSON {
         String caminho = CAMINHO_MODS + categoria.toLowerCase() + "_" + ano + "/motores.json";
         return carregarLista(caminho, new TypeToken<ArrayList<Motor>>(){}.getType());
     }
-
-
 }

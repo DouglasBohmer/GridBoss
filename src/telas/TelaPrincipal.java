@@ -73,7 +73,7 @@ public class TelaPrincipal extends JFrame {
         this.indiceEtapaVisual = this.campeonato.getNumeroEtapaAtual() - 1; 
         if (this.indiceEtapaVisual < 0) this.indiceEtapaVisual = 0;
 
-        setTitle("Motorsport Manager - Grid Boss");
+        setTitle("Grid Boss");
         setIconImage(Toolkit.getDefaultToolkit().getImage(TelaPrincipal.class.getResource("/resource/Icone16px.png")));
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setBounds(100, 100, 1235, 700); 

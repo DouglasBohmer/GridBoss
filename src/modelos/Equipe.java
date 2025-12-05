@@ -20,18 +20,18 @@ public class Equipe {
     private int podios;
     private int poles;
     
-    // --- FÁBRICA & DESENVOLVIMENTO (ATUALIZADO) ---
-    // Níveis de Estrutura (1 a 5) - Definem o potencial máximo
+    // --- FÁBRICA & DESENVOLVIMENTO ---
+    // Níveis de Estrutura (1 a 5)
     private int nivelMotor = 1;
     private int nivelAero = 1;
     private int nivelChassi = 1;
-    private int nivelConfiabilidade = 1; // NOVO
+    private int nivelConfiabilidade = 1;
 
-    // Staff (Funcionários) (1 a 10) - Definem o desempenho atual dentro do nível
+    // Staff (Funcionários) (1 a 10)
     private int staffMotor = 1;
     private int staffAero = 1;
     private int staffChassi = 1;
-    private int staffConfiabilidade = 1; // NOVO
+    private int staffConfiabilidade = 1;
 
     private Arquivos arquivos;
     private List<String> pilotosContratadosIDs = new ArrayList<>();
@@ -43,6 +43,9 @@ public class Equipe {
     private transient List<Piloto> pilotosReservas = new ArrayList<>();
     private transient List<Patrocinador> patrocinadoresAtivos = new ArrayList<>();
     private transient Categoria categoriaAtual;
+    
+    // --- NOVO: VÍNCULO COM OBJETO MOTOR ---
+    private transient Motor motorObjeto; 
 
     public Equipe() {
         this.arquivos = new Arquivos(); 
@@ -55,16 +58,21 @@ public class Equipe {
         this.arquivos = new Arquivos();
     }
     
-    // --- INICIALIZAÇÃO DA FÁBRICA INTELIGENTE ---
+    // --- MÉTODOS DO MOTOR (Passo 3) ---
+    public void setMotorObjeto(Motor m) {
+        this.motorObjeto = m;
+    }
+    
+    public Motor getMotorObjeto() { return motorObjeto; }
+    
+    // --- INICIALIZAÇÃO DA FÁBRICA ---
     public void inicializarFabricaInteligente() {
-        // 1. Define Nível baseada na Reputação
         if (reputacao >= 90) definirNiveis(5);      
         else if (reputacao >= 75) definirNiveis(4); 
         else if (reputacao >= 50) definirNiveis(3); 
         else if (reputacao >= 30) definirNiveis(2); 
         else definirNiveis(1);                      
         
-        // 2. Todos começam com Staff no mínimo (1)
         this.staffMotor = 1;
         this.staffAero = 1;
         this.staffChassi = 1;
@@ -78,57 +86,31 @@ public class Equipe {
         this.nivelConfiabilidade = n;
     }
 
-    // --- MÉTODOS DE EVOLUÇÃO (STAFF) ---
+    // --- MÉTODOS DE EVOLUÇÃO ---
     public boolean contratarStaffMotor() {
-        if (staffMotor < 10) { staffMotor++; return true; }
-        return false;
+        if (staffMotor < 10) { staffMotor++; return true; } return false;
     }
     public boolean contratarStaffAero() {
-        if (staffAero < 10) { staffAero++; return true; }
-        return false;
+        if (staffAero < 10) { staffAero++; return true; } return false;
     }
     public boolean contratarStaffChassi() {
-        if (staffChassi < 10) { staffChassi++; return true; }
-        return false;
+        if (staffChassi < 10) { staffChassi++; return true; } return false;
     }
     public boolean contratarStaffConfiabilidade() {
-        if (staffConfiabilidade < 10) { staffConfiabilidade++; return true; }
-        return false;
+        if (staffConfiabilidade < 10) { staffConfiabilidade++; return true; } return false;
     }
 
-    // --- MÉTODOS DE EVOLUÇÃO (NÍVEL DA ESTRUTURA) ---
-    // Nota: O controle de saldo financeiro será feito pelo Service antes de chamar aqui
     public boolean subirNivelMotor() {
-        if (nivelMotor < 5) {
-            nivelMotor++;
-            staffMotor = 1; // Reset de Staff (Regra do GDD)
-            return true;
-        }
-        return false;
+        if (nivelMotor < 5) { nivelMotor++; staffMotor = 1; return true; } return false;
     }
     public boolean subirNivelAero() {
-        if (nivelAero < 5) {
-            nivelAero++;
-            staffAero = 1;
-            return true;
-        }
-        return false;
+        if (nivelAero < 5) { nivelAero++; staffAero = 1; return true; } return false;
     }
     public boolean subirNivelChassi() {
-        if (nivelChassi < 5) {
-            nivelChassi++;
-            staffChassi = 1;
-            return true;
-        }
-        return false;
+        if (nivelChassi < 5) { nivelChassi++; staffChassi = 1; return true; } return false;
     }
     public boolean subirNivelConfiabilidade() {
-        if (nivelConfiabilidade < 5) {
-            nivelConfiabilidade++;
-            staffConfiabilidade = 1;
-            return true;
-        }
-        return false;
+        if (nivelConfiabilidade < 5) { nivelConfiabilidade++; staffConfiabilidade = 1; return true; } return false;
     }
 
     public static class Arquivos {
@@ -204,7 +186,7 @@ public class Equipe {
         return false;
     }
 
-    // --- GETTERS E SETTERS PADRÃO ---
+    // --- GETTERS E SETTERS ---
     public String getNome() { return nome; }
     public String getId() { return id; }
     public String getSede() { return sede; }
@@ -214,7 +196,6 @@ public class Equipe {
     public double getSaldoFinanceiro() { return saldoFinanceiro; }
     public int getAnosConsecutivosNoVermelho() { return anosConsecutivosNoVermelho; }
     
-    // Getters de Fábrica
     public int getNivelMotor() { return nivelMotor; }
     public int getNivelAero() { return nivelAero; }
     public int getNivelChassi() { return nivelChassi; }
@@ -225,7 +206,6 @@ public class Equipe {
     public int getStaffChassi() { return staffChassi; }
     public int getStaffConfiabilidade() { return staffConfiabilidade; }
 
-    // Stats da Temporada
     public int getPontos() { return pontos; }
     public void setPontos(int pontos) { this.pontos = pontos; }
     public void adicionarPontos(int pontos) { this.pontos += pontos; }
@@ -251,7 +231,8 @@ public class Equipe {
         this.categoriaAtual = categoriaAtual;
     }
     
-    // --- HELPER METHODS IMAGENS ---
+    // --- HELPER METHODS IMAGENS (ATUALIZADO) ---
+    
     public String getCaminhoLogo() {
         if (arquivos != null && arquivos.logo != null) return arquivos.logo;
         return "/resource/Icone64pxErro.png";
@@ -263,11 +244,21 @@ public class Equipe {
     }
     
     public String getCaminhoBandeiraMotor() {
+        // PRIORIDADE 1: Se tivermos o objeto Motor vinculado, usamos a bandeira dele
+        if (motorObjeto != null) {
+            return motorObjeto.getCaminhoBandeira();
+        }
+        // PRIORIDADE 2: Fallback para o arquivo equipes.json (comportamento antigo)
         if (arquivos != null && arquivos.bandeiraMotor != null) return arquivos.bandeiraMotor;
         return "/resource/Bandeira BRANCA.png";
     }
     
     public String getCaminhoLogoMotor() {
+        // PRIORIDADE 1: Objeto Motor
+        if (motorObjeto != null) {
+            return motorObjeto.getCaminhoLogo();
+        }
+        // PRIORIDADE 2: Fallback
         if (arquivos != null && arquivos.logoMotor != null) return arquivos.logoMotor;
         return "/resource/Icone16pxErro.png";
     }

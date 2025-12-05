@@ -2,9 +2,10 @@ package telas;
 
 import com.formdev.flatlaf.FlatLightLaf;
 import dados.CarregadorJSON;
-import dados.DadosDoJogo; // Importado
+import dados.DadosDoJogo;
 import dados.SessaoJogo;
 import modelos.Equipe;
+import modelos.Motor; // IMPORTANTE: Importar Motor
 import modelos.Piloto;
 import modelos.TipoContrato;
 
@@ -37,12 +38,11 @@ public class TelaSelecionarEquipe extends JFrame {
     
     private JTextField tfNomeDirigente;
 
-    // --- DADOS CARREGADOS DO JSON (Apenas para visualização nesta tela) ---
+    // --- DADOS CARREGADOS DO JSON ---
     private List<Equipe> equipesDisponiveis = new ArrayList<>();
     private List<Piloto> todosPilotos = new ArrayList<>();
     private Equipe equipeSelecionadaObj = null; 
 
-    // Variáveis Globais (Mantidas por compatibilidade, mas o ideal é usar DadosDoJogo)
     public static String nomeDirigente;
 
     public static void main(String[] args) {
@@ -63,6 +63,7 @@ public class TelaSelecionarEquipe extends JFrame {
     }
 
     public TelaSelecionarEquipe() {
+    	setIconImage(Toolkit.getDefaultToolkit().getImage(TelaSelecionarEquipe.class.getResource("/resource/Icone16px.png")));
         setTitle("Grid Boss - Selecionar Equipe");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setBounds(100, 100, 586, 740);
@@ -226,7 +227,7 @@ public class TelaSelecionarEquipe extends JFrame {
         contentPane.add(l);
     }
 
-    // --- LÓGICA DE DADOS (Visualização apenas) ---
+    // --- LÓGICA DE DADOS ---
 
     private void carregarDadosIniciais() {
         String cat = SessaoJogo.categoriaKey;
@@ -235,7 +236,6 @@ public class TelaSelecionarEquipe extends JFrame {
         lblCategoriaBanner.setText(SessaoJogo.categoriaSelecionada + " - Temporada " + ano);
         carregarImagem(lblLogoCategoria, SessaoJogo.IMAGEM_SELECIONADA);
 
-        // Carrega dados locais APENAS para popular o combobox e mostrar na tela
         this.todosPilotos = CarregadorJSON.carregarPilotos(cat, ano);
         this.equipesDisponiveis = CarregadorJSON.carregarEquipes(cat, ano);
 
@@ -243,6 +243,21 @@ public class TelaSelecionarEquipe extends JFrame {
             JOptionPane.showMessageDialog(this, "Nenhuma equipe encontrada em /mods/" + cat + "_" + ano, "Erro de Mod", JOptionPane.ERROR_MESSAGE);
             return;
         }
+        
+        // --- NOVO: VÍNCULO DE MOTORES NA TELA DE SELEÇÃO ---
+        List<Motor> motores = CarregadorJSON.carregarMotores(cat, ano);
+        if (motores != null && !motores.isEmpty()) {
+            for (Equipe eq : equipesDisponiveis) {
+                if (eq.getMotor() == null) continue;
+                for (Motor m : motores) {
+                    if (eq.getMotor().equalsIgnoreCase(m.getId())) {
+                        eq.setMotorObjeto(m);
+                        break;
+                    }
+                }
+            }
+        }
+        // --------------------------------------------------
 
         vincularPilotosAsEquipesLocal();
 
@@ -292,6 +307,8 @@ public class TelaSelecionarEquipe extends JFrame {
         
         carregarImagem(lblFotoCarro, eq.getCaminhoLogo());
         carregarImagem(lblFlagSede, eq.getCaminhoBandeiraSede());
+        
+        // AGORA ISSO VAI PEGAR AS IMAGENS DO MOTOR VINCULADO
         carregarImagem(lblFlagMotor, eq.getCaminhoBandeiraMotor());
         carregarImagem(lblLogoMotor, eq.getCaminhoLogoMotor());
 
@@ -342,7 +359,6 @@ public class TelaSelecionarEquipe extends JFrame {
         }
     }
 
-    // --- AÇÃO FINAL: INICIAR O JOGO DE VERDADE ---
     private void iniciarJogo() {
         if (tfNomeDirigente.getText().trim().isEmpty()) {
             JOptionPane.showMessageDialog(this, "Digite o nome do Dirigente!", "Atenção", JOptionPane.WARNING_MESSAGE);
@@ -355,13 +371,11 @@ public class TelaSelecionarEquipe extends JFrame {
         }
         
         String nomeDirigenteInput = tfNomeDirigente.getText();
-        String nomeEquipeEscolhida = equipeSelecionadaObj.getNome(); // Guardamos o nome, não o objeto
+        String nomeEquipeEscolhida = equipeSelecionadaObj.getNome(); 
         
-        // 1. CRIAÇÃO DO "MUNDO" (DADOS GLOBAIS)
-        // Aqui carregamos tudo do zero de forma limpa na memória definitiva
+        // Carrega o jogo REAL (DadosDoJogo fará o vínculo dos motores de novo para a memória do jogo)
         DadosDoJogo dados = new DadosDoJogo(SessaoJogo.categoriaKey, SessaoJogo.anoSelecionado);
         
-        // 2. CONFIGURA O JOGADOR DENTRO DESSE MUNDO
         dados.definirEquipeDoJogador(nomeEquipeEscolhida, nomeDirigenteInput);
         
         if (dados.getEquipeDoJogador() == null) {
@@ -369,7 +383,6 @@ public class TelaSelecionarEquipe extends JFrame {
             return;
         }
 
-        // 3. TRANSIÇÃO PASSANDO O MUNDO INTEIRO
         TelaPrincipal telaPrincipal = new TelaPrincipal(dados);
         telaPrincipal.setVisible(true);
         telaPrincipal.setLocationRelativeTo(null);

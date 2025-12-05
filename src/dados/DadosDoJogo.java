@@ -1,6 +1,7 @@
 package dados;
 
 import modelos.Equipe;
+import modelos.Motor; // IMPORTANTE: Importar Motor
 import modelos.Piloto;
 import modelos.TipoContrato;
 import servicos.CampeonatoService;
@@ -33,11 +34,42 @@ public class DadosDoJogo {
         this.todasAsEquipes = CarregadorJSON.carregarEquipes(categoriaKey, anoAtual);
         this.todosOsPilotos = CarregadorJSON.carregarPilotos(categoriaKey, anoAtual);
         
+        // --- 1.1 CARREGAR E VINCULAR MOTORES ---
+        List<Motor> motores = CarregadorJSON.carregarMotores(categoriaKey, anoAtual);
+        vincularMotores(motores);
+        // ---------------------------------------
+        
         // 2. Inicia o serviço de campeonato (Calendário)
         this.campeonato = new CampeonatoService(categoriaKey, anoAtual);
         
         // 3. Faz o vínculo lógico (Coloca os objetos Piloto dentro dos objetos Equipe)
         vincularPilotosAsEquipes();
+        
+        // 4. Inicializa as Fábricas (Com base na reputação)
+        inicializarFabricas();
+    }
+    
+    private void vincularMotores(List<Motor> motores) {
+        if (motores == null || todasAsEquipes == null) return;
+        
+        for (Equipe eq : todasAsEquipes) {
+            if (eq.getMotor() == null) continue;
+            
+            for (Motor m : motores) {
+                // Compara o ID na Equipe ("Renault") com o ID do Motor ("Renault")
+                if (eq.getMotor().equalsIgnoreCase(m.getId())) {
+                    eq.setMotorObjeto(m);
+                    break;
+                }
+            }
+        }
+    }
+    
+    private void inicializarFabricas() {
+        if (todasAsEquipes == null) return;
+        for (Equipe eq : todasAsEquipes) {
+            eq.inicializarFabricaInteligente();
+        }
     }
 
     private void vincularPilotosAsEquipes() {
@@ -51,7 +83,6 @@ public class DadosDoJogo {
                     Piloto pilotoEncontrado = buscarPilotoPorNome(idAlvo);
                     
                     if (pilotoEncontrado != null) {
-                        // Adiciona na equipe e atualiza o status do piloto
                         eq.adicionarPilotoDoLoad(pilotoEncontrado, TipoContrato.TITULAR);
                         pilotoEncontrado.setNomeEquipeAtual(eq.getNome());
                     }
@@ -62,7 +93,6 @@ public class DadosDoJogo {
 
     private Piloto buscarPilotoPorNome(String nome) {
         for (Piloto p : todosOsPilotos) {
-            // Comparação simples ignorando maiúsculas/minúsculas
             if (p.getNome().equalsIgnoreCase(nome)) {
                 return p;
             }

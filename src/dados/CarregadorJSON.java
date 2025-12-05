@@ -5,7 +5,7 @@ import com.google.gson.reflect.TypeToken;
 import modelos.Equipe;
 import modelos.Piloto;
 import modelos.Pista;
-
+import modelos.Motor;
 import java.io.File;
 import java.io.FileReader;
 import java.io.Reader;
@@ -77,4 +77,11 @@ public class CarregadorJSON {
             return new ArrayList<>();
         }
     }
+
+    public static List<Motor> carregarMotores(String categoria, int ano) {
+        String caminho = CAMINHO_MODS + categoria.toLowerCase() + "_" + ano + "/motores.json";
+        return carregarLista(caminho, new TypeToken<ArrayList<Motor>>(){}.getType());
+    }
+
+
 }

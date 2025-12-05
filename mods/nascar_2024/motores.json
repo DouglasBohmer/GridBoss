@@ -1,0 +1,29 @@
+[
+  {
+    "id": "Chevrolet",
+    "nome": "Chevrolet R07",
+    "potencia": 5,
+    "dirigibilidade": 5,
+    "durabilidade": 4,
+    "preco": 5.0,
+    "arquivos": { "logo": "/resource/Motor_ChevroletPQ.png","bandeira": "/resource/Bandeira Estados Unidos.png" }
+  },
+  {
+    "id": "Ford",
+    "nome": "Ford FR9 EFI",
+    "potencia": 5,
+    "dirigibilidade": 4,
+    "durabilidade": 5,
+    "preco": 5.0,
+    "arquivos": { "logo": "/resource/Motor_FordPQ.png","bandeira": "/resource/Bandeira Estados Unidos.png" }
+  },
+  {
+    "id": "Toyota",
+    "nome": "Toyota TRD V8",
+    "potencia": 4,
+    "dirigibilidade": 5,
+    "durabilidade": 5,
+    "preco": 5.0,
+    "arquivos": { "logo": "/resource/Motor_ToyotaPQ.png","bandeira": "/resource/Bandeira Japao.png" }
+  }
+]

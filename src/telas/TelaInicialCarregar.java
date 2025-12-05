@@ -119,8 +119,9 @@ public class TelaInicialCarregar extends JFrame {
         // 3. ADICIONAR MODS (Novo)
         JButton btnMods = new JButton("ADICIONAR MODS");
         btnMods.setFont(new Font("Berlin Sans FB", Font.PLAIN, 12));
-        btnMods.setBounds(btnX, startY + (gap * 2), 185, btnH);
         
+        btnMods.setBounds(btnX, startY + (gap * 2), 185, btnH);
+        btnMods.setEnabled(false);
         btnMods.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 JOptionPane.showMessageDialog(null, "Funcionalidade de Mods em breve!");

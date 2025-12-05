@@ -91,20 +91,21 @@ public class TelaPrincipal extends JFrame {
         JMenu Menu_Geral = new JMenu("Geral");
         menuBar.add(Menu_Geral);
         
-        JMenuItem MenuItem_NovoJogo = new JMenuItem("Iniciar Novo Jogo");
-        MenuItem_NovoJogo.addActionListener(e -> {
+        JMenuItem mntmNovoJogo = new JMenuItem("Novo Jogo");
+        mntmNovoJogo.addActionListener(e -> {
             TelaSelecionarCategoria nova = new TelaSelecionarCategoria();
             nova.setVisible(true);
             nova.setLocationRelativeTo(null);
             dispose();
         });
-        Menu_Geral.add(MenuItem_NovoJogo);
+        Menu_Geral.add(mntmNovoJogo);
         Menu_Geral.add(new JMenuItem("Salvar Jogo"));
         Menu_Geral.add(new JMenuItem("Carregar Jogo"));
 
         JMenu Menu_Equipe = new JMenu("Equipe");
         menuBar.add(Menu_Equipe);
         Menu_Equipe.add(new JMenuItem("Fábrica"));
+        Menu_Equipe.add(new JMenuItem("Motor"));
         Menu_Equipe.add(new JMenuItem("Patrocínios"));
 
         JMenu Menu_Piloto = new JMenu("Pilotos");

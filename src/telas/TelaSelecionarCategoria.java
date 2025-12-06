@@ -273,6 +273,7 @@ public class TelaSelecionarCategoria extends JFrame {
 
             // 2. lbLogo recebe o texto exatamente como está no combo (MAIÚSCULO)
             lbLogo.setIcon(null);
+            //lbLogo.setIcon(new ImageIcon(getClass().getResource("/resource/BannerLogo.jpg")));
             lbLogo.setText(itemSelecionado); // "WEC"
             
             // 3. Atualiza variáveis e combo

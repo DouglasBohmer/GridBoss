@@ -72,7 +72,7 @@ public class TelaFabrica extends JDialog {
         setModal(true);
         setTitle("Grid Boss - Fábrica");
         setIconImage(Toolkit.getDefaultToolkit().getImage(TelaFabrica.class.getResource("/resource/Icone16px.png")));
-        setBounds(100, 100, 997, 750);
+        setBounds(100, 100, 1000, 614);
         setResizable(false);
         
         contentPane = new JPanel();
@@ -85,13 +85,13 @@ public class TelaFabrica extends JDialog {
         JLabel lblTitulo = new JLabel("DESENVOLVIMENTO & FÁBRICA");
         lblTitulo.setHorizontalAlignment(SwingConstants.CENTER);
         lblTitulo.setFont(new Font("Berlin Sans FB Demi", Font.BOLD, 24));
-        lblTitulo.setBounds(10, 11, 470, 40);
+        lblTitulo.setBounds(0, 11, 970, 40);
         contentPane.add(lblTitulo);
 
         JLabel lblNomeEquipe = new JLabel(equipe.getNome());
-        lblNomeEquipe.setHorizontalAlignment(SwingConstants.CENTER);
-        lblNomeEquipe.setFont(new Font("Berlin Sans FB", Font.PLAIN, 20));
-        lblNomeEquipe.setBounds(500, 11, 320, 40);
+        lblNomeEquipe.setHorizontalAlignment(SwingConstants.LEFT);
+        lblNomeEquipe.setFont(new Font("Berlin Sans FB", Font.PLAIN, 21));
+        lblNomeEquipe.setBounds(180, 544, 480, 25);
         contentPane.add(lblNomeEquipe);
 
         // =================================================================
@@ -103,13 +103,13 @@ public class TelaFabrica extends JDialog {
         pnlMotor.setBorder(new LineBorder(Color.LIGHT_GRAY, 1, true));
         pnlMotor.setBounds(10, 62, 470, 160);
         contentPane.add(pnlMotor);
-
+        
         JLabel lblTitMotor = new JLabel("DEPARTAMENTO DE MOTOR");
         lblTitMotor.setHorizontalAlignment(SwingConstants.CENTER);
         lblTitMotor.setFont(new Font("Berlin Sans FB Demi", Font.PLAIN, 16));
         lblTitMotor.setBounds(20, 10, 440, 25);
         pnlMotor.add(lblTitMotor);
-
+        
         lblNivelMotor = new JLabel("Nível: 1");
         lblNivelMotor.setHorizontalAlignment(SwingConstants.CENTER);
         lblNivelMotor.setFont(new Font("Berlin Sans FB", Font.PLAIN, 16));
@@ -122,18 +122,18 @@ public class TelaFabrica extends JDialog {
         lblPerfMotor.setFont(new Font("Arial", Font.BOLD, 12));
         lblPerfMotor.setBounds(320, 132, 140, 25);
         pnlMotor.add(lblPerfMotor);
-
+        
         JLabel lblStaffM = new JLabel("Equipe Técnica:");
         lblStaffM.setFont(new Font("Berlin Sans FB", Font.PLAIN, 14));
         lblStaffM.setBounds(10, 77, 105, 20);
         pnlMotor.add(lblStaffM);
-
+        
         barStaffMotor = new JProgressBar();
         barStaffMotor.setMaximum(10);
         barStaffMotor.setForeground(new Color(50, 205, 50));
         barStaffMotor.setBounds(125, 77, 185, 20);
         pnlMotor.add(barStaffMotor);
-
+        
         lblValorStaffMotor = new JLabel("1/10");
         lblValorStaffMotor.setHorizontalAlignment(SwingConstants.LEFT);
         lblValorStaffMotor.setBounds(420, 77, 40, 20);
@@ -154,14 +154,14 @@ public class TelaFabrica extends JDialog {
         lblSalarioM.setFont(new Font("Arial", Font.PLAIN, 11));
         lblSalarioM.setBounds(320, 108, 140, 15);
         pnlMotor.add(lblSalarioM);
-
+        
         btnContratarMotor = new JButton("Contratar (-€500k)");
         btnContratarMotor.setForeground(new Color(255, 255, 255));
         btnContratarMotor.setBackground(new Color(0, 168, 0));
         btnContratarMotor.setBounds(170, 108, 140, 20);
         btnContratarMotor.addActionListener(e -> acaoContratarStaff("motor"));
         pnlMotor.add(btnContratarMotor);
-
+        
         btnDowngradeMotor = new JButton("Descer Nível");
         btnDowngradeMotor.setForeground(new Color(255, 255, 255));
         btnDowngradeMotor.setToolTipText("Reduzir Nível (Economiza manutenção)");
@@ -169,7 +169,7 @@ public class TelaFabrica extends JDialog {
         btnDowngradeMotor.setBounds(10, 46, 140, 20);
         btnDowngradeMotor.addActionListener(e -> acaoDowngradeNivel("motor"));
         pnlMotor.add(btnDowngradeMotor);
-
+        
         btnEvoluirMotor = new JButton("Evoluir Nível");
         btnEvoluirMotor.setForeground(new Color(255, 255, 255));
         btnEvoluirMotor.setBackground(new Color(0, 168, 0));
@@ -190,77 +190,87 @@ public class TelaFabrica extends JDialog {
         pnlAero.setLayout(null);
         pnlAero.setBackground(new Color(250, 250, 250));
         pnlAero.setBorder(new LineBorder(Color.LIGHT_GRAY, 1, true));
-        pnlAero.setBounds(500, 62, 471, 220);
+        pnlAero.setBounds(500, 62, 470, 160); // X = 500
         contentPane.add(pnlAero);
-
+        
         JLabel lblTitAero = new JLabel("AERODINÂMICA");
+        lblTitAero.setHorizontalAlignment(SwingConstants.CENTER);
         lblTitAero.setFont(new Font("Berlin Sans FB Demi", Font.PLAIN, 16));
-        lblTitAero.setBounds(10, 10, 300, 25);
+        lblTitAero.setBounds(20, 10, 440, 25);
         pnlAero.add(lblTitAero);
-
+        
         lblNivelAero = new JLabel("Nível: 1");
+        lblNivelAero.setHorizontalAlignment(SwingConstants.CENTER);
         lblNivelAero.setFont(new Font("Berlin Sans FB", Font.PLAIN, 16));
-        lblNivelAero.setBounds(20, 45, 100, 20);
+        lblNivelAero.setBounds(320, 46, 140, 20);
         pnlAero.add(lblNivelAero);
         
         lblPerfAero = new JLabel("Performance: 22 pts");
+        lblPerfAero.setHorizontalAlignment(SwingConstants.CENTER);
         lblPerfAero.setForeground(new Color(0, 100, 0));
         lblPerfAero.setFont(new Font("Arial", Font.BOLD, 12));
-        lblPerfAero.setBounds(150, 45, 200, 20);
+        lblPerfAero.setBounds(320, 132, 140, 25);
         pnlAero.add(lblPerfAero);
-
-        JLabel lblInfoGanhoA = new JLabel("(Ganho: +20/Nível, +2/Staff)");
-        lblInfoGanhoA.setForeground(Color.GRAY);
-        lblInfoGanhoA.setFont(new Font("Arial", Font.ITALIC, 10));
-        lblInfoGanhoA.setBounds(20, 65, 300, 15);
-        pnlAero.add(lblInfoGanhoA);
-
+        
         JLabel lblStaffA = new JLabel("Equipe Técnica:");
         lblStaffA.setFont(new Font("Berlin Sans FB", Font.PLAIN, 14));
-        lblStaffA.setBounds(20, 95, 100, 20);
+        lblStaffA.setBounds(10, 77, 105, 20);
         pnlAero.add(lblStaffA);
-
+        
         barStaffAero = new JProgressBar();
         barStaffAero.setMaximum(10);
-        barStaffAero.setForeground(new Color(30, 144, 255));
-        barStaffAero.setBounds(120, 95, 180, 20);
+        barStaffAero.setForeground(new Color(30, 144, 255)); // Azul
+        barStaffAero.setBounds(125, 77, 185, 20);
         pnlAero.add(barStaffAero);
-
+        
         lblValorStaffAero = new JLabel("1/10");
-        lblValorStaffAero.setBounds(310, 95, 40, 20);
+        lblValorStaffAero.setHorizontalAlignment(SwingConstants.LEFT);
+        lblValorStaffAero.setBounds(420, 77, 40, 20);
         pnlAero.add(lblValorStaffAero);
         
-        btnDemitirAero = new JButton("-");
+        btnDemitirAero = new JButton("Demitir (+€250k)");
+        btnDemitirAero.setForeground(new Color(255, 255, 255));
+        btnDemitirAero.setBackground(new Color(255, 55, 55));
         btnDemitirAero.setToolTipText("Demitir (-€250k Reembolso)");
         btnDemitirAero.setMargin(new Insets(2, 2, 2, 2));
-        btnDemitirAero.setBounds(350, 95, 25, 20);
+        btnDemitirAero.setBounds(10, 108, 140, 20);
         btnDemitirAero.addActionListener(e -> acaoDemitir("aero"));
         pnlAero.add(btnDemitirAero);
         
-        JLabel lblSalarioA = new JLabel("Custo: € 10k/mês por pessoa");
+        JLabel lblSalarioA = new JLabel("€10k/mês por pessoa");
+        lblSalarioA.setHorizontalAlignment(SwingConstants.CENTER);
         lblSalarioA.setForeground(Color.DARK_GRAY);
         lblSalarioA.setFont(new Font("Arial", Font.PLAIN, 11));
-        lblSalarioA.setBounds(120, 115, 200, 15);
+        lblSalarioA.setBounds(320, 108, 140, 15);
         pnlAero.add(lblSalarioA);
-
-        btnContratarAero = new JButton("Contratar (+€0.5M)");
-        btnContratarAero.setBackground(new Color(173, 216, 230));
-        btnContratarAero.setBounds(20, 160, 180, 30);
+        
+        btnContratarAero = new JButton("Contratar (-€500k)");
+        btnContratarAero.setForeground(new Color(255, 255, 255));
+        btnContratarAero.setBackground(new Color(0, 168, 0));
+        btnContratarAero.setBounds(170, 108, 140, 20);
         btnContratarAero.addActionListener(e -> acaoContratarStaff("aero"));
         pnlAero.add(btnContratarAero);
-
-        btnDowngradeAero = new JButton("v");
+        
+        btnDowngradeAero = new JButton("Descer Nível");
+        btnDowngradeAero.setForeground(new Color(255, 255, 255));
         btnDowngradeAero.setToolTipText("Reduzir Nível");
-        btnDowngradeAero.setBackground(new Color(255, 160, 122)); 
-        btnDowngradeAero.setBounds(210, 160, 40, 30);
+        btnDowngradeAero.setBackground(new Color(255, 55, 55)); 
+        btnDowngradeAero.setBounds(10, 46, 140, 20);
         btnDowngradeAero.addActionListener(e -> acaoDowngradeNivel("aero"));
         pnlAero.add(btnDowngradeAero);
-
+        
         btnEvoluirAero = new JButton("Evoluir Nível");
-        btnEvoluirAero.setBackground(new Color(255, 215, 0));
-        btnEvoluirAero.setBounds(260, 160, 150, 30);
+        btnEvoluirAero.setForeground(new Color(255, 255, 255));
+        btnEvoluirAero.setBackground(new Color(0, 168, 0));
+        btnEvoluirAero.setBounds(170, 46, 140, 20);
         btnEvoluirAero.addActionListener(e -> acaoEvoluirNivel("aero"));
         pnlAero.add(btnEvoluirAero);
+        
+        JLabel lblFuncionriosA = new JLabel("Funcionários");
+        lblFuncionriosA.setHorizontalAlignment(SwingConstants.CENTER);
+        lblFuncionriosA.setFont(new Font("Berlin Sans FB", Font.PLAIN, 14));
+        lblFuncionriosA.setBounds(320, 77, 90, 20);
+        pnlAero.add(lblFuncionriosA);
 
         // =================================================================
         // --- PAINEL CHASSI ---
@@ -269,77 +279,87 @@ public class TelaFabrica extends JDialog {
         pnlChassi.setLayout(null);
         pnlChassi.setBackground(new Color(250, 250, 250));
         pnlChassi.setBorder(new LineBorder(Color.LIGHT_GRAY, 1, true));
-        pnlChassi.setBounds(40, 340, 440, 220);
+        pnlChassi.setBounds(10, 233, 470, 160); // Y = 233
         contentPane.add(pnlChassi);
-
+        
         JLabel lblTitChassi = new JLabel("CHASSI & SUSPENSÃO");
+        lblTitChassi.setHorizontalAlignment(SwingConstants.CENTER);
         lblTitChassi.setFont(new Font("Berlin Sans FB Demi", Font.PLAIN, 16));
-        lblTitChassi.setBounds(10, 10, 300, 25);
+        lblTitChassi.setBounds(20, 10, 440, 25);
         pnlChassi.add(lblTitChassi);
-
+        
         lblNivelChassi = new JLabel("Nível: 1");
+        lblNivelChassi.setHorizontalAlignment(SwingConstants.CENTER);
         lblNivelChassi.setFont(new Font("Berlin Sans FB", Font.PLAIN, 16));
-        lblNivelChassi.setBounds(20, 45, 100, 20);
+        lblNivelChassi.setBounds(320, 46, 140, 20);
         pnlChassi.add(lblNivelChassi);
         
         lblPerfChassi = new JLabel("Performance: 22 pts");
+        lblPerfChassi.setHorizontalAlignment(SwingConstants.CENTER);
         lblPerfChassi.setForeground(new Color(0, 100, 0));
         lblPerfChassi.setFont(new Font("Arial", Font.BOLD, 12));
-        lblPerfChassi.setBounds(150, 45, 200, 20);
+        lblPerfChassi.setBounds(320, 132, 140, 25);
         pnlChassi.add(lblPerfChassi);
-
-        JLabel lblInfoGanhoC = new JLabel("(Ganho: +20/Nível, +2/Staff)");
-        lblInfoGanhoC.setForeground(Color.GRAY);
-        lblInfoGanhoC.setFont(new Font("Arial", Font.ITALIC, 10));
-        lblInfoGanhoC.setBounds(20, 65, 300, 15);
-        pnlChassi.add(lblInfoGanhoC);
-
+        
         JLabel lblStaffC = new JLabel("Equipe Técnica:");
         lblStaffC.setFont(new Font("Berlin Sans FB", Font.PLAIN, 14));
-        lblStaffC.setBounds(20, 95, 100, 20);
+        lblStaffC.setBounds(10, 77, 105, 20);
         pnlChassi.add(lblStaffC);
-
+        
         barStaffChassi = new JProgressBar();
         barStaffChassi.setMaximum(10);
-        barStaffChassi.setForeground(new Color(255, 140, 0));
-        barStaffChassi.setBounds(120, 95, 180, 20);
+        barStaffChassi.setForeground(new Color(255, 140, 0)); // Laranja
+        barStaffChassi.setBounds(125, 77, 185, 20);
         pnlChassi.add(barStaffChassi);
-
+        
         lblValorStaffChassi = new JLabel("1/10");
-        lblValorStaffChassi.setBounds(310, 95, 40, 20);
+        lblValorStaffChassi.setHorizontalAlignment(SwingConstants.LEFT);
+        lblValorStaffChassi.setBounds(420, 77, 40, 20);
         pnlChassi.add(lblValorStaffChassi);
         
-        btnDemitirChassi = new JButton("-");
+        btnDemitirChassi = new JButton("Demitir (+€250k)");
+        btnDemitirChassi.setForeground(new Color(255, 255, 255));
+        btnDemitirChassi.setBackground(new Color(255, 55, 55));
         btnDemitirChassi.setToolTipText("Demitir (-€250k Reembolso)");
         btnDemitirChassi.setMargin(new Insets(2, 2, 2, 2));
-        btnDemitirChassi.setBounds(350, 95, 25, 20);
+        btnDemitirChassi.setBounds(10, 108, 140, 20);
         btnDemitirChassi.addActionListener(e -> acaoDemitir("chassi"));
         pnlChassi.add(btnDemitirChassi);
         
-        JLabel lblSalarioC = new JLabel("Custo: € 10k/mês por pessoa");
+        JLabel lblSalarioC = new JLabel("€10k/mês por pessoa");
+        lblSalarioC.setHorizontalAlignment(SwingConstants.CENTER);
         lblSalarioC.setForeground(Color.DARK_GRAY);
         lblSalarioC.setFont(new Font("Arial", Font.PLAIN, 11));
-        lblSalarioC.setBounds(120, 115, 200, 15);
+        lblSalarioC.setBounds(320, 108, 140, 15);
         pnlChassi.add(lblSalarioC);
-
-        btnContratarChassi = new JButton("Contratar (+€0.5M)");
-        btnContratarChassi.setBackground(new Color(173, 216, 230));
-        btnContratarChassi.setBounds(20, 160, 180, 30);
+        
+        btnContratarChassi = new JButton("Contratar (-€500k)");
+        btnContratarChassi.setForeground(new Color(255, 255, 255));
+        btnContratarChassi.setBackground(new Color(0, 168, 0));
+        btnContratarChassi.setBounds(170, 108, 140, 20);
         btnContratarChassi.addActionListener(e -> acaoContratarStaff("chassi"));
         pnlChassi.add(btnContratarChassi);
-
-        btnDowngradeChassi = new JButton("v");
+        
+        btnDowngradeChassi = new JButton("Descer Nível");
+        btnDowngradeChassi.setForeground(new Color(255, 255, 255));
         btnDowngradeChassi.setToolTipText("Reduzir Nível");
-        btnDowngradeChassi.setBackground(new Color(255, 160, 122)); 
-        btnDowngradeChassi.setBounds(210, 160, 40, 30);
+        btnDowngradeChassi.setBackground(new Color(255, 55, 55)); 
+        btnDowngradeChassi.setBounds(10, 46, 140, 20);
         btnDowngradeChassi.addActionListener(e -> acaoDowngradeNivel("chassi"));
         pnlChassi.add(btnDowngradeChassi);
-
+        
         btnEvoluirChassi = new JButton("Evoluir Nível");
-        btnEvoluirChassi.setBackground(new Color(255, 215, 0));
-        btnEvoluirChassi.setBounds(260, 160, 150, 30);
+        btnEvoluirChassi.setForeground(new Color(255, 255, 255));
+        btnEvoluirChassi.setBackground(new Color(0, 168, 0));
+        btnEvoluirChassi.setBounds(170, 46, 140, 20);
         btnEvoluirChassi.addActionListener(e -> acaoEvoluirNivel("chassi"));
         pnlChassi.add(btnEvoluirChassi);
+        
+        JLabel lblFuncionriosC = new JLabel("Funcionários");
+        lblFuncionriosC.setHorizontalAlignment(SwingConstants.CENTER);
+        lblFuncionriosC.setFont(new Font("Berlin Sans FB", Font.PLAIN, 14));
+        lblFuncionriosC.setBounds(320, 77, 90, 20);
+        pnlChassi.add(lblFuncionriosC);
 
         // =================================================================
         // --- PAINEL CONFIABILIDADE ---
@@ -348,81 +368,91 @@ public class TelaFabrica extends JDialog {
         pnlConf.setLayout(null);
         pnlConf.setBackground(new Color(250, 250, 250));
         pnlConf.setBorder(new LineBorder(Color.LIGHT_GRAY, 1, true));
-        pnlConf.setBounds(500, 340, 440, 220);
+        pnlConf.setBounds(500, 233, 470, 160); // X = 500
         contentPane.add(pnlConf);
-
+        
         JLabel lblTitConf = new JLabel("CONFIABILIDADE");
+        lblTitConf.setHorizontalAlignment(SwingConstants.CENTER);
         lblTitConf.setFont(new Font("Berlin Sans FB Demi", Font.PLAIN, 16));
-        lblTitConf.setBounds(10, 10, 300, 25);
+        lblTitConf.setBounds(20, 10, 440, 25);
         pnlConf.add(lblTitConf);
-
+        
         lblNivelConf = new JLabel("Nível: 1");
+        lblNivelConf.setHorizontalAlignment(SwingConstants.CENTER);
         lblNivelConf.setFont(new Font("Berlin Sans FB", Font.PLAIN, 16));
-        lblNivelConf.setBounds(20, 45, 100, 20);
+        lblNivelConf.setBounds(320, 46, 140, 20);
         pnlConf.add(lblNivelConf);
         
         lblPerfConf = new JLabel("Performance: 22 pts");
+        lblPerfConf.setHorizontalAlignment(SwingConstants.CENTER);
         lblPerfConf.setForeground(new Color(0, 100, 0));
         lblPerfConf.setFont(new Font("Arial", Font.BOLD, 12));
-        lblPerfConf.setBounds(150, 45, 200, 20);
+        lblPerfConf.setBounds(320, 132, 140, 25);
         pnlConf.add(lblPerfConf);
-
-        JLabel lblInfoGanhoCo = new JLabel("(Ganho: +20/Nível, +2/Staff)");
-        lblInfoGanhoCo.setForeground(Color.GRAY);
-        lblInfoGanhoCo.setFont(new Font("Arial", Font.ITALIC, 10));
-        lblInfoGanhoCo.setBounds(20, 65, 300, 15);
-        pnlConf.add(lblInfoGanhoCo);
-
+        
         JLabel lblStaffCo = new JLabel("Equipe Técnica:");
         lblStaffCo.setFont(new Font("Berlin Sans FB", Font.PLAIN, 14));
-        lblStaffCo.setBounds(20, 95, 100, 20);
+        lblStaffCo.setBounds(10, 77, 105, 20);
         pnlConf.add(lblStaffCo);
-
+        
         barStaffConf = new JProgressBar();
         barStaffConf.setMaximum(10);
-        barStaffConf.setForeground(new Color(128, 0, 128));
-        barStaffConf.setBounds(120, 95, 180, 20);
+        barStaffConf.setForeground(new Color(128, 0, 128)); // Roxo
+        barStaffConf.setBounds(125, 77, 185, 20);
         pnlConf.add(barStaffConf);
-
+        
         lblValorStaffConf = new JLabel("1/10");
-        lblValorStaffConf.setBounds(310, 95, 40, 20);
+        lblValorStaffConf.setHorizontalAlignment(SwingConstants.LEFT);
+        lblValorStaffConf.setBounds(420, 77, 40, 20);
         pnlConf.add(lblValorStaffConf);
         
-        btnDemitirConf = new JButton("-");
+        btnDemitirConf = new JButton("Demitir (+€250k)");
+        btnDemitirConf.setForeground(new Color(255, 255, 255));
+        btnDemitirConf.setBackground(new Color(255, 55, 55));
         btnDemitirConf.setToolTipText("Demitir (-€250k Reembolso)");
         btnDemitirConf.setMargin(new Insets(2, 2, 2, 2));
-        btnDemitirConf.setBounds(350, 95, 25, 20);
+        btnDemitirConf.setBounds(10, 108, 140, 20);
         btnDemitirConf.addActionListener(e -> acaoDemitir("confiabilidade"));
         pnlConf.add(btnDemitirConf);
         
-        JLabel lblSalarioCo = new JLabel("Custo: € 10k/mês por pessoa");
+        JLabel lblSalarioCo = new JLabel("€10k/mês por pessoa");
+        lblSalarioCo.setHorizontalAlignment(SwingConstants.CENTER);
         lblSalarioCo.setForeground(Color.DARK_GRAY);
         lblSalarioCo.setFont(new Font("Arial", Font.PLAIN, 11));
-        lblSalarioCo.setBounds(120, 115, 200, 15);
+        lblSalarioCo.setBounds(320, 108, 140, 15);
         pnlConf.add(lblSalarioCo);
-
-        btnContratarConf = new JButton("Contratar (+€0.5M)");
-        btnContratarConf.setBackground(new Color(173, 216, 230));
-        btnContratarConf.setBounds(20, 160, 180, 30);
+        
+        btnContratarConf = new JButton("Contratar (-€500k)");
+        btnContratarConf.setForeground(new Color(255, 255, 255));
+        btnContratarConf.setBackground(new Color(0, 168, 0));
+        btnContratarConf.setBounds(170, 108, 140, 20);
         btnContratarConf.addActionListener(e -> acaoContratarStaff("confiabilidade"));
         pnlConf.add(btnContratarConf);
-
-        btnDowngradeConf = new JButton("v");
+        
+        btnDowngradeConf = new JButton("Descer Nível");
+        btnDowngradeConf.setForeground(new Color(255, 255, 255));
         btnDowngradeConf.setToolTipText("Reduzir Nível");
-        btnDowngradeConf.setBackground(new Color(255, 160, 122)); 
-        btnDowngradeConf.setBounds(210, 160, 40, 30);
+        btnDowngradeConf.setBackground(new Color(255, 55, 55)); 
+        btnDowngradeConf.setBounds(10, 46, 140, 20);
         btnDowngradeConf.addActionListener(e -> acaoDowngradeNivel("confiabilidade"));
         pnlConf.add(btnDowngradeConf);
-
+        
         btnEvoluirConf = new JButton("Evoluir Nível");
-        btnEvoluirConf.setBackground(new Color(255, 215, 0));
-        btnEvoluirConf.setBounds(260, 160, 150, 30);
+        btnEvoluirConf.setForeground(new Color(255, 255, 255));
+        btnEvoluirConf.setBackground(new Color(0, 168, 0));
+        btnEvoluirConf.setBounds(170, 46, 140, 20);
         btnEvoluirConf.addActionListener(e -> acaoEvoluirNivel("confiabilidade"));
         pnlConf.add(btnEvoluirConf);
+        
+        JLabel lblFuncionriosCo = new JLabel("Funcionários");
+        lblFuncionriosCo.setHorizontalAlignment(SwingConstants.CENTER);
+        lblFuncionriosCo.setFont(new Font("Berlin Sans FB", Font.PLAIN, 14));
+        lblFuncionriosCo.setBounds(320, 77, 90, 20);
+        pnlConf.add(lblFuncionriosCo);
 
         // --- TABELA DE RESUMO (RODAPÉ) ---
         JScrollPane scrollTabela = new JScrollPane();
-        scrollTabela.setBounds(40, 580, 900, 85);
+        scrollTabela.setBounds(10, 404, 960, 130);
         contentPane.add(scrollTabela);
         
         tabelaResumo = new JTable();
@@ -450,18 +480,19 @@ public class TelaFabrica extends JDialog {
         // --- BOTÃO VOLTAR ---
         JButton btnVoltar = new JButton("VOLTAR PARA O MENU");
         btnVoltar.setFont(new Font("Berlin Sans FB", Font.PLAIN, 16));
-        btnVoltar.setBounds(350, 675, 300, 35);
+        btnVoltar.setBounds(670, 545, 300, 25);
         btnVoltar.addActionListener(e -> dispose()); 
         contentPane.add(btnVoltar);
         
                 lblSaldo = new JLabel("€ 0.0 M");
-                lblSaldo.setBounds(830, 11, 110, 40);
+                lblSaldo.setBounds(10, 545, 115, 25);
                 contentPane.add(lblSaldo);
                 lblSaldo.setHorizontalAlignment(SwingConstants.RIGHT);
                 lblSaldo.setFont(new Font("Arial", Font.BOLD, 16));
                 
                 JLabel lblIconeMoney = new JLabel("");
-                lblIconeMoney.setBounds(947, 11, 24, 40);
+                lblIconeMoney.setHorizontalAlignment(SwingConstants.CENTER);
+                lblIconeMoney.setBounds(135, 544, 35, 25);
                 contentPane.add(lblIconeMoney);
                 lblIconeMoney.setIcon(new ImageIcon(TelaFabrica.class.getResource("/resource/IconeEuro24px.png")));
 
@@ -509,14 +540,17 @@ public class TelaFabrica extends JDialog {
 
     private void acaoEvoluirNivel(String setor) {
         int nivel = getNivelSetor(setor);
-        double custo = nivel * CUSTO_BASE_EVOLUCAO;
+        // FIX: Garante que custo nunca seja 0, mesmo se nivel for 0 por erro
+        int nivelParaCalculo = (nivel < 1) ? 1 : nivel;
+        double custo = nivelParaCalculo * CUSTO_BASE_EVOLUCAO;
+        
         if (equipe.getSaldoFinanceiro() < custo) {
             JOptionPane.showMessageDialog(this, "Saldo insuficiente!", "Erro", JOptionPane.ERROR_MESSAGE);
             return;
         }
         
         int resp = JOptionPane.showConfirmDialog(this, 
-            "Evoluir " + setor.toUpperCase() + " para Nível " + (nivel+1) + "?\nCusto: €" + custo + "M\nAVISO: Staff reseta para 1!", 
+            "Evoluir " + setor.toUpperCase() + " para Nível " + (nivel+1) + "?\nCusto: €" + custo + "M\nAVISO: O Staff atual será ajustado para o mínimo do novo nível.", 
             "Confirmar", JOptionPane.YES_NO_OPTION);
             
         if (resp == JOptionPane.YES_OPTION) {
@@ -577,16 +611,16 @@ public class TelaFabrica extends JDialog {
     private void atualizarInterface() {
         lblSaldo.setText(String.format("€ %.1f M", equipe.getSaldoFinanceiro()));
         
-        atualizarPainel(lblNivelMotor, lblPerfMotor, barStaffMotor, lblValorStaffMotor, btnEvoluirMotor, btnDowngradeMotor,
+        atualizarPainel(lblNivelMotor, lblPerfMotor, barStaffMotor, lblValorStaffMotor, btnEvoluirMotor, btnDowngradeMotor, btnContratarMotor, btnDemitirMotor,
                 equipe.getNivelMotor(), equipe.getStaffMotor(), equipe.getForcaMotorCalculada());
                 
-        atualizarPainel(lblNivelAero, lblPerfAero, barStaffAero, lblValorStaffAero, btnEvoluirAero, btnDowngradeAero,
+        atualizarPainel(lblNivelAero, lblPerfAero, barStaffAero, lblValorStaffAero, btnEvoluirAero, btnDowngradeAero, btnContratarAero, btnDemitirAero,
                 equipe.getNivelAero(), equipe.getStaffAero(), equipe.getForcaAeroCalculada());
                 
-        atualizarPainel(lblNivelChassi, lblPerfChassi, barStaffChassi, lblValorStaffChassi, btnEvoluirChassi, btnDowngradeChassi,
+        atualizarPainel(lblNivelChassi, lblPerfChassi, barStaffChassi, lblValorStaffChassi, btnEvoluirChassi, btnDowngradeChassi, btnContratarChassi, btnDemitirChassi,
                 equipe.getNivelChassi(), equipe.getStaffChassi(), equipe.getForcaChassiCalculada());
                 
-        atualizarPainel(lblNivelConf, lblPerfConf, barStaffConf, lblValorStaffConf, btnEvoluirConf, btnDowngradeConf,
+        atualizarPainel(lblNivelConf, lblPerfConf, barStaffConf, lblValorStaffConf, btnEvoluirConf, btnDowngradeConf, btnContratarConf, btnDemitirConf,
                 equipe.getNivelConfiabilidade(), equipe.getStaffConfiabilidade(), equipe.getForcaConfiabilidadeCalculada());
                 
         // Atualizar Tabela
@@ -610,20 +644,25 @@ public class TelaFabrica extends JDialog {
         });
     }
     
-    private void atualizarPainel(JLabel lblNivel, JLabel lblPerf, JProgressBar bar, JLabel lblVal, JButton btnUp, JButton btnDown, int nivel, int staff, double forca) {
+    private void atualizarPainel(JLabel lblNivel, JLabel lblPerf, JProgressBar bar, JLabel lblVal, JButton btnUp, JButton btnDown, JButton btnHire, JButton btnFire, int nivel, int staff, double forca) {
         lblNivel.setText("Nível: " + nivel + "/5");
         lblPerf.setText("Performance: " + (int)forca + " pts");
         
-        // Limite dinâmico: 5, 10, 15, 20, 30
         int limite = equipe.getLimiteStaff(nivel);
         bar.setMaximum(limite);
         bar.setValue(staff);
         lblVal.setText(staff + "/" + limite);
         
-        double custo = nivel * CUSTO_BASE_EVOLUCAO;
-        btnUp.setText("Subir Nível (€0M)");
+        int nivelParaCalculo = (nivel < 1) ? 1 : nivel;
+        double custo = nivelParaCalculo * CUSTO_BASE_EVOLUCAO;
+        
+        btnUp.setText("Evoluir Nível (€" + (int)custo + "M)");
         btnUp.setEnabled(nivel < 5);
         btnDown.setEnabled(nivel > 1);
+        
+        // Regras de bloqueio solicitadas
+        btnHire.setEnabled(staff < limite); // Bloqueia contratar se estiver cheio
+        btnFire.setEnabled(staff > 1);      // Bloqueia demitir se tiver só 1
     }
     
     private void adicionarLinhaTabela(DefaultTableModel model, String nome, int nivel, int staff, double forca) {

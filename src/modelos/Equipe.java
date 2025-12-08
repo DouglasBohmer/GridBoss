@@ -83,7 +83,7 @@ public class Equipe {
         this.nivelConfiabilidade = n;
     }
 
-    // --- NOVA REGRA: LIMITE DE STAFF POR NÍVEL ---
+    // --- REGRAS DE STAFF ---
     public int getLimiteStaff(int nivel) {
         switch (nivel) {
             case 1: return 5;
@@ -95,7 +95,48 @@ public class Equipe {
         }
     }
 
-    // --- CONTRATAR STAFF (Respeitando Limite Dinâmico) ---
+    private int calcularStaffAposUpgrade(int nivelNovo, int staffAtual) {
+        // Regra: Sair do 1 pro 2 -> Mantém apenas 5
+        if (nivelNovo == 2) return 5;
+        // Regra: Outros níveis -> Mínimo 10
+        return Math.max(staffAtual, 10);
+    }
+
+    // --- EVOLUIR NÍVEL (COM NOVA REGRA) ---
+    public boolean subirNivelMotor() { 
+        if (nivelMotor < 5) { 
+            nivelMotor++; 
+            staffMotor = calcularStaffAposUpgrade(nivelMotor, staffMotor);
+            return true; 
+        } 
+        return false; 
+    }
+    public boolean subirNivelAero() { 
+        if (nivelAero < 5) { 
+            nivelAero++; 
+            staffAero = calcularStaffAposUpgrade(nivelAero, staffAero);
+            return true; 
+        } 
+        return false; 
+    }
+    public boolean subirNivelChassi() { 
+        if (nivelChassi < 5) { 
+            nivelChassi++; 
+            staffChassi = calcularStaffAposUpgrade(nivelChassi, staffChassi);
+            return true; 
+        } 
+        return false; 
+    }
+    public boolean subirNivelConfiabilidade() { 
+        if (nivelConfiabilidade < 5) { 
+            nivelConfiabilidade++; 
+            staffConfiabilidade = calcularStaffAposUpgrade(nivelConfiabilidade, staffConfiabilidade);
+            return true; 
+        } 
+        return false; 
+    }
+
+    // --- CONTRATAR STAFF ---
     public boolean contratarStaffMotor() { if (staffMotor < getLimiteStaff(nivelMotor)) { staffMotor++; return true; } return false; }
     public boolean contratarStaffAero() { if (staffAero < getLimiteStaff(nivelAero)) { staffAero++; return true; } return false; }
     public boolean contratarStaffChassi() { if (staffChassi < getLimiteStaff(nivelChassi)) { staffChassi++; return true; } return false; }
@@ -107,46 +148,23 @@ public class Equipe {
     public boolean demitirStaffChassi() { if (staffChassi > 1) { staffChassi--; return true; } return false; }
     public boolean demitirStaffConfiabilidade() { if (staffConfiabilidade > 1) { staffConfiabilidade--; return true; } return false; }
 
-    // --- EVOLUIR NÍVEL (Upgrade) ---
-    public boolean subirNivelMotor() { if (nivelMotor < 5) { nivelMotor++; staffMotor = 1; return true; } return false; }
-    public boolean subirNivelAero() { if (nivelAero < 5) { nivelAero++; staffAero = 1; return true; } return false; }
-    public boolean subirNivelChassi() { if (nivelChassi < 5) { nivelChassi++; staffChassi = 1; return true; } return false; }
-    public boolean subirNivelConfiabilidade() { if (nivelConfiabilidade < 5) { nivelConfiabilidade++; staffConfiabilidade = 1; return true; } return false; }
-
-    // --- DOWNGRADE DE NÍVEL (Retorna valor reembolsado por staff demitido) ---
+    // --- DOWNGRADE DE NÍVEL ---
     public double downgradeNivelMotor() {
-        if (nivelMotor > 1) {
-            nivelMotor--;
-            return ajustarStaffAposDowngrade(1); // 1 = Motor
-        }
-        return 0.0;
+        if (nivelMotor > 1) { nivelMotor--; return ajustarStaffAposDowngrade(1); } return 0.0;
     }
     public double downgradeNivelAero() {
-        if (nivelAero > 1) {
-            nivelAero--;
-            return ajustarStaffAposDowngrade(2);
-        }
-        return 0.0;
+        if (nivelAero > 1) { nivelAero--; return ajustarStaffAposDowngrade(2); } return 0.0;
     }
     public double downgradeNivelChassi() {
-        if (nivelChassi > 1) {
-            nivelChassi--;
-            return ajustarStaffAposDowngrade(3);
-        }
-        return 0.0;
+        if (nivelChassi > 1) { nivelChassi--; return ajustarStaffAposDowngrade(3); } return 0.0;
     }
     public double downgradeNivelConfiabilidade() {
-        if (nivelConfiabilidade > 1) {
-            nivelConfiabilidade--;
-            return ajustarStaffAposDowngrade(4);
-        }
-        return 0.0;
+        if (nivelConfiabilidade > 1) { nivelConfiabilidade--; return ajustarStaffAposDowngrade(4); } return 0.0;
     }
 
     private double ajustarStaffAposDowngrade(int tipo) {
         int nivelAtual = 0;
         int staffAtual = 0;
-        
         switch(tipo) {
             case 1: nivelAtual = nivelMotor; staffAtual = staffMotor; break;
             case 2: nivelAtual = nivelAero; staffAtual = staffAero; break;
@@ -159,31 +177,28 @@ public class Equipe {
         
         if (staffAtual > tetoNovo) {
             int excedente = staffAtual - tetoNovo;
-            reembolso = excedente * 0.25; // 250k por cabeça demitida forçadamente
+            reembolso = excedente * 0.25; 
             staffAtual = tetoNovo;
         }
         
-        // Aplica o novo valor de staff
         switch(tipo) {
             case 1: staffMotor = staffAtual; break;
             case 2: staffAero = staffAtual; break;
             case 3: staffChassi = staffAtual; break;
             case 4: staffConfiabilidade = staffAtual; break;
         }
-        
         return reembolso;
     }
 
-    // --- CÁLCULO DE PERFORMANCE ---
+    // --- PERFORMANCE ---
     public double getForcaMotorCalculada() { return (nivelMotor * 20) + (staffMotor * 2); }
     public double getForcaAeroCalculada() { return (nivelAero * 20) + (staffAero * 2); }
     public double getForcaChassiCalculada() { return (nivelChassi * 20) + (staffChassi * 2); }
     public double getForcaConfiabilidadeCalculada() { return (nivelConfiabilidade * 20) + (staffConfiabilidade * 2); }
     
-    // Custo Mensal Total (Staff + Manutenção Nível)
     public double getCustoMensalFabrica() {
-        double custoStaff = (staffMotor + staffAero + staffChassi + staffConfiabilidade) * 0.01; // 10k cada
-        double custoNiveis = (nivelMotor + nivelAero + nivelChassi + nivelConfiabilidade) * 0.1; // 100k cada nível
+        double custoStaff = (staffMotor + staffAero + staffChassi + staffConfiabilidade) * 0.01;
+        double custoNiveis = (nivelMotor + nivelAero + nivelChassi + nivelConfiabilidade) * 0.1;
         return custoStaff + custoNiveis;
     }
 
@@ -198,7 +213,7 @@ public class Equipe {
         public String logoMotorSvg;
     }
 
-    // --- MÉTODOS DE CONTRATAÇÃO ---
+    // --- MÉTODOS DE CONTRATAÇÃO / FINANCEIRO ---
     public boolean contratarPiloto(Piloto piloto, double salario, double custoAssinatura, int meses, TipoContrato tipo) {
         if (categoriaAtual != null) {
             if (tipo == TipoContrato.TITULAR && pilotosTitulares.size() >= categoriaAtual.getMaxTitulares()) return false;

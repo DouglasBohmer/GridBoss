@@ -128,7 +128,14 @@ public class TelaPrincipal extends JFrame {
         
         // --- CARREGAR JOGO (ATUALIZADO) ---
         JMenuItem menuCarregar = new JMenuItem("Carregar Jogo");
-        menuCarregar.addActionListener(e -> carregarJogoAction());
+        menuCarregar.addActionListener(e -> {
+            TelaCarregarJogo tela = new TelaCarregarJogo(this); // Passa 'this' para fechar esta tela depois
+            tela.setLocationRelativeTo(this);
+            tela.setVisible(true);
+        });
+        
+        //menuCarregar.addActionListener(e -> carregarJogoAction());
+        
         Menu_Geral.add(menuCarregar);
         // ----------------------------------
 

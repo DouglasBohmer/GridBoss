@@ -7,7 +7,9 @@ import modelos.Equipe;
 import modelos.Piloto;
 import modelos.Pista;
 import servicos.CampeonatoService;
-
+import javax.swing.JFileChooser;
+import javax.swing.filechooser.FileNameExtensionFilter;
+import java.io.File;
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 import javax.swing.table.DefaultTableCellRenderer;
@@ -17,8 +19,6 @@ import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
 import java.text.Normalizer;
-import java.awt.event.ActionListener;
-import java.awt.event.ActionEvent;
 
 public class TelaPrincipal extends JFrame {
 
@@ -101,30 +101,51 @@ public class TelaPrincipal extends JFrame {
             dispose();
         });
         Menu_Geral.add(mntmNovoJogo);
-        Menu_Geral.add(new JMenuItem("Salvar Jogo"));
-        Menu_Geral.add(new JMenuItem("Carregar Jogo"));
+        
+        // --- SAVE RÁPIDO ---
+        JMenuItem menuSalvarRapido = new JMenuItem("Salvar");
+        menuSalvarRapido.setAccelerator(KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_S, java.awt.Event.CTRL_MASK));
+        menuSalvarRapido.addActionListener(e -> {
+            if (dadosDoJogo.getArquivoAtual() != null) {
+                boolean sucesso = dadosDoJogo.salvarJogo(dadosDoJogo.getArquivoAtual());
+                if (sucesso) JOptionPane.showMessageDialog(this, "Progresso salvo em '" + dadosDoJogo.getArquivoAtual() + ".save'!");
+                else JOptionPane.showMessageDialog(this, "Erro ao salvar!", "Erro", JOptionPane.ERROR_MESSAGE);
+            } else {
+                TelaSalvarJogo tela = new TelaSalvarJogo(dadosDoJogo);
+                tela.setLocationRelativeTo(this);
+                tela.setVisible(true);
+            }
+        });
+        Menu_Geral.add(menuSalvarRapido);
+        
+        JMenuItem menuSalvarComo = new JMenuItem("Salvar Como...");
+        menuSalvarComo.addActionListener(e -> {
+            TelaSalvarJogo tela = new TelaSalvarJogo(dadosDoJogo);
+            tela.setLocationRelativeTo(this);
+            tela.setVisible(true);
+        });
+        Menu_Geral.add(menuSalvarComo);
+        
+        // --- CARREGAR JOGO (ATUALIZADO) ---
+        JMenuItem menuCarregar = new JMenuItem("Carregar Jogo");
+        menuCarregar.addActionListener(e -> carregarJogoAction());
+        Menu_Geral.add(menuCarregar);
+        // ----------------------------------
 
-        // --- MENU EQUIPE (ATUALIZADO) ---
         JMenu Menu_Equipe = new JMenu("Equipe");
         menuBar.add(Menu_Equipe);
         
         JMenuItem mntmFabrica = new JMenuItem("Fábrica & Desenvolvimento");
         mntmFabrica.addActionListener(e -> {
-            // 1. Cria a janela da fábrica passando os dados globais
             TelaFabrica tela = new TelaFabrica(dadosDoJogo);
-            tela.setLocationRelativeTo(this); // Centraliza sobre a tela principal
-            
-            // 2. Abre a janela. Como é MODAL, o código da TelaPrincipal PAUSA aqui.
+            tela.setLocationRelativeTo(this); 
             tela.setVisible(true); 
-            
-            // 3. Quando o 'dispose()' for chamado na fábrica (botão Voltar), o código continua:
-            atualizarDados(); // <--- AQUI A MÁGICA ACONTECE! Recarrega o saldo novo.
+            atualizarDados(); 
         });
         Menu_Equipe.add(mntmFabrica);
         
         Menu_Equipe.add(new JMenuItem("Motor"));
         Menu_Equipe.add(new JMenuItem("Patrocínios"));
-        // -------------------------------
 
         JMenu Menu_Piloto = new JMenu("Pilotos");
         menuBar.add(Menu_Piloto);
@@ -587,6 +608,7 @@ public class TelaPrincipal extends JFrame {
         tabelaConstrutores.getColumnModel().getColumn(7).setPreferredWidth(50);
     }
     
+    // --- Renderers mantidos iguais (Inner Classes) ---
     static class CentralizadoRenderer extends DefaultTableCellRenderer {
         @Override
         public Component getTableCellRendererComponent(JTable table, Object value, boolean isSelected, boolean hasFocus, int row, int column) {
@@ -688,9 +710,8 @@ public class TelaPrincipal extends JFrame {
             // Mas o ideal é: return dadosDoJogo.getCampeonato().getCalendario().get(index);
             
             // Fallback temporário seguro:
-            List<Pista> fallback = CarregadorJSON.carregarCalendario(SessaoJogo.categoriaKey, SessaoJogo.anoSelecionado);
-            if (index >= 0 && index < fallback.size()) {
-                return fallback.get(index);
+            if (todas != null && index >= 0 && index < todas.size()) {
+                return todas.get(index);
             }
         } catch (Exception e) {
             e.printStackTrace();
@@ -727,4 +748,42 @@ public class TelaPrincipal extends JFrame {
     private void irParaCorrida() {
         JOptionPane.showMessageDialog(this, "Carregando fim de semana de corrida...");
     }
+
+    private void carregarJogoAction() {
+        File diretorioSaves = new File("saves");
+        if (!diretorioSaves.exists()) {
+            diretorioSaves.mkdir();
+        }
+
+        JFileChooser fileChooser = new JFileChooser(diretorioSaves);
+        fileChooser.setDialogTitle("Carregar Jogo Salvo");
+        fileChooser.setFileFilter(new FileNameExtensionFilter("Save Game (.save)", "save"));
+        
+        int retorno = fileChooser.showOpenDialog(this);
+        
+        if (retorno == JFileChooser.APPROVE_OPTION) {
+            File arquivoSelecionado = fileChooser.getSelectedFile();
+            
+            // Tenta carregar o jogo
+            DadosDoJogo jogoCarregado = DadosDoJogo.carregarJogo(arquivoSelecionado.getName());
+            
+            if (jogoCarregado != null) {
+                // Sucesso: Cria uma nova tela principal com os dados novos
+                TelaPrincipal novaTela = new TelaPrincipal(jogoCarregado);
+                novaTela.setVisible(true);
+                novaTela.setLocationRelativeTo(null);
+                
+                // Fecha a tela atual (o jogo antigo)
+                this.dispose(); 
+                
+                JOptionPane.showMessageDialog(novaTela, "Jogo carregado com sucesso!");
+            } else {
+                JOptionPane.showMessageDialog(this, 
+                    "Erro ao carregar o save.\nArquivo corrompido ou versão incompatível.", 
+                    "Erro", 
+                    JOptionPane.ERROR_MESSAGE);
+            }
+        }
+    }
+
 }

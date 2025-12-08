@@ -15,7 +15,7 @@
     "dirigibilidade": 3,
     "durabilidade": 4,
     "preco": 14.5,
-    "arquivos": { "logo": "/resource/Motor_FerrariPQ.png","bandeira": "/resource/Bandeira Ferrari.png" }
+    "arquivos": { "logo": "/resource/Motor_FerrariPQ.png","bandeira": "/resource/Bandeira Italia.png" }
   },
   {
     "id": "Mercedes",

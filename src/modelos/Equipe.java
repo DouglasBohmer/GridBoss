@@ -21,13 +21,11 @@ public class Equipe {
     private int poles;
     
     // --- FÁBRICA & DESENVOLVIMENTO ---
-    // Níveis de Estrutura (1 a 5)
     private int nivelMotor = 1;
     private int nivelAero = 1;
     private int nivelChassi = 1;
     private int nivelConfiabilidade = 1;
 
-    // Staff (Funcionários) (1 a 10)
     private int staffMotor = 1;
     private int staffAero = 1;
     private int staffChassi = 1;
@@ -44,7 +42,7 @@ public class Equipe {
     private transient List<Patrocinador> patrocinadoresAtivos = new ArrayList<>();
     private transient Categoria categoriaAtual;
     
-    // --- NOVO: VÍNCULO COM OBJETO MOTOR ---
+    // Vínculo com Objeto Motor
     private transient Motor motorObjeto; 
 
     public Equipe() {
@@ -58,14 +56,31 @@ public class Equipe {
         this.arquivos = new Arquivos();
     }
     
-    // --- MÉTODOS DO MOTOR (Passo 3) ---
+    // --- NOVO: MÉTODO DE PREPARAÇÃO PARA SAVE ---
+    public void sincronizarDadosParaSalvar() {
+        // 1. Atualiza a lista de IDs (Strings) baseada nos objetos reais
+        this.pilotosContratadosIDs.clear();
+        
+        for (Piloto p : pilotosTitulares) {
+            this.pilotosContratadosIDs.add(p.getNome());
+        }
+        for (Piloto p : pilotosReservas) {
+            this.pilotosContratadosIDs.add(p.getNome());
+        }
+        
+        // 2. Atualiza a string do motor caso tenha trocado de fornecedor
+        if (this.motorObjeto != null) {
+            this.motor = this.motorObjeto.getId();
+        }
+    }
+    // --------------------------------------------
+    
     public void setMotorObjeto(Motor m) {
         this.motorObjeto = m;
     }
     
     public Motor getMotorObjeto() { return motorObjeto; }
     
-    // --- INICIALIZAÇÃO DA FÁBRICA ---
     public void inicializarFabricaInteligente() {
         if (reputacao >= 90) definirNiveis(5);      
         else if (reputacao >= 75) definirNiveis(4); 
@@ -86,7 +101,6 @@ public class Equipe {
         this.nivelConfiabilidade = n;
     }
 
-    // --- MÉTODOS DE EVOLUÇÃO ---
     public boolean contratarStaffMotor() {
         if (staffMotor < 10) { staffMotor++; return true; } return false;
     }
@@ -124,7 +138,6 @@ public class Equipe {
         public String logoMotorSvg;
     }
 
-    // --- MÉTODOS DE CONTRATAÇÃO ---
     public boolean contratarPiloto(Piloto piloto, double salario, double custoAssinatura, int meses, TipoContrato tipo) {
         if (categoriaAtual != null) {
             if (tipo == TipoContrato.TITULAR && pilotosTitulares.size() >= categoriaAtual.getMaxTitulares()) return false;
@@ -157,7 +170,6 @@ public class Equipe {
         p.assinarContrato(c);
     }
 
-    // --- MÉTODOS FINANCEIROS ---
     public void adicionarPatrocinador(Patrocinador p) {
         patrocinadoresAtivos.add(p);
         this.saldoFinanceiro += p.getValorAssinatura();
@@ -231,8 +243,6 @@ public class Equipe {
         this.categoriaAtual = categoriaAtual;
     }
     
-    // --- HELPER METHODS IMAGENS (ATUALIZADO) ---
-    
     public String getCaminhoLogo() {
         if (arquivos != null && arquivos.logo != null) return arquivos.logo;
         return "/resource/Icone64pxErro.png";
@@ -244,21 +254,13 @@ public class Equipe {
     }
     
     public String getCaminhoBandeiraMotor() {
-        // PRIORIDADE 1: Se tivermos o objeto Motor vinculado, usamos a bandeira dele
-        if (motorObjeto != null) {
-            return motorObjeto.getCaminhoBandeira();
-        }
-        // PRIORIDADE 2: Fallback para o arquivo equipes.json (comportamento antigo)
+        if (motorObjeto != null) return motorObjeto.getCaminhoBandeira();
         if (arquivos != null && arquivos.bandeiraMotor != null) return arquivos.bandeiraMotor;
         return "/resource/Bandeira BRANCA.png";
     }
     
     public String getCaminhoLogoMotor() {
-        // PRIORIDADE 1: Objeto Motor
-        if (motorObjeto != null) {
-            return motorObjeto.getCaminhoLogo();
-        }
-        // PRIORIDADE 2: Fallback
+        if (motorObjeto != null) return motorObjeto.getCaminhoLogo();
         if (arquivos != null && arquivos.logoMotor != null) return arquivos.logoMotor;
         return "/resource/Icone16pxErro.png";
     }

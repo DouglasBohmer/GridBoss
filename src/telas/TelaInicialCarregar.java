@@ -7,6 +7,8 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.File;
+import dados.DadosDoJogo; // Importar a classe de dados
+import javax.swing.filechooser.FileNameExtensionFilter;
 
 public class TelaInicialCarregar extends JFrame {
 
@@ -159,13 +161,39 @@ public class TelaInicialCarregar extends JFrame {
     }
 
     private void carregarJogoAction() {
-        JFileChooser fileChooser = new JFileChooser();
-        fileChooser.setFileFilter(new javax.swing.filechooser.FileNameExtensionFilter("Save Game JSON", "json"));
+        // Define o diretório inicial para a pasta "saves" do projeto
+        File diretorioSaves = new File("saves");
+        if (!diretorioSaves.exists()) {
+            diretorioSaves.mkdir();
+        }
+
+        JFileChooser fileChooser = new JFileChooser(diretorioSaves);
+        
+        // Agora filtra por .save (que é o padrão que definimos)
+        fileChooser.setFileFilter(new FileNameExtensionFilter("Save Game (.save)", "save"));
+        
         int retorno = fileChooser.showOpenDialog(this);
         
         if (retorno == JFileChooser.APPROVE_OPTION) {
-            ArquivoCarregado = fileChooser.getSelectedFile();
-            JOptionPane.showMessageDialog(this, "Carregando: " + ArquivoCarregado.getName());
+            File arquivoSelecionado = fileChooser.getSelectedFile();
+            
+            // Chama a lógica de carregamento do DadosDoJogo
+            DadosDoJogo jogoCarregado = DadosDoJogo.carregarJogo(arquivoSelecionado.getName());
+            
+            if (jogoCarregado != null) {
+                // Sucesso: Abre a tela principal com os dados carregados
+                TelaPrincipal telaPrincipal = new TelaPrincipal(jogoCarregado);
+                telaPrincipal.setVisible(true);
+                telaPrincipal.setLocationRelativeTo(null);
+                
+                this.dispose(); // Fecha a tela inicial
+            } else {
+                JOptionPane.showMessageDialog(this, 
+                    "Erro ao carregar o save.\nO arquivo pode estar corrompido ou ser de uma versão antiga.", 
+                    "Erro", 
+                    JOptionPane.ERROR_MESSAGE);
+            }
         }
     }
+    
 }

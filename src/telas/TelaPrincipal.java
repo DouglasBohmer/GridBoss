@@ -389,6 +389,7 @@ public class TelaPrincipal extends JFrame {
         LB_NomeP1.setFont(fontNome); LB_NomeP2.setFont(fontNome); LB_NomeP3.setFont(fontNome); LB_NomeP4.setFont(fontNome); LB_NomeP5.setFont(fontNome);
     }
 
+ 
     private void atualizarDados() {
         if (equipeJogavel == null) return;
 
@@ -397,28 +398,45 @@ public class TelaPrincipal extends JFrame {
         LB_Motor.setText("Motor " + equipeJogavel.getMotor());
         LB_Orc.setText(String.format("€ %.1f milhões", equipeJogavel.getSaldoFinanceiro()));
         LB_NomeDirigente.setText(dadosDoJogo.getNomeDoDirigente());
-        LB_Ano.setText("Ano " + SessaoJogo.anoSelecionado);
+        
+        // CORREÇÃO: Ler o ano do Save, e não da Sessão estática
+        LB_Ano.setText("Ano " + dadosDoJogo.getAnoAtual()); 
         
         carregarImagem(LB_LogoEquipe, equipeJogavel.getCaminhoLogo());
         carregarImagem(LB_BandeiraMotor, equipeJogavel.getCaminhoBandeiraMotor());
         carregarImagem(LB_LogoMotorPQ, equipeJogavel.getCaminhoLogoMotor());
         carregarImagem(LB_BandeiraSede, equipeJogavel.getCaminhoBandeiraSede());
 
-        // Banners
-        if (SessaoJogo.categoriaKey.contains("f1")) {
+        // --- BANNERS (LÓGICA CORRIGIDA) ---
+        // Pegamos a categoria do objeto carregado (Save)
+        String catKey = "";
+        if (dadosDoJogo.getCategoriaKey() != null) {
+            catKey = dadosDoJogo.getCategoriaKey().toLowerCase();
+        }
+
+        if (catKey.contains("f1")) {
             carregarImagem(LB_CategoriaEscolhida, "/resource/Logo Novo_F1_OKPQ.png");
             carregarImagem(LB_CarrosCat, "/resource/Banner F1_OK.png");
             LB_TipoPista.setForeground(Color.BLACK);
-        } else if (SessaoJogo.categoriaKey.contains("indy")) {
+            
+        } else if (catKey.contains("indy")) {
             carregarImagem(LB_CategoriaEscolhida, "/resource/Logo Indy_OKPQ.png");
-            carregarImagem(LB_CarrosCat, "/resource/Banner F1_OK.png");
+            carregarImagem(LB_CarrosCat, "/resource/Banner F1_OK.png"); 
             LB_TipoPista.setForeground(Color.BLUE);
-        } else {
+            
+        } else if (catKey.contains("nascar")) {
             carregarImagem(LB_CategoriaEscolhida, "/resource/Logo Nascar_OKPQ.png");
-            carregarImagem(LB_CarrosCat, "/resource/Banner F1_OK.png");
+            carregarImagem(LB_CarrosCat, "/resource/Banner F1_OK.png"); 
             LB_TipoPista.setForeground(Color.BLUE);
+            
+        } else {
+            // CASO PADRÃO (Se não for nenhuma das 3 acima)
+            carregarImagem(LB_CategoriaEscolhida, "/resource/BannerLogo.png");
+            carregarImagem(LB_CarrosCat, "/resource/Banner F1_OK.png");
+            LB_TipoPista.setForeground(Color.BLACK);
         }
 
+        // --- RESTO DO CÓDIGO (Tabelas e Pilotos) ---
         List<Piloto> pilotosEquipe = equipeJogavel.getPilotosTitulares();
         pilotosEquipe.addAll(equipeJogavel.getPilotosReservas());
 
@@ -431,7 +449,8 @@ public class TelaPrincipal extends JFrame {
         atualizarCalendarioUI();
         preencherTabelas();
     }
-
+    
+    
     private void atualizarSlotPiloto(int index, List<Piloto> lista, JLabel lbNome, JLabel lbNum, JLabel lbIdade, JLabel lbContrato, JLabel lbFlag, JLabel lbStatus, JLabel lbOver) {
         if (index < lista.size()) {
             Piloto p = lista.get(index);

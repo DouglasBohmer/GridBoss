@@ -5,16 +5,16 @@ import java.util.Iterator;
 import java.util.List;
 
 public class Equipe {
-    // --- CAMPOS DO JSON (Dados Carregados) ---
+    // --- CAMPOS DO JSON ---
     private String id;
     private String nome;
     private String sede;
     private String motor;
     private int fundacao;
     private double saldoFinanceiro;
-    private int reputacao;      // 0 a 100
+    private int reputacao;      
     
-    // --- ESTATÍSTICAS DA TEMPORADA ---
+    // --- ESTATÍSTICAS ---
     private int pontos;
     private int vitorias;
     private int podios;
@@ -34,20 +34,16 @@ public class Equipe {
     private Arquivos arquivos;
     private List<String> pilotosContratadosIDs = new ArrayList<>();
     
-    // Campos de Lógica
+    // Lógica
     private int anosConsecutivosNoVermelho = 0;
     
     private transient List<Piloto> pilotosTitulares = new ArrayList<>();
     private transient List<Piloto> pilotosReservas = new ArrayList<>();
     private transient List<Patrocinador> patrocinadoresAtivos = new ArrayList<>();
     private transient Categoria categoriaAtual;
-    
-    // Vínculo com Objeto Motor
     private transient Motor motorObjeto; 
 
-    public Equipe() {
-        this.arquivos = new Arquivos(); 
-    }
+    public Equipe() { this.arquivos = new Arquivos(); }
 
     public Equipe(String nome, double saldoInicial, int reputacao) {
         this.nome = nome;
@@ -56,29 +52,15 @@ public class Equipe {
         this.arquivos = new Arquivos();
     }
     
-    // --- NOVO: MÉTODO DE PREPARAÇÃO PARA SAVE ---
+    // --- PREPARAÇÃO PARA SAVE ---
     public void sincronizarDadosParaSalvar() {
-        // 1. Atualiza a lista de IDs (Strings) baseada nos objetos reais
         this.pilotosContratadosIDs.clear();
-        
-        for (Piloto p : pilotosTitulares) {
-            this.pilotosContratadosIDs.add(p.getNome());
-        }
-        for (Piloto p : pilotosReservas) {
-            this.pilotosContratadosIDs.add(p.getNome());
-        }
-        
-        // 2. Atualiza a string do motor caso tenha trocado de fornecedor
-        if (this.motorObjeto != null) {
-            this.motor = this.motorObjeto.getId();
-        }
-    }
-    // --------------------------------------------
-    
-    public void setMotorObjeto(Motor m) {
-        this.motorObjeto = m;
+        for (Piloto p : pilotosTitulares) this.pilotosContratadosIDs.add(p.getNome());
+        for (Piloto p : pilotosReservas) this.pilotosContratadosIDs.add(p.getNome());
+        if (this.motorObjeto != null) this.motor = this.motorObjeto.getId();
     }
     
+    public void setMotorObjeto(Motor m) { this.motorObjeto = m; }
     public Motor getMotorObjeto() { return motorObjeto; }
     
     public void inicializarFabricaInteligente() {
@@ -101,30 +83,108 @@ public class Equipe {
         this.nivelConfiabilidade = n;
     }
 
-    public boolean contratarStaffMotor() {
-        if (staffMotor < 10) { staffMotor++; return true; } return false;
-    }
-    public boolean contratarStaffAero() {
-        if (staffAero < 10) { staffAero++; return true; } return false;
-    }
-    public boolean contratarStaffChassi() {
-        if (staffChassi < 10) { staffChassi++; return true; } return false;
-    }
-    public boolean contratarStaffConfiabilidade() {
-        if (staffConfiabilidade < 10) { staffConfiabilidade++; return true; } return false;
+    // --- NOVA REGRA: LIMITE DE STAFF POR NÍVEL ---
+    public int getLimiteStaff(int nivel) {
+        switch (nivel) {
+            case 1: return 5;
+            case 2: return 10;
+            case 3: return 15;
+            case 4: return 20;
+            case 5: return 30;
+            default: return 5;
+        }
     }
 
-    public boolean subirNivelMotor() {
-        if (nivelMotor < 5) { nivelMotor++; staffMotor = 1; return true; } return false;
+    // --- CONTRATAR STAFF (Respeitando Limite Dinâmico) ---
+    public boolean contratarStaffMotor() { if (staffMotor < getLimiteStaff(nivelMotor)) { staffMotor++; return true; } return false; }
+    public boolean contratarStaffAero() { if (staffAero < getLimiteStaff(nivelAero)) { staffAero++; return true; } return false; }
+    public boolean contratarStaffChassi() { if (staffChassi < getLimiteStaff(nivelChassi)) { staffChassi++; return true; } return false; }
+    public boolean contratarStaffConfiabilidade() { if (staffConfiabilidade < getLimiteStaff(nivelConfiabilidade)) { staffConfiabilidade++; return true; } return false; }
+
+    // --- DEMITIR STAFF ---
+    public boolean demitirStaffMotor() { if (staffMotor > 1) { staffMotor--; return true; } return false; }
+    public boolean demitirStaffAero() { if (staffAero > 1) { staffAero--; return true; } return false; }
+    public boolean demitirStaffChassi() { if (staffChassi > 1) { staffChassi--; return true; } return false; }
+    public boolean demitirStaffConfiabilidade() { if (staffConfiabilidade > 1) { staffConfiabilidade--; return true; } return false; }
+
+    // --- EVOLUIR NÍVEL (Upgrade) ---
+    public boolean subirNivelMotor() { if (nivelMotor < 5) { nivelMotor++; staffMotor = 1; return true; } return false; }
+    public boolean subirNivelAero() { if (nivelAero < 5) { nivelAero++; staffAero = 1; return true; } return false; }
+    public boolean subirNivelChassi() { if (nivelChassi < 5) { nivelChassi++; staffChassi = 1; return true; } return false; }
+    public boolean subirNivelConfiabilidade() { if (nivelConfiabilidade < 5) { nivelConfiabilidade++; staffConfiabilidade = 1; return true; } return false; }
+
+    // --- DOWNGRADE DE NÍVEL (Retorna valor reembolsado por staff demitido) ---
+    public double downgradeNivelMotor() {
+        if (nivelMotor > 1) {
+            nivelMotor--;
+            return ajustarStaffAposDowngrade(1); // 1 = Motor
+        }
+        return 0.0;
     }
-    public boolean subirNivelAero() {
-        if (nivelAero < 5) { nivelAero++; staffAero = 1; return true; } return false;
+    public double downgradeNivelAero() {
+        if (nivelAero > 1) {
+            nivelAero--;
+            return ajustarStaffAposDowngrade(2);
+        }
+        return 0.0;
     }
-    public boolean subirNivelChassi() {
-        if (nivelChassi < 5) { nivelChassi++; staffChassi = 1; return true; } return false;
+    public double downgradeNivelChassi() {
+        if (nivelChassi > 1) {
+            nivelChassi--;
+            return ajustarStaffAposDowngrade(3);
+        }
+        return 0.0;
     }
-    public boolean subirNivelConfiabilidade() {
-        if (nivelConfiabilidade < 5) { nivelConfiabilidade++; staffConfiabilidade = 1; return true; } return false;
+    public double downgradeNivelConfiabilidade() {
+        if (nivelConfiabilidade > 1) {
+            nivelConfiabilidade--;
+            return ajustarStaffAposDowngrade(4);
+        }
+        return 0.0;
+    }
+
+    private double ajustarStaffAposDowngrade(int tipo) {
+        int nivelAtual = 0;
+        int staffAtual = 0;
+        
+        switch(tipo) {
+            case 1: nivelAtual = nivelMotor; staffAtual = staffMotor; break;
+            case 2: nivelAtual = nivelAero; staffAtual = staffAero; break;
+            case 3: nivelAtual = nivelChassi; staffAtual = staffChassi; break;
+            case 4: nivelAtual = nivelConfiabilidade; staffAtual = staffConfiabilidade; break;
+        }
+        
+        int tetoNovo = getLimiteStaff(nivelAtual);
+        double reembolso = 0.0;
+        
+        if (staffAtual > tetoNovo) {
+            int excedente = staffAtual - tetoNovo;
+            reembolso = excedente * 0.25; // 250k por cabeça demitida forçadamente
+            staffAtual = tetoNovo;
+        }
+        
+        // Aplica o novo valor de staff
+        switch(tipo) {
+            case 1: staffMotor = staffAtual; break;
+            case 2: staffAero = staffAtual; break;
+            case 3: staffChassi = staffAtual; break;
+            case 4: staffConfiabilidade = staffAtual; break;
+        }
+        
+        return reembolso;
+    }
+
+    // --- CÁLCULO DE PERFORMANCE ---
+    public double getForcaMotorCalculada() { return (nivelMotor * 20) + (staffMotor * 2); }
+    public double getForcaAeroCalculada() { return (nivelAero * 20) + (staffAero * 2); }
+    public double getForcaChassiCalculada() { return (nivelChassi * 20) + (staffChassi * 2); }
+    public double getForcaConfiabilidadeCalculada() { return (nivelConfiabilidade * 20) + (staffConfiabilidade * 2); }
+    
+    // Custo Mensal Total (Staff + Manutenção Nível)
+    public double getCustoMensalFabrica() {
+        double custoStaff = (staffMotor + staffAero + staffChassi + staffConfiabilidade) * 0.01; // 10k cada
+        double custoNiveis = (nivelMotor + nivelAero + nivelChassi + nivelConfiabilidade) * 0.1; // 100k cada nível
+        return custoStaff + custoNiveis;
     }
 
     public static class Arquivos {
@@ -138,23 +198,21 @@ public class Equipe {
         public String logoMotorSvg;
     }
 
+    // --- MÉTODOS DE CONTRATAÇÃO ---
     public boolean contratarPiloto(Piloto piloto, double salario, double custoAssinatura, int meses, TipoContrato tipo) {
         if (categoriaAtual != null) {
             if (tipo == TipoContrato.TITULAR && pilotosTitulares.size() >= categoriaAtual.getMaxTitulares()) return false;
             if (tipo == TipoContrato.RESERVA && pilotosReservas.size() >= categoriaAtual.getMaxReservas()) return false;
         }
-
         double custoFinalAssinatura = custoAssinatura;
         if (tipo == TipoContrato.TITULAR && piloto.isReservaDaEquipe(this)) {
             custoFinalAssinatura = custoAssinatura * 0.5;
             pilotosReservas.remove(piloto);
         }
-
         if (saldoFinanceiro >= custoFinalAssinatura) {
             this.saldoFinanceiro -= custoFinalAssinatura;
             Contrato novoContrato = new Contrato(salario, meses, this, tipo);
             piloto.assinarContrato(novoContrato);
-            
             if (tipo == TipoContrato.TITULAR) pilotosTitulares.add(piloto);
             else pilotosReservas.add(piloto);
             return true;
@@ -165,7 +223,6 @@ public class Equipe {
     public void adicionarPilotoDoLoad(Piloto p, TipoContrato tipo) {
         if (tipo == TipoContrato.TITULAR) pilotosTitulares.add(p);
         else pilotosReservas.add(p);
-        
         Contrato c = new Contrato(0.5, 12, this, tipo); 
         p.assinarContrato(c);
     }
@@ -239,26 +296,21 @@ public class Equipe {
     public List<Piloto> getPilotosReservas() { return pilotosReservas; }
     public List<String> getPilotosContratadosIDs() { return pilotosContratadosIDs; }
     
-    public void setCategoriaAtual(Categoria categoriaAtual) {
-        this.categoriaAtual = categoriaAtual;
-    }
+    public void setCategoriaAtual(Categoria categoriaAtual) { this.categoriaAtual = categoriaAtual; }
     
     public String getCaminhoLogo() {
         if (arquivos != null && arquivos.logo != null) return arquivos.logo;
         return "/resource/Icone64pxErro.png";
     }
-    
     public String getCaminhoBandeiraSede() {
         if (arquivos != null && arquivos.bandeiraSede != null) return arquivos.bandeiraSede;
         return "/resource/Bandeira BRANCA.png";
     }
-    
     public String getCaminhoBandeiraMotor() {
         if (motorObjeto != null) return motorObjeto.getCaminhoBandeira();
         if (arquivos != null && arquivos.bandeiraMotor != null) return arquivos.bandeiraMotor;
         return "/resource/Bandeira BRANCA.png";
     }
-    
     public String getCaminhoLogoMotor() {
         if (motorObjeto != null) return motorObjeto.getCaminhoLogo();
         if (arquivos != null && arquivos.logoMotor != null) return arquivos.logoMotor;

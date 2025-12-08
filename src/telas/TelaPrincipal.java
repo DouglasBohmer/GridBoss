@@ -17,6 +17,8 @@ import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
 import java.text.Normalizer;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 public class TelaPrincipal extends JFrame {
 
@@ -102,11 +104,27 @@ public class TelaPrincipal extends JFrame {
         Menu_Geral.add(new JMenuItem("Salvar Jogo"));
         Menu_Geral.add(new JMenuItem("Carregar Jogo"));
 
+        // --- MENU EQUIPE (ATUALIZADO) ---
         JMenu Menu_Equipe = new JMenu("Equipe");
         menuBar.add(Menu_Equipe);
-        Menu_Equipe.add(new JMenuItem("Fábrica"));
+        
+        JMenuItem mntmFabrica = new JMenuItem("Fábrica & Desenvolvimento");
+        mntmFabrica.addActionListener(e -> {
+            // 1. Cria a janela da fábrica passando os dados globais
+            TelaFabrica tela = new TelaFabrica(dadosDoJogo);
+            tela.setLocationRelativeTo(this); // Centraliza sobre a tela principal
+            
+            // 2. Abre a janela. Como é MODAL, o código da TelaPrincipal PAUSA aqui.
+            tela.setVisible(true); 
+            
+            // 3. Quando o 'dispose()' for chamado na fábrica (botão Voltar), o código continua:
+            atualizarDados(); // <--- AQUI A MÁGICA ACONTECE! Recarrega o saldo novo.
+        });
+        Menu_Equipe.add(mntmFabrica);
+        
         Menu_Equipe.add(new JMenuItem("Motor"));
         Menu_Equipe.add(new JMenuItem("Patrocínios"));
+        // -------------------------------
 
         JMenu Menu_Piloto = new JMenu("Pilotos");
         menuBar.add(Menu_Piloto);
@@ -569,7 +587,6 @@ public class TelaPrincipal extends JFrame {
         tabelaConstrutores.getColumnModel().getColumn(7).setPreferredWidth(50);
     }
     
-    // --- Renderers mantidos iguais (Inner Classes) ---
     static class CentralizadoRenderer extends DefaultTableCellRenderer {
         @Override
         public Component getTableCellRendererComponent(JTable table, Object value, boolean isSelected, boolean hasFocus, int row, int column) {

@@ -169,7 +169,7 @@ public class CorridaService {
             // Rolagem de dado (ex: chance 5% -> precisa tirar < 5 em 10000 para ser raro por volta)
             if (random.nextDouble() * 100 < (chance / 10.0)) { 
                 safetyCarNaPista = true;
-                System.out.println("SAFETY CAR DEPLOYED!");
+                System.out.println("SAFETY CAR ACIONADO!");
             }
         }
     }

@@ -24,7 +24,7 @@ public class TelaCarregarJogo extends JDialog {
         setModal(true);
         setTitle("Grid Boss - Carregar Jogo");
         setIconImage(Toolkit.getDefaultToolkit().getImage(TelaCarregarJogo.class.getResource("/resource/Icone16px.png")));
-        setBounds(100, 100, 650, 520); // Aumentei um tiquinho a altura
+        setBounds(100, 100, 650, 500); // Aumentei um tiquinho a altura
         setResizable(false);
         
         contentPane = new JPanel();
@@ -69,7 +69,7 @@ public class TelaCarregarJogo extends JDialog {
         btnCarregar.setBackground(new Color(34, 139, 34));
         btnCarregar.setForeground(Color.WHITE);
         btnCarregar.setFont(new Font("Berlin Sans FB Demi", Font.PLAIN, 16));
-        btnCarregar.setBounds(384, 420, 220, 45);
+        btnCarregar.setBounds(384, 420, 220, 27);
         btnCarregar.setFocusPainted(false);
         btnCarregar.addActionListener(e -> acaoCarregar());
         contentPane.add(btnCarregar);
@@ -79,7 +79,7 @@ public class TelaCarregarJogo extends JDialog {
         btnCancelar.setBackground(new Color(220, 220, 220));
         btnCancelar.setForeground(Color.BLACK);
         btnCancelar.setFont(new Font("Berlin Sans FB", Font.PLAIN, 16));
-        btnCancelar.setBounds(30, 420, 150, 45);
+        btnCancelar.setBounds(30, 420, 150, 27);
         btnCancelar.setFocusPainted(false);
         btnCancelar.addActionListener(e -> dispose());
         contentPane.add(btnCancelar);
@@ -89,7 +89,7 @@ public class TelaCarregarJogo extends JDialog {
         btnExcluir.setBackground(new Color(255, 99, 71));
         btnExcluir.setForeground(Color.WHITE);
         btnExcluir.setFont(new Font("Berlin Sans FB", Font.PLAIN, 14));
-        btnExcluir.setBounds(190, 420, 100, 45);
+        btnExcluir.setBounds(190, 420, 100, 27);
         btnExcluir.setFocusPainted(false);
         btnExcluir.addActionListener(e -> acaoExcluir());
         contentPane.add(btnExcluir);

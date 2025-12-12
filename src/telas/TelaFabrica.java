@@ -91,7 +91,7 @@ public class TelaFabrica extends JDialog {
         JLabel lblNomeEquipe = new JLabel(equipe.getNome());
         lblNomeEquipe.setHorizontalAlignment(SwingConstants.LEFT);
         lblNomeEquipe.setFont(new Font("Berlin Sans FB", Font.PLAIN, 21));
-        lblNomeEquipe.setBounds(180, 544, 480, 25);
+        lblNomeEquipe.setBounds(156, 545, 504, 25);
         contentPane.add(lblNomeEquipe);
 
         // =================================================================
@@ -485,14 +485,14 @@ public class TelaFabrica extends JDialog {
         contentPane.add(btnVoltar);
         
                 lblSaldo = new JLabel("€ 0.0 M");
-                lblSaldo.setBounds(10, 545, 115, 25);
+                lblSaldo.setBounds(51, 545, 95, 25);
                 contentPane.add(lblSaldo);
-                lblSaldo.setHorizontalAlignment(SwingConstants.RIGHT);
+                lblSaldo.setHorizontalAlignment(SwingConstants.LEFT);
                 lblSaldo.setFont(new Font("Arial", Font.BOLD, 16));
                 
                 JLabel lblIconeMoney = new JLabel("");
                 lblIconeMoney.setHorizontalAlignment(SwingConstants.CENTER);
-                lblIconeMoney.setBounds(135, 544, 35, 25);
+                lblIconeMoney.setBounds(10, 544, 35, 25);
                 contentPane.add(lblIconeMoney);
                 lblIconeMoney.setIcon(new ImageIcon(TelaFabrica.class.getResource("/resource/IconeEuro24px.png")));
 

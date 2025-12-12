@@ -19,6 +19,10 @@ import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
 import java.text.Normalizer;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 
 public class TelaPrincipal extends JFrame {
 
@@ -133,11 +137,7 @@ public class TelaPrincipal extends JFrame {
             tela.setLocationRelativeTo(this);
             tela.setVisible(true);
         });
-        
-        //menuCarregar.addActionListener(e -> carregarJogoAction());
-        
         Menu_Geral.add(menuCarregar);
-        // ----------------------------------
 
         JMenu Menu_Equipe = new JMenu("Equipe");
         menuBar.add(Menu_Equipe);
@@ -147,11 +147,31 @@ public class TelaPrincipal extends JFrame {
             TelaFabrica tela = new TelaFabrica(dadosDoJogo);
             tela.setLocationRelativeTo(this); 
             tela.setVisible(true); 
-            atualizarDados(); 
+            // Adicionado listener para atualizar quando fechar também, caso mude saldo
+            tela.addWindowListener(new WindowAdapter() {
+                @Override
+                public void windowClosed(WindowEvent e) {
+                    atualizarDados();
+                }
+            });
         });
         Menu_Equipe.add(mntmFabrica);
         
-        Menu_Equipe.add(new JMenuItem("Motor"));
+        // --- MENU MOTOR (ATUALIZADO) ---
+        JMenuItem mntmMotor = new JMenuItem("Motor");
+        mntmMotor.addActionListener(e -> {
+            TelaMotor tela = new TelaMotor(dadosDoJogo);
+            tela.setVisible(true);
+            // IMPORTANTE: Atualiza a tela principal quando a tela de motor fechar
+            tela.addWindowListener(new WindowAdapter() {
+                @Override
+                public void windowClosed(WindowEvent e) {
+                    atualizarDados();
+                }
+            });
+        });
+        Menu_Equipe.add(mntmMotor);
+        
         Menu_Equipe.add(new JMenuItem("Patrocínios"));
 
         JMenu Menu_Piloto = new JMenu("Pilotos");

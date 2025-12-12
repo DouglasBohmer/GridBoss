@@ -1,11 +1,13 @@
 package telas;
 
 import com.formdev.flatlaf.FlatLightLaf;
+import com.formdev.flatlaf.extras.FlatSVGIcon;
+import com.formdev.flatlaf.extras.FlatSVGUtils;
 import dados.CarregadorJSON;
 import dados.DadosDoJogo;
 import dados.SessaoJogo;
 import modelos.Equipe;
-import modelos.Motor; // IMPORTANTE: Importar Motor
+import modelos.Motor;
 import modelos.Piloto;
 import modelos.TipoContrato;
 
@@ -63,7 +65,12 @@ public class TelaSelecionarEquipe extends JFrame {
     }
 
     public TelaSelecionarEquipe() {
-    	setIconImage(Toolkit.getDefaultToolkit().getImage(TelaSelecionarEquipe.class.getResource("/resource/Icone16px.png")));
+        // Ícone da janela agora em SVG
+        try {
+            setIconImage(FlatSVGUtils.svg2image("resource/Icone16px.svg", 16, 16));
+        } catch (Exception e) {
+        }
+
         setTitle("Grid Boss - Selecionar Equipe");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setBounds(100, 100, 586, 740);
@@ -244,7 +251,7 @@ public class TelaSelecionarEquipe extends JFrame {
             return;
         }
         
-        // --- NOVO: VÍNCULO DE MOTORES NA TELA DE SELEÇÃO ---
+        // --- VÍNCULO DE MOTORES ---
         List<Motor> motores = CarregadorJSON.carregarMotores(cat, ano);
         if (motores != null && !motores.isEmpty()) {
             for (Equipe eq : equipesDisponiveis) {
@@ -257,7 +264,6 @@ public class TelaSelecionarEquipe extends JFrame {
                 }
             }
         }
-        // --------------------------------------------------
 
         vincularPilotosAsEquipesLocal();
 
@@ -307,8 +313,6 @@ public class TelaSelecionarEquipe extends JFrame {
         
         carregarImagem(lblFotoCarro, eq.getCaminhoLogo());
         carregarImagem(lblFlagSede, eq.getCaminhoBandeiraSede());
-        
-        // AGORA ISSO VAI PEGAR AS IMAGENS DO MOTOR VINCULADO
         carregarImagem(lblFlagMotor, eq.getCaminhoBandeiraMotor());
         carregarImagem(lblLogoMotor, eq.getCaminhoLogoMotor());
 
@@ -333,7 +337,8 @@ public class TelaSelecionarEquipe extends JFrame {
 
                 lblNomes[i].setText(p.getNome());
                 lblNumeros[i].setText("#" + p.getNumero());
-                carregarImagem(lblBandeiras[i], "/resource/Bandeira " + p.getNacionalidade() + ".png");
+                
+                carregarImagem(lblBandeiras[i], "/resource/Bandeira " + p.getNacionalidade() + ".svg");
             } else {
                 lblTitulos[i].setVisible(false);
                 lblNomes[i].setVisible(false);
@@ -350,7 +355,33 @@ public class TelaSelecionarEquipe extends JFrame {
                 if (!path.startsWith("/")) path = "/" + path;
                 if (!path.startsWith("/resource")) path = "/resource" + path;
                 path = path.replace("//", "/");
-                lbl.setIcon(new ImageIcon(getClass().getResource(path)));
+
+                // SE VIER COM .PNG, TROCA POR .SVG
+                if (path.toLowerCase().endsWith(".png")) {
+                    path = path.substring(0, path.length() - 4) + ".svg";
+                }
+                if (!path.toLowerCase().endsWith(".svg")) {
+                    path = path + ".svg";
+                }
+
+                String svgPath = path.startsWith("/") ? path.substring(1) : path;
+                
+                // --- FIX: LÓGICA DE TAMANHO COM MARGEM DE 1PX ---
+                int larguraLabel = lbl.getWidth();
+                int alturaLabel = lbl.getHeight();
+
+                if (larguraLabel > 0 && alturaLabel > 0) {
+                    // Pega o menor lado para garantir quadrado
+                    int menorLado = Math.min(larguraLabel, alturaLabel);
+                    
+                    // Subtrai 1 para garantir a folga solicitada (ex: 15x20 -> menor 15 -> 14x14)
+                    int ladoFinal = Math.max(1, menorLado - 1); 
+                    
+                    lbl.setIcon(new FlatSVGIcon(svgPath, ladoFinal, ladoFinal));
+                } else {
+                    lbl.setIcon(new FlatSVGIcon(svgPath));
+                }
+                
             } else {
                 lbl.setIcon(null);
             }
@@ -373,9 +404,7 @@ public class TelaSelecionarEquipe extends JFrame {
         String nomeDirigenteInput = tfNomeDirigente.getText();
         String nomeEquipeEscolhida = equipeSelecionadaObj.getNome(); 
         
-        // Carrega o jogo REAL (DadosDoJogo fará o vínculo dos motores de novo para a memória do jogo)
         DadosDoJogo dados = new DadosDoJogo(SessaoJogo.categoriaKey, SessaoJogo.anoSelecionado);
-        
         dados.definirEquipeDoJogador(nomeEquipeEscolhida, nomeDirigenteInput);
         
         if (dados.getEquipeDoJogador() == null) {

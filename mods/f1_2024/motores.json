@@ -6,7 +6,10 @@
     "dirigibilidade": 4,
     "durabilidade": 4,
     "preco": 15.0,
-    "arquivos": { "logo": "/resource/Motor_HondaPQ.png","bandeira": "/resource/Bandeira Japao.png" }
+    "arquivos": {
+      "logo": "/resource/Motor_HondaPQ.png",
+      "bandeira": "/resource/Bandeira Japao.png"
+    }
   },
   {
     "id": "Ferrari",
@@ -15,7 +18,10 @@
     "dirigibilidade": 3,
     "durabilidade": 4,
     "preco": 14.5,
-    "arquivos": { "logo": "/resource/Motor_FerrariPQ.png","bandeira": "/resource/Bandeira Italia.png" }
+    "arquivos": {
+      "logo": "/resource/Motor_FerrariPQ.png",
+      "bandeira": "/resource/Bandeira Italia.png"
+    }
   },
   {
     "id": "Mercedes",
@@ -24,7 +30,10 @@
     "dirigibilidade": 5,
     "durabilidade": 5,
     "preco": 16.0,
-    "arquivos": { "logo": "/resource/Motor_MercedesPQ.png","bandeira": "/resource/Bandeira Alemanha.png" }
+    "arquivos": {
+      "logo": "/resource/Motor_MercedesPQ.png",
+      "bandeira": "/resource/Bandeira Alemanha.png"
+    }
   },
   {
     "id": "Renault",
@@ -33,6 +42,9 @@
     "dirigibilidade": 3,
     "durabilidade": 3,
     "preco": 12.0,
-    "arquivos": { "logo": "/resource/Motor_RenaultPQ.png","bandeira": "/resource/Bandeira Franca.png" }
+    "arquivos": {
+      "logo": "/resource/Motor_RenaultPQ.png",
+      "bandeira": "/resource/Bandeira Franca.png"
+    }
   }
 ]

@@ -16,9 +16,7 @@
     "tempoPerdidoPitLane": 24.0,
     "arquivos": {
       "traçado": "/resource/CircuitoBahrain.png",
-      "traçadoSvg": "/resource/CircuitoBahrain.svg",
-      "bandeira": "/resource/Bandeira Bahrain.png",
-      "bandeiraSvg": "/resource/Bandeira Bahrain.svg"
+      "bandeira": "/resource/Bandeira Bahrain.png"
     }
   },
   {
@@ -38,9 +36,7 @@
     "tempoPerdidoPitLane": 22.0,
     "arquivos": {
       "traçado": "/resource/CircuitoJeddah.png",
-      "traçadoSvg": "/resource/CircuitoJeddah.svg",
-      "bandeira": "/resource/Bandeira Arabia Saudita.png",
-      "bandeiraSvg": "/resource/Bandeira Arabia Saudita.svg"
+      "bandeira": "/resource/Bandeira Arabia Saudita.png"
     }
   },
   {
@@ -60,9 +56,7 @@
     "tempoPerdidoPitLane": 21.0,
     "arquivos": {
       "traçado": "/resource/CircuitoMelbourne2021+.png",
-      "traçadoSvg": "/resource/CircuitoMelbourne2021+.svg",
-      "bandeira": "/resource/Bandeira Australia.png",
-      "bandeiraSvg": "/resource/Bandeira Australia.svg"
+      "bandeira": "/resource/Bandeira Australia.png"
     }
   },
   {
@@ -82,9 +76,7 @@
     "tempoPerdidoPitLane": 23.0,
     "arquivos": {
       "traçado": "/resource/CircuitoSuzuka.png",
-      "traçadoSvg": "/resource/CircuitoSuzuka.svg",
-      "bandeira": "/resource/Bandeira Japao.png",
-      "bandeiraSvg": "/resource/Bandeira Japao.svg"
+      "bandeira": "/resource/Bandeira Japao.png"
     }
   },
   {
@@ -104,9 +96,7 @@
     "tempoPerdidoPitLane": 24.0,
     "arquivos": {
       "traçado": "/resource/CircuitoShangai.png",
-      "traçadoSvg": "/resource/CircuitoShangai.svg",
-      "bandeira": "/resource/Bandeira China.png",
-      "bandeiraSvg": "/resource/Bandeira China.svg"
+      "bandeira": "/resource/Bandeira China.png"
     }
   },
   {
@@ -126,9 +116,7 @@
     "tempoPerdidoPitLane": 21.0,
     "arquivos": {
       "traçado": "/resource/CircuitoMiami.png",
-      "traçadoSvg": "/resource/CircuitoMiami.svg",
-      "bandeira": "/resource/Bandeira EUA.png",
-      "bandeiraSvg": "/resource/Bandeira EUA.svg"
+      "bandeira": "/resource/Bandeira EUA.png"
     }
   },
   {
@@ -148,9 +136,7 @@
     "tempoPerdidoPitLane": 25.0,
     "arquivos": {
       "traçado": "/resource/CircuitoImola2008+.png",
-      "traçadoSvg": "/resource/CircuitoImola2008+.svg",
-      "bandeira": "/resource/Bandeira Italia.png",
-      "bandeiraSvg": "/resource/Bandeira Italia.svg"
+      "bandeira": "/resource/Bandeira Italia.png"
     }
   },
   {
@@ -170,9 +156,7 @@
     "tempoPerdidoPitLane": 20.0,
     "arquivos": {
       "traçado": "/resource/CircuitoMonaco.png",
-      "traçadoSvg": "/resource/CircuitoMonaco.svg",
-      "bandeira": "/resource/Bandeira Monaco.png",
-      "bandeiraSvg": "/resource/Bandeira Monaco.svg"
+      "bandeira": "/resource/Bandeira Monaco.png"
     }
   },
   {
@@ -192,9 +176,7 @@
     "tempoPerdidoPitLane": 19.0,
     "arquivos": {
       "traçado": "/resource/CircuitoMontreal.png",
-      "traçadoSvg": "/resource/CircuitoMontreal.svg",
-      "bandeira": "/resource/Bandeira Canada.png",
-      "bandeiraSvg": "/resource/Bandeira Canada.svg"
+      "bandeira": "/resource/Bandeira Canada.png"
     }
   },
   {
@@ -214,9 +196,7 @@
     "tempoPerdidoPitLane": 22.0,
     "arquivos": {
       "traçado": "/resource/CircuitoCatalunha2023+.png",
-      "traçadoSvg": "/resource/CircuitoCatalunha2023+.svg",
-      "bandeira": "/resource/Bandeira Espanha.png",
-      "bandeiraSvg": "/resource/Bandeira Espanha.svg"
+      "bandeira": "/resource/Bandeira Espanha.png"
     }
   },
   {
@@ -236,9 +216,7 @@
     "tempoPerdidoPitLane": 21.0,
     "arquivos": {
       "traçado": "/resource/CircuitoAustria2016+.png",
-      "traçadoSvg": "/resource/CircuitoAustria2016+.svg",
-      "bandeira": "/resource/Bandeira Austria.png",
-      "bandeiraSvg": "/resource/Bandeira Austria.svg"
+      "bandeira": "/resource/Bandeira Austria.png"
     }
   },
   {
@@ -258,9 +236,7 @@
     "tempoPerdidoPitLane": 24.0,
     "arquivos": {
       "traçado": "/resource/CircuitoSilverstone2010+.png",
-      "traçadoSvg": "/resource/CircuitoSilverstone2010+.svg",
-      "bandeira": "/resource/Bandeira Reino Unido.png",
-      "bandeiraSvg": "/resource/Bandeira Reino Unido.svg"
+      "bandeira": "/resource/Bandeira Reino Unido.png"
     }
   },
   {
@@ -280,9 +256,7 @@
     "tempoPerdidoPitLane": 20.0,
     "arquivos": {
       "traçado": "/resource/CircuitoHungaroring2003+.png",
-      "traçadoSvg": "/resource/CircuitoHungaroring2003+.svg",
-      "bandeira": "/resource/Bandeira Hungria.png",
-      "bandeiraSvg": "/resource/Bandeira Hungria.svg"
+      "bandeira": "/resource/Bandeira Hungria.png"
     }
   },
   {
@@ -302,9 +276,7 @@
     "tempoPerdidoPitLane": 20.0,
     "arquivos": {
       "traçado": "/resource/CircuitoSpa2007+.png",
-      "traçadoSvg": "/resource/CircuitoSpa2007+.svg",
-      "bandeira": "/resource/Bandeira Belgica.png",
-      "bandeiraSvg": "/resource/Bandeira Belgica.svg"
+      "bandeira": "/resource/Bandeira Belgica.png"
     }
   },
   {
@@ -324,9 +296,7 @@
     "tempoPerdidoPitLane": 18.0,
     "arquivos": {
       "traçado": "/resource/CircuitoZandvoort.png",
-      "traçadoSvg": "/resource/CircuitoZandvoort.svg",
-      "bandeira": "/resource/Bandeira Holanda.png",
-      "bandeiraSvg": "/resource/Bandeira Holanda.svg"
+      "bandeira": "/resource/Bandeira Holanda.png"
     }
   },
   {
@@ -346,9 +316,7 @@
     "tempoPerdidoPitLane": 24.0,
     "arquivos": {
       "traçado": "/resource/CircuitoMonza.png",
-      "traçadoSvg": "/resource/CircuitoMonza.svg",
-      "bandeira": "/resource/Bandeira Italia.png",
-      "bandeiraSvg": "/resource/Bandeira Italia.svg"
+      "bandeira": "/resource/Bandeira Italia.png"
     }
   },
   {
@@ -368,9 +336,7 @@
     "tempoPerdidoPitLane": 22.0,
     "arquivos": {
       "traçado": "/resource/CircuitoBaku.png",
-      "traçadoSvg": "/resource/CircuitoBaku.svg",
-      "bandeira": "/resource/Bandeira Azerbaijao.png",
-      "bandeiraSvg": "/resource/Bandeira Azerbaijao.svg"
+      "bandeira": "/resource/Bandeira Azerbaijao.png"
     }
   },
   {
@@ -390,9 +356,7 @@
     "tempoPerdidoPitLane": 28.0,
     "arquivos": {
       "traçado": "/resource/CircuitoSingapura2023+.png",
-      "traçadoSvg": "/resource/CircuitoSingapura2023+.svg",
-      "bandeira": "/resource/Bandeira Singapura.png",
-      "bandeiraSvg": "/resource/Bandeira Singapura.svg"
+      "bandeira": "/resource/Bandeira Singapura.png"
     }
   },
   {
@@ -412,9 +376,7 @@
     "tempoPerdidoPitLane": 22.0,
     "arquivos": {
       "traçado": "/resource/CircuitoAustin.png",
-      "traçadoSvg": "/resource/CircuitoAustin.svg",
-      "bandeira": "/resource/Bandeira EUA.png",
-      "bandeiraSvg": "/resource/Bandeira EUA.svg"
+      "bandeira": "/resource/Bandeira EUA.png"
     }
   },
   {
@@ -434,9 +396,7 @@
     "tempoPerdidoPitLane": 23.0,
     "arquivos": {
       "traçado": "/resource/CircuitoMexico.png",
-      "traçadoSvg": "/resource/CircuitoMexico.svg",
-      "bandeira": "/resource/Bandeira Mexico.png",
-      "bandeiraSvg": "/resource/Bandeira Mexico.svg"
+      "bandeira": "/resource/Bandeira Mexico.png"
     }
   },
   {
@@ -456,9 +416,7 @@
     "tempoPerdidoPitLane": 21.0,
     "arquivos": {
       "traçado": "/resource/CircuitoInterlagos.png",
-      "traçadoSvg": "/resource/CircuitoInterlagos.svg",
-      "bandeira": "/resource/Bandeira Brasil.png",
-      "bandeiraSvg": "/resource/Bandeira Brasil.svg"
+      "bandeira": "/resource/Bandeira Brasil.png"
     }
   },
   {
@@ -478,9 +436,7 @@
     "tempoPerdidoPitLane": 23.0,
     "arquivos": {
       "traçado": "/resource/CircuitoLasVegas.png",
-      "traçadoSvg": "/resource/CircuitoLasVegas.svg",
-      "bandeira": "/resource/Bandeira EUA.png",
-      "bandeiraSvg": "/resource/Bandeira EUA.svg"
+      "bandeira": "/resource/Bandeira EUA.png"
     }
   },
   {
@@ -500,9 +456,7 @@
     "tempoPerdidoPitLane": 24.0,
     "arquivos": {
       "traçado": "/resource/CircuitoLusail.png",
-      "traçadoSvg": "/resource/CircuitoLusail.svg",
-      "bandeira": "/resource/Bandeira Qatar.png",
-      "bandeiraSvg": "/resource/Bandeira Qatar.svg"
+      "bandeira": "/resource/Bandeira Qatar.png"
     }
   },
   {
@@ -522,9 +476,7 @@
     "tempoPerdidoPitLane": 22.0,
     "arquivos": {
       "traçado": "/resource/CircuitoYasMarina2021+.png",
-      "traçadoSvg": "/resource/CircuitoYasMarina2021+.svg",
-      "bandeira": "/resource/Bandeira Emirados Arabes Unidos.png",
-      "bandeiraSvg": "/resource/Bandeira Emirados Arabes Unidos.svg"
+      "bandeira": "/resource/Bandeira Emirados Arabes Unidos.png"
     }
   }
 ]

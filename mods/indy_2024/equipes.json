@@ -9,11 +9,10 @@
     "reputacao": 95,
     "saldoFinanceiro": 35.0,
     "arquivos": {
-      "logo": "/resource/Equipe_Indy_Penske.png",
-      "logoSvg": "/resource/Equipe_Indy_Penske.svg",
-      "bandeiraSede": "/resource/Bandeira EUA.png",
-      "bandeiraMotor": "/resource/Bandeira Estados Unidos.png",
-      "logoMotor": "/resource/Motor_ChevroletPQ.png"
+      "logo": "/resource/Equipe_Indy_Penske.svg",
+      "bandeiraSede": "/resource/Bandeira EUA.svg",
+      "bandeiraMotor": "/resource/Bandeira Estados Unidos.svg",
+      "logoMotor": "/resource/Motor_ChevroletPQ.svg"
     },
     "pilotosContratadosIDs": [
       "Josef Newgarden",
@@ -31,11 +30,10 @@
     "reputacao": 95,
     "saldoFinanceiro": 32.0,
     "arquivos": {
-      "logo": "/resource/Equipe_Indy_Chip Ganassi.png",
-      "logoSvg": "/resource/Equipe_Indy_Chip Ganassi.svg",
-      "bandeiraSede": "/resource/Bandeira EUA.png",
-      "bandeiraMotor": "/resource/Bandeira Japao.png",
-      "logoMotor": "/resource/Motor_HondaPQ.png"
+      "logo": "/resource/Equipe_Indy_Chip Ganassi.svg",
+      "bandeiraSede": "/resource/Bandeira EUA.svg",
+      "bandeiraMotor": "/resource/Bandeira Japao.svg",
+      "logoMotor": "/resource/Motor_HondaPQ.svg"
     },
     "pilotosContratadosIDs": [
       "Alex Palou",
@@ -55,11 +53,10 @@
     "reputacao": 88,
     "saldoFinanceiro": 35.0,
     "arquivos": {
-      "logo": "/resource/Equipe_Indy_Andretti.png",
-      "logoSvg": "/resource/Equipe_Indy_Andretti.svg",
-      "bandeiraSede": "/resource/Bandeira EUA.png",
-      "bandeiraMotor": "/resource/Bandeira Japao.png",
-      "logoMotor": "/resource/Motor_HondaPQ.png"
+      "logo": "/resource/Equipe_Indy_Andretti.svg",
+      "bandeiraSede": "/resource/Bandeira EUA.svg",
+      "bandeiraMotor": "/resource/Bandeira Japao.svg",
+      "logoMotor": "/resource/Motor_HondaPQ.svg"
     },
     "pilotosContratadosIDs": [
       "Colton Herta",
@@ -78,11 +75,10 @@
     "reputacao": 85,
     "saldoFinanceiro": 25.0,
     "arquivos": {
-      "logo": "/resource/Equipe_Indy_Arrow McLaren.png",
-      "logoSvg": "/resource/Equipe_Indy_Arrow McLaren.svg",
-      "bandeiraSede": "/resource/Bandeira EUA.png",
-      "bandeiraMotor": "/resource/Bandeira Estados Unidos.png",
-      "logoMotor": "/resource/Motor_ChevroletPQ.png"
+      "logo": "/resource/Equipe_Indy_Arrow McLaren.svg",
+      "bandeiraSede": "/resource/Bandeira EUA.svg",
+      "bandeiraMotor": "/resource/Bandeira Estados Unidos.svg",
+      "logoMotor": "/resource/Motor_ChevroletPQ.svg"
     },
     "pilotosContratadosIDs": [
       "Patricio O'Ward",
@@ -101,11 +97,10 @@
     "reputacao": 75,
     "saldoFinanceiro": 12.0,
     "arquivos": {
-      "logo": "/resource/Equipe_Indy_Rahal.png",
-      "logoSvg": "/resource/Equipe_Indy_Rahal.svg",
-      "bandeiraSede": "/resource/Bandeira EUA.png",
-      "bandeiraMotor": "/resource/Bandeira Japao.png",
-      "logoMotor": "/resource/Motor_HondaPQ.png"
+      "logo": "/resource/Equipe_Indy_Rahal.svg",
+      "bandeiraSede": "/resource/Bandeira EUA.svg",
+      "bandeiraMotor": "/resource/Bandeira Japao.svg",
+      "logoMotor": "/resource/Motor_HondaPQ.svg"
     },
     "pilotosContratadosIDs": [
       "Graham Rahal",
@@ -124,11 +119,10 @@
     "reputacao": 70,
     "saldoFinanceiro": 10.0,
     "arquivos": {
-      "logo": "/resource/Equipe_Indy_Meyer Shank.png",
-      "logoSvg": "/resource/Equipe_Indy_Meyer Shank.svg",
-      "bandeiraSede": "/resource/Bandeira EUA.png",
-      "bandeiraMotor": "/resource/Bandeira Japao.png",
-      "logoMotor": "/resource/Motor_HondaPQ.png"
+      "logo": "/resource/Equipe_Indy_Meyer Shank.svg",
+      "bandeiraSede": "/resource/Bandeira EUA.svg",
+      "bandeiraMotor": "/resource/Bandeira Japao.svg",
+      "logoMotor": "/resource/Motor_HondaPQ.svg"
     },
     "pilotosContratadosIDs": [
       "Felix Rosenqvist",
@@ -146,11 +140,10 @@
     "reputacao": 60,
     "saldoFinanceiro": 8.0,
     "arquivos": {
-      "logo": "/resource/Equipe_Indy_EdCarpterRacing.png",
-      "logoSvg": "/resource/Equipe_Indy_EdCarpterRacing.svg",
-      "bandeiraSede": "/resource/Bandeira EUA.png",
-      "bandeiraMotor": "/resource/Bandeira Estados Unidos.png",
-      "logoMotor": "/resource/Motor_ChevroletPQ.png"
+      "logo": "/resource/Equipe_Indy_EdCarpterRacing.svg",
+      "bandeiraSede": "/resource/Bandeira EUA.svg",
+      "bandeiraMotor": "/resource/Bandeira Estados Unidos.svg",
+      "logoMotor": "/resource/Motor_ChevroletPQ.svg"
     },
     "pilotosContratadosIDs": [
       "Rinus VeeKay",
@@ -167,11 +160,10 @@
     "reputacao": 55,
     "saldoFinanceiro": 9.5,
     "arquivos": {
-      "logo": "/resource/Equipe_Indy_Juncos.png",
-      "logoSvg": "/resource/Equipe_Indy_Juncos.svg",
-      "bandeiraSede": "/resource/Bandeira EUA.png",
-      "bandeiraMotor": "/resource/Bandeira Estados Unidos.png",
-      "logoMotor": "/resource/Motor_ChevroletPQ.png"
+      "logo": "/resource/Equipe_Indy_Juncos.svg",
+      "bandeiraSede": "/resource/Bandeira EUA.svg",
+      "bandeiraMotor": "/resource/Bandeira Estados Unidos.svg",
+      "logoMotor": "/resource/Motor_ChevroletPQ.svg"
     },
     "pilotosContratadosIDs": [
       "Romain Grosjean",
@@ -188,11 +180,10 @@
     "reputacao": 50,
     "saldoFinanceiro": 10.0,
     "arquivos": {
-      "logo": "/resource/Equipe_Indy_Dale Coyne.png",
-      "logoSvg": "/resource/Equipe_Indy_Dale Coyne.svg",
-      "bandeiraSede": "/resource/Bandeira EUA.png",
-      "bandeiraMotor": "/resource/Bandeira Japao.png",
-      "logoMotor": "/resource/Motor_HondaPQ.png"
+      "logo": "/resource/Equipe_Indy_Dale Coyne.svg",
+      "bandeiraSede": "/resource/Bandeira EUA.svg",
+      "bandeiraMotor": "/resource/Bandeira Japao.svg",
+      "logoMotor": "/resource/Motor_HondaPQ.svg"
     },
     "pilotosContratadosIDs": [
       "Jack Harvey",
@@ -209,11 +200,10 @@
     "reputacao": 55,
     "saldoFinanceiro": 11.0,
     "arquivos": {
-      "logo": "/resource/Equipe_Indy_AJ Foyt.png",
-      "logoSvg": "/resource/Equipe_Indy_AJ Foyt.svg",
-      "bandeiraSede": "/resource/Bandeira EUA.png",
-      "bandeiraMotor": "/resource/Bandeira Estados Unidos.png",
-      "logoMotor": "/resource/Motor_ChevroletPQ.png"
+      "logo": "/resource/Equipe_Indy_AJ Foyt.svg",
+      "bandeiraSede": "/resource/Bandeira EUA.svg",
+      "bandeiraMotor": "/resource/Bandeira Estados Unidos.svg",
+      "logoMotor": "/resource/Motor_ChevroletPQ.svg"
     },
     "pilotosContratadosIDs": [
       "Santino Ferrucci",
@@ -230,11 +220,10 @@
     "reputacao": 50,
     "saldoFinanceiro": 12.0,
     "arquivos": {
-      "logo": "/resource/Equipe_Indy_Dreyer.png",
-      "logoSvg": "/resource/Equipe_Indy_Dreyer.svg",
-      "bandeiraSede": "/resource/Bandeira EUA.png",
-      "bandeiraMotor": "/resource/Bandeira Estados Unidos.png",
-      "logoMotor": "/resource/Motor_ChevroletPQ.png"
+      "logo": "/resource/Equipe_Indy_Dreyer.svg",
+      "bandeiraSede": "/resource/Bandeira EUA.svg",
+      "bandeiraMotor": "/resource/Bandeira Estados Unidos.svg",
+      "logoMotor": "/resource/Motor_ChevroletPQ.svg"
     },
     "pilotosContratadosIDs": [
       "Ryan Hunter-Reay",
@@ -251,11 +240,10 @@
     "reputacao": 40,
     "saldoFinanceiro": 12.0,
     "arquivos": {
-      "logo": "/resource/Equipe_Indy_Abel.png",
-      "logoSvg": "/resource/Equipe_Indy_Abel.svg",
-      "bandeiraSede": "/resource/Bandeira EUA.png",
-      "bandeiraMotor": "/resource/Bandeira Estados Unidos.png",
-      "logoMotor": "/resource/Motor_ChevroletPQ.png"
+      "logo": "/resource/Equipe_Indy_Abel.svg",
+      "bandeiraSede": "/resource/Bandeira EUA.svg",
+      "bandeiraMotor": "/resource/Bandeira Estados Unidos.svg",
+      "logoMotor": "/resource/Motor_ChevroletPQ.svg"
     },
     "pilotosContratadosIDs": [
       "Richard Chad 'RC' Enerson"

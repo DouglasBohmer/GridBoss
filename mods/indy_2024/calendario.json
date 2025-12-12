@@ -17,9 +17,7 @@
     "tempoPerdidoPitLane": 22.0,
     "arquivos": {
       "traçado": "/resource/CircuitoStPetersburg.png",
-      "traçadoSvg": "/resource/CircuitoStPetersburg.svg",
-      "bandeira": "/resource/Bandeira Estados Unidos.png",
-      "bandeiraSvg": "/resource/Bandeira Estados Unidos.svg"
+      "bandeira": "/resource/Bandeira Estados Unidos.png"
     }
   },
   {
@@ -40,9 +38,7 @@
     "tempoPerdidoPitLane": 20.0,
     "arquivos": {
       "traçado": "/resource/CircuitoLongBeach.png",
-      "traçadoSvg": "/resource/CircuitoLongBeach.svg",
-      "bandeira": "/resource/Bandeira Estados Unidos.png",
-      "bandeiraSvg": "/resource/Bandeira Estados Unidos.svg"
+      "bandeira": "/resource/Bandeira Estados Unidos.png"
     }
   },
   {
@@ -63,9 +59,7 @@
     "tempoPerdidoPitLane": 23.0,
     "arquivos": {
       "traçado": "/resource/CircuitoBarber.png",
-      "traçadoSvg": "/resource/CircuitoBarber.svg",
-      "bandeira": "/resource/Bandeira Estados Unidos.png",
-      "bandeiraSvg": "/resource/Bandeira Estados Unidos.svg"
+      "bandeira": "/resource/Bandeira Estados Unidos.png"
     }
   },
   {
@@ -86,9 +80,7 @@
     "tempoPerdidoPitLane": 24.0,
     "arquivos": {
       "traçado": "/resource/CircuitoIndianapolisMistoIndy.png",
-      "traçadoSvg": "/resource/CircuitoIndianapolisMistoIndy.svg",
-      "bandeira": "/resource/Bandeira Estados Unidos.png",
-      "bandeiraSvg": "/resource/Bandeira Estados Unidos.svg"
+      "bandeira": "/resource/Bandeira Estados Unidos.png"
     }
   },
   {
@@ -109,9 +101,7 @@
     "tempoPerdidoPitLane": 25.0,
     "arquivos": {
       "traçado": "/resource/CircuitoIndy500.png",
-      "traçadoSvg": "/resource/CircuitoIndy500.svg",
-      "bandeira": "/resource/Bandeira Estados Unidos.png",
-      "bandeiraSvg": "/resource/Bandeira Estados Unidos.svg"
+      "bandeira": "/resource/Bandeira Estados Unidos.png"
     }
   },
   {
@@ -132,9 +122,7 @@
     "tempoPerdidoPitLane": 21.0,
     "arquivos": {
       "traçado": "/resource/CircuitoDetroitIndy.png",
-      "traçadoSvg": "/resource/CircuitoDetroitIndy.svg",
-      "bandeira": "/resource/Bandeira Estados Unidos.png",
-      "bandeiraSvg": "/resource/Bandeira Estados Unidos.svg"
+      "bandeira": "/resource/Bandeira Estados Unidos.png"
     }
   },
   {
@@ -155,9 +143,7 @@
     "tempoPerdidoPitLane": 26.0,
     "arquivos": {
       "traçado": "/resource/CircuitoRoadAmerica.png",
-      "traçadoSvg": "/resource/CircuitoRoadAmerica.svg",
-      "bandeira": "/resource/Bandeira Estados Unidos.png",
-      "bandeiraSvg": "/resource/Bandeira Estados Unidos.svg"
+      "bandeira": "/resource/Bandeira Estados Unidos.png"
     }
   },
   {
@@ -178,9 +164,7 @@
     "tempoPerdidoPitLane": 21.0,
     "arquivos": {
       "traçado": "/resource/CircuitoLagunaSeca.png",
-      "traçadoSvg": "/resource/CircuitoLagunaSeca.svg",
-      "bandeira": "/resource/Bandeira Estados Unidos.png",
-      "bandeiraSvg": "/resource/Bandeira Estados Unidos.svg"
+      "bandeira": "/resource/Bandeira Estados Unidos.png"
     }
   },
   {
@@ -201,9 +185,7 @@
     "tempoPerdidoPitLane": 22.0,
     "arquivos": {
       "traçado": "/resource/CircuitoMidOhio.png",
-      "traçadoSvg": "/resource/CircuitoMidOhio.svg",
-      "bandeira": "/resource/Bandeira Estados Unidos.png",
-      "bandeiraSvg": "/resource/Bandeira Estados Unidos.svg"
+      "bandeira": "/resource/Bandeira Estados Unidos.png"
     }
   },
   {
@@ -224,9 +206,7 @@
     "tempoPerdidoPitLane": 18.0,
     "arquivos": {
       "traçado": "/resource/CircuitoIowa.png",
-      "traçadoSvg": "/resource/CircuitoIowa.svg",
-      "bandeira": "/resource/Bandeira Estados Unidos.png",
-      "bandeiraSvg": "/resource/Bandeira Estados Unidos.svg"
+      "bandeira": "/resource/Bandeira Estados Unidos.png"
     }
   },
   {
@@ -247,9 +227,7 @@
     "tempoPerdidoPitLane": 18.0,
     "arquivos": {
       "traçado": "/resource/CircuitoIowa.png",
-      "traçadoSvg": "/resource/CircuitoIowa.svg",
-      "bandeira": "/resource/Bandeira Estados Unidos.png",
-      "bandeiraSvg": "/resource/Bandeira Estados Unidos.svg"
+      "bandeira": "/resource/Bandeira Estados Unidos.png"
     }
   },
   {
@@ -270,9 +248,7 @@
     "tempoPerdidoPitLane": 21.0,
     "arquivos": {
       "traçado": "/resource/CircuitoToronto.png",
-      "traçadoSvg": "/resource/CircuitoToronto.svg",
-      "bandeira": "/resource/Bandeira Canada.png",
-      "bandeiraSvg": "/resource/Bandeira Canada.svg"
+      "bandeira": "/resource/Bandeira Canada.png"
     }
   },
   {
@@ -293,9 +269,7 @@
     "tempoPerdidoPitLane": 20.0,
     "arquivos": {
       "traçado": "/resource/CircuitoGetaway.png",
-      "traçadoSvg": "/resource/CircuitoGetaway.svg",
-      "bandeira": "/resource/Bandeira Estados Unidos.png",
-      "bandeiraSvg": "/resource/Bandeira Estados Unidos.svg"
+      "bandeira": "/resource/Bandeira Estados Unidos.png"
     }
   },
   {
@@ -316,9 +290,7 @@
     "tempoPerdidoPitLane": 22.0,
     "arquivos": {
       "traçado": "/resource/CircuitoPorland.png",
-      "traçadoSvg": "/resource/CircuitoPorland.svg",
-      "bandeira": "/resource/Bandeira Estados Unidos.png",
-      "bandeiraSvg": "/resource/Bandeira Estados Unidos.svg"
+      "bandeira": "/resource/Bandeira Estados Unidos.png"
     }
   },
   {
@@ -339,9 +311,7 @@
     "tempoPerdidoPitLane": 19.0,
     "arquivos": {
       "traçado": "/resource/CircuitoMilwaukee.png",
-      "traçadoSvg": "/resource/CircuitoMilwaukee.svg",
-      "bandeira": "/resource/Bandeira Estados Unidos.png",
-      "bandeiraSvg": "/resource/Bandeira Estados Unidos.svg"
+      "bandeira": "/resource/Bandeira Estados Unidos.png"
     }
   },
   {
@@ -362,9 +332,7 @@
     "tempoPerdidoPitLane": 19.0,
     "arquivos": {
       "traçado": "/resource/CircuitoMilwaukee.png",
-      "traçadoSvg": "/resource/CircuitoMilwaukee.svg",
-      "bandeira": "/resource/Bandeira Estados Unidos.png",
-      "bandeiraSvg": "/resource/Bandeira Estados Unidos.svg"
+      "bandeira": "/resource/Bandeira Estados Unidos.png"
     }
   },
   {
@@ -385,9 +353,7 @@
     "tempoPerdidoPitLane": 20.0,
     "arquivos": {
       "traçado": "/resource/CircuitoNashville.png",
-      "traçadoSvg": "/resource/CircuitoNashville.svg",
-      "bandeira": "/resource/Bandeira Estados Unidos.png",
-      "bandeiraSvg": "/resource/Bandeira Estados Unidos.svg"
+      "bandeira": "/resource/Bandeira Estados Unidos.png"
     }
   }
 ]

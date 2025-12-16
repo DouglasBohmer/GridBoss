@@ -1,6 +1,8 @@
 package telas;
 
 import com.formdev.flatlaf.FlatLightLaf;
+import com.formdev.flatlaf.extras.FlatSVGIcon;
+import com.formdev.flatlaf.extras.FlatSVGUtils;
 import dados.CarregadorJSON;
 import dados.SessaoJogo;
 
@@ -18,11 +20,10 @@ public class TelaSelecionarCategoria extends JFrame {
 
     private JPanel contentPane;
     
-    // Variáveis Estáticas
+    // Variáveis Estáticas Locais
     public static String CATEGORIA_SELECIONADA = "Fórmula 1";
     public static String TEMPORADA_SELECIONADA = "";
-    public static String IMAGEM_SELECIONADA = "/resource/Logo F1 Novo_OK.png";
-
+    
     // Mapa com os mods carregados do disco
     private Map<String, List<String>> modsDisponiveis;
 
@@ -32,7 +33,7 @@ public class TelaSelecionarCategoria extends JFrame {
     private JRadioButton rbNascar;
     private JRadioButton rbOutro;
     
-    private JLabel lbCarro;
+    // REMOVIDO: private JLabel lbCarro;
     private JLabel lbLogo;
     
     private JLabel lblSelecioneCat; 
@@ -43,9 +44,9 @@ public class TelaSelecionarCategoria extends JFrame {
     private JButton btnComecar;
     private JButton btnVoltar;
 
-    // Constantes de Altura da Janela
-    private static final int ALTURA_NORMAL = 645;
-    private static final int ALTURA_EXPANDIDA = 680;
+    // NOVAS ALTURAS (Mais compactas)
+    private static final int ALTURA_NORMAL = 400;
+    private static final int ALTURA_EXPANDIDA = 440;
 
     public static void main(String[] args) {
         try {
@@ -68,14 +69,13 @@ public class TelaSelecionarCategoria extends JFrame {
     public TelaSelecionarCategoria() {
         modsDisponiveis = CarregadorJSON.escanearModsInstalados();
 
-        setIconImage(Toolkit.getDefaultToolkit().getImage(TelaSelecionarCategoria.class.getResource("/resource/Icone16px.png")));
+        configurarIconeJanela();
+        
         setTitle("Grid Boss");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        // Inicia com o tamanho normal (sem o combo extra)
         setBounds(100, 100, 500, ALTURA_NORMAL);
         setResizable(false);
         
-        // Listener para configuração inicial
         addWindowListener(new WindowAdapter() {
             @Override
             public void windowOpened(WindowEvent e) {
@@ -89,45 +89,38 @@ public class TelaSelecionarCategoria extends JFrame {
         setContentPane(contentPane);
         contentPane.setLayout(null);
 
-        // Logo (Topo)
+        // Logo (Topo) - Mantido na posição original
         lbLogo = new JLabel("");
         lbLogo.setHorizontalAlignment(SwingConstants.CENTER);
         lbLogo.setBounds(20, 11, 450, 148);
         lbLogo.setFont(new Font("Castellar", Font.BOLD, 48)); 
         contentPane.add(lbLogo);
 
-        // Carro (Centro)
-        lbCarro = new JLabel("");
-        lbCarro.setHorizontalAlignment(SwingConstants.CENTER);
-        lbCarro.setBounds(20, 157, 450, 274);
-        contentPane.add(lbCarro);
+        // REMOVIDO: lbCarro
 
+        // Subiu de y=442 para y=179
         lblSelecioneCat = new JLabel("SELECIONE A CATEGORIA");
         lblSelecioneCat.setHorizontalAlignment(SwingConstants.CENTER);
         lblSelecioneCat.setFont(new Font("Berlin Sans FB", Font.PLAIN, 20));
-        lblSelecioneCat.setBounds(20, 442, 450, 27);
+        lblSelecioneCat.setBounds(20, 179, 450, 27);
         contentPane.add(lblSelecioneCat);
 
         // --- RADIO BUTTONS ---
-        
-        // F1 (x=10)
+        // Subiram de y=476 para y=216
         rbF1 = new JRadioButton("FÓRMULA 1");
-        configurarRadioButton(rbF1, 10, "f1", "Fórmula 1", "/resource/Logo F1 Novo_OK.png", "/resource/F1 ");
+        configurarRadioButton(rbF1, 10, 216, "f1", "Fórmula 1", "/resource/Logo F1 Novo.svg");
         
-        // INDY (x=125)
         rbIndy = new JRadioButton("INDY");
-        configurarRadioButton(rbIndy, 125, "indy", "Fórmula INDY", "/resource/Logo Indy_OK.png", "/resource/Indy ");
+        configurarRadioButton(rbIndy, 125, 216, "indy", "Fórmula INDY", "/resource/Logo Indy.svg");
         
-        // NASCAR (x=240)
         rbNascar = new JRadioButton("NASCAR");
-        configurarRadioButton(rbNascar, 240, "nascar", "NASCAR", "/resource/Logo Nascar_OK.png", "/resource/Cup Series ");
+        configurarRadioButton(rbNascar, 240, 216, "nascar", "NASCAR", "/resource/Logo Nascar.svg");
 
-        // OUTRO (x=355)
         rbOutro = new JRadioButton("OUTRO");
         rbOutro.setBackground(new Color(255, 255, 255));
         rbOutro.setFont(new Font("Berlin Sans FB", Font.PLAIN, 13));
         rbOutro.setHorizontalAlignment(SwingConstants.CENTER);
-        rbOutro.setBounds(355, 476, 103, 21);
+        rbOutro.setBounds(355, 216, 103, 21); // y=216
         contentPane.add(rbOutro);
 
         ButtonGroup grupoBotoes = new ButtonGroup();
@@ -137,32 +130,35 @@ public class TelaSelecionarCategoria extends JFrame {
         grupoBotoes.add(rbOutro);
         
         // --- COMBOBOX OUTROS ---
+        // Posição inicial (invisível), referência para y=252
         cbCategoriasOutras = new JComboBox<>();
         cbCategoriasOutras.setFont(new Font("Berlin Sans FB", Font.PLAIN, 13));
-        cbCategoriasOutras.setBounds(20, 505, 450, 21);
+        cbCategoriasOutras.setBounds(20, 252, 450, 21);
         cbCategoriasOutras.setVisible(false);
         contentPane.add(cbCategoriasOutras);
 
-        // Lógica para popular e configurar o botão "Outro"
         configurarLogicaOutros();
 
         // --- TEMPORADA ---
+        // Posição inicial Normal: y=252
         lblSelecioneTemp = new JLabel("SELECIONE A TEMPORADA");
         lblSelecioneTemp.setFont(new Font("Berlin Sans FB", Font.PLAIN, 20));
         lblSelecioneTemp.setHorizontalAlignment(SwingConstants.CENTER);
-        lblSelecioneTemp.setBounds(20, 505, 450, 27); 
+        lblSelecioneTemp.setBounds(20, 252, 450, 27); 
         contentPane.add(lblSelecioneTemp);
 
+        // Posição inicial Normal: y=284
         cbListaTemp = new JComboBox<>();
         cbListaTemp.setMaximumRowCount(6);
         cbListaTemp.setFont(new Font("Berlin Sans FB", Font.PLAIN, 13));
-        cbListaTemp.setBounds(20, 535, 450, 21);
+        cbListaTemp.setBounds(20, 284, 450, 21);
         contentPane.add(cbListaTemp);
 
         // --- BOTÕES NAVEGAÇÃO ---
+        // Posição inicial Normal: y=325
         btnVoltar = new JButton("VOLTAR");
         btnVoltar.setFont(new Font("Berlin Sans FB", Font.PLAIN, 11));
-        btnVoltar.setBounds(20, 575, 172, 21);
+        btnVoltar.setBounds(20, 325, 172, 21);
         btnVoltar.addActionListener(e -> {
             TelaInicialCarregar telaInicial = new TelaInicialCarregar();
             telaInicial.setVisible(true);
@@ -173,38 +169,63 @@ public class TelaSelecionarCategoria extends JFrame {
 
         btnComecar = new JButton("ESCOLHER EQUIPE");
         btnComecar.setFont(new Font("Berlin Sans FB", Font.PLAIN, 11));
-        btnComecar.setBounds(298, 575, 172, 21);
+        btnComecar.setBounds(298, 325, 172, 21);
         btnComecar.addActionListener(e -> irParaEquipes());
         contentPane.add(btnComecar);
+    }
+
+    private void configurarIconeJanela() {
+        try {
+            String path = "/resource/Icone.svg";
+            java.net.URL url = getClass().getResource(path);
+            
+            if (url == null) {
+                System.err.println("ERRO: O Java não encontrou o arquivo: " + path);
+                return; 
+            }
+
+            java.awt.Image icon = FlatSVGUtils.svg2image(path, 32, 32);
+            if (icon != null) {
+                setIconImage(icon);
+            }
+            
+        } catch (Exception e) {
+            System.err.println("Falha ao definir ícone da janela: " + e.getMessage());
+        }
     }
 
     private void ajustarLayout(boolean mostrarComboExtra) {
         cbCategoriasOutras.setVisible(mostrarComboExtra);
 
         if (mostrarComboExtra) {
-            // Expande janela e desce componentes
+            // Expandido (Tem o combo "Outros")
             setSize(500, ALTURA_EXPANDIDA); 
             
-            lblSelecioneTemp.setBounds(20, 535, 450, 27);
-            cbListaTemp.setBounds(20, 565, 450, 21);
-            btnVoltar.setBounds(20, 605, 172, 21);
-            btnComecar.setBounds(298, 605, 172, 21);
+            // Empurra tudo pra baixo
+            lblSelecioneTemp.setBounds(20, 288, 450, 27);
+            cbListaTemp.setBounds(20, 320, 450, 21);
+            
+            btnVoltar.setBounds(20, 361, 172, 21);
+            btnComecar.setBounds(298, 361, 172, 21);
         } else {
-            // Contrai janela e sobe componentes
+            // Normal
             setSize(500, ALTURA_NORMAL);
             
-            lblSelecioneTemp.setBounds(20, 505, 450, 27);
-            cbListaTemp.setBounds(20, 535, 450, 21);
-            btnVoltar.setBounds(20, 575, 172, 21);
-            btnComecar.setBounds(298, 575, 172, 21);
+            // Puxa de volta pra cima
+            lblSelecioneTemp.setBounds(20, 252, 450, 27);
+            cbListaTemp.setBounds(20, 284, 450, 21);
+            
+            btnVoltar.setBounds(20, 325, 172, 21);
+            btnComecar.setBounds(298, 325, 172, 21);
         }
     }
 
-    private void configurarRadioButton(JRadioButton rb, int x, String keyMod, String nomeCategoria, String pathLogo, String pathCarroPrefix) {
+    // Atualizei para receber o Y
+    private void configurarRadioButton(JRadioButton rb, int x, int y, String keyMod, String nomeCategoria, String pathLogo) {
         rb.setBackground(new Color(255, 255, 255));
         rb.setFont(new Font("Berlin Sans FB", Font.PLAIN, 13));
         rb.setHorizontalAlignment(SwingConstants.CENTER);
-        rb.setBounds(x, 476, 103, 21);
+        rb.setBounds(x, y, 103, 21);
         
         List<String> anosDisponiveis = modsDisponiveis.get(keyMod);
         
@@ -214,7 +235,7 @@ public class TelaSelecionarCategoria extends JFrame {
         } else {
             rb.addActionListener(e -> {
                 ajustarLayout(false);
-                atualizarSelecaoPadrao(keyMod, nomeCategoria, pathLogo, pathCarroPrefix, anosDisponiveis);
+                atualizarSelecaoPadrao(keyMod, nomeCategoria, pathLogo, anosDisponiveis);
             });
         }
         
@@ -237,7 +258,6 @@ public class TelaSelecionarCategoria extends JFrame {
             rbOutro.setToolTipText("Nenhum mod extra encontrado na pasta /mods.");
         } else {
             for (String cat : categoriasExtras) {
-                // AQUI: Adiciona no combo convertendo para MAIÚSCULO
                 cbCategoriasOutras.addItem(cat.toUpperCase());
             }
             if (cbCategoriasOutras.getItemCount() > 0) {
@@ -261,51 +281,93 @@ public class TelaSelecionarCategoria extends JFrame {
         String itemSelecionado = (String) cbCategoriasOutras.getSelectedItem();
         
         if (itemSelecionado != null) {
-            // A chave do mapa é minúscula (ex: "wec"), mas o item do combo está maiúsculo (ex: "WEC")
-            // Precisamos converter para minúsculo para ACHAR no mapa
             String keyParaBusca = itemSelecionado.toLowerCase();
             List<String> anos = modsDisponiveis.get(keyParaBusca);
             
-            // 1. lbCarro recebe o Banner F1
-            try {
-                lbCarro.setIcon(new ImageIcon(getClass().getResource("/resource/BannerOutro.png")));
-            } catch (Exception ex) { lbCarro.setIcon(null); }
+            // lbCarro removido daqui
 
-            // 2. lbLogo recebe o texto exatamente como está no combo (MAIÚSCULO)
             lbLogo.setIcon(null);
-            //lbLogo.setIcon(new ImageIcon(getClass().getResource("/resource/BannerLogo.jpg")));
-            lbLogo.setText(itemSelecionado); // "WEC"
+            lbLogo.setText(itemSelecionado); 
             
-            // 3. Atualiza variáveis e combo
-            IMAGEM_SELECIONADA = "/resource/Banner F1_OK.png"; 
+            SessaoJogo.IMAGEM_SELECIONADA = "/resource/Banner F1.svg"; 
+            
             atualizarComboAnos(anos);
             
-            SessaoJogo.categoriaSelecionada = itemSelecionado; // Exibe "WEC"
-            SessaoJogo.categoriaKey = keyParaBusca; // Carrega arquivo "wec_2023..."
+            SessaoJogo.categoriaSelecionada = itemSelecionado; 
+            SessaoJogo.categoriaKey = keyParaBusca; 
         }
     }
 
-    private void atualizarSelecaoPadrao(String keyMod, String nomeCategoria, String pathLogo, String pathCarroPrefix, List<String> anos) {
+    // Removi o pathCarroPrefix pois não usamos mais
+    private void atualizarSelecaoPadrao(String keyMod, String nomeCategoria, String pathLogo, List<String> anos) {
         CATEGORIA_SELECIONADA = nomeCategoria;
-        IMAGEM_SELECIONADA = pathLogo;
+        SessaoJogo.IMAGEM_SELECIONADA = pathLogo;
         
         lbLogo.setText(""); 
-        try {
-            lbLogo.setIcon(new ImageIcon(getClass().getResource(pathLogo)));
-        } catch (Exception ex) { lbLogo.setIcon(null); }
+        carregarImagem(lbLogo, pathLogo);
         
-        int max = 7; 
-        if (keyMod.equals("indy")) max = 8;
-        int randomNum = new Random().nextInt(max) + 1;
-        
-        try {
-            lbCarro.setIcon(new ImageIcon(getClass().getResource(pathCarroPrefix + randomNum + ".png")));
-        } catch (Exception ex) { lbCarro.setIcon(null); }
+        // lbCarro removido daqui
 
         atualizarComboAnos(anos);
         
         SessaoJogo.categoriaSelecionada = nomeCategoria;
         SessaoJogo.categoriaKey = keyMod; 
+    }
+    
+    private void carregarImagem(JLabel lbl, String path) {
+        try {
+            if (path == null || path.isEmpty()) {
+                lbl.setIcon(null);
+                return;
+            }
+
+            if (!path.startsWith("/")) path = "/" + path;
+            if (!path.startsWith("/resource")) path = "/resource" + path;
+            path = path.replace("//", "/");
+
+            if (path.toLowerCase().endsWith(".png")) {
+                path = path.substring(0, path.length() - 4) + ".svg";
+            }
+            if (!path.toLowerCase().endsWith(".svg")) {
+                path = path + ".svg";
+            }
+
+            String svgPath = path.startsWith("/") ? path.substring(1) : path;
+
+            int labelW = lbl.getWidth();
+            int labelH = lbl.getHeight();
+
+            if (labelW > 0 && labelH > 0) {
+                FlatSVGIcon iconOriginal = new FlatSVGIcon(svgPath);
+                
+                if (iconOriginal.getIconWidth() <= 0) {
+                    lbl.setIcon(null);
+                    return;
+                }
+
+                float origW = iconOriginal.getIconWidth();
+                float origH = iconOriginal.getIconHeight();
+
+                float ratioW = (float) labelW / origW;
+                float ratioH = (float) labelH / origH;
+
+                float scale = Math.min(ratioW, ratioH);
+
+                int finalW = Math.round(origW * scale);
+                int finalH = Math.round(origH * scale);
+
+                finalW = Math.max(1, finalW - 2);
+                finalH = Math.max(1, finalH - 2);
+
+                lbl.setIcon(new FlatSVGIcon(svgPath, finalW, finalH));
+                
+            } else {
+                lbl.setIcon(new FlatSVGIcon(svgPath));
+            }
+
+        } catch (Exception e) {
+            lbl.setIcon(null);
+        }
     }
 
     private void atualizarComboAnos(List<String> anos) {

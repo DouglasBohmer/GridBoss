@@ -1,28 +1,28 @@
 package telas;
 
 import com.formdev.flatlaf.FlatLightLaf;
+import com.formdev.flatlaf.extras.FlatSVGIcon;   // Import necessário
+import com.formdev.flatlaf.extras.FlatSVGUtils;  // Import necessário
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.File;
-import dados.DadosDoJogo; // Importar a classe de dados
+import dados.DadosDoJogo; 
 import javax.swing.filechooser.FileNameExtensionFilter;
 
 public class TelaInicialCarregar extends JFrame {
 
     private JPanel contentPane;
-    public static File ArquivoCarregado; // Para uso futuro
+    public static File ArquivoCarregado; 
 
     /**
      * Launch the application.
      */
     public static void main(String[] args) {
-        // Configuração do Tema (Claro)
         try {
             FlatLightLaf.setup();
-            // Ajustes opcionais para combinar com o estilo "compacto" do seu layout original
             UIManager.put("Button.arc", 10); 
         } catch (Exception ex) {
             System.err.println("Erro ao iniciar FlatLaf");
@@ -33,7 +33,7 @@ public class TelaInicialCarregar extends JFrame {
                 try {
                     TelaInicialCarregar frame = new TelaInicialCarregar();
                     frame.setVisible(true);
-                    frame.setLocationRelativeTo(null); // Centraliza na tela
+                    frame.setLocationRelativeTo(null); 
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
@@ -45,9 +45,10 @@ public class TelaInicialCarregar extends JFrame {
      * Create the frame.
      */
     public TelaInicialCarregar() {
-    	setIconImage(Toolkit.getDefaultToolkit().getImage(TelaInicialCarregar.class.getResource("/resource/Icone16px.png")));
+        // 1. Carrega o ícone da janela em SVG (com verificação de segurança)
+        configurarIconeJanela();
+        
         setTitle("Grid Boss");
-        // Ajustei a altura (450) para caber os novos botões sem apertar
         setBounds(100, 100, 487, 450); 
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setResizable(false);
@@ -55,7 +56,7 @@ public class TelaInicialCarregar extends JFrame {
         contentPane = new JPanel();
         contentPane.setBackground(Color.WHITE);
         contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
-        contentPane.setLayout(null); // Layout Absoluto (Fiel ao original)
+        contentPane.setLayout(null); 
         setContentPane(contentPane);
 
         // --- TÍTULO ---
@@ -71,34 +72,22 @@ public class TelaInicialCarregar extends JFrame {
         lblBanner.setVerticalAlignment(SwingConstants.BOTTOM);
         lblBanner.setBounds(10, 56, 451, 170);
         
-        try {
-            // PNG (Original recuperado do seu código)
-            lblBanner.setIcon(new ImageIcon(getClass().getResource("/resource/Banner F1_OK.png")));
-            
-            // SVG (Futuro - Comentado)
-            // lblBanner.setIcon(new com.formdev.flatlaf.extras.FlatSVGIcon("resource/Banner F1_OK.svg"));
-        } catch (Exception e) {
-            // Se falhar, não quebra a tela
-        }
+        // 2. Carrega o Banner em SVG com redimensionamento automático
+        carregarImagem(lblBanner, "/resource/Banner F1_OK.svg");
+        
         contentPane.add(lblBanner);
 
         // --- BOTÕES ---
-        // Mantendo a largura (185) e altura (21) do seu original
-        // Centralizando matematicamente: (487 largura total - 185 botão) / 2 ~= 150 (X do seu código)
         int btnX = 150;
-        int btnH = 25; // Aumentei levemente de 21 pra 25 pra caber melhor a fonte "Berlin" no FlatLaf
-        int startY = 240; // Começando logo abaixo do banner
-        int gap = 35;     // Espaço entre botões
+        int btnH = 25; 
+        int startY = 240; 
+        int gap = 35;     
 
         // 1. INICIAR NOVO JOGO
         JButton btnNovoJogo = new JButton("INICIAR NOVO JOGO");
         btnNovoJogo.setFont(new Font("Berlin Sans FB", Font.PLAIN, 12));
         btnNovoJogo.setBounds(btnX, startY, 185, btnH);
         
-        // Ícones (Opcionais, adicionei placeholders caso queira usar)
-        // btnNovoJogo.setIcon(new ImageIcon(getClass().getResource("/resource/IconeCorrida16px.png")));
-        // btnNovoJogo.setIcon(new com.formdev.flatlaf.extras.FlatSVGIcon("resource/IconeCorrida16px.svg"));
-
         btnNovoJogo.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 irParaSelecaoCategoria();
@@ -118,7 +107,7 @@ public class TelaInicialCarregar extends JFrame {
         });
         contentPane.add(btnCarregar);
 
-        // 3. ADICIONAR MODS (Novo)
+        // 3. ADICIONAR MODS 
         JButton btnMods = new JButton("ADICIONAR MODS");
         btnMods.setFont(new Font("Berlin Sans FB", Font.PLAIN, 12));
         
@@ -151,21 +140,101 @@ public class TelaInicialCarregar extends JFrame {
         contentPane.add(lblVersao);
     }
 
+    // --- MÉTODOS AUXILIARES (SVG) ---
+
+    private void configurarIconeJanela() {
+        try {
+            String path = "/resource/Icone.svg";
+            java.net.URL url = getClass().getResource(path);
+            
+            if (url == null) {
+                System.err.println("ERRO: O Java não encontrou o arquivo: " + path);
+                return; 
+            }
+
+            java.awt.Image icon = FlatSVGUtils.svg2image(path, 32, 32);
+            if (icon != null) {
+                setIconImage(icon);
+            }
+            
+        } catch (Exception e) {
+            System.err.println("Falha ao definir ícone da janela: " + e.getMessage());
+        }
+    }
+
+    private void carregarImagem(JLabel lbl, String path) {
+        try {
+            if (path == null || path.isEmpty()) {
+                lbl.setIcon(null);
+                return;
+            }
+
+            // Tratamento do caminho
+            if (!path.startsWith("/")) path = "/" + path;
+            if (!path.startsWith("/resource")) path = "/resource" + path;
+            path = path.replace("//", "/");
+
+            // Garante .svg
+            if (path.toLowerCase().endsWith(".png")) {
+                path = path.substring(0, path.length() - 4) + ".svg";
+            }
+            if (!path.toLowerCase().endsWith(".svg")) {
+                path = path + ".svg";
+            }
+
+            String svgPath = path.startsWith("/") ? path.substring(1) : path;
+
+            // Dimensões
+            int labelW = lbl.getWidth();
+            int labelH = lbl.getHeight();
+
+            if (labelW > 0 && labelH > 0) {
+                // Lê o tamanho original do SVG
+                FlatSVGIcon iconOriginal = new FlatSVGIcon(svgPath);
+                
+                if (iconOriginal.getIconWidth() <= 0) {
+                    lbl.setIcon(null);
+                    return;
+                }
+
+                float origW = iconOriginal.getIconWidth();
+                float origH = iconOriginal.getIconHeight();
+
+                // Matemática de Ajuste (Scale to Fit)
+                float ratioW = (float) labelW / origW;
+                float ratioH = (float) labelH / origH;
+                float scale = Math.min(ratioW, ratioH);
+
+                int finalW = Math.round(origW * scale);
+                int finalH = Math.round(origH * scale);
+
+                // Margem segura
+                finalW = Math.max(1, finalW - 2);
+                finalH = Math.max(1, finalH - 2);
+
+                lbl.setIcon(new FlatSVGIcon(svgPath, finalW, finalH));
+                
+            } else {
+                lbl.setIcon(new FlatSVGIcon(svgPath));
+            }
+
+        } catch (Exception e) {
+            lbl.setIcon(null);
+        }
+    }
+
     // --- AÇÕES ---
 
     private void irParaSelecaoCategoria() {
         TelaSelecionarCategoria tela = new TelaSelecionarCategoria();
         tela.setVisible(true);
-        tela.setLocationRelativeTo(null); // Centraliza na tela
-        this.dispose(); // Fecha a tela de carregamento
+        tela.setLocationRelativeTo(null); 
+        this.dispose(); 
     }
 
     private void carregarJogoAction() {
-        // Abre a tela bonita de carregamento
-        // Passamos 'this' para que ela saiba quem fechar quando o jogo carregar
         TelaCarregarJogo tela = new TelaCarregarJogo(this);
         tela.setLocationRelativeTo(this);
         tela.setVisible(true);
     }
-
 }

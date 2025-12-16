@@ -65,15 +65,13 @@ public class TelaSelecionarEquipe extends JFrame {
     }
 
     public TelaSelecionarEquipe() {
-        // Ícone da janela agora em SVG
-        try {
-            setIconImage(FlatSVGUtils.svg2image("resource/Icone16px.svg", 16, 16));
-        } catch (Exception e) {
-        }
+
+    	configurarIconeJanela();
 
         setTitle("Grid Boss - Selecionar Equipe");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        setBounds(100, 100, 586, 740);
+        // AJUSTE: Reduzi a altura da janela de 740 para 630 pois o conteúdo subiu
+        setBounds(100, 100, 586, 630);
         setResizable(false);
         
         contentPane = new JPanel();
@@ -91,13 +89,13 @@ public class TelaSelecionarEquipe extends JFrame {
 
         lblLogoCategoria = new JLabel("");
         lblLogoCategoria.setHorizontalAlignment(SwingConstants.CENTER);
-        lblLogoCategoria.setBounds(20, 48, 540, 149);
+        lblLogoCategoria.setBounds(310, 48, 250, 100);
         contentPane.add(lblLogoCategoria);
 
         lblCategoriaBanner = new JLabel("CARREGANDO...");
         lblCategoriaBanner.setFont(new Font("Berlin Sans FB Demi", Font.ITALIC, 15));
         lblCategoriaBanner.setHorizontalAlignment(SwingConstants.CENTER);
-        lblCategoriaBanner.setBounds(20, 208, 540, 36);
+        lblCategoriaBanner.setBounds(20, 159, 540, 36);
         contentPane.add(lblCategoriaBanner);
 
         // --- SELETOR ---
@@ -105,17 +103,18 @@ public class TelaSelecionarEquipe extends JFrame {
         cbListaEquipes.setModel(new DefaultComboBoxModel<>(new String[] {"-- CARREGANDO --"}));
         cbListaEquipes.setMaximumRowCount(15);
         cbListaEquipes.setFont(new Font("Berlin Sans FB", Font.PLAIN, 16));
-        cbListaEquipes.setBounds(20, 238, 540, 21);
+        cbListaEquipes.setBounds(20, 189, 540, 21);
         cbListaEquipes.addActionListener(e -> atualizarDadosNaTela());
         contentPane.add(cbListaEquipes);
 
         lblFotoCarro = new JLabel("");
         lblFotoCarro.setHorizontalAlignment(SwingConstants.CENTER);
-        lblFotoCarro.setBounds(20, 282, 540, 100);
+        lblFotoCarro.setBounds(20, 48, 250, 100);
         contentPane.add(lblFotoCarro);
 
         // --- SLOTS DE PILOTOS (1 a 5) ---
-        int startY = 393;
+        // AJUSTE: startY alterado de 393 para 230 para fechar o buraco verde
+        int startY = 230;
         int gapY = 32;
 
         for (int i = 0; i < 5; i++) {
@@ -148,66 +147,73 @@ public class TelaSelecionarEquipe extends JFrame {
         }
 
         // --- DADOS DA EQUIPE (RODAPÉ) ---
-        criarLabelInfo("Sede/Fundação", 553);
-        criarLabelInfo("Motor", 585);
-        criarLabelInfo("Orçamento", 617);
+        // AJUSTE: Recalculei as posições Y baseando-se no novo startY dos pilotos
+        // Info 1: Y = 410
+        // Info 2: Y = 442
+        // Info 3: Y = 474
+        
+        criarLabelInfo("Sede/Fundação", 410);
+        criarLabelInfo("Motor", 442);
+        criarLabelInfo("Orçamento", 474);
 
         lblSede = new JLabel("");
         lblSede.setHorizontalAlignment(SwingConstants.CENTER);
         lblSede.setFont(new Font("Berlin Sans FB", Font.PLAIN, 15));
-        lblSede.setBounds(121, 553, 318, 21);
+        lblSede.setBounds(121, 410, 318, 21);
         contentPane.add(lblSede);
         
         lblAnoFundacao = new JLabel("");
-        lblAnoFundacao.setBounds(425, 553, 93, 21);
+        lblAnoFundacao.setBounds(425, 410, 93, 21);
         lblAnoFundacao.setHorizontalAlignment(SwingConstants.CENTER);
         lblAnoFundacao.setFont(new Font("Berlin Sans FB", Font.PLAIN, 15));
         contentPane.add(lblAnoFundacao);
         
         lblFlagSede = new JLabel("");
-        lblFlagSede.setBounds(528, 553, 32, 21);
+        lblFlagSede.setBounds(528, 410, 32, 21);
         lblFlagSede.setHorizontalAlignment(SwingConstants.CENTER);
         contentPane.add(lblFlagSede);
 
         lblMotor = new JLabel("");
         lblMotor.setHorizontalAlignment(SwingConstants.CENTER);
         lblMotor.setFont(new Font("Berlin Sans FB", Font.PLAIN, 15));
-        lblMotor.setBounds(121, 585, 318, 21);
+        lblMotor.setBounds(121, 442, 318, 21);
         contentPane.add(lblMotor);
         
         lblLogoMotor = new JLabel("");
-        lblLogoMotor.setBounds(425, 585, 93, 21);
+        lblLogoMotor.setBounds(425, 442, 93, 21);
         lblLogoMotor.setHorizontalAlignment(SwingConstants.CENTER);
         contentPane.add(lblLogoMotor);
         
         lblFlagMotor = new JLabel("");
-        lblFlagMotor.setBounds(528, 585, 32, 21);
+        lblFlagMotor.setBounds(528, 442, 32, 21);
         lblFlagMotor.setHorizontalAlignment(SwingConstants.CENTER);
         contentPane.add(lblFlagMotor);
 
         lblOrcamento = new JLabel("");
         lblOrcamento.setHorizontalAlignment(SwingConstants.CENTER);
         lblOrcamento.setFont(new Font("Berlin Sans FB", Font.PLAIN, 15));
-        lblOrcamento.setBounds(121, 617, 318, 21);
+        lblOrcamento.setBounds(121, 474, 318, 21);
         contentPane.add(lblOrcamento);
 
         // --- DIRIGENTE ---
+        // AJUSTE: Subi para Y=515
         JLabel lblAviso = new JLabel("Nome do Dirigente");
         lblAviso.setHorizontalAlignment(SwingConstants.CENTER);
         lblAviso.setFont(new Font("Berlin Sans FB", Font.PLAIN, 15));
-        lblAviso.setBounds(10, 645, 172, 21);
+        lblAviso.setBounds(10, 515, 172, 21);
         contentPane.add(lblAviso);
 
         tfNomeDirigente = new JTextField("Douglas Bohmer");
         tfNomeDirigente.setHorizontalAlignment(SwingConstants.CENTER);
         tfNomeDirigente.setFont(new Font("Berlin Sans FB", Font.PLAIN, 15));
-        tfNomeDirigente.setBounds(269, 645, 291, 21);
+        tfNomeDirigente.setBounds(269, 515, 291, 21);
         contentPane.add(tfNomeDirigente);
 
         // BOTÕES
+        // AJUSTE: Subi para Y=550
         JButton btnVoltar = new JButton("VOLTAR");
         btnVoltar.setFont(new Font("Berlin Sans FB", Font.PLAIN, 15));
-        btnVoltar.setBounds(10, 674, 172, 21);
+        btnVoltar.setBounds(10, 550, 172, 21);
         btnVoltar.addActionListener(e -> {
             TelaSelecionarCategoria tela = new TelaSelecionarCategoria();
             tela.setVisible(true);
@@ -218,7 +224,7 @@ public class TelaSelecionarEquipe extends JFrame {
 
         JButton btnComecar = new JButton("COMEÇAR JOGO");
         btnComecar.setFont(new Font("Berlin Sans FB", Font.PLAIN, 15));
-        btnComecar.setBounds(388, 674, 172, 21);
+        btnComecar.setBounds(388, 550, 172, 21);
         btnComecar.addActionListener(e -> iniciarJogo());
         contentPane.add(btnComecar);
 
@@ -234,8 +240,35 @@ public class TelaSelecionarEquipe extends JFrame {
         contentPane.add(l);
     }
 
-    // --- LÓGICA DE DADOS ---
+    private void configurarIconeJanela() {
+        try {
+            String path = "/resource/Icone.svg";
+            
+            // 1. Verificação Manual: O Java consegue ver esse arquivo?
+            java.net.URL url = getClass().getResource(path);
+            
+            if (url == null) {
+                System.err.println("-------------------------------------------------------");
+                System.err.println("ERRO: O Java não encontrou o arquivo: " + path);
+                System.err.println("SOLUÇÃO: Dê um 'Refresh' (F5) no projeto dentro do Eclipse.");
+                System.err.println("Verifique se o nome é 'Icone.svg' (I maiúsculo) na pasta.");
+                System.err.println("-------------------------------------------------------");
+                return; // Sai do método para não travar o programa
+            }
 
+            // 2. Se chegou aqui, o arquivo existe. Carrega a imagem.
+            java.awt.Image icon = FlatSVGUtils.svg2image(path, 32, 32);
+            
+            if (icon != null) {
+                setIconImage(icon);
+            }
+            
+        } catch (Exception e) {
+            // Apenas loga o erro mas deixa o programa abrir sem ícone
+            System.err.println("Falha ao definir ícone da janela: " + e.getMessage());
+        }
+    }
+    
     private void carregarDadosIniciais() {
         String cat = SessaoJogo.categoriaKey;
         int ano = SessaoJogo.anoSelecionado;
@@ -351,41 +384,76 @@ public class TelaSelecionarEquipe extends JFrame {
 
     private void carregarImagem(JLabel lbl, String path) {
         try {
-            if (path != null && !path.isEmpty()) {
-                if (!path.startsWith("/")) path = "/" + path;
-                if (!path.startsWith("/resource")) path = "/resource" + path;
-                path = path.replace("//", "/");
+            if (path == null || path.isEmpty()) {
+                lbl.setIcon(null);
+                return;
+            }
 
-                // SE VIER COM .PNG, TROCA POR .SVG
-                if (path.toLowerCase().endsWith(".png")) {
-                    path = path.substring(0, path.length() - 4) + ".svg";
-                }
-                if (!path.toLowerCase().endsWith(".svg")) {
-                    path = path + ".svg";
-                }
+            // --- 1. Saneamento do Caminho (Path) ---
+            // Garante que começa com /resource e termina com .svg
+            if (!path.startsWith("/")) path = "/" + path;
+            if (!path.startsWith("/resource")) path = "/resource" + path;
+            path = path.replace("//", "/");
 
-                String svgPath = path.startsWith("/") ? path.substring(1) : path;
+            // Se vier .png, troca para .svg
+            if (path.toLowerCase().endsWith(".png")) {
+                path = path.substring(0, path.length() - 4) + ".svg";
+            }
+            if (!path.toLowerCase().endsWith(".svg")) {
+                path = path + ".svg";
+            }
+
+            // Remove a barra inicial para o carregador do FlatLaf funcionar
+            String svgPath = path.startsWith("/") ? path.substring(1) : path;
+
+            // --- 2. Dimensões do Label (O Espaço Disponível) ---
+            int labelW = lbl.getWidth();
+            int labelH = lbl.getHeight();
+
+            // Só tentamos ajustar se o Label já tiver tamanho definido na tela
+            if (labelW > 0 && labelH > 0) {
                 
-                // --- FIX: LÓGICA DE TAMANHO COM MARGEM DE 1PX ---
-                int larguraLabel = lbl.getWidth();
-                int alturaLabel = lbl.getHeight();
-
-                if (larguraLabel > 0 && alturaLabel > 0) {
-                    // Pega o menor lado para garantir quadrado
-                    int menorLado = Math.min(larguraLabel, alturaLabel);
-                    
-                    // Subtrai 1 para garantir a folga solicitada (ex: 15x20 -> menor 15 -> 14x14)
-                    int ladoFinal = Math.max(1, menorLado - 1); 
-                    
-                    lbl.setIcon(new FlatSVGIcon(svgPath, ladoFinal, ladoFinal));
-                } else {
-                    lbl.setIcon(new FlatSVGIcon(svgPath));
+                // Carregamos o ícone "cru" apenas para ler o tamanho original do desenho (ex: 900x300)
+                FlatSVGIcon iconOriginal = new FlatSVGIcon(svgPath);
+                
+                // Verifica se o arquivo existe e tem tamanho
+                if (iconOriginal.getIconWidth() <= 0) {
+                    lbl.setIcon(null);
+                    return;
                 }
+
+                float origW = iconOriginal.getIconWidth();
+                float origH = iconOriginal.getIconHeight();
+
+                // --- 3. Matemática de Proporção (O Pulo do Gato) ---
+                // Calculamos quantas vezes o desenho cabe na largura e na altura
+                float ratioW = (float) labelW / origW;
+                float ratioH = (float) labelH / origH;
+
+                // Escolhemos o MENOR ratio. 
+                // Isso garante que a imagem "bata" na borda mais próxima (seja lateral ou topo/baixo)
+                // e pare de crescer, mantendo a proporção original.
+                float scale = Math.min(ratioW, ratioH);
+
+                // Calcula o tamanho final aplicando a escala
+                int finalW = Math.round(origW * scale);
+                int finalH = Math.round(origH * scale);
+
+                // Margem de segurança de 2px para não tocar na borda (opcional, mas fica mais bonito)
+                finalW = Math.max(1, finalW - 2);
+                finalH = Math.max(1, finalH - 2);
+
+                // Define o ícone com o tamanho calculado perfeitamente
+                lbl.setIcon(new FlatSVGIcon(svgPath, finalW, finalH));
                 
             } else {
-                lbl.setIcon(null);
+                // Fallback: Se o label não tiver tamanho ainda, carrega o padrão
+                lbl.setIcon(new FlatSVGIcon(svgPath));
             }
+
         } catch (Exception e) {
+            // Se der erro (arquivo não encontrado, etc), limpa o label
+            // e.printStackTrace(); // Descomente para ver erros no console se precisar
             lbl.setIcon(null);
         }
     }

@@ -9,10 +9,10 @@
     "reputacao": 55,
     "saldoFinanceiro": 50.0,
     "arquivos": {
-      "logo": "/resource/Equipe_F1_Stake.svg",
+      "logo": "/resource/Equipe F1 Stake.svg",
       "bandeiraSede": "/resource/Bandeira Suica.svg",
       "bandeiraMotor": "/resource/Bandeira Italia.svg",
-      "logoMotor": "/resource/Motor_FerrariPQ.svg"
+      "logoMotor": "/resource/Logo Ferrari.svg"
     },
     "pilotosContratadosIDs": [
       "Valtteri Bottas",
@@ -31,10 +31,10 @@
     "reputacao": 98,
     "saldoFinanceiro": 140.0,
     "arquivos": {
-      "logo": "/resource/Equipe_F1_RBR.svg",
+      "logo": "/resource/Equipe F1 RBR.svg",
       "bandeiraSede": "/resource/Bandeira Austria.svg",
       "bandeiraMotor": "/resource/Bandeira Japao.svg",
-      "logoMotor": "/resource/Motor_HondaPQ.svg"
+      "logoMotor": "/resource/Logo Honda.svg"
     },
     "pilotosContratadosIDs": [
       "Max Verstappen",
@@ -53,10 +53,10 @@
     "reputacao": 75,
     "saldoFinanceiro": 95.0,
     "arquivos": {
-      "logo": "/resource/Equipe_F1_Alpine.svg",
+      "logo": "/resource/Equipe F1 Alpine.svg",
       "bandeiraSede": "/resource/Bandeira Franca.svg",
       "bandeiraMotor": "/resource/Bandeira Franca.svg",
-      "logoMotor": "/resource/Motor_RenaultPQ.svg"
+      "logoMotor": "/resource/Logo Renault.svg"
     },
     "pilotosContratadosIDs": [
       "Pierre Gasly",
@@ -74,10 +74,10 @@
     "reputacao": 97,
     "saldoFinanceiro": 138.0,
     "arquivos": {
-      "logo": "/resource/Equipe_F1_Ferrari.svg",
+      "logo": "/resource/Equipe F1 Ferrari.svg",
       "bandeiraSede": "/resource/Bandeira Italia.svg",
       "bandeiraMotor": "/resource/Bandeira Italia.svg",
-      "logoMotor": "/resource/Motor_FerrariPQ.svg"
+      "logoMotor": "/resource/Logo Ferrari.svg"
     },
     "pilotosContratadosIDs": [
       "Charles Leclerc",
@@ -97,10 +97,10 @@
     "reputacao": 65,
     "saldoFinanceiro": 60.0,
     "arquivos": {
-      "logo": "/resource/Equipe_F1_Williams.svg",
+      "logo": "/resource/Equipe F1 Williams.svg",
       "bandeiraSede": "/resource/Bandeira Reino Unido.svg",
       "bandeiraMotor": "/resource/Bandeira Alemanha.svg",
-      "logoMotor": "/resource/Motor_MercedesPQ.svg"
+      "logoMotor": "/resource/Logo Mercedes.svg"
     },
     "pilotosContratadosIDs": [
       "Alexander Albon",
@@ -117,10 +117,10 @@
     "reputacao": 60,
     "saldoFinanceiro": 55.0,
     "arquivos": {
-      "logo": "/resource/Equipe_F1_RB.svg",
+      "logo": "/resource/Equipe F1 RB.svg",
       "bandeiraSede": "/resource/Bandeira Italia.svg",
       "bandeiraMotor": "/resource/Bandeira Japao.svg",
-      "logoMotor": "/resource/Motor_HondaPQ.svg"
+      "logoMotor": "/resource/Logo Honda.svg"
     },
     "pilotosContratadosIDs": [
       "Yuki Tsunoda",
@@ -138,10 +138,10 @@
     "reputacao": 85,
     "saldoFinanceiro": 110.0,
     "arquivos": {
-      "logo": "/resource/Equipe_F1_Aston Martin.svg",
+      "logo": "/resource/Equipe F1 Aston Martin.svg",
       "bandeiraSede": "/resource/Bandeira Reino Unido.svg",
       "bandeiraMotor": "/resource/Bandeira Alemanha.svg",
-      "logoMotor": "/resource/Motor_MercedesPQ.svg"
+      "logoMotor": "/resource/Logo Mercedes.svg"
     },
     "pilotosContratadosIDs": [
       "Fernando Alonso",
@@ -160,10 +160,10 @@
     "reputacao": 50,
     "saldoFinanceiro": 45.0,
     "arquivos": {
-      "logo": "/resource/Equipe_F1_Haas.svg",
+      "logo": "/resource/Equipe F1 Haas.svg",
       "bandeiraSede": "/resource/Bandeira EUA.svg",
       "bandeiraMotor": "/resource/Bandeira Italia.svg",
-      "logoMotor": "/resource/Motor_FerrariPQ.svg"
+      "logoMotor": "/resource/Logo Ferrari.svg"
     },
     "pilotosContratadosIDs": [
       "Nico Hulkenberg",
@@ -182,10 +182,10 @@
     "reputacao": 90,
     "saldoFinanceiro": 120.0,
     "arquivos": {
-      "logo": "/resource/Equipe_F1_McLaren.svg",
+      "logo": "/resource/Equipe F1 McLaren.svg",
       "bandeiraSede": "/resource/Bandeira Reino Unido.svg",
       "bandeiraMotor": "/resource/Bandeira Alemanha.svg",
-      "logoMotor": "/resource/Motor_MercedesPQ.svg"
+      "logoMotor": "/resource/Logo Mercedes.svg"
     },
     "pilotosContratadosIDs": [
       "Lando Norris",
@@ -206,10 +206,10 @@
     "reputacao": 95,
     "saldoFinanceiro": 135.0,
     "arquivos": {
-      "logo": "/resource/Equipe_F1_Mercedes.svg",
+      "logo": "/resource/Equipe F1 Mercedes.svg",
       "bandeiraSede": "/resource/Bandeira Alemanha.svg",
       "bandeiraMotor": "/resource/Bandeira Alemanha.svg",
-      "logoMotor": "/resource/Motor_MercedesPQ.svg"
+      "logoMotor": "/resource/Logo Mercedes.svg"
     },
     "pilotosContratadosIDs": [
       "Lewis Hamilton",

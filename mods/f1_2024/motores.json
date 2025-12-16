@@ -7,7 +7,7 @@
     "durabilidade": 4,
     "preco": 15.0,
     "arquivos": {
-      "logo": "/resource/Motor_HondaPQ.svg",
+      "logo": "/resource/Logo Honda.svg",
       "bandeira": "/resource/Bandeira Japao.svg"
     }
   },
@@ -19,7 +19,7 @@
     "durabilidade": 4,
     "preco": 14.5,
     "arquivos": {
-      "logo": "/resource/Motor_FerrariPQ.svg",
+      "logo": "/resource/Logo Ferrari.svg",
       "bandeira": "/resource/Bandeira Italia.svg"
     }
   },
@@ -31,7 +31,7 @@
     "durabilidade": 5,
     "preco": 16.0,
     "arquivos": {
-      "logo": "/resource/Motor_MercedesPQ.svg",
+      "logo": "/resource/Logo Mercedes.svg",
       "bandeira": "/resource/Bandeira Alemanha.svg"
     }
   },
@@ -43,7 +43,7 @@
     "durabilidade": 3,
     "preco": 12.0,
     "arquivos": {
-      "logo": "/resource/Motor_RenaultPQ.svg",
+      "logo": "/resource/Logo Renault.svg",
       "bandeira": "/resource/Bandeira Franca.svg"
     }
   }

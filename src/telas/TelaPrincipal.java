@@ -259,7 +259,7 @@ public class TelaPrincipal extends JFrame {
         LB_IconeDinheiro.setHorizontalAlignment(SwingConstants.CENTER);
         LB_IconeDinheiro.setBounds(1164, 50, 45, 25);
         // Usa o carregador inteligente para o ícone de dinheiro
-        carregarImagem(LB_IconeDinheiro, "/resource/IconeEuro24px.svg");
+        carregarImagem(LB_IconeDinheiro, "/resource/Icone Euro.svg");
         contentPane.add(LB_IconeDinheiro);
 
         // === PILOTOS ===

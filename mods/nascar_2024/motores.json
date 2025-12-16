@@ -6,7 +6,7 @@
     "dirigibilidade": 5,
     "durabilidade": 4,
     "preco": 5.0,
-    "arquivos": { "logo": "/resource/Motor_ChevroletPQ.png","bandeira": "/resource/Bandeira Estados Unidos.png" }
+    "arquivos": { "logo": "/resource/Logo Chevrolet.svg","bandeira": "/resource/Bandeira Estados Unidos.svg" }
   },
   {
     "id": "Ford",
@@ -15,7 +15,7 @@
     "dirigibilidade": 4,
     "durabilidade": 5,
     "preco": 5.0,
-    "arquivos": { "logo": "/resource/Motor_FordPQ.png","bandeira": "/resource/Bandeira Estados Unidos.png" }
+    "arquivos": { "logo": "/resource/Logo Ford.svg","bandeira": "/resource/Bandeira Estados Unidos.svg" }
   },
   {
     "id": "Toyota",
@@ -24,6 +24,6 @@
     "dirigibilidade": 5,
     "durabilidade": 5,
     "preco": 5.0,
-    "arquivos": { "logo": "/resource/Motor_ToyotaPQ.png","bandeira": "/resource/Bandeira Japao.png" }
+    "arquivos": { "logo": "/resource/Logo Toyota.svg","bandeira": "/resource/Bandeira Japao.svg" }
   }
 ]

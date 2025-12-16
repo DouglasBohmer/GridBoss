@@ -1,7 +1,10 @@
 package telas;
 
+import com.formdev.flatlaf.FlatLightLaf;
+import com.formdev.flatlaf.extras.FlatSVGIcon;  // Import necessário
+import com.formdev.flatlaf.extras.FlatSVGUtils; // Import necessário
 import dados.CarregadorJSON;
-import dados.DadosDoJogo; // Importado
+import dados.DadosDoJogo;
 import dados.SessaoJogo;
 import modelos.Equipe;
 import modelos.Piloto;
@@ -72,7 +75,10 @@ public class TelaPrincipal extends JFrame {
         if (this.indiceEtapaVisual < 0) this.indiceEtapaVisual = 0;
 
         setTitle("Grid Boss");
-        setIconImage(Toolkit.getDefaultToolkit().getImage(TelaPrincipal.class.getResource("/resource/Icone16px.png")));
+        
+        // --- Ícone da Janela em SVG ---
+        configurarIconeJanela();
+        
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setBounds(100, 100, 1235, 700); 
         setResizable(false);
@@ -252,7 +258,8 @@ public class TelaPrincipal extends JFrame {
         LB_IconeDinheiro = new JLabel("");
         LB_IconeDinheiro.setHorizontalAlignment(SwingConstants.CENTER);
         LB_IconeDinheiro.setBounds(1164, 50, 45, 25);
-        carregarImagem(LB_IconeDinheiro, "/resource/IconeEuro24px.png");
+        // Usa o carregador inteligente para o ícone de dinheiro
+        carregarImagem(LB_IconeDinheiro, "/resource/IconeEuro24px.svg");
         contentPane.add(LB_IconeDinheiro);
 
         // === PILOTOS ===
@@ -370,28 +377,33 @@ public class TelaPrincipal extends JFrame {
         tabelaPilotos = new JTable();
         tabelaPilotos.setRowHeight(35);
         JScrollPane scrollPilotos = new JScrollPane(tabelaPilotos);
-        tabbedPane.addTab("Classificação Pilotos", new ImageIcon(getClass().getResource("/resource/Icone24pxPiloto.png")), scrollPilotos);
+        // Ícone da aba em SVG
+        tabbedPane.addTab("Classificação Pilotos", new FlatSVGIcon("resource/Icone24pxPiloto.svg"), scrollPilotos);
         
         // --- TABELA DE CONSTRUTORES ---
         tabelaConstrutores = new JTable();
         tabelaConstrutores.setRowHeight(40);
         JScrollPane scrollConstrutores = new JScrollPane(tabelaConstrutores);
-        tabbedPane.addTab("Classificação Equipes", new ImageIcon(getClass().getResource("/resource/Icone24pxEquipe.png")), scrollConstrutores);
+        // Ícone da aba em SVG
+        tabbedPane.addTab("Classificação Equipes", new FlatSVGIcon("resource/Icone24pxEquipe.svg"), scrollConstrutores);
         
         JPanel pnlResultados = new JPanel(null);
-        tabbedPane.addTab("Resultados", new ImageIcon(getClass().getResource("/resource/Icone24pxTrofeu.png")), pnlResultados);
+        // Ícone da aba em SVG
+        tabbedPane.addTab("Resultados", new FlatSVGIcon("resource/Icone24pxTrofeu.svg"), pnlResultados);
 
         // === RODAPÉ ===
         LB_CarrosCat = new JLabel("");
         LB_CarrosCat.setVerticalAlignment(SwingConstants.BOTTOM);
-        LB_CarrosCat.setIcon(new ImageIcon(TelaPrincipal.class.getResource("/resource/Banner F1_OK.png")));
+        // Usa o carregador inteligente para o Banner
+        carregarImagem(LB_CarrosCat, "/resource/Banner F1_OK.svg");
         LB_CarrosCat.setHorizontalAlignment(SwingConstants.CENTER);
         LB_CarrosCat.setBounds(642, 432, 567, 163);
         contentPane.add(LB_CarrosCat);
 
         BT_IrParaCorrida = new JButton("IR PARA A CORRIDA!");
         BT_IrParaCorrida.setFont(new Font("Arial", Font.BOLD, 16));
-        BT_IrParaCorrida.setIcon(new ImageIcon(getClass().getResource("/resource/Icone24pxBandeiraDeChegada.png")));
+        // Ícone do botão em SVG
+        BT_IrParaCorrida.setIcon(new FlatSVGIcon("resource/Icone24pxBandeiraDeChegada.svg"));
         BT_IrParaCorrida.setBounds(643, 606, 566, 33);
         BT_IrParaCorrida.addActionListener(e -> irParaCorrida());
         contentPane.add(BT_IrParaCorrida);
@@ -408,7 +420,6 @@ public class TelaPrincipal extends JFrame {
         Font fontNome = new Font("Arial Rounded MT Bold", Font.ITALIC, 14);
         LB_NomeP1.setFont(fontNome); LB_NomeP2.setFont(fontNome); LB_NomeP3.setFont(fontNome); LB_NomeP4.setFont(fontNome); LB_NomeP5.setFont(fontNome);
     }
-
  
     private void atualizarDados() {
         if (equipeJogavel == null) return;
@@ -419,7 +430,6 @@ public class TelaPrincipal extends JFrame {
         LB_Orc.setText(String.format("€ %.1f milhões", equipeJogavel.getSaldoFinanceiro()));
         LB_NomeDirigente.setText(dadosDoJogo.getNomeDoDirigente());
         
-        // CORREÇÃO: Ler o ano do Save, e não da Sessão estática
         LB_Ano.setText("Ano " + dadosDoJogo.getAnoAtual()); 
         
         carregarImagem(LB_LogoEquipe, equipeJogavel.getCaminhoLogo());
@@ -427,32 +437,31 @@ public class TelaPrincipal extends JFrame {
         carregarImagem(LB_LogoMotorPQ, equipeJogavel.getCaminhoLogoMotor());
         carregarImagem(LB_BandeiraSede, equipeJogavel.getCaminhoBandeiraSede());
 
-        // --- BANNERS (LÓGICA CORRIGIDA) ---
-        // Pegamos a categoria do objeto carregado (Save)
+        // --- BANNERS (AGORA TUDO SVG) ---
         String catKey = "";
         if (dadosDoJogo.getCategoriaKey() != null) {
             catKey = dadosDoJogo.getCategoriaKey().toLowerCase();
         }
 
         if (catKey.contains("f1")) {
-            carregarImagem(LB_CategoriaEscolhida, "/resource/Logo Novo_F1_OKPQ.png");
-            carregarImagem(LB_CarrosCat, "/resource/Banner F1_OK.png");
+            carregarImagem(LB_CategoriaEscolhida, "/resource/Logo Novo_F1_OKPQ.svg");
+            carregarImagem(LB_CarrosCat, "/resource/Banner F1_OK.svg");
             LB_TipoPista.setForeground(Color.BLACK);
             
         } else if (catKey.contains("indy")) {
-            carregarImagem(LB_CategoriaEscolhida, "/resource/Logo Indy_OKPQ.png");
-            carregarImagem(LB_CarrosCat, "/resource/Banner F1_OK.png"); 
+            carregarImagem(LB_CategoriaEscolhida, "/resource/Logo Indy_OKPQ.svg");
+            carregarImagem(LB_CarrosCat, "/resource/Banner F1_OK.svg"); 
             LB_TipoPista.setForeground(Color.BLUE);
             
         } else if (catKey.contains("nascar")) {
-            carregarImagem(LB_CategoriaEscolhida, "/resource/Logo Nascar_OKPQ.png");
-            carregarImagem(LB_CarrosCat, "/resource/Banner F1_OK.png"); 
+            carregarImagem(LB_CategoriaEscolhida, "/resource/Logo Nascar_OKPQ.svg");
+            carregarImagem(LB_CarrosCat, "/resource/Banner F1_OK.svg"); 
             LB_TipoPista.setForeground(Color.BLUE);
             
         } else {
-            // CASO PADRÃO (Se não for nenhuma das 3 acima)
-            carregarImagem(LB_CategoriaEscolhida, "/resource/BannerLogo.png");
-            carregarImagem(LB_CarrosCat, "/resource/Banner F1_OK.png");
+            // CASO PADRÃO
+            carregarImagem(LB_CategoriaEscolhida, "/resource/BannerLogo.svg");
+            carregarImagem(LB_CarrosCat, "/resource/Banner F1_OK.svg");
             LB_TipoPista.setForeground(Color.BLACK);
         }
 
@@ -469,8 +478,7 @@ public class TelaPrincipal extends JFrame {
         atualizarCalendarioUI();
         preencherTabelas();
     }
-    
-    
+        
     private void atualizarSlotPiloto(int index, List<Piloto> lista, JLabel lbNome, JLabel lbNum, JLabel lbIdade, JLabel lbContrato, JLabel lbFlag, JLabel lbStatus, JLabel lbOver) {
         if (index < lista.size()) {
             Piloto p = lista.get(index);
@@ -480,7 +488,8 @@ public class TelaPrincipal extends JFrame {
             lbContrato.setText("Contrato Ativo");
             lbOver.setText("Ovr " + (int)p.getOverall());
             
-            carregarImagem(lbFlag, "/resource/Bandeira " + p.getNacionalidade() + ".png");
+            // Bandeira SVG
+            carregarImagem(lbFlag, "/resource/Bandeira " + p.getNacionalidade() + ".svg");
             
             lbNome.setVisible(true); lbNum.setVisible(true); lbIdade.setVisible(true);
             lbContrato.setVisible(true); lbFlag.setVisible(true); lbStatus.setVisible(true); lbOver.setVisible(true);
@@ -514,30 +523,25 @@ public class TelaPrincipal extends JFrame {
         DefaultTableModel modelPilotos = new DefaultTableModel(colunasPilotos, 0) {
             @Override
             public Class<?> getColumnClass(int columnIndex) {
-                if (columnIndex == 1) return ImageIcon.class; 
+                if (columnIndex == 1) return Icon.class; // Alterado para Icon (aceita SVG)
                 return Object.class;
             }
             @Override
             public boolean isCellEditable(int row, int column) { return false; }
         };
 
-        // AGORA USAMOS OS DADOS VIVOS (onde os pontos serão somados)
         List<Equipe> todasEquipes = dadosDoJogo.getTodasAsEquipes();
         
-        // A lógica de extração de pilotos para o grid é igual, mas baseada nos objetos vivos
         java.util.List<Piloto> pilotosGrid = new java.util.ArrayList<>();
         boolean isF1 = SessaoJogo.categoriaKey.toLowerCase().contains("f1");
 
         for (Equipe eq : todasEquipes) {
-            // Como já rodamos "vincularPilotosAsEquipes" no DadosDoJogo, 
-            // podemos pegar direto a lista de objetos, sem buscar por ID!
             List<Piloto> titulares = eq.getPilotosTitulares();
-            
             for (int i = 0; i < titulares.size(); i++) {
-                if (isF1 && i >= 2) continue; // F1 só mostra 2
+                if (isF1 && i >= 2) continue; 
                 
                 Piloto p = titulares.get(i);
-                p.setNomeEquipeAtual(eq.getNome()); // Garante nome atualizado
+                p.setNomeEquipeAtual(eq.getNome()); 
                 pilotosGrid.add(p);
             }
         }
@@ -556,7 +560,8 @@ public class TelaPrincipal extends JFrame {
         int pontosLiderP = (pilotosGrid.isEmpty()) ? 0 : pilotosGrid.get(0).getPontos();
 
         for (Piloto p : pilotosGrid) {
-            ImageIcon flag = obterIcone("/resource/Bandeira " + p.getNacionalidade() + ".png");
+            // Bandeira SVG para a tabela
+            Icon flag = obterIcone("/resource/Bandeira " + p.getNacionalidade() + ".svg");
             int diff = pontosLiderP - p.getPontos();
             
             modelPilotos.addRow(new Object[]{
@@ -600,14 +605,13 @@ public class TelaPrincipal extends JFrame {
         DefaultTableModel modelEquipes = new DefaultTableModel(colunasEquipes, 0) {
             @Override
             public Class<?> getColumnClass(int columnIndex) {
-                if (columnIndex == 1) return ImageIcon.class; 
+                if (columnIndex == 1) return Icon.class; // Alterado para Icon
                 return Object.class;
             }
             @Override
             public boolean isCellEditable(int row, int column) { return false; }
         };
 
-        // Ordenamos a lista de equipes VIVA
         Collections.sort(todasEquipes, new Comparator<Equipe>() {
             @Override
             public int compare(Equipe e1, Equipe e2) {
@@ -622,7 +626,8 @@ public class TelaPrincipal extends JFrame {
         int pontosLiderE = (todasEquipes.isEmpty()) ? 0 : todasEquipes.get(0).getPontos();
 
         for (Equipe eq : todasEquipes) {
-            ImageIcon flag = obterIcone(eq.getCaminhoBandeiraSede());
+            // Bandeira SVG para a tabela
+            Icon flag = obterIcone(eq.getCaminhoBandeiraSede());
             int diff = pontosLiderE - eq.getPontos();
 
             modelEquipes.addRow(new Object[]{
@@ -654,15 +659,15 @@ public class TelaPrincipal extends JFrame {
         tabelaConstrutores.getColumnModel().getColumn(7).setPreferredWidth(50);
     }
     
-    // --- Renderers mantidos iguais (Inner Classes) ---
+    // --- Renderers Atualizados para aceitar SVG (Icon) ---
     static class CentralizadoRenderer extends DefaultTableCellRenderer {
         @Override
         public Component getTableCellRendererComponent(JTable table, Object value, boolean isSelected, boolean hasFocus, int row, int column) {
             super.getTableCellRendererComponent(table, value, isSelected, hasFocus, row, column);
             setHorizontalAlignment(SwingConstants.CENTER);
             setVerticalAlignment(SwingConstants.CENTER);
-            if (value instanceof ImageIcon) {
-                setIcon((ImageIcon) value);
+            if (value instanceof Icon) { // Alterado de ImageIcon para Icon
+                setIcon((Icon) value);
                 setText(""); 
             } else {
                 setIcon(null);
@@ -678,8 +683,8 @@ public class TelaPrincipal extends JFrame {
             super.getTableCellRendererComponent(table, value, isSelected, hasFocus, row, column);
             setHorizontalAlignment(SwingConstants.LEFT);
             setVerticalAlignment(SwingConstants.CENTER);
-            if (value instanceof ImageIcon) {
-                setIcon((ImageIcon) value);
+            if (value instanceof Icon) { // Alterado de ImageIcon para Icon
+                setIcon((Icon) value);
                 setText("");
             } else {
                 setIcon(null);
@@ -706,7 +711,9 @@ public class TelaPrincipal extends JFrame {
             } else {
                 LB_LocalPista.setText(pistaVisual.getPais());
             }
-            carregarImagem(LB_BandeiraPista, "/resource/Bandeira " + pistaVisual.getPais() + ".png");
+            
+            // Bandeira SVG
+            carregarImagem(LB_BandeiraPista, "/resource/Bandeira " + pistaVisual.getPais() + ".svg");
 
             String tipoTexto = "Misto";
             if (pistaVisual.getTipo() != null) {
@@ -736,10 +743,11 @@ public class TelaPrincipal extends JFrame {
             String desgasteTexto = (desgaste < 1.0) ? "Baixo" : (desgaste <= 1.5) ? "Médio" : "Alto";
             LB_DesgastePneu.setText("Desgaste Pneu: " + desgasteTexto);
 
-            String caminhoImagem = "/resource/Icone64pxErro.png";
+            String caminhoImagem = "/resource/Icone64pxErro.svg";
             String nomeOriginal = pistaVisual.getCaminhoTracado();
-            if (nomeOriginal != null && nomeOriginal.contains(".png")) {
-                caminhoImagem = nomeOriginal.replace(".png", "PQ.png");
+            if (nomeOriginal != null) {
+                // Tenta carregar a versão PQ em SVG
+                caminhoImagem = nomeOriginal.replace(".png", "PQ.svg");
             }
             carregarImagem(LB_ImagemPista, caminhoImagem);
         }
@@ -750,12 +758,7 @@ public class TelaPrincipal extends JFrame {
     
     private Pista buscarPistaPorIndice(int index) {
         try {
-            // Aqui podemos pegar do campeonato VIVO em vez de carregar do JSON
-            List<Pista> todas = campeonato.getCalendario(); // Assumindo que você adicione getCalendario no service depois
-            // Se não tiver getCalendario público, use o carregador por enquanto (não quebra o estado, pois pista é estática)
-            // Mas o ideal é: return dadosDoJogo.getCampeonato().getCalendario().get(index);
-            
-            // Fallback temporário seguro:
+            List<Pista> todas = campeonato.getCalendario(); 
             if (todas != null && index >= 0 && index < todas.size()) {
                 return todas.get(index);
             }
@@ -770,25 +773,117 @@ public class TelaPrincipal extends JFrame {
         atualizarCalendarioUI();
     }
 
+    // --- MÉTODOS DE IMAGEM (SVG) ---
+
     private void carregarImagem(JLabel lbl, String path) {
-        ImageIcon icon = obterIcone(path);
-        if (icon != null) lbl.setIcon(icon);
-        else lbl.setIcon(null);
+        try {
+            if (path == null || path.isEmpty()) {
+                lbl.setIcon(null);
+                return;
+            }
+
+            if (!path.startsWith("/")) path = "/" + path;
+            if (!path.startsWith("/resource")) path = "/resource" + path;
+            path = path.replace("//", "/");
+
+            if (path.toLowerCase().endsWith(".png")) {
+                path = path.substring(0, path.length() - 4) + ".svg";
+            }
+            if (!path.toLowerCase().endsWith(".svg")) {
+                path = path + ".svg";
+            }
+
+            String svgPath = path.startsWith("/") ? path.substring(1) : path;
+
+            int labelW = lbl.getWidth();
+            int labelH = lbl.getHeight();
+
+            if (labelW > 0 && labelH > 0) {
+                FlatSVGIcon iconOriginal = new FlatSVGIcon(svgPath);
+                
+                if (iconOriginal.getIconWidth() <= 0) {
+                    lbl.setIcon(null);
+                    return;
+                }
+
+                float origW = iconOriginal.getIconWidth();
+                float origH = iconOriginal.getIconHeight();
+
+                float ratioW = (float) labelW / origW;
+                float ratioH = (float) labelH / origH;
+                float scale = Math.min(ratioW, ratioH);
+
+                int finalW = Math.round(origW * scale);
+                int finalH = Math.round(origH * scale);
+
+                // --- ALTERAÇÃO: CONTROLE DE MARGEM ---
+                int margem = 2; // Margem padrão (bem justa)
+                
+                // Se for uma das bandeiras do topo, aplica uma margem maior (reduz o ícone)
+                if (lbl == LB_BandeiraMotor || lbl == LB_BandeiraSede || lbl == LB_BandeiraPista) {
+                    margem = 8; 
+                }
+
+                finalW = Math.max(1, finalW - margem);
+                finalH = Math.max(1, finalH - margem);
+                // -------------------------------------
+
+                lbl.setIcon(new FlatSVGIcon(svgPath, finalW, finalH));
+                
+            } else {
+                lbl.setIcon(new FlatSVGIcon(svgPath));
+            }
+
+        } catch (Exception e) {
+            lbl.setIcon(null);
+        }
     }
     
-    private ImageIcon obterIcone(String path) {
+    // 2. Carregador para Tabelas e Ícones Pequenos (Retorna o objeto Icon)
+    private Icon obterIcone(String path) {
         try {
             if (path != null && !path.isEmpty()) {
                 if (!path.startsWith("/")) path = "/" + path;
                 if (!path.startsWith("/resource")) path = "/resource" + path;
                 path = path.replace("//", "/");
-                java.net.URL imgUrl = getClass().getResource(path);
-                if (imgUrl != null) return new ImageIcon(imgUrl);
+
+                if (path.toLowerCase().endsWith(".png")) {
+                    path = path.substring(0, path.length() - 4) + ".svg";
+                }
+                if (!path.toLowerCase().endsWith(".svg")) {
+                    path = path + ".svg";
+                }
+
+                String svgPath = path.startsWith("/") ? path.substring(1) : path;
+                
+                // Define um tamanho fixo pequeno para ícones de tabela (Bandeiras)
+                // 28x20 é um bom tamanho para rowHeight=35
+                return new FlatSVGIcon(svgPath, 28, 20); 
             }
         } catch (Exception e) {
             e.printStackTrace();
         }
         return null;
+    }
+
+    private void configurarIconeJanela() {
+        try {
+            String path = "/resource/Icone.svg";
+            java.net.URL url = getClass().getResource(path);
+            
+            if (url == null) {
+                System.err.println("ERRO: O Java não encontrou o arquivo: " + path);
+                return; 
+            }
+
+            java.awt.Image icon = FlatSVGUtils.svg2image(path, 32, 32);
+            if (icon != null) {
+                setIconImage(icon);
+            }
+            
+        } catch (Exception e) {
+            System.err.println("Falha ao definir ícone da janela: " + e.getMessage());
+        }
     }
 
     private void irParaCorrida() {
@@ -810,16 +905,13 @@ public class TelaPrincipal extends JFrame {
         if (retorno == JFileChooser.APPROVE_OPTION) {
             File arquivoSelecionado = fileChooser.getSelectedFile();
             
-            // Tenta carregar o jogo
             DadosDoJogo jogoCarregado = DadosDoJogo.carregarJogo(arquivoSelecionado.getName());
             
             if (jogoCarregado != null) {
-                // Sucesso: Cria uma nova tela principal com os dados novos
                 TelaPrincipal novaTela = new TelaPrincipal(jogoCarregado);
                 novaTela.setVisible(true);
                 novaTela.setLocationRelativeTo(null);
                 
-                // Fecha a tela atual (o jogo antigo)
                 this.dispose(); 
                 
                 JOptionPane.showMessageDialog(novaTela, "Jogo carregado com sucesso!");
@@ -831,5 +923,4 @@ public class TelaPrincipal extends JFrame {
             }
         }
     }
-
 }

@@ -16,10 +16,8 @@
     "chanceSafetyCar": 90.0,
     "tempoPerdidoPitLane": 28.0,
     "arquivos": {
-      "traçado": "/resource/CircuitoDaytona.png",
-      "traçadoSvg": "/resource/CircuitoDaytona.svg",
-      "bandeira": "/resource/Bandeira Estados Unidos.png",
-      "bandeiraSvg": "/resource/Bandeira Estados Unidos.svg"
+      "traçado": "/resource/Circuito Daytona.svg",
+      "bandeira": "/resource/Bandeira Estados Unidos.svg"
     }
   },
   {
@@ -39,10 +37,8 @@
     "chanceSafetyCar": 75.0,
     "tempoPerdidoPitLane": 24.0,
     "arquivos": {
-      "traçado": "/resource/CircuitoAtlanta.png",
-      "traçadoSvg": "/resource/CircuitoAtlanta.svg",
-      "bandeira": "/resource/Bandeira Estados Unidos.png",
-      "bandeiraSvg": "/resource/Bandeira Estados Unidos.svg"
+      "traçado": "/resource/Circuito Atlanta.svg",
+      "bandeira": "/resource/Bandeira Estados Unidos.svg"
     }
   },
   {
@@ -62,10 +58,8 @@
     "chanceSafetyCar": 55.0,
     "tempoPerdidoPitLane": 22.0,
     "arquivos": {
-      "traçado": "/resource/CircuitoLasVegasSpeedway.png",
-      "traçadoSvg": "/resource/CircuitoLasVegasSpeedway.svg",
-      "bandeira": "/resource/Bandeira Estados Unidos.png",
-      "bandeiraSvg": "/resource/Bandeira Estados Unidos.svg"
+      "traçado": "/resource/Circuito Las Vegas Speedway.svg",
+      "bandeira": "/resource/Bandeira Estados Unidos.svg"
     }
   },
   {
@@ -85,10 +79,8 @@
     "chanceSafetyCar": 60.0,
     "tempoPerdidoPitLane": 21.0,
     "arquivos": {
-      "traçado": "/resource/CircuitoPhoenix.png",
-      "traçadoSvg": "/resource/CircuitoPhoenix.svg",
-      "bandeira": "/resource/Bandeira Estados Unidos.png",
-      "bandeiraSvg": "/resource/Bandeira Estados Unidos.svg"
+      "traçado": "/resource/Circuito Phoenix.svg",
+      "bandeira": "/resource/Bandeira Estados Unidos.svg"
     }
   },
   {
@@ -108,10 +100,8 @@
     "chanceSafetyCar": 85.0,
     "tempoPerdidoPitLane": 18.0,
     "arquivos": {
-      "traçado": "/resource/CircuitoBristol.png",
-      "traçadoSvg": "/resource/CircuitoBristol.svg",
-      "bandeira": "/resource/Bandeira Estados Unidos.png",
-      "bandeiraSvg": "/resource/Bandeira Estados Unidos.svg"
+      "traçado": "/resource/Circuito Bristol.svg",
+      "bandeira": "/resource/Bandeira Estados Unidos.svg"
     }
   },
   {
@@ -131,10 +121,8 @@
     "chanceSafetyCar": 35.0,
     "tempoPerdidoPitLane": 25.0,
     "arquivos": {
-      "traçado": "/resource/CircuitoAustin.png",
-      "traçadoSvg": "/resource/CircuitoAustin.svg",
-      "bandeira": "/resource/Bandeira Estados Unidos.png",
-      "bandeiraSvg": "/resource/Bandeira Estados Unidos.svg"
+      "traçado": "/resource/Circuito Austin.svg",
+      "bandeira": "/resource/Bandeira Estados Unidos.svg"
     }
   },
   {
@@ -154,10 +142,8 @@
     "chanceSafetyCar": 65.0,
     "tempoPerdidoPitLane": 20.0,
     "arquivos": {
-      "traçado": "/resource/CircuitoRichmond.png",
-      "traçadoSvg": "/resource/CircuitoRichmond.svg",
-      "bandeira": "/resource/Bandeira Estados Unidos.png",
-      "bandeiraSvg": "/resource/Bandeira Estados Unidos.svg"
+      "traçado": "/resource/Circuito Richmond.svg",
+      "bandeira": "/resource/Bandeira Estados Unidos.svg"
     }
   },
   {
@@ -177,10 +163,8 @@
     "chanceSafetyCar": 80.0,
     "tempoPerdidoPitLane": 18.0,
     "arquivos": {
-      "traçado": "/resource/CircuitoMartinsville.png",
-      "traçadoSvg": "/resource/CircuitoMartinsville.svg",
-      "bandeira": "/resource/Bandeira Estados Unidos.png",
-      "bandeiraSvg": "/resource/Bandeira Estados Unidos.svg"
+      "traçado": "/resource/Circuito Martinsville.svg",
+      "bandeira": "/resource/Bandeira Estados Unidos.svg"
     }
   },
   {
@@ -200,10 +184,8 @@
     "chanceSafetyCar": 60.0,
     "tempoPerdidoPitLane": 22.0,
     "arquivos": {
-      "traçado": "/resource/CircuitoTexas.png",
-      "traçadoSvg": "/resource/CircuitoTexas.svg",
-      "bandeira": "/resource/Bandeira Estados Unidos.png",
-      "bandeiraSvg": "/resource/Bandeira Estados Unidos.svg"
+      "traçado": "/resource/Circuito Texas.svg",
+      "bandeira": "/resource/Bandeira Estados Unidos.svg"
     }
   },
   {
@@ -223,10 +205,8 @@
     "chanceSafetyCar": 95.0,
     "tempoPerdidoPitLane": 28.0,
     "arquivos": {
-      "traçado": "/resource/CircuitoTalladega.png",
-      "traçadoSvg": "/resource/CircuitoTalladega.svg",
-      "bandeira": "/resource/Bandeira Estados Unidos.png",
-      "bandeiraSvg": "/resource/Bandeira Estados Unidos.svg"
+      "traçado": "/resource/Circuito Talladega.svg",
+      "bandeira": "/resource/Bandeira Estados Unidos.svg"
     }
   },
   {
@@ -246,10 +226,8 @@
     "chanceSafetyCar": 50.0,
     "tempoPerdidoPitLane": 21.0,
     "arquivos": {
-      "traçado": "/resource/CircuitoDover.png",
-      "traçadoSvg": "/resource/CircuitoDover.svg",
-      "bandeira": "/resource/Bandeira Estados Unidos.png",
-      "bandeiraSvg": "/resource/Bandeira Estados Unidos.svg"
+      "traçado": "/resource/Circuito Dover.svg",
+      "bandeira": "/resource/Bandeira Estados Unidos.svg"
     }
   },
   {
@@ -269,10 +247,8 @@
     "chanceSafetyCar": 55.0,
     "tempoPerdidoPitLane": 22.0,
     "arquivos": {
-      "traçado": "/resource/CircuitoKansas.png",
-      "traçadoSvg": "/resource/CircuitoKansas.svg",
-      "bandeira": "/resource/Bandeira Estados Unidos.png",
-      "bandeiraSvg": "/resource/Bandeira Estados Unidos.svg"
+      "traçado": "/resource/Circuito Kansas.svg",
+      "bandeira": "/resource/Bandeira Estados Unidos.svg"
     }
   },
   {
@@ -292,10 +268,8 @@
     "chanceSafetyCar": 65.0,
     "tempoPerdidoPitLane": 23.0,
     "arquivos": {
-      "traçado": "/resource/CircuitoDarlington.png",
-      "traçadoSvg": "/resource/CircuitoDarlington.svg",
-      "bandeira": "/resource/Bandeira Estados Unidos.png",
-      "bandeiraSvg": "/resource/Bandeira Estados Unidos.svg"
+      "traçado": "/resource/Circuito Darlington.svg",
+      "bandeira": "/resource/Bandeira Estados Unidos.svg"
     }
   },
   {
@@ -315,10 +289,8 @@
     "chanceSafetyCar": 60.0,
     "tempoPerdidoPitLane": 22.0,
     "arquivos": {
-      "traçado": "/resource/CircuitoCharlotte.png",
-      "traçadoSvg": "/resource/CircuitoCharlotte.svg",
-      "bandeira": "/resource/Bandeira Estados Unidos.png",
-      "bandeiraSvg": "/resource/Bandeira Estados Unidos.svg"
+      "traçado": "/resource/Circuito Charlotte.svg",
+      "bandeira": "/resource/Bandeira Estados Unidos.svg"
     }
   },
   {
@@ -338,10 +310,8 @@
     "chanceSafetyCar": 55.0,
     "tempoPerdidoPitLane": 20.0,
     "arquivos": {
-      "traçado": "/resource/CircuitoGatewayNascar.png",
-      "traçadoSvg": "/resource/CircuitoGatewayNascar.svg",
-      "bandeira": "/resource/Bandeira Estados Unidos.png",
-      "bandeiraSvg": "/resource/Bandeira Estados Unidos.svg"
+      "traçado": "/resource/Circuito Gateway Nascar.svg",
+      "bandeira": "/resource/Bandeira Estados Unidos.svg"
     }
   },
   {
@@ -361,10 +331,8 @@
     "chanceSafetyCar": 30.0,
     "tempoPerdidoPitLane": 24.0,
     "arquivos": {
-      "traçado": "/resource/CircuitoSonoma.png",
-      "traçadoSvg": "/resource/CircuitoSonoma.svg",
-      "bandeira": "/resource/Bandeira Estados Unidos.png",
-      "bandeiraSvg": "/resource/Bandeira Estados Unidos.svg"
+      "traçado": "/resource/Circuito Sonoma.svg",
+      "bandeira": "/resource/Bandeira Estados Unidos.svg"
     }
   },
   {
@@ -384,10 +352,8 @@
     "chanceSafetyCar": 60.0,
     "tempoPerdidoPitLane": 19.0,
     "arquivos": {
-      "traçado": "/resource/CircuitoIowa.png",
-      "traçadoSvg": "/resource/CircuitoIowa.svg",
-      "bandeira": "/resource/Bandeira Estados Unidos.png",
-      "bandeiraSvg": "/resource/Bandeira Estados Unidos.svg"
+      "traçado": "/resource/Circuito Iowa.svg",
+      "bandeira": "/resource/Bandeira Estados Unidos.svg"
     }
   },
   {
@@ -407,10 +373,8 @@
     "chanceSafetyCar": 65.0,
     "tempoPerdidoPitLane": 20.0,
     "arquivos": {
-      "traçado": "/resource/CircuitoNewHampshire.png",
-      "traçadoSvg": "/resource/CircuitoNewHampshire.svg",
-      "bandeira": "/resource/Bandeira Estados Unidos.png",
-      "bandeiraSvg": "/resource/Bandeira Estados Unidos.svg"
+      "traçado": "/resource/Circuito New Hampshire.svg",
+      "bandeira": "/resource/Bandeira Estados Unidos.svg"
     }
   },
   {
@@ -430,10 +394,8 @@
     "chanceSafetyCar": 55.0,
     "tempoPerdidoPitLane": 22.0,
     "arquivos": {
-      "traçado": "/resource/CircuitoNashville.png",
-      "traçadoSvg": "/resource/CircuitoNashville.svg",
-      "bandeira": "/resource/Bandeira Estados Unidos.png",
-      "bandeiraSvg": "/resource/Bandeira Estados Unidos.svg"
+      "traçado": "/resource/Circuito Nashville.svg",
+      "bandeira": "/resource/Bandeira Estados Unidos.svg"
     }
   },
   {
@@ -453,10 +415,8 @@
     "chanceSafetyCar": 75.0,
     "tempoPerdidoPitLane": 25.0,
     "arquivos": {
-      "traçado": "/resource/CircuitoChicagoStreet.png",
-      "traçadoSvg": "/resource/CircuitoChicagoStreet.svg",
-      "bandeira": "/resource/Bandeira Estados Unidos.png",
-      "bandeiraSvg": "/resource/Bandeira Estados Unidos.svg"
+      "traçado": "/resource/Circuito Chicago Street.svg",
+      "bandeira": "/resource/Bandeira Estados Unidos.svg"
     }
   },
   {
@@ -476,10 +436,8 @@
     "chanceSafetyCar": 55.0,
     "tempoPerdidoPitLane": 28.0,
     "arquivos": {
-      "traçado": "/resource/CircuitoPocono.png",
-      "traçadoSvg": "/resource/CircuitoPocono.svg",
-      "bandeira": "/resource/Bandeira Estados Unidos.png",
-      "bandeiraSvg": "/resource/Bandeira Estados Unidos.svg"
+      "traçado": "/resource/Circuito Pocono.svg",
+      "bandeira": "/resource/Bandeira Estados Unidos.svg"
     }
   },
   {
@@ -499,10 +457,8 @@
     "chanceSafetyCar": 60.0,
     "tempoPerdidoPitLane": 25.0,
     "arquivos": {
-      "traçado": "/resource/CircuitoIndy500.png",
-      "traçadoSvg": "/resource/CircuitoIndy500.svg",
-      "bandeira": "/resource/Bandeira Estados Unidos.png",
-      "bandeiraSvg": "/resource/Bandeira Estados Unidos.svg"
+      "traçado": "/resource/Circuito Indy500.svg",
+      "bandeira": "/resource/Bandeira Estados Unidos.svg"
     }
   },
   {
@@ -522,10 +478,8 @@
     "chanceSafetyCar": 60.0,
     "tempoPerdidoPitLane": 20.0,
     "arquivos": {
-      "traçado": "/resource/CircuitoRichmond.png",
-      "traçadoSvg": "/resource/CircuitoRichmond.svg",
-      "bandeira": "/resource/Bandeira Estados Unidos.png",
-      "bandeiraSvg": "/resource/Bandeira Estados Unidos.svg"
+      "traçado": "/resource/Circuito Richmond.svg",
+      "bandeira": "/resource/Bandeira Estados Unidos.svg"
     }
   },
   {
@@ -545,10 +499,8 @@
     "chanceSafetyCar": 55.0,
     "tempoPerdidoPitLane": 24.0,
     "arquivos": {
-      "traçado": "/resource/CircuitoMichigan.png",
-      "traçadoSvg": "/resource/CircuitoMichigan.svg",
-      "bandeira": "/resource/Bandeira Estados Unidos.png",
-      "bandeiraSvg": "/resource/Bandeira Estados Unidos.svg"
+      "traçado": "/resource/Circuito Michigan.svg",
+      "bandeira": "/resource/Bandeira Estados Unidos.svg"
     }
   },
   {
@@ -568,10 +520,8 @@
     "chanceSafetyCar": 90.0,
     "tempoPerdidoPitLane": 28.0,
     "arquivos": {
-      "traçado": "/resource/CircuitoDaytona.png",
-      "traçadoSvg": "/resource/CircuitoDaytona.svg",
-      "bandeira": "/resource/Bandeira Estados Unidos.png",
-      "bandeiraSvg": "/resource/Bandeira Estados Unidos.svg"
+      "traçado": "/resource/Circuito Daytona.svg",
+      "bandeira": "/resource/Bandeira Estados Unidos.svg"
     }
   },
   {
@@ -591,10 +541,8 @@
     "chanceSafetyCar": 70.0,
     "tempoPerdidoPitLane": 23.0,
     "arquivos": {
-      "traçado": "/resource/CircuitoDarlington.png",
-      "traçadoSvg": "/resource/CircuitoDarlington.svg",
-      "bandeira": "/resource/Bandeira Estados Unidos.png",
-      "bandeiraSvg": "/resource/Bandeira Estados Unidos.svg"
+      "traçado": "/resource/Circuito Darlington.svg",
+      "bandeira": "/resource/Bandeira Estados Unidos.svg"
     }
   },
   {
@@ -614,10 +562,8 @@
     "chanceSafetyCar": 75.0,
     "tempoPerdidoPitLane": 24.0,
     "arquivos": {
-      "traçado": "/resource/CircuitoAtlanta.png",
-      "traçadoSvg": "/resource/CircuitoAtlanta.svg",
-      "bandeira": "/resource/Bandeira Estados Unidos.png",
-      "bandeiraSvg": "/resource/Bandeira Estados Unidos.svg"
+      "traçado": "/resource/Circuito Atlanta.svg",
+      "bandeira": "/resource/Bandeira Estados Unidos.svg"
     }
   },
   {
@@ -637,10 +583,8 @@
     "chanceSafetyCar": 40.0,
     "tempoPerdidoPitLane": 22.0,
     "arquivos": {
-      "traçado": "/resource/CircuitoWatkinsGlen.png",
-      "traçadoSvg": "/resource/CircuitoWatkinsGlen.svg",
-      "bandeira": "/resource/Bandeira Estados Unidos.png",
-      "bandeiraSvg": "/resource/Bandeira Estados Unidos.svg"
+      "traçado": "/resource/Circuito Watkins Glen.svg",
+      "bandeira": "/resource/Bandeira Estados Unidos.svg"
     }
   },
   {
@@ -660,10 +604,8 @@
     "chanceSafetyCar": 85.0,
     "tempoPerdidoPitLane": 18.0,
     "arquivos": {
-      "traçado": "/resource/CircuitoBristol.png",
-      "traçadoSvg": "/resource/CircuitoBristol.svg",
-      "bandeira": "/resource/Bandeira Estados Unidos.png",
-      "bandeiraSvg": "/resource/Bandeira Estados Unidos.svg"
+      "traçado": "/resource/Circuito Bristol.svg",
+      "bandeira": "/resource/Bandeira Estados Unidos.svg"
     }
   },
   {
@@ -683,10 +625,8 @@
     "chanceSafetyCar": 55.0,
     "tempoPerdidoPitLane": 22.0,
     "arquivos": {
-      "traçado": "/resource/CircuitoKansas.png",
-      "traçadoSvg": "/resource/CircuitoKansas.svg",
-      "bandeira": "/resource/Bandeira Estados Unidos.png",
-      "bandeiraSvg": "/resource/Bandeira Estados Unidos.svg"
+      "traçado": "/resource/Circuito Kansas.svg",
+      "bandeira": "/resource/Bandeira Estados Unidos.svg"
     }
   },
   {
@@ -706,10 +646,8 @@
     "chanceSafetyCar": 95.0,
     "tempoPerdidoPitLane": 28.0,
     "arquivos": {
-      "traçado": "/resource/CircuitoTalladega.png",
-      "traçadoSvg": "/resource/CircuitoTalladega.svg",
-      "bandeira": "/resource/Bandeira Estados Unidos.png",
-      "bandeiraSvg": "/resource/Bandeira Estados Unidos.svg"
+      "traçado": "/resource/Circuito Talladega.svg",
+      "bandeira": "/resource/Bandeira Estados Unidos.svg"
     }
   },
   {
@@ -729,10 +667,8 @@
     "chanceSafetyCar": 50.0,
     "tempoPerdidoPitLane": 23.0,
     "arquivos": {
-      "traçado": "/resource/CircuitoCharlotteRoval.png",
-      "traçadoSvg": "/resource/CircuitoCharlotteRoval.svg",
-      "bandeira": "/resource/Bandeira Estados Unidos.png",
-      "bandeiraSvg": "/resource/Bandeira Estados Unidos.svg"
+      "traçado": "/resource/Circuito Charlotte Roval.svg",
+      "bandeira": "/resource/Bandeira Estados Unidos.svg"
     }
   },
   {
@@ -752,10 +688,8 @@
     "chanceSafetyCar": 55.0,
     "tempoPerdidoPitLane": 22.0,
     "arquivos": {
-      "traçado": "/resource/CircuitoLasVegasSpeedway.png",
-      "traçadoSvg": "/resource/CircuitoLasVegasSpeedway.svg",
-      "bandeira": "/resource/Bandeira Estados Unidos.png",
-      "bandeiraSvg": "/resource/Bandeira Estados Unidos.svg"
+      "traçado": "/resource/Circuito Las Vegas Speedway.svg",
+      "bandeira": "/resource/Bandeira Estados Unidos.svg"
     }
   },
   {
@@ -775,10 +709,8 @@
     "chanceSafetyCar": 55.0,
     "tempoPerdidoPitLane": 22.0,
     "arquivos": {
-      "traçado": "/resource/CircuitoHomestedMiami.png",
-      "traçadoSvg": "/resource/CircuitoHomestedMiami.svg",
-      "bandeira": "/resource/Bandeira Estados Unidos.png",
-      "bandeiraSvg": "/resource/Bandeira Estados Unidos.svg"
+      "traçado": "/resource/Circuito Homested Miami.svg",
+      "bandeira": "/resource/Bandeira Estados Unidos.svg"
     }
   },
   {
@@ -798,10 +730,8 @@
     "chanceSafetyCar": 80.0,
     "tempoPerdidoPitLane": 18.0,
     "arquivos": {
-      "traçado": "/resource/CircuitoMartinsville.png",
-      "traçadoSvg": "/resource/CircuitoMartinsville.svg",
-      "bandeira": "/resource/Bandeira Estados Unidos.png",
-      "bandeiraSvg": "/resource/Bandeira Estados Unidos.svg"
+      "traçado": "/resource/Circuito Martinsville.svg",
+      "bandeira": "/resource/Bandeira Estados Unidos.svg"
     }
   },
   {
@@ -821,10 +751,8 @@
     "chanceSafetyCar": 60.0,
     "tempoPerdidoPitLane": 21.0,
     "arquivos": {
-      "traçado": "/resource/CircuitoPhoenix.png",
-      "traçadoSvg": "/resource/CircuitoPhoenix.svg",
-      "bandeira": "/resource/Bandeira Estados Unidos.png",
-      "bandeiraSvg": "/resource/Bandeira Estados Unidos.svg"
+      "traçado": "/resource/Circuito Phoenix.svg",
+      "bandeira": "/resource/Bandeira Estados Unidos.svg"
     }
   }
 ]

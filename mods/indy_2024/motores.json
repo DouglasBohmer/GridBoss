@@ -6,7 +6,7 @@
     "dirigibilidade": 4,
     "durabilidade": 4,
     "preco": 8.0,
-    "arquivos": { "logo": "/resource/Motor_ChevroletPQ.svg","bandeira": "/resource/Bandeira Estados Unidos.svg" }
+    "arquivos": { "logo": "/resource/Logo Chevrolet.svg","bandeira": "/resource/Bandeira Estados Unidos.svg" }
   },
   {
     "id": "Honda",
@@ -15,6 +15,6 @@
     "dirigibilidade": 5,
     "durabilidade": 4,
     "preco": 8.0,
-    "arquivos": { "logo": "/resource/Motor_HondaPQ.svg","bandeira": "/resource/Bandeira Japao.svg" }
+    "arquivos": { "logo": "/resource/Logo Honda.svg","bandeira": "/resource/Bandeira Japao.svg" }
   }
 ]

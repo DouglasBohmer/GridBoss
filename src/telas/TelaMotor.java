@@ -1,5 +1,6 @@
 package telas;
 
+import com.formdev.flatlaf.extras.FlatSVGIcon;
 import dados.CarregadorJSON;
 import dados.DadosDoJogo;
 import modelos.Equipe;
@@ -113,7 +114,10 @@ public class TelaMotor extends JFrame {
         lblLogoFabricante = new JLabel("");
         lblLogoFabricante.setHorizontalAlignment(SwingConstants.CENTER);
         lblLogoFabricante.setBounds(20, 30, 100, 100);
+        
+        // CORREÇÃO: Borda fina normal (revertido)
         lblLogoFabricante.setBorder(BorderFactory.createLineBorder(Color.LIGHT_GRAY));
+        
         panelDetalhes.add(lblLogoFabricante);
         
         lblNomeMotor = new JLabel("Selecione um Motor");
@@ -366,16 +370,67 @@ public class TelaMotor extends JFrame {
     }
 
     private void carregarImagem(JLabel lbl, String path) {
-        if (path == null || path.isEmpty()) return;
         try {
-            URL url = getClass().getResource(path);
-            if (url != null) {
-                lbl.setIcon(new ImageIcon(url));
-            } else {
-                lbl.setIcon(null); 
+            if (path == null || path.isEmpty()) {
+                lbl.setIcon(null);
+                return;
             }
+
+            // Normaliza caminho
+            if (!path.startsWith("/")) path = "/" + path;
+            if (!path.startsWith("/resource")) path = "/resource" + path;
+            path = path.replace("//", "/");
+
+            // Força extensão .svg
+            if (path.toLowerCase().endsWith(".png")) {
+                path = path.substring(0, path.length() - 4) + ".svg";
+            }
+            if (!path.toLowerCase().endsWith(".svg")) {
+                path = path + ".svg";
+            }
+
+            String svgPath = path.startsWith("/") ? path.substring(1) : path;
+
+            // Obtém dimensões do label
+            int labelW = lbl.getWidth();
+            int labelH = lbl.getHeight();
+
+            if (labelW > 0 && labelH > 0) {
+                FlatSVGIcon iconOriginal = new FlatSVGIcon(svgPath);
+                
+                if (iconOriginal.getIconWidth() <= 0) {
+                    lbl.setIcon(null);
+                    return;
+                }
+
+                float origW = iconOriginal.getIconWidth();
+                float origH = iconOriginal.getIconHeight();
+
+                float ratioW = (float) labelW / origW;
+                float ratioH = (float) labelH / origH;
+                float scale = Math.min(ratioW, ratioH);
+
+                int finalW = Math.round(origW * scale);
+                int finalH = Math.round(origH * scale);
+
+                // --- ALTERAÇÃO: Padding de 5px (10px total) para o logo do fabricante ---
+                int margem = 2; // Margem padrão
+                
+                if (lbl == lblLogoFabricante) {
+                    margem = 6; // 5px de cada lado
+                }
+
+                finalW = Math.max(1, finalW - margem);
+                finalH = Math.max(1, finalH - margem);
+
+                lbl.setIcon(new FlatSVGIcon(svgPath, finalW, finalH));
+                
+            } else {
+                lbl.setIcon(new FlatSVGIcon(svgPath));
+            }
+
         } catch (Exception e) {
-            e.printStackTrace();
+            lbl.setIcon(null);
         }
     }
 

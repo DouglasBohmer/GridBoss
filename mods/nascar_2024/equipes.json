@@ -9,11 +9,10 @@
     "reputacao": 98,
     "saldoFinanceiro": 40.0,
     "arquivos": {
-      "logo": "/resource/NascarHendrick.png",
-      "logoSvg": "/resource/NascarHendrick.svg",
-      "bandeiraSede": "/resource/Bandeira Estados Unidos.png",
-      "bandeiraMotor": "/resource/Bandeira Estados Unidos.png",
-      "logoMotor": "/resource/Motor_ChevroletPQ.png"
+      "logo": "/resource/Equipe Nascar Hendrick.svg",
+      "bandeiraSede": "/resource/Bandeira Estados Unidos.svg",
+      "bandeiraMotor": "/resource/Bandeira Estados Unidos.svg",
+      "logoMotor": "/resource/Logo Chevrolet.svg"
     },
     "pilotosContratadosIDs": [
       "Kyle Larson",
@@ -32,11 +31,10 @@
     "reputacao": 95,
     "saldoFinanceiro": 38.0,
     "arquivos": {
-      "logo": "/resource/NascarJoeGibbs.png",
-      "logoSvg": "/resource/NascarJoeGibbs.svg",
-      "bandeiraSede": "/resource/Bandeira Estados Unidos.png",
-      "bandeiraMotor": "/resource/Bandeira Japao.png",
-      "logoMotor": "/resource/Motor_ToyotaPQ.png"
+      "logo": "/resource/Equipe Nascar JoeGibbs.svg",
+      "bandeiraSede": "/resource/Bandeira Estados Unidos.svg",
+      "bandeiraMotor": "/resource/Bandeira Japao.svg",
+      "logoMotor": "/resource/Logo Toyota.svg"
     },
     "pilotosContratadosIDs": [
       "Denny Hamlin",
@@ -55,11 +53,10 @@
     "reputacao": 95,
     "saldoFinanceiro": 35.0,
     "arquivos": {
-      "logo": "/resource/Equipe_Indy_Penske.png",
-      "logoSvg": "/resource/Equipe_Indy_Penske.svg",
-      "bandeiraSede": "/resource/Bandeira Estados Unidos.png",
-      "bandeiraMotor": "/resource/Bandeira Estados Unidos.png",
-      "logoMotor": "/resource/Motor_FordPQ.png"
+      "logo": "/resource/Equipe Indy Penske.svg",
+      "bandeiraSede": "/resource/Bandeira Estados Unidos.svg",
+      "bandeiraMotor": "/resource/Bandeira Estados Unidos.svg",
+      "logoMotor": "/resource/Logo Ford.svg"
     },
     "pilotosContratadosIDs": [
       "Joey Logano",
@@ -77,11 +74,10 @@
     "reputacao": 85,
     "saldoFinanceiro": 20.0,
     "arquivos": {
-      "logo": "/resource/Nascar23XI.png",
-      "logoSvg": "/resource/Nascar23XI.svg",
-      "bandeiraSede": "/resource/Bandeira Estados Unidos.png",
-      "bandeiraMotor": "/resource/Bandeira Japao.png",
-      "logoMotor": "/resource/Motor_ToyotaPQ.png"
+      "logo": "/resource/Equipe Nascar 23XI.svg",
+      "bandeiraSede": "/resource/Bandeira Estados Unidos.svg",
+      "bandeiraMotor": "/resource/Bandeira Japao.svg",
+      "logoMotor": "/resource/Logo Toyota.svg"
     },
     "pilotosContratadosIDs": [
       "Tyler Reddick",
@@ -98,11 +94,10 @@
     "reputacao": 85,
     "saldoFinanceiro": 22.0,
     "arquivos": {
-      "logo": "/resource/NascarTrackhouse.png",
-      "logoSvg": "/resource/NascarTrackhouse.svg",
-      "bandeiraSede": "/resource/Bandeira Estados Unidos.png",
-      "bandeiraMotor": "/resource/Bandeira Estados Unidos.png",
-      "logoMotor": "/resource/Motor_ChevroletPQ.png"
+      "logo": "/resource/Equipe Nascar Trackhouse.svg",
+      "bandeiraSede": "/resource/Bandeira Estados Unidos.svg",
+      "bandeiraMotor": "/resource/Bandeira Estados Unidos.svg",
+       "logoMotor": "/resource/Logo Chevrolet.svg"
     },
     "pilotosContratadosIDs": [
       "Ross Chastain",
@@ -120,11 +115,10 @@
     "reputacao": 88,
     "saldoFinanceiro": 25.0,
     "arquivos": {
-      "logo": "/resource/NascarRFK.png",
-      "logoSvg": "/resource/NascarRFK.svg",
-      "bandeiraSede": "/resource/Bandeira Estados Unidos.png",
-      "bandeiraMotor": "/resource/Bandeira Estados Unidos.png",
-      "logoMotor": "/resource/Motor_FordPQ.png"
+      "logo": "/resource/Equipe Nascar RFK.svg",
+      "bandeiraSede": "/resource/Bandeira Estados Unidos.svg",
+      "bandeiraMotor": "/resource/Bandeira Estados Unidos.svg",
+      "logoMotor": "/resource/Logo Ford.svg"
     },
     "pilotosContratadosIDs": [
       "Brad Keselowski",
@@ -141,11 +135,10 @@
     "reputacao": 82,
     "saldoFinanceiro": 28.0,
     "arquivos": {
-      "logo": "/resource/NascarRCR.png",
-      "logoSvg": "/resource/NascarRCR.svg",
-      "bandeiraSede": "/resource/Bandeira Estados Unidos.png",
-      "bandeiraMotor": "/resource/Bandeira Estados Unidos.png",
-      "logoMotor": "/resource/Motor_ChevroletPQ.png"
+      "logo": "/resource/Equipe Nascar RCR.svg",
+      "bandeiraSede": "/resource/Bandeira Estados Unidos.svg",
+      "bandeiraMotor": "/resource/Bandeira Estados Unidos.svg",
+      "logoMotor": "/resource/Logo Chevrolet.svg"
     },
     "pilotosContratadosIDs": [
       "Kyle Busch",
@@ -162,11 +155,10 @@
     "reputacao": 75,
     "saldoFinanceiro": 25.0,
     "arquivos": {
-      "logo": "/resource/NascarStewartHaas.png",
-      "logoSvg": "/resource/NascarStewartHaas.svg",
-      "bandeiraSede": "/resource/Bandeira Estados Unidos.png",
-      "bandeiraMotor": "/resource/Bandeira Estados Unidos.png",
-      "logoMotor": "/resource/Motor_FordPQ.png"
+      "logo": "/resource/Equipe Nascar Stewart Haas.svg",
+      "bandeiraSede": "/resource/Bandeira Estados Unidos.svg",
+      "bandeiraMotor": "/resource/Bandeira Estados Unidos.svg",
+      "logoMotor": "/resource/Logo Ford.svg"
     },
     "pilotosContratadosIDs": [
       "Chase Briscoe",
@@ -185,11 +177,10 @@
     "reputacao": 60,
     "saldoFinanceiro": 15.0,
     "arquivos": {
-      "logo": "/resource/NascarSpire.png",
-      "logoSvg": "/resource/NascarSpire.svg",
-      "bandeiraSede": "/resource/Bandeira Estados Unidos.png",
-      "bandeiraMotor": "/resource/Bandeira Estados Unidos.png",
-      "logoMotor": "/resource/Motor_ChevroletPQ.png"
+      "logo": "/resource/Equipe Nascar Spire.svg",
+      "bandeiraSede": "/resource/Bandeira Estados Unidos.svg",
+      "bandeiraMotor": "/resource/Bandeira Estados Unidos.svg",
+      "logoMotor": "/resource/Logo Chevrolet.svg"
     },
     "pilotosContratadosIDs": [
       "Corey LaJoie",
@@ -207,11 +198,10 @@
     "reputacao": 70,
     "saldoFinanceiro": 18.0,
     "arquivos": {
-      "logo": "/resource/NascarFrontRow.png",
-      "logoSvg": "/resource/NascarFrontRow.svg",
-      "bandeiraSede": "/resource/Bandeira Estados Unidos.png",
-      "bandeiraMotor": "/resource/Bandeira Estados Unidos.png",
-      "logoMotor": "/resource/Motor_FordPQ.png"
+      "logo": "/resource/Equipe Nascar Front Row.svg",
+      "bandeiraSede": "/resource/Bandeira Estados Unidos.svg",
+      "bandeiraMotor": "/resource/Bandeira Estados Unidos.svg",
+      "logoMotor": "/resource/Logo Ford.svg"
     },
     "pilotosContratadosIDs": [
       "Michael McDowell",
@@ -228,11 +218,10 @@
     "reputacao": 65,
     "saldoFinanceiro": 20.0,
     "arquivos": {
-      "logo": "/resource/NascarLegacy.png",
-      "logoSvg": "/resource/NascarLegacy.svg",
-      "bandeiraSede": "/resource/Bandeira Estados Unidos.png",
-      "bandeiraMotor": "/resource/Bandeira Japao.png",
-      "logoMotor": "/resource/Motor_ToyotaPQ.png"
+      "logo": "/resource/Equipe Nascar Legacy.svg",
+      "bandeiraSede": "/resource/Bandeira Estados Unidos.svg",
+      "bandeiraMotor": "/resource/Bandeira Japao.svg",
+      "logoMotor": "/resource/Logo Toyota.svg"
     },
     "pilotosContratadosIDs": [
       "Erik Jones",
@@ -250,11 +239,10 @@
     "reputacao": 60,
     "saldoFinanceiro": 12.0,
     "arquivos": {
-      "logo": "/resource/NascarJTG.png",
-      "logoSvg": "/resource/NascarJTG.svg",
-      "bandeiraSede": "/resource/Bandeira Estados Unidos.png",
-      "bandeiraMotor": "/resource/Bandeira Estados Unidos.png",
-      "logoMotor": "/resource/Motor_ChevroletPQ.png"
+      "logo": "/resource/Equipe Nascar JTG.svg",
+      "bandeiraSede": "/resource/Bandeira Estados Unidos.svg",
+      "bandeiraMotor": "/resource/Bandeira Estados Unidos.svg",
+      "logoMotor": "/resource/Logo Chevrolet.svg"
     },
     "pilotosContratadosIDs": [
       "Ricky Stenhouse Jr"
@@ -270,11 +258,10 @@
     "reputacao": 65,
     "saldoFinanceiro": 15.0,
     "arquivos": {
-      "logo": "/resource/NascarWoodBrothers.png",
-      "logoSvg": "/resource/NascarWoodBrothers.svg",
-      "bandeiraSede": "/resource/Bandeira Estados Unidos.png",
-      "bandeiraMotor": "/resource/Bandeira Estados Unidos.png",
-      "logoMotor": "/resource/Motor_FordPQ.png"
+      "logo": "/resource/Equipe Nascar Wood Brothers.svg",
+      "bandeiraSede": "/resource/Bandeira Estados Unidos.svg",
+      "bandeiraMotor": "/resource/Bandeira Estados Unidos.svg",
+      "logoMotor": "/resource/Logo Ford.svg"
     },
     "pilotosContratadosIDs": [
       "Harrison Burton"
@@ -290,11 +277,10 @@
     "reputacao": 60,
     "saldoFinanceiro": 18.0,
     "arquivos": {
-      "logo": "/resource/NascarKaulig.png",
-      "logoSvg": "/resource/NascarKaulig.svg",
-      "bandeiraSede": "/resource/Bandeira Estados Unidos.png",
-      "bandeiraMotor": "/resource/Bandeira Estados Unidos.png",
-      "logoMotor": "/resource/Motor_ChevroletPQ.png"
+      "logo": "/resource/Equipe Nascar Kaulig.svg",
+      "bandeiraSede": "/resource/Bandeira Estados Unidos.svg",
+      "bandeiraMotor": "/resource/Bandeira Estados Unidos.svg",
+      "logoMotor": "/resource/Logo Chevrolet.svg"
     },
     "pilotosContratadosIDs": [
       "AJ Allmendinger",
@@ -311,11 +297,10 @@
     "reputacao": 50,
     "saldoFinanceiro": 10.0,
     "arquivos": {
-      "logo": "/resource/NascarRickWare.png",
-      "logoSvg": "/resource/NascarRickWare.svg",
-      "bandeiraSede": "/resource/Bandeira Estados Unidos.png",
-      "bandeiraMotor": "/resource/Bandeira Estados Unidos.png",
-      "logoMotor": "/resource/Motor_FordPQ.png"
+      "logo": "/resource/Equipe Nascar RickWare.svg",
+      "bandeiraSede": "/resource/Bandeira Estados Unidos.svg",
+      "bandeiraMotor": "/resource/Bandeira Estados Unidos.svg",
+      "logoMotor": "/resource/Logo Ford.svg"
     },
     "pilotosContratadosIDs": [
       "Justin Haley",

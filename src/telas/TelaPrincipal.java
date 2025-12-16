@@ -1,8 +1,8 @@
 package telas;
 
 import com.formdev.flatlaf.FlatLightLaf;
-import com.formdev.flatlaf.extras.FlatSVGIcon;  // Import necessário
-import com.formdev.flatlaf.extras.FlatSVGUtils; // Import necessário
+import com.formdev.flatlaf.extras.FlatSVGIcon;
+import com.formdev.flatlaf.extras.FlatSVGUtils;
 import dados.CarregadorJSON;
 import dados.DadosDoJogo;
 import dados.SessaoJogo;
@@ -10,31 +10,25 @@ import modelos.Equipe;
 import modelos.Piloto;
 import modelos.Pista;
 import servicos.CampeonatoService;
-import javax.swing.JFileChooser;
-import javax.swing.filechooser.FileNameExtensionFilter;
-import java.io.File;
+
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
-import javax.swing.table.DefaultTableCellRenderer;
-import javax.swing.table.DefaultTableModel;
+import javax.swing.border.MatteBorder;
 import java.awt.*;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
+import java.io.File;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
-import java.text.Normalizer;
-import java.awt.event.ActionListener;
-import java.awt.event.ActionEvent;
-import java.awt.event.WindowAdapter;
-import java.awt.event.WindowEvent;
+import javax.swing.filechooser.FileNameExtensionFilter;
 
 public class TelaPrincipal extends JFrame {
 
     private JPanel contentPane;
 
-    // --- DADOS DO JOGO (Agora centralizados) ---
+    // --- DADOS DO JOGO ---
     private DadosDoJogo dadosDoJogo;
-    
-    // Atalhos para facilitar o código (apontam para dentro de dadosDoJogo)
     private Equipe equipeJogavel;
     private CampeonatoService campeonato;
     
@@ -59,13 +53,21 @@ public class TelaPrincipal extends JFrame {
     private JLabel LB_Classificacoes;
     private JTabbedPane tabbedPane;
     
-    // Tabelas
-    private JTable tabelaPilotos;
-    private JTable tabelaConstrutores;
+    private JPanel pnlListaPilotosContainer; 
+    private JPanel pnlListaConstrutoresContainer;
     
     private JLabel LB_CarrosCat;
+    private final int[] W_PILOTOS = {30, 40, 30, 160, 160, 40, 40, 35, 35, 35}; 
+    private final String[] H_PILOTOS = {"Pos", "País", "Nº", "Piloto", "Equipe", "Pts", "Dif", "Vit", "Pód", "Pol"};
+    // Alinhamentos do Header e Dados (C=Center, L=Left)
+    private final int[] A_PILOTOS = {SwingConstants.CENTER, SwingConstants.CENTER, SwingConstants.CENTER, SwingConstants.LEFT, SwingConstants.LEFT, SwingConstants.CENTER, SwingConstants.CENTER, SwingConstants.CENTER, SwingConstants.CENTER, SwingConstants.CENTER};
+    
+    // 8 Colunas: Pos, Flag, Nome, Pts, Dif, Vit, Pod, Pol
+    private final int[] W_EQUIPES = {30, 40, 290, 50, 50, 50, 50, 50}; 
+    private final String[] H_EQUIPES = {"Pos", "País", "Equipe", "Pts", "Dif", "Vit", "Pód", "Pol"};
+    // Alinhamentos do Header e Dados
+    private final int[] A_EQUIPES = {SwingConstants.CENTER, SwingConstants.CENTER, SwingConstants.LEFT, SwingConstants.CENTER, SwingConstants.CENTER, SwingConstants.CENTER, SwingConstants.CENTER, SwingConstants.CENTER};
 
-    // Construtor principal modificado
     public TelaPrincipal(DadosDoJogo dados) {
         this.dadosDoJogo = dados;
         this.equipeJogavel = dados.getEquipeDoJogador();
@@ -75,10 +77,7 @@ public class TelaPrincipal extends JFrame {
         if (this.indiceEtapaVisual < 0) this.indiceEtapaVisual = 0;
 
         setTitle("Grid Boss");
-        
-        // --- Ícone da Janela em SVG ---
         configurarIconeJanela();
-        
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setBounds(100, 100, 1235, 700); 
         setResizable(false);
@@ -112,7 +111,6 @@ public class TelaPrincipal extends JFrame {
         });
         Menu_Geral.add(mntmNovoJogo);
         
-        // --- SAVE RÁPIDO ---
         JMenuItem menuSalvarRapido = new JMenuItem("Salvar");
         menuSalvarRapido.setAccelerator(KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_S, java.awt.Event.CTRL_MASK));
         menuSalvarRapido.addActionListener(e -> {
@@ -136,10 +134,9 @@ public class TelaPrincipal extends JFrame {
         });
         Menu_Geral.add(menuSalvarComo);
         
-        // --- CARREGAR JOGO (ATUALIZADO) ---
         JMenuItem menuCarregar = new JMenuItem("Carregar Jogo");
         menuCarregar.addActionListener(e -> {
-            TelaCarregarJogo tela = new TelaCarregarJogo(this); // Passa 'this' para fechar esta tela depois
+            TelaCarregarJogo tela = new TelaCarregarJogo(this);
             tela.setLocationRelativeTo(this);
             tela.setVisible(true);
         });
@@ -153,7 +150,6 @@ public class TelaPrincipal extends JFrame {
             TelaFabrica tela = new TelaFabrica(dadosDoJogo);
             tela.setLocationRelativeTo(this); 
             tela.setVisible(true); 
-            // Adicionado listener para atualizar quando fechar também, caso mude saldo
             tela.addWindowListener(new WindowAdapter() {
                 @Override
                 public void windowClosed(WindowEvent e) {
@@ -163,12 +159,10 @@ public class TelaPrincipal extends JFrame {
         });
         Menu_Equipe.add(mntmFabrica);
         
-        // --- MENU MOTOR (ATUALIZADO) ---
         JMenuItem mntmMotor = new JMenuItem("Motor");
         mntmMotor.addActionListener(e -> {
             TelaMotor tela = new TelaMotor(dadosDoJogo);
             tela.setVisible(true);
-            // IMPORTANTE: Atualiza a tela principal quando a tela de motor fechar
             tela.addWindowListener(new WindowAdapter() {
                 @Override
                 public void windowClosed(WindowEvent e) {
@@ -177,7 +171,6 @@ public class TelaPrincipal extends JFrame {
             });
         });
         Menu_Equipe.add(mntmMotor);
-        
         Menu_Equipe.add(new JMenuItem("Patrocínios"));
 
         JMenu Menu_Piloto = new JMenu("Pilotos");
@@ -258,7 +251,6 @@ public class TelaPrincipal extends JFrame {
         LB_IconeDinheiro = new JLabel("");
         LB_IconeDinheiro.setHorizontalAlignment(SwingConstants.CENTER);
         LB_IconeDinheiro.setBounds(1164, 50, 45, 25);
-        // Usa o carregador inteligente para o ícone de dinheiro
         carregarImagem(LB_IconeDinheiro, "/resource/Icone Euro.svg");
         contentPane.add(LB_IconeDinheiro);
 
@@ -269,7 +261,7 @@ public class TelaPrincipal extends JFrame {
         lblTituloPilotos.setBounds(12, 99, 618, 25);
         contentPane.add(lblTituloPilotos);
 
-        // P1 a P5
+        // Labels dos Slots de Pilotos (Visualização rápida da equipe)
         LB_BandeiraP1 = criarLabel(10, 135, 25, 25); LB_NumP1 = criarLabel(35, 135, 35, 25); LB_NomeP1 = criarLabel(70, 135, 205, 25); LB_IdadeP1 = criarLabel(275, 135, 50, 25); LB_Over_P1 = criarLabel(335, 135, 80, 25); LB_TempoContratoP1 = criarLabel(415, 135, 134, 25); LB_StatusP1 = criarLabel(550, 135, 80, 25);
         LB_BandeiraP2 = criarLabel(10, 160, 25, 25); LB_NumP2 = criarLabel(35, 160, 35, 25); LB_NomeP2 = criarLabel(70, 160, 205, 25); LB_IdadeP2 = criarLabel(275, 160, 50, 25); LB_Over_P2 = criarLabel(335, 160, 80, 25); LB_TempoContratoP2 = criarLabel(415, 160, 134, 25); LB_StatusP2 = criarLabel(550, 160, 80, 25);
         LB_BandeiraP3 = criarLabel(10, 185, 25, 25); LB_NumP3 = criarLabel(35, 185, 35, 25); LB_NomeP3 = criarLabel(70, 185, 205, 25); LB_IdadeP3 = criarLabel(275, 185, 50, 25); LB_Over_P3 = criarLabel(335, 185, 80, 25); LB_TempoContratoP3 = criarLabel(415, 185, 134, 25); LB_StatusP3 = criarLabel(550, 185, 80, 25);
@@ -373,28 +365,33 @@ public class TelaPrincipal extends JFrame {
         tabbedPane.setBounds(10, 307, 620, 332);
         contentPane.add(tabbedPane);
         
-        // --- TABELA DE PILOTOS ---
-        tabelaPilotos = new JTable();
-        tabelaPilotos.setRowHeight(35);
-        JScrollPane scrollPilotos = new JScrollPane(tabelaPilotos);
-        // Ícone da aba em SVG
-        tabbedPane.addTab("Classificação Pilotos", new FlatSVGIcon("resource/Icone24pxPiloto.svg"), scrollPilotos);
+        // ==============================================================
+        // CRIAÇÃO DAS ABAS USANDO O NOVO MÉTODO ESTRUTURAL
+        // ==============================================================
         
-        // --- TABELA DE CONSTRUTORES ---
-        tabelaConstrutores = new JTable();
-        tabelaConstrutores.setRowHeight(40);
-        JScrollPane scrollConstrutores = new JScrollPane(tabelaConstrutores);
-        // Ícone da aba em SVG
-        tabbedPane.addTab("Classificação Equipes", new FlatSVGIcon("resource/Icone24pxEquipe.svg"), scrollConstrutores);
+        // 1. Aba Pilotos
+        JPanel pnlAbaPilotos = construirEstruturaAba(H_PILOTOS, W_PILOTOS, A_PILOTOS);
+        // CORREÇÃO: O ScrollPane agora é o ÚNICO filho (index 0), pois o header está dentro dele
+        JScrollPane spP = (JScrollPane) pnlAbaPilotos.getComponent(0); 
+        pnlListaPilotosContainer = (JPanel) spP.getViewport().getView();
         
+        tabbedPane.addTab("Classificação Pilotos", new FlatSVGIcon("resource/Icone24pxPiloto.svg"), pnlAbaPilotos);
+        
+        // 2. Aba Equipes
+        JPanel pnlAbaEquipes = construirEstruturaAba(H_EQUIPES, W_EQUIPES, A_EQUIPES);
+        // CORREÇÃO: Mesma coisa aqui, index 0
+        JScrollPane spE = (JScrollPane) pnlAbaEquipes.getComponent(0);
+        pnlListaConstrutoresContainer = (JPanel) spE.getViewport().getView();
+        
+        tabbedPane.addTab("Classificação Equipes", new FlatSVGIcon("resource/Icone24pxEquipe.svg"), pnlAbaEquipes);
+        
+        // 3. Aba Resultados
         JPanel pnlResultados = new JPanel(null);
-        // Ícone da aba em SVG
         tabbedPane.addTab("Resultados", new FlatSVGIcon("resource/Icone24pxTrofeu.svg"), pnlResultados);
 
         // === RODAPÉ ===
         LB_CarrosCat = new JLabel("");
         LB_CarrosCat.setVerticalAlignment(SwingConstants.BOTTOM);
-        // Usa o carregador inteligente para o Banner
         carregarImagem(LB_CarrosCat, "/resource/Banner F1_OK.svg");
         LB_CarrosCat.setHorizontalAlignment(SwingConstants.CENTER);
         LB_CarrosCat.setBounds(642, 432, 567, 163);
@@ -402,11 +399,108 @@ public class TelaPrincipal extends JFrame {
 
         BT_IrParaCorrida = new JButton("IR PARA A CORRIDA!");
         BT_IrParaCorrida.setFont(new Font("Arial", Font.BOLD, 16));
-        // Ícone do botão em SVG
         BT_IrParaCorrida.setIcon(new FlatSVGIcon("resource/Icone24pxBandeiraDeChegada.svg"));
         BT_IrParaCorrida.setBounds(643, 606, 566, 33);
         BT_IrParaCorrida.addActionListener(e -> irParaCorrida());
         contentPane.add(BT_IrParaCorrida);
+    }
+    
+    // --- HELPER 1: CRIA A ESTRUTURA COMPLETA DA ABA (HEADER + SCROLL + CONTAINER) ---
+    private JPanel construirEstruturaAba(String[] titulos, int[] larguras, int[] aligns) {
+        JPanel pnlPrincipal = new JPanel(new BorderLayout());
+        pnlPrincipal.setBackground(Color.WHITE);
+        
+        // 1. Calcular a largura total exata baseada nas colunas
+        int larguraTotal = 0;
+        for (int w : larguras) larguraTotal += w;
+        
+        // 2. Cabeçalho com tamanho EXATO das colunas
+        JPanel pnlHeader = new JPanel(null);
+        pnlHeader.setPreferredSize(new Dimension(larguraTotal, 30));
+        pnlHeader.setBackground(new Color(230, 230, 230)); 
+        pnlHeader.setBorder(new MatteBorder(0, 0, 1, 0, Color.GRAY));
+        
+        int xAtual = 0;
+        for (int i = 0; i < titulos.length; i++) {
+            JLabel lb = new JLabel(titulos[i]);
+            lb.setBounds(xAtual, 0, larguras[i], 30);
+            
+            int alinhamento = (i < aligns.length) ? aligns[i] : SwingConstants.CENTER;
+            lb.setHorizontalAlignment(alinhamento);
+            
+            lb.setFont(new Font("Segoe UI", Font.BOLD, 12));
+            pnlHeader.add(lb);
+            xAtual += larguras[i];
+        }
+        
+        // 3. Container da Lista (Vertical)
+        JPanel pnlContainer = new JPanel();
+        pnlContainer.setLayout(new BoxLayout(pnlContainer, BoxLayout.Y_AXIS));
+        pnlContainer.setBackground(Color.WHITE);
+        
+        JScrollPane scroll = new JScrollPane(pnlContainer);
+        scroll.getVerticalScrollBar().setUnitIncrement(16);
+        scroll.setBorder(null);
+        
+        // MÁGICA: Colocar o header no ScrollPane. 
+        scroll.setColumnHeaderView(pnlHeader);
+        
+        pnlPrincipal.add(scroll, BorderLayout.CENTER);
+        
+        return pnlPrincipal;
+    }
+    
+    // --- HELPER 2: ADICIONA UMA LINHA DE DADOS NO CONTAINER ---
+    private void adicionarLinhaGrid(JPanel container, int pos, String pathBandeira, String[] dados, int[] larguras, int[] aligns, boolean[] bolds) {
+        int larguraTotal = 0;
+        for(int w : larguras) larguraTotal += w;
+        
+        JPanel row = new JPanel(null); 
+        row.setPreferredSize(new Dimension(larguraTotal, 35));
+        row.setMaximumSize(new Dimension(larguraTotal, 35)); 
+        row.setMinimumSize(new Dimension(larguraTotal, 35));
+        
+        // CRUCIAL: Alinha o componente à ESQUERDA dentro do BoxLayout.
+        row.setAlignmentX(Component.LEFT_ALIGNMENT);
+        
+        // Cor Zebra
+        if (pos % 2 == 0) row.setBackground(new Color(245, 245, 245));
+        else row.setBackground(Color.WHITE);
+        
+        int xAtual = 0;
+        
+        // 1. Posição
+        adicionarLabel(row, dados[0], xAtual, larguras[0], aligns[0], bolds[0]);
+        xAtual += larguras[0];
+        
+        // 2. Bandeira
+        JLabel lblFlag = new JLabel();
+        int flagW = larguras[1];
+        int iconW = 28; 
+        int offset = (flagW - iconW) / 2; 
+        lblFlag.setBounds(xAtual + offset, 7, iconW, 20); 
+        carregarImagem(lblFlag, pathBandeira);
+        row.add(lblFlag);
+        xAtual += larguras[1];
+        
+        // 3. Demais Colunas
+        for (int i = 1; i < dados.length; i++) {
+            if (i + 1 >= larguras.length) break;
+            
+            int larguraCol = larguras[i + 1];
+            adicionarLabel(row, dados[i], xAtual, larguraCol, aligns[i], bolds[i]);
+            xAtual += larguraCol;
+        }
+        
+        container.add(row);
+    }
+    
+    private void adicionarLabel(JPanel pnl, String txt, int x, int w, int align, boolean bold) {
+        JLabel lb = new JLabel(txt);
+        lb.setBounds(x, 0, w, 35);
+        lb.setHorizontalAlignment(align);
+        lb.setFont(new Font("Segoe UI", bold ? Font.BOLD : Font.PLAIN, 12));
+        pnl.add(lb);
     }
     
     private JLabel criarLabel(int x, int y, int w, int h) {
@@ -424,7 +518,6 @@ public class TelaPrincipal extends JFrame {
     private void atualizarDados() {
         if (equipeJogavel == null) return;
 
-        // Equipe Info
         LB_SedeEquipe.setText(equipeJogavel.getSede());
         LB_Motor.setText("Motor " + equipeJogavel.getMotor());
         LB_Orc.setText(String.format("€ %.1f milhões", equipeJogavel.getSaldoFinanceiro()));
@@ -437,7 +530,6 @@ public class TelaPrincipal extends JFrame {
         carregarImagem(LB_LogoMotorPQ, equipeJogavel.getCaminhoLogoMotor());
         carregarImagem(LB_BandeiraSede, equipeJogavel.getCaminhoBandeiraSede());
 
-        // --- BANNERS (AGORA TUDO SVG) ---
         String catKey = "";
         if (dadosDoJogo.getCategoriaKey() != null) {
             catKey = dadosDoJogo.getCategoriaKey().toLowerCase();
@@ -459,13 +551,11 @@ public class TelaPrincipal extends JFrame {
             LB_TipoPista.setForeground(Color.BLUE);
             
         } else {
-            // CASO PADRÃO
             carregarImagem(LB_CategoriaEscolhida, "/resource/BannerLogo.svg");
             carregarImagem(LB_CarrosCat, "/resource/Banner F1_OK.svg");
             LB_TipoPista.setForeground(Color.BLACK);
         }
 
-        // --- RESTO DO CÓDIGO (Tabelas e Pilotos) ---
         List<Piloto> pilotosEquipe = equipeJogavel.getPilotosTitulares();
         pilotosEquipe.addAll(equipeJogavel.getPilotosReservas());
 
@@ -476,9 +566,9 @@ public class TelaPrincipal extends JFrame {
         atualizarSlotPiloto(4, pilotosEquipe, LB_NomeP5, LB_NumP5, LB_IdadeP5, LB_TempoContratoP5, LB_BandeiraP5, LB_StatusP5, LB_Over_P5);
 
         atualizarCalendarioUI();
-        preencherTabelas();
+        preencherTabelas(); 
     }
-        
+    
     private void atualizarSlotPiloto(int index, List<Piloto> lista, JLabel lbNome, JLabel lbNum, JLabel lbIdade, JLabel lbContrato, JLabel lbFlag, JLabel lbStatus, JLabel lbOver) {
         if (index < lista.size()) {
             Piloto p = lista.get(index);
@@ -488,7 +578,6 @@ public class TelaPrincipal extends JFrame {
             lbContrato.setText("Contrato Ativo");
             lbOver.setText("Ovr " + (int)p.getOverall());
             
-            // Bandeira SVG
             carregarImagem(lbFlag, "/resource/Bandeira " + p.getNacionalidade() + ".svg");
             
             lbNome.setVisible(true); lbNum.setVisible(true); lbIdade.setVisible(true);
@@ -517,21 +606,10 @@ public class TelaPrincipal extends JFrame {
     }
 
     private void preencherTabelas() {
-        // --- 1. TABELA DE PILOTOS ---
-        String[] colunasPilotos = {"Pos", "País", "Nº", "Piloto", "Equipe", "Pts", "Diff", "Vit", "Pód", "Poles"};
+        // === 1. LISTA PILOTOS ===
+        pnlListaPilotosContainer.removeAll();
         
-        DefaultTableModel modelPilotos = new DefaultTableModel(colunasPilotos, 0) {
-            @Override
-            public Class<?> getColumnClass(int columnIndex) {
-                if (columnIndex == 1) return Icon.class; // Alterado para Icon (aceita SVG)
-                return Object.class;
-            }
-            @Override
-            public boolean isCellEditable(int row, int column) { return false; }
-        };
-
         List<Equipe> todasEquipes = dadosDoJogo.getTodasAsEquipes();
-        
         java.util.List<Piloto> pilotosGrid = new java.util.ArrayList<>();
         boolean isF1 = SessaoJogo.categoriaKey.toLowerCase().contains("f1");
 
@@ -539,7 +617,6 @@ public class TelaPrincipal extends JFrame {
             List<Piloto> titulares = eq.getPilotosTitulares();
             for (int i = 0; i < titulares.size(); i++) {
                 if (isF1 && i >= 2) continue; 
-                
                 Piloto p = titulares.get(i);
                 p.setNomeEquipeAtual(eq.getNome()); 
                 pilotosGrid.add(p);
@@ -560,57 +637,44 @@ public class TelaPrincipal extends JFrame {
         int pontosLiderP = (pilotosGrid.isEmpty()) ? 0 : pilotosGrid.get(0).getPontos();
 
         for (Piloto p : pilotosGrid) {
-            // Bandeira SVG para a tabela
-            Icon flag = obterIcone("/resource/Bandeira " + p.getNacionalidade() + ".svg");
             int diff = pontosLiderP - p.getPontos();
             
-            modelPilotos.addRow(new Object[]{
-                posP++, 
-                flag, 
-                p.getNumero(),          
-                p.getNome(),            
-                p.getNomeEquipeAtual(), 
-                p.getPontos(), 
-                diff, 
-                p.getVitorias(), 
-                p.getPodios(), 
-                p.getPoles()
-            });
+            String[] dadosLinha = {
+                String.valueOf(posP),
+                String.valueOf(p.getNumero()),
+                p.getNome(),
+                p.getNomeEquipeAtual(),
+                String.valueOf(p.getPontos()),
+                String.valueOf(diff),
+                String.valueOf(p.getVitorias()),
+                String.valueOf(p.getPodios()),
+                String.valueOf(p.getPoles())
+            };
+            
+            boolean[] bolds = {true, false, true, false, true, false, false, false, false};
+            
+            int[] aligns = {
+                SwingConstants.CENTER, // Pos
+                SwingConstants.CENTER, // Num
+                SwingConstants.LEFT,   // Nome
+                SwingConstants.LEFT,   // Equipe
+                SwingConstants.CENTER, // Pts
+                SwingConstants.CENTER, // Diff
+                SwingConstants.CENTER, // Vit
+                SwingConstants.CENTER, // Pod
+                SwingConstants.CENTER  // Pol
+            };
+            
+            String pathBandeira = "/resource/Bandeira " + p.getNacionalidade() + ".svg";
+            adicionarLinhaGrid(pnlListaPilotosContainer, posP, pathBandeira, dadosLinha, W_PILOTOS, aligns, bolds);
+            posP++;
         }
-
-        tabelaPilotos.setModel(modelPilotos);
         
-        CentralizadoRenderer centerRenderer = new CentralizadoRenderer();
-        EsquerdaRenderer leftRenderer = new EsquerdaRenderer();
-        
-        for (int i = 0; i < tabelaPilotos.getColumnCount(); i++) {
-            if (i == 3 || i == 4) tabelaPilotos.getColumnModel().getColumn(i).setCellRenderer(leftRenderer);
-            else tabelaPilotos.getColumnModel().getColumn(i).setCellRenderer(centerRenderer);
-        }
+        pnlListaPilotosContainer.revalidate();
+        pnlListaPilotosContainer.repaint();
 
-        tabelaPilotos.getColumnModel().getColumn(0).setPreferredWidth(30);
-        tabelaPilotos.getColumnModel().getColumn(1).setPreferredWidth(40);
-        tabelaPilotos.getColumnModel().getColumn(2).setPreferredWidth(30);
-        tabelaPilotos.getColumnModel().getColumn(3).setPreferredWidth(170);
-        tabelaPilotos.getColumnModel().getColumn(4).setPreferredWidth(150);
-        tabelaPilotos.getColumnModel().getColumn(5).setPreferredWidth(50);
-        tabelaPilotos.getColumnModel().getColumn(6).setPreferredWidth(50);
-        tabelaPilotos.getColumnModel().getColumn(7).setPreferredWidth(50);
-        tabelaPilotos.getColumnModel().getColumn(8).setPreferredWidth(50);
-        tabelaPilotos.getColumnModel().getColumn(9).setPreferredWidth(50);
-
-        // --- 2. TABELA DE CONSTRUTORES ---
-        String[] colunasEquipes = {"Pos", "País", "Equipe", "Pts", "Diff", "Vit", "Pód", "Poles"};
-        
-        DefaultTableModel modelEquipes = new DefaultTableModel(colunasEquipes, 0) {
-            @Override
-            public Class<?> getColumnClass(int columnIndex) {
-                if (columnIndex == 1) return Icon.class; // Alterado para Icon
-                return Object.class;
-            }
-            @Override
-            public boolean isCellEditable(int row, int column) { return false; }
-        };
+        // === 2. LISTA EQUIPES ===
+        pnlListaConstrutoresContainer.removeAll();
 
         Collections.sort(todasEquipes, new Comparator<Equipe>() {
             @Override
@@ -626,74 +690,37 @@ public class TelaPrincipal extends JFrame {
         int pontosLiderE = (todasEquipes.isEmpty()) ? 0 : todasEquipes.get(0).getPontos();
 
         for (Equipe eq : todasEquipes) {
-            // Bandeira SVG para a tabela
-            Icon flag = obterIcone(eq.getCaminhoBandeiraSede());
             int diff = pontosLiderE - eq.getPontos();
-
-            modelEquipes.addRow(new Object[]{
-                posE++, 
-                flag, 
+            
+            String[] dadosLinha = {
+                String.valueOf(posE),
                 eq.getNome(),
-                eq.getPontos(), 
-                diff, 
-                eq.getVitorias(), 
-                eq.getPodios(), 
-                eq.getPoles()
-            });
+                String.valueOf(eq.getPontos()),
+                String.valueOf(diff),
+                String.valueOf(eq.getVitorias()),
+                String.valueOf(eq.getPodios()),
+                String.valueOf(eq.getPoles())
+            };
+            
+            boolean[] bolds = {true, true, true, false, false, false, false};
+            int[] aligns = {
+                SwingConstants.CENTER, // Pos
+                SwingConstants.LEFT,   // Nome
+                SwingConstants.CENTER, // Pts
+                SwingConstants.CENTER, // Diff
+                SwingConstants.CENTER, // Vit
+                SwingConstants.CENTER, // Pod
+                SwingConstants.CENTER  // Pol
+            };
+            
+            adicionarLinhaGrid(pnlListaConstrutoresContainer, posE, eq.getCaminhoBandeiraSede(), dadosLinha, W_EQUIPES, aligns, bolds);
+            posE++;
         }
-
-        tabelaConstrutores.setModel(modelEquipes);
         
-        for (int i = 0; i < tabelaConstrutores.getColumnCount(); i++) {
-            if (i == 2) tabelaConstrutores.getColumnModel().getColumn(i).setCellRenderer(leftRenderer);
-            else tabelaConstrutores.getColumnModel().getColumn(i).setCellRenderer(centerRenderer);
-        }
-        
-        tabelaConstrutores.getColumnModel().getColumn(0).setPreferredWidth(30);
-        tabelaConstrutores.getColumnModel().getColumn(1).setPreferredWidth(40);
-        tabelaConstrutores.getColumnModel().getColumn(2).setPreferredWidth(200);
-        tabelaConstrutores.getColumnModel().getColumn(3).setPreferredWidth(50);
-        tabelaConstrutores.getColumnModel().getColumn(4).setPreferredWidth(50);
-        tabelaConstrutores.getColumnModel().getColumn(5).setPreferredWidth(50);
-        tabelaConstrutores.getColumnModel().getColumn(6).setPreferredWidth(50);
-        tabelaConstrutores.getColumnModel().getColumn(7).setPreferredWidth(50);
+        pnlListaConstrutoresContainer.revalidate();
+        pnlListaConstrutoresContainer.repaint();
     }
     
-    // --- Renderers Atualizados para aceitar SVG (Icon) ---
-    static class CentralizadoRenderer extends DefaultTableCellRenderer {
-        @Override
-        public Component getTableCellRendererComponent(JTable table, Object value, boolean isSelected, boolean hasFocus, int row, int column) {
-            super.getTableCellRendererComponent(table, value, isSelected, hasFocus, row, column);
-            setHorizontalAlignment(SwingConstants.CENTER);
-            setVerticalAlignment(SwingConstants.CENTER);
-            if (value instanceof Icon) { // Alterado de ImageIcon para Icon
-                setIcon((Icon) value);
-                setText(""); 
-            } else {
-                setIcon(null);
-                setText(value != null ? value.toString() : "");
-            }
-            return this;
-        }
-    }
-
-    static class EsquerdaRenderer extends DefaultTableCellRenderer {
-        @Override
-        public Component getTableCellRendererComponent(JTable table, Object value, boolean isSelected, boolean hasFocus, int row, int column) {
-            super.getTableCellRendererComponent(table, value, isSelected, hasFocus, row, column);
-            setHorizontalAlignment(SwingConstants.LEFT);
-            setVerticalAlignment(SwingConstants.CENTER);
-            if (value instanceof Icon) { // Alterado de ImageIcon para Icon
-                setIcon((Icon) value);
-                setText("");
-            } else {
-                setIcon(null);
-                setText(value != null ? "  " + value.toString() : "");
-            }
-            return this;
-        }
-    }
-
     private void atualizarCalendarioUI() {
         Pista pistaVisual = buscarPistaPorIndice(indiceEtapaVisual);
         int etapaReal = campeonato.getNumeroEtapaAtual();
@@ -712,7 +739,6 @@ public class TelaPrincipal extends JFrame {
                 LB_LocalPista.setText(pistaVisual.getPais());
             }
             
-            // Bandeira SVG
             carregarImagem(LB_BandeiraPista, "/resource/Bandeira " + pistaVisual.getPais() + ".svg");
 
             String tipoTexto = "Misto";
@@ -746,7 +772,6 @@ public class TelaPrincipal extends JFrame {
             String caminhoImagem = "/resource/Icone64pxErro.svg";
             String nomeOriginal = pistaVisual.getCaminhoTracado();
             if (nomeOriginal != null) {
-                // Tenta carregar a versão PQ em SVG
                 caminhoImagem = nomeOriginal.replace(".png", "PQ.svg");
             }
             carregarImagem(LB_ImagemPista, caminhoImagem);
@@ -772,8 +797,6 @@ public class TelaPrincipal extends JFrame {
         this.indiceEtapaVisual += direcao;
         atualizarCalendarioUI();
     }
-
-    // --- MÉTODOS DE IMAGEM (SVG) ---
 
     private void carregarImagem(JLabel lbl, String path) {
         try {
@@ -816,17 +839,13 @@ public class TelaPrincipal extends JFrame {
                 int finalW = Math.round(origW * scale);
                 int finalH = Math.round(origH * scale);
 
-                // --- ALTERAÇÃO: CONTROLE DE MARGEM ---
-                int margem = 2; // Margem padrão (bem justa)
-                
-                // Se for uma das bandeiras do topo, aplica uma margem maior (reduz o ícone)
+                int margem = 2; 
                 if (lbl == LB_BandeiraMotor || lbl == LB_BandeiraSede || lbl == LB_BandeiraPista) {
                     margem = 8; 
                 }
 
                 finalW = Math.max(1, finalW - margem);
                 finalH = Math.max(1, finalH - margem);
-                // -------------------------------------
 
                 lbl.setIcon(new FlatSVGIcon(svgPath, finalW, finalH));
                 
@@ -839,33 +858,6 @@ public class TelaPrincipal extends JFrame {
         }
     }
     
-    // 2. Carregador para Tabelas e Ícones Pequenos (Retorna o objeto Icon)
-    private Icon obterIcone(String path) {
-        try {
-            if (path != null && !path.isEmpty()) {
-                if (!path.startsWith("/")) path = "/" + path;
-                if (!path.startsWith("/resource")) path = "/resource" + path;
-                path = path.replace("//", "/");
-
-                if (path.toLowerCase().endsWith(".png")) {
-                    path = path.substring(0, path.length() - 4) + ".svg";
-                }
-                if (!path.toLowerCase().endsWith(".svg")) {
-                    path = path + ".svg";
-                }
-
-                String svgPath = path.startsWith("/") ? path.substring(1) : path;
-                
-                // Define um tamanho fixo pequeno para ícones de tabela (Bandeiras)
-                // 28x20 é um bom tamanho para rowHeight=35
-                return new FlatSVGIcon(svgPath, 28, 20); 
-            }
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        return null;
-    }
-
     private void configurarIconeJanela() {
         try {
             String path = "/resource/Icone.svg";

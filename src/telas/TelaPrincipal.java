@@ -706,7 +706,7 @@ public class TelaPrincipal extends JFrame {
 
         LB_SedeEquipe.setText(equipeJogavel.getSede());
         LB_Motor.setText("Motor " + equipeJogavel.getMotor());
-        LB_Orc.setText(String.format("€ %.1f milhões", equipeJogavel.getSaldoFinanceiro()));
+        LB_Orc.setText(String.format("€ %.2f milhões", equipeJogavel.getSaldoFinanceiro()));
         LB_NomeDirigente.setText(dadosDoJogo.getNomeDoDirigente());
         LB_Ano.setText("Ano " + dadosDoJogo.getAnoAtual()); 
         

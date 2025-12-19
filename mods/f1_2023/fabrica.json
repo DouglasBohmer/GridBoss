@@ -1,0 +1,7 @@
+{
+  "custoContratacao": 0.5,
+  "reembolsoDemissao": 0.25,
+  "salarioMensalPorPessoa": 0.01,
+  "custoBaseEvolucao": 5.0,
+  "manutencaoPorNivel": 0.1
+}

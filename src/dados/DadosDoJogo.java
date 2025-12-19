@@ -1,5 +1,6 @@
 package dados;
 
+import modelos.ConfiguracaoEconomia;
 import modelos.Equipe;
 import modelos.Motor; 
 import modelos.Piloto;
@@ -34,6 +35,16 @@ public class DadosDoJogo {
     // --- CONTROLE DE ARQUIVO ---
     private transient String arquivoAtual = null; 
     
+    // --- CONFIGURAÇÃO (DATA-DRIVEN) ---
+    private transient ConfiguracaoEconomia configEconomia;
+
+    // Construtor Vazio
+    public DadosDoJogo() {
+        this.configEconomia = new ConfiguracaoEconomia(); 
+        this.configEconomia.setCustoContratacao(0.5);
+        this.configEconomia.setSalarioMensalPorPessoa(0.01);
+    }
+    
     public DadosDoJogo(String categoriaKey, int ano) {
         this.categoriaKey = categoriaKey;
         this.anoAtual = ano;
@@ -50,9 +61,53 @@ public class DadosDoJogo {
         this.campeonato = new CampeonatoService(categoriaKey, anoAtual);
         vincularPilotosAsEquipes();
         inicializarFabricas();
+        carregarConfiguracaoEconomia(); // Carrega o JSON da fábrica do MOD
     }
     
-    // --- MÉTODOS DE VÍNCULO (Usados no Novo Jogo e no Load) ---
+    // --- CARREGAMENTO DE ECONOMIA (JSON DO MOD) ---
+    private void carregarConfiguracaoEconomia() {
+        try {
+            // Constrói o caminho específico do Mod: mods/CATEGORIA_ANO/fabrica.json
+            // Ex: mods/f1_2024/fabrica.json
+            String nomePastaMod = categoriaKey + "_" + anoAtual;
+            String caminhoArquivoMod = "mods/" + nomePastaMod + "/fabrica.json";
+            
+            File f = new File(caminhoArquivoMod);
+            
+            if (f.exists()) {
+                try (Reader reader = new FileReader(f)) {
+                    this.configEconomia = new Gson().fromJson(reader, ConfiguracaoEconomia.class);
+                    System.out.println("Configuração de fábrica carregada de: " + caminhoArquivoMod);
+                }
+            } else {
+                // Tenta fallback genérico se não achar no mod
+                File fGenerico = new File("json/fabrica.json");
+                if (fGenerico.exists()) {
+                    try (Reader reader = new FileReader(fGenerico)) {
+                        this.configEconomia = new Gson().fromJson(reader, ConfiguracaoEconomia.class);
+                        System.out.println("Aviso: fabrica.json não encontrado no mod. Usando genérico.");
+                    }
+                } else {
+                    System.err.println("AVISO: Nenhum 'fabrica.json' encontrado. Usando valores padrão hardcoded.");
+                    criarConfiguracaoPadrao();
+                }
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+            criarConfiguracaoPadrao();
+        }
+    }
+
+    private void criarConfiguracaoPadrao() {
+        this.configEconomia = new ConfiguracaoEconomia();
+        this.configEconomia.setCustoContratacao(0.5);
+        this.configEconomia.setReembolsoDemissao(0.25);
+        this.configEconomia.setSalarioMensalPorPessoa(0.01);
+        this.configEconomia.setCustoBaseEvolucao(5.0);
+        this.configEconomia.setManutencaoPorNivel(0.1);
+    }
+
+    // --- MÉTODOS DE VÍNCULO ---
     
     private void vincularMotores(List<Motor> motores) {
         if (motores == null || todasAsEquipes == null) return;
@@ -73,7 +128,6 @@ public class DadosDoJogo {
         for (Equipe eq : todasAsEquipes) {
             List<String> idsContratados = eq.getPilotosContratadosIDs();
             
-            // Limpa as listas transientes para evitar duplicatas ao recarregar
             eq.getPilotosTitulares().clear();
             eq.getPilotosReservas().clear();
             
@@ -105,7 +159,7 @@ public class DadosDoJogo {
         return null;
     }
     
-    // --- LÓGICA DE SALVAMENTO ---
+    // --- SALVAMENTO ---
     
     public boolean verificarSeSaveExiste(String nomeArquivo) {
         File f = new File("saves/" + nomeArquivo + ".save");
@@ -114,7 +168,6 @@ public class DadosDoJogo {
     
     public boolean salvarJogo(String nomeArquivo) {
         try {
-            // Sincroniza
             for (Equipe eq : todasAsEquipes) {
                 eq.sincronizarDadosParaSalvar();
             }
@@ -137,18 +190,16 @@ public class DadosDoJogo {
         }
     }
     
-    // --- LÓGICA DE CARREGAMENTO (NOVO) ---
+    // --- CARREGAMENTO ---
     
     public static DadosDoJogo carregarJogo(String nomeArquivoCompleto) {
         try (Reader reader = new FileReader("saves/" + nomeArquivoCompleto)) {
             Gson gson = new Gson();
             DadosDoJogo dadosCarregados = gson.fromJson(reader, DadosDoJogo.class);
             
-            // Define o nome do arquivo atual para QuickSave funcionar
             String nomeSemExtensao = nomeArquivoCompleto.replace(".save", "");
             dadosCarregados.setArquivoAtual(nomeSemExtensao);
             
-            // Reconstrói as conexões que o JSON não salvou
             dadosCarregados.reconstruirPosLoad();
             
             return dadosCarregados;
@@ -159,16 +210,10 @@ public class DadosDoJogo {
     }
     
     private void reconstruirPosLoad() {
-        // 1. Recarregar Motores (Eles são dados estáticos do Mod, não salvos no save)
         List<Motor> motores = CarregadorJSON.carregarMotores(categoriaKey, anoAtual);
         vincularMotores(motores);
-        
-        // 2. Reconectar Pilotos às Equipes (Usando os IDs salvos)
         vincularPilotosAsEquipes();
         
-        // 3. Corrigir referência da Equipe do Jogador
-        // O JSON cria objetos novos. Precisamos apontar 'equipeDoJogador' 
-        // para a instância que está dentro da lista 'todasAsEquipes'.
         if (this.equipeDoJogador != null) {
             for (Equipe e : todasAsEquipes) {
                 if (e.getNome().equals(this.equipeDoJogador.getNome())) {
@@ -178,11 +223,17 @@ public class DadosDoJogo {
             }
         }
         
-        // NOTA: Não chamamos inicializarFabricas() aqui para não resetar o progresso salvo!
+        // Recarrega a economia baseado na categoria/ano salvos
+        carregarConfiguracaoEconomia();
     }
     
     // --- GETTERS E SETTERS ---
     
+    public ConfiguracaoEconomia getConfigEconomia() {
+        if (configEconomia == null) carregarConfiguracaoEconomia();
+        return configEconomia;
+    }
+
     public String getArquivoAtual() { return arquivoAtual; }
     public void setArquivoAtual(String arq) { this.arquivoAtual = arq; }
     

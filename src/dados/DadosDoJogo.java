@@ -77,7 +77,7 @@ public class DadosDoJogo {
             if (f.exists()) {
                 try (Reader reader = new FileReader(f)) {
                     this.configEconomia = new Gson().fromJson(reader, ConfiguracaoEconomia.class);
-                    System.out.println("Configuração de fábrica carregada de: " + caminhoArquivoMod);
+                  //  System.out.println("Configuração de fábrica carregada de: " + caminhoArquivoMod);
                 }
             } else {
                 // Tenta fallback genérico se não achar no mod

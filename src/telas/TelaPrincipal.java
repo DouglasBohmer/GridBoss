@@ -15,12 +15,16 @@ import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 import javax.swing.border.MatteBorder;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.io.File;
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
+import java.util.Random;
 import javax.swing.filechooser.FileNameExtensionFilter;
 
 public class TelaPrincipal extends JFrame {
@@ -56,17 +60,24 @@ public class TelaPrincipal extends JFrame {
     private JPanel pnlListaPilotosContainer; 
     private JPanel pnlListaConstrutoresContainer;
     
+    // --- NOVOS COMPONENTES: RESULTADOS ---
+    private JPanel pnlListaResultadosContainer;
+    private JComboBox<String> cbFiltroEtapaResultados;
+    
     private JLabel LB_CarrosCat;
+    
+    // --- LARGURAS ORIGINAIS (Mantidas conforme seu arquivo) ---
     private final int[] W_PILOTOS = {30, 40, 30, 160, 160, 40, 40, 35, 35, 35}; 
     private final String[] H_PILOTOS = {"Pos", "País", "Nº", "Piloto", "Equipe", "Pts", "Dif", "Vit", "Pód", "Pol"};
-    // Alinhamentos do Header e Dados (C=Center, L=Left)
     private final int[] A_PILOTOS = {SwingConstants.CENTER, SwingConstants.CENTER, SwingConstants.CENTER, SwingConstants.LEFT, SwingConstants.LEFT, SwingConstants.CENTER, SwingConstants.CENTER, SwingConstants.CENTER, SwingConstants.CENTER, SwingConstants.CENTER};
     
-    // 8 Colunas: Pos, Flag, Nome, Pts, Dif, Vit, Pod, Pol
     private final int[] W_EQUIPES = {30, 40, 290, 50, 50, 50, 50, 50}; 
     private final String[] H_EQUIPES = {"Pos", "País", "Equipe", "Pts", "Dif", "Vit", "Pód", "Pol"};
-    // Alinhamentos do Header e Dados
     private final int[] A_EQUIPES = {SwingConstants.CENTER, SwingConstants.CENTER, SwingConstants.LEFT, SwingConstants.CENTER, SwingConstants.CENTER, SwingConstants.CENTER, SwingConstants.CENTER, SwingConstants.CENTER};
+
+    // --- NOVA CONFIGURAÇÃO: RESULTADOS (~540px) ---
+    private final int[] W_RESULTADOS = {30, 35, 40, 140, 120, 95, 40, 40}; 
+    private final String[] H_RESULTADOS = {"Pos", "+/-", "País", "Piloto", "Equipe", "Tempo", "M.V", "Pts"};
 
     public TelaPrincipal(DadosDoJogo dados) {
         this.dadosDoJogo = dados;
@@ -261,7 +272,7 @@ public class TelaPrincipal extends JFrame {
         lblTituloPilotos.setBounds(12, 99, 618, 25);
         contentPane.add(lblTituloPilotos);
 
-        // Labels dos Slots de Pilotos (Visualização rápida da equipe)
+        // Labels dos Slots de Pilotos
         LB_BandeiraP1 = criarLabel(10, 135, 25, 25); LB_NumP1 = criarLabel(35, 135, 35, 25); LB_NomeP1 = criarLabel(70, 135, 205, 25); LB_IdadeP1 = criarLabel(275, 135, 50, 25); LB_Over_P1 = criarLabel(335, 135, 80, 25); LB_TempoContratoP1 = criarLabel(415, 135, 134, 25); LB_StatusP1 = criarLabel(550, 135, 80, 25);
         LB_BandeiraP2 = criarLabel(10, 160, 25, 25); LB_NumP2 = criarLabel(35, 160, 35, 25); LB_NomeP2 = criarLabel(70, 160, 205, 25); LB_IdadeP2 = criarLabel(275, 160, 50, 25); LB_Over_P2 = criarLabel(335, 160, 80, 25); LB_TempoContratoP2 = criarLabel(415, 160, 134, 25); LB_StatusP2 = criarLabel(550, 160, 80, 25);
         LB_BandeiraP3 = criarLabel(10, 185, 25, 25); LB_NumP3 = criarLabel(35, 185, 35, 25); LB_NomeP3 = criarLabel(70, 185, 205, 25); LB_IdadeP3 = criarLabel(275, 185, 50, 25); LB_Over_P3 = criarLabel(335, 185, 80, 25); LB_TempoContratoP3 = criarLabel(415, 185, 134, 25); LB_StatusP3 = criarLabel(550, 185, 80, 25);
@@ -365,29 +376,69 @@ public class TelaPrincipal extends JFrame {
         tabbedPane.setBounds(10, 307, 620, 332);
         contentPane.add(tabbedPane);
         
-        // ==============================================================
-        // CRIAÇÃO DAS ABAS USANDO O NOVO MÉTODO ESTRUTURAL
-        // ==============================================================
-        
-        // 1. Aba Pilotos
+        // --- 1. Aba Pilotos (Mantida) ---
         JPanel pnlAbaPilotos = construirEstruturaAba(H_PILOTOS, W_PILOTOS, A_PILOTOS);
-        // CORREÇÃO: O ScrollPane agora é o ÚNICO filho (index 0), pois o header está dentro dele
         JScrollPane spP = (JScrollPane) pnlAbaPilotos.getComponent(0); 
         pnlListaPilotosContainer = (JPanel) spP.getViewport().getView();
-        
         tabbedPane.addTab("Classificação Pilotos", new FlatSVGIcon("resource/Icone24pxPiloto.svg"), pnlAbaPilotos);
         
-        // 2. Aba Equipes
+        // --- 2. Aba Equipes (Mantida) ---
         JPanel pnlAbaEquipes = construirEstruturaAba(H_EQUIPES, W_EQUIPES, A_EQUIPES);
-        // CORREÇÃO: Mesma coisa aqui, index 0
         JScrollPane spE = (JScrollPane) pnlAbaEquipes.getComponent(0);
         pnlListaConstrutoresContainer = (JPanel) spE.getViewport().getView();
-        
         tabbedPane.addTab("Classificação Equipes", new FlatSVGIcon("resource/Icone24pxEquipe.svg"), pnlAbaEquipes);
         
-        // 3. Aba Resultados
-        JPanel pnlResultados = new JPanel(null);
-        tabbedPane.addTab("Resultados", new FlatSVGIcon("resource/Icone24pxTrofeu.svg"), pnlResultados);
+        // --- 3. Aba Resultados (NOVA IMPLEMENTAÇÃO MANUAL) ---
+        JPanel pnlAbaResultados = new JPanel(new BorderLayout());
+        pnlAbaResultados.setBackground(Color.WHITE);
+        
+        // Topo: Filtro
+        JPanel pnlTopoResultados = new JPanel(new FlowLayout(FlowLayout.LEFT));
+        pnlTopoResultados.setBackground(Color.WHITE);
+        cbFiltroEtapaResultados = new JComboBox<>();
+        cbFiltroEtapaResultados.setFont(new Font("Segoe UI", Font.PLAIN, 12));
+        cbFiltroEtapaResultados.addActionListener(e -> atualizarListaResultados(cbFiltroEtapaResultados.getSelectedIndex()));
+        pnlTopoResultados.add(new JLabel("Selecionar Etapa:"));
+        pnlTopoResultados.add(cbFiltroEtapaResultados);
+        pnlAbaResultados.add(pnlTopoResultados, BorderLayout.NORTH);
+        
+        // Centro: Header + Lista
+        JPanel pnlCentroRes = new JPanel(new BorderLayout());
+        
+        // Header Manual
+        JPanel pnlHeaderRes = new JPanel(null);
+        pnlHeaderRes.setPreferredSize(new Dimension(600, 30));
+        pnlHeaderRes.setBackground(new Color(230, 230, 230)); 
+        pnlHeaderRes.setBorder(new MatteBorder(0, 0, 1, 0, Color.GRAY));
+        
+        int xAtual = 0;
+        for (int i = 0; i < H_RESULTADOS.length; i++) {
+            JLabel lb = new JLabel(H_RESULTADOS[i]);
+            lb.setBounds(xAtual, 0, W_RESULTADOS[i], 30);
+            
+            int align = SwingConstants.CENTER;
+            if (H_RESULTADOS[i].equals("Piloto") || H_RESULTADOS[i].equals("Equipe")) align = SwingConstants.LEFT;
+            
+            lb.setHorizontalAlignment(align);
+            lb.setFont(new Font("Segoe UI", Font.BOLD, 12));
+            pnlHeaderRes.add(lb);
+            xAtual += W_RESULTADOS[i];
+        }
+        pnlCentroRes.add(pnlHeaderRes, BorderLayout.NORTH);
+        
+        // Lista Container
+        pnlListaResultadosContainer = new JPanel();
+        pnlListaResultadosContainer.setLayout(new BoxLayout(pnlListaResultadosContainer, BoxLayout.Y_AXIS));
+        pnlListaResultadosContainer.setBackground(Color.WHITE);
+        
+        JScrollPane scrollRes = new JScrollPane(pnlListaResultadosContainer);
+        scrollRes.getVerticalScrollBar().setUnitIncrement(16);
+        scrollRes.setBorder(null);
+        pnlCentroRes.add(scrollRes, BorderLayout.CENTER);
+        
+        pnlAbaResultados.add(pnlCentroRes, BorderLayout.CENTER);
+        
+        tabbedPane.addTab("Resultados", new FlatSVGIcon("resource/Icone24pxTrofeu.svg"), pnlAbaResultados);
 
         // === RODAPÉ ===
         LB_CarrosCat = new JLabel("");
@@ -405,16 +456,14 @@ public class TelaPrincipal extends JFrame {
         contentPane.add(BT_IrParaCorrida);
     }
     
-    // --- HELPER 1: CRIA A ESTRUTURA COMPLETA DA ABA (HEADER + SCROLL + CONTAINER) ---
+    // --- HELPER 1: CRIA A ESTRUTURA COMPLETA DA ABA (MANTIDO) ---
     private JPanel construirEstruturaAba(String[] titulos, int[] larguras, int[] aligns) {
         JPanel pnlPrincipal = new JPanel(new BorderLayout());
         pnlPrincipal.setBackground(Color.WHITE);
         
-        // 1. Calcular a largura total exata baseada nas colunas
         int larguraTotal = 0;
         for (int w : larguras) larguraTotal += w;
         
-        // 2. Cabeçalho com tamanho EXATO das colunas
         JPanel pnlHeader = new JPanel(null);
         pnlHeader.setPreferredSize(new Dimension(larguraTotal, 30));
         pnlHeader.setBackground(new Color(230, 230, 230)); 
@@ -433,7 +482,6 @@ public class TelaPrincipal extends JFrame {
             xAtual += larguras[i];
         }
         
-        // 3. Container da Lista (Vertical)
         JPanel pnlContainer = new JPanel();
         pnlContainer.setLayout(new BoxLayout(pnlContainer, BoxLayout.Y_AXIS));
         pnlContainer.setBackground(Color.WHITE);
@@ -442,7 +490,6 @@ public class TelaPrincipal extends JFrame {
         scroll.getVerticalScrollBar().setUnitIncrement(16);
         scroll.setBorder(null);
         
-        // MÁGICA: Colocar o header no ScrollPane. 
         scroll.setColumnHeaderView(pnlHeader);
         
         pnlPrincipal.add(scroll, BorderLayout.CENTER);
@@ -450,7 +497,7 @@ public class TelaPrincipal extends JFrame {
         return pnlPrincipal;
     }
     
-    // --- HELPER 2: ADICIONA UMA LINHA DE DADOS NO CONTAINER ---
+    // --- HELPER 2: LINHA PADRÃO (MANTIDO) ---
     private void adicionarLinhaGrid(JPanel container, int pos, String pathBandeira, String[] dados, int[] larguras, int[] aligns, boolean[] bolds) {
         int larguraTotal = 0;
         for(int w : larguras) larguraTotal += w;
@@ -460,20 +507,16 @@ public class TelaPrincipal extends JFrame {
         row.setMaximumSize(new Dimension(larguraTotal, 35)); 
         row.setMinimumSize(new Dimension(larguraTotal, 35));
         
-        // CRUCIAL: Alinha o componente à ESQUERDA dentro do BoxLayout.
         row.setAlignmentX(Component.LEFT_ALIGNMENT);
         
-        // Cor Zebra
         if (pos % 2 == 0) row.setBackground(new Color(245, 245, 245));
         else row.setBackground(Color.WHITE);
         
         int xAtual = 0;
         
-        // 1. Posição
         adicionarLabel(row, dados[0], xAtual, larguras[0], aligns[0], bolds[0]);
         xAtual += larguras[0];
         
-        // 2. Bandeira
         JLabel lblFlag = new JLabel();
         int flagW = larguras[1];
         int iconW = 28; 
@@ -483,7 +526,6 @@ public class TelaPrincipal extends JFrame {
         row.add(lblFlag);
         xAtual += larguras[1];
         
-        // 3. Demais Colunas
         for (int i = 1; i < dados.length; i++) {
             if (i + 1 >= larguras.length) break;
             
@@ -491,6 +533,87 @@ public class TelaPrincipal extends JFrame {
             adicionarLabel(row, dados[i], xAtual, larguraCol, aligns[i], bolds[i]);
             xAtual += larguraCol;
         }
+        
+        container.add(row);
+    }
+    
+    // --- HELPER 3: LINHA RESULTADO (NOVO) ---
+    private void adicionarLinhaResultado(JPanel container, int pos, int largada, String pathBandeira, String nomePiloto, String nomeEquipe, String tempo, boolean melhorVolta, String pontos) {
+        int larguraTotal = 0;
+        for(int w : W_RESULTADOS) larguraTotal += w;
+        
+        JPanel row = new JPanel(null); 
+        row.setPreferredSize(new Dimension(larguraTotal, 35));
+        row.setMaximumSize(new Dimension(larguraTotal, 35)); 
+        
+        if (pos % 2 == 0) row.setBackground(new Color(245, 245, 245));
+        else row.setBackground(Color.WHITE);
+        
+        int x = 0;
+        int i = 0; 
+        
+        // 1. Pos
+        adicionarLabel(row, String.valueOf(pos), x, W_RESULTADOS[i], SwingConstants.CENTER, true);
+        x += W_RESULTADOS[i++];
+        
+        // 2. Variação (Seta)
+        int diff = largada - pos; 
+        JLabel lblVar = new JLabel();
+        lblVar.setBounds(x, 0, W_RESULTADOS[i], 35);
+        lblVar.setHorizontalAlignment(SwingConstants.CENTER);
+        lblVar.setFont(new Font("Segoe UI Symbol", Font.BOLD, 12)); 
+        
+        if (diff > 0) {
+            lblVar.setText("▲ " + Math.abs(diff));
+            lblVar.setForeground(new Color(0, 180, 0)); 
+        } else if (diff < 0) {
+            lblVar.setText("▼ " + Math.abs(diff));
+            lblVar.setForeground(Color.RED);
+        } else {
+            lblVar.setText("-");
+            lblVar.setForeground(Color.GRAY);
+        }
+        row.add(lblVar);
+        x += W_RESULTADOS[i++];
+        
+        // 3. Bandeira
+        JLabel lblFlag = new JLabel();
+        int flagW = W_RESULTADOS[i];
+        lblFlag.setBounds(x + (flagW-28)/2, 7, 28, 20);
+        carregarImagem(lblFlag, pathBandeira);
+        row.add(lblFlag);
+        x += W_RESULTADOS[i++];
+        
+        // 4. Piloto
+        adicionarLabel(row, nomePiloto, x, W_RESULTADOS[i], SwingConstants.LEFT, true);
+        x += W_RESULTADOS[i++];
+        
+        // 5. Equipe (Texto)
+        adicionarLabel(row, nomeEquipe, x, W_RESULTADOS[i], SwingConstants.LEFT, false);
+        x += W_RESULTADOS[i++];
+        
+        // 6. Tempo / Status
+        JLabel lblTempo = new JLabel(tempo);
+        lblTempo.setBounds(x, 0, W_RESULTADOS[i], 35);
+        lblTempo.setHorizontalAlignment(SwingConstants.CENTER);
+        if (tempo.contains("DNF") || tempo.contains("Batida")) lblTempo.setForeground(Color.RED);
+        else lblTempo.setForeground(Color.BLACK);
+        lblTempo.setFont(new Font("Segoe UI", Font.PLAIN, 12));
+        row.add(lblTempo);
+        x += W_RESULTADOS[i++];
+        
+        // 7. Melhor Volta
+        JLabel lblMV = new JLabel(melhorVolta ? "★" : ""); 
+        lblMV.setBounds(x, 0, W_RESULTADOS[i], 35);
+        lblMV.setHorizontalAlignment(SwingConstants.CENTER);
+        lblMV.setForeground(new Color(128, 0, 128)); 
+        lblMV.setFont(new Font("Segoe UI Symbol", Font.BOLD, 14));
+        row.add(lblMV);
+        x += W_RESULTADOS[i++];
+        
+        // 8. Pontos
+        if (!pontos.equals("0")) pontos = "+" + pontos;
+        adicionarLabel(row, pontos, x, W_RESULTADOS[i], SwingConstants.CENTER, true);
         
         container.add(row);
     }
@@ -522,7 +645,6 @@ public class TelaPrincipal extends JFrame {
         LB_Motor.setText("Motor " + equipeJogavel.getMotor());
         LB_Orc.setText(String.format("€ %.1f milhões", equipeJogavel.getSaldoFinanceiro()));
         LB_NomeDirigente.setText(dadosDoJogo.getNomeDoDirigente());
-        
         LB_Ano.setText("Ano " + dadosDoJogo.getAnoAtual()); 
         
         carregarImagem(LB_LogoEquipe, equipeJogavel.getCaminhoLogo());
@@ -530,28 +652,26 @@ public class TelaPrincipal extends JFrame {
         carregarImagem(LB_LogoMotorPQ, equipeJogavel.getCaminhoLogoMotor());
         carregarImagem(LB_BandeiraSede, equipeJogavel.getCaminhoBandeiraSede());
 
-        String catKey = "";
-        if (dadosDoJogo.getCategoriaKey() != null) {
-            catKey = dadosDoJogo.getCategoriaKey().toLowerCase();
-        }
+        // --- CORREÇÃO DO LOGO (LOAD GAME) ---
+        String catKey = (dadosDoJogo.getCategoriaKey() != null) ? dadosDoJogo.getCategoriaKey().toLowerCase() : "";
+        String logoPath = "/resource/Logo F1 Novo.svg"; 
+        
+        if (catKey.contains("indy")) logoPath = "/resource/Logo Indy.svg";
+        else if (catKey.contains("nascar")) logoPath = "/resource/Logo Nascar.svg";
+        
+        carregarImagem(LB_CategoriaEscolhida, logoPath);
 
+        // --- BANNERS ---
         if (catKey.contains("f1")) {
-            carregarImagem(LB_CategoriaEscolhida, "/resource/Logo Novo_F1_OKPQ.svg");
             carregarImagem(LB_CarrosCat, "/resource/Banner F1_OK.svg");
             LB_TipoPista.setForeground(Color.BLACK);
-            
         } else if (catKey.contains("indy")) {
-            carregarImagem(LB_CategoriaEscolhida, "/resource/Logo Indy_OKPQ.svg");
             carregarImagem(LB_CarrosCat, "/resource/Banner F1_OK.svg"); 
             LB_TipoPista.setForeground(Color.BLUE);
-            
         } else if (catKey.contains("nascar")) {
-            carregarImagem(LB_CategoriaEscolhida, "/resource/Logo Nascar_OKPQ.svg");
             carregarImagem(LB_CarrosCat, "/resource/Banner F1_OK.svg"); 
             LB_TipoPista.setForeground(Color.BLUE);
-            
         } else {
-            carregarImagem(LB_CategoriaEscolhida, "/resource/BannerLogo.svg");
             carregarImagem(LB_CarrosCat, "/resource/Banner F1_OK.svg");
             LB_TipoPista.setForeground(Color.BLACK);
         }
@@ -567,6 +687,65 @@ public class TelaPrincipal extends JFrame {
 
         atualizarCalendarioUI();
         preencherTabelas(); 
+        
+        // Popula o ComboBox de Etapas
+        cbFiltroEtapaResultados.removeAllItems();
+        if (campeonato.getCalendario() != null) {
+            for (int i = 0; i < campeonato.getCalendario().size(); i++) {
+                cbFiltroEtapaResultados.addItem("Etapa " + (i+1) + " - " + campeonato.getCalendario().get(i).getNome());
+            }
+        }
+        int etapaParaMostrar = Math.max(0, campeonato.getNumeroEtapaAtual() - 1);
+        if (cbFiltroEtapaResultados.getItemCount() > etapaParaMostrar) {
+            cbFiltroEtapaResultados.setSelectedIndex(etapaParaMostrar);
+        }
+        atualizarListaResultados(etapaParaMostrar);
+    }
+    
+    private void atualizarListaResultados(int indiceEtapa) {
+        pnlListaResultadosContainer.removeAll();
+        
+        // --- GERADOR DE DADOS FICTÍCIOS ---
+        List<Equipe> equipes = dadosDoJogo.getTodasAsEquipes();
+        List<Piloto> pilotos = new ArrayList<>();
+        boolean isF1 = SessaoJogo.categoriaKey.toLowerCase().contains("f1");
+        
+        for(Equipe eq : equipes) {
+            List<Piloto> tits = eq.getPilotosTitulares();
+            for(int i=0; i<tits.size(); i++) {
+                if(isF1 && i>=2) continue;
+                tits.get(i).setNomeEquipeAtual(eq.getNome());
+                pilotos.add(tits.get(i));
+            }
+        }
+        Collections.shuffle(pilotos, new Random(indiceEtapa * 1234L)); 
+        
+        for (int i = 0; i < pilotos.size(); i++) {
+            Piloto p = pilotos.get(i);
+            int posChegada = i + 1;
+            int posLargada = (i + 3) % pilotos.size() + 1; 
+            
+            String tempo = (i == 0) ? "1:35:20.102" : "+" + (i * 2.5) + "s";
+            if (i > 18) tempo = "DNF (Motor)";
+            
+            String pts = (i < 10) ? String.valueOf(25 - (i*2)) : "0";
+            boolean mv = (i == 2); 
+            
+            adicionarLinhaResultado(
+                pnlListaResultadosContainer, 
+                posChegada, 
+                posLargada, 
+                "/resource/Bandeira " + p.getNacionalidade() + ".svg", 
+                p.getNome(), 
+                p.getNomeEquipeAtual(), 
+                tempo, 
+                mv, 
+                pts
+            );
+        }
+        
+        pnlListaResultadosContainer.revalidate();
+        pnlListaResultadosContainer.repaint();
     }
     
     private void atualizarSlotPiloto(int index, List<Piloto> lista, JLabel lbNome, JLabel lbNum, JLabel lbIdade, JLabel lbContrato, JLabel lbFlag, JLabel lbStatus, JLabel lbOver) {
@@ -606,7 +785,7 @@ public class TelaPrincipal extends JFrame {
     }
 
     private void preencherTabelas() {
-        // === 1. LISTA PILOTOS ===
+        // === 1. LISTA PILOTOS (MANTIDO) ===
         pnlListaPilotosContainer.removeAll();
         
         List<Equipe> todasEquipes = dadosDoJogo.getTodasAsEquipes();
@@ -650,30 +829,17 @@ public class TelaPrincipal extends JFrame {
                 String.valueOf(p.getPodios()),
                 String.valueOf(p.getPoles())
             };
-            
             boolean[] bolds = {true, false, true, false, true, false, false, false, false};
             
-            int[] aligns = {
-                SwingConstants.CENTER, // Pos
-                SwingConstants.CENTER, // Num
-                SwingConstants.LEFT,   // Nome
-                SwingConstants.LEFT,   // Equipe
-                SwingConstants.CENTER, // Pts
-                SwingConstants.CENTER, // Diff
-                SwingConstants.CENTER, // Vit
-                SwingConstants.CENTER, // Pod
-                SwingConstants.CENTER  // Pol
-            };
-            
             String pathBandeira = "/resource/Bandeira " + p.getNacionalidade() + ".svg";
-            adicionarLinhaGrid(pnlListaPilotosContainer, posP, pathBandeira, dadosLinha, W_PILOTOS, aligns, bolds);
+            adicionarLinhaGrid(pnlListaPilotosContainer, posP, pathBandeira, dadosLinha, W_PILOTOS, A_PILOTOS, bolds);
             posP++;
         }
         
         pnlListaPilotosContainer.revalidate();
         pnlListaPilotosContainer.repaint();
 
-        // === 2. LISTA EQUIPES ===
+        // === 2. LISTA EQUIPES (MANTIDO) ===
         pnlListaConstrutoresContainer.removeAll();
 
         Collections.sort(todasEquipes, new Comparator<Equipe>() {
@@ -701,19 +867,9 @@ public class TelaPrincipal extends JFrame {
                 String.valueOf(eq.getPodios()),
                 String.valueOf(eq.getPoles())
             };
-            
             boolean[] bolds = {true, true, true, false, false, false, false};
-            int[] aligns = {
-                SwingConstants.CENTER, // Pos
-                SwingConstants.LEFT,   // Nome
-                SwingConstants.CENTER, // Pts
-                SwingConstants.CENTER, // Diff
-                SwingConstants.CENTER, // Vit
-                SwingConstants.CENTER, // Pod
-                SwingConstants.CENTER  // Pol
-            };
             
-            adicionarLinhaGrid(pnlListaConstrutoresContainer, posE, eq.getCaminhoBandeiraSede(), dadosLinha, W_EQUIPES, aligns, bolds);
+            adicionarLinhaGrid(pnlListaConstrutoresContainer, posE, eq.getCaminhoBandeiraSede(), dadosLinha, W_EQUIPES, A_EQUIPES, bolds);
             posE++;
         }
         
@@ -839,9 +995,12 @@ public class TelaPrincipal extends JFrame {
                 int finalW = Math.round(origW * scale);
                 int finalH = Math.round(origH * scale);
 
+                // --- MARGEM: 20px (10 de cada lado) para o Logo Principal ---
                 int margem = 2; 
                 if (lbl == LB_BandeiraMotor || lbl == LB_BandeiraSede || lbl == LB_BandeiraPista) {
                     margem = 8; 
+                } else if (lbl == LB_CategoriaEscolhida) {
+                    margem = 20; 
                 }
 
                 finalW = Math.max(1, finalW - margem);

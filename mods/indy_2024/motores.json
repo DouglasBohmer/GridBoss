@@ -2,18 +2,18 @@
   {
     "id": "Chevrolet",
     "nome": "Chevrolet V6 Twin-Turbo",
-    "potencia": 5,
-    "dirigibilidade": 4,
-    "durabilidade": 4,
+    "potencia": 10,
+    "dirigibilidade": 8,
+    "durabilidade": 8,
     "preco": 8.0,
     "arquivos": { "logo": "/resource/Logo Chevrolet.svg","bandeira": "/resource/Bandeira Estados Unidos.svg" }
   },
   {
     "id": "Honda",
     "nome": "Honda HI24TT V6",
-    "potencia": 4,
-    "dirigibilidade": 5,
-    "durabilidade": 4,
+    "potencia": 8,
+    "dirigibilidade": 10,
+    "durabilidade": 8,
     "preco": 8.0,
     "arquivos": { "logo": "/resource/Logo Honda.svg","bandeira": "/resource/Bandeira Japao.svg" }
   }

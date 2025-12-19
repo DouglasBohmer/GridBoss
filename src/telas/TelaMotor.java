@@ -9,12 +9,9 @@ import modelos.Motor;
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 import javax.swing.border.TitledBorder;
-import javax.swing.event.ListSelectionEvent;
-import javax.swing.event.ListSelectionListener;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.net.URL;
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class TelaMotor extends JFrame {
@@ -26,6 +23,7 @@ public class TelaMotor extends JFrame {
     // --- Componentes de Dados ---
     private List<Motor> listaDeMotoresDisponiveis;
     private Motor motorSelecionado;
+    private boolean isEquipeFabrica = false; // Controle da regra de 50%
     
     // --- Componentes Visuais (Esquerda) ---
     private JList<Motor> listMotores;
@@ -41,7 +39,13 @@ public class TelaMotor extends JFrame {
     private JProgressBar barPotencia;
     private JProgressBar barDirigibilidade;
     private JProgressBar barConfiabilidade;
-    private CircularOverallPanel panelOverall; // Customizado com Texto
+    
+    // Novos Labels de Valor (Ex: "8/10")
+    private JLabel lblValPot;
+    private JLabel lblValDir;
+    private JLabel lblValConf;
+    
+    private CircularOverallPanel panelOverall; 
     
     // Contrato
     private JRadioButton rd1Ano, rd2Anos, rd3Anos;
@@ -64,8 +68,42 @@ public class TelaMotor extends JFrame {
         setResizable(false);
         setLocationRelativeTo(null);
         
-        // Carregar motores do JSON
-        this.listaDeMotoresDisponiveis = CarregadorJSON.carregarMotores(dados.getCategoriaKey(), dados.getAnoAtual());
+        // --- CORREÇÃO: CARREGAMENTO DOS ARQUIVOS ---
+        this.listaDeMotoresDisponiveis = new ArrayList<>();
+        
+        try {
+            // 1. Carrega o arquivo OFICIAL (motores.json) usando o método que já sabe o caminho correto
+            List<Motor> listaPrincipal = CarregadorJSON.carregarMotores(dados.getCategoriaKey(), dados.getAnoAtual());
+            if (listaPrincipal != null) {
+                this.listaDeMotoresDisponiveis.addAll(listaPrincipal);
+            }
+            
+            // 2. Monta o caminho manualmente para o arquivo EXTRA na mesma pasta do mod
+            String caminhoMod = "mods/" + dados.getCategoriaKey().toLowerCase() + "_" + dados.getAnoAtual() + "/";
+            String caminhoExtra = caminhoMod + "motores_extra.json";
+            
+            // Carrega o arquivo EXTRA
+            List<Motor> listaExtra = CarregadorJSON.carregarMotoresPorArquivo(caminhoExtra);
+            if (listaExtra != null) {
+                this.listaDeMotoresDisponiveis.addAll(listaExtra);
+            }
+            
+            // Debug caso continue vazio
+            if (this.listaDeMotoresDisponiveis.isEmpty()) {
+                System.out.println("ERRO: Nenhum motor encontrado!");
+                System.out.println("Tentou carregar de: " + caminhoMod);
+            }
+            
+        } catch (Exception e) {
+            System.err.println("Erro crítico ao carregar motores: " + e.getMessage());
+        }
+
+        // --- ORDENAÇÃO POR OVERALL ---
+        this.listaDeMotoresDisponiveis.sort((m1, m2) -> {
+            double overall1 = (m1.getPotencia() + m1.getDirigibilidade() + m1.getDurabilidade());
+            double overall2 = (m2.getPotencia() + m2.getDirigibilidade() + m2.getDurabilidade());
+            return Double.compare(overall2, overall1); // Decrescente (maior para menor)
+        });
 
         contentPane = new JPanel();
         contentPane.setBackground(Color.WHITE);
@@ -114,10 +152,7 @@ public class TelaMotor extends JFrame {
         lblLogoFabricante = new JLabel("");
         lblLogoFabricante.setHorizontalAlignment(SwingConstants.CENTER);
         lblLogoFabricante.setBounds(20, 30, 100, 100);
-        
-        // CORREÇÃO: Borda fina normal (revertido)
         lblLogoFabricante.setBorder(BorderFactory.createLineBorder(Color.LIGHT_GRAY));
-        
         panelDetalhes.add(lblLogoFabricante);
         
         lblNomeMotor = new JLabel("Selecione um Motor");
@@ -129,7 +164,9 @@ public class TelaMotor extends JFrame {
         lblBandeiraPais.setBounds(140, 80, 50, 30);
         panelDetalhes.add(lblBandeiraPais);
         
-        // Painel de Stats (Barras)
+        // --- STATUS (BARRAS + VALORES) ---
+        
+        // 1. Potência
         JLabel lblPot = new JLabel("Potência");
         lblPot.setBounds(20, 160, 100, 20);
         panelDetalhes.add(lblPot);
@@ -137,6 +174,13 @@ public class TelaMotor extends JFrame {
         barPotencia = criarProgressBar(20, 180);
         panelDetalhes.add(barPotencia);
         
+        lblValPot = new JLabel("0/10");
+        lblValPot.setFont(new Font("Arial", Font.PLAIN, 10));
+        lblValPot.setHorizontalAlignment(SwingConstants.CENTER);
+        lblValPot.setBounds(20, 196, 140, 14);
+        panelDetalhes.add(lblValPot);
+        
+        // 2. Dirigibilidade
         JLabel lblDir = new JLabel("Dirigibilidade");
         lblDir.setBounds(180, 160, 100, 20);
         panelDetalhes.add(lblDir);
@@ -144,6 +188,13 @@ public class TelaMotor extends JFrame {
         barDirigibilidade = criarProgressBar(180, 180);
         panelDetalhes.add(barDirigibilidade);
         
+        lblValDir = new JLabel("0/10");
+        lblValDir.setFont(new Font("Arial", Font.PLAIN, 10));
+        lblValDir.setHorizontalAlignment(SwingConstants.CENTER);
+        lblValDir.setBounds(180, 196, 140, 14);
+        panelDetalhes.add(lblValDir);
+        
+        // 3. Confiabilidade
         JLabel lblConf = new JLabel("Confiabilidade");
         lblConf.setBounds(340, 160, 100, 20);
         panelDetalhes.add(lblConf);
@@ -151,7 +202,13 @@ public class TelaMotor extends JFrame {
         barConfiabilidade = criarProgressBar(340, 180);
         panelDetalhes.add(barConfiabilidade);
         
-        // Overall (Círculo Customizado com Texto Integrado)
+        lblValConf = new JLabel("0/10");
+        lblValConf.setFont(new Font("Arial", Font.PLAIN, 10));
+        lblValConf.setHorizontalAlignment(SwingConstants.CENTER);
+        lblValConf.setBounds(340, 196, 140, 14);
+        panelDetalhes.add(lblValConf);
+        
+        // Overall
         panelOverall = new CircularOverallPanel();
         panelOverall.setBounds(500, 150, 80, 80);
         panelOverall.setBackground(Color.WHITE);
@@ -196,7 +253,7 @@ public class TelaMotor extends JFrame {
         
         lblPrecoBase = new JLabel("Preço Base: € -- mi");
         lblPrecoBase.setForeground(Color.GRAY);
-        lblPrecoBase.setBounds(420, 314, 160, 14);
+        lblPrecoBase.setBounds(420, 314, 200, 14); 
         panelDetalhes.add(lblPrecoBase);
         
         // Painel Financeiro Final
@@ -214,7 +271,7 @@ public class TelaMotor extends JFrame {
         lblCustoFinal = new JLabel("€ 0.0 mi");
         lblCustoFinal.setForeground(new Color(0, 128, 0));
         lblCustoFinal.setFont(new Font("Arial", Font.BOLD, 24));
-        lblCustoFinal.setBounds(10, 30, 200, 30);
+        lblCustoFinal.setBounds(10, 30, 300, 30);
         panelFinanceiro.add(lblCustoFinal);
         
         lblMultaRescisao = new JLabel("Multa Rescisória (Troca Imediata): € 0.0 mi");
@@ -246,7 +303,7 @@ public class TelaMotor extends JFrame {
     }
     
     private JProgressBar criarProgressBar(int x, int y) {
-        JProgressBar bar = new JProgressBar(0, 5);
+        JProgressBar bar = new JProgressBar(0, 10);
         bar.setBounds(x, y, 140, 15);
         bar.setForeground(new Color(0, 120, 215)); 
         return bar;
@@ -256,20 +313,25 @@ public class TelaMotor extends JFrame {
 
     private void verificarRegrasDeFabrica() {
         String nomeEquipe = equipeJogador.getNome().toLowerCase();
-        boolean isFabrica = nomeEquipe.contains("ferrari") || 
-                            nomeEquipe.contains("mercedes") || 
-                            nomeEquipe.contains("honda") ||
-                            nomeEquipe.contains("rbpt"); 
         
-        if (isFabrica) {
+        // Regra de fábrica
+        this.isEquipeFabrica = nomeEquipe.contains("ferrari") || 
+                               nomeEquipe.contains("mercedes") || 
+                               nomeEquipe.contains("honda") ||
+                               nomeEquipe.contains("rbpt") ||
+                               nomeEquipe.contains("alpine") || 
+                               nomeEquipe.contains("audi");     
+        
+        if (isEquipeFabrica) {
             listMotores.setEnabled(false);
             btnAssinarProxima.setVisible(false);
             btnTrocarAgora.setVisible(false);
             
             rd1Ano.setEnabled(false); rd2Anos.setEnabled(false); rd3Anos.setEnabled(false);
+            rd1Ano.setSelected(true); // Força 1 ano visualmente
             
             lblAvisoFabrica.setVisible(true);
-            lblAvisoFabrica.setText("EQUIPE " + equipeJogador.getNome().toUpperCase() + " USA MOTORES PRÓPRIOS.");
+            lblAvisoFabrica.setText("EQUIPE " + equipeJogador.getNome().toUpperCase() + " (FABRICANTE)");
             
             if (equipeJogador.getMotorObjeto() != null) {
                 selecionarVisualmenteMotorAtual(equipeJogador.getMotorObjeto().getId());
@@ -287,20 +349,33 @@ public class TelaMotor extends JFrame {
     }
 
     private void selecionarMotor(Motor m) {
+        if (m == null) return;
+        
         this.motorSelecionado = m;
         
         lblNomeMotor.setText(m.getNome());
-        lblPrecoBase.setText(String.format("Preço Base: € %.1f mi", m.getPreco()));
+        
+        if (isEquipeFabrica) {
+            lblPrecoBase.setText(String.format("Base: € %.1f mi (Subsídio)", m.getPreco()));
+        } else {
+            lblPrecoBase.setText(String.format("Preço Base: € %.1f mi", m.getPreco()));
+        }
         
         carregarImagem(lblLogoFabricante, m.getCaminhoLogo());
         carregarImagem(lblBandeiraPais, m.getCaminhoBandeira());
         
+        // Atualiza Barras
         barPotencia.setValue((int)m.getPotencia());
         barDirigibilidade.setValue((int)m.getDirigibilidade());
         barConfiabilidade.setValue((int)m.getDurabilidade());
         
+        // Atualiza Textos
+        lblValPot.setText((int)m.getPotencia() + "/10");
+        lblValDir.setText((int)m.getDirigibilidade() + "/10");
+        lblValConf.setText((int)m.getDurabilidade() + "/10");
+        
         int overall = calcularOverall(m);
-        panelOverall.setScore(overall); // Define score e repinta
+        panelOverall.setScore(overall);
         
         double valorMultaEstimado = 5.0; 
         if (equipeJogador.getMotorObjeto() != null) {
@@ -313,20 +388,26 @@ public class TelaMotor extends JFrame {
     
     private int calcularOverall(Motor m) {
         double media = (m.getPotencia() + m.getDirigibilidade() + m.getDurabilidade()) / 3.0;
-        return (int) (media * 20.0);
+        return (int) (media * 10.0);
     }
     
     private void atualizarPrecos() {
         if (motorSelecionado == null) return;
         
-        double preco = motorSelecionado.getPreco();
-        double desconto = 0.0;
-        
-        if (rd2Anos.isSelected()) desconto = 0.10; 
-        else if (rd3Anos.isSelected()) desconto = 0.20; 
-        
-        double precoFinal = preco * (1.0 - desconto);
-        lblCustoFinal.setText(String.format("€ %.1f mi", precoFinal));
+        double precoBase = motorSelecionado.getPreco();
+        double precoFinal;
+
+        if (isEquipeFabrica) {
+            precoFinal = precoBase * 0.5;
+            lblCustoFinal.setText(String.format("€ %.1f mi (Fixo -50%%)", precoFinal));
+        } else {
+            double desconto = 0.0;
+            if (rd2Anos.isSelected()) desconto = 0.10; 
+            else if (rd3Anos.isSelected()) desconto = 0.20; 
+            
+            precoFinal = precoBase * (1.0 - desconto);
+            lblCustoFinal.setText(String.format("€ %.1f mi", precoFinal));
+        }
     }
     
     private void acaoTrocarAgora() {
@@ -345,11 +426,7 @@ public class TelaMotor extends JFrame {
             
             if (equipeJogador.getSaldoFinanceiro() >= custoTotal) {
                 equipeJogador.pagarDespesa(custoTotal);
-                
-                // 1. Define objeto
                 equipeJogador.setMotorObjeto(motorSelecionado);
-                
-                // 2. Sincroniza ID String (Importante para TelaPrincipal exibir nome correto)
                 equipeJogador.sincronizarDadosParaSalvar();
                 
                 JOptionPane.showMessageDialog(this, "Motor Trocado com Sucesso!\nCusto Total: € " + custoTotal + " mi");
@@ -376,12 +453,10 @@ public class TelaMotor extends JFrame {
                 return;
             }
 
-            // Normaliza caminho
             if (!path.startsWith("/")) path = "/" + path;
             if (!path.startsWith("/resource")) path = "/resource" + path;
             path = path.replace("//", "/");
 
-            // Força extensão .svg
             if (path.toLowerCase().endsWith(".png")) {
                 path = path.substring(0, path.length() - 4) + ".svg";
             }
@@ -391,7 +466,6 @@ public class TelaMotor extends JFrame {
 
             String svgPath = path.startsWith("/") ? path.substring(1) : path;
 
-            // Obtém dimensões do label
             int labelW = lbl.getWidth();
             int labelH = lbl.getHeight();
 
@@ -413,12 +487,8 @@ public class TelaMotor extends JFrame {
                 int finalW = Math.round(origW * scale);
                 int finalH = Math.round(origH * scale);
 
-                // --- ALTERAÇÃO: Padding de 5px (10px total) para o logo do fabricante ---
-                int margem = 2; // Margem padrão
-                
-                if (lbl == lblLogoFabricante) {
-                    margem = 6; // 5px de cada lado
-                }
+                int margem = 2; 
+                if (lbl == lblLogoFabricante) margem = 6; 
 
                 finalW = Math.max(1, finalW - margem);
                 finalH = Math.max(1, finalH - margem);
@@ -441,7 +511,10 @@ public class TelaMotor extends JFrame {
             JLabel label = (JLabel) super.getListCellRendererComponent(list, value, index, isSelected, cellHasFocus);
             if (value instanceof Motor) {
                 Motor m = (Motor) value;
-                label.setText(m.getNome());
+                
+                int ov = calcularOverall(m);
+                label.setText(m.getNome() + " (" + ov + ")");
+                
                 label.setBorder(new EmptyBorder(5, 5, 5, 5));
             }
             return label;
@@ -453,7 +526,7 @@ public class TelaMotor extends JFrame {
         private int score = 0;
         public void setScore(int s) { 
             this.score = s; 
-            repaint(); // Força redesenho ao mudar nota
+            repaint(); 
         }
         
         @Override
@@ -468,11 +541,9 @@ public class TelaMotor extends JFrame {
             int x = (w - diametro) / 2;
             int y = (h - diametro) / 2;
             
-            // Fundo
             g2.setColor(new Color(230, 230, 230));
             g2.fillOval(x, y, diametro, diametro);
             
-            // Arco (Cor Dinâmica)
             if (score >= 90) g2.setColor(new Color(0, 180, 0));       
             else if (score >= 75) g2.setColor(new Color(100, 200, 0));
             else if (score >= 50) g2.setColor(Color.ORANGE);          
@@ -481,21 +552,18 @@ public class TelaMotor extends JFrame {
             int angulo = (int) ((score / 100.0) * 360);
             g2.fillArc(x, y, diametro, diametro, 90, -angulo); 
             
-            // Buraco da Rosca
             int innerD = diametro - 15;
             int innerX = x + (diametro - innerD) / 2;
             int innerY = y + (diametro - innerD) / 2;
             g2.setColor(Color.WHITE);
             g2.fillOval(innerX, innerY, innerD, innerD);
             
-            // TEXTO (DENTRO DO CÍRCULO)
             g2.setColor(Color.BLACK);
             g2.setFont(new Font("Arial", Font.BOLD, 24));
             
             String texto = String.valueOf(score);
             FontMetrics fm = g2.getFontMetrics();
             int textX = x + (diametro - fm.stringWidth(texto)) / 2;
-            // Centraliza verticalmente considerando ascent
             int textY = y + ((diametro - fm.getHeight()) / 2) + fm.getAscent();
             
             g2.drawString(texto, textX, textY);

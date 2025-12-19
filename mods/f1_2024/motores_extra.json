@@ -1,0 +1,254 @@
+[
+  {
+    "id": "Bugatti",
+    "nome": "Bugatti Hyper Sport",
+    "potencia": 10,
+    "dirigibilidade": 6,
+    "durabilidade": 7,
+    "preco": 18.0,
+    "arquivos": {
+      "logo": "/resource/Logo Bugatti.svg",
+      "bandeira": "/resource/Bandeira Franca.svg"
+    }
+  },
+  {
+    "id": "BMW",
+    "nome": "BMW Power Unit",
+    "potencia": 9,
+    "dirigibilidade": 8,
+    "durabilidade": 8,
+    "preco": 15.5,
+    "arquivos": {
+      "logo": "/resource/Logo BMW.svg",
+      "bandeira": "/resource/Bandeira Alemanha.svg"
+    }
+  },
+  {
+    "id": "Audi",
+    "nome": "Audi Sport Ultra",
+    "potencia": 8,
+    "dirigibilidade": 9,
+    "durabilidade": 9,
+    "preco": 15.0,
+    "arquivos": {
+      "logo": "/resource/Logo Audi.svg",
+      "bandeira": "/resource/Bandeira Alemanha.svg"
+    }
+  },
+  {
+    "id": "Porsche",
+    "nome": "Porsche Performance",
+    "potencia": 9,
+    "dirigibilidade": 9,
+    "durabilidade": 7,
+    "preco": 16.5,
+    "arquivos": {
+      "logo": "/resource/Logo Porsche.svg",
+      "bandeira": "/resource/Bandeira Alemanha.svg"
+    }
+  },
+  {
+    "id": "Volkswagen",
+    "nome": "Volkswagen Motorsport",
+    "potencia": 7,
+    "dirigibilidade": 8,
+    "durabilidade": 9,
+    "preco": 13.0,
+    "arquivos": {
+      "logo": "/resource/Logo Volkswagen.svg",
+      "bandeira": "/resource/Bandeira Alemanha.svg"
+    }
+  },
+  {
+    "id": "Chevrolet",
+    "nome": "Chevrolet Racing",
+    "potencia": 9,
+    "dirigibilidade": 6,
+    "durabilidade": 8,
+    "preco": 13.5,
+    "arquivos": {
+      "logo": "/resource/Logo Chevrolet.svg",
+      "bandeira": "/resource/Bandeira EUA.svg"
+    }
+  },
+  {
+    "id": "Toyota",
+    "nome": "Toyota Gazoo Racing",
+    "potencia": 8,
+    "dirigibilidade": 8,
+    "durabilidade": 9,
+    "preco": 14.5,
+    "arquivos": {
+      "logo": "/resource/Logo Toyota.svg",
+      "bandeira": "/resource/Bandeira Japao.svg"
+    }
+  },
+  {
+    "id": "Cosworth",
+    "nome": "Cosworth Engineering",
+    "potencia": 7,
+    "dirigibilidade": 8,
+    "durabilidade": 9,
+    "preco": 11.0,
+    "arquivos": {
+      "logo": "/resource/Logo Cosworth.svg",
+      "bandeira": "/resource/Bandeira Reino Unido.svg"
+    }
+  },
+  {
+    "id": "Ford",
+    "nome": "Ford EcoBoost",
+    "potencia": 9,
+    "dirigibilidade": 7,
+    "durabilidade": 8,
+    "preco": 14.0,
+    "arquivos": {
+      "logo": "/resource/Logo Ford.svg",
+      "bandeira": "/resource/Bandeira EUA.svg"
+    }
+  },
+  {
+    "id": "Lamborghini",
+    "nome": "Lamborghini Squadra Corse",
+    "potencia": 10,
+    "dirigibilidade": 5,
+    "durabilidade": 6,
+    "preco": 17.0,
+    "arquivos": {
+      "logo": "/resource/Logo Lamborghini.svg",
+      "bandeira": "/resource/Bandeira Italia.svg"
+    }
+  },
+  {
+    "id": "Dodge",
+    "nome": "Dodge SRT Power",
+    "potencia": 9,
+    "dirigibilidade": 5,
+    "durabilidade": 7,
+    "preco": 12.5,
+    "arquivos": {
+      "logo": "/resource/Logo Dodge.svg",
+      "bandeira": "/resource/Bandeira EUA.svg"
+    }
+  },
+  {
+    "id": "Nissan",
+    "nome": "Nissan Nismo",
+    "potencia": 8,
+    "dirigibilidade": 9,
+    "durabilidade": 7,
+    "preco": 13.5,
+    "arquivos": {
+      "logo": "/resource/Logo Nissan.svg",
+      "bandeira": "/resource/Bandeira Japao.svg"
+    }
+  },
+  {
+    "id": "Judd",
+    "nome": "Judd Power",
+    "potencia": 6,
+    "dirigibilidade": 8,
+    "durabilidade": 9,
+    "preco": 10.0,
+    "arquivos": {
+      "logo": "/resource/Logo Judd.svg",
+      "bandeira": "/resource/Bandeira Reino Unido.svg"
+    }
+  },
+  {
+    "id": "Jaguar",
+    "nome": "Jaguar Racing",
+    "potencia": 8,
+    "dirigibilidade": 8,
+    "durabilidade": 7,
+    "preco": 14.0,
+    "arquivos": {
+      "logo": "/resource/Logo Jaguar.svg",
+      "bandeira": "/resource/Bandeira Reino Unido.svg"
+    }
+  },
+  {
+    "id": "Maserati",
+    "nome": "Maserati Trident",
+    "potencia": 9,
+    "dirigibilidade": 7,
+    "durabilidade": 6,
+    "preco": 15.0,
+    "arquivos": {
+      "logo": "/resource/Logo Maserati.svg",
+      "bandeira": "/resource/Bandeira Italia.svg"
+    }
+  },
+  {
+    "id": "Mecachrome",
+    "nome": "Mecachrome Engineering",
+    "potencia": 7,
+    "dirigibilidade": 6,
+    "durabilidade": 6,
+    "preco": 9.5,
+    "arquivos": {
+      "logo": "/resource/Logo Mecachrome.svg",
+      "bandeira": "/resource/Bandeira Franca.svg"
+    }
+  },
+  {
+    "id": "Mugen",
+    "nome": "Mugen Power",
+    "potencia": 8,
+    "dirigibilidade": 7,
+    "durabilidade": 8,
+    "preco": 12.0,
+    "arquivos": {
+      "logo": "/resource/Logo Mugen.svg",
+      "bandeira": "/resource/Bandeira Japao.svg"
+    }
+  },
+  {
+    "id": "Peugeot",
+    "nome": "Peugeot Sport",
+    "potencia": 7,
+    "dirigibilidade": 7,
+    "durabilidade": 7,
+    "preco": 11.5,
+    "arquivos": {
+      "logo": "/resource/Logo Peugeot.svg",
+      "bandeira": "/resource/Bandeira Franca.svg"
+    }
+  },
+  {
+    "id": "Subaru",
+    "nome": "Subaru Tecnica",
+    "potencia": 7,
+    "dirigibilidade": 9,
+    "durabilidade": 8,
+    "preco": 12.5,
+    "arquivos": {
+      "logo": "/resource/Logo Subaru.svg",
+      "bandeira": "/resource/Bandeira Japao.svg"
+    }
+  },
+  {
+    "id": "Vanwall",
+    "nome": "Vanwall Heritage",
+    "potencia": 7,
+    "dirigibilidade": 7,
+    "durabilidade": 7,
+    "preco": 11.0,
+    "arquivos": {
+      "logo": "/resource/Logo Vanwall.svg",
+      "bandeira": "/resource/Bandeira Reino Unido.svg"
+    }
+  },
+  {
+    "id": "Yamaha",
+    "nome": "Yamaha Racing",
+    "potencia": 8,
+    "dirigibilidade": 7,
+    "durabilidade": 6,
+    "preco": 12.0,
+    "arquivos": {
+      "logo": "/resource/Logo Yamaha.svg",
+      "bandeira": "/resource/Bandeira Japao.svg"
+    }
+  }
+]

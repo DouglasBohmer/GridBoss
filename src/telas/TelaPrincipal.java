@@ -349,7 +349,7 @@ public class TelaPrincipal extends JFrame {
         LB_NomeEtapa.setForeground(new Color(0, 0, 0));
         LB_NomeEtapa.setHorizontalAlignment(SwingConstants.LEFT);
         LB_NomeEtapa.setFont(new Font("Arial Rounded MT Bold", Font.ITALIC, 12));
-        LB_NomeEtapa.setBounds(900, 203, 309, 30);
+        LB_NomeEtapa.setBounds(900, 203, 309, 60);
         contentPane.add(LB_NomeEtapa);
 
         LB_DesgastePneu = new JLabel("Desgaste Pneu");
@@ -445,7 +445,7 @@ public class TelaPrincipal extends JFrame {
         pnlAbaPilotos.add(scrollPilotos, BorderLayout.CENTER);
         
         pnlListaPilotosContainer = pnlContainerPilotos;
-        tabbedPane.addTab("Classificação Pilotos", new FlatSVGIcon("resource/Icone24pxPiloto.svg"), pnlAbaPilotos);
+        tabbedPane.addTab("Classificação Pilotos", new FlatSVGIcon("resource/Piloto.svg"), pnlAbaPilotos);
         
         // --- 2. Aba Equipes ---
         JPanel pnlAbaEquipes = new JPanel(new BorderLayout());
@@ -480,7 +480,7 @@ public class TelaPrincipal extends JFrame {
         pnlAbaEquipes.add(scrollEquipes, BorderLayout.CENTER);
         
         pnlListaConstrutoresContainer = pnlContainerEquipes;
-        tabbedPane.addTab("Classificação Equipes", new FlatSVGIcon("resource/Icone24pxEquipe.svg"), pnlAbaEquipes);
+        tabbedPane.addTab("Classificação Equipes", new FlatSVGIcon("resource/Equipe.svg"), pnlAbaEquipes);
         
         // --- 3. Aba Resultados ---
         JPanel pnlAbaResultados = new JPanel(new BorderLayout());
@@ -530,7 +530,7 @@ public class TelaPrincipal extends JFrame {
         pnlAbaResultados.add(pnlCentroResultados, BorderLayout.CENTER);
         
         pnlListaResultadosContainer = pnlContainerRes;
-        tabbedPane.addTab("Resultados", new FlatSVGIcon("resource/Icone24pxTrofeu.svg"), pnlAbaResultados);
+        tabbedPane.addTab("Resultados", new FlatSVGIcon("resource/Resultado.svg"), pnlAbaResultados);
 
         // === RODAPÉ ===
         LB_CarrosCat = new JLabel("");
@@ -542,7 +542,7 @@ public class TelaPrincipal extends JFrame {
 
         BT_IrParaCorrida = new JButton("IR PARA A CORRIDA!");
         BT_IrParaCorrida.setFont(new Font("Arial", Font.BOLD, 16));
-        BT_IrParaCorrida.setIcon(new FlatSVGIcon("resource/Icone24pxBandeiraDeChegada.svg"));
+        BT_IrParaCorrida.setIcon(new FlatSVGIcon("resource/Bandeirada.svg"));
         BT_IrParaCorrida.setBounds(643, 606, 566, 33);
         BT_IrParaCorrida.addActionListener(e -> irParaCorrida());
         contentPane.add(BT_IrParaCorrida);
@@ -942,9 +942,15 @@ public class TelaPrincipal extends JFrame {
             boolean isIndyOrNascar = SessaoJogo.categoriaKey.contains("indy") || SessaoJogo.categoriaKey.contains("nascar");
             
             if (isIndyOrNascar) {
-                LB_LocalPista.setText(pistaVisual.getNome());
+            	LB_NomeEtapa.setText(
+            		    "<html><div style='width:309px;'>" + pistaVisual.getNome() + "</div></html>"
+            		);
+
             } else {
-                LB_LocalPista.setText(pistaVisual.getPais());
+            	LB_NomeEtapa.setText(
+            		    "<html><div style='width:309px;'>" + pistaVisual.getNome() + "</div></html>"
+            		);
+
             }
             
             carregarImagem(LB_BandeiraPista, "/resource/Bandeira " + pistaVisual.getPais() + ".svg");

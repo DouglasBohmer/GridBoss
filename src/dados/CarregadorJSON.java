@@ -47,10 +47,7 @@ public class CarregadorJSON {
                         String categoria = partes[0]; // ex: "wec"
                         String ano = partes[1];       // ex: "2023"
                         
-                        // --- ALTERAÇÃO PRINCIPAL AQUI ---
-                        // Antes: Só adicionava se a chave já existisse (f1, indy, nascar)
-                        // Agora: Se não existir, cria a nova categoria na hora
-                        
+                        // Cria a nova categoria na hora se não existir
                         if (!modsEncontrados.containsKey(categoria)) {
                             modsEncontrados.put(categoria, new ArrayList<>());
                         }
@@ -61,7 +58,7 @@ public class CarregadorJSON {
             }
         }
         
-        // Ordena os anos de forma decrescente para todas as categorias encontradas
+        // Ordena os anos de forma decrescente
         for (List<String> anos : modsEncontrados.values()) {
             anos.sort(Collections.reverseOrder());
         }
@@ -79,25 +76,32 @@ public class CarregadorJSON {
         return carregarLista(caminho, new TypeToken<ArrayList<Piloto>>(){}.getType());
     }
 
-    // NOVO MÉTODO: Carregar Calendário
     public static List<Pista> carregarCalendario(String categoria, int ano) {
         String caminho = CAMINHO_MODS + categoria.toLowerCase() + "_" + ano + "/calendario.json";
         return carregarLista(caminho, new TypeToken<ArrayList<Pista>>(){}.getType());
     }
 
-    // Método genérico para evitar repetição de código
+    public static List<Motor> carregarMotores(String categoria, int ano) {
+        String caminho = CAMINHO_MODS + categoria.toLowerCase() + "_" + ano + "/motores.json";
+        return carregarLista(caminho, new TypeToken<ArrayList<Motor>>(){}.getType());
+    }
+    
+    // --- NOVO MÉTODO ADICIONADO AQUI ---
+    // Permite carregar um arquivo específico pelo nome/caminho
+    public static List<Motor> carregarMotoresPorArquivo(String caminhoArquivo) {
+        // Se o arquivo estiver dentro da pasta mods, o usuário deve passar o caminho completo no TelaMotor.
+        // Se estiver na raiz do projeto (como teste), basta passar o nome.
+        return carregarLista(caminhoArquivo, new TypeToken<ArrayList<Motor>>(){}.getType());
+    }
+
+    // Método genérico privado
     private static <T> List<T> carregarLista(String caminho, Type tipo) {
         try (Reader reader = new FileReader(caminho, StandardCharsets.UTF_8)) {
             Gson gson = new Gson();
             return gson.fromJson(reader, tipo);
         } catch (Exception e) {
-            System.err.println("Erro ao carregar JSON (" + caminho + "): " + e.getMessage());
-            return new ArrayList<>();
+            // System.err.println("Arquivo não encontrado ou erro de leitura: " + caminho);
+            return null; // Retorna null para tratarmos na tela se falhar
         }
-    }
-
-    public static List<Motor> carregarMotores(String categoria, int ano) {
-        String caminho = CAMINHO_MODS + categoria.toLowerCase() + "_" + ano + "/motores.json";
-        return carregarLista(caminho, new TypeToken<ArrayList<Motor>>(){}.getType());
     }
 }

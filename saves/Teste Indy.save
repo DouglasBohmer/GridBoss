@@ -21,11 +21,10 @@
       "staffChassi": 1,
       "staffConfiabilidade": 1,
       "arquivos": {
-        "logo": "/resource/Equipe_Indy_AJ Foyt.png",
-        "logoSvg": "/resource/Equipe_Indy_AJ Foyt.svg",
-        "bandeiraSede": "/resource/Bandeira EUA.png",
-        "bandeiraMotor": "/resource/Bandeira Estados Unidos.png",
-        "logoMotor": "/resource/Motor_ChevroletPQ.png"
+        "logo": "/resource/Equipe Indy AJ Foyt.svg",
+        "bandeiraSede": "/resource/Bandeira EUA.svg",
+        "bandeiraMotor": "/resource/Bandeira Estados Unidos.svg",
+        "logoMotor": "/resource/Logo Chevrolet.svg"
       },
       "pilotosContratadosIDs": [
         "Santino Ferrucci",
@@ -54,11 +53,10 @@
       "staffChassi": 1,
       "staffConfiabilidade": 1,
       "arquivos": {
-        "logo": "/resource/Equipe_Indy_Abel.png",
-        "logoSvg": "/resource/Equipe_Indy_Abel.svg",
-        "bandeiraSede": "/resource/Bandeira EUA.png",
-        "bandeiraMotor": "/resource/Bandeira Estados Unidos.png",
-        "logoMotor": "/resource/Motor_ChevroletPQ.png"
+        "logo": "/resource/Equipe Indy Abel.svg",
+        "bandeiraSede": "/resource/Bandeira EUA.svg",
+        "bandeiraMotor": "/resource/Bandeira Estados Unidos.svg",
+        "logoMotor": "/resource/Logo Chevrolet.svg"
       },
       "pilotosContratadosIDs": [
         "Richard Chad \u0027RC\u0027 Enerson"
@@ -86,11 +84,10 @@
       "staffChassi": 1,
       "staffConfiabilidade": 1,
       "arquivos": {
-        "logo": "/resource/Equipe_Indy_Andretti.png",
-        "logoSvg": "/resource/Equipe_Indy_Andretti.svg",
-        "bandeiraSede": "/resource/Bandeira EUA.png",
-        "bandeiraMotor": "/resource/Bandeira Japao.png",
-        "logoMotor": "/resource/Motor_HondaPQ.png"
+        "logo": "/resource/Equipe Indy Andretti.svg",
+        "bandeiraSede": "/resource/Bandeira EUA.svg",
+        "bandeiraMotor": "/resource/Bandeira Japao.svg",
+        "logoMotor": "/resource/Logo Honda.svg"
       },
       "pilotosContratadosIDs": [
         "Colton Herta",
@@ -121,11 +118,10 @@
       "staffChassi": 1,
       "staffConfiabilidade": 1,
       "arquivos": {
-        "logo": "/resource/Equipe_Indy_Arrow McLaren.png",
-        "logoSvg": "/resource/Equipe_Indy_Arrow McLaren.svg",
-        "bandeiraSede": "/resource/Bandeira EUA.png",
-        "bandeiraMotor": "/resource/Bandeira Estados Unidos.png",
-        "logoMotor": "/resource/Motor_ChevroletPQ.png"
+        "logo": "/resource/Equipe Indy Arrow McLaren.svg",
+        "bandeiraSede": "/resource/Bandeira EUA.svg",
+        "bandeiraMotor": "/resource/Bandeira Estados Unidos.svg",
+        "logoMotor": "/resource/Logo Chevrolet.svg"
       },
       "pilotosContratadosIDs": [
         "Alexander Rossi",
@@ -155,11 +151,10 @@
       "staffChassi": 1,
       "staffConfiabilidade": 1,
       "arquivos": {
-        "logo": "/resource/Equipe_Indy_Chip Ganassi.png",
-        "logoSvg": "/resource/Equipe_Indy_Chip Ganassi.svg",
-        "bandeiraSede": "/resource/Bandeira EUA.png",
-        "bandeiraMotor": "/resource/Bandeira Japao.png",
-        "logoMotor": "/resource/Motor_HondaPQ.png"
+        "logo": "/resource/Equipe Indy Chip Ganassi.svg",
+        "bandeiraSede": "/resource/Bandeira EUA.svg",
+        "bandeiraMotor": "/resource/Bandeira Japao.svg",
+        "logoMotor": "/resource/Logo Honda.svg"
       },
       "pilotosContratadosIDs": [
         "Alex Palou",
@@ -191,11 +186,10 @@
       "staffChassi": 1,
       "staffConfiabilidade": 1,
       "arquivos": {
-        "logo": "/resource/Equipe_Indy_Dale Coyne.png",
-        "logoSvg": "/resource/Equipe_Indy_Dale Coyne.svg",
-        "bandeiraSede": "/resource/Bandeira EUA.png",
-        "bandeiraMotor": "/resource/Bandeira Japao.png",
-        "logoMotor": "/resource/Motor_HondaPQ.png"
+        "logo": "/resource/Equipe Indy Dale Coyne.svg",
+        "bandeiraSede": "/resource/Bandeira EUA.svg",
+        "bandeiraMotor": "/resource/Bandeira Japao.svg",
+        "logoMotor": "/resource/Logo Honda.svg"
       },
       "pilotosContratadosIDs": [
         "Jack Harvey",
@@ -224,11 +218,10 @@
       "staffChassi": 1,
       "staffConfiabilidade": 1,
       "arquivos": {
-        "logo": "/resource/Equipe_Indy_Dreyer.png",
-        "logoSvg": "/resource/Equipe_Indy_Dreyer.svg",
-        "bandeiraSede": "/resource/Bandeira EUA.png",
-        "bandeiraMotor": "/resource/Bandeira Estados Unidos.png",
-        "logoMotor": "/resource/Motor_ChevroletPQ.png"
+        "logo": "/resource/Equipe Indy Dreyer.svg",
+        "bandeiraSede": "/resource/Bandeira EUA.svg",
+        "bandeiraMotor": "/resource/Bandeira Estados Unidos.svg",
+        "logoMotor": "/resource/Logo Chevrolet.svg"
       },
       "pilotosContratadosIDs": [
         "Ryan Hunter-Reay",
@@ -257,11 +250,10 @@
       "staffChassi": 1,
       "staffConfiabilidade": 1,
       "arquivos": {
-        "logo": "/resource/Equipe_Indy_EdCarpterRacing.png",
-        "logoSvg": "/resource/Equipe_Indy_EdCarpterRacing.svg",
-        "bandeiraSede": "/resource/Bandeira EUA.png",
-        "bandeiraMotor": "/resource/Bandeira Estados Unidos.png",
-        "logoMotor": "/resource/Motor_ChevroletPQ.png"
+        "logo": "/resource/Equipe Indy EdCarpterRacing.svg",
+        "bandeiraSede": "/resource/Bandeira EUA.svg",
+        "bandeiraMotor": "/resource/Bandeira Estados Unidos.svg",
+        "logoMotor": "/resource/Logo Chevrolet.svg"
       },
       "pilotosContratadosIDs": [
         "Rinus VeeKay",
@@ -290,11 +282,10 @@
       "staffChassi": 1,
       "staffConfiabilidade": 1,
       "arquivos": {
-        "logo": "/resource/Equipe_Indy_Juncos.png",
-        "logoSvg": "/resource/Equipe_Indy_Juncos.svg",
-        "bandeiraSede": "/resource/Bandeira EUA.png",
-        "bandeiraMotor": "/resource/Bandeira Estados Unidos.png",
-        "logoMotor": "/resource/Motor_ChevroletPQ.png"
+        "logo": "/resource/Equipe Indy Juncos.svg",
+        "bandeiraSede": "/resource/Bandeira EUA.svg",
+        "bandeiraMotor": "/resource/Bandeira Estados Unidos.svg",
+        "logoMotor": "/resource/Logo Chevrolet.svg"
       },
       "pilotosContratadosIDs": [
         "Romain Grosjean",
@@ -323,11 +314,10 @@
       "staffChassi": 1,
       "staffConfiabilidade": 1,
       "arquivos": {
-        "logo": "/resource/Equipe_Indy_Meyer Shank.png",
-        "logoSvg": "/resource/Equipe_Indy_Meyer Shank.svg",
-        "bandeiraSede": "/resource/Bandeira EUA.png",
-        "bandeiraMotor": "/resource/Bandeira Japao.png",
-        "logoMotor": "/resource/Motor_HondaPQ.png"
+        "logo": "/resource/Equipe Indy Meyer Shank.svg",
+        "bandeiraSede": "/resource/Bandeira EUA.svg",
+        "bandeiraMotor": "/resource/Bandeira Japao.svg",
+        "logoMotor": "/resource/Logo Honda.svg"
       },
       "pilotosContratadosIDs": [
         "Felix Rosenqvist",
@@ -357,11 +347,10 @@
       "staffChassi": 1,
       "staffConfiabilidade": 1,
       "arquivos": {
-        "logo": "/resource/Equipe_Indy_Rahal.png",
-        "logoSvg": "/resource/Equipe_Indy_Rahal.svg",
-        "bandeiraSede": "/resource/Bandeira EUA.png",
-        "bandeiraMotor": "/resource/Bandeira Japao.png",
-        "logoMotor": "/resource/Motor_HondaPQ.png"
+        "logo": "/resource/Equipe Indy Rahal.svg",
+        "bandeiraSede": "/resource/Bandeira EUA.svg",
+        "bandeiraMotor": "/resource/Bandeira Japao.svg",
+        "logoMotor": "/resource/Logo Honda.svg"
       },
       "pilotosContratadosIDs": [
         "Graham Rahal",
@@ -392,11 +381,10 @@
       "staffChassi": 1,
       "staffConfiabilidade": 1,
       "arquivos": {
-        "logo": "/resource/Equipe_Indy_Penske.png",
-        "logoSvg": "/resource/Equipe_Indy_Penske.svg",
-        "bandeiraSede": "/resource/Bandeira EUA.png",
-        "bandeiraMotor": "/resource/Bandeira Estados Unidos.png",
-        "logoMotor": "/resource/Motor_ChevroletPQ.png"
+        "logo": "/resource/Equipe Indy Penske.svg",
+        "bandeiraSede": "/resource/Bandeira EUA.svg",
+        "bandeiraMotor": "/resource/Bandeira Estados Unidos.svg",
+        "logoMotor": "/resource/Logo Chevrolet.svg"
       },
       "pilotosContratadosIDs": [
         "Josef Newgarden",
@@ -454,11 +442,10 @@
             "staffChassi": 1,
             "staffConfiabilidade": 1,
             "arquivos": {
-              "logo": "/resource/Equipe_Indy_Chip Ganassi.png",
-              "logoSvg": "/resource/Equipe_Indy_Chip Ganassi.svg",
-              "bandeiraSede": "/resource/Bandeira EUA.png",
-              "bandeiraMotor": "/resource/Bandeira Japao.png",
-              "logoMotor": "/resource/Motor_HondaPQ.png"
+              "logo": "/resource/Equipe Indy Chip Ganassi.svg",
+              "bandeiraSede": "/resource/Bandeira EUA.svg",
+              "bandeiraMotor": "/resource/Bandeira Japao.svg",
+              "logoMotor": "/resource/Logo Honda.svg"
             },
             "pilotosContratadosIDs": [
               "Alex Palou",
@@ -520,11 +507,10 @@
             "staffChassi": 1,
             "staffConfiabilidade": 1,
             "arquivos": {
-              "logo": "/resource/Equipe_Indy_Chip Ganassi.png",
-              "logoSvg": "/resource/Equipe_Indy_Chip Ganassi.svg",
-              "bandeiraSede": "/resource/Bandeira EUA.png",
-              "bandeiraMotor": "/resource/Bandeira Japao.png",
-              "logoMotor": "/resource/Motor_HondaPQ.png"
+              "logo": "/resource/Equipe Indy Chip Ganassi.svg",
+              "bandeiraSede": "/resource/Bandeira EUA.svg",
+              "bandeiraMotor": "/resource/Bandeira Japao.svg",
+              "logoMotor": "/resource/Logo Honda.svg"
             },
             "pilotosContratadosIDs": [
               "Alex Palou",
@@ -586,11 +572,10 @@
             "staffChassi": 1,
             "staffConfiabilidade": 1,
             "arquivos": {
-              "logo": "/resource/Equipe_Indy_Penske.png",
-              "logoSvg": "/resource/Equipe_Indy_Penske.svg",
-              "bandeiraSede": "/resource/Bandeira EUA.png",
-              "bandeiraMotor": "/resource/Bandeira Estados Unidos.png",
-              "logoMotor": "/resource/Motor_ChevroletPQ.png"
+              "logo": "/resource/Equipe Indy Penske.svg",
+              "bandeiraSede": "/resource/Bandeira EUA.svg",
+              "bandeiraMotor": "/resource/Bandeira Estados Unidos.svg",
+              "logoMotor": "/resource/Logo Chevrolet.svg"
             },
             "pilotosContratadosIDs": [
               "Josef Newgarden",
@@ -650,11 +635,10 @@
             "staffChassi": 1,
             "staffConfiabilidade": 1,
             "arquivos": {
-              "logo": "/resource/Equipe_Indy_Penske.png",
-              "logoSvg": "/resource/Equipe_Indy_Penske.svg",
-              "bandeiraSede": "/resource/Bandeira EUA.png",
-              "bandeiraMotor": "/resource/Bandeira Estados Unidos.png",
-              "logoMotor": "/resource/Motor_ChevroletPQ.png"
+              "logo": "/resource/Equipe Indy Penske.svg",
+              "bandeiraSede": "/resource/Bandeira EUA.svg",
+              "bandeiraMotor": "/resource/Bandeira Estados Unidos.svg",
+              "logoMotor": "/resource/Logo Chevrolet.svg"
             },
             "pilotosContratadosIDs": [
               "Josef Newgarden",
@@ -714,11 +698,10 @@
             "staffChassi": 1,
             "staffConfiabilidade": 1,
             "arquivos": {
-              "logo": "/resource/Equipe_Indy_Penske.png",
-              "logoSvg": "/resource/Equipe_Indy_Penske.svg",
-              "bandeiraSede": "/resource/Bandeira EUA.png",
-              "bandeiraMotor": "/resource/Bandeira Estados Unidos.png",
-              "logoMotor": "/resource/Motor_ChevroletPQ.png"
+              "logo": "/resource/Equipe Indy Penske.svg",
+              "bandeiraSede": "/resource/Bandeira EUA.svg",
+              "bandeiraMotor": "/resource/Bandeira Estados Unidos.svg",
+              "logoMotor": "/resource/Logo Chevrolet.svg"
             },
             "pilotosContratadosIDs": [
               "Josef Newgarden",
@@ -802,11 +785,10 @@
             "staffChassi": 1,
             "staffConfiabilidade": 1,
             "arquivos": {
-              "logo": "/resource/Equipe_Indy_Andretti.png",
-              "logoSvg": "/resource/Equipe_Indy_Andretti.svg",
-              "bandeiraSede": "/resource/Bandeira EUA.png",
-              "bandeiraMotor": "/resource/Bandeira Japao.png",
-              "logoMotor": "/resource/Motor_HondaPQ.png"
+              "logo": "/resource/Equipe Indy Andretti.svg",
+              "bandeiraSede": "/resource/Bandeira EUA.svg",
+              "bandeiraMotor": "/resource/Bandeira Japao.svg",
+              "logoMotor": "/resource/Logo Honda.svg"
             },
             "pilotosContratadosIDs": [
               "Colton Herta",
@@ -867,11 +849,10 @@
             "staffChassi": 1,
             "staffConfiabilidade": 1,
             "arquivos": {
-              "logo": "/resource/Equipe_Indy_Andretti.png",
-              "logoSvg": "/resource/Equipe_Indy_Andretti.svg",
-              "bandeiraSede": "/resource/Bandeira EUA.png",
-              "bandeiraMotor": "/resource/Bandeira Japao.png",
-              "logoMotor": "/resource/Motor_HondaPQ.png"
+              "logo": "/resource/Equipe Indy Andretti.svg",
+              "bandeiraSede": "/resource/Bandeira EUA.svg",
+              "bandeiraMotor": "/resource/Bandeira Japao.svg",
+              "logoMotor": "/resource/Logo Honda.svg"
             },
             "pilotosContratadosIDs": [
               "Colton Herta",
@@ -932,11 +913,10 @@
             "staffChassi": 1,
             "staffConfiabilidade": 1,
             "arquivos": {
-              "logo": "/resource/Equipe_Indy_Arrow McLaren.png",
-              "logoSvg": "/resource/Equipe_Indy_Arrow McLaren.svg",
-              "bandeiraSede": "/resource/Bandeira EUA.png",
-              "bandeiraMotor": "/resource/Bandeira Estados Unidos.png",
-              "logoMotor": "/resource/Motor_ChevroletPQ.png"
+              "logo": "/resource/Equipe Indy Arrow McLaren.svg",
+              "bandeiraSede": "/resource/Bandeira EUA.svg",
+              "bandeiraMotor": "/resource/Bandeira Estados Unidos.svg",
+              "logoMotor": "/resource/Logo Chevrolet.svg"
             },
             "pilotosContratadosIDs": [
               "Alexander Rossi",
@@ -996,11 +976,10 @@
             "staffChassi": 1,
             "staffConfiabilidade": 1,
             "arquivos": {
-              "logo": "/resource/Equipe_Indy_Andretti.png",
-              "logoSvg": "/resource/Equipe_Indy_Andretti.svg",
-              "bandeiraSede": "/resource/Bandeira EUA.png",
-              "bandeiraMotor": "/resource/Bandeira Japao.png",
-              "logoMotor": "/resource/Motor_HondaPQ.png"
+              "logo": "/resource/Equipe Indy Andretti.svg",
+              "bandeiraSede": "/resource/Bandeira EUA.svg",
+              "bandeiraMotor": "/resource/Bandeira Japao.svg",
+              "logoMotor": "/resource/Logo Honda.svg"
             },
             "pilotosContratadosIDs": [
               "Colton Herta",
@@ -1061,11 +1040,10 @@
             "staffChassi": 1,
             "staffConfiabilidade": 1,
             "arquivos": {
-              "logo": "/resource/Equipe_Indy_Rahal.png",
-              "logoSvg": "/resource/Equipe_Indy_Rahal.svg",
-              "bandeiraSede": "/resource/Bandeira EUA.png",
-              "bandeiraMotor": "/resource/Bandeira Japao.png",
-              "logoMotor": "/resource/Motor_HondaPQ.png"
+              "logo": "/resource/Equipe Indy Rahal.svg",
+              "bandeiraSede": "/resource/Bandeira EUA.svg",
+              "bandeiraMotor": "/resource/Bandeira Japao.svg",
+              "logoMotor": "/resource/Logo Honda.svg"
             },
             "pilotosContratadosIDs": [
               "Graham Rahal",
@@ -1126,11 +1104,10 @@
             "staffChassi": 1,
             "staffConfiabilidade": 1,
             "arquivos": {
-              "logo": "/resource/Equipe_Indy_Meyer Shank.png",
-              "logoSvg": "/resource/Equipe_Indy_Meyer Shank.svg",
-              "bandeiraSede": "/resource/Bandeira EUA.png",
-              "bandeiraMotor": "/resource/Bandeira Japao.png",
-              "logoMotor": "/resource/Motor_HondaPQ.png"
+              "logo": "/resource/Equipe Indy Meyer Shank.svg",
+              "bandeiraSede": "/resource/Bandeira EUA.svg",
+              "bandeiraMotor": "/resource/Bandeira Japao.svg",
+              "logoMotor": "/resource/Logo Honda.svg"
             },
             "pilotosContratadosIDs": [
               "Felix Rosenqvist",
@@ -1190,11 +1167,10 @@
             "staffChassi": 1,
             "staffConfiabilidade": 1,
             "arquivos": {
-              "logo": "/resource/Equipe_Indy_Juncos.png",
-              "logoSvg": "/resource/Equipe_Indy_Juncos.svg",
-              "bandeiraSede": "/resource/Bandeira EUA.png",
-              "bandeiraMotor": "/resource/Bandeira Estados Unidos.png",
-              "logoMotor": "/resource/Motor_ChevroletPQ.png"
+              "logo": "/resource/Equipe Indy Juncos.svg",
+              "bandeiraSede": "/resource/Bandeira EUA.svg",
+              "bandeiraMotor": "/resource/Bandeira Estados Unidos.svg",
+              "logoMotor": "/resource/Logo Chevrolet.svg"
             },
             "pilotosContratadosIDs": [
               "Romain Grosjean",
@@ -1253,11 +1229,10 @@
             "staffChassi": 1,
             "staffConfiabilidade": 1,
             "arquivos": {
-              "logo": "/resource/Equipe_Indy_Rahal.png",
-              "logoSvg": "/resource/Equipe_Indy_Rahal.svg",
-              "bandeiraSede": "/resource/Bandeira EUA.png",
-              "bandeiraMotor": "/resource/Bandeira Japao.png",
-              "logoMotor": "/resource/Motor_HondaPQ.png"
+              "logo": "/resource/Equipe Indy Rahal.svg",
+              "bandeiraSede": "/resource/Bandeira EUA.svg",
+              "bandeiraMotor": "/resource/Bandeira Japao.svg",
+              "logoMotor": "/resource/Logo Honda.svg"
             },
             "pilotosContratadosIDs": [
               "Graham Rahal",
@@ -1318,11 +1293,10 @@
             "staffChassi": 1,
             "staffConfiabilidade": 1,
             "arquivos": {
-              "logo": "/resource/Equipe_Indy_EdCarpterRacing.png",
-              "logoSvg": "/resource/Equipe_Indy_EdCarpterRacing.svg",
-              "bandeiraSede": "/resource/Bandeira EUA.png",
-              "bandeiraMotor": "/resource/Bandeira Estados Unidos.png",
-              "logoMotor": "/resource/Motor_ChevroletPQ.png"
+              "logo": "/resource/Equipe Indy EdCarpterRacing.svg",
+              "bandeiraSede": "/resource/Bandeira EUA.svg",
+              "bandeiraMotor": "/resource/Bandeira Estados Unidos.svg",
+              "logoMotor": "/resource/Logo Chevrolet.svg"
             },
             "pilotosContratadosIDs": [
               "Rinus VeeKay",
@@ -1381,11 +1355,10 @@
             "staffChassi": 1,
             "staffConfiabilidade": 1,
             "arquivos": {
-              "logo": "/resource/Equipe_Indy_AJ Foyt.png",
-              "logoSvg": "/resource/Equipe_Indy_AJ Foyt.svg",
-              "bandeiraSede": "/resource/Bandeira EUA.png",
-              "bandeiraMotor": "/resource/Bandeira Estados Unidos.png",
-              "logoMotor": "/resource/Motor_ChevroletPQ.png"
+              "logo": "/resource/Equipe Indy AJ Foyt.svg",
+              "bandeiraSede": "/resource/Bandeira EUA.svg",
+              "bandeiraMotor": "/resource/Bandeira Estados Unidos.svg",
+              "logoMotor": "/resource/Logo Chevrolet.svg"
             },
             "pilotosContratadosIDs": [
               "Santino Ferrucci",
@@ -1444,11 +1417,10 @@
             "staffChassi": 1,
             "staffConfiabilidade": 1,
             "arquivos": {
-              "logo": "/resource/Equipe_Indy_Arrow McLaren.png",
-              "logoSvg": "/resource/Equipe_Indy_Arrow McLaren.svg",
-              "bandeiraSede": "/resource/Bandeira EUA.png",
-              "bandeiraMotor": "/resource/Bandeira Estados Unidos.png",
-              "logoMotor": "/resource/Motor_ChevroletPQ.png"
+              "logo": "/resource/Equipe Indy Arrow McLaren.svg",
+              "bandeiraSede": "/resource/Bandeira EUA.svg",
+              "bandeiraMotor": "/resource/Bandeira Estados Unidos.svg",
+              "logoMotor": "/resource/Logo Chevrolet.svg"
             },
             "pilotosContratadosIDs": [
               "Alexander Rossi",
@@ -1508,11 +1480,10 @@
             "staffChassi": 1,
             "staffConfiabilidade": 1,
             "arquivos": {
-              "logo": "/resource/Equipe_Indy_Chip Ganassi.png",
-              "logoSvg": "/resource/Equipe_Indy_Chip Ganassi.svg",
-              "bandeiraSede": "/resource/Bandeira EUA.png",
-              "bandeiraMotor": "/resource/Bandeira Japao.png",
-              "logoMotor": "/resource/Motor_HondaPQ.png"
+              "logo": "/resource/Equipe Indy Chip Ganassi.svg",
+              "bandeiraSede": "/resource/Bandeira EUA.svg",
+              "bandeiraMotor": "/resource/Bandeira Japao.svg",
+              "logoMotor": "/resource/Logo Honda.svg"
             },
             "pilotosContratadosIDs": [
               "Alex Palou",
@@ -1574,11 +1545,10 @@
             "staffChassi": 1,
             "staffConfiabilidade": 1,
             "arquivos": {
-              "logo": "/resource/Equipe_Indy_Chip Ganassi.png",
-              "logoSvg": "/resource/Equipe_Indy_Chip Ganassi.svg",
-              "bandeiraSede": "/resource/Bandeira EUA.png",
-              "bandeiraMotor": "/resource/Bandeira Japao.png",
-              "logoMotor": "/resource/Motor_HondaPQ.png"
+              "logo": "/resource/Equipe Indy Chip Ganassi.svg",
+              "bandeiraSede": "/resource/Bandeira EUA.svg",
+              "bandeiraMotor": "/resource/Bandeira Japao.svg",
+              "logoMotor": "/resource/Logo Honda.svg"
             },
             "pilotosContratadosIDs": [
               "Alex Palou",
@@ -1640,11 +1610,10 @@
             "staffChassi": 1,
             "staffConfiabilidade": 1,
             "arquivos": {
-              "logo": "/resource/Equipe_Indy_Juncos.png",
-              "logoSvg": "/resource/Equipe_Indy_Juncos.svg",
-              "bandeiraSede": "/resource/Bandeira EUA.png",
-              "bandeiraMotor": "/resource/Bandeira Estados Unidos.png",
-              "logoMotor": "/resource/Motor_ChevroletPQ.png"
+              "logo": "/resource/Equipe Indy Juncos.svg",
+              "bandeiraSede": "/resource/Bandeira EUA.svg",
+              "bandeiraMotor": "/resource/Bandeira Estados Unidos.svg",
+              "logoMotor": "/resource/Logo Chevrolet.svg"
             },
             "pilotosContratadosIDs": [
               "Romain Grosjean",
@@ -1703,11 +1672,10 @@
             "staffChassi": 1,
             "staffConfiabilidade": 1,
             "arquivos": {
-              "logo": "/resource/Equipe_Indy_Meyer Shank.png",
-              "logoSvg": "/resource/Equipe_Indy_Meyer Shank.svg",
-              "bandeiraSede": "/resource/Bandeira EUA.png",
-              "bandeiraMotor": "/resource/Bandeira Japao.png",
-              "logoMotor": "/resource/Motor_HondaPQ.png"
+              "logo": "/resource/Equipe Indy Meyer Shank.svg",
+              "bandeiraSede": "/resource/Bandeira EUA.svg",
+              "bandeiraMotor": "/resource/Bandeira Japao.svg",
+              "logoMotor": "/resource/Logo Honda.svg"
             },
             "pilotosContratadosIDs": [
               "Felix Rosenqvist",
@@ -1767,11 +1735,10 @@
             "staffChassi": 1,
             "staffConfiabilidade": 1,
             "arquivos": {
-              "logo": "/resource/Equipe_Indy_Rahal.png",
-              "logoSvg": "/resource/Equipe_Indy_Rahal.svg",
-              "bandeiraSede": "/resource/Bandeira EUA.png",
-              "bandeiraMotor": "/resource/Bandeira Japao.png",
-              "logoMotor": "/resource/Motor_HondaPQ.png"
+              "logo": "/resource/Equipe Indy Rahal.svg",
+              "bandeiraSede": "/resource/Bandeira EUA.svg",
+              "bandeiraMotor": "/resource/Bandeira Japao.svg",
+              "logoMotor": "/resource/Logo Honda.svg"
             },
             "pilotosContratadosIDs": [
               "Graham Rahal",
@@ -1832,11 +1799,10 @@
             "staffChassi": 1,
             "staffConfiabilidade": 1,
             "arquivos": {
-              "logo": "/resource/Equipe_Indy_Meyer Shank.png",
-              "logoSvg": "/resource/Equipe_Indy_Meyer Shank.svg",
-              "bandeiraSede": "/resource/Bandeira EUA.png",
-              "bandeiraMotor": "/resource/Bandeira Japao.png",
-              "logoMotor": "/resource/Motor_HondaPQ.png"
+              "logo": "/resource/Equipe Indy Meyer Shank.svg",
+              "bandeiraSede": "/resource/Bandeira EUA.svg",
+              "bandeiraMotor": "/resource/Bandeira Japao.svg",
+              "logoMotor": "/resource/Logo Honda.svg"
             },
             "pilotosContratadosIDs": [
               "Felix Rosenqvist",
@@ -1896,11 +1862,10 @@
             "staffChassi": 1,
             "staffConfiabilidade": 1,
             "arquivos": {
-              "logo": "/resource/Equipe_Indy_EdCarpterRacing.png",
-              "logoSvg": "/resource/Equipe_Indy_EdCarpterRacing.svg",
-              "bandeiraSede": "/resource/Bandeira EUA.png",
-              "bandeiraMotor": "/resource/Bandeira Estados Unidos.png",
-              "logoMotor": "/resource/Motor_ChevroletPQ.png"
+              "logo": "/resource/Equipe Indy EdCarpterRacing.svg",
+              "bandeiraSede": "/resource/Bandeira EUA.svg",
+              "bandeiraMotor": "/resource/Bandeira Estados Unidos.svg",
+              "logoMotor": "/resource/Logo Chevrolet.svg"
             },
             "pilotosContratadosIDs": [
               "Rinus VeeKay",
@@ -1959,11 +1924,10 @@
             "staffChassi": 1,
             "staffConfiabilidade": 1,
             "arquivos": {
-              "logo": "/resource/Equipe_Indy_Chip Ganassi.png",
-              "logoSvg": "/resource/Equipe_Indy_Chip Ganassi.svg",
-              "bandeiraSede": "/resource/Bandeira EUA.png",
-              "bandeiraMotor": "/resource/Bandeira Japao.png",
-              "logoMotor": "/resource/Motor_HondaPQ.png"
+              "logo": "/resource/Equipe Indy Chip Ganassi.svg",
+              "bandeiraSede": "/resource/Bandeira EUA.svg",
+              "bandeiraMotor": "/resource/Bandeira Japao.svg",
+              "logoMotor": "/resource/Logo Honda.svg"
             },
             "pilotosContratadosIDs": [
               "Alex Palou",
@@ -2025,11 +1989,10 @@
             "staffChassi": 1,
             "staffConfiabilidade": 1,
             "arquivos": {
-              "logo": "/resource/Equipe_Indy_AJ Foyt.png",
-              "logoSvg": "/resource/Equipe_Indy_AJ Foyt.svg",
-              "bandeiraSede": "/resource/Bandeira EUA.png",
-              "bandeiraMotor": "/resource/Bandeira Estados Unidos.png",
-              "logoMotor": "/resource/Motor_ChevroletPQ.png"
+              "logo": "/resource/Equipe Indy AJ Foyt.svg",
+              "bandeiraSede": "/resource/Bandeira EUA.svg",
+              "bandeiraMotor": "/resource/Bandeira Estados Unidos.svg",
+              "logoMotor": "/resource/Logo Chevrolet.svg"
             },
             "pilotosContratadosIDs": [
               "Santino Ferrucci",
@@ -2088,11 +2051,10 @@
             "staffChassi": 1,
             "staffConfiabilidade": 1,
             "arquivos": {
-              "logo": "/resource/Equipe_Indy_Dale Coyne.png",
-              "logoSvg": "/resource/Equipe_Indy_Dale Coyne.svg",
-              "bandeiraSede": "/resource/Bandeira EUA.png",
-              "bandeiraMotor": "/resource/Bandeira Japao.png",
-              "logoMotor": "/resource/Motor_HondaPQ.png"
+              "logo": "/resource/Equipe Indy Dale Coyne.svg",
+              "bandeiraSede": "/resource/Bandeira EUA.svg",
+              "bandeiraMotor": "/resource/Bandeira Japao.svg",
+              "logoMotor": "/resource/Logo Honda.svg"
             },
             "pilotosContratadosIDs": [
               "Jack Harvey",
@@ -2151,11 +2113,10 @@
             "staffChassi": 1,
             "staffConfiabilidade": 1,
             "arquivos": {
-              "logo": "/resource/Equipe_Indy_Dale Coyne.png",
-              "logoSvg": "/resource/Equipe_Indy_Dale Coyne.svg",
-              "bandeiraSede": "/resource/Bandeira EUA.png",
-              "bandeiraMotor": "/resource/Bandeira Japao.png",
-              "logoMotor": "/resource/Motor_HondaPQ.png"
+              "logo": "/resource/Equipe Indy Dale Coyne.svg",
+              "bandeiraSede": "/resource/Bandeira EUA.svg",
+              "bandeiraMotor": "/resource/Bandeira Japao.svg",
+              "logoMotor": "/resource/Logo Honda.svg"
             },
             "pilotosContratadosIDs": [
               "Jack Harvey",
@@ -2214,11 +2175,10 @@
             "staffChassi": 1,
             "staffConfiabilidade": 1,
             "arquivos": {
-              "logo": "/resource/Equipe_Indy_Dreyer.png",
-              "logoSvg": "/resource/Equipe_Indy_Dreyer.svg",
-              "bandeiraSede": "/resource/Bandeira EUA.png",
-              "bandeiraMotor": "/resource/Bandeira Estados Unidos.png",
-              "logoMotor": "/resource/Motor_ChevroletPQ.png"
+              "logo": "/resource/Equipe Indy Dreyer.svg",
+              "bandeiraSede": "/resource/Bandeira EUA.svg",
+              "bandeiraMotor": "/resource/Bandeira Estados Unidos.svg",
+              "logoMotor": "/resource/Logo Chevrolet.svg"
             },
             "pilotosContratadosIDs": [
               "Ryan Hunter-Reay",
@@ -2277,11 +2237,10 @@
             "staffChassi": 1,
             "staffConfiabilidade": 1,
             "arquivos": {
-              "logo": "/resource/Equipe_Indy_Dreyer.png",
-              "logoSvg": "/resource/Equipe_Indy_Dreyer.svg",
-              "bandeiraSede": "/resource/Bandeira EUA.png",
-              "bandeiraMotor": "/resource/Bandeira Estados Unidos.png",
-              "logoMotor": "/resource/Motor_ChevroletPQ.png"
+              "logo": "/resource/Equipe Indy Dreyer.svg",
+              "bandeiraSede": "/resource/Bandeira EUA.svg",
+              "bandeiraMotor": "/resource/Bandeira Estados Unidos.svg",
+              "logoMotor": "/resource/Logo Chevrolet.svg"
             },
             "pilotosContratadosIDs": [
               "Ryan Hunter-Reay",
@@ -2340,11 +2299,10 @@
             "staffChassi": 1,
             "staffConfiabilidade": 1,
             "arquivos": {
-              "logo": "/resource/Equipe_Indy_Rahal.png",
-              "logoSvg": "/resource/Equipe_Indy_Rahal.svg",
-              "bandeiraSede": "/resource/Bandeira EUA.png",
-              "bandeiraMotor": "/resource/Bandeira Japao.png",
-              "logoMotor": "/resource/Motor_HondaPQ.png"
+              "logo": "/resource/Equipe Indy Rahal.svg",
+              "bandeiraSede": "/resource/Bandeira EUA.svg",
+              "bandeiraMotor": "/resource/Bandeira Japao.svg",
+              "logoMotor": "/resource/Logo Honda.svg"
             },
             "pilotosContratadosIDs": [
               "Graham Rahal",
@@ -2405,11 +2363,10 @@
             "staffChassi": 1,
             "staffConfiabilidade": 1,
             "arquivos": {
-              "logo": "/resource/Equipe_Indy_Andretti.png",
-              "logoSvg": "/resource/Equipe_Indy_Andretti.svg",
-              "bandeiraSede": "/resource/Bandeira EUA.png",
-              "bandeiraMotor": "/resource/Bandeira Japao.png",
-              "logoMotor": "/resource/Motor_HondaPQ.png"
+              "logo": "/resource/Equipe Indy Andretti.svg",
+              "bandeiraSede": "/resource/Bandeira EUA.svg",
+              "bandeiraMotor": "/resource/Bandeira Japao.svg",
+              "logoMotor": "/resource/Logo Honda.svg"
             },
             "pilotosContratadosIDs": [
               "Colton Herta",
@@ -2470,11 +2427,10 @@
             "staffChassi": 1,
             "staffConfiabilidade": 1,
             "arquivos": {
-              "logo": "/resource/Equipe_Indy_Arrow McLaren.png",
-              "logoSvg": "/resource/Equipe_Indy_Arrow McLaren.svg",
-              "bandeiraSede": "/resource/Bandeira EUA.png",
-              "bandeiraMotor": "/resource/Bandeira Estados Unidos.png",
-              "logoMotor": "/resource/Motor_ChevroletPQ.png"
+              "logo": "/resource/Equipe Indy Arrow McLaren.svg",
+              "bandeiraSede": "/resource/Bandeira EUA.svg",
+              "bandeiraMotor": "/resource/Bandeira Estados Unidos.svg",
+              "logoMotor": "/resource/Logo Chevrolet.svg"
             },
             "pilotosContratadosIDs": [
               "Alexander Rossi",
@@ -2534,11 +2490,10 @@
             "staffChassi": 1,
             "staffConfiabilidade": 1,
             "arquivos": {
-              "logo": "/resource/Equipe_Indy_Abel.png",
-              "logoSvg": "/resource/Equipe_Indy_Abel.svg",
-              "bandeiraSede": "/resource/Bandeira EUA.png",
-              "bandeiraMotor": "/resource/Bandeira Estados Unidos.png",
-              "logoMotor": "/resource/Motor_ChevroletPQ.png"
+              "logo": "/resource/Equipe Indy Abel.svg",
+              "bandeiraSede": "/resource/Bandeira EUA.svg",
+              "bandeiraMotor": "/resource/Bandeira Estados Unidos.svg",
+              "logoMotor": "/resource/Logo Chevrolet.svg"
             },
             "pilotosContratadosIDs": [
               "Richard Chad \u0027RC\u0027 Enerson"
@@ -2568,10 +2523,8 @@
         "chanceSafetyCar": 70.0,
         "tempoPerdidoPitLane": 22.0,
         "arquivos": {
-          "traçado": "/resource/CircuitoStPetersburg.png",
-          "traçadoSvg": "/resource/CircuitoStPetersburg.svg",
-          "bandeira": "/resource/Bandeira Estados Unidos.png",
-          "bandeiraSvg": "/resource/Bandeira Estados Unidos.svg"
+          "traçado": "/resource/Circuito St Petersburg.svg",
+          "bandeira": "/resource/Bandeira Estados Unidos.svg"
         }
       },
       {
@@ -2590,10 +2543,8 @@
         "chanceSafetyCar": 65.0,
         "tempoPerdidoPitLane": 20.0,
         "arquivos": {
-          "traçado": "/resource/CircuitoLongBeach.png",
-          "traçadoSvg": "/resource/CircuitoLongBeach.svg",
-          "bandeira": "/resource/Bandeira Estados Unidos.png",
-          "bandeiraSvg": "/resource/Bandeira Estados Unidos.svg"
+          "traçado": "/resource/Circuito Long Beach.svg",
+          "bandeira": "/resource/Bandeira Estados Unidos.svg"
         }
       },
       {
@@ -2612,10 +2563,8 @@
         "chanceSafetyCar": 40.0,
         "tempoPerdidoPitLane": 23.0,
         "arquivos": {
-          "traçado": "/resource/CircuitoBarber.png",
-          "traçadoSvg": "/resource/CircuitoBarber.svg",
-          "bandeira": "/resource/Bandeira Estados Unidos.png",
-          "bandeiraSvg": "/resource/Bandeira Estados Unidos.svg"
+          "traçado": "/resource/Circuito Barber.svg",
+          "bandeira": "/resource/Bandeira Estados Unidos.svg"
         }
       },
       {
@@ -2634,10 +2583,8 @@
         "chanceSafetyCar": 30.0,
         "tempoPerdidoPitLane": 24.0,
         "arquivos": {
-          "traçado": "/resource/CircuitoIndianapolisMistoIndy.png",
-          "traçadoSvg": "/resource/CircuitoIndianapolisMistoIndy.svg",
-          "bandeira": "/resource/Bandeira Estados Unidos.png",
-          "bandeiraSvg": "/resource/Bandeira Estados Unidos.svg"
+          "traçado": "/resource/Circuito Indianapolis Misto Indy.svg",
+          "bandeira": "/resource/Bandeira Estados Unidos.svg"
         }
       },
       {
@@ -2656,10 +2603,8 @@
         "chanceSafetyCar": 60.0,
         "tempoPerdidoPitLane": 25.0,
         "arquivos": {
-          "traçado": "/resource/CircuitoIndy500.png",
-          "traçadoSvg": "/resource/CircuitoIndy500.svg",
-          "bandeira": "/resource/Bandeira Estados Unidos.png",
-          "bandeiraSvg": "/resource/Bandeira Estados Unidos.svg"
+          "traçado": "/resource/Circuito Indy500.svg",
+          "bandeira": "/resource/Bandeira Estados Unidos.svg"
         }
       },
       {
@@ -2678,10 +2623,8 @@
         "chanceSafetyCar": 85.0,
         "tempoPerdidoPitLane": 21.0,
         "arquivos": {
-          "traçado": "/resource/CircuitoDetroitIndy.png",
-          "traçadoSvg": "/resource/CircuitoDetroitIndy.svg",
-          "bandeira": "/resource/Bandeira Estados Unidos.png",
-          "bandeiraSvg": "/resource/Bandeira Estados Unidos.svg"
+          "traçado": "/resource/Circuito Detroit Indy.svg",
+          "bandeira": "/resource/Bandeira Estados Unidos.svg"
         }
       },
       {
@@ -2700,10 +2643,8 @@
         "chanceSafetyCar": 45.0,
         "tempoPerdidoPitLane": 26.0,
         "arquivos": {
-          "traçado": "/resource/CircuitoRoadAmerica.png",
-          "traçadoSvg": "/resource/CircuitoRoadAmerica.svg",
-          "bandeira": "/resource/Bandeira Estados Unidos.png",
-          "bandeiraSvg": "/resource/Bandeira Estados Unidos.svg"
+          "traçado": "/resource/Circuito Road America.svg",
+          "bandeira": "/resource/Bandeira Estados Unidos.svg"
         }
       },
       {
@@ -2722,10 +2663,8 @@
         "chanceSafetyCar": 50.0,
         "tempoPerdidoPitLane": 21.0,
         "arquivos": {
-          "traçado": "/resource/CircuitoLagunaSeca.png",
-          "traçadoSvg": "/resource/CircuitoLagunaSeca.svg",
-          "bandeira": "/resource/Bandeira Estados Unidos.png",
-          "bandeiraSvg": "/resource/Bandeira Estados Unidos.svg"
+          "traçado": "/resource/Circuito Laguna Seca.svg",
+          "bandeira": "/resource/Bandeira Estados Unidos.svg"
         }
       },
       {
@@ -2744,10 +2683,8 @@
         "chanceSafetyCar": 35.0,
         "tempoPerdidoPitLane": 22.0,
         "arquivos": {
-          "traçado": "/resource/CircuitoMidOhio.png",
-          "traçadoSvg": "/resource/CircuitoMidOhio.svg",
-          "bandeira": "/resource/Bandeira Estados Unidos.png",
-          "bandeiraSvg": "/resource/Bandeira Estados Unidos.svg"
+          "traçado": "/resource/Circuito Mid Ohio.svg",
+          "bandeira": "/resource/Bandeira Estados Unidos.svg"
         }
       },
       {
@@ -2766,10 +2703,8 @@
         "chanceSafetyCar": 55.0,
         "tempoPerdidoPitLane": 18.0,
         "arquivos": {
-          "traçado": "/resource/CircuitoIowa.png",
-          "traçadoSvg": "/resource/CircuitoIowa.svg",
-          "bandeira": "/resource/Bandeira Estados Unidos.png",
-          "bandeiraSvg": "/resource/Bandeira Estados Unidos.svg"
+          "traçado": "/resource/Circuito Iowa.svg",
+          "bandeira": "/resource/Bandeira Estados Unidos.svg"
         }
       },
       {
@@ -2788,10 +2723,8 @@
         "chanceSafetyCar": 55.0,
         "tempoPerdidoPitLane": 18.0,
         "arquivos": {
-          "traçado": "/resource/CircuitoIowa.png",
-          "traçadoSvg": "/resource/CircuitoIowa.svg",
-          "bandeira": "/resource/Bandeira Estados Unidos.png",
-          "bandeiraSvg": "/resource/Bandeira Estados Unidos.svg"
+          "traçado": "/resource/Circuito Iowa.svg",
+          "bandeira": "/resource/Bandeira Estados Unidos.svg"
         }
       },
       {
@@ -2810,10 +2743,8 @@
         "chanceSafetyCar": 75.0,
         "tempoPerdidoPitLane": 21.0,
         "arquivos": {
-          "traçado": "/resource/CircuitoToronto.png",
-          "traçadoSvg": "/resource/CircuitoToronto.svg",
-          "bandeira": "/resource/Bandeira Canada.png",
-          "bandeiraSvg": "/resource/Bandeira Canada.svg"
+          "traçado": "/resource/Circuito Toronto.svg",
+          "bandeira": "/resource/Bandeira Canada.svg"
         }
       },
       {
@@ -2832,10 +2763,8 @@
         "chanceSafetyCar": 50.0,
         "tempoPerdidoPitLane": 20.0,
         "arquivos": {
-          "traçado": "/resource/CircuitoGetaway.png",
-          "traçadoSvg": "/resource/CircuitoGetaway.svg",
-          "bandeira": "/resource/Bandeira Estados Unidos.png",
-          "bandeiraSvg": "/resource/Bandeira Estados Unidos.svg"
+          "traçado": "/resource/Circuito Getaway.svg",
+          "bandeira": "/resource/Bandeira Estados Unidos.svg"
         }
       },
       {
@@ -2854,10 +2783,8 @@
         "chanceSafetyCar": 40.0,
         "tempoPerdidoPitLane": 22.0,
         "arquivos": {
-          "traçado": "/resource/CircuitoPorland.png",
-          "traçadoSvg": "/resource/CircuitoPorland.svg",
-          "bandeira": "/resource/Bandeira Estados Unidos.png",
-          "bandeiraSvg": "/resource/Bandeira Estados Unidos.svg"
+          "traçado": "/resource/Circuito Porland.svg",
+          "bandeira": "/resource/Bandeira Estados Unidos.svg"
         }
       },
       {
@@ -2876,10 +2803,8 @@
         "chanceSafetyCar": 45.0,
         "tempoPerdidoPitLane": 19.0,
         "arquivos": {
-          "traçado": "/resource/CircuitoMilwaukee.png",
-          "traçadoSvg": "/resource/CircuitoMilwaukee.svg",
-          "bandeira": "/resource/Bandeira Estados Unidos.png",
-          "bandeiraSvg": "/resource/Bandeira Estados Unidos.svg"
+          "traçado": "/resource/Circuito Milwaukee.svg",
+          "bandeira": "/resource/Bandeira Estados Unidos.svg"
         }
       },
       {
@@ -2898,10 +2823,8 @@
         "chanceSafetyCar": 45.0,
         "tempoPerdidoPitLane": 19.0,
         "arquivos": {
-          "traçado": "/resource/CircuitoMilwaukee.png",
-          "traçadoSvg": "/resource/CircuitoMilwaukee.svg",
-          "bandeira": "/resource/Bandeira Estados Unidos.png",
-          "bandeiraSvg": "/resource/Bandeira Estados Unidos.svg"
+          "traçado": "/resource/Circuito Milwaukee.svg",
+          "bandeira": "/resource/Bandeira Estados Unidos.svg"
         }
       },
       {
@@ -2920,10 +2843,8 @@
         "chanceSafetyCar": 60.0,
         "tempoPerdidoPitLane": 20.0,
         "arquivos": {
-          "traçado": "/resource/CircuitoNashville.png",
-          "traçadoSvg": "/resource/CircuitoNashville.svg",
-          "bandeira": "/resource/Bandeira Estados Unidos.png",
-          "bandeiraSvg": "/resource/Bandeira Estados Unidos.svg"
+          "traçado": "/resource/Circuito Nashville.svg",
+          "bandeira": "/resource/Bandeira Estados Unidos.png"
         }
       }
     ],
@@ -2952,11 +2873,10 @@
     "staffChassi": 1,
     "staffConfiabilidade": 1,
     "arquivos": {
-      "logo": "/resource/Equipe_Indy_Penske.png",
-      "logoSvg": "/resource/Equipe_Indy_Penske.svg",
-      "bandeiraSede": "/resource/Bandeira EUA.png",
-      "bandeiraMotor": "/resource/Bandeira Estados Unidos.png",
-      "logoMotor": "/resource/Motor_ChevroletPQ.png"
+      "logo": "/resource/Equipe Indy Penske.svg",
+      "bandeiraSede": "/resource/Bandeira EUA.svg",
+      "bandeiraMotor": "/resource/Bandeira Estados Unidos.svg",
+      "logoMotor": "/resource/Logo Chevrolet.svg"
     },
     "pilotosContratadosIDs": [
       "Josef Newgarden",

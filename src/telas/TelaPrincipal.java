@@ -66,37 +66,55 @@ public class TelaPrincipal extends JFrame {
     private JLabel LB_CarrosCat;
 
     // =========================================================================================
-    // CONFIGURAÇÃO DE COLUNAS (LARGURAS E ALINHAMENTOS)
+    // CONFIGURAÇÃO DE COLUNAS
     // =========================================================================================
     
-    // PILOTOS (10 colunas)
+    // PILOTOS
     private final int[]    W_PILOTOS = {30, 40, 30, 160, 150, 40, 40, 35, 35, 35}; 
     private final String[] H_PILOTOS = {"Pos", "País", "Nº", "Piloto", "Equipe", "Pts", "Dif", "Vit", "Pód", "Pol"};
     private final int[]    A_PILOTOS = {SwingConstants.CENTER, SwingConstants.CENTER, SwingConstants.CENTER, 
                                         SwingConstants.LEFT, SwingConstants.LEFT, 
                                         SwingConstants.CENTER, SwingConstants.CENTER, SwingConstants.CENTER, SwingConstants.CENTER, SwingConstants.CENTER};
     
-    // EQUIPES (7 colunas - SEM LOGO, NOMES COMPLETOS)
-    private final int[]    W_EQUIPES = {40, 230, 60, 70, 70, 60, 60}; // Ajustado para ~590px
+    // EQUIPES
+    private final int[]    W_EQUIPES = {40, 230, 60, 70, 70, 60, 60}; 
     private final String[] H_EQUIPES = {"Pos", "Equipe", "Pontos", "Diferença", "Vitórias", "Pódios", "Poles"};
-    // Importante: Cabeçalho alinhado igual ao conteúdo (Equipe=LEFT, Resto=CENTER)
     private final int[]    A_EQUIPES = {SwingConstants.CENTER, SwingConstants.LEFT, 
                                         SwingConstants.CENTER, SwingConstants.CENTER, SwingConstants.CENTER, SwingConstants.CENTER, SwingConstants.CENTER};
 
-    // RESULTADOS (8 colunas)
-    private final int[]    W_RESULTADOS = {30, 35, 40, 140, 120, 95, 40, 40}; 
-    private final String[] H_RESULTADOS = {"Pos", "+/-", "País", "Piloto", "Equipe", "Tempo", "M.V", "Pts"};
-    private final int[]    A_RESULTADOS = {SwingConstants.CENTER, SwingConstants.CENTER, SwingConstants.CENTER, 
+    // RESULTADOS
+    private final int[]    W_RESULTADOS = {30, 30, 35, 40, 150, 130, 105, 40, 40}; 
+    private final String[] H_RESULTADOS = {"Pos", "Grid", "+/-", "País", "Piloto", "Equipe", "Tempo", "M.V", "Pts"};
+    private final int[]    A_RESULTADOS = {SwingConstants.CENTER, SwingConstants.CENTER, SwingConstants.CENTER, SwingConstants.CENTER, 
                                            SwingConstants.LEFT, SwingConstants.LEFT, 
                                            SwingConstants.CENTER, SwingConstants.CENTER, SwingConstants.CENTER};
 
+    /**
+     * Launch for WindowBuilder (Testing)
+     */
+    public static void main(String[] args) {
+        EventQueue.invokeLater(() -> {
+            try {
+                TelaPrincipal frame = new TelaPrincipal(null);
+                frame.setVisible(true);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        });
+    }
+
     public TelaPrincipal(DadosDoJogo dados) {
         this.dadosDoJogo = dados;
-        this.equipeJogavel = dados.getEquipeDoJogador();
-        this.campeonato = dados.getCampeonato();
         
-        this.indiceEtapaVisual = this.campeonato.getNumeroEtapaAtual() - 1; 
-        if (this.indiceEtapaVisual < 0) this.indiceEtapaVisual = 0;
+        if (this.dadosDoJogo != null) {
+            this.equipeJogavel = this.dadosDoJogo.getEquipeDoJogador();
+            this.campeonato = this.dadosDoJogo.getCampeonato();
+            
+            if (this.campeonato != null) {
+                this.indiceEtapaVisual = this.campeonato.getNumeroEtapaAtual() - 1; 
+                if (this.indiceEtapaVisual < 0) this.indiceEtapaVisual = 0;
+            }
+        }
 
         setTitle("Grid Boss");
         configurarIconeJanela();
@@ -113,7 +131,10 @@ public class TelaPrincipal extends JFrame {
         contentPane.setLayout(null);
 
         initComponents();
-        atualizarDados();
+        
+        if (equipeJogavel != null) {
+            atualizarDados();
+        }
     }
     
     private void criarMenu() {
@@ -387,16 +408,50 @@ public class TelaPrincipal extends JFrame {
         tabbedPane.setBounds(10, 307, 620, 332);
         contentPane.add(tabbedPane);
         
+        // -------------------------------------------------------------------------
+        // CRIAÇÃO EXPLÍCITA DAS ABAS (PARA CORRIGIR ERRO NO WINDOW BUILDER)
+        // -------------------------------------------------------------------------
+        
         // --- 1. Aba Pilotos ---
-        JPanel pnlAbaPilotos = construirEstruturaAba(H_PILOTOS, W_PILOTOS, A_PILOTOS);
-        JScrollPane spP = (JScrollPane) pnlAbaPilotos.getComponent(0); 
-        pnlListaPilotosContainer = (JPanel) spP.getViewport().getView();
+        JPanel pnlAbaPilotos = new JPanel(new BorderLayout());
+        pnlAbaPilotos.setBackground(Color.WHITE);
+        
+        // Header
+        JPanel pnlHeaderPilotos = criarPainelHeader(H_PILOTOS, W_PILOTOS, A_PILOTOS);
+        pnlAbaPilotos.add(pnlHeaderPilotos, BorderLayout.NORTH);
+        
+        // Lista
+        JPanel pnlContainerPilotos = new JPanel();
+        pnlContainerPilotos.setLayout(new BoxLayout(pnlContainerPilotos, BoxLayout.Y_AXIS));
+        pnlContainerPilotos.setBackground(Color.WHITE);
+        
+        JScrollPane scrollPilotos = new JScrollPane(pnlContainerPilotos);
+        scrollPilotos.getVerticalScrollBar().setUnitIncrement(16);
+        scrollPilotos.setBorder(null);
+        pnlAbaPilotos.add(scrollPilotos, BorderLayout.CENTER);
+        
+        pnlListaPilotosContainer = pnlContainerPilotos; // Referência para uso posterior
         tabbedPane.addTab("Classificação Pilotos", new FlatSVGIcon("resource/Icone24pxPiloto.svg"), pnlAbaPilotos);
         
-        // --- 2. Aba Equipes (REFORMULADA: Sem Logo, Nomes Completos) ---
-        JPanel pnlAbaEquipes = construirEstruturaAba(H_EQUIPES, W_EQUIPES, A_EQUIPES);
-        JScrollPane spE = (JScrollPane) pnlAbaEquipes.getComponent(0);
-        pnlListaConstrutoresContainer = (JPanel) spE.getViewport().getView();
+        // --- 2. Aba Equipes ---
+        JPanel pnlAbaEquipes = new JPanel(new BorderLayout());
+        pnlAbaEquipes.setBackground(Color.WHITE);
+        
+        // Header
+        JPanel pnlHeaderEquipes = criarPainelHeader(H_EQUIPES, W_EQUIPES, A_EQUIPES);
+        pnlAbaEquipes.add(pnlHeaderEquipes, BorderLayout.NORTH);
+        
+        // Lista
+        JPanel pnlContainerEquipes = new JPanel();
+        pnlContainerEquipes.setLayout(new BoxLayout(pnlContainerEquipes, BoxLayout.Y_AXIS));
+        pnlContainerEquipes.setBackground(Color.WHITE);
+        
+        JScrollPane scrollEquipes = new JScrollPane(pnlContainerEquipes);
+        scrollEquipes.getVerticalScrollBar().setUnitIncrement(16);
+        scrollEquipes.setBorder(null);
+        pnlAbaEquipes.add(scrollEquipes, BorderLayout.CENTER);
+        
+        pnlListaConstrutoresContainer = pnlContainerEquipes;
         tabbedPane.addTab("Classificação Equipes", new FlatSVGIcon("resource/Icone24pxEquipe.svg"), pnlAbaEquipes);
         
         // --- 3. Aba Resultados ---
@@ -413,12 +468,25 @@ public class TelaPrincipal extends JFrame {
         pnlTopo.add(cbFiltroEtapaResultados);
         pnlAbaResultados.add(pnlTopo, BorderLayout.NORTH);
         
-        // Centro: Tabela Padronizada
-        JPanel pnlTabelaResultados = construirEstruturaAba(H_RESULTADOS, W_RESULTADOS, A_RESULTADOS);
-        JScrollPane spR = (JScrollPane) pnlTabelaResultados.getComponent(0);
-        pnlListaResultadosContainer = (JPanel) spR.getViewport().getView();
-        pnlAbaResultados.add(pnlTabelaResultados, BorderLayout.CENTER);
+        // Centro (Tabela)
+        JPanel pnlTabelaRes = new JPanel(new BorderLayout());
+        pnlTabelaRes.setBackground(Color.WHITE);
         
+        JPanel pnlHeaderRes = criarPainelHeader(H_RESULTADOS, W_RESULTADOS, A_RESULTADOS);
+        pnlTabelaRes.add(pnlHeaderRes, BorderLayout.NORTH);
+        
+        JPanel pnlContainerRes = new JPanel();
+        pnlContainerRes.setLayout(new BoxLayout(pnlContainerRes, BoxLayout.Y_AXIS));
+        pnlContainerRes.setBackground(Color.WHITE);
+        
+        JScrollPane scrollRes = new JScrollPane(pnlContainerRes);
+        scrollRes.getVerticalScrollBar().setUnitIncrement(16);
+        scrollRes.setBorder(null);
+        pnlTabelaRes.add(scrollRes, BorderLayout.CENTER);
+        
+        pnlAbaResultados.add(pnlTabelaRes, BorderLayout.CENTER);
+        
+        pnlListaResultadosContainer = pnlContainerRes;
         tabbedPane.addTab("Resultados", new FlatSVGIcon("resource/Icone24pxTrofeu.svg"), pnlAbaResultados);
 
         // === RODAPÉ ===
@@ -437,11 +505,8 @@ public class TelaPrincipal extends JFrame {
         contentPane.add(BT_IrParaCorrida);
     }
     
-    // --- HELPERS ESTRUTURAIS ---
-    private JPanel construirEstruturaAba(String[] titulos, int[] larguras, int[] aligns) {
-        JPanel pnlPrincipal = new JPanel(new BorderLayout());
-        pnlPrincipal.setBackground(Color.WHITE);
-        
+    // --- HELPER PARA CRIAR O HEADER (SEPARADO DO CONTAINER PARA AGRADAR O WINDOW BUILDER) ---
+    private JPanel criarPainelHeader(String[] titulos, int[] larguras, int[] aligns) {
         int larguraTotal = 0;
         for (int w : larguras) larguraTotal += w;
         
@@ -455,26 +520,13 @@ public class TelaPrincipal extends JFrame {
             JLabel lb = new JLabel(titulos[i]);
             lb.setBounds(xAtual, 0, larguras[i], 30);
             
-            // Garante alinhamento igual ao conteúdo
             int alinhamento = (i < aligns.length) ? aligns[i] : SwingConstants.CENTER;
             lb.setHorizontalAlignment(alinhamento);
-            
             lb.setFont(new Font("Segoe UI", Font.BOLD, 12));
             pnlHeader.add(lb);
             xAtual += larguras[i];
         }
-        
-        JPanel pnlContainer = new JPanel();
-        pnlContainer.setLayout(new BoxLayout(pnlContainer, BoxLayout.Y_AXIS));
-        pnlContainer.setBackground(Color.WHITE);
-        
-        JScrollPane scroll = new JScrollPane(pnlContainer);
-        scroll.getVerticalScrollBar().setUnitIncrement(16);
-        scroll.setBorder(null);
-        scroll.setColumnHeaderView(pnlHeader);
-        
-        pnlPrincipal.add(scroll, BorderLayout.CENTER);
-        return pnlPrincipal;
+        return pnlHeader;
     }
     
     // --- LINHA PADRÃO ---
@@ -486,7 +538,6 @@ public class TelaPrincipal extends JFrame {
         row.setPreferredSize(new Dimension(larguraTotal, 35));
         row.setMaximumSize(new Dimension(larguraTotal, 35)); 
         row.setMinimumSize(new Dimension(larguraTotal, 35));
-        
         row.setAlignmentX(Component.LEFT_ALIGNMENT);
         
         if (pos % 2 == 0) row.setBackground(new Color(245, 245, 245));
@@ -498,33 +549,21 @@ public class TelaPrincipal extends JFrame {
         adicionarLabel(row, dados[0], xAtual, larguras[0], aligns[0], bolds[0]);
         xAtual += larguras[0];
         
-        // 2. Bandeira (se pathBandeira não for nulo)
+        // 2. Bandeira (se houver)
         if (pathBandeira != null) {
             JLabel lblFlag = new JLabel();
             int slotW = larguras[1];
-            int iconW = 28; // Tamanho fixo menor
+            int iconW = 28; 
             int offset = (slotW - iconW) / 2; 
             lblFlag.setBounds(xAtual + offset, 7, iconW, 20); 
             carregarImagem(lblFlag, pathBandeira);
             row.add(lblFlag);
             xAtual += larguras[1];
-        } else {
-            // Se for nulo (caso Equipes que removemos o logo), não adiciona nada e não avança X
-            // Mas nosso array de larguras e dados na tabela Equipes já não tem o logo
-            // então esse bloco só roda para Pilotos que tem bandeira
-        }
+        } 
         
-        // 3. Demais Dados
+        // 3. Demais
         for (int i = 1; i < dados.length; i++) {
-            // Ajuste de índice: Se tiver bandeira, dados[1] vai para larguras[2].
-            // Se não tiver (Equipes), dados[1] vai para larguras[1] (Pos é 0).
-            
-            // Para simplificar: O método assume que dados[0] é Pos.
-            // Se pathBandeira != null, larguras tem [Pos, Flag, D1, D2...]
-            // Se pathBandeira == null, larguras tem [Pos, D1, D2...]
-            
             int offsetIdx = (pathBandeira != null) ? 1 : 0;
-            
             if (i + offsetIdx >= larguras.length) break;
             
             int larguraCol = larguras[i + offsetIdx];
@@ -546,7 +585,6 @@ public class TelaPrincipal extends JFrame {
         row.setPreferredSize(new Dimension(larguraTotal, 35));
         row.setMaximumSize(new Dimension(larguraTotal, 35)); 
         row.setMinimumSize(new Dimension(larguraTotal, 35));
-        
         row.setAlignmentX(Component.LEFT_ALIGNMENT);
         
         if (pos % 2 == 0) row.setBackground(new Color(245, 245, 245));
@@ -559,7 +597,11 @@ public class TelaPrincipal extends JFrame {
         adicionarLabel(row, String.valueOf(pos), x, W_RESULTADOS[i], SwingConstants.CENTER, true);
         x += W_RESULTADOS[i++];
         
-        // 2. Variação
+        // 2. Grid
+        adicionarLabel(row, String.valueOf(largada), x, W_RESULTADOS[i], SwingConstants.CENTER, false);
+        x += W_RESULTADOS[i++];
+        
+        // 3. Variação
         int diff = largada - pos; 
         JLabel lblVar = new JLabel();
         lblVar.setBounds(x, 0, W_RESULTADOS[i], 35);
@@ -578,23 +620,23 @@ public class TelaPrincipal extends JFrame {
         row.add(lblVar);
         x += W_RESULTADOS[i++];
         
-        // 3. Bandeira
+        // 4. Bandeira
         JLabel lblFlag = new JLabel();
-        int flagSlotW = W_RESULTADOS[i];
-        lblFlag.setBounds(x + (flagSlotW-28)/2, 7, 28, 20);
+        int flagW = W_RESULTADOS[i];
+        lblFlag.setBounds(x + (flagW-28)/2, 7, 28, 20);
         carregarImagem(lblFlag, pathBandeira);
         row.add(lblFlag);
         x += W_RESULTADOS[i++];
         
-        // 4. Piloto
+        // 5. Piloto
         adicionarLabel(row, nomePiloto, x, W_RESULTADOS[i], SwingConstants.LEFT, true);
         x += W_RESULTADOS[i++];
         
-        // 5. Equipe
+        // 6. Equipe
         adicionarLabel(row, nomeEquipe, x, W_RESULTADOS[i], SwingConstants.LEFT, false);
         x += W_RESULTADOS[i++];
         
-        // 6. Tempo
+        // 7. Tempo
         JLabel lblTempo = new JLabel(tempo);
         lblTempo.setBounds(x, 0, W_RESULTADOS[i], 35);
         lblTempo.setHorizontalAlignment(SwingConstants.CENTER);
@@ -604,7 +646,7 @@ public class TelaPrincipal extends JFrame {
         row.add(lblTempo);
         x += W_RESULTADOS[i++];
         
-        // 7. MV
+        // 8. MV
         JLabel lblMV = new JLabel(melhorVolta ? "★" : ""); 
         lblMV.setBounds(x, 0, W_RESULTADOS[i], 35);
         lblMV.setHorizontalAlignment(SwingConstants.CENTER);
@@ -613,7 +655,7 @@ public class TelaPrincipal extends JFrame {
         row.add(lblMV);
         x += W_RESULTADOS[i++];
         
-        // 8. Pts
+        // 9. Pts
         if (!pontos.equals("0")) pontos = "+" + pontos;
         adicionarLabel(row, pontos, x, W_RESULTADOS[i], SwingConstants.CENTER, true);
         
@@ -702,6 +744,7 @@ public class TelaPrincipal extends JFrame {
     private void atualizarListaResultados(int indiceEtapa) {
         pnlListaResultadosContainer.removeAll();
         
+        // --- GERADOR DE DADOS FICTÍCIOS PARA VISUALIZAÇÃO ---
         List<Equipe> equipes = dadosDoJogo.getTodasAsEquipes();
         List<Piloto> pilotos = new ArrayList<>();
         boolean isF1 = SessaoJogo.categoriaKey.toLowerCase().contains("f1");
@@ -860,7 +903,6 @@ public class TelaPrincipal extends JFrame {
             };
             boolean[] bolds = {true, true, true, false, false, false, false};
             
-            // Passa null para imagem pois Equipes não tem bandeira
             adicionarLinhaGrid(pnlListaConstrutoresContainer, posE, null, dadosLinha, W_EQUIPES, A_EQUIPES, bolds);
             posE++;
         }
@@ -989,14 +1031,12 @@ public class TelaPrincipal extends JFrame {
 
                 int margem = 2; 
                 
-                // --- AJUSTE DE MARGENS ---
                 if (lbl == LB_BandeiraMotor || lbl == LB_BandeiraSede || lbl == LB_BandeiraPista) {
                     margem = 8; 
-                } else if (lbl == LB_CategoriaEscolhida) {
+                } else if (lbl == LB_CategoriaEscolhida || lbl == LB_LogoEquipe) { 
                     margem = 20; 
                 } else if (labelW <= 40) { 
-                    // Bandeiras de tabela (pequenas) ganham margem extra para "respiro"
-                    margem = 6; // 3px de cada lado
+                    margem = 4;
                 }
 
                 finalW = Math.max(1, finalW - margem);

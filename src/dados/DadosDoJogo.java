@@ -33,7 +33,7 @@ public class DadosDoJogo {
     
     // --- CONTROLE DE ARQUIVO ---
     private transient String arquivoAtual = null; 
-
+    
     public DadosDoJogo(String categoriaKey, int ano) {
         this.categoriaKey = categoriaKey;
         this.anoAtual = ano;

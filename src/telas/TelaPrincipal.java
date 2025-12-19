@@ -233,7 +233,7 @@ public class TelaPrincipal extends JFrame {
         // === EQUIPE ===
         LB_LogoEquipe = new JLabel("");
         LB_LogoEquipe.setHorizontalAlignment(SwingConstants.CENTER);
-        LB_LogoEquipe.setBounds(10, 0, 200, 96);
+        LB_LogoEquipe.setBounds(10, 11, 200, 85);
         contentPane.add(LB_LogoEquipe);
 
         LB_LogoMotorPQ = new JLabel("");
@@ -408,29 +408,43 @@ public class TelaPrincipal extends JFrame {
         tabbedPane.setBounds(10, 307, 620, 332);
         contentPane.add(tabbedPane);
         
-        // -------------------------------------------------------------------------
+        // ==============================================================
         // CRIAÇÃO EXPLÍCITA DAS ABAS (PARA CORRIGIR ERRO NO WINDOW BUILDER)
-        // -------------------------------------------------------------------------
+        // ==============================================================
         
         // --- 1. Aba Pilotos ---
         JPanel pnlAbaPilotos = new JPanel(new BorderLayout());
         pnlAbaPilotos.setBackground(Color.WHITE);
         
         // Header
-        JPanel pnlHeaderPilotos = criarPainelHeader(H_PILOTOS, W_PILOTOS, A_PILOTOS);
+        JPanel pnlHeaderPilotos = new JPanel(null);
+        int wTotalP = 0; for(int w : W_PILOTOS) wTotalP += w;
+        pnlHeaderPilotos.setPreferredSize(new Dimension(wTotalP, 30));
+        pnlHeaderPilotos.setBackground(new Color(230, 230, 230)); 
+        pnlHeaderPilotos.setBorder(new MatteBorder(0, 0, 1, 0, Color.GRAY));
+        
+        int xP = 0;
+        for (int i = 0; i < H_PILOTOS.length; i++) {
+            JLabel lb = new JLabel(H_PILOTOS[i]);
+            lb.setBounds(xP, 0, W_PILOTOS[i], 30);
+            int align = (i < A_PILOTOS.length) ? A_PILOTOS[i] : SwingConstants.CENTER;
+            lb.setHorizontalAlignment(align);
+            lb.setFont(new Font("Segoe UI", Font.BOLD, 12));
+            pnlHeaderPilotos.add(lb);
+            xP += W_PILOTOS[i];
+        }
         pnlAbaPilotos.add(pnlHeaderPilotos, BorderLayout.NORTH);
         
         // Lista
         JPanel pnlContainerPilotos = new JPanel();
         pnlContainerPilotos.setLayout(new BoxLayout(pnlContainerPilotos, BoxLayout.Y_AXIS));
         pnlContainerPilotos.setBackground(Color.WHITE);
-        
         JScrollPane scrollPilotos = new JScrollPane(pnlContainerPilotos);
         scrollPilotos.getVerticalScrollBar().setUnitIncrement(16);
         scrollPilotos.setBorder(null);
         pnlAbaPilotos.add(scrollPilotos, BorderLayout.CENTER);
         
-        pnlListaPilotosContainer = pnlContainerPilotos; // Referência para uso posterior
+        pnlListaPilotosContainer = pnlContainerPilotos;
         tabbedPane.addTab("Classificação Pilotos", new FlatSVGIcon("resource/Icone24pxPiloto.svg"), pnlAbaPilotos);
         
         // --- 2. Aba Equipes ---
@@ -438,14 +452,28 @@ public class TelaPrincipal extends JFrame {
         pnlAbaEquipes.setBackground(Color.WHITE);
         
         // Header
-        JPanel pnlHeaderEquipes = criarPainelHeader(H_EQUIPES, W_EQUIPES, A_EQUIPES);
+        JPanel pnlHeaderEquipes = new JPanel(null);
+        int wTotalE = 0; for(int w : W_EQUIPES) wTotalE += w;
+        pnlHeaderEquipes.setPreferredSize(new Dimension(wTotalE, 30));
+        pnlHeaderEquipes.setBackground(new Color(230, 230, 230)); 
+        pnlHeaderEquipes.setBorder(new MatteBorder(0, 0, 1, 0, Color.GRAY));
+        
+        int xE = 0;
+        for (int i = 0; i < H_EQUIPES.length; i++) {
+            JLabel lb = new JLabel(H_EQUIPES[i]);
+            lb.setBounds(xE, 0, W_EQUIPES[i], 30);
+            int align = (i < A_EQUIPES.length) ? A_EQUIPES[i] : SwingConstants.CENTER;
+            lb.setHorizontalAlignment(align);
+            lb.setFont(new Font("Segoe UI", Font.BOLD, 12));
+            pnlHeaderEquipes.add(lb);
+            xE += W_EQUIPES[i];
+        }
         pnlAbaEquipes.add(pnlHeaderEquipes, BorderLayout.NORTH);
         
         // Lista
         JPanel pnlContainerEquipes = new JPanel();
         pnlContainerEquipes.setLayout(new BoxLayout(pnlContainerEquipes, BoxLayout.Y_AXIS));
         pnlContainerEquipes.setBackground(Color.WHITE);
-        
         JScrollPane scrollEquipes = new JScrollPane(pnlContainerEquipes);
         scrollEquipes.getVerticalScrollBar().setUnitIncrement(16);
         scrollEquipes.setBorder(null);
@@ -468,23 +496,38 @@ public class TelaPrincipal extends JFrame {
         pnlTopo.add(cbFiltroEtapaResultados);
         pnlAbaResultados.add(pnlTopo, BorderLayout.NORTH);
         
-        // Centro (Tabela)
-        JPanel pnlTabelaRes = new JPanel(new BorderLayout());
-        pnlTabelaRes.setBackground(Color.WHITE);
+        // Centro: Header + Tabela
+        JPanel pnlCentroResultados = new JPanel(new BorderLayout());
         
-        JPanel pnlHeaderRes = criarPainelHeader(H_RESULTADOS, W_RESULTADOS, A_RESULTADOS);
-        pnlTabelaRes.add(pnlHeaderRes, BorderLayout.NORTH);
+        // Header
+        JPanel pnlHeaderRes = new JPanel(null);
+        int wTotalR = 0; for(int w : W_RESULTADOS) wTotalR += w;
+        pnlHeaderRes.setPreferredSize(new Dimension(wTotalR, 30));
+        pnlHeaderRes.setBackground(new Color(230, 230, 230)); 
+        pnlHeaderRes.setBorder(new MatteBorder(0, 0, 1, 0, Color.GRAY));
         
+        int xR = 0;
+        for (int i = 0; i < H_RESULTADOS.length; i++) {
+            JLabel lb = new JLabel(H_RESULTADOS[i]);
+            lb.setBounds(xR, 0, W_RESULTADOS[i], 30);
+            int align = (i < A_RESULTADOS.length) ? A_RESULTADOS[i] : SwingConstants.CENTER;
+            lb.setHorizontalAlignment(align);
+            lb.setFont(new Font("Segoe UI", Font.BOLD, 12));
+            pnlHeaderRes.add(lb);
+            xR += W_RESULTADOS[i];
+        }
+        pnlCentroResultados.add(pnlHeaderRes, BorderLayout.NORTH);
+        
+        // Lista
         JPanel pnlContainerRes = new JPanel();
         pnlContainerRes.setLayout(new BoxLayout(pnlContainerRes, BoxLayout.Y_AXIS));
         pnlContainerRes.setBackground(Color.WHITE);
-        
         JScrollPane scrollRes = new JScrollPane(pnlContainerRes);
         scrollRes.getVerticalScrollBar().setUnitIncrement(16);
         scrollRes.setBorder(null);
-        pnlTabelaRes.add(scrollRes, BorderLayout.CENTER);
+        pnlCentroResultados.add(scrollRes, BorderLayout.CENTER);
         
-        pnlAbaResultados.add(pnlTabelaRes, BorderLayout.CENTER);
+        pnlAbaResultados.add(pnlCentroResultados, BorderLayout.CENTER);
         
         pnlListaResultadosContainer = pnlContainerRes;
         tabbedPane.addTab("Resultados", new FlatSVGIcon("resource/Icone24pxTrofeu.svg"), pnlAbaResultados);
@@ -503,30 +546,6 @@ public class TelaPrincipal extends JFrame {
         BT_IrParaCorrida.setBounds(643, 606, 566, 33);
         BT_IrParaCorrida.addActionListener(e -> irParaCorrida());
         contentPane.add(BT_IrParaCorrida);
-    }
-    
-    // --- HELPER PARA CRIAR O HEADER (SEPARADO DO CONTAINER PARA AGRADAR O WINDOW BUILDER) ---
-    private JPanel criarPainelHeader(String[] titulos, int[] larguras, int[] aligns) {
-        int larguraTotal = 0;
-        for (int w : larguras) larguraTotal += w;
-        
-        JPanel pnlHeader = new JPanel(null);
-        pnlHeader.setPreferredSize(new Dimension(larguraTotal, 30));
-        pnlHeader.setBackground(new Color(230, 230, 230)); 
-        pnlHeader.setBorder(new MatteBorder(0, 0, 1, 0, Color.GRAY));
-        
-        int xAtual = 0;
-        for (int i = 0; i < titulos.length; i++) {
-            JLabel lb = new JLabel(titulos[i]);
-            lb.setBounds(xAtual, 0, larguras[i], 30);
-            
-            int alinhamento = (i < aligns.length) ? aligns[i] : SwingConstants.CENTER;
-            lb.setHorizontalAlignment(alinhamento);
-            lb.setFont(new Font("Segoe UI", Font.BOLD, 12));
-            pnlHeader.add(lb);
-            xAtual += larguras[i];
-        }
-        return pnlHeader;
     }
     
     // --- LINHA PADRÃO ---
@@ -744,7 +763,6 @@ public class TelaPrincipal extends JFrame {
     private void atualizarListaResultados(int indiceEtapa) {
         pnlListaResultadosContainer.removeAll();
         
-        // --- GERADOR DE DADOS FICTÍCIOS PARA VISUALIZAÇÃO ---
         List<Equipe> equipes = dadosDoJogo.getTodasAsEquipes();
         List<Piloto> pilotos = new ArrayList<>();
         boolean isF1 = SessaoJogo.categoriaKey.toLowerCase().contains("f1");
@@ -995,10 +1013,12 @@ public class TelaPrincipal extends JFrame {
                 return;
             }
 
+            // Normaliza o caminho
             if (!path.startsWith("/")) path = "/" + path;
             if (!path.startsWith("/resource")) path = "/resource" + path;
             path = path.replace("//", "/");
 
+            // Força extensão .svg
             if (path.toLowerCase().endsWith(".png")) {
                 path = path.substring(0, path.length() - 4) + ".svg";
             }
@@ -1008,48 +1028,60 @@ public class TelaPrincipal extends JFrame {
 
             String svgPath = path.startsWith("/") ? path.substring(1) : path;
 
+            // Pega tamanho do componente (ou usa 0 se ainda não desenhado)
             int labelW = lbl.getWidth();
             int labelH = lbl.getHeight();
 
-            if (labelW > 0 && labelH > 0) {
-                FlatSVGIcon iconOriginal = new FlatSVGIcon(svgPath);
-                
-                if (iconOriginal.getIconWidth() <= 0) {
-                    lbl.setIcon(null);
-                    return;
-                }
-
-                float origW = iconOriginal.getIconWidth();
-                float origH = iconOriginal.getIconHeight();
-
-                float ratioW = (float) labelW / origW;
-                float ratioH = (float) labelH / origH;
-                float scale = Math.min(ratioW, ratioH);
-
-                int finalW = Math.round(origW * scale);
-                int finalH = Math.round(origH * scale);
-
-                int margem = 2; 
-                
-                if (lbl == LB_BandeiraMotor || lbl == LB_BandeiraSede || lbl == LB_BandeiraPista) {
-                    margem = 8; 
-                } else if (lbl == LB_CategoriaEscolhida || lbl == LB_LogoEquipe) { 
-                    margem = 20; 
-                } else if (labelW <= 40) { 
-                    margem = 4;
-                }
-
-                finalW = Math.max(1, finalW - margem);
-                finalH = Math.max(1, finalH - margem);
-
-                lbl.setIcon(new FlatSVGIcon(svgPath, finalW, finalH));
-                
-            } else {
-                lbl.setIcon(new FlatSVGIcon(svgPath));
+            // Proteção para Window Builder ou labels não renderizados
+            if (labelW == 0 || labelH == 0) {
+                // Define um tamanho padrão apenas para evitar erro visual no editor
+                labelW = 100;
+                labelH = 100;
             }
 
+            // Carrega o ícone original para pegar as dimensões reais do SVG
+            FlatSVGIcon iconOriginal = new FlatSVGIcon(svgPath);
+            
+            if (iconOriginal.getIconWidth() <= 0) {
+                lbl.setIcon(null);
+                return;
+            }
+
+            float origW = iconOriginal.getIconWidth();
+            float origH = iconOriginal.getIconHeight();
+
+            // --- CÁLCULO DA MARGEM (Respiro) ---
+            // Define a margem ANTES de calcular a escala para não distorcer
+            int margem = 2; // Padrão
+            
+            if (lbl == LB_BandeiraMotor || lbl == LB_BandeiraSede || lbl == LB_BandeiraPista) {
+                margem = 8; 
+            } else if (lbl == LB_CategoriaEscolhida || lbl == LB_LogoEquipe) { 
+                margem = 20; // 10px de cada lado (20px total)
+            } else if (labelW <= 40) { 
+                margem = 4; // Tabelas pequenas
+            }
+
+            // Calcula o espaço útil disponível
+            float spaceW = Math.max(1, labelW - margem);
+            float spaceH = Math.max(1, labelH - margem);
+
+            // Calcula a escala baseada no espaço útil (Scale to Fit)
+            float ratioW = spaceW / origW;
+            float ratioH = spaceH / origH;
+            float scale = Math.min(ratioW, ratioH);
+
+            // Aplica a escala para obter o tamanho final proporcional
+            int finalW = Math.round(origW * scale);
+            int finalH = Math.round(origH * scale);
+
+            // Define o ícone redimensionado
+            lbl.setIcon(new FlatSVGIcon(svgPath, finalW, finalH));
+
         } catch (Exception e) {
-            lbl.setIcon(null);
+            // Em caso de erro (arquivo não encontrado), limpa o ícone ou põe um padrão
+            lbl.setIcon(null); 
+            // e.printStackTrace(); // Opcional para debug
         }
     }
     

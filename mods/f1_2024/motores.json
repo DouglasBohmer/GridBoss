@@ -5,7 +5,7 @@
     "potencia": 9,
     "dirigibilidade": 8,
     "durabilidade": 8,
-    "preco": 15.0,
+    "preco": 18.0,
     "arquivos": {
       "logo": "/resource/Logo Honda.svg",
       "bandeira": "/resource/Bandeira Japao.svg"
@@ -17,7 +17,7 @@
     "potencia": 9,
     "dirigibilidade": 7,
     "durabilidade": 8,
-    "preco": 14.5,
+    "preco": 16.0,
     "arquivos": {
       "logo": "/resource/Logo Ferrari.svg",
       "bandeira": "/resource/Bandeira Italia.svg"
@@ -29,7 +29,7 @@
     "potencia": 8,
     "dirigibilidade": 9,
     "durabilidade": 9,
-    "preco": 16.0,
+    "preco": 17.5,
     "arquivos": {
       "logo": "/resource/Logo Mercedes.svg",
       "bandeira": "/resource/Bandeira Alemanha.svg"
@@ -41,7 +41,7 @@
     "potencia": 7,
     "dirigibilidade": 7,
     "durabilidade": 7,
-    "preco": 12.0,
+    "preco": 12.5,
     "arquivos": {
       "logo": "/resource/Logo Renault.svg",
       "bandeira": "/resource/Bandeira Franca.svg"

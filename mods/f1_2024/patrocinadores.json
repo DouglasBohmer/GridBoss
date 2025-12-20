@@ -1,0 +1,602 @@
+[
+  {
+    "nome": "Rolex",
+    "segmento": "Relógios de Luxo",
+    "pais": "Suica",
+    "reputacaoMinima": 90,
+    "valorBase": 1.5,
+    "bonusAssinatura": 5.0,
+    "bonusVitoria": 1.0,
+    "bonusPodio": 0.5,
+    "bonusTop10": 0.1,
+    "arquivos": {
+      "logo": "/resource/Logo Rolex.svg",
+      "bandeira": "/resource/Bandeira Suica.svg"
+    }
+  },
+  {
+    "nome": "Aramco",
+    "segmento": "Petróleo e Gás",
+    "pais": "Arabia Saudita",
+    "reputacaoMinima": 85,
+    "valorBase": 1.8,
+    "bonusAssinatura": 8.0,
+    "bonusVitoria": 0.8,
+    "bonusPodio": 0.4,
+    "bonusTop10": 0.1,
+    "arquivos": {
+      "logo": "/resource/Logo Aramco.svg",
+      "bandeira": "/resource/Bandeira Arabia Saudita.svg"
+    }
+  },
+  {
+    "nome": "Heineken",
+    "segmento": "Bebidas",
+    "pais": "Holanda",
+    "reputacaoMinima": 75,
+    "valorBase": 1.2,
+    "bonusAssinatura": 3.5,
+    "bonusVitoria": 0.6,
+    "bonusPodio": 0.3,
+    "bonusTop10": 0.1,
+    "arquivos": {
+      "logo": "/resource/Logo Heineken.svg",
+      "bandeira": "/resource/Bandeira Holanda.svg"
+    }
+  },
+  {
+    "nome": "DHL",
+    "segmento": "Logística",
+    "pais": "Alemanha",
+    "reputacaoMinima": 60,
+    "valorBase": 0.9,
+    "bonusAssinatura": 2.5,
+    "bonusVitoria": 0.5,
+    "bonusPodio": 0.3,
+    "bonusTop10": 0.1,
+    "arquivos": {
+      "logo": "/resource/Logo DHL.svg",
+      "bandeira": "/resource/Bandeira Alemanha.svg"
+    }
+  },
+  {
+    "nome": "Santander",
+    "segmento": "Bancário",
+    "pais": "Espanha",
+    "reputacaoMinima": 70,
+    "valorBase": 1.1,
+    "bonusAssinatura": 3.0,
+    "bonusVitoria": 0.6,
+    "bonusPodio": 0.3,
+    "bonusTop10": 0.1,
+    "arquivos": {
+      "logo": "/resource/Logo Santander.svg",
+      "bandeira": "/resource/Bandeira Espanha.svg"
+    }
+  },
+  {
+    "nome": "Oracle",
+    "segmento": "Tecnologia",
+    "pais": "EUA",
+    "reputacaoMinima": 80,
+    "valorBase": 1.4,
+    "bonusAssinatura": 6.0,
+    "bonusVitoria": 0.7,
+    "bonusPodio": 0.4,
+    "bonusTop10": 0.1,
+    "arquivos": {
+      "logo": "/resource/Logo Oracle.svg",
+      "bandeira": "/resource/Bandeira EUA.svg"
+    }
+  },
+  {
+    "nome": "Petronas",
+    "segmento": "Petróleo e Gás",
+    "pais": "Malasia",
+    "reputacaoMinima": 75,
+    "valorBase": 1.3,
+    "bonusAssinatura": 4.0,
+    "bonusVitoria": 0.6,
+    "bonusPodio": 0.3,
+    "bonusTop10": 0.1,
+    "arquivos": {
+      "logo": "/resource/Logo Petronas.svg",
+      "bandeira": "/resource/Bandeira Malasia.svg"
+    }
+  },
+  {
+    "nome": "AWS",
+    "segmento": "Tecnologia",
+    "pais": "EUA",
+    "reputacaoMinima": 65,
+    "valorBase": 1.0,
+    "bonusAssinatura": 3.0,
+    "bonusVitoria": 0.5,
+    "bonusPodio": 0.25,
+    "bonusTop10": 0.1,
+    "arquivos": {
+      "logo": "/resource/Logo AWS.svg",
+      "bandeira": "/resource/Bandeira EUA.svg"
+    }
+  },
+  {
+    "nome": "Pirelli",
+    "segmento": "Pneus",
+    "pais": "Italia",
+    "reputacaoMinima": 50,
+    "valorBase": 0.8,
+    "bonusAssinatura": 2.0,
+    "bonusVitoria": 0.4,
+    "bonusPodio": 0.2,
+    "bonusTop10": 0.05,
+    "arquivos": {
+      "logo": "/resource/Logo Pirelli.svg",
+      "bandeira": "/resource/Bandeira Italia.svg"
+    }
+  },
+  {
+    "nome": "Shell",
+    "segmento": "Combustível",
+    "pais": "Holanda",
+    "reputacaoMinima": 70,
+    "valorBase": 1.2,
+    "bonusAssinatura": 3.5,
+    "bonusVitoria": 0.6,
+    "bonusPodio": 0.3,
+    "bonusTop10": 0.1,
+    "arquivos": {
+      "logo": "/resource/Logo Shell.svg",
+      "bandeira": "/resource/Bandeira Holanda.svg"
+    }
+  },
+  {
+    "nome": "Puma",
+    "segmento": "Vestuário",
+    "pais": "Alemanha",
+    "reputacaoMinima": 40,
+    "valorBase": 0.6,
+    "bonusAssinatura": 1.5,
+    "bonusVitoria": 0.3,
+    "bonusPodio": 0.15,
+    "bonusTop10": 0.05,
+    "arquivos": {
+      "logo": "/resource/Logo Puma.svg",
+      "bandeira": "/resource/Bandeira Alemanha.svg"
+    }
+  },
+  {
+    "nome": "Ray-Ban",
+    "segmento": "Óculos",
+    "pais": "Italia",
+    "reputacaoMinima": 45,
+    "valorBase": 0.5,
+    "bonusAssinatura": 1.0,
+    "bonusVitoria": 0.3,
+    "bonusPodio": 0.1,
+    "bonusTop10": 0.05,
+    "arquivos": {
+      "logo": "/resource/Logo Ray-Ban.svg",
+      "bandeira": "/resource/Bandeira Italia.svg"
+    }
+  },
+  {
+    "nome": "Red Bull",
+    "segmento": "Bebidas",
+    "pais": "Austria",
+    "reputacaoMinima": 85,
+    "valorBase": 1.6,
+    "bonusAssinatura": 5.5,
+    "bonusVitoria": 0.9,
+    "bonusPodio": 0.5,
+    "bonusTop10": 0.1,
+    "arquivos": {
+      "logo": "/resource/Logo Red Bull.svg",
+      "bandeira": "/resource/Bandeira Austria.svg"
+    }
+  },
+  {
+    "nome": "Emirates",
+    "segmento": "Aviação",
+    "pais": "Emirados Arabes Unidos",
+    "reputacaoMinima": 80,
+    "valorBase": 1.4,
+    "bonusAssinatura": 4.5,
+    "bonusVitoria": 0.7,
+    "bonusPodio": 0.4,
+    "bonusTop10": 0.1,
+    "arquivos": {
+      "logo": "/resource/Logo Emirates.svg",
+      "bandeira": "/resource/Bandeira Emirados Arabes Unidos.svg"
+    }
+  },
+  {
+    "nome": "Coca-Cola",
+    "segmento": "Bebidas",
+    "pais": "EUA",
+    "reputacaoMinima": 60,
+    "valorBase": 0.9,
+    "bonusAssinatura": 2.5,
+    "bonusVitoria": 0.4,
+    "bonusPodio": 0.2,
+    "bonusTop10": 0.1,
+    "arquivos": {
+      "logo": "/resource/Logo Coca-Cola.svg",
+      "bandeira": "/resource/Bandeira EUA.svg"
+    }
+  },
+  {
+    "nome": "BWT",
+    "segmento": "Tratamento de Água",
+    "pais": "Austria",
+    "reputacaoMinima": 30,
+    "valorBase": 0.7,
+    "bonusAssinatura": 1.8,
+    "bonusVitoria": 0.4,
+    "bonusPodio": 0.2,
+    "bonusTop10": 0.05,
+    "arquivos": {
+      "logo": "/resource/Logo BWT.svg",
+      "bandeira": "/resource/Bandeira Austria.svg"
+    }
+  },
+  {
+    "nome": "Dell Technologies",
+    "segmento": "Tecnologia",
+    "pais": "EUA",
+    "reputacaoMinima": 55,
+    "valorBase": 0.8,
+    "bonusAssinatura": 2.2,
+    "bonusVitoria": 0.4,
+    "bonusPodio": 0.2,
+    "bonusTop10": 0.1,
+    "arquivos": {
+      "logo": "/resource/Logo Dell.svg",
+      "bandeira": "/resource/Bandeira EUA.svg"
+    }
+  },
+  {
+    "nome": "Hugo Boss",
+    "segmento": "Moda",
+    "pais": "Alemanha",
+    "reputacaoMinima": 50,
+    "valorBase": 0.6,
+    "bonusAssinatura": 1.2,
+    "bonusVitoria": 0.3,
+    "bonusPodio": 0.15,
+    "bonusTop10": 0.05,
+    "arquivos": {
+      "logo": "/resource/Logo Hugo Boss.svg",
+      "bandeira": "/resource/Bandeira Alemanha.svg"
+    }
+  },
+  {
+    "nome": "Mobil 1",
+    "segmento": "Lubrificantes",
+    "pais": "EUA",
+    "reputacaoMinima": 45,
+    "valorBase": 0.5,
+    "bonusAssinatura": 1.5,
+    "bonusVitoria": 0.3,
+    "bonusPodio": 0.15,
+    "bonusTop10": 0.05,
+    "arquivos": {
+      "logo": "/resource/Logo Mobil 1.svg",
+      "bandeira": "/resource/Bandeira EUA.svg"
+    }
+  },
+  {
+    "nome": "Castrol",
+    "segmento": "Lubrificantes",
+    "pais": "Reino Unido",
+    "reputacaoMinima": 35,
+    "valorBase": 0.45,
+    "bonusAssinatura": 1.0,
+    "bonusVitoria": 0.25,
+    "bonusPodio": 0.1,
+    "bonusTop10": 0.05,
+    "arquivos": {
+      "logo": "/resource/Logo Castrol.svg",
+      "bandeira": "/resource/Bandeira Reino Unido.svg"
+    }
+  },
+  {
+    "nome": "Petrobras",
+    "segmento": "Petróleo e Gás",
+    "pais": "Brasil",
+    "reputacaoMinima": 20,
+    "valorBase": 0.5,
+    "bonusAssinatura": 1.5,
+    "bonusVitoria": 0.3,
+    "bonusPodio": 0.15,
+    "bonusTop10": 0.05,
+    "arquivos": {
+      "logo": "/resource/Logo Petrobras.svg",
+      "bandeira": "/resource/Bandeira Brasil.svg"
+    }
+  },
+  {
+    "nome": "Estrella Galicia",
+    "segmento": "Bebidas",
+    "pais": "Espanha",
+    "reputacaoMinima": 25,
+    "valorBase": 0.4,
+    "bonusAssinatura": 0.8,
+    "bonusVitoria": 0.2,
+    "bonusPodio": 0.1,
+    "bonusTop10": 0.05,
+    "arquivos": {
+      "logo": "/resource/Logo Estrella Galicia.svg",
+      "bandeira": "/resource/Bandeira Espanha.svg"
+    }
+  },
+  {
+    "nome": "Richard Mille",
+    "segmento": "Relógios de Luxo",
+    "pais": "Suica",
+    "reputacaoMinima": 75,
+    "valorBase": 1.0,
+    "bonusAssinatura": 3.0,
+    "bonusVitoria": 0.8,
+    "bonusPodio": 0.4,
+    "bonusTop10": 0.1,
+    "arquivos": {
+      "logo": "/resource/Logo Richard Mille.svg",
+      "bandeira": "/resource/Bandeira Suica.svg"
+    }
+  },
+  {
+    "nome": "Tag Heuer",
+    "segmento": "Relógios",
+    "pais": "Suica",
+    "reputacaoMinima": 60,
+    "valorBase": 0.8,
+    "bonusAssinatura": 2.0,
+    "bonusVitoria": 0.5,
+    "bonusPodio": 0.25,
+    "bonusTop10": 0.1,
+    "arquivos": {
+      "logo": "/resource/Logo Tag Heuer.svg",
+      "bandeira": "/resource/Bandeira Suica.svg"
+    }
+  },
+  {
+    "nome": "Qatar Airways",
+    "segmento": "Aviação",
+    "pais": "Qatar",
+    "reputacaoMinima": 75,
+    "valorBase": 1.3,
+    "bonusAssinatura": 4.0,
+    "bonusVitoria": 0.7,
+    "bonusPodio": 0.35,
+    "bonusTop10": 0.1,
+    "arquivos": {
+      "logo": "/resource/Logo Qatar Airways.svg",
+      "bandeira": "/resource/Bandeira Qatar.svg"
+    }
+  },
+  {
+    "nome": "Google Chrome",
+    "segmento": "Tecnologia",
+    "pais": "EUA",
+    "reputacaoMinima": 65,
+    "valorBase": 1.1,
+    "bonusAssinatura": 3.5,
+    "bonusVitoria": 0.6,
+    "bonusPodio": 0.3,
+    "bonusTop10": 0.1,
+    "arquivos": {
+      "logo": "/resource/Logo Google Chrome.svg",
+      "bandeira": "/resource/Bandeira EUA.svg"
+    }
+  },
+  {
+    "nome": "Snapdragon",
+    "segmento": "Tecnologia",
+    "pais": "EUA",
+    "reputacaoMinima": 55,
+    "valorBase": 0.9,
+    "bonusAssinatura": 2.5,
+    "bonusVitoria": 0.5,
+    "bonusPodio": 0.25,
+    "bonusTop10": 0.1,
+    "arquivos": {
+      "logo": "/resource/Logo Snapdragon.svg",
+      "bandeira": "/resource/Bandeira EUA.svg"
+    }
+  },
+  {
+    "nome": "CrowdStrike",
+    "segmento": "Cibersegurança",
+    "pais": "EUA",
+    "reputacaoMinima": 40,
+    "valorBase": 0.7,
+    "bonusAssinatura": 1.5,
+    "bonusVitoria": 0.3,
+    "bonusPodio": 0.15,
+    "bonusTop10": 0.05,
+    "arquivos": {
+      "logo": "/resource/Logo CrowdStrike.svg",
+      "bandeira": "/resource/Bandeira EUA.svg"
+    }
+  },
+  {
+    "nome": "Workday",
+    "segmento": "Software",
+    "pais": "EUA",
+    "reputacaoMinima": 35,
+    "valorBase": 0.6,
+    "bonusAssinatura": 1.2,
+    "bonusVitoria": 0.3,
+    "bonusPodio": 0.15,
+    "bonusTop10": 0.05,
+    "arquivos": {
+      "logo": "/resource/Logo Workday.svg",
+      "bandeira": "/resource/Bandeira EUA.svg"
+    }
+  },
+  {
+    "nome": "Oakley",
+    "segmento": "Óculos",
+    "pais": "EUA",
+    "reputacaoMinima": 25,
+    "valorBase": 0.4,
+    "bonusAssinatura": 0.8,
+    "bonusVitoria": 0.2,
+    "bonusPodio": 0.1,
+    "bonusTop10": 0.05,
+    "arquivos": {
+      "logo": "/resource/Logo Oakley.svg",
+      "bandeira": "/resource/Bandeira EUA.svg"
+    }
+  },
+  {
+    "nome": "MSC Cruises",
+    "segmento": "Turismo",
+    "pais": "Suica",
+    "reputacaoMinima": 50,
+    "valorBase": 0.8,
+    "bonusAssinatura": 2.0,
+    "bonusVitoria": 0.4,
+    "bonusPodio": 0.2,
+    "bonusTop10": 0.1,
+    "arquivos": {
+      "logo": "/resource/Logo MSC Cruises.svg",
+      "bandeira": "/resource/Bandeira Suica.svg"
+    }
+  },
+  {
+    "nome": "Crypto.com",
+    "segmento": "Financeiro",
+    "pais": "Singapura",
+    "reputacaoMinima": 40,
+    "valorBase": 1.0,
+    "bonusAssinatura": 2.5,
+    "bonusVitoria": 0.5,
+    "bonusPodio": 0.25,
+    "bonusTop10": 0.1,
+    "arquivos": {
+      "logo": "/resource/Logo Crypto.com.svg",
+      "bandeira": "/resource/Bandeira Singapura.svg"
+    }
+  },
+  {
+    "nome": "Alpinestars",
+    "segmento": "Equipamento",
+    "pais": "Italia",
+    "reputacaoMinima": 15,
+    "valorBase": 0.3,
+    "bonusAssinatura": 0.5,
+    "bonusVitoria": 0.15,
+    "bonusPodio": 0.08,
+    "bonusTop10": 0.02,
+    "arquivos": {
+      "logo": "/resource/Logo Alpinestars.svg",
+      "bandeira": "/resource/Bandeira Italia.svg"
+    }
+  },
+  {
+    "nome": "Sparco",
+    "segmento": "Equipamento",
+    "pais": "Italia",
+    "reputacaoMinima": 10,
+    "valorBase": 0.25,
+    "bonusAssinatura": 0.4,
+    "bonusVitoria": 0.1,
+    "bonusPodio": 0.05,
+    "bonusTop10": 0.01,
+    "arquivos": {
+      "logo": "/resource/Logo Sparco.svg",
+      "bandeira": "/resource/Bandeira Italia.svg"
+    }
+  },
+  {
+    "nome": "Brembo",
+    "segmento": "Freios",
+    "pais": "Italia",
+    "reputacaoMinima": 30,
+    "valorBase": 0.5,
+    "bonusAssinatura": 1.0,
+    "bonusVitoria": 0.2,
+    "bonusPodio": 0.1,
+    "bonusTop10": 0.05,
+    "arquivos": {
+      "logo": "/resource/Logo Brembo.svg",
+      "bandeira": "/resource/Bandeira Italia.svg"
+    }
+  },
+  {
+    "nome": "NGK Spark Plugs",
+    "segmento": "Peças Automotivas",
+    "pais": "Japao",
+    "reputacaoMinima": 20,
+    "valorBase": 0.35,
+    "bonusAssinatura": 0.7,
+    "bonusVitoria": 0.15,
+    "bonusPodio": 0.08,
+    "bonusTop10": 0.02,
+    "arquivos": {
+      "logo": "/resource/Logo NGK.svg",
+      "bandeira": "/resource/Bandeira Japao.svg"
+    }
+  },
+  {
+    "nome": "Mapfre",
+    "segmento": "Seguros",
+    "pais": "Espanha",
+    "reputacaoMinima": 25,
+    "valorBase": 0.45,
+    "bonusAssinatura": 0.9,
+    "bonusVitoria": 0.2,
+    "bonusPodio": 0.1,
+    "bonusTop10": 0.05,
+    "arquivos": {
+      "logo": "/resource/Logo Mapfre.svg",
+      "bandeira": "/resource/Bandeira Espanha.svg"
+    }
+  },
+  {
+    "nome": "Claro",
+    "segmento": "Telecom",
+    "pais": "Mexico",
+    "reputacaoMinima": 35,
+    "valorBase": 0.6,
+    "bonusAssinatura": 1.2,
+    "bonusVitoria": 0.3,
+    "bonusPodio": 0.15,
+    "bonusTop10": 0.05,
+    "arquivos": {
+      "logo": "/resource/Logo Claro.svg",
+      "bandeira": "/resource/Bandeira Mexico.svg"
+    }
+  },
+  {
+    "nome": "Telmex",
+    "segmento": "Telecom",
+    "pais": "Mexico",
+    "reputacaoMinima": 30,
+    "valorBase": 0.5,
+    "bonusAssinatura": 1.0,
+    "bonusVitoria": 0.25,
+    "bonusPodio": 0.12,
+    "bonusTop10": 0.05,
+    "arquivos": {
+      "logo": "/resource/Logo Telmex.svg",
+      "bandeira": "/resource/Bandeira Mexico.svg"
+    }
+  },
+  {
+    "nome": "Banco do Brasil",
+    "segmento": "Bancário",
+    "pais": "Brasil",
+    "reputacaoMinima": 20,
+    "valorBase": 0.45,
+    "bonusAssinatura": 1.0,
+    "bonusVitoria": 0.2,
+    "bonusPodio": 0.1,
+    "bonusTop10": 0.05,
+    "arquivos": {
+      "logo": "/resource/Logo Banco do Brasil.svg",
+      "bandeira": "/resource/Bandeira Brasil.svg"
+    }
+  }
+]

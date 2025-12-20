@@ -1,50 +1,42 @@
 package modelos;
 
 public class Patrocinador {
-    // ... (Atributos anteriores: nome, valores, bonus) ...
     private String nome;
-    private int mesesRestantes; // Duração dinâmica
-    private double valorMensal;
-    private double valorAssinatura;
-    
-    // Bônus
+    private String segmento;
+    private String pais;
+    private int reputacaoMinima;
+    private double valorBase;
+    private double bonusAssinatura;
     private double bonusVitoria;
     private double bonusPodio;
     private double bonusTop10;
+    private Arquivos arquivos;
 
-    public Patrocinador(String nome, int mesesDuracao, double valorAssinatura, double valorMensal) {
-        this.nome = nome;
-        this.mesesRestantes = mesesDuracao;
-        this.valorAssinatura = valorAssinatura;
-        this.valorMensal = valorMensal;
-    }
-
-    public void setBonus(double vitoria, double podio, double top10) {
-        this.bonusVitoria = vitoria;
-        this.bonusPodio = podio;
-        this.bonusTop10 = top10;
-    }
-
-    public double calcularPremioCorrida(int pos) {
-        if (pos == 1) return bonusVitoria;
-        if (pos <= 3) return bonusPodio;
-        if (pos <= 10) return bonusTop10;
-        return 0.0;
-    }
-
-    public void reduzirMesRestante() {
-        if (mesesRestantes > 0) {
-            mesesRestantes--;
-        }
-    }
-
-    public boolean expirou() {
-        return mesesRestantes <= 0;
+    public static class Arquivos {
+        private String logo;
+        private String bandeira;
+        
+        public String getLogo() { return logo; }
+        public String getBandeira() { return bandeira; }
     }
 
     // Getters
     public String getNome() { return nome; }
-    public double getValorMensal() { return valorMensal; }
-    public double getValorAssinatura() { return valorAssinatura; }
-    public int getMesesRestantes() { return mesesRestantes; }
+    public String getSegmento() { return segmento; }
+    public String getPais() { return pais; }
+    public int getReputacaoMinima() { return reputacaoMinima; }
+    public double getValorBase() { return valorBase; }
+    public double getBonusAssinatura() { return bonusAssinatura; }
+    public double getBonusVitoria() { return bonusVitoria; }
+    public double getBonusPodio() { return bonusPodio; }
+    public double getBonusTop10() { return bonusTop10; }
+    
+    // Helpers para caminhos
+    public String getCaminhoLogo() { return (arquivos != null) ? arquivos.getLogo() : null; }
+    public String getCaminhoBandeira() { return (arquivos != null) ? arquivos.getBandeira() : null; }
+    
+    @Override
+    public String toString() {
+        return nome;
+    }
 }

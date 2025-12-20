@@ -214,7 +214,22 @@ public class TelaPrincipal extends JFrame {
             });
         });
         Menu_Equipe.add(mntmMotor);
-        Menu_Equipe.add(new JMenuItem("Patrocínios"));
+        
+        JMenuItem mntmPatrocinios = new JMenuItem("Patrocínios");
+        mntmPatrocinios.addActionListener(e -> {
+            TelaPatrocinador tela = new TelaPatrocinador(dadosDoJogo);
+            tela.setVisible(true);
+            
+            // Adiciona um ouvinte para atualizar o saldo na tela principal
+            // assim que a tela de patrocínios for fechada
+            tela.addWindowListener(new WindowAdapter() {
+                @Override
+                public void windowClosed(WindowEvent e) {
+                    atualizarDados();
+                }
+            });
+        });
+        Menu_Equipe.add(mntmPatrocinios);
 
         JMenu Menu_Piloto = new JMenu("Pilotos");
         menuBar.add(Menu_Piloto);

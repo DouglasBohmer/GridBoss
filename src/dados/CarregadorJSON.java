@@ -6,6 +6,8 @@ import modelos.Equipe;
 import modelos.Piloto;
 import modelos.Pista;
 import modelos.Motor;
+import modelos.Patrocinador; // Importação da nova classe
+
 import java.io.File;
 import java.io.FileReader;
 import java.io.Reader;
@@ -86,8 +88,13 @@ public class CarregadorJSON {
         return carregarLista(caminho, new TypeToken<ArrayList<Motor>>(){}.getType());
     }
     
-    // --- NOVO MÉTODO ADICIONADO AQUI ---
-    // Permite carregar um arquivo específico pelo nome/caminho
+    // --- NOVO MÉTODO PARA PATROCINADORES ---
+    public static List<Patrocinador> carregarPatrocinadores(String categoria, int ano) {
+        String caminho = CAMINHO_MODS + categoria.toLowerCase() + "_" + ano + "/patrocinadores.json";
+        return carregarLista(caminho, new TypeToken<ArrayList<Patrocinador>>(){}.getType());
+    }
+    
+    // Permite carregar um arquivo específico pelo nome/caminho (Útil para o motores_extra.json)
     public static List<Motor> carregarMotoresPorArquivo(String caminhoArquivo) {
         // Se o arquivo estiver dentro da pasta mods, o usuário deve passar o caminho completo no TelaMotor.
         // Se estiver na raiz do projeto (como teste), basta passar o nome.

@@ -1,18 +1,18 @@
 package telas;
 
 import com.formdev.flatlaf.extras.FlatSVGIcon;
-import com.formdev.flatlaf.extras.FlatSVGUtils;
-
+import dados.CarregadorJSON;
 import dados.DadosDoJogo;
 import modelos.Equipe;
+import modelos.Patrocinador;
 
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 import javax.swing.border.LineBorder;
 import javax.swing.border.TitledBorder;
 import java.awt.*;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -23,39 +23,40 @@ public class TelaPatrocinador extends JFrame {
     private Equipe equipeJogador;
 
     // --- Componentes de Dados ---
-    private List<PatrocinadorMock> listaPatrocinadores; // Substituir pela sua classe oficial depois
-    private PatrocinadorMock patrocinadorSelecionado;
+    private List<Patrocinador> listaPatrocinadores; 
+    private Patrocinador patrocinadorSelecionado;
+    
+    // Armazena os objetos reais que estão nos slots para validação de segmento
+    private Patrocinador[] patrocinadoresAtivos = new Patrocinador[6]; 
 
     // --- Componentes Visuais (Topo Esquerda - Lista) ---
-    private JList<PatrocinadorMock> listPatrocinadores;
-    private DefaultListModel<PatrocinadorMock> listModel;
+    private JList<Patrocinador> listPatrocinadores;
+    private DefaultListModel<Patrocinador> listModel;
 
     // --- Componentes Visuais (Topo Direita - Detalhes) ---
     private JLabel lblLogoDetalhe;
     private JLabel lblNomePatrocinador;
-    private JLabel lblTipoEmpresa; // Ex: Bebidas, Tech, Auto
+    private JLabel lblTipoEmpresa; 
+    private JLabel lblBandeiraPais; 
     private JLabel lblValorPorCorrida;
     private JLabel lblBonusAssinatura;
+    private JLabel lblReputacaoExigida; 
     
     // Contrato
-    private JComboBox<String> comboDuracao;
+    private JComboBox<String> comboDuracao; 
     private JButton btnAssinar;
 
     // --- Componentes Visuais (Baixo - Slots Atuais) ---
     private JPanel[] slotsPaineis;
     private JLabel[] slotsLogos;
-    private JLabel[] slotsStatus; // Ex: "Vazio" ou "X Meses restantes"
+    private JLabel[] slotsStatus; 
+    private JLabel[] slotsValores; // Novo: Mostra o valor no slot
 
     public TelaPatrocinador(DadosDoJogo dados) {
         this.dados = dados;
         this.equipeJogador = dados.getEquipeDoJogador();
 
-        setTitle("Grid Boss - Patrocinador");
-        try {
-            java.awt.Image icon = FlatSVGUtils.svg2image("/resource/Icone.svg", 32, 32);
-            if (icon != null) setIconImage(icon);
-        } catch (Exception e) {
-        }
+        setTitle("Gestão de Patrocinadores e Parceiros");
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         setBounds(100, 100, 900, 700);
         setResizable(false);
@@ -67,9 +68,31 @@ public class TelaPatrocinador extends JFrame {
         setContentPane(contentPane);
         contentPane.setLayout(null);
 
-        carregarDadosMock(); // TODO: Substituir por CarregadorJSON
+        carregarDadosReais(); 
         inicializarTopo();
         inicializarSlotsInferiores();
+    }
+    
+    private void carregarDadosReais() {
+        this.listaPatrocinadores = new ArrayList<>();
+        try {
+            List<Patrocinador> todos = CarregadorJSON.carregarPatrocinadores(dados.getCategoriaKey(), dados.getAnoAtual());
+            if (todos != null) {
+                int reputacaoAtual = equipeJogador.getReputacao();
+                
+                for (Patrocinador p : todos) {
+                    // REGRA 1: Só adiciona se a reputação da equipe for suficiente
+                    if (reputacaoAtual >= p.getReputacaoMinima()) {
+                        this.listaPatrocinadores.add(p);
+                    }
+                }
+            }
+        } catch (Exception e) {
+            System.err.println("Erro ao carregar patrocinadores: " + e.getMessage());
+        }
+        
+        // Ordena por Valor Base (Maior para menor)
+        this.listaPatrocinadores.sort((p1, p2) -> Double.compare(p2.getValorBase(), p1.getValorBase()));
     }
 
     private void inicializarTopo() {
@@ -81,7 +104,7 @@ public class TelaPatrocinador extends JFrame {
         contentPane.add(panelLista);
 
         listModel = new DefaultListModel<>();
-        for (PatrocinadorMock p : listaPatrocinadores) {
+        for (Patrocinador p : listaPatrocinadores) {
             listModel.addElement(p);
         }
 
@@ -115,14 +138,24 @@ public class TelaPatrocinador extends JFrame {
         // Informações Principais
         lblNomePatrocinador = new JLabel("Selecione um Patrocinador");
         lblNomePatrocinador.setFont(new Font("Arial", Font.BOLD | Font.ITALIC, 20));
-        lblNomePatrocinador.setBounds(160, 30, 380, 30);
+        lblNomePatrocinador.setBounds(160, 30, 300, 30);
         panelDetalhes.add(lblNomePatrocinador);
+        
+        lblBandeiraPais = new JLabel("");
+        lblBandeiraPais.setBounds(470, 30, 40, 30);
+        panelDetalhes.add(lblBandeiraPais);
 
         lblTipoEmpresa = new JLabel("Setor: --");
         lblTipoEmpresa.setForeground(Color.GRAY);
         lblTipoEmpresa.setFont(new Font("Arial", Font.PLAIN, 12));
         lblTipoEmpresa.setBounds(160, 60, 200, 20);
         panelDetalhes.add(lblTipoEmpresa);
+        
+        lblReputacaoExigida = new JLabel("Reputação Mínima: --");
+        lblReputacaoExigida.setForeground(Color.DARK_GRAY);
+        lblReputacaoExigida.setFont(new Font("Arial", Font.BOLD, 11));
+        lblReputacaoExigida.setBounds(370, 60, 180, 20);
+        panelDetalhes.add(lblReputacaoExigida);
         
         // Área Financeira
         JPanel panelFin = new JPanel();
@@ -151,7 +184,6 @@ public class TelaPatrocinador extends JFrame {
         lblDuracao.setBounds(20, 200, 200, 20);
         panelDetalhes.add(lblDuracao);
 
-        // ComboBox conforme solicitado (3, 6, 9, 12, 24)
         String[] opcoesDuracao = {
             "3 Meses (Curto Prazo)", 
             "6 Meses (Meia Temporada)", 
@@ -159,7 +191,9 @@ public class TelaPatrocinador extends JFrame {
             "12 Meses (1 Temporada)", 
             "24 Meses (2 Temporadas)"
         };
-        comboDuracao = new JComboBox<>(opcoesDuracao);
+        
+        comboDuracao = new JComboBox<String>();
+        comboDuracao.setModel(new DefaultComboBoxModel<String>(opcoesDuracao));
         comboDuracao.setBounds(20, 230, 250, 30);
         panelDetalhes.add(comboDuracao);
 
@@ -167,69 +201,70 @@ public class TelaPatrocinador extends JFrame {
         btnAssinar = new JButton("Assinar Contrato");
         btnAssinar.setFont(new Font("Arial", Font.BOLD, 14));
         btnAssinar.setBounds(20, 290, 530, 40);
-        btnAssinar.setEnabled(false); // Só habilita ao selecionar
+        btnAssinar.setEnabled(false);
         btnAssinar.addActionListener(e -> acaoAssinarContrato());
         panelDetalhes.add(btnAssinar);
     }
 
     private void inicializarSlotsInferiores() {
-        // Título da seção inferior
         JLabel lblTituloSlots = new JLabel("ESPAÇOS NO CARRO (SLOTS ATIVOS)");
         lblTituloSlots.setFont(new Font("Arial", Font.BOLD, 14));
         lblTituloSlots.setForeground(Color.DARK_GRAY);
         lblTituloSlots.setBounds(10, 370, 400, 20);
         contentPane.add(lblTituloSlots);
 
-        // Configuração dos 6 slots
         slotsPaineis = new JPanel[6];
         slotsLogos = new JLabel[6];
         slotsStatus = new JLabel[6];
+        slotsValores = new JLabel[6]; // REGRA 2: Inicializa array de valores
 
         int startX = 10;
         int startY = 400;
-        int larguraSlot = 140; // 900px / 6 slots dá +/- 150px
+        int larguraSlot = 140;
         int alturaSlot = 240;
         int gap = 10;
 
         for (int i = 0; i < 6; i++) {
-            // Painel do Slot
             JPanel p = new JPanel();
             p.setLayout(null);
             p.setBackground(Color.WHITE);
             p.setBorder(new LineBorder(Color.LIGHT_GRAY, 1, true));
-            // Cálculo da posição X para ficar um ao lado do outro
             p.setBounds(startX + (i * (larguraSlot + gap)), startY, larguraSlot, alturaSlot);
             
-            // Título do Slot (Slot 1, Slot 2...)
             JLabel lblTitulo = new JLabel("Slot " + (i + 1));
             lblTitulo.setHorizontalAlignment(SwingConstants.CENTER);
             lblTitulo.setFont(new Font("Arial", Font.BOLD, 12));
             lblTitulo.setBounds(0, 5, larguraSlot, 20);
             p.add(lblTitulo);
 
-            // Placeholder da Logo
             JLabel lblLogo = new JLabel("Vazio");
             lblLogo.setHorizontalAlignment(SwingConstants.CENTER);
             lblLogo.setForeground(Color.LIGHT_GRAY);
-            lblLogo.setBorder(new EmptyBorder(5,5,5,5)); // Padding
+            lblLogo.setBorder(new EmptyBorder(5,5,5,5)); 
             lblLogo.setBounds(10, 35, larguraSlot - 20, 100);
             p.add(lblLogo);
             slotsLogos[i] = lblLogo;
+            
+            // Valor do Contrato (Novo)
+            JLabel lblValor = new JLabel("-");
+            lblValor.setHorizontalAlignment(SwingConstants.CENTER);
+            lblValor.setFont(new Font("Arial", Font.BOLD, 12));
+            lblValor.setForeground(new Color(0, 100, 0));
+            lblValor.setBounds(5, 140, larguraSlot - 10, 20);
+            p.add(lblValor);
+            slotsValores[i] = lblValor;
 
-            // Status do Contrato no Slot
             JLabel lblStatus = new JLabel("Disponível");
             lblStatus.setHorizontalAlignment(SwingConstants.CENTER);
             lblStatus.setFont(new Font("Arial", Font.PLAIN, 11));
-            lblStatus.setForeground(new Color(0, 128, 0)); // Verde
-            lblStatus.setBounds(5, 150, larguraSlot - 10, 20);
+            lblStatus.setForeground(Color.GRAY);
+            lblStatus.setBounds(5, 165, larguraSlot - 10, 20);
             p.add(lblStatus);
             slotsStatus[i] = lblStatus;
 
-            // Botãozinho "Gerenciar" ou "Remover" (Opcional)
             JButton btnGerir = new JButton("Gerir");
             btnGerir.setFont(new Font("Arial", Font.PLAIN, 10));
             btnGerir.setBounds(20, 200, larguraSlot - 40, 25);
-            // btnGerir.addActionListener(...) 
             p.add(btnGerir);
 
             slotsPaineis[i] = p;
@@ -239,37 +274,77 @@ public class TelaPatrocinador extends JFrame {
 
     // --- LÓGICA ---
 
-    private void selecionarPatrocinador(PatrocinadorMock p) {
+    private void selecionarPatrocinador(Patrocinador p) {
         if (p == null) return;
         this.patrocinadorSelecionado = p;
 
-        lblNomePatrocinador.setText(p.nome);
-        lblTipoEmpresa.setText("Setor: " + p.tipo);
-        lblValorPorCorrida.setText(String.format("Pagamento por Corrida: € %.2f mi", p.valorPorCorrida));
-        lblBonusAssinatura.setText(String.format("Bônus Assinatura: € %.2f mi", p.bonusAssinatura));
+        lblNomePatrocinador.setText(p.getNome());
+        lblTipoEmpresa.setText("Setor: " + p.getSegmento());
+        lblValorPorCorrida.setText(String.format("Pagamento por Corrida: € %.2f mi", p.getValorBase()));
+        lblBonusAssinatura.setText(String.format("Bônus Assinatura: € %.2f mi", p.getBonusAssinatura()));
         
-        // Simulação de Logo
-        carregarImagem(lblLogoDetalhe, p.caminhoLogo);
+        carregarImagem(lblLogoDetalhe, p.getCaminhoLogo());
+        carregarImagem(lblBandeiraPais, p.getCaminhoBandeira());
 
-        btnAssinar.setEnabled(true);
-        btnAssinar.setText("Assinar com " + p.nome);
+        int reputacaoEquipe = equipeJogador.getReputacao(); 
+        int reputacaoExigida = p.getReputacaoMinima();
+        
+        lblReputacaoExigida.setText("Reputação Mínima: " + reputacaoExigida);
+        
+        // Embora já tenhamos filtrado na lista, mantemos a validação visual caso algo mude
+        if (reputacaoEquipe >= reputacaoExigida) {
+            lblReputacaoExigida.setForeground(new Color(0, 128, 0)); 
+            btnAssinar.setEnabled(true);
+            btnAssinar.setText("Assinar com " + p.getNome());
+        } else {
+            lblReputacaoExigida.setForeground(Color.RED);
+            btnAssinar.setEnabled(false);
+            btnAssinar.setText("Reputação Insuficiente");
+        }
     }
     
     private void acaoAssinarContrato() {
         if (patrocinadorSelecionado == null) return;
         
+        // REGRA 3: Verifica conflito de segmento (Mesmo Ramo)
+        for (Patrocinador ativo : patrocinadoresAtivos) {
+            if (ativo != null && ativo.getSegmento().equalsIgnoreCase(patrocinadorSelecionado.getSegmento())) {
+                JOptionPane.showMessageDialog(this, 
+                    "Conflito de Interesse!\n\n" +
+                    "Você já possui um patrocinador do ramo '" + ativo.getSegmento() + "' (" + ativo.getNome() + ").\n" +
+                    "Não é permitido ter dois concorrentes no mesmo carro.",
+                    "Contrato Bloqueado", JOptionPane.WARNING_MESSAGE);
+                return;
+            }
+        }
+        
         String duracaoTexto = (String) comboDuracao.getSelectedItem();
         
-        // Lógica simples para preencher o primeiro slot vazio (simulação)
         boolean assinou = false;
         for (int i = 0; i < 6; i++) {
             if (slotsStatus[i].getText().equals("Disponível")) {
+                
+                // Salva o objeto para validações futuras
+                patrocinadoresAtivos[i] = patrocinadorSelecionado;
+                
+                // Atualiza UI
                 slotsStatus[i].setText(duracaoTexto);
                 slotsStatus[i].setForeground(Color.BLUE);
-                slotsLogos[i].setText(""); // Remove o texto "Vazio"
-                carregarImagem(slotsLogos[i], patrocinadorSelecionado.caminhoLogo);
+                slotsLogos[i].setText(""); 
                 
-                JOptionPane.showMessageDialog(this, "Contrato assinado com sucesso no Slot " + (i+1) + "!");
+                // REGRA 2: Mostra o valor no slot
+                slotsValores[i].setText(String.format("€ %.2f mi", patrocinadorSelecionado.getValorBase()));
+                
+                carregarImagem(slotsLogos[i], patrocinadorSelecionado.getCaminhoLogo());
+                
+                // Aplica Bônus financeiro
+                double bonus = patrocinadorSelecionado.getBonusAssinatura();
+                equipeJogador.receberReceita(bonus);
+                
+                JOptionPane.showMessageDialog(this, 
+                    "Contrato assinado com " + patrocinadorSelecionado.getNome() + "!\n" +
+                    "Bônus de € " + bonus + " mi adicionado ao caixa.");
+                
                 assinou = true;
                 break;
             }
@@ -280,72 +355,68 @@ public class TelaPatrocinador extends JFrame {
         }
     }
 
-    // Método utilitário igual ao da TelaMotor
     private void carregarImagem(JLabel lbl, String path) {
         try {
             if (path == null || path.isEmpty()) {
                 lbl.setIcon(null); 
-                if (lbl.getText().isEmpty()) lbl.setText("Sem Logo");
                 return;
             }
-            // Se tiver FlatSVGIcon, usa a lógica de redimensionamento aqui
-            // Por enquanto, texto para teste
-            lbl.setIcon(null);
-            lbl.setText("<html><center>LOGO<br>" + path + "</center></html>");
+
+            if (!path.startsWith("/")) path = "/" + path;
+            if (!path.startsWith("/resource")) path = "/resource" + path;
+            path = path.replace("//", "/");
+
+            if (path.toLowerCase().endsWith(".png")) {
+                path = path.substring(0, path.length() - 4) + ".svg";
+            }
+            if (!path.toLowerCase().endsWith(".svg")) {
+                path = path + ".svg";
+            }
+
+            String svgPath = path.startsWith("/") ? path.substring(1) : path;
             
-            // Exemplo REAL (Descomente se tiver as imagens):
-            /*
-            FlatSVGIcon icon = new FlatSVGIcon(path);
-            // ... lógica de scale igual TelaMotor ...
-            lbl.setIcon(icon);
-            lbl.setText("");
-            */
+            int labelW = lbl.getWidth();
+            int labelH = lbl.getHeight();
+            
+            if (labelW > 0 && labelH > 0) {
+                 FlatSVGIcon iconOriginal = new FlatSVGIcon(svgPath);
+                 if (iconOriginal.getIconWidth() <= 0) {
+                     lbl.setIcon(null);
+                     return;
+                 }
+                 float origW = iconOriginal.getIconWidth();
+                 float origH = iconOriginal.getIconHeight();
+                 
+                 // Margem de 5px (total 10px)
+                 int padding = 5; 
+                 float availableW = Math.max(1, labelW - (padding * 2));
+                 float availableH = Math.max(1, labelH - (padding * 2));
+
+                 float ratioW = availableW / origW;
+                 float ratioH = availableH / origH;
+                 
+                 float scale = Math.min(ratioW, ratioH);
+                 
+                 int finalW = Math.round(origW * scale);
+                 int finalH = Math.round(origH * scale);
+                 
+                 lbl.setIcon(new FlatSVGIcon(svgPath, Math.max(1, finalW), Math.max(1, finalH)));
+            } else {
+                 lbl.setIcon(new FlatSVGIcon(svgPath));
+            }
+
         } catch (Exception e) {
             lbl.setIcon(null);
         }
     }
 
-    // --- MOCKS E CLASSES AUXILIARES ---
-
-    private void carregarDadosMock() {
-        listaPatrocinadores = new ArrayList<>();
-        listaPatrocinadores.add(new PatrocinadorMock("Rolex", "Luxo", 0.5, 2.0, "rolex.svg"));
-        listaPatrocinadores.add(new PatrocinadorMock("Shell", "Petróleo", 0.8, 1.5, "shell.svg"));
-        listaPatrocinadores.add(new PatrocinadorMock("Heineken", "Bebidas", 0.4, 1.0, "heineken.svg"));
-        listaPatrocinadores.add(new PatrocinadorMock("AWS", "Tecnologia", 0.6, 1.8, "aws.svg"));
-        listaPatrocinadores.add(new PatrocinadorMock("Santander", "Banco", 0.55, 1.2, "santander.svg"));
-    }
-
-    // Classe interna provisória até você criar o JSON oficial
-    class PatrocinadorMock {
-        String nome;
-        String tipo;
-        double valorPorCorrida;
-        double bonusAssinatura;
-        String caminhoLogo;
-
-        public PatrocinadorMock(String nome, String tipo, double v, double b, String img) {
-            this.nome = nome;
-            this.tipo = tipo;
-            this.valorPorCorrida = v;
-            this.bonusAssinatura = b;
-            this.caminhoLogo = img;
-        }
-        
-        @Override
-        public String toString() {
-            return nome; // Para aparecer na JList
-        }
-    }
-    
-    // Renderer para deixar a lista bonita
     class PatrocinadorRenderer extends DefaultListCellRenderer {
         @Override
         public Component getListCellRendererComponent(JList<?> list, Object value, int index, boolean isSelected, boolean cellHasFocus) {
             JLabel label = (JLabel) super.getListCellRendererComponent(list, value, index, isSelected, cellHasFocus);
-            if (value instanceof PatrocinadorMock) {
-                PatrocinadorMock p = (PatrocinadorMock) value;
-                label.setText(p.nome + " (" + p.tipo + ")");
+            if (value instanceof Patrocinador) {
+                Patrocinador p = (Patrocinador) value;
+                label.setText(p.getNome() + " (Valor: " + p.getValorBase() + " mi)");
                 label.setBorder(new EmptyBorder(5, 5, 5, 5));
             }
             return label;

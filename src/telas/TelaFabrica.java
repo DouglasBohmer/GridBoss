@@ -62,13 +62,10 @@ public class TelaFabrica extends JDialog {
         setModal(true);
         setTitle("Grid Boss - Fábrica");
         
-        // --- ALTERAÇÃO 1: ÍCONE DA PÁGINA (JANELA) ---
         try {
             java.awt.Image icon = FlatSVGUtils.svg2image("/resource/Icone.svg", 32, 32);
             if (icon != null) setIconImage(icon);
         } catch (Exception e) {
-            // Se der erro, tenta o PNG antigo ou ignora
-            // e.printStackTrace();
         }
         
         setBounds(100, 100, 1000, 614);

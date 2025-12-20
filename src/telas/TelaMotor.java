@@ -1,6 +1,8 @@
 package telas;
 
 import com.formdev.flatlaf.extras.FlatSVGIcon;
+import com.formdev.flatlaf.extras.FlatSVGUtils;
+
 import dados.CarregadorJSON;
 import dados.DadosDoJogo;
 import modelos.Equipe;
@@ -62,7 +64,12 @@ public class TelaMotor extends JFrame {
         this.dados = dados;
         this.equipeJogador = dados.getEquipeDoJogador();
         
-        setTitle("Fornecedores de Unidade de Potência");
+        setTitle("Grid Boss - Motor");
+        try {
+            java.awt.Image icon = FlatSVGUtils.svg2image("/resource/Icone.svg", 32, 32);
+            if (icon != null) setIconImage(icon);
+        } catch (Exception e) {
+        }
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         setBounds(100, 100, 900, 600);
         setResizable(false);

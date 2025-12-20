@@ -5,7 +5,7 @@
     "potencia": 10,
     "dirigibilidade": 6,
     "durabilidade": 7,
-    "preco": 18.0,
+    "preco": 14.0,
     "arquivos": {
       "logo": "/resource/Logo Bugatti.svg",
       "bandeira": "/resource/Bandeira Franca.svg"
@@ -17,7 +17,7 @@
     "potencia": 9,
     "dirigibilidade": 8,
     "durabilidade": 8,
-    "preco": 15.5,
+    "preco": 14.2,
     "arquivos": {
       "logo": "/resource/Logo BMW.svg",
       "bandeira": "/resource/Bandeira Alemanha.svg"
@@ -41,7 +41,7 @@
     "potencia": 9,
     "dirigibilidade": 9,
     "durabilidade": 7,
-    "preco": 16.5,
+    "preco": 14.5,
     "arquivos": {
       "logo": "/resource/Logo Porsche.svg",
       "bandeira": "/resource/Bandeira Alemanha.svg"
@@ -53,7 +53,7 @@
     "potencia": 7,
     "dirigibilidade": 8,
     "durabilidade": 9,
-    "preco": 13.0,
+    "preco": 12.2,
     "arquivos": {
       "logo": "/resource/Logo Volkswagen.svg",
       "bandeira": "/resource/Bandeira Alemanha.svg"
@@ -65,7 +65,7 @@
     "potencia": 9,
     "dirigibilidade": 6,
     "durabilidade": 8,
-    "preco": 13.5,
+    "preco": 13.2,
     "arquivos": {
       "logo": "/resource/Logo Chevrolet.svg",
       "bandeira": "/resource/Bandeira EUA.svg"
@@ -89,7 +89,7 @@
     "potencia": 7,
     "dirigibilidade": 8,
     "durabilidade": 9,
-    "preco": 11.0,
+    "preco": 11.5,
     "arquivos": {
       "logo": "/resource/Logo Cosworth.svg",
       "bandeira": "/resource/Bandeira Reino Unido.svg"
@@ -101,7 +101,7 @@
     "potencia": 9,
     "dirigibilidade": 7,
     "durabilidade": 8,
-    "preco": 14.0,
+    "preco": 13.8,
     "arquivos": {
       "logo": "/resource/Logo Ford.svg",
       "bandeira": "/resource/Bandeira EUA.svg"
@@ -113,7 +113,7 @@
     "potencia": 10,
     "dirigibilidade": 5,
     "durabilidade": 6,
-    "preco": 17.0,
+    "preco": 14.0,
     "arquivos": {
       "logo": "/resource/Logo Lamborghini.svg",
       "bandeira": "/resource/Bandeira Italia.svg"
@@ -125,7 +125,7 @@
     "potencia": 9,
     "dirigibilidade": 5,
     "durabilidade": 7,
-    "preco": 12.5,
+    "preco": 11.8,
     "arquivos": {
       "logo": "/resource/Logo Dodge.svg",
       "bandeira": "/resource/Bandeira EUA.svg"
@@ -137,7 +137,7 @@
     "potencia": 8,
     "dirigibilidade": 9,
     "durabilidade": 7,
-    "preco": 13.5,
+    "preco": 12.8,
     "arquivos": {
       "logo": "/resource/Logo Nissan.svg",
       "bandeira": "/resource/Bandeira Japao.svg"
@@ -149,7 +149,7 @@
     "potencia": 6,
     "dirigibilidade": 8,
     "durabilidade": 9,
-    "preco": 10.0,
+    "preco": 9.8,
     "arquivos": {
       "logo": "/resource/Logo Judd.svg",
       "bandeira": "/resource/Bandeira Reino Unido.svg"
@@ -161,7 +161,7 @@
     "potencia": 8,
     "dirigibilidade": 8,
     "durabilidade": 7,
-    "preco": 14.0,
+    "preco": 12.5,
     "arquivos": {
       "logo": "/resource/Logo Jaguar.svg",
       "bandeira": "/resource/Bandeira Reino Unido.svg"
@@ -173,7 +173,7 @@
     "potencia": 9,
     "dirigibilidade": 7,
     "durabilidade": 6,
-    "preco": 15.0,
+    "preco": 13.0,
     "arquivos": {
       "logo": "/resource/Logo Maserati.svg",
       "bandeira": "/resource/Bandeira Italia.svg"
@@ -185,7 +185,7 @@
     "potencia": 7,
     "dirigibilidade": 6,
     "durabilidade": 6,
-    "preco": 9.5,
+    "preco": 8.5,
     "arquivos": {
       "logo": "/resource/Logo Mecachrome.svg",
       "bandeira": "/resource/Bandeira Franca.svg"
@@ -197,7 +197,7 @@
     "potencia": 7,
     "dirigibilidade": 7,
     "durabilidade": 7,
-    "preco": 11.5,
+    "preco": 10.5,
     "arquivos": {
       "logo": "/resource/Logo Peugeot.svg",
       "bandeira": "/resource/Bandeira Franca.svg"
@@ -208,8 +208,8 @@
     "nome": "Vanwall Heritage",
     "potencia": 7,
     "dirigibilidade": 7,
-    "durabilidade": 7,
-    "preco": 11.0,
+    "durabilidade": 6,
+    "preco": 9.0,
     "arquivos": {
       "logo": "/resource/Logo Vanwall.svg",
       "bandeira": "/resource/Bandeira Reino Unido.svg"
@@ -221,34 +221,34 @@
     "potencia": 8,
     "dirigibilidade": 7,
     "durabilidade": 6,
-    "preco": 12.0,
+    "preco": 11.0,
     "arquivos": {
       "logo": "/resource/Logo Yamaha.svg",
       "bandeira": "/resource/Bandeira Japao.svg"
     }
   },
-{
+  {
     "id": "Suzuki",
     "nome": "Suzuki Racing Power",
     "potencia": 7,
     "dirigibilidade": 7,
     "durabilidade": 8,
-    "preco": 11.5,
+    "preco": 10.8,
     "arquivos": {
       "logo": "/resource/Logo Suzuki.svg",
       "bandeira": "/resource/Bandeira Japao.svg"
     }
   },
   {
-    "id": "Bentley",
-    "nome": "Bentley Speed Power",
+    "id": "Mugen",
+    "nome": "Mugen Power",
     "potencia": 7,
     "dirigibilidade": 6,
-    "durabilidade": 10,
-    "preco": 14.0,
+    "durabilidade": 6,
+    "preco": 8.2,
     "arquivos": {
-      "logo": "/resource/Logo Bentley.svg",
-      "bandeira": "/resource/Bandeira Reino Unido.svg"
+      "logo": "/resource/Logo Mugen.svg",
+      "bandeira": "/resource/Bandeira Japao.svg"
     }
   }
 ]

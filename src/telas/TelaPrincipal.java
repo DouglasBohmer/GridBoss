@@ -233,32 +233,32 @@ public class TelaPrincipal extends JFrame {
         // === EQUIPE ===
         LB_LogoEquipe = new JLabel("");
         LB_LogoEquipe.setHorizontalAlignment(SwingConstants.CENTER);
-        LB_LogoEquipe.setBounds(10, 11, 200, 85);
+        LB_LogoEquipe.setBounds(10, 9, 200, 85);
         contentPane.add(LB_LogoEquipe);
 
         LB_LogoMotorPQ = new JLabel("");
         LB_LogoMotorPQ.setHorizontalAlignment(SwingConstants.CENTER);
-        LB_LogoMotorPQ.setBounds(461, 11, 45, 33);
+        LB_LogoMotorPQ.setBounds(462, 50, 168, 72);
         contentPane.add(LB_LogoMotorPQ);
 
         LB_BandeiraMotor = new JLabel("");
         LB_BandeiraMotor.setHorizontalAlignment(SwingConstants.CENTER);
-        LB_BandeiraMotor.setBounds(415, 11, 45, 33);
+        LB_BandeiraMotor.setBounds(462, 9, 34, 33);
         contentPane.add(LB_BandeiraMotor);
         
         LB_Motor = new JLabel("Motor");
         LB_Motor.setHorizontalAlignment(SwingConstants.CENTER);
-        LB_Motor.setBounds(220, 11, 185, 33);
+        LB_Motor.setBounds(506, 9, 124, 33);
         contentPane.add(LB_Motor);
 
         LB_BandeiraSede = new JLabel("");
         LB_BandeiraSede.setHorizontalAlignment(SwingConstants.CENTER);
-        LB_BandeiraSede.setBounds(415, 55, 45, 33);
+        LB_BandeiraSede.setBounds(220, 9, 45, 33);
         contentPane.add(LB_BandeiraSede);
 
         LB_SedeEquipe = new JLabel("Sede");
         LB_SedeEquipe.setHorizontalAlignment(SwingConstants.CENTER);
-        LB_SedeEquipe.setBounds(220, 55, 183, 33);
+        LB_SedeEquipe.setBounds(275, 9, 145, 33);
         contentPane.add(LB_SedeEquipe);
 
         // === INFO JOGO ===

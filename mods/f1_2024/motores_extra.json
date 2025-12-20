@@ -192,18 +192,6 @@
     }
   },
   {
-    "id": "Mugen",
-    "nome": "Mugen Power",
-    "potencia": 8,
-    "dirigibilidade": 7,
-    "durabilidade": 8,
-    "preco": 12.0,
-    "arquivos": {
-      "logo": "/resource/Logo Mugen.svg",
-      "bandeira": "/resource/Bandeira Japao.svg"
-    }
-  },
-  {
     "id": "Peugeot",
     "nome": "Peugeot Sport",
     "potencia": 7,
@@ -213,18 +201,6 @@
     "arquivos": {
       "logo": "/resource/Logo Peugeot.svg",
       "bandeira": "/resource/Bandeira Franca.svg"
-    }
-  },
-  {
-    "id": "Subaru",
-    "nome": "Subaru Tecnica",
-    "potencia": 7,
-    "dirigibilidade": 9,
-    "durabilidade": 8,
-    "preco": 12.5,
-    "arquivos": {
-      "logo": "/resource/Logo Subaru.svg",
-      "bandeira": "/resource/Bandeira Japao.svg"
     }
   },
   {
@@ -249,6 +225,30 @@
     "arquivos": {
       "logo": "/resource/Logo Yamaha.svg",
       "bandeira": "/resource/Bandeira Japao.svg"
+    }
+  },
+{
+    "id": "Suzuki",
+    "nome": "Suzuki Racing Power",
+    "potencia": 7,
+    "dirigibilidade": 7,
+    "durabilidade": 8,
+    "preco": 11.5,
+    "arquivos": {
+      "logo": "/resource/Logo Suzuki.svg",
+      "bandeira": "/resource/Bandeira Japao.svg"
+    }
+  },
+  {
+    "id": "Bentley",
+    "nome": "Bentley Speed Power",
+    "potencia": 7,
+    "dirigibilidade": 6,
+    "durabilidade": 10,
+    "preco": 14.0,
+    "arquivos": {
+      "logo": "/resource/Logo Bentley.svg",
+      "bandeira": "/resource/Bandeira Reino Unido.svg"
     }
   }
 ]

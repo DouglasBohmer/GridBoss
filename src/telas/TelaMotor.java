@@ -67,7 +67,7 @@ public class TelaMotor extends JDialog {
         
         // ALTERAÇÃO 2: Configuração Modal e Utilitária
         setModal(true);
-        setType(Type.UTILITY);
+       // setType(Type.UTILITY);
         
         setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
         setBounds(100, 100, 900, 600);

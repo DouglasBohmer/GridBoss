@@ -39,7 +39,7 @@ public class Equipe {
     
     private transient List<Piloto> pilotosTitulares = new ArrayList<>();
     private transient List<Piloto> pilotosReservas = new ArrayList<>();
-    private transient List<Patrocinador> patrocinadoresAtivos = new ArrayList<>();
+    private List<Patrocinador> patrocinadoresAtivos = new ArrayList<>();
     private transient Categoria categoriaAtual;
     private transient Motor motorObjeto; 
 

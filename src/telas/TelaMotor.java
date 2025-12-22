@@ -2,7 +2,6 @@ package telas;
 
 import com.formdev.flatlaf.extras.FlatSVGIcon;
 import com.formdev.flatlaf.extras.FlatSVGUtils;
-
 import dados.CarregadorJSON;
 import dados.DadosDoJogo;
 import modelos.Equipe;
@@ -13,10 +12,10 @@ import javax.swing.border.EmptyBorder;
 import javax.swing.border.TitledBorder;
 import java.awt.*;
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 
-public class TelaMotor extends JFrame {
+// ALTERAÇÃO 1: Estende JDialog em vez de JFrame
+public class TelaMotor extends JDialog {
 
     private JPanel contentPane;
     private DadosDoJogo dados;
@@ -64,28 +63,35 @@ public class TelaMotor extends JFrame {
         this.dados = dados;
         this.equipeJogador = dados.getEquipeDoJogador();
         
-        setTitle("Grid Boss - Motor");
+        setTitle("Fornecedores de Unidade de Potência");
+        
+        // ALTERAÇÃO 2: Configuração Modal e Utilitária
+        setModal(true);
+        setType(Type.UTILITY);
+        
+        setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
+        setBounds(100, 100, 900, 600);
+        setResizable(false);
+        setLocationRelativeTo(null);
+        
+        // Ícone da janela (Padrão)
         try {
             java.awt.Image icon = FlatSVGUtils.svg2image("/resource/Icone.svg", 32, 32);
             if (icon != null) setIconImage(icon);
         } catch (Exception e) {
         }
-        setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-        setBounds(100, 100, 900, 600);
-        setResizable(false);
-        setLocationRelativeTo(null);
         
-        // --- CORREÇÃO: CARREGAMENTO DOS ARQUIVOS ---
+        // --- CARREGAMENTO DOS ARQUIVOS ---
         this.listaDeMotoresDisponiveis = new ArrayList<>();
         
         try {
-            // 1. Carrega o arquivo OFICIAL (motores.json) usando o método que já sabe o caminho correto
+            // 1. Carrega o arquivo OFICIAL (motores.json)
             List<Motor> listaPrincipal = CarregadorJSON.carregarMotores(dados.getCategoriaKey(), dados.getAnoAtual());
             if (listaPrincipal != null) {
                 this.listaDeMotoresDisponiveis.addAll(listaPrincipal);
             }
             
-            // 2. Monta o caminho manualmente para o arquivo EXTRA na mesma pasta do mod
+            // 2. Monta o caminho para o arquivo EXTRA na mesma pasta do mod
             String caminhoMod = "mods/" + dados.getCategoriaKey().toLowerCase() + "_" + dados.getAnoAtual() + "/";
             String caminhoExtra = caminhoMod + "motores_extra.json";
             
@@ -93,12 +99,6 @@ public class TelaMotor extends JFrame {
             List<Motor> listaExtra = CarregadorJSON.carregarMotoresPorArquivo(caminhoExtra);
             if (listaExtra != null) {
                 this.listaDeMotoresDisponiveis.addAll(listaExtra);
-            }
-            
-            // Debug caso continue vazio
-            if (this.listaDeMotoresDisponiveis.isEmpty()) {
-                System.out.println("ERRO: Nenhum motor encontrado!");
-                System.out.println("Tentou carregar de: " + caminhoMod);
             }
             
         } catch (Exception e) {

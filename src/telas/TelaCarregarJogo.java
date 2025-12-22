@@ -7,6 +7,9 @@ import servicos.CampeonatoService;
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 import javax.swing.border.LineBorder;
+
+import com.formdev.flatlaf.extras.FlatSVGUtils;
+
 import java.awt.*;
 import java.io.File;
 
@@ -23,7 +26,11 @@ public class TelaCarregarJogo extends JDialog {
         
         setModal(true);
         setTitle("Grid Boss - Carregar Jogo");
-        setIconImage(Toolkit.getDefaultToolkit().getImage(TelaCarregarJogo.class.getResource("/resource/Icone16px.png")));
+        try {
+            java.awt.Image icon = FlatSVGUtils.svg2image("/resource/Icone.svg", 32, 32);
+            if (icon != null) setIconImage(icon);
+        } catch (Exception e) {
+        }
         setBounds(100, 100, 650, 500); // Aumentei um tiquinho a altura
         setResizable(false);
         

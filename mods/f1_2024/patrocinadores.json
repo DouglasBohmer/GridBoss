@@ -30,9 +30,9 @@
     }
   },
   {
-    "nome": "Heineken",
+    "nome": "Pespi",
     "segmento": "Bebidas",
-    "pais": "Holanda",
+    "pais": "EUA",
     "reputacaoMinima": 75,
     "valorBase": 1.2,
     "bonusAssinatura": 3.5,
@@ -40,8 +40,8 @@
     "bonusPodio": 0.3,
     "bonusTop10": 0.1,
     "arquivos": {
-      "logo": "/resource/Logo Heineken.svg",
-      "bandeira": "/resource/Bandeira Holanda.svg"
+      "logo": "/resource/Logo Pepsi.svg",
+      "bandeira": "/resource/Bandeira EUA.svg"
     }
   },
   {
@@ -177,21 +177,6 @@
     "arquivos": {
       "logo": "/resource/Logo Ray-Ban.svg",
       "bandeira": "/resource/Bandeira Italia.svg"
-    }
-  },
-  {
-    "nome": "Red Bull",
-    "segmento": "Bebidas",
-    "pais": "Austria",
-    "reputacaoMinima": 85,
-    "valorBase": 1.6,
-    "bonusAssinatura": 5.5,
-    "bonusVitoria": 0.9,
-    "bonusPodio": 0.5,
-    "bonusTop10": 0.1,
-    "arquivos": {
-      "logo": "/resource/Logo Red Bull.svg",
-      "bandeira": "/resource/Bandeira Austria.svg"
     }
   },
   {

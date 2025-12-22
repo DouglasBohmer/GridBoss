@@ -21,18 +21,18 @@
       "staffChassi": 1,
       "staffConfiabilidade": 1,
       "arquivos": {
-        "logo": "/resource/Equipe_F1_Alpine.png",
-        "logoSvg": "/resource/Equipe_F1_Alpine.svg",
-        "bandeiraSede": "/resource/Bandeira Franca.png",
-        "bandeiraMotor": "/resource/Bandeira Franca.png",
-        "logoMotor": "/resource/Motor_RenaultPQ.png"
+        "logo": "/resource/Equipe F1 Alpine.svg",
+        "bandeiraSede": "/resource/Bandeira Franca.svg",
+        "bandeiraMotor": "/resource/Bandeira Franca.svg",
+        "logoMotor": "/resource/Logo Renault.svg"
       },
       "pilotosContratadosIDs": [
         "Pierre Gasly",
         "Esteban Ocon",
         "Jack Doohan"
       ],
-      "anosConsecutivosNoVermelho": 0
+      "anosConsecutivosNoVermelho": 0,
+      "patrocinadoresAtivos": []
     },
     {
       "id": "astonmartin",
@@ -55,11 +55,10 @@
       "staffChassi": 1,
       "staffConfiabilidade": 1,
       "arquivos": {
-        "logo": "/resource/Equipe_F1_Aston Martin.png",
-        "logoSvg": "/resource/Equipe_F1_Aston Martin.svg",
-        "bandeiraSede": "/resource/Bandeira Reino Unido.png",
-        "bandeiraMotor": "/resource/Bandeira Alemanha.png",
-        "logoMotor": "/resource/Motor_MercedesPQ.png"
+        "logo": "/resource/Equipe F1 Aston Martin.svg",
+        "bandeiraSede": "/resource/Bandeira Reino Unido.svg",
+        "bandeiraMotor": "/resource/Bandeira Alemanha.svg",
+        "logoMotor": "/resource/Logo Mercedes.svg"
       },
       "pilotosContratadosIDs": [
         "Fernando Alonso",
@@ -67,7 +66,8 @@
         "Felipe Drugovich",
         "Stoffel Vandoorne"
       ],
-      "anosConsecutivosNoVermelho": 0
+      "anosConsecutivosNoVermelho": 0,
+      "patrocinadoresAtivos": []
     },
     {
       "id": "ferrari",
@@ -75,7 +75,7 @@
       "sede": "Maranello, Itália",
       "motor": "Ferrari",
       "fundacao": 1929,
-      "saldoFinanceiro": 138.0,
+      "saldoFinanceiro": 145.2,
       "reputacao": 97,
       "pontos": 0,
       "vitorias": 0,
@@ -90,11 +90,10 @@
       "staffChassi": 1,
       "staffConfiabilidade": 1,
       "arquivos": {
-        "logo": "/resource/Equipe_F1_Ferrari.png",
-        "logoSvg": "/resource/Equipe_F1_Ferrari.svg",
-        "bandeiraSede": "/resource/Bandeira Italia.png",
-        "bandeiraMotor": "/resource/Bandeira Italia.png",
-        "logoMotor": "/resource/Motor_FerrariPQ.png"
+        "logo": "/resource/Equipe F1 Ferrari.svg",
+        "bandeiraSede": "/resource/Bandeira Italia.svg",
+        "bandeiraMotor": "/resource/Bandeira Italia.svg",
+        "logoMotor": "/resource/Logo Ferrari.svg"
       },
       "pilotosContratadosIDs": [
         "Charles Leclerc",
@@ -103,7 +102,57 @@
         "Oliver Bearman",
         "Antonio Giovinazzi"
       ],
-      "anosConsecutivosNoVermelho": 0
+      "anosConsecutivosNoVermelho": 0,
+      "patrocinadoresAtivos": [
+        {
+          "nome": "Crypto.com",
+          "segmento": "Financeiro",
+          "pais": "Singapura",
+          "reputacaoMinima": 40,
+          "valorBase": 1.0,
+          "bonusAssinatura": 2.5,
+          "bonusVitoria": 0.5,
+          "bonusPodio": 0.25,
+          "bonusTop10": 0.1,
+          "arquivos": {
+            "logo": "/resource/Logo Crypto.com.svg",
+            "bandeira": "/resource/Bandeira Singapura.svg"
+          },
+          "duracaoRestante": 3
+        },
+        {
+          "nome": "Sparco",
+          "segmento": "Equipamento",
+          "pais": "Italia",
+          "reputacaoMinima": 10,
+          "valorBase": 0.25,
+          "bonusAssinatura": 0.4,
+          "bonusVitoria": 0.1,
+          "bonusPodio": 0.05,
+          "bonusTop10": 0.01,
+          "arquivos": {
+            "logo": "/resource/Logo Sparco.svg",
+            "bandeira": "/resource/Bandeira Italia.svg"
+          },
+          "duracaoRestante": 3
+        },
+        {
+          "nome": "NGK Spark Plugs",
+          "segmento": "Peças Automotivas",
+          "pais": "Japao",
+          "reputacaoMinima": 20,
+          "valorBase": 0.35,
+          "bonusAssinatura": 0.7,
+          "bonusVitoria": 0.15,
+          "bonusPodio": 0.08,
+          "bonusTop10": 0.02,
+          "arquivos": {
+            "logo": "/resource/Logo NGK.svg",
+            "bandeira": "/resource/Bandeira Japao.svg"
+          },
+          "duracaoRestante": 12
+        }
+      ]
     },
     {
       "id": "haas",
@@ -126,11 +175,10 @@
       "staffChassi": 1,
       "staffConfiabilidade": 1,
       "arquivos": {
-        "logo": "/resource/Equipe_F1_Haas.png",
-        "logoSvg": "/resource/Equipe_F1_Haas.svg",
-        "bandeiraSede": "/resource/Bandeira EUA.png",
-        "bandeiraMotor": "/resource/Bandeira Italia.png",
-        "logoMotor": "/resource/Motor_FerrariPQ.png"
+        "logo": "/resource/Equipe F1 Haas.svg",
+        "bandeiraSede": "/resource/Bandeira EUA.svg",
+        "bandeiraMotor": "/resource/Bandeira Italia.svg",
+        "logoMotor": "/resource/Logo Ferrari.svg"
       },
       "pilotosContratadosIDs": [
         "Nico Hulkenberg",
@@ -138,7 +186,8 @@
         "Pietro Fittipaldi",
         "Oliver Bearman"
       ],
-      "anosConsecutivosNoVermelho": 0
+      "anosConsecutivosNoVermelho": 0,
+      "patrocinadoresAtivos": []
     },
     {
       "id": "mclaren",
@@ -161,11 +210,10 @@
       "staffChassi": 1,
       "staffConfiabilidade": 1,
       "arquivos": {
-        "logo": "/resource/Equipe_F1_McLaren.png",
-        "logoSvg": "/resource/Equipe_F1_McLaren.svg",
-        "bandeiraSede": "/resource/Bandeira Reino Unido.png",
-        "bandeiraMotor": "/resource/Bandeira Alemanha.png",
-        "logoMotor": "/resource/Motor_MercedesPQ.png"
+        "logo": "/resource/Equipe F1 McLaren.svg",
+        "bandeiraSede": "/resource/Bandeira Reino Unido.svg",
+        "bandeiraMotor": "/resource/Bandeira Alemanha.svg",
+        "logoMotor": "/resource/Logo Mercedes.svg"
       },
       "pilotosContratadosIDs": [
         "Lando Norris",
@@ -175,7 +223,8 @@
         "Mick Schumacher",
         "Felipe Drugovich"
       ],
-      "anosConsecutivosNoVermelho": 0
+      "anosConsecutivosNoVermelho": 0,
+      "patrocinadoresAtivos": []
     },
     {
       "id": "mercedes",
@@ -198,11 +247,10 @@
       "staffChassi": 1,
       "staffConfiabilidade": 1,
       "arquivos": {
-        "logo": "/resource/Equipe_F1_Mercedes.png",
-        "logoSvg": "/resource/Equipe_F1_Mercedes.svg",
-        "bandeiraSede": "/resource/Bandeira Alemanha.png",
-        "bandeiraMotor": "/resource/Bandeira Alemanha.png",
-        "logoMotor": "/resource/Motor_MercedesPQ.png"
+        "logo": "/resource/Equipe F1 Mercedes.svg",
+        "bandeiraSede": "/resource/Bandeira Alemanha.svg",
+        "bandeiraMotor": "/resource/Bandeira Alemanha.svg",
+        "logoMotor": "/resource/Logo Mercedes.svg"
       },
       "pilotosContratadosIDs": [
         "Lewis Hamilton",
@@ -210,7 +258,8 @@
         "Mick Schumacher",
         "Frederik Vesti"
       ],
-      "anosConsecutivosNoVermelho": 0
+      "anosConsecutivosNoVermelho": 0,
+      "patrocinadoresAtivos": []
     },
     {
       "id": "racingbulls",
@@ -233,18 +282,18 @@
       "staffChassi": 1,
       "staffConfiabilidade": 1,
       "arquivos": {
-        "logo": "/resource/Equipe_F1_RB.png",
-        "logoSvg": "/resource/Equipe_F1_RB.svg",
-        "bandeiraSede": "/resource/Bandeira Italia.png",
-        "bandeiraMotor": "/resource/Bandeira Japao.png",
-        "logoMotor": "/resource/Motor_HondaPQ.png"
+        "logo": "/resource/Equipe F1 RB.svg",
+        "bandeiraSede": "/resource/Bandeira Italia.svg",
+        "bandeiraMotor": "/resource/Bandeira Japao.svg",
+        "logoMotor": "/resource/Logo Honda.svg"
       },
       "pilotosContratadosIDs": [
         "Yuki Tsunoda",
         "Daniel Ricciardo",
         "Liam Lawson"
       ],
-      "anosConsecutivosNoVermelho": 0
+      "anosConsecutivosNoVermelho": 0,
+      "patrocinadoresAtivos": []
     },
     {
       "id": "redbull",
@@ -267,11 +316,10 @@
       "staffChassi": 1,
       "staffConfiabilidade": 1,
       "arquivos": {
-        "logo": "/resource/Equipe_F1_RBR.png",
-        "logoSvg": "/resource/Equipe_F1_RBR.svg",
-        "bandeiraSede": "/resource/Bandeira Austria.png",
-        "bandeiraMotor": "/resource/Bandeira Japao.png",
-        "logoMotor": "/resource/Motor_HondaPQ.png"
+        "logo": "/resource/Equipe F1 RBR.svg",
+        "bandeiraSede": "/resource/Bandeira Austria.svg",
+        "bandeiraMotor": "/resource/Bandeira Japao.svg",
+        "logoMotor": "/resource/Logo Honda.svg"
       },
       "pilotosContratadosIDs": [
         "Max Verstappen",
@@ -279,7 +327,8 @@
         "Liam Lawson",
         "Sebastien Buemi"
       ],
-      "anosConsecutivosNoVermelho": 0
+      "anosConsecutivosNoVermelho": 0,
+      "patrocinadoresAtivos": []
     },
     {
       "id": "stake",
@@ -287,7 +336,7 @@
       "sede": "Hinwil, Suíça",
       "motor": "Ferrari",
       "fundacao": 2024,
-      "saldoFinanceiro": 50.0,
+      "saldoFinanceiro": 990.0,
       "reputacao": 55,
       "pontos": 0,
       "vitorias": 0,
@@ -302,11 +351,10 @@
       "staffChassi": 1,
       "staffConfiabilidade": 1,
       "arquivos": {
-        "logo": "/resource/Equipe_F1_Stake.png",
-        "logoSvg": "/resource/Equipe_F1_Stake.svg",
-        "bandeiraSede": "/resource/Bandeira Suica.png",
-        "bandeiraMotor": "/resource/Bandeira Italia.png",
-        "logoMotor": "/resource/Motor_FerrariPQ.png"
+        "logo": "/resource/Equipe F1 Stake.svg",
+        "bandeiraSede": "/resource/Bandeira Suica.svg",
+        "bandeiraMotor": "/resource/Bandeira Italia.svg",
+        "logoMotor": "/resource/Logo Ferrari.svg"
       },
       "pilotosContratadosIDs": [
         "Valtteri Bottas",
@@ -314,7 +362,8 @@
         "Zane Maloney",
         "Théo Pourchaire"
       ],
-      "anosConsecutivosNoVermelho": 0
+      "anosConsecutivosNoVermelho": 0,
+      "patrocinadoresAtivos": []
     },
     {
       "id": "williams",
@@ -337,17 +386,17 @@
       "staffChassi": 1,
       "staffConfiabilidade": 1,
       "arquivos": {
-        "logo": "/resource/Equipe_F1_Williams.png",
-        "logoSvg": "/resource/Equipe_F1_Williams.svg",
-        "bandeiraSede": "/resource/Bandeira Reino Unido.png",
-        "bandeiraMotor": "/resource/Bandeira Alemanha.png",
-        "logoMotor": "/resource/Motor_MercedesPQ.png"
+        "logo": "/resource/Equipe F1 Williams.svg",
+        "bandeiraSede": "/resource/Bandeira Reino Unido.svg",
+        "bandeiraMotor": "/resource/Bandeira Alemanha.svg",
+        "logoMotor": "/resource/Logo Mercedes.svg"
       },
       "pilotosContratadosIDs": [
         "Alexander Albon",
         "Logan Sargeant"
       ],
-      "anosConsecutivosNoVermelho": 0
+      "anosConsecutivosNoVermelho": 0,
+      "patrocinadoresAtivos": []
     }
   ],
   "todosOsPilotos": [
@@ -398,11 +447,10 @@
             "staffChassi": 1,
             "staffConfiabilidade": 1,
             "arquivos": {
-              "logo": "/resource/Equipe_F1_RBR.png",
-              "logoSvg": "/resource/Equipe_F1_RBR.svg",
-              "bandeiraSede": "/resource/Bandeira Austria.png",
-              "bandeiraMotor": "/resource/Bandeira Japao.png",
-              "logoMotor": "/resource/Motor_HondaPQ.png"
+              "logo": "/resource/Equipe F1 RBR.svg",
+              "bandeiraSede": "/resource/Bandeira Austria.svg",
+              "bandeiraMotor": "/resource/Bandeira Japao.svg",
+              "logoMotor": "/resource/Logo Honda.svg"
             },
             "pilotosContratadosIDs": [
               "Max Verstappen",
@@ -410,7 +458,8 @@
               "Liam Lawson",
               "Sebastien Buemi"
             ],
-            "anosConsecutivosNoVermelho": 0
+            "anosConsecutivosNoVermelho": 0,
+            "patrocinadoresAtivos": []
           },
           "tipo": "TITULAR"
         }
@@ -463,11 +512,10 @@
             "staffChassi": 1,
             "staffConfiabilidade": 1,
             "arquivos": {
-              "logo": "/resource/Equipe_F1_RBR.png",
-              "logoSvg": "/resource/Equipe_F1_RBR.svg",
-              "bandeiraSede": "/resource/Bandeira Austria.png",
-              "bandeiraMotor": "/resource/Bandeira Japao.png",
-              "logoMotor": "/resource/Motor_HondaPQ.png"
+              "logo": "/resource/Equipe F1 RBR.svg",
+              "bandeiraSede": "/resource/Bandeira Austria.svg",
+              "bandeiraMotor": "/resource/Bandeira Japao.svg",
+              "logoMotor": "/resource/Logo Honda.svg"
             },
             "pilotosContratadosIDs": [
               "Max Verstappen",
@@ -475,7 +523,8 @@
               "Liam Lawson",
               "Sebastien Buemi"
             ],
-            "anosConsecutivosNoVermelho": 0
+            "anosConsecutivosNoVermelho": 0,
+            "patrocinadoresAtivos": []
           },
           "tipo": "TITULAR"
         }
@@ -528,11 +577,10 @@
             "staffChassi": 1,
             "staffConfiabilidade": 1,
             "arquivos": {
-              "logo": "/resource/Equipe_F1_Mercedes.png",
-              "logoSvg": "/resource/Equipe_F1_Mercedes.svg",
-              "bandeiraSede": "/resource/Bandeira Alemanha.png",
-              "bandeiraMotor": "/resource/Bandeira Alemanha.png",
-              "logoMotor": "/resource/Motor_MercedesPQ.png"
+              "logo": "/resource/Equipe F1 Mercedes.svg",
+              "bandeiraSede": "/resource/Bandeira Alemanha.svg",
+              "bandeiraMotor": "/resource/Bandeira Alemanha.svg",
+              "logoMotor": "/resource/Logo Mercedes.svg"
             },
             "pilotosContratadosIDs": [
               "Lewis Hamilton",
@@ -540,7 +588,8 @@
               "Mick Schumacher",
               "Frederik Vesti"
             ],
-            "anosConsecutivosNoVermelho": 0
+            "anosConsecutivosNoVermelho": 0,
+            "patrocinadoresAtivos": []
           },
           "tipo": "TITULAR"
         }
@@ -593,11 +642,10 @@
             "staffChassi": 1,
             "staffConfiabilidade": 1,
             "arquivos": {
-              "logo": "/resource/Equipe_F1_Mercedes.png",
-              "logoSvg": "/resource/Equipe_F1_Mercedes.svg",
-              "bandeiraSede": "/resource/Bandeira Alemanha.png",
-              "bandeiraMotor": "/resource/Bandeira Alemanha.png",
-              "logoMotor": "/resource/Motor_MercedesPQ.png"
+              "logo": "/resource/Equipe F1 Mercedes.svg",
+              "bandeiraSede": "/resource/Bandeira Alemanha.svg",
+              "bandeiraMotor": "/resource/Bandeira Alemanha.svg",
+              "logoMotor": "/resource/Logo Mercedes.svg"
             },
             "pilotosContratadosIDs": [
               "Lewis Hamilton",
@@ -605,7 +653,8 @@
               "Mick Schumacher",
               "Frederik Vesti"
             ],
-            "anosConsecutivosNoVermelho": 0
+            "anosConsecutivosNoVermelho": 0,
+            "patrocinadoresAtivos": []
           },
           "tipo": "TITULAR"
         }
@@ -643,7 +692,7 @@
             "sede": "Maranello, Itália",
             "motor": "Ferrari",
             "fundacao": 1929,
-            "saldoFinanceiro": 138.0,
+            "saldoFinanceiro": 145.2,
             "reputacao": 97,
             "pontos": 0,
             "vitorias": 0,
@@ -658,11 +707,10 @@
             "staffChassi": 1,
             "staffConfiabilidade": 1,
             "arquivos": {
-              "logo": "/resource/Equipe_F1_Ferrari.png",
-              "logoSvg": "/resource/Equipe_F1_Ferrari.svg",
-              "bandeiraSede": "/resource/Bandeira Italia.png",
-              "bandeiraMotor": "/resource/Bandeira Italia.png",
-              "logoMotor": "/resource/Motor_FerrariPQ.png"
+              "logo": "/resource/Equipe F1 Ferrari.svg",
+              "bandeiraSede": "/resource/Bandeira Italia.svg",
+              "bandeiraMotor": "/resource/Bandeira Italia.svg",
+              "logoMotor": "/resource/Logo Ferrari.svg"
             },
             "pilotosContratadosIDs": [
               "Charles Leclerc",
@@ -671,7 +719,57 @@
               "Oliver Bearman",
               "Antonio Giovinazzi"
             ],
-            "anosConsecutivosNoVermelho": 0
+            "anosConsecutivosNoVermelho": 0,
+            "patrocinadoresAtivos": [
+              {
+                "nome": "Crypto.com",
+                "segmento": "Financeiro",
+                "pais": "Singapura",
+                "reputacaoMinima": 40,
+                "valorBase": 1.0,
+                "bonusAssinatura": 2.5,
+                "bonusVitoria": 0.5,
+                "bonusPodio": 0.25,
+                "bonusTop10": 0.1,
+                "arquivos": {
+                  "logo": "/resource/Logo Crypto.com.svg",
+                  "bandeira": "/resource/Bandeira Singapura.svg"
+                },
+                "duracaoRestante": 3
+              },
+              {
+                "nome": "Sparco",
+                "segmento": "Equipamento",
+                "pais": "Italia",
+                "reputacaoMinima": 10,
+                "valorBase": 0.25,
+                "bonusAssinatura": 0.4,
+                "bonusVitoria": 0.1,
+                "bonusPodio": 0.05,
+                "bonusTop10": 0.01,
+                "arquivos": {
+                  "logo": "/resource/Logo Sparco.svg",
+                  "bandeira": "/resource/Bandeira Italia.svg"
+                },
+                "duracaoRestante": 3
+              },
+              {
+                "nome": "NGK Spark Plugs",
+                "segmento": "Peças Automotivas",
+                "pais": "Japao",
+                "reputacaoMinima": 20,
+                "valorBase": 0.35,
+                "bonusAssinatura": 0.7,
+                "bonusVitoria": 0.15,
+                "bonusPodio": 0.08,
+                "bonusTop10": 0.02,
+                "arquivos": {
+                  "logo": "/resource/Logo NGK.svg",
+                  "bandeira": "/resource/Bandeira Japao.svg"
+                },
+                "duracaoRestante": 12
+              }
+            ]
           },
           "tipo": "TITULAR"
         }
@@ -709,7 +807,7 @@
             "sede": "Maranello, Itália",
             "motor": "Ferrari",
             "fundacao": 1929,
-            "saldoFinanceiro": 138.0,
+            "saldoFinanceiro": 145.2,
             "reputacao": 97,
             "pontos": 0,
             "vitorias": 0,
@@ -724,11 +822,10 @@
             "staffChassi": 1,
             "staffConfiabilidade": 1,
             "arquivos": {
-              "logo": "/resource/Equipe_F1_Ferrari.png",
-              "logoSvg": "/resource/Equipe_F1_Ferrari.svg",
-              "bandeiraSede": "/resource/Bandeira Italia.png",
-              "bandeiraMotor": "/resource/Bandeira Italia.png",
-              "logoMotor": "/resource/Motor_FerrariPQ.png"
+              "logo": "/resource/Equipe F1 Ferrari.svg",
+              "bandeiraSede": "/resource/Bandeira Italia.svg",
+              "bandeiraMotor": "/resource/Bandeira Italia.svg",
+              "logoMotor": "/resource/Logo Ferrari.svg"
             },
             "pilotosContratadosIDs": [
               "Charles Leclerc",
@@ -737,7 +834,57 @@
               "Oliver Bearman",
               "Antonio Giovinazzi"
             ],
-            "anosConsecutivosNoVermelho": 0
+            "anosConsecutivosNoVermelho": 0,
+            "patrocinadoresAtivos": [
+              {
+                "nome": "Crypto.com",
+                "segmento": "Financeiro",
+                "pais": "Singapura",
+                "reputacaoMinima": 40,
+                "valorBase": 1.0,
+                "bonusAssinatura": 2.5,
+                "bonusVitoria": 0.5,
+                "bonusPodio": 0.25,
+                "bonusTop10": 0.1,
+                "arquivos": {
+                  "logo": "/resource/Logo Crypto.com.svg",
+                  "bandeira": "/resource/Bandeira Singapura.svg"
+                },
+                "duracaoRestante": 3
+              },
+              {
+                "nome": "Sparco",
+                "segmento": "Equipamento",
+                "pais": "Italia",
+                "reputacaoMinima": 10,
+                "valorBase": 0.25,
+                "bonusAssinatura": 0.4,
+                "bonusVitoria": 0.1,
+                "bonusPodio": 0.05,
+                "bonusTop10": 0.01,
+                "arquivos": {
+                  "logo": "/resource/Logo Sparco.svg",
+                  "bandeira": "/resource/Bandeira Italia.svg"
+                },
+                "duracaoRestante": 3
+              },
+              {
+                "nome": "NGK Spark Plugs",
+                "segmento": "Peças Automotivas",
+                "pais": "Japao",
+                "reputacaoMinima": 20,
+                "valorBase": 0.35,
+                "bonusAssinatura": 0.7,
+                "bonusVitoria": 0.15,
+                "bonusPodio": 0.08,
+                "bonusTop10": 0.02,
+                "arquivos": {
+                  "logo": "/resource/Logo NGK.svg",
+                  "bandeira": "/resource/Bandeira Japao.svg"
+                },
+                "duracaoRestante": 12
+              }
+            ]
           },
           "tipo": "TITULAR"
         }
@@ -790,11 +937,10 @@
             "staffChassi": 1,
             "staffConfiabilidade": 1,
             "arquivos": {
-              "logo": "/resource/Equipe_F1_McLaren.png",
-              "logoSvg": "/resource/Equipe_F1_McLaren.svg",
-              "bandeiraSede": "/resource/Bandeira Reino Unido.png",
-              "bandeiraMotor": "/resource/Bandeira Alemanha.png",
-              "logoMotor": "/resource/Motor_MercedesPQ.png"
+              "logo": "/resource/Equipe F1 McLaren.svg",
+              "bandeiraSede": "/resource/Bandeira Reino Unido.svg",
+              "bandeiraMotor": "/resource/Bandeira Alemanha.svg",
+              "logoMotor": "/resource/Logo Mercedes.svg"
             },
             "pilotosContratadosIDs": [
               "Lando Norris",
@@ -804,7 +950,8 @@
               "Mick Schumacher",
               "Felipe Drugovich"
             ],
-            "anosConsecutivosNoVermelho": 0
+            "anosConsecutivosNoVermelho": 0,
+            "patrocinadoresAtivos": []
           },
           "tipo": "TITULAR"
         }
@@ -857,11 +1004,10 @@
             "staffChassi": 1,
             "staffConfiabilidade": 1,
             "arquivos": {
-              "logo": "/resource/Equipe_F1_McLaren.png",
-              "logoSvg": "/resource/Equipe_F1_McLaren.svg",
-              "bandeiraSede": "/resource/Bandeira Reino Unido.png",
-              "bandeiraMotor": "/resource/Bandeira Alemanha.png",
-              "logoMotor": "/resource/Motor_MercedesPQ.png"
+              "logo": "/resource/Equipe F1 McLaren.svg",
+              "bandeiraSede": "/resource/Bandeira Reino Unido.svg",
+              "bandeiraMotor": "/resource/Bandeira Alemanha.svg",
+              "logoMotor": "/resource/Logo Mercedes.svg"
             },
             "pilotosContratadosIDs": [
               "Lando Norris",
@@ -871,7 +1017,8 @@
               "Mick Schumacher",
               "Felipe Drugovich"
             ],
-            "anosConsecutivosNoVermelho": 0
+            "anosConsecutivosNoVermelho": 0,
+            "patrocinadoresAtivos": []
           },
           "tipo": "TITULAR"
         }
@@ -924,11 +1071,10 @@
             "staffChassi": 1,
             "staffConfiabilidade": 1,
             "arquivos": {
-              "logo": "/resource/Equipe_F1_Aston Martin.png",
-              "logoSvg": "/resource/Equipe_F1_Aston Martin.svg",
-              "bandeiraSede": "/resource/Bandeira Reino Unido.png",
-              "bandeiraMotor": "/resource/Bandeira Alemanha.png",
-              "logoMotor": "/resource/Motor_MercedesPQ.png"
+              "logo": "/resource/Equipe F1 Aston Martin.svg",
+              "bandeiraSede": "/resource/Bandeira Reino Unido.svg",
+              "bandeiraMotor": "/resource/Bandeira Alemanha.svg",
+              "logoMotor": "/resource/Logo Mercedes.svg"
             },
             "pilotosContratadosIDs": [
               "Fernando Alonso",
@@ -936,7 +1082,8 @@
               "Felipe Drugovich",
               "Stoffel Vandoorne"
             ],
-            "anosConsecutivosNoVermelho": 0
+            "anosConsecutivosNoVermelho": 0,
+            "patrocinadoresAtivos": []
           },
           "tipo": "TITULAR"
         }
@@ -989,11 +1136,10 @@
             "staffChassi": 1,
             "staffConfiabilidade": 1,
             "arquivos": {
-              "logo": "/resource/Equipe_F1_Aston Martin.png",
-              "logoSvg": "/resource/Equipe_F1_Aston Martin.svg",
-              "bandeiraSede": "/resource/Bandeira Reino Unido.png",
-              "bandeiraMotor": "/resource/Bandeira Alemanha.png",
-              "logoMotor": "/resource/Motor_MercedesPQ.png"
+              "logo": "/resource/Equipe F1 Aston Martin.svg",
+              "bandeiraSede": "/resource/Bandeira Reino Unido.svg",
+              "bandeiraMotor": "/resource/Bandeira Alemanha.svg",
+              "logoMotor": "/resource/Logo Mercedes.svg"
             },
             "pilotosContratadosIDs": [
               "Fernando Alonso",
@@ -1001,7 +1147,8 @@
               "Felipe Drugovich",
               "Stoffel Vandoorne"
             ],
-            "anosConsecutivosNoVermelho": 0
+            "anosConsecutivosNoVermelho": 0,
+            "patrocinadoresAtivos": []
           },
           "tipo": "TITULAR"
         }
@@ -1054,18 +1201,18 @@
             "staffChassi": 1,
             "staffConfiabilidade": 1,
             "arquivos": {
-              "logo": "/resource/Equipe_F1_Alpine.png",
-              "logoSvg": "/resource/Equipe_F1_Alpine.svg",
-              "bandeiraSede": "/resource/Bandeira Franca.png",
-              "bandeiraMotor": "/resource/Bandeira Franca.png",
-              "logoMotor": "/resource/Motor_RenaultPQ.png"
+              "logo": "/resource/Equipe F1 Alpine.svg",
+              "bandeiraSede": "/resource/Bandeira Franca.svg",
+              "bandeiraMotor": "/resource/Bandeira Franca.svg",
+              "logoMotor": "/resource/Logo Renault.svg"
             },
             "pilotosContratadosIDs": [
               "Pierre Gasly",
               "Esteban Ocon",
               "Jack Doohan"
             ],
-            "anosConsecutivosNoVermelho": 0
+            "anosConsecutivosNoVermelho": 0,
+            "patrocinadoresAtivos": []
           },
           "tipo": "TITULAR"
         }
@@ -1118,18 +1265,18 @@
             "staffChassi": 1,
             "staffConfiabilidade": 1,
             "arquivos": {
-              "logo": "/resource/Equipe_F1_Alpine.png",
-              "logoSvg": "/resource/Equipe_F1_Alpine.svg",
-              "bandeiraSede": "/resource/Bandeira Franca.png",
-              "bandeiraMotor": "/resource/Bandeira Franca.png",
-              "logoMotor": "/resource/Motor_RenaultPQ.png"
+              "logo": "/resource/Equipe F1 Alpine.svg",
+              "bandeiraSede": "/resource/Bandeira Franca.svg",
+              "bandeiraMotor": "/resource/Bandeira Franca.svg",
+              "logoMotor": "/resource/Logo Renault.svg"
             },
             "pilotosContratadosIDs": [
               "Pierre Gasly",
               "Esteban Ocon",
               "Jack Doohan"
             ],
-            "anosConsecutivosNoVermelho": 0
+            "anosConsecutivosNoVermelho": 0,
+            "patrocinadoresAtivos": []
           },
           "tipo": "TITULAR"
         }
@@ -1182,17 +1329,17 @@
             "staffChassi": 1,
             "staffConfiabilidade": 1,
             "arquivos": {
-              "logo": "/resource/Equipe_F1_Williams.png",
-              "logoSvg": "/resource/Equipe_F1_Williams.svg",
-              "bandeiraSede": "/resource/Bandeira Reino Unido.png",
-              "bandeiraMotor": "/resource/Bandeira Alemanha.png",
-              "logoMotor": "/resource/Motor_MercedesPQ.png"
+              "logo": "/resource/Equipe F1 Williams.svg",
+              "bandeiraSede": "/resource/Bandeira Reino Unido.svg",
+              "bandeiraMotor": "/resource/Bandeira Alemanha.svg",
+              "logoMotor": "/resource/Logo Mercedes.svg"
             },
             "pilotosContratadosIDs": [
               "Alexander Albon",
               "Logan Sargeant"
             ],
-            "anosConsecutivosNoVermelho": 0
+            "anosConsecutivosNoVermelho": 0,
+            "patrocinadoresAtivos": []
           },
           "tipo": "TITULAR"
         }
@@ -1245,17 +1392,17 @@
             "staffChassi": 1,
             "staffConfiabilidade": 1,
             "arquivos": {
-              "logo": "/resource/Equipe_F1_Williams.png",
-              "logoSvg": "/resource/Equipe_F1_Williams.svg",
-              "bandeiraSede": "/resource/Bandeira Reino Unido.png",
-              "bandeiraMotor": "/resource/Bandeira Alemanha.png",
-              "logoMotor": "/resource/Motor_MercedesPQ.png"
+              "logo": "/resource/Equipe F1 Williams.svg",
+              "bandeiraSede": "/resource/Bandeira Reino Unido.svg",
+              "bandeiraMotor": "/resource/Bandeira Alemanha.svg",
+              "logoMotor": "/resource/Logo Mercedes.svg"
             },
             "pilotosContratadosIDs": [
               "Alexander Albon",
               "Logan Sargeant"
             ],
-            "anosConsecutivosNoVermelho": 0
+            "anosConsecutivosNoVermelho": 0,
+            "patrocinadoresAtivos": []
           },
           "tipo": "TITULAR"
         }
@@ -1308,18 +1455,18 @@
             "staffChassi": 1,
             "staffConfiabilidade": 1,
             "arquivos": {
-              "logo": "/resource/Equipe_F1_RB.png",
-              "logoSvg": "/resource/Equipe_F1_RB.svg",
-              "bandeiraSede": "/resource/Bandeira Italia.png",
-              "bandeiraMotor": "/resource/Bandeira Japao.png",
-              "logoMotor": "/resource/Motor_HondaPQ.png"
+              "logo": "/resource/Equipe F1 RB.svg",
+              "bandeiraSede": "/resource/Bandeira Italia.svg",
+              "bandeiraMotor": "/resource/Bandeira Japao.svg",
+              "logoMotor": "/resource/Logo Honda.svg"
             },
             "pilotosContratadosIDs": [
               "Yuki Tsunoda",
               "Daniel Ricciardo",
               "Liam Lawson"
             ],
-            "anosConsecutivosNoVermelho": 0
+            "anosConsecutivosNoVermelho": 0,
+            "patrocinadoresAtivos": []
           },
           "tipo": "TITULAR"
         }
@@ -1372,18 +1519,18 @@
             "staffChassi": 1,
             "staffConfiabilidade": 1,
             "arquivos": {
-              "logo": "/resource/Equipe_F1_RB.png",
-              "logoSvg": "/resource/Equipe_F1_RB.svg",
-              "bandeiraSede": "/resource/Bandeira Italia.png",
-              "bandeiraMotor": "/resource/Bandeira Japao.png",
-              "logoMotor": "/resource/Motor_HondaPQ.png"
+              "logo": "/resource/Equipe F1 RB.svg",
+              "bandeiraSede": "/resource/Bandeira Italia.svg",
+              "bandeiraMotor": "/resource/Bandeira Japao.svg",
+              "logoMotor": "/resource/Logo Honda.svg"
             },
             "pilotosContratadosIDs": [
               "Yuki Tsunoda",
               "Daniel Ricciardo",
               "Liam Lawson"
             ],
-            "anosConsecutivosNoVermelho": 0
+            "anosConsecutivosNoVermelho": 0,
+            "patrocinadoresAtivos": []
           },
           "tipo": "TITULAR"
         }
@@ -1421,7 +1568,7 @@
             "sede": "Hinwil, Suíça",
             "motor": "Ferrari",
             "fundacao": 2024,
-            "saldoFinanceiro": 50.0,
+            "saldoFinanceiro": 990.0,
             "reputacao": 55,
             "pontos": 0,
             "vitorias": 0,
@@ -1436,11 +1583,10 @@
             "staffChassi": 1,
             "staffConfiabilidade": 1,
             "arquivos": {
-              "logo": "/resource/Equipe_F1_Stake.png",
-              "logoSvg": "/resource/Equipe_F1_Stake.svg",
-              "bandeiraSede": "/resource/Bandeira Suica.png",
-              "bandeiraMotor": "/resource/Bandeira Italia.png",
-              "logoMotor": "/resource/Motor_FerrariPQ.png"
+              "logo": "/resource/Equipe F1 Stake.svg",
+              "bandeiraSede": "/resource/Bandeira Suica.svg",
+              "bandeiraMotor": "/resource/Bandeira Italia.svg",
+              "logoMotor": "/resource/Logo Ferrari.svg"
             },
             "pilotosContratadosIDs": [
               "Valtteri Bottas",
@@ -1448,7 +1594,8 @@
               "Zane Maloney",
               "Théo Pourchaire"
             ],
-            "anosConsecutivosNoVermelho": 0
+            "anosConsecutivosNoVermelho": 0,
+            "patrocinadoresAtivos": []
           },
           "tipo": "TITULAR"
         }
@@ -1486,7 +1633,7 @@
             "sede": "Hinwil, Suíça",
             "motor": "Ferrari",
             "fundacao": 2024,
-            "saldoFinanceiro": 50.0,
+            "saldoFinanceiro": 990.0,
             "reputacao": 55,
             "pontos": 0,
             "vitorias": 0,
@@ -1501,11 +1648,10 @@
             "staffChassi": 1,
             "staffConfiabilidade": 1,
             "arquivos": {
-              "logo": "/resource/Equipe_F1_Stake.png",
-              "logoSvg": "/resource/Equipe_F1_Stake.svg",
-              "bandeiraSede": "/resource/Bandeira Suica.png",
-              "bandeiraMotor": "/resource/Bandeira Italia.png",
-              "logoMotor": "/resource/Motor_FerrariPQ.png"
+              "logo": "/resource/Equipe F1 Stake.svg",
+              "bandeiraSede": "/resource/Bandeira Suica.svg",
+              "bandeiraMotor": "/resource/Bandeira Italia.svg",
+              "logoMotor": "/resource/Logo Ferrari.svg"
             },
             "pilotosContratadosIDs": [
               "Valtteri Bottas",
@@ -1513,7 +1659,8 @@
               "Zane Maloney",
               "Théo Pourchaire"
             ],
-            "anosConsecutivosNoVermelho": 0
+            "anosConsecutivosNoVermelho": 0,
+            "patrocinadoresAtivos": []
           },
           "tipo": "TITULAR"
         }
@@ -1566,11 +1713,10 @@
             "staffChassi": 1,
             "staffConfiabilidade": 1,
             "arquivos": {
-              "logo": "/resource/Equipe_F1_Haas.png",
-              "logoSvg": "/resource/Equipe_F1_Haas.svg",
-              "bandeiraSede": "/resource/Bandeira EUA.png",
-              "bandeiraMotor": "/resource/Bandeira Italia.png",
-              "logoMotor": "/resource/Motor_FerrariPQ.png"
+              "logo": "/resource/Equipe F1 Haas.svg",
+              "bandeiraSede": "/resource/Bandeira EUA.svg",
+              "bandeiraMotor": "/resource/Bandeira Italia.svg",
+              "logoMotor": "/resource/Logo Ferrari.svg"
             },
             "pilotosContratadosIDs": [
               "Nico Hulkenberg",
@@ -1578,7 +1724,8 @@
               "Pietro Fittipaldi",
               "Oliver Bearman"
             ],
-            "anosConsecutivosNoVermelho": 0
+            "anosConsecutivosNoVermelho": 0,
+            "patrocinadoresAtivos": []
           },
           "tipo": "TITULAR"
         }
@@ -1631,11 +1778,10 @@
             "staffChassi": 1,
             "staffConfiabilidade": 1,
             "arquivos": {
-              "logo": "/resource/Equipe_F1_Haas.png",
-              "logoSvg": "/resource/Equipe_F1_Haas.svg",
-              "bandeiraSede": "/resource/Bandeira EUA.png",
-              "bandeiraMotor": "/resource/Bandeira Italia.png",
-              "logoMotor": "/resource/Motor_FerrariPQ.png"
+              "logo": "/resource/Equipe F1 Haas.svg",
+              "bandeiraSede": "/resource/Bandeira EUA.svg",
+              "bandeiraMotor": "/resource/Bandeira Italia.svg",
+              "logoMotor": "/resource/Logo Ferrari.svg"
             },
             "pilotosContratadosIDs": [
               "Nico Hulkenberg",
@@ -1643,7 +1789,8 @@
               "Pietro Fittipaldi",
               "Oliver Bearman"
             ],
-            "anosConsecutivosNoVermelho": 0
+            "anosConsecutivosNoVermelho": 0,
+            "patrocinadoresAtivos": []
           },
           "tipo": "TITULAR"
         }
@@ -1681,7 +1828,7 @@
             "sede": "Hinwil, Suíça",
             "motor": "Ferrari",
             "fundacao": 2024,
-            "saldoFinanceiro": 50.0,
+            "saldoFinanceiro": 990.0,
             "reputacao": 55,
             "pontos": 0,
             "vitorias": 0,
@@ -1696,11 +1843,10 @@
             "staffChassi": 1,
             "staffConfiabilidade": 1,
             "arquivos": {
-              "logo": "/resource/Equipe_F1_Stake.png",
-              "logoSvg": "/resource/Equipe_F1_Stake.svg",
-              "bandeiraSede": "/resource/Bandeira Suica.png",
-              "bandeiraMotor": "/resource/Bandeira Italia.png",
-              "logoMotor": "/resource/Motor_FerrariPQ.png"
+              "logo": "/resource/Equipe F1 Stake.svg",
+              "bandeiraSede": "/resource/Bandeira Suica.svg",
+              "bandeiraMotor": "/resource/Bandeira Italia.svg",
+              "logoMotor": "/resource/Logo Ferrari.svg"
             },
             "pilotosContratadosIDs": [
               "Valtteri Bottas",
@@ -1708,7 +1854,8 @@
               "Zane Maloney",
               "Théo Pourchaire"
             ],
-            "anosConsecutivosNoVermelho": 0
+            "anosConsecutivosNoVermelho": 0,
+            "patrocinadoresAtivos": []
           },
           "tipo": "TITULAR"
         }
@@ -1746,7 +1893,7 @@
             "sede": "Hinwil, Suíça",
             "motor": "Ferrari",
             "fundacao": 2024,
-            "saldoFinanceiro": 50.0,
+            "saldoFinanceiro": 990.0,
             "reputacao": 55,
             "pontos": 0,
             "vitorias": 0,
@@ -1761,11 +1908,10 @@
             "staffChassi": 1,
             "staffConfiabilidade": 1,
             "arquivos": {
-              "logo": "/resource/Equipe_F1_Stake.png",
-              "logoSvg": "/resource/Equipe_F1_Stake.svg",
-              "bandeiraSede": "/resource/Bandeira Suica.png",
-              "bandeiraMotor": "/resource/Bandeira Italia.png",
-              "logoMotor": "/resource/Motor_FerrariPQ.png"
+              "logo": "/resource/Equipe F1 Stake.svg",
+              "bandeiraSede": "/resource/Bandeira Suica.svg",
+              "bandeiraMotor": "/resource/Bandeira Italia.svg",
+              "logoMotor": "/resource/Logo Ferrari.svg"
             },
             "pilotosContratadosIDs": [
               "Valtteri Bottas",
@@ -1773,7 +1919,8 @@
               "Zane Maloney",
               "Théo Pourchaire"
             ],
-            "anosConsecutivosNoVermelho": 0
+            "anosConsecutivosNoVermelho": 0,
+            "patrocinadoresAtivos": []
           },
           "tipo": "TITULAR"
         }
@@ -1826,18 +1973,18 @@
             "staffChassi": 1,
             "staffConfiabilidade": 1,
             "arquivos": {
-              "logo": "/resource/Equipe_F1_RB.png",
-              "logoSvg": "/resource/Equipe_F1_RB.svg",
-              "bandeiraSede": "/resource/Bandeira Italia.png",
-              "bandeiraMotor": "/resource/Bandeira Japao.png",
-              "logoMotor": "/resource/Motor_HondaPQ.png"
+              "logo": "/resource/Equipe F1 RB.svg",
+              "bandeiraSede": "/resource/Bandeira Italia.svg",
+              "bandeiraMotor": "/resource/Bandeira Japao.svg",
+              "logoMotor": "/resource/Logo Honda.svg"
             },
             "pilotosContratadosIDs": [
               "Yuki Tsunoda",
               "Daniel Ricciardo",
               "Liam Lawson"
             ],
-            "anosConsecutivosNoVermelho": 0
+            "anosConsecutivosNoVermelho": 0,
+            "patrocinadoresAtivos": []
           },
           "tipo": "TITULAR"
         }
@@ -1890,18 +2037,18 @@
             "staffChassi": 1,
             "staffConfiabilidade": 1,
             "arquivos": {
-              "logo": "/resource/Equipe_F1_Alpine.png",
-              "logoSvg": "/resource/Equipe_F1_Alpine.svg",
-              "bandeiraSede": "/resource/Bandeira Franca.png",
-              "bandeiraMotor": "/resource/Bandeira Franca.png",
-              "logoMotor": "/resource/Motor_RenaultPQ.png"
+              "logo": "/resource/Equipe F1 Alpine.svg",
+              "bandeiraSede": "/resource/Bandeira Franca.svg",
+              "bandeiraMotor": "/resource/Bandeira Franca.svg",
+              "logoMotor": "/resource/Logo Renault.svg"
             },
             "pilotosContratadosIDs": [
               "Pierre Gasly",
               "Esteban Ocon",
               "Jack Doohan"
             ],
-            "anosConsecutivosNoVermelho": 0
+            "anosConsecutivosNoVermelho": 0,
+            "patrocinadoresAtivos": []
           },
           "tipo": "TITULAR"
         }
@@ -1939,7 +2086,7 @@
             "sede": "Maranello, Itália",
             "motor": "Ferrari",
             "fundacao": 1929,
-            "saldoFinanceiro": 138.0,
+            "saldoFinanceiro": 145.2,
             "reputacao": 97,
             "pontos": 0,
             "vitorias": 0,
@@ -1954,11 +2101,10 @@
             "staffChassi": 1,
             "staffConfiabilidade": 1,
             "arquivos": {
-              "logo": "/resource/Equipe_F1_Ferrari.png",
-              "logoSvg": "/resource/Equipe_F1_Ferrari.svg",
-              "bandeiraSede": "/resource/Bandeira Italia.png",
-              "bandeiraMotor": "/resource/Bandeira Italia.png",
-              "logoMotor": "/resource/Motor_FerrariPQ.png"
+              "logo": "/resource/Equipe F1 Ferrari.svg",
+              "bandeiraSede": "/resource/Bandeira Italia.svg",
+              "bandeiraMotor": "/resource/Bandeira Italia.svg",
+              "logoMotor": "/resource/Logo Ferrari.svg"
             },
             "pilotosContratadosIDs": [
               "Charles Leclerc",
@@ -1967,7 +2113,57 @@
               "Oliver Bearman",
               "Antonio Giovinazzi"
             ],
-            "anosConsecutivosNoVermelho": 0
+            "anosConsecutivosNoVermelho": 0,
+            "patrocinadoresAtivos": [
+              {
+                "nome": "Crypto.com",
+                "segmento": "Financeiro",
+                "pais": "Singapura",
+                "reputacaoMinima": 40,
+                "valorBase": 1.0,
+                "bonusAssinatura": 2.5,
+                "bonusVitoria": 0.5,
+                "bonusPodio": 0.25,
+                "bonusTop10": 0.1,
+                "arquivos": {
+                  "logo": "/resource/Logo Crypto.com.svg",
+                  "bandeira": "/resource/Bandeira Singapura.svg"
+                },
+                "duracaoRestante": 3
+              },
+              {
+                "nome": "Sparco",
+                "segmento": "Equipamento",
+                "pais": "Italia",
+                "reputacaoMinima": 10,
+                "valorBase": 0.25,
+                "bonusAssinatura": 0.4,
+                "bonusVitoria": 0.1,
+                "bonusPodio": 0.05,
+                "bonusTop10": 0.01,
+                "arquivos": {
+                  "logo": "/resource/Logo Sparco.svg",
+                  "bandeira": "/resource/Bandeira Italia.svg"
+                },
+                "duracaoRestante": 3
+              },
+              {
+                "nome": "NGK Spark Plugs",
+                "segmento": "Peças Automotivas",
+                "pais": "Japao",
+                "reputacaoMinima": 20,
+                "valorBase": 0.35,
+                "bonusAssinatura": 0.7,
+                "bonusVitoria": 0.15,
+                "bonusPodio": 0.08,
+                "bonusTop10": 0.02,
+                "arquivos": {
+                  "logo": "/resource/Logo NGK.svg",
+                  "bandeira": "/resource/Bandeira Japao.svg"
+                },
+                "duracaoRestante": 12
+              }
+            ]
           },
           "tipo": "TITULAR"
         }
@@ -2020,11 +2216,10 @@
             "staffChassi": 1,
             "staffConfiabilidade": 1,
             "arquivos": {
-              "logo": "/resource/Equipe_F1_Haas.png",
-              "logoSvg": "/resource/Equipe_F1_Haas.svg",
-              "bandeiraSede": "/resource/Bandeira EUA.png",
-              "bandeiraMotor": "/resource/Bandeira Italia.png",
-              "logoMotor": "/resource/Motor_FerrariPQ.png"
+              "logo": "/resource/Equipe F1 Haas.svg",
+              "bandeiraSede": "/resource/Bandeira EUA.svg",
+              "bandeiraMotor": "/resource/Bandeira Italia.svg",
+              "logoMotor": "/resource/Logo Ferrari.svg"
             },
             "pilotosContratadosIDs": [
               "Nico Hulkenberg",
@@ -2032,7 +2227,8 @@
               "Pietro Fittipaldi",
               "Oliver Bearman"
             ],
-            "anosConsecutivosNoVermelho": 0
+            "anosConsecutivosNoVermelho": 0,
+            "patrocinadoresAtivos": []
           },
           "tipo": "TITULAR"
         }
@@ -2070,7 +2266,7 @@
             "sede": "Maranello, Itália",
             "motor": "Ferrari",
             "fundacao": 1929,
-            "saldoFinanceiro": 138.0,
+            "saldoFinanceiro": 145.2,
             "reputacao": 97,
             "pontos": 0,
             "vitorias": 0,
@@ -2085,11 +2281,10 @@
             "staffChassi": 1,
             "staffConfiabilidade": 1,
             "arquivos": {
-              "logo": "/resource/Equipe_F1_Ferrari.png",
-              "logoSvg": "/resource/Equipe_F1_Ferrari.svg",
-              "bandeiraSede": "/resource/Bandeira Italia.png",
-              "bandeiraMotor": "/resource/Bandeira Italia.png",
-              "logoMotor": "/resource/Motor_FerrariPQ.png"
+              "logo": "/resource/Equipe F1 Ferrari.svg",
+              "bandeiraSede": "/resource/Bandeira Italia.svg",
+              "bandeiraMotor": "/resource/Bandeira Italia.svg",
+              "logoMotor": "/resource/Logo Ferrari.svg"
             },
             "pilotosContratadosIDs": [
               "Charles Leclerc",
@@ -2098,7 +2293,57 @@
               "Oliver Bearman",
               "Antonio Giovinazzi"
             ],
-            "anosConsecutivosNoVermelho": 0
+            "anosConsecutivosNoVermelho": 0,
+            "patrocinadoresAtivos": [
+              {
+                "nome": "Crypto.com",
+                "segmento": "Financeiro",
+                "pais": "Singapura",
+                "reputacaoMinima": 40,
+                "valorBase": 1.0,
+                "bonusAssinatura": 2.5,
+                "bonusVitoria": 0.5,
+                "bonusPodio": 0.25,
+                "bonusTop10": 0.1,
+                "arquivos": {
+                  "logo": "/resource/Logo Crypto.com.svg",
+                  "bandeira": "/resource/Bandeira Singapura.svg"
+                },
+                "duracaoRestante": 3
+              },
+              {
+                "nome": "Sparco",
+                "segmento": "Equipamento",
+                "pais": "Italia",
+                "reputacaoMinima": 10,
+                "valorBase": 0.25,
+                "bonusAssinatura": 0.4,
+                "bonusVitoria": 0.1,
+                "bonusPodio": 0.05,
+                "bonusTop10": 0.01,
+                "arquivos": {
+                  "logo": "/resource/Logo Sparco.svg",
+                  "bandeira": "/resource/Bandeira Italia.svg"
+                },
+                "duracaoRestante": 3
+              },
+              {
+                "nome": "NGK Spark Plugs",
+                "segmento": "Peças Automotivas",
+                "pais": "Japao",
+                "reputacaoMinima": 20,
+                "valorBase": 0.35,
+                "bonusAssinatura": 0.7,
+                "bonusVitoria": 0.15,
+                "bonusPodio": 0.08,
+                "bonusTop10": 0.02,
+                "arquivos": {
+                  "logo": "/resource/Logo NGK.svg",
+                  "bandeira": "/resource/Bandeira Japao.svg"
+                },
+                "duracaoRestante": 12
+              }
+            ]
           },
           "tipo": "TITULAR"
         }
@@ -2151,11 +2396,10 @@
             "staffChassi": 1,
             "staffConfiabilidade": 1,
             "arquivos": {
-              "logo": "/resource/Equipe_F1_McLaren.png",
-              "logoSvg": "/resource/Equipe_F1_McLaren.svg",
-              "bandeiraSede": "/resource/Bandeira Reino Unido.png",
-              "bandeiraMotor": "/resource/Bandeira Alemanha.png",
-              "logoMotor": "/resource/Motor_MercedesPQ.png"
+              "logo": "/resource/Equipe F1 McLaren.svg",
+              "bandeiraSede": "/resource/Bandeira Reino Unido.svg",
+              "bandeiraMotor": "/resource/Bandeira Alemanha.svg",
+              "logoMotor": "/resource/Logo Mercedes.svg"
             },
             "pilotosContratadosIDs": [
               "Lando Norris",
@@ -2165,7 +2409,8 @@
               "Mick Schumacher",
               "Felipe Drugovich"
             ],
-            "anosConsecutivosNoVermelho": 0
+            "anosConsecutivosNoVermelho": 0,
+            "patrocinadoresAtivos": []
           },
           "tipo": "TITULAR"
         }
@@ -2218,11 +2463,10 @@
             "staffChassi": 1,
             "staffConfiabilidade": 1,
             "arquivos": {
-              "logo": "/resource/Equipe_F1_Aston Martin.png",
-              "logoSvg": "/resource/Equipe_F1_Aston Martin.svg",
-              "bandeiraSede": "/resource/Bandeira Reino Unido.png",
-              "bandeiraMotor": "/resource/Bandeira Alemanha.png",
-              "logoMotor": "/resource/Motor_MercedesPQ.png"
+              "logo": "/resource/Equipe F1 Aston Martin.svg",
+              "bandeiraSede": "/resource/Bandeira Reino Unido.svg",
+              "bandeiraMotor": "/resource/Bandeira Alemanha.svg",
+              "logoMotor": "/resource/Logo Mercedes.svg"
             },
             "pilotosContratadosIDs": [
               "Fernando Alonso",
@@ -2230,7 +2474,8 @@
               "Felipe Drugovich",
               "Stoffel Vandoorne"
             ],
-            "anosConsecutivosNoVermelho": 0
+            "anosConsecutivosNoVermelho": 0,
+            "patrocinadoresAtivos": []
           },
           "tipo": "TITULAR"
         }
@@ -2283,11 +2528,10 @@
             "staffChassi": 1,
             "staffConfiabilidade": 1,
             "arquivos": {
-              "logo": "/resource/Equipe_F1_Haas.png",
-              "logoSvg": "/resource/Equipe_F1_Haas.svg",
-              "bandeiraSede": "/resource/Bandeira EUA.png",
-              "bandeiraMotor": "/resource/Bandeira Italia.png",
-              "logoMotor": "/resource/Motor_FerrariPQ.png"
+              "logo": "/resource/Equipe F1 Haas.svg",
+              "bandeiraSede": "/resource/Bandeira EUA.svg",
+              "bandeiraMotor": "/resource/Bandeira Italia.svg",
+              "logoMotor": "/resource/Logo Ferrari.svg"
             },
             "pilotosContratadosIDs": [
               "Nico Hulkenberg",
@@ -2295,7 +2539,8 @@
               "Pietro Fittipaldi",
               "Oliver Bearman"
             ],
-            "anosConsecutivosNoVermelho": 0
+            "anosConsecutivosNoVermelho": 0,
+            "patrocinadoresAtivos": []
           },
           "tipo": "TITULAR"
         }
@@ -2348,11 +2593,10 @@
             "staffChassi": 1,
             "staffConfiabilidade": 1,
             "arquivos": {
-              "logo": "/resource/Equipe_F1_McLaren.png",
-              "logoSvg": "/resource/Equipe_F1_McLaren.svg",
-              "bandeiraSede": "/resource/Bandeira Reino Unido.png",
-              "bandeiraMotor": "/resource/Bandeira Alemanha.png",
-              "logoMotor": "/resource/Motor_MercedesPQ.png"
+              "logo": "/resource/Equipe F1 McLaren.svg",
+              "bandeiraSede": "/resource/Bandeira Reino Unido.svg",
+              "bandeiraMotor": "/resource/Bandeira Alemanha.svg",
+              "logoMotor": "/resource/Logo Mercedes.svg"
             },
             "pilotosContratadosIDs": [
               "Lando Norris",
@@ -2362,7 +2606,8 @@
               "Mick Schumacher",
               "Felipe Drugovich"
             ],
-            "anosConsecutivosNoVermelho": 0
+            "anosConsecutivosNoVermelho": 0,
+            "patrocinadoresAtivos": []
           },
           "tipo": "TITULAR"
         }
@@ -2415,11 +2660,10 @@
             "staffChassi": 1,
             "staffConfiabilidade": 1,
             "arquivos": {
-              "logo": "/resource/Equipe_F1_McLaren.png",
-              "logoSvg": "/resource/Equipe_F1_McLaren.svg",
-              "bandeiraSede": "/resource/Bandeira Reino Unido.png",
-              "bandeiraMotor": "/resource/Bandeira Alemanha.png",
-              "logoMotor": "/resource/Motor_MercedesPQ.png"
+              "logo": "/resource/Equipe F1 McLaren.svg",
+              "bandeiraSede": "/resource/Bandeira Reino Unido.svg",
+              "bandeiraMotor": "/resource/Bandeira Alemanha.svg",
+              "logoMotor": "/resource/Logo Mercedes.svg"
             },
             "pilotosContratadosIDs": [
               "Lando Norris",
@@ -2429,7 +2673,8 @@
               "Mick Schumacher",
               "Felipe Drugovich"
             ],
-            "anosConsecutivosNoVermelho": 0
+            "anosConsecutivosNoVermelho": 0,
+            "patrocinadoresAtivos": []
           },
           "tipo": "TITULAR"
         }
@@ -2482,11 +2727,10 @@
             "staffChassi": 1,
             "staffConfiabilidade": 1,
             "arquivos": {
-              "logo": "/resource/Equipe_F1_Mercedes.png",
-              "logoSvg": "/resource/Equipe_F1_Mercedes.svg",
-              "bandeiraSede": "/resource/Bandeira Alemanha.png",
-              "bandeiraMotor": "/resource/Bandeira Alemanha.png",
-              "logoMotor": "/resource/Motor_MercedesPQ.png"
+              "logo": "/resource/Equipe F1 Mercedes.svg",
+              "bandeiraSede": "/resource/Bandeira Alemanha.svg",
+              "bandeiraMotor": "/resource/Bandeira Alemanha.svg",
+              "logoMotor": "/resource/Logo Mercedes.svg"
             },
             "pilotosContratadosIDs": [
               "Lewis Hamilton",
@@ -2494,7 +2738,8 @@
               "Mick Schumacher",
               "Frederik Vesti"
             ],
-            "anosConsecutivosNoVermelho": 0
+            "anosConsecutivosNoVermelho": 0,
+            "patrocinadoresAtivos": []
           },
           "tipo": "TITULAR"
         }
@@ -2547,11 +2792,10 @@
             "staffChassi": 1,
             "staffConfiabilidade": 1,
             "arquivos": {
-              "logo": "/resource/Equipe_F1_Mercedes.png",
-              "logoSvg": "/resource/Equipe_F1_Mercedes.svg",
-              "bandeiraSede": "/resource/Bandeira Alemanha.png",
-              "bandeiraMotor": "/resource/Bandeira Alemanha.png",
-              "logoMotor": "/resource/Motor_MercedesPQ.png"
+              "logo": "/resource/Equipe F1 Mercedes.svg",
+              "bandeiraSede": "/resource/Bandeira Alemanha.svg",
+              "bandeiraMotor": "/resource/Bandeira Alemanha.svg",
+              "logoMotor": "/resource/Logo Mercedes.svg"
             },
             "pilotosContratadosIDs": [
               "Lewis Hamilton",
@@ -2559,7 +2803,8 @@
               "Mick Schumacher",
               "Frederik Vesti"
             ],
-            "anosConsecutivosNoVermelho": 0
+            "anosConsecutivosNoVermelho": 0,
+            "patrocinadoresAtivos": []
           },
           "tipo": "TITULAR"
         }
@@ -2612,11 +2857,10 @@
             "staffChassi": 1,
             "staffConfiabilidade": 1,
             "arquivos": {
-              "logo": "/resource/Equipe_F1_RBR.png",
-              "logoSvg": "/resource/Equipe_F1_RBR.svg",
-              "bandeiraSede": "/resource/Bandeira Austria.png",
-              "bandeiraMotor": "/resource/Bandeira Japao.png",
-              "logoMotor": "/resource/Motor_HondaPQ.png"
+              "logo": "/resource/Equipe F1 RBR.svg",
+              "bandeiraSede": "/resource/Bandeira Austria.svg",
+              "bandeiraMotor": "/resource/Bandeira Japao.svg",
+              "logoMotor": "/resource/Logo Honda.svg"
             },
             "pilotosContratadosIDs": [
               "Max Verstappen",
@@ -2624,7 +2868,8 @@
               "Liam Lawson",
               "Sebastien Buemi"
             ],
-            "anosConsecutivosNoVermelho": 0
+            "anosConsecutivosNoVermelho": 0,
+            "patrocinadoresAtivos": []
           },
           "tipo": "TITULAR"
         }
@@ -2649,10 +2894,8 @@
         "chanceSafetyCar": 20.0,
         "tempoPerdidoPitLane": 24.0,
         "arquivos": {
-          "traçado": "/resource/CircuitoBahrain.png",
-          "traçadoSvg": "/resource/CircuitoBahrain.svg",
-          "bandeira": "/resource/Bandeira Bahrain.png",
-          "bandeiraSvg": "/resource/Bandeira Bahrain.svg"
+          "traçado": "/resource/Circuito Bahrain.svg",
+          "bandeira": "/resource/Bandeira Bahrain.svg"
         }
       },
       {
@@ -2671,10 +2914,8 @@
         "chanceSafetyCar": 60.0,
         "tempoPerdidoPitLane": 22.0,
         "arquivos": {
-          "traçado": "/resource/CircuitoJeddah.png",
-          "traçadoSvg": "/resource/CircuitoJeddah.svg",
-          "bandeira": "/resource/Bandeira Arabia Saudita.png",
-          "bandeiraSvg": "/resource/Bandeira Arabia Saudita.svg"
+          "traçado": "/resource/Circuito Jeddah.svg",
+          "bandeira": "/resource/Bandeira Arabia Saudita.svg"
         }
       },
       {
@@ -2693,10 +2934,8 @@
         "chanceSafetyCar": 70.0,
         "tempoPerdidoPitLane": 21.0,
         "arquivos": {
-          "traçado": "/resource/CircuitoMelbourne2021+.png",
-          "traçadoSvg": "/resource/CircuitoMelbourne2021+.svg",
-          "bandeira": "/resource/Bandeira Australia.png",
-          "bandeiraSvg": "/resource/Bandeira Australia.svg"
+          "traçado": "/resource/Circuito Melbourne2021+.svg",
+          "bandeira": "/resource/Bandeira Australia.svg"
         }
       },
       {
@@ -2715,10 +2954,8 @@
         "chanceSafetyCar": 30.0,
         "tempoPerdidoPitLane": 23.0,
         "arquivos": {
-          "traçado": "/resource/CircuitoSuzuka.png",
-          "traçadoSvg": "/resource/CircuitoSuzuka.svg",
-          "bandeira": "/resource/Bandeira Japao.png",
-          "bandeiraSvg": "/resource/Bandeira Japao.svg"
+          "traçado": "/resource/Circuito Suzuka.svg",
+          "bandeira": "/resource/Bandeira Japao.svg"
         }
       },
       {
@@ -2737,10 +2974,8 @@
         "chanceSafetyCar": 40.0,
         "tempoPerdidoPitLane": 24.0,
         "arquivos": {
-          "traçado": "/resource/CircuitoShangai.png",
-          "traçadoSvg": "/resource/CircuitoShangai.svg",
-          "bandeira": "/resource/Bandeira China.png",
-          "bandeiraSvg": "/resource/Bandeira China.svg"
+          "traçado": "/resource/Circuito Shangai.svg",
+          "bandeira": "/resource/Bandeira China.svg"
         }
       },
       {
@@ -2759,10 +2994,8 @@
         "chanceSafetyCar": 45.0,
         "tempoPerdidoPitLane": 21.0,
         "arquivos": {
-          "traçado": "/resource/CircuitoMiami.png",
-          "traçadoSvg": "/resource/CircuitoMiami.svg",
-          "bandeira": "/resource/Bandeira EUA.png",
-          "bandeiraSvg": "/resource/Bandeira EUA.svg"
+          "traçado": "/resource/Circuito Miami.svg",
+          "bandeira": "/resource/Bandeira EUA.svg"
         }
       },
       {
@@ -2781,10 +3014,8 @@
         "chanceSafetyCar": 50.0,
         "tempoPerdidoPitLane": 25.0,
         "arquivos": {
-          "traçado": "/resource/CircuitoImola2008+.png",
-          "traçadoSvg": "/resource/CircuitoImola2008+.svg",
-          "bandeira": "/resource/Bandeira Italia.png",
-          "bandeiraSvg": "/resource/Bandeira Italia.svg"
+          "traçado": "/resource/Circuito Imola2008+.svg",
+          "bandeira": "/resource/Bandeira Italia.svg"
         }
       },
       {
@@ -2803,10 +3034,8 @@
         "chanceSafetyCar": 85.0,
         "tempoPerdidoPitLane": 20.0,
         "arquivos": {
-          "traçado": "/resource/CircuitoMonaco.png",
-          "traçadoSvg": "/resource/CircuitoMonaco.svg",
-          "bandeira": "/resource/Bandeira Monaco.png",
-          "bandeiraSvg": "/resource/Bandeira Monaco.svg"
+          "traçado": "/resource/Circuito Monaco.svg",
+          "bandeira": "/resource/Bandeira Monaco.svg"
         }
       },
       {
@@ -2825,10 +3054,8 @@
         "chanceSafetyCar": 65.0,
         "tempoPerdidoPitLane": 19.0,
         "arquivos": {
-          "traçado": "/resource/CircuitoMontreal.png",
-          "traçadoSvg": "/resource/CircuitoMontreal.svg",
-          "bandeira": "/resource/Bandeira Canada.png",
-          "bandeiraSvg": "/resource/Bandeira Canada.svg"
+          "traçado": "/resource/Circuito Montreal.svg",
+          "bandeira": "/resource/Bandeira Canada.svg"
         }
       },
       {
@@ -2847,10 +3074,8 @@
         "chanceSafetyCar": 20.0,
         "tempoPerdidoPitLane": 22.0,
         "arquivos": {
-          "traçado": "/resource/CircuitoCatalunha2023+.png",
-          "traçadoSvg": "/resource/CircuitoCatalunha2023+.svg",
-          "bandeira": "/resource/Bandeira Espanha.png",
-          "bandeiraSvg": "/resource/Bandeira Espanha.svg"
+          "traçado": "/resource/Circuito Catalunha2023+.svg",
+          "bandeira": "/resource/Bandeira Espanha.svg"
         }
       },
       {
@@ -2869,10 +3094,8 @@
         "chanceSafetyCar": 40.0,
         "tempoPerdidoPitLane": 21.0,
         "arquivos": {
-          "traçado": "/resource/CircuitoAustria2016+.png",
-          "traçadoSvg": "/resource/CircuitoAustria2016+.svg",
-          "bandeira": "/resource/Bandeira Austria.png",
-          "bandeiraSvg": "/resource/Bandeira Austria.svg"
+          "traçado": "/resource/Circuito Austria2016+.svg",
+          "bandeira": "/resource/Bandeira Austria.svg"
         }
       },
       {
@@ -2891,10 +3114,8 @@
         "chanceSafetyCar": 35.0,
         "tempoPerdidoPitLane": 24.0,
         "arquivos": {
-          "traçado": "/resource/CircuitoSilverstone2010+.png",
-          "traçadoSvg": "/resource/CircuitoSilverstone2010+.svg",
-          "bandeira": "/resource/Bandeira Reino Unido.png",
-          "bandeiraSvg": "/resource/Bandeira Reino Unido.svg"
+          "traçado": "/resource/Circuito Silverstone2010+.svg",
+          "bandeira": "/resource/Bandeira Reino Unido.svg"
         }
       },
       {
@@ -2913,10 +3134,8 @@
         "chanceSafetyCar": 25.0,
         "tempoPerdidoPitLane": 20.0,
         "arquivos": {
-          "traçado": "/resource/CircuitoHungaroring2003+.png",
-          "traçadoSvg": "/resource/CircuitoHungaroring2003+.svg",
-          "bandeira": "/resource/Bandeira Hungria.png",
-          "bandeiraSvg": "/resource/Bandeira Hungria.svg"
+          "traçado": "/resource/Circuito Hungaroring2003+.svg",
+          "bandeira": "/resource/Bandeira Hungria.svg"
         }
       },
       {
@@ -2935,10 +3154,8 @@
         "chanceSafetyCar": 45.0,
         "tempoPerdidoPitLane": 20.0,
         "arquivos": {
-          "traçado": "/resource/CircuitoSpa2007+.png",
-          "traçadoSvg": "/resource/CircuitoSpa2007+.svg",
-          "bandeira": "/resource/Bandeira Belgica.png",
-          "bandeiraSvg": "/resource/Bandeira Belgica.svg"
+          "traçado": "/resource/Circuito Spa2007+.svg",
+          "bandeira": "/resource/Bandeira Belgica.svg"
         }
       },
       {
@@ -2957,10 +3174,8 @@
         "chanceSafetyCar": 40.0,
         "tempoPerdidoPitLane": 18.0,
         "arquivos": {
-          "traçado": "/resource/CircuitoZandvoort.png",
-          "traçadoSvg": "/resource/CircuitoZandvoort.svg",
-          "bandeira": "/resource/Bandeira Holanda.png",
-          "bandeiraSvg": "/resource/Bandeira Holanda.svg"
+          "traçado": "/resource/Circuito Zandvoort.svg",
+          "bandeira": "/resource/Bandeira Holanda.svg"
         }
       },
       {
@@ -2979,10 +3194,8 @@
         "chanceSafetyCar": 30.0,
         "tempoPerdidoPitLane": 24.0,
         "arquivos": {
-          "traçado": "/resource/CircuitoMonza.png",
-          "traçadoSvg": "/resource/CircuitoMonza.svg",
-          "bandeira": "/resource/Bandeira Italia.png",
-          "bandeiraSvg": "/resource/Bandeira Italia.svg"
+          "traçado": "/resource/Circuito Monza.svg",
+          "bandeira": "/resource/Bandeira Italia.svg"
         }
       },
       {
@@ -3001,10 +3214,8 @@
         "chanceSafetyCar": 65.0,
         "tempoPerdidoPitLane": 22.0,
         "arquivos": {
-          "traçado": "/resource/CircuitoBaku.png",
-          "traçadoSvg": "/resource/CircuitoBaku.svg",
-          "bandeira": "/resource/Bandeira Azerbaijao.png",
-          "bandeiraSvg": "/resource/Bandeira Azerbaijao.svg"
+          "traçado": "/resource/Circuito Baku.svg",
+          "bandeira": "/resource/Bandeira Azerbaijao.svg"
         }
       },
       {
@@ -3023,10 +3234,8 @@
         "chanceSafetyCar": 100.0,
         "tempoPerdidoPitLane": 28.0,
         "arquivos": {
-          "traçado": "/resource/CircuitoSingapura2023+.png",
-          "traçadoSvg": "/resource/CircuitoSingapura2023+.svg",
-          "bandeira": "/resource/Bandeira Singapura.png",
-          "bandeiraSvg": "/resource/Bandeira Singapura.svg"
+          "traçado": "/resource/Circuito Singapura2023+.svg",
+          "bandeira": "/resource/Bandeira Singapura.svg"
         }
       },
       {
@@ -3045,10 +3254,8 @@
         "chanceSafetyCar": 40.0,
         "tempoPerdidoPitLane": 22.0,
         "arquivos": {
-          "traçado": "/resource/CircuitoAustin.png",
-          "traçadoSvg": "/resource/CircuitoAustin.svg",
-          "bandeira": "/resource/Bandeira EUA.png",
-          "bandeiraSvg": "/resource/Bandeira EUA.svg"
+          "traçado": "/resource/Circuito Austin.svg",
+          "bandeira": "/resource/Bandeira EUA.svg"
         }
       },
       {
@@ -3067,10 +3274,8 @@
         "chanceSafetyCar": 45.0,
         "tempoPerdidoPitLane": 23.0,
         "arquivos": {
-          "traçado": "/resource/CircuitoMexico.png",
-          "traçadoSvg": "/resource/CircuitoMexico.svg",
-          "bandeira": "/resource/Bandeira Mexico.png",
-          "bandeiraSvg": "/resource/Bandeira Mexico.svg"
+          "traçado": "/resource/Circuito Mexico.svg",
+          "bandeira": "/resource/Bandeira Mexico.svg"
         }
       },
       {
@@ -3089,10 +3294,8 @@
         "chanceSafetyCar": 60.0,
         "tempoPerdidoPitLane": 21.0,
         "arquivos": {
-          "traçado": "/resource/CircuitoInterlagos.png",
-          "traçadoSvg": "/resource/CircuitoInterlagos.svg",
-          "bandeira": "/resource/Bandeira Brasil.png",
-          "bandeiraSvg": "/resource/Bandeira Brasil.svg"
+          "traçado": "/resource/Circuito Interlagos.svg",
+          "bandeira": "/resource/Bandeira Brasil.svg"
         }
       },
       {
@@ -3111,10 +3314,8 @@
         "chanceSafetyCar": 55.0,
         "tempoPerdidoPitLane": 23.0,
         "arquivos": {
-          "traçado": "/resource/CircuitoLasVegas.png",
-          "traçadoSvg": "/resource/CircuitoLasVegas.svg",
-          "bandeira": "/resource/Bandeira EUA.png",
-          "bandeiraSvg": "/resource/Bandeira EUA.svg"
+          "traçado": "/resource/Circuito Las Vegas.svg",
+          "bandeira": "/resource/Bandeira EUA.svg"
         }
       },
       {
@@ -3133,10 +3334,8 @@
         "chanceSafetyCar": 25.0,
         "tempoPerdidoPitLane": 24.0,
         "arquivos": {
-          "traçado": "/resource/CircuitoLusail.png",
-          "traçadoSvg": "/resource/CircuitoLusail.svg",
-          "bandeira": "/resource/Bandeira Qatar.png",
-          "bandeiraSvg": "/resource/Bandeira Qatar.svg"
+          "traçado": "/resource/Circuito Lusail.svg",
+          "bandeira": "/resource/Bandeira Qatar.svg"
         }
       },
       {
@@ -3155,10 +3354,8 @@
         "chanceSafetyCar": 30.0,
         "tempoPerdidoPitLane": 22.0,
         "arquivos": {
-          "traçado": "/resource/CircuitoYasMarina2021+.png",
-          "traçadoSvg": "/resource/CircuitoYasMarina2021+.svg",
-          "bandeira": "/resource/Bandeira Emirados Arabes Unidos.png",
-          "bandeiraSvg": "/resource/Bandeira Emirados Arabes Unidos.svg"
+          "traçado": "/resource/Circuito YasMarina2021+.svg",
+          "bandeira": "/resource/Bandeira Emirados Arabes Unidos.svg"
         }
       }
     ],
@@ -3167,13 +3364,13 @@
     "categoriaAtual": "f1"
   },
   "equipeDoJogador": {
-    "id": "redbull",
-    "nome": "Red Bull Racing",
-    "sede": "Milton Keynes, UK",
-    "motor": "Honda RBPT",
-    "fundacao": 2005,
-    "saldoFinanceiro": 140.0,
-    "reputacao": 98,
+    "id": "ferrari",
+    "nome": "Ferrari",
+    "sede": "Maranello, Itália",
+    "motor": "Ferrari",
+    "fundacao": 1929,
+    "saldoFinanceiro": 145.2,
+    "reputacao": 97,
     "pontos": 0,
     "vitorias": 0,
     "podios": 0,
@@ -3187,19 +3384,69 @@
     "staffChassi": 1,
     "staffConfiabilidade": 1,
     "arquivos": {
-      "logo": "/resource/Equipe_F1_RBR.png",
-      "logoSvg": "/resource/Equipe_F1_RBR.svg",
-      "bandeiraSede": "/resource/Bandeira Austria.png",
-      "bandeiraMotor": "/resource/Bandeira Japao.png",
-      "logoMotor": "/resource/Motor_HondaPQ.png"
+      "logo": "/resource/Equipe F1 Ferrari.svg",
+      "bandeiraSede": "/resource/Bandeira Italia.svg",
+      "bandeiraMotor": "/resource/Bandeira Italia.svg",
+      "logoMotor": "/resource/Logo Ferrari.svg"
     },
     "pilotosContratadosIDs": [
-      "Max Verstappen",
-      "Sergio Perez",
-      "Liam Lawson",
-      "Sebastien Buemi"
+      "Charles Leclerc",
+      "Carlos Sainz Jr",
+      "Robert Shwartzman",
+      "Oliver Bearman",
+      "Antonio Giovinazzi"
     ],
-    "anosConsecutivosNoVermelho": 0
+    "anosConsecutivosNoVermelho": 0,
+    "patrocinadoresAtivos": [
+      {
+        "nome": "Crypto.com",
+        "segmento": "Financeiro",
+        "pais": "Singapura",
+        "reputacaoMinima": 40,
+        "valorBase": 1.0,
+        "bonusAssinatura": 2.5,
+        "bonusVitoria": 0.5,
+        "bonusPodio": 0.25,
+        "bonusTop10": 0.1,
+        "arquivos": {
+          "logo": "/resource/Logo Crypto.com.svg",
+          "bandeira": "/resource/Bandeira Singapura.svg"
+        },
+        "duracaoRestante": 3
+      },
+      {
+        "nome": "Sparco",
+        "segmento": "Equipamento",
+        "pais": "Italia",
+        "reputacaoMinima": 10,
+        "valorBase": 0.25,
+        "bonusAssinatura": 0.4,
+        "bonusVitoria": 0.1,
+        "bonusPodio": 0.05,
+        "bonusTop10": 0.01,
+        "arquivos": {
+          "logo": "/resource/Logo Sparco.svg",
+          "bandeira": "/resource/Bandeira Italia.svg"
+        },
+        "duracaoRestante": 3
+      },
+      {
+        "nome": "NGK Spark Plugs",
+        "segmento": "Peças Automotivas",
+        "pais": "Japao",
+        "reputacaoMinima": 20,
+        "valorBase": 0.35,
+        "bonusAssinatura": 0.7,
+        "bonusVitoria": 0.15,
+        "bonusPodio": 0.08,
+        "bonusTop10": 0.02,
+        "arquivos": {
+          "logo": "/resource/Logo NGK.svg",
+          "bandeira": "/resource/Bandeira Japao.svg"
+        },
+        "duracaoRestante": 12
+      }
+    ]
   },
   "nomeDoDirigente": "Douglas Bohmer",
   "categoriaKey": "f1",

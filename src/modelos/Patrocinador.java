@@ -1,6 +1,9 @@
 package modelos;
 
-public class Patrocinador {
+import java.io.Serializable;
+
+public class Patrocinador implements Serializable { 
+    private static final long serialVersionUID = 1L;
     // --- CAMPOS VINDOS DO JSON ---
     private String nome;
     private String segmento;
@@ -16,7 +19,7 @@ public class Patrocinador {
     // --- CAMPOS DE CONTROLE (Lógica do Jogo) ---
     private int duracaoRestante; // Em meses ou corridas
 
-    public static class Arquivos {
+    public static class Arquivos implements Serializable {
         private String logo;
         private String bandeira;
         public String getLogo() { return logo; }

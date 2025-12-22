@@ -6,7 +6,7 @@
       "sede": "Enstone, UK",
       "motor": "Renault",
       "fundacao": 2021,
-      "saldoFinanceiro": 95.0,
+      "saldoFinanceiro": 98.80000000000001,
       "reputacao": 75,
       "pontos": 0,
       "vitorias": 0,
@@ -31,7 +31,41 @@
         "Esteban Ocon",
         "Jack Doohan"
       ],
-      "anosConsecutivosNoVermelho": 0
+      "anosConsecutivosNoVermelho": 0,
+      "patrocinadoresAtivos": [
+        {
+          "nome": "Mapfre",
+          "segmento": "Seguros",
+          "pais": "Espanha",
+          "reputacaoMinima": 25,
+          "valorBase": 0.45,
+          "bonusAssinatura": 0.9,
+          "bonusVitoria": 0.2,
+          "bonusPodio": 0.1,
+          "bonusTop10": 0.05,
+          "arquivos": {
+            "logo": "/resource/Logo Mapfre.svg",
+            "bandeira": "/resource/Bandeira Espanha.svg"
+          },
+          "duracaoRestante": 3
+        },
+        {
+          "nome": "Telmex",
+          "segmento": "Telecom",
+          "pais": "Mexico",
+          "reputacaoMinima": 30,
+          "valorBase": 0.5,
+          "bonusAssinatura": 1.0,
+          "bonusVitoria": 0.25,
+          "bonusPodio": 0.12,
+          "bonusTop10": 0.05,
+          "arquivos": {
+            "logo": "/resource/Logo Telmex.svg",
+            "bandeira": "/resource/Bandeira Mexico.svg"
+          },
+          "duracaoRestante": 9
+        }
+      ]
     },
     {
       "id": "astonmartin",
@@ -65,7 +99,8 @@
         "Felipe Drugovich",
         "Stoffel Vandoorne"
       ],
-      "anosConsecutivosNoVermelho": 0
+      "anosConsecutivosNoVermelho": 0,
+      "patrocinadoresAtivos": []
     },
     {
       "id": "ferrari",
@@ -100,7 +135,8 @@
         "Oliver Bearman",
         "Antonio Giovinazzi"
       ],
-      "anosConsecutivosNoVermelho": 0
+      "anosConsecutivosNoVermelho": 0,
+      "patrocinadoresAtivos": []
     },
     {
       "id": "haas",
@@ -134,7 +170,8 @@
         "Pietro Fittipaldi",
         "Oliver Bearman"
       ],
-      "anosConsecutivosNoVermelho": 0
+      "anosConsecutivosNoVermelho": 0,
+      "patrocinadoresAtivos": []
     },
     {
       "id": "mclaren",
@@ -170,7 +207,8 @@
         "Mick Schumacher",
         "Felipe Drugovich"
       ],
-      "anosConsecutivosNoVermelho": 0
+      "anosConsecutivosNoVermelho": 0,
+      "patrocinadoresAtivos": []
     },
     {
       "id": "mercedes",
@@ -204,7 +242,8 @@
         "Mick Schumacher",
         "Frederik Vesti"
       ],
-      "anosConsecutivosNoVermelho": 0
+      "anosConsecutivosNoVermelho": 0,
+      "patrocinadoresAtivos": []
     },
     {
       "id": "racingbulls",
@@ -237,7 +276,8 @@
         "Daniel Ricciardo",
         "Liam Lawson"
       ],
-      "anosConsecutivosNoVermelho": 0
+      "anosConsecutivosNoVermelho": 0,
+      "patrocinadoresAtivos": []
     },
     {
       "id": "redbull",
@@ -271,15 +311,16 @@
         "Liam Lawson",
         "Sebastien Buemi"
       ],
-      "anosConsecutivosNoVermelho": 0
+      "anosConsecutivosNoVermelho": 0,
+      "patrocinadoresAtivos": []
     },
     {
       "id": "stake",
       "nome": "Stake Kick",
       "sede": "Hinwil, Suíça",
-      "motor": "Renault",
+      "motor": "Ferrari",
       "fundacao": 2024,
-      "saldoFinanceiro": 30.75,
+      "saldoFinanceiro": 990.0,
       "reputacao": 55,
       "pontos": 0,
       "vitorias": 0,
@@ -305,7 +346,8 @@
         "Zane Maloney",
         "Théo Pourchaire"
       ],
-      "anosConsecutivosNoVermelho": 0
+      "anosConsecutivosNoVermelho": 0,
+      "patrocinadoresAtivos": []
     },
     {
       "id": "williams",
@@ -337,7 +379,8 @@
         "Alexander Albon",
         "Logan Sargeant"
       ],
-      "anosConsecutivosNoVermelho": 0
+      "anosConsecutivosNoVermelho": 0,
+      "patrocinadoresAtivos": []
     }
   ],
   "todosOsPilotos": [
@@ -399,7 +442,8 @@
               "Liam Lawson",
               "Sebastien Buemi"
             ],
-            "anosConsecutivosNoVermelho": 0
+            "anosConsecutivosNoVermelho": 0,
+            "patrocinadoresAtivos": []
           },
           "tipo": "TITULAR"
         }
@@ -463,7 +507,8 @@
               "Liam Lawson",
               "Sebastien Buemi"
             ],
-            "anosConsecutivosNoVermelho": 0
+            "anosConsecutivosNoVermelho": 0,
+            "patrocinadoresAtivos": []
           },
           "tipo": "TITULAR"
         }
@@ -527,7 +572,8 @@
               "Mick Schumacher",
               "Frederik Vesti"
             ],
-            "anosConsecutivosNoVermelho": 0
+            "anosConsecutivosNoVermelho": 0,
+            "patrocinadoresAtivos": []
           },
           "tipo": "TITULAR"
         }
@@ -591,7 +637,8 @@
               "Mick Schumacher",
               "Frederik Vesti"
             ],
-            "anosConsecutivosNoVermelho": 0
+            "anosConsecutivosNoVermelho": 0,
+            "patrocinadoresAtivos": []
           },
           "tipo": "TITULAR"
         }
@@ -656,7 +703,8 @@
               "Oliver Bearman",
               "Antonio Giovinazzi"
             ],
-            "anosConsecutivosNoVermelho": 0
+            "anosConsecutivosNoVermelho": 0,
+            "patrocinadoresAtivos": []
           },
           "tipo": "TITULAR"
         }
@@ -721,7 +769,8 @@
               "Oliver Bearman",
               "Antonio Giovinazzi"
             ],
-            "anosConsecutivosNoVermelho": 0
+            "anosConsecutivosNoVermelho": 0,
+            "patrocinadoresAtivos": []
           },
           "tipo": "TITULAR"
         }
@@ -787,7 +836,8 @@
               "Mick Schumacher",
               "Felipe Drugovich"
             ],
-            "anosConsecutivosNoVermelho": 0
+            "anosConsecutivosNoVermelho": 0,
+            "patrocinadoresAtivos": []
           },
           "tipo": "TITULAR"
         }
@@ -853,7 +903,8 @@
               "Mick Schumacher",
               "Felipe Drugovich"
             ],
-            "anosConsecutivosNoVermelho": 0
+            "anosConsecutivosNoVermelho": 0,
+            "patrocinadoresAtivos": []
           },
           "tipo": "TITULAR"
         }
@@ -917,7 +968,8 @@
               "Felipe Drugovich",
               "Stoffel Vandoorne"
             ],
-            "anosConsecutivosNoVermelho": 0
+            "anosConsecutivosNoVermelho": 0,
+            "patrocinadoresAtivos": []
           },
           "tipo": "TITULAR"
         }
@@ -981,7 +1033,8 @@
               "Felipe Drugovich",
               "Stoffel Vandoorne"
             ],
-            "anosConsecutivosNoVermelho": 0
+            "anosConsecutivosNoVermelho": 0,
+            "patrocinadoresAtivos": []
           },
           "tipo": "TITULAR"
         }
@@ -1019,7 +1072,7 @@
             "sede": "Enstone, UK",
             "motor": "Renault",
             "fundacao": 2021,
-            "saldoFinanceiro": 95.0,
+            "saldoFinanceiro": 98.80000000000001,
             "reputacao": 75,
             "pontos": 0,
             "vitorias": 0,
@@ -1044,7 +1097,41 @@
               "Esteban Ocon",
               "Jack Doohan"
             ],
-            "anosConsecutivosNoVermelho": 0
+            "anosConsecutivosNoVermelho": 0,
+            "patrocinadoresAtivos": [
+              {
+                "nome": "Mapfre",
+                "segmento": "Seguros",
+                "pais": "Espanha",
+                "reputacaoMinima": 25,
+                "valorBase": 0.45,
+                "bonusAssinatura": 0.9,
+                "bonusVitoria": 0.2,
+                "bonusPodio": 0.1,
+                "bonusTop10": 0.05,
+                "arquivos": {
+                  "logo": "/resource/Logo Mapfre.svg",
+                  "bandeira": "/resource/Bandeira Espanha.svg"
+                },
+                "duracaoRestante": 3
+              },
+              {
+                "nome": "Telmex",
+                "segmento": "Telecom",
+                "pais": "Mexico",
+                "reputacaoMinima": 30,
+                "valorBase": 0.5,
+                "bonusAssinatura": 1.0,
+                "bonusVitoria": 0.25,
+                "bonusPodio": 0.12,
+                "bonusTop10": 0.05,
+                "arquivos": {
+                  "logo": "/resource/Logo Telmex.svg",
+                  "bandeira": "/resource/Bandeira Mexico.svg"
+                },
+                "duracaoRestante": 9
+              }
+            ]
           },
           "tipo": "TITULAR"
         }
@@ -1082,7 +1169,7 @@
             "sede": "Enstone, UK",
             "motor": "Renault",
             "fundacao": 2021,
-            "saldoFinanceiro": 95.0,
+            "saldoFinanceiro": 98.80000000000001,
             "reputacao": 75,
             "pontos": 0,
             "vitorias": 0,
@@ -1107,7 +1194,41 @@
               "Esteban Ocon",
               "Jack Doohan"
             ],
-            "anosConsecutivosNoVermelho": 0
+            "anosConsecutivosNoVermelho": 0,
+            "patrocinadoresAtivos": [
+              {
+                "nome": "Mapfre",
+                "segmento": "Seguros",
+                "pais": "Espanha",
+                "reputacaoMinima": 25,
+                "valorBase": 0.45,
+                "bonusAssinatura": 0.9,
+                "bonusVitoria": 0.2,
+                "bonusPodio": 0.1,
+                "bonusTop10": 0.05,
+                "arquivos": {
+                  "logo": "/resource/Logo Mapfre.svg",
+                  "bandeira": "/resource/Bandeira Espanha.svg"
+                },
+                "duracaoRestante": 3
+              },
+              {
+                "nome": "Telmex",
+                "segmento": "Telecom",
+                "pais": "Mexico",
+                "reputacaoMinima": 30,
+                "valorBase": 0.5,
+                "bonusAssinatura": 1.0,
+                "bonusVitoria": 0.25,
+                "bonusPodio": 0.12,
+                "bonusTop10": 0.05,
+                "arquivos": {
+                  "logo": "/resource/Logo Telmex.svg",
+                  "bandeira": "/resource/Bandeira Mexico.svg"
+                },
+                "duracaoRestante": 9
+              }
+            ]
           },
           "tipo": "TITULAR"
         }
@@ -1169,7 +1290,8 @@
               "Alexander Albon",
               "Logan Sargeant"
             ],
-            "anosConsecutivosNoVermelho": 0
+            "anosConsecutivosNoVermelho": 0,
+            "patrocinadoresAtivos": []
           },
           "tipo": "TITULAR"
         }
@@ -1231,7 +1353,8 @@
               "Alexander Albon",
               "Logan Sargeant"
             ],
-            "anosConsecutivosNoVermelho": 0
+            "anosConsecutivosNoVermelho": 0,
+            "patrocinadoresAtivos": []
           },
           "tipo": "TITULAR"
         }
@@ -1294,7 +1417,8 @@
               "Daniel Ricciardo",
               "Liam Lawson"
             ],
-            "anosConsecutivosNoVermelho": 0
+            "anosConsecutivosNoVermelho": 0,
+            "patrocinadoresAtivos": []
           },
           "tipo": "TITULAR"
         }
@@ -1357,7 +1481,8 @@
               "Daniel Ricciardo",
               "Liam Lawson"
             ],
-            "anosConsecutivosNoVermelho": 0
+            "anosConsecutivosNoVermelho": 0,
+            "patrocinadoresAtivos": []
           },
           "tipo": "TITULAR"
         }
@@ -1393,9 +1518,9 @@
             "id": "stake",
             "nome": "Stake Kick",
             "sede": "Hinwil, Suíça",
-            "motor": "Renault",
+            "motor": "Ferrari",
             "fundacao": 2024,
-            "saldoFinanceiro": 30.75,
+            "saldoFinanceiro": 990.0,
             "reputacao": 55,
             "pontos": 0,
             "vitorias": 0,
@@ -1421,7 +1546,8 @@
               "Zane Maloney",
               "Théo Pourchaire"
             ],
-            "anosConsecutivosNoVermelho": 0
+            "anosConsecutivosNoVermelho": 0,
+            "patrocinadoresAtivos": []
           },
           "tipo": "TITULAR"
         }
@@ -1457,9 +1583,9 @@
             "id": "stake",
             "nome": "Stake Kick",
             "sede": "Hinwil, Suíça",
-            "motor": "Renault",
+            "motor": "Ferrari",
             "fundacao": 2024,
-            "saldoFinanceiro": 30.75,
+            "saldoFinanceiro": 990.0,
             "reputacao": 55,
             "pontos": 0,
             "vitorias": 0,
@@ -1485,7 +1611,8 @@
               "Zane Maloney",
               "Théo Pourchaire"
             ],
-            "anosConsecutivosNoVermelho": 0
+            "anosConsecutivosNoVermelho": 0,
+            "patrocinadoresAtivos": []
           },
           "tipo": "TITULAR"
         }
@@ -1549,7 +1676,8 @@
               "Pietro Fittipaldi",
               "Oliver Bearman"
             ],
-            "anosConsecutivosNoVermelho": 0
+            "anosConsecutivosNoVermelho": 0,
+            "patrocinadoresAtivos": []
           },
           "tipo": "TITULAR"
         }
@@ -1613,7 +1741,8 @@
               "Pietro Fittipaldi",
               "Oliver Bearman"
             ],
-            "anosConsecutivosNoVermelho": 0
+            "anosConsecutivosNoVermelho": 0,
+            "patrocinadoresAtivos": []
           },
           "tipo": "TITULAR"
         }
@@ -1649,9 +1778,9 @@
             "id": "stake",
             "nome": "Stake Kick",
             "sede": "Hinwil, Suíça",
-            "motor": "Renault",
+            "motor": "Ferrari",
             "fundacao": 2024,
-            "saldoFinanceiro": 30.75,
+            "saldoFinanceiro": 990.0,
             "reputacao": 55,
             "pontos": 0,
             "vitorias": 0,
@@ -1677,7 +1806,8 @@
               "Zane Maloney",
               "Théo Pourchaire"
             ],
-            "anosConsecutivosNoVermelho": 0
+            "anosConsecutivosNoVermelho": 0,
+            "patrocinadoresAtivos": []
           },
           "tipo": "TITULAR"
         }
@@ -1713,9 +1843,9 @@
             "id": "stake",
             "nome": "Stake Kick",
             "sede": "Hinwil, Suíça",
-            "motor": "Renault",
+            "motor": "Ferrari",
             "fundacao": 2024,
-            "saldoFinanceiro": 30.75,
+            "saldoFinanceiro": 990.0,
             "reputacao": 55,
             "pontos": 0,
             "vitorias": 0,
@@ -1741,7 +1871,8 @@
               "Zane Maloney",
               "Théo Pourchaire"
             ],
-            "anosConsecutivosNoVermelho": 0
+            "anosConsecutivosNoVermelho": 0,
+            "patrocinadoresAtivos": []
           },
           "tipo": "TITULAR"
         }
@@ -1804,7 +1935,8 @@
               "Daniel Ricciardo",
               "Liam Lawson"
             ],
-            "anosConsecutivosNoVermelho": 0
+            "anosConsecutivosNoVermelho": 0,
+            "patrocinadoresAtivos": []
           },
           "tipo": "TITULAR"
         }
@@ -1842,7 +1974,7 @@
             "sede": "Enstone, UK",
             "motor": "Renault",
             "fundacao": 2021,
-            "saldoFinanceiro": 95.0,
+            "saldoFinanceiro": 98.80000000000001,
             "reputacao": 75,
             "pontos": 0,
             "vitorias": 0,
@@ -1867,7 +1999,41 @@
               "Esteban Ocon",
               "Jack Doohan"
             ],
-            "anosConsecutivosNoVermelho": 0
+            "anosConsecutivosNoVermelho": 0,
+            "patrocinadoresAtivos": [
+              {
+                "nome": "Mapfre",
+                "segmento": "Seguros",
+                "pais": "Espanha",
+                "reputacaoMinima": 25,
+                "valorBase": 0.45,
+                "bonusAssinatura": 0.9,
+                "bonusVitoria": 0.2,
+                "bonusPodio": 0.1,
+                "bonusTop10": 0.05,
+                "arquivos": {
+                  "logo": "/resource/Logo Mapfre.svg",
+                  "bandeira": "/resource/Bandeira Espanha.svg"
+                },
+                "duracaoRestante": 3
+              },
+              {
+                "nome": "Telmex",
+                "segmento": "Telecom",
+                "pais": "Mexico",
+                "reputacaoMinima": 30,
+                "valorBase": 0.5,
+                "bonusAssinatura": 1.0,
+                "bonusVitoria": 0.25,
+                "bonusPodio": 0.12,
+                "bonusTop10": 0.05,
+                "arquivos": {
+                  "logo": "/resource/Logo Telmex.svg",
+                  "bandeira": "/resource/Bandeira Mexico.svg"
+                },
+                "duracaoRestante": 9
+              }
+            ]
           },
           "tipo": "TITULAR"
         }
@@ -1932,7 +2098,8 @@
               "Oliver Bearman",
               "Antonio Giovinazzi"
             ],
-            "anosConsecutivosNoVermelho": 0
+            "anosConsecutivosNoVermelho": 0,
+            "patrocinadoresAtivos": []
           },
           "tipo": "TITULAR"
         }
@@ -1996,7 +2163,8 @@
               "Pietro Fittipaldi",
               "Oliver Bearman"
             ],
-            "anosConsecutivosNoVermelho": 0
+            "anosConsecutivosNoVermelho": 0,
+            "patrocinadoresAtivos": []
           },
           "tipo": "TITULAR"
         }
@@ -2061,7 +2229,8 @@
               "Oliver Bearman",
               "Antonio Giovinazzi"
             ],
-            "anosConsecutivosNoVermelho": 0
+            "anosConsecutivosNoVermelho": 0,
+            "patrocinadoresAtivos": []
           },
           "tipo": "TITULAR"
         }
@@ -2127,7 +2296,8 @@
               "Mick Schumacher",
               "Felipe Drugovich"
             ],
-            "anosConsecutivosNoVermelho": 0
+            "anosConsecutivosNoVermelho": 0,
+            "patrocinadoresAtivos": []
           },
           "tipo": "TITULAR"
         }
@@ -2191,7 +2361,8 @@
               "Felipe Drugovich",
               "Stoffel Vandoorne"
             ],
-            "anosConsecutivosNoVermelho": 0
+            "anosConsecutivosNoVermelho": 0,
+            "patrocinadoresAtivos": []
           },
           "tipo": "TITULAR"
         }
@@ -2255,7 +2426,8 @@
               "Pietro Fittipaldi",
               "Oliver Bearman"
             ],
-            "anosConsecutivosNoVermelho": 0
+            "anosConsecutivosNoVermelho": 0,
+            "patrocinadoresAtivos": []
           },
           "tipo": "TITULAR"
         }
@@ -2321,7 +2493,8 @@
               "Mick Schumacher",
               "Felipe Drugovich"
             ],
-            "anosConsecutivosNoVermelho": 0
+            "anosConsecutivosNoVermelho": 0,
+            "patrocinadoresAtivos": []
           },
           "tipo": "TITULAR"
         }
@@ -2387,7 +2560,8 @@
               "Mick Schumacher",
               "Felipe Drugovich"
             ],
-            "anosConsecutivosNoVermelho": 0
+            "anosConsecutivosNoVermelho": 0,
+            "patrocinadoresAtivos": []
           },
           "tipo": "TITULAR"
         }
@@ -2451,7 +2625,8 @@
               "Mick Schumacher",
               "Frederik Vesti"
             ],
-            "anosConsecutivosNoVermelho": 0
+            "anosConsecutivosNoVermelho": 0,
+            "patrocinadoresAtivos": []
           },
           "tipo": "TITULAR"
         }
@@ -2515,7 +2690,8 @@
               "Mick Schumacher",
               "Frederik Vesti"
             ],
-            "anosConsecutivosNoVermelho": 0
+            "anosConsecutivosNoVermelho": 0,
+            "patrocinadoresAtivos": []
           },
           "tipo": "TITULAR"
         }
@@ -2579,7 +2755,8 @@
               "Liam Lawson",
               "Sebastien Buemi"
             ],
-            "anosConsecutivosNoVermelho": 0
+            "anosConsecutivosNoVermelho": 0,
+            "patrocinadoresAtivos": []
           },
           "tipo": "TITULAR"
         }
@@ -3074,38 +3251,71 @@
     "categoriaAtual": "f1"
   },
   "equipeDoJogador": {
-    "id": "stake",
-    "nome": "Stake Kick",
-    "sede": "Hinwil, Suíça",
+    "id": "alpine",
+    "nome": "Alpine",
+    "sede": "Enstone, UK",
     "motor": "Renault",
-    "fundacao": 2024,
-    "saldoFinanceiro": 30.75,
-    "reputacao": 55,
+    "fundacao": 2021,
+    "saldoFinanceiro": 98.80000000000001,
+    "reputacao": 75,
     "pontos": 0,
     "vitorias": 0,
     "podios": 0,
     "poles": 0,
-    "nivelMotor": 3,
-    "nivelAero": 3,
-    "nivelChassi": 3,
-    "nivelConfiabilidade": 3,
+    "nivelMotor": 4,
+    "nivelAero": 4,
+    "nivelChassi": 4,
+    "nivelConfiabilidade": 4,
     "staffMotor": 1,
     "staffAero": 1,
     "staffChassi": 1,
     "staffConfiabilidade": 1,
     "arquivos": {
-      "logo": "/resource/Equipe F1 Stake.svg",
-      "bandeiraSede": "/resource/Bandeira Suica.svg",
-      "bandeiraMotor": "/resource/Bandeira Italia.svg",
-      "logoMotor": "/resource/Logo Ferrari.svg"
+      "logo": "/resource/Equipe F1 Alpine.svg",
+      "bandeiraSede": "/resource/Bandeira Franca.svg",
+      "bandeiraMotor": "/resource/Bandeira Franca.svg",
+      "logoMotor": "/resource/Logo Renault.svg"
     },
     "pilotosContratadosIDs": [
-      "Valtteri Bottas",
-      "Guanyu Zhou",
-      "Zane Maloney",
-      "Théo Pourchaire"
+      "Pierre Gasly",
+      "Esteban Ocon",
+      "Jack Doohan"
     ],
-    "anosConsecutivosNoVermelho": 0
+    "anosConsecutivosNoVermelho": 0,
+    "patrocinadoresAtivos": [
+      {
+        "nome": "Mapfre",
+        "segmento": "Seguros",
+        "pais": "Espanha",
+        "reputacaoMinima": 25,
+        "valorBase": 0.45,
+        "bonusAssinatura": 0.9,
+        "bonusVitoria": 0.2,
+        "bonusPodio": 0.1,
+        "bonusTop10": 0.05,
+        "arquivos": {
+          "logo": "/resource/Logo Mapfre.svg",
+          "bandeira": "/resource/Bandeira Espanha.svg"
+        },
+        "duracaoRestante": 3
+      },
+      {
+        "nome": "Telmex",
+        "segmento": "Telecom",
+        "pais": "Mexico",
+        "reputacaoMinima": 30,
+        "valorBase": 0.5,
+        "bonusAssinatura": 1.0,
+        "bonusVitoria": 0.25,
+        "bonusPodio": 0.12,
+        "bonusTop10": 0.05,
+        "arquivos": {
+          "logo": "/resource/Logo Telmex.svg",
+          "bandeira": "/resource/Bandeira Mexico.svg"
+        },
+        "duracaoRestante": 9
+      }
+    ]
   },
   "nomeDoDirigente": "Douglas Bohmer",
   "categoriaKey": "f1",

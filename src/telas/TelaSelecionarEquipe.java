@@ -310,14 +310,26 @@ public class TelaSelecionarEquipe extends JFrame {
     }
 
     private void vincularPilotosAsEquipesLocal() {
+        // CORREÇÃO: Verifica se é F1 para aplicar lógica de Reservas
+        boolean isF1 = SessaoJogo.categoriaKey != null && SessaoJogo.categoriaKey.toLowerCase().contains("f1");
+
         for (Equipe eq : equipesDisponiveis) {
             List<String> idsContratados = eq.getPilotosContratadosIDs();
             if (idsContratados != null) {
+                int contador = 0;
                 for (String idAlvo : idsContratados) {
                     Piloto pilotoEncontrado = buscarPilotoPorIdLocal(idAlvo);
                     if (pilotoEncontrado != null) {
-                        eq.adicionarPilotoDoLoad(pilotoEncontrado, TipoContrato.TITULAR);
+                        TipoContrato tipo = TipoContrato.TITULAR;
+                        
+                        // CORREÇÃO: Se for F1 e for o 3º piloto (índice 2) ou maior, define como Reserva
+                        if (isF1 && contador >= 2) {
+                            tipo = TipoContrato.RESERVA;
+                        }
+                        
+                        eq.adicionarPilotoDoLoad(pilotoEncontrado, tipo);
                     }
+                    contador++;
                 }
             }
         }
@@ -350,10 +362,15 @@ public class TelaSelecionarEquipe extends JFrame {
         carregarImagem(lblLogoMotor, eq.getCaminhoLogoMotor());
 
         List<Piloto> titulares = eq.getPilotosTitulares();
+        List<Piloto> reservas = eq.getPilotosReservas();
+        
+        // CORREÇÃO VISUAL: Combina as listas para exibição correta nesta tela
+        List<Piloto> todosDaEquipe = new ArrayList<>(titulares);
+        todosDaEquipe.addAll(reservas);
         
         for (int i = 0; i < 5; i++) {
-            if (i < titulares.size()) {
-                Piloto p = titulares.get(i);
+            if (i < todosDaEquipe.size()) {
+                Piloto p = todosDaEquipe.get(i);
                 lblTitulos[i].setVisible(true);
                 lblNomes[i].setVisible(true);
                 lblNumeros[i].setVisible(true);

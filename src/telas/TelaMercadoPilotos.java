@@ -21,10 +21,13 @@ import javax.swing.table.TableRowSorter;
 import java.awt.*;
 import java.text.DecimalFormat;
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Random;
+import java.util.Set;
 
 public class TelaMercadoPilotos extends JDialog {
 
@@ -51,8 +54,8 @@ public class TelaMercadoPilotos extends JDialog {
 
     // --- Ação / Negociação ---
     private JButton btnConfirmarAcao;
-    private JSpinner spinSalario; // MUDANÇA: Spinner
-    private JComboBox<String> cbDuracaoInput; // MUDANÇA: Combo de Anos
+    private JSpinner spinSalario;
+    private JComboBox<String> cbDuracaoInput;
     private JComboBox<TipoContrato> cbVagaInput;
     private JLabel lbTituloAcao;
 
@@ -62,6 +65,9 @@ public class TelaMercadoPilotos extends JDialog {
         this.dados = dados;
         this.minhaEquipe = dados.getEquipeDoJogador();
         this.isF1 = SessaoJogo.categoriaKey != null && SessaoJogo.categoriaKey.toLowerCase().contains("f1");
+
+        // Limpa duplicatas da memória da equipe antes de carregar a tela
+        sanitizarEquipeLocal();
 
         setTitle("Mercado Global de Pilotos");
         setModal(true);
@@ -79,19 +85,77 @@ public class TelaMercadoPilotos extends JDialog {
         atualizarMinhaEquipe();
         limparSelecao();
     }
+    
+    private void sanitizarEquipeLocal() {
+        Set<String> nomesUnicos = new HashSet<>();
+        List<Piloto> titularesLimpos = new ArrayList<>();
+        List<Piloto> reservasLimpos = new ArrayList<>();
+
+        for (Piloto p : minhaEquipe.getPilotosTitulares()) {
+            if (nomesUnicos.add(p.getNome())) titularesLimpos.add(p);
+        }
+        for (Piloto p : minhaEquipe.getPilotosReservas()) {
+            if (nomesUnicos.add(p.getNome())) reservasLimpos.add(p);
+        }
+        
+        minhaEquipe.getPilotosTitulares().clear();
+        minhaEquipe.getPilotosTitulares().addAll(titularesLimpos);
+        minhaEquipe.getPilotosReservas().clear();
+        minhaEquipe.getPilotosReservas().addAll(reservasLimpos);
+    }
 
     private void carregarListaPilotos() {
         todosPilotos.clear();
         pilotosMinhaEquipe.clear();
         
+        List<Piloto> listaBruta = new ArrayList<>();
         for (Piloto p : dados.getTodosOsPilotos()) {
-            if (p != null) {
-                todosPilotos.add(p);
-                if (minhaEquipe.getPilotosTitulares().contains(p) || minhaEquipe.getPilotosReservas().contains(p)) {
-                    pilotosMinhaEquipe.add(p);
-                }
+            if (p != null) listaBruta.add(p);
+        }
+        
+        // --- 1. ORDENAÇÃO COMPLEXA (PEDIDO 1) ---
+        // Ordem: Função -> Over -> Tempo Contrato -> Salário -> Nome
+        listaBruta.sort((p1, p2) -> {
+            // 1. Função: Titular (3) > Reserva (2) > Sem Contrato (1)
+            int peso1 = getPesoFuncao(p1);
+            int peso2 = getPesoFuncao(p2);
+            if (peso1 != peso2) return Integer.compare(peso2, peso1); // Maior peso primeiro
+
+            // 2. Over (Decrescente)
+            int compOver = Double.compare(p2.getOverall(), p1.getOverall());
+            if (compOver != 0) return compOver;
+
+            // 3. Tempo de Contrato (Crescente - quem acaba antes aparece primeiro)
+            int m1 = (p1.getContrato() != null) ? p1.getContrato().getMesesRestantes() : 999;
+            int m2 = (p2.getContrato() != null) ? p2.getContrato().getMesesRestantes() : 999;
+            if (m1 != m2) return Integer.compare(m1, m2);
+
+            // 4. Salário (Decrescente - maiores salários primeiro)
+            double s1 = (p1.getContrato() != null) ? p1.getContrato().getSalarioMensal() : 0;
+            double s2 = (p2.getContrato() != null) ? p2.getContrato().getSalarioMensal() : 0;
+            int compSal = Double.compare(s2, s1);
+            if (compSal != 0) return compSal;
+
+            // 5. Ordem Alfabética
+            return p1.getNome().compareTo(p2.getNome());
+        });
+
+        todosPilotos.addAll(listaBruta);
+
+        // Preenche lista auxiliar da minha equipe
+        for (Piloto p : todosPilotos) {
+            if (minhaEquipe.getPilotosTitulares().contains(p) || minhaEquipe.getPilotosReservas().contains(p)) {
+                pilotosMinhaEquipe.add(p);
             }
         }
+    }
+    
+    // Auxiliar para definir peso da função na ordenação
+    private int getPesoFuncao(Piloto p) {
+        if (p.getContrato() == null) return 1; // Sem contrato
+        if (p.getContrato().getTipo() == TipoContrato.TITULAR) return 3;
+        if (p.getContrato().getTipo() == TipoContrato.RESERVA) return 2;
+        return 1;
     }
 
     private void initComponents() {
@@ -201,9 +265,7 @@ public class TelaMercadoPilotos extends JDialog {
 
         pnlTextosHeader.add(lbNomePilotoStats);
         pnlTextosHeader.add(lbNacionalidadeStats);
-        pnlHeaderStats.add(pnlTextosHeader, BorderLayout.CENTER);
-
-        pnlAnalise.add(pnlHeaderStats, BorderLayout.NORTH);
+        pnlHeaderStats.add(pnlTextosHeader, BorderLayout.NORTH);
 
         // Lista de Atributos
         pnlListaStats = new JPanel(new GridLayout(0, 2, 10, 5));
@@ -251,7 +313,7 @@ public class TelaMercadoPilotos extends JDialog {
         });
         pnlDireita.add(pnlMinhaEquipe, BorderLayout.NORTH);
 
-        // B. PROPOSTA (Reformulado)
+        // B. PROPOSTA
         JPanel pnlPropostaContainer = new JPanel(new BorderLayout());
         pnlPropostaContainer.setBorder(new TitledBorder(new LineBorder(new Color(100, 100, 100)), "Negociação"));
         pnlPropostaContainer.setBackground(new Color(245, 250, 255));
@@ -268,16 +330,14 @@ public class TelaMercadoPilotos extends JDialog {
         // 1. Salário (Spinner)
         pnlFormProposta.add(criarLabel("Salário Mensal:", 15, yBase));
         
-        // Modelo do Spinner: Valor atual 0.5, Mínimo 0.1, Max 100.0, Passo 0.1
         SpinnerNumberModel spinModel = new SpinnerNumberModel(0.5, 0.1, 100.0, 0.1);
         spinSalario = new JSpinner(spinModel);
-        // Formata para mostrar "0.5" em vez de "0,500" se possível, ou padrao
         JSpinner.NumberEditor editor = new JSpinner.NumberEditor(spinSalario, "0.0 'mi'");
         spinSalario.setEditor(editor);
         spinSalario.setBounds(120, yBase, 80, 25);
         pnlFormProposta.add(spinSalario);
 
-        // 2. Duração (ComboBox com descontos)
+        // 2. Duração
         pnlFormProposta.add(criarLabel("Duração:", 220, yBase));
         String[] opcoesDuracao = {"1 Ano", "2 Anos (-5%)", "3 Anos (-10%)"};
         cbDuracaoInput = new JComboBox<>(opcoesDuracao);
@@ -292,7 +352,7 @@ public class TelaMercadoPilotos extends JDialog {
         cbVagaInput.setBounds(120, y2, 120, 25);
         pnlFormProposta.add(cbVagaInput);
         
-        // 5. Botão de Ação
+        // Botão de Ação
         btnConfirmarAcao = new JButton("ENVIAR PROPOSTA");
         btnConfirmarAcao.setFont(new Font("Segoe UI", Font.BOLD, 14));
         btnConfirmarAcao.setBackground(new Color(0, 120, 215));
@@ -308,10 +368,6 @@ public class TelaMercadoPilotos extends JDialog {
         painelPrincipal.add(pnlInferior, BorderLayout.CENTER);
     }
     
-    // =================================================================================
-    // LÓGICA DE DADOS
-    // =================================================================================
-
     private void atualizarTabelaPrincipal() {
         modeloPrincipal.setRowCount(0);
         Random rng = new Random();
@@ -347,20 +403,35 @@ public class TelaMercadoPilotos extends JDialog {
     private void atualizarMinhaEquipe() {
         modeloMinhaEquipe.setRowCount(0);
         
-        for (Piloto p : minhaEquipe.getPilotosTitulares()) {
-            double sal = (p.getContrato() != null) ? p.getContrato().getSalarioMensal() : 0;
-            String tempo = (p.getContrato() != null) ? p.getContrato().getMesesRestantes() + " m" : "-";
-            modeloMinhaEquipe.addRow(new Object[]{
-                "Titular", p.getNacionalidade(), p.getNome(), (int)p.getOverall(), tempo, "€ " + formatarMoeda(sal)
-            });
-        }
+        List<Piloto> listaUnificada = new ArrayList<>();
+        listaUnificada.addAll(minhaEquipe.getPilotosTitulares());
+        listaUnificada.addAll(minhaEquipe.getPilotosReservas());
         
-        for (Piloto p : minhaEquipe.getPilotosReservas()) {
+        int contador = 0;
+        
+        for (Piloto p : listaUnificada) {
+            String funcaoExibida = "Titular";
+            
+            // --- 2. REGRA DE RESERVAS (PEDIDO 2) ---
+            // APENAS F1 força reserva a partir do 3º piloto.
+            // Nascar/Indy mantêm todos como Titular.
+            if (isF1 && contador >= 2) {
+                funcaoExibida = "Reserva";
+            }
+            
             double sal = (p.getContrato() != null) ? p.getContrato().getSalarioMensal() : 0;
             String tempo = (p.getContrato() != null) ? p.getContrato().getMesesRestantes() + " m" : "-";
+            
             modeloMinhaEquipe.addRow(new Object[]{
-                "Reserva", p.getNacionalidade(), p.getNome(), (int)p.getOverall(), tempo, "€ " + formatarMoeda(sal)
+                funcaoExibida, 
+                p.getNacionalidade(), 
+                p.getNome(), 
+                (int)p.getOverall(), 
+                tempo, 
+                "€ " + formatarMoeda(sal)
             });
+            
+            contador++;
         }
     }
 
@@ -427,9 +498,7 @@ public class TelaMercadoPilotos extends JDialog {
             lbFotoPiloto.setIcon(new FlatSVGIcon("resource/Bandeira " + p.getNacionalidade() + ".svg", 45, 45));
         } catch(Exception e) { lbFotoPiloto.setIcon(null); }
 
-        // --- PREENCHER LISTA DE STATS (Cores Customizadas) ---
         pnlListaStats.removeAll();
-        // Over = Azul, Salário/Multa = Vermelho, Resto = Preto
         adicionarItemStat("Overall", String.valueOf((int)p.getOverall()), Color.BLUE);
         adicionarItemStat("Experiência", String.valueOf((int)p.getExperiencia()), Color.BLACK);
         adicionarItemStat("Ritmo", String.valueOf((int)p.getRitmo()), Color.BLACK);
@@ -448,9 +517,7 @@ public class TelaMercadoPilotos extends JDialog {
             adicionarItemStat("Equipe Atual", p.getContrato().getEquipeAtual().getNome(), Color.BLACK);
             adicionarItemStat("Salário Atual", "€ " + formatarMoeda(p.getContrato().getSalarioMensal()), Color.RED);
             
-            // Adiciona Multa
             double multa = p.getContrato().calcularMultaRescisoria();
-            // Se for minha equipe, a multa é zero (tecnicamente) ou não aplicável para exibição de custo
             if (!pilotosMinhaEquipe.contains(p)) {
                 adicionarItemStat("Multa Rescisória", "€ " + formatarMoeda(multa), Color.RED);
             }
@@ -464,7 +531,6 @@ public class TelaMercadoPilotos extends JDialog {
         pnlListaStats.revalidate();
         pnlListaStats.repaint();
 
-        // Inputs Proposta
         boolean isMeu = pilotosMinhaEquipe.contains(p);
         lbTituloAcao.setText(isMeu ? "Renovação: " + p.getNome() : "Negociar: " + p.getNome());
         btnConfirmarAcao.setText(isMeu ? "RENOVAR" : "CONTRATAR");
@@ -495,26 +561,28 @@ public class TelaMercadoPilotos extends JDialog {
         cbVagaInput.setEnabled(false);
         btnConfirmarAcao.setEnabled(false);
     }
+    
+    private int contarPilotosUnicosDaEquipe() {
+        Set<String> nomes = new HashSet<>();
+        for (Piloto p : minhaEquipe.getPilotosTitulares()) nomes.add(p.getNome());
+        for (Piloto p : minhaEquipe.getPilotosReservas()) nomes.add(p.getNome());
+        return nomes.size();
+    }
 
     private void executarAcaoContrato() {
         if (pilotoSelecionado == null) return;
         
-        // Verifica limites da equipe 
-        int nTit = minhaEquipe.getPilotosTitulares().size();
-        int nRes = minhaEquipe.getPilotosReservas().size();
-        if (pilotosMinhaEquipe.contains(pilotoSelecionado)) {
-            if (pilotoSelecionado.isTitular()) nTit--; else nRes--; 
-        } else {
-            if (nTit + nRes >= 5) {
-                JOptionPane.showMessageDialog(this, "Equipe Cheia (Máx 5)!", "Erro", JOptionPane.ERROR_MESSAGE);
-                return;
-            }
+        boolean renovando = pilotosMinhaEquipe.contains(pilotoSelecionado);
+        int totalPilotos = contarPilotosUnicosDaEquipe();
+        
+        if (!renovando && totalPilotos >= 5) {
+             JOptionPane.showMessageDialog(this, "Equipe Cheia (Máx 5)!", "Erro", JOptionPane.ERROR_MESSAGE);
+             return;
         }
         
         try {
             double salBase = (Double) spinSalario.getValue();
             
-            // Lógica de Desconto por Duração
             int duracaoIndex = cbDuracaoInput.getSelectedIndex();
             double desconto = 0;
             int meses = 12;
@@ -530,7 +598,6 @@ public class TelaMercadoPilotos extends JDialog {
             double salFinal = salBase * (1.0 - desconto);
             TipoContrato tipo = (TipoContrato) cbVagaInput.getSelectedItem();
             
-            // Confirmar Multa se necessário
             double custoMulta = 0;
             if (pilotoSelecionado.getContrato() != null && !pilotosMinhaEquipe.contains(pilotoSelecionado)) {
                 custoMulta = pilotoSelecionado.getContrato().calcularMultaRescisoria();
@@ -608,7 +675,6 @@ public class TelaMercadoPilotos extends JDialog {
         cm.getColumn(5).setCellRenderer(c);
     }
     
-    // MUDANÇA: Aceita COR como parâmetro
     private void adicionarItemStat(String label, String valor, Color corValor) {
         JPanel p = new JPanel(new BorderLayout());
         p.setOpaque(false);
@@ -616,12 +682,12 @@ public class TelaMercadoPilotos extends JDialog {
         
         JLabel lbKey = new JLabel(label);
         lbKey.setFont(new Font("Segoe UI", Font.PLAIN, 12));
-        lbKey.setForeground(Color.BLACK); // Labels Pretos
+        lbKey.setForeground(Color.BLACK);
         
         JLabel lbVal = new JLabel(valor);
         boolean isOver = label.equals("Overall");
         lbVal.setFont(new Font("Segoe UI", isOver ? Font.BOLD : Font.PLAIN, isOver ? 14 : 12));
-        lbVal.setForeground(corValor); // Cor customizada
+        lbVal.setForeground(corValor);
         lbVal.setHorizontalAlignment(SwingConstants.RIGHT);
         
         p.add(lbKey, BorderLayout.WEST);

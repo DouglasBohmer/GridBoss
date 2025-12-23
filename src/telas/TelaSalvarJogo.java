@@ -1,10 +1,12 @@
 package telas;
 
+import com.formdev.flatlaf.extras.FlatSVGUtils;
 import dados.DadosDoJogo;
 
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 import java.awt.*;
+import java.util.List; // Import para manipulação de listas se necessário no futuro
 
 public class TelaSalvarJogo extends JDialog {
 
@@ -17,9 +19,22 @@ public class TelaSalvarJogo extends JDialog {
         
         setModal(true);
         setTitle("Grid Boss - Salvar Jogo");
-        setIconImage(Toolkit.getDefaultToolkit().getImage(TelaSalvarJogo.class.getResource("/resource/Icone16px.png")));
+        
+        // --- CORREÇÃO: Carregamento seguro do ícone SVG ---
+        try {
+            // Tenta carregar o SVG convertendo para imagem (16x16 ou 32x32)
+            Image icon = FlatSVGUtils.svg2image("/resource/Icone.svg", 32, 32);
+            if (icon != null) {
+                setIconImage(icon);
+            }
+        } catch (Exception e) {
+            System.err.println("Aviso: Ícone não encontrado em TelaSalvarJogo.");
+        }
+        // --------------------------------------------------
+
         setBounds(100, 100, 450, 220);
         setResizable(false);
+        setLocationRelativeTo(null); // Centraliza na tela
         
         contentPane = new JPanel();
         contentPane.setBackground(Color.WHITE);
@@ -41,11 +56,14 @@ public class TelaSalvarJogo extends JDialog {
         txtNomeSave = new JTextField();
         txtNomeSave.setFont(new Font("Arial", Font.PLAIN, 14));
         
-        // Sugestão de nome (Se já tiver um arquivo salvo, sugere ele, senão sugere o nome do dirigente)
+        // Sugestão de nome
         if (dados.getArquivoAtual() != null) {
             txtNomeSave.setText(dados.getArquivoAtual());
         } else {
-            String nomeLimpo = dados.getNomeDoDirigente().split(" ")[0];
+            String nomeDirigente = dados.getNomeDoDirigente();
+            String nomeLimpo = (nomeDirigente != null && !nomeDirigente.isEmpty()) 
+                    ? nomeDirigente.split(" ")[0] 
+                    : "Jogador";
             txtNomeSave.setText("Carreira " + nomeLimpo);
         }
         
@@ -77,7 +95,7 @@ public class TelaSalvarJogo extends JDialog {
         // Remove caracteres inválidos para nome de arquivo
         nome = nome.replaceAll("[^a-zA-Z0-9\\s-_]", "");
         
-        // --- VERIFICAÇÃO SE EXISTE (NOVO) ---
+        // Verifica se já existe
         if (dadosDoJogo.verificarSeSaveExiste(nome)) {
             int resposta = JOptionPane.showConfirmDialog(this, 
                 "O save '" + nome + "' já existe.\nDeseja substituir?",
@@ -87,10 +105,9 @@ public class TelaSalvarJogo extends JDialog {
             );
             
             if (resposta != JOptionPane.YES_OPTION) {
-                return; // Cancela se o usuário disser "Não"
+                return;
             }
         }
-        // -------------------------------------
         
         boolean sucesso = dadosDoJogo.salvarJogo(nome);
         

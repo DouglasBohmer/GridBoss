@@ -15,7 +15,12 @@ import java.io.FileWriter;
 import java.io.Reader;
 import java.io.Writer;
 import java.nio.charset.StandardCharsets;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Map;
+import java.util.Set;
 
 public class DadosDoJogo {
     
@@ -32,13 +37,9 @@ public class DadosDoJogo {
     private String categoriaKey;
     private int anoAtual;
     
-    // --- CONTROLE DE ARQUIVO ---
     private transient String arquivoAtual = null; 
-    
-    // --- CONFIGURAÇÃO (DATA-DRIVEN) ---
     private transient ConfiguracaoEconomia configEconomia;
 
-    // Construtor Vazio
     public DadosDoJogo() {
         this.configEconomia = new ConfiguracaoEconomia(); 
         this.configEconomia.setCustoContratacao(0.5);
@@ -55,40 +56,64 @@ public class DadosDoJogo {
         this.todasAsEquipes = CarregadorJSON.carregarEquipes(categoriaKey, anoAtual);
         this.todosOsPilotos = CarregadorJSON.carregarPilotos(categoriaKey, anoAtual);
         
+        // 1. CORREÇÃO CRÍTICA: Remove pilotos duplicados vindo dos JSONs (ex: Kyle Larson em dois arquivos)
+        sanitizarListaMestraDePilotos();
+
         List<Motor> motores = CarregadorJSON.carregarMotores(categoriaKey, anoAtual);
         vincularMotores(motores);
         
         this.campeonato = new CampeonatoService(categoriaKey, anoAtual);
         vincularPilotosAsEquipes();
         inicializarFabricas();
-        carregarConfiguracaoEconomia(); // Carrega o JSON da fábrica do MOD
+        carregarConfiguracaoEconomia();
     }
     
-    // --- CARREGAMENTO DE ECONOMIA (JSON DO MOD) ---
+    /**
+     * Remove duplicatas da lista principal (todosOsPilotos).
+     * Se houver dois pilotos com o mesmo nome, mantém o que tiver maior Overall.
+     */
+    private void sanitizarListaMestraDePilotos() {
+        if (todosOsPilotos == null) return;
+
+        Map<String, Piloto> mapaUnico = new HashMap<>();
+        
+        for (Piloto p : todosOsPilotos) {
+            if (p == null || p.getNome() == null) continue;
+            
+            String chave = p.getNome().trim().toLowerCase();
+            
+            if (mapaUnico.containsKey(chave)) {
+                // Se já existe, comparamos o Overall para manter o melhor (ou mais atual)
+                Piloto existente = mapaUnico.get(chave);
+                if (p.getOverall() > existente.getOverall()) {
+                    mapaUnico.put(chave, p); // Substitui pelo melhor
+                }
+            } else {
+                mapaUnico.put(chave, p);
+            }
+        }
+        
+        // Reconstrói a lista apenas com os únicos
+        this.todosOsPilotos = new ArrayList<>(mapaUnico.values());
+    }
+
     private void carregarConfiguracaoEconomia() {
         try {
-            // Constrói o caminho específico do Mod: mods/CATEGORIA_ANO/fabrica.json
-            // Ex: mods/f1_2024/fabrica.json
             String nomePastaMod = categoriaKey + "_" + anoAtual;
             String caminhoArquivoMod = "mods/" + nomePastaMod + "/fabrica.json";
-            
             File f = new File(caminhoArquivoMod);
             
             if (f.exists()) {
                 try (Reader reader = new FileReader(f)) {
                     this.configEconomia = new Gson().fromJson(reader, ConfiguracaoEconomia.class);
-                  //  System.out.println("Configuração de fábrica carregada de: " + caminhoArquivoMod);
                 }
             } else {
-                // Tenta fallback genérico se não achar no mod
                 File fGenerico = new File("json/fabrica.json");
                 if (fGenerico.exists()) {
                     try (Reader reader = new FileReader(fGenerico)) {
                         this.configEconomia = new Gson().fromJson(reader, ConfiguracaoEconomia.class);
-                        System.out.println("Aviso: fabrica.json não encontrado no mod. Usando genérico.");
                     }
                 } else {
-                    System.err.println("AVISO: Nenhum 'fabrica.json' encontrado. Usando valores padrão hardcoded.");
                     criarConfiguracaoPadrao();
                 }
             }
@@ -107,8 +132,6 @@ public class DadosDoJogo {
         this.configEconomia.setManutencaoPorNivel(0.1);
     }
 
-    // --- MÉTODOS DE VÍNCULO ---
-    
     private void vincularMotores(List<Motor> motores) {
         if (motores == null || todasAsEquipes == null) return;
         for (Equipe eq : todasAsEquipes) {
@@ -124,6 +147,8 @@ public class DadosDoJogo {
     
     private void vincularPilotosAsEquipes() {
         if (todasAsEquipes == null || todosOsPilotos == null) return;
+        
+        boolean isF1 = categoriaKey != null && categoriaKey.toLowerCase().contains("f1");
 
         for (Equipe eq : todasAsEquipes) {
             List<String> idsContratados = eq.getPilotosContratadosIDs();
@@ -132,15 +157,74 @@ public class DadosDoJogo {
             eq.getPilotosReservas().clear();
             
             if (idsContratados != null) {
+                int contador = 0;
+                
+                // Set para evitar adicionar o mesmo piloto (pelo nome) duas vezes na mesma equipe
+                Set<String> nomesProcessadosNestaEquipe = new HashSet<>();
+                
                 for (String idAlvo : idsContratados) {
                     Piloto pilotoEncontrado = buscarPilotoPorNome(idAlvo);
+                    
                     if (pilotoEncontrado != null) {
-                        eq.adicionarPilotoDoLoad(pilotoEncontrado, TipoContrato.TITULAR);
+                        // Verifica duplicidade pelo NOME (resolve problemas de objetos diferentes mas mesma pessoa)
+                        if (nomesProcessadosNestaEquipe.contains(pilotoEncontrado.getNome().toLowerCase())) {
+                            continue;
+                        }
+
+                        // Verifica se o objeto já está nas listas (segurança extra)
+                        if (eq.getPilotosTitulares().contains(pilotoEncontrado) || 
+                            eq.getPilotosReservas().contains(pilotoEncontrado)) {
+                            continue;
+                        }
+
+                        nomesProcessadosNestaEquipe.add(pilotoEncontrado.getNome().toLowerCase());
+                        
+                        TipoContrato tipo = TipoContrato.TITULAR;
+                        if (isF1 && contador >= 2) {
+                            tipo = TipoContrato.RESERVA;
+                        }
+                        
+                        eq.adicionarPilotoDoLoad(pilotoEncontrado, tipo);
                         pilotoEncontrado.setNomeEquipeAtual(eq.getNome());
+                        contador++;
                     }
                 }
             }
+            
+            // 2. CORREÇÃO FINAL: Garante que um piloto não seja Titular e Reserva ao mesmo tempo
+            sanitizarEquipe(eq);
         }
+    }
+    
+    /**
+     * Remove inconsistências dentro da equipe (ex: piloto duplicado ou piloto que é titular e reserva ao mesmo tempo).
+     */
+    private void sanitizarEquipe(Equipe eq) {
+        // A. Remove duplicatas exatas dentro da lista de Titulares
+        List<Piloto> titularesUnicos = new ArrayList<>();
+        for (Piloto p : eq.getPilotosTitulares()) {
+            if (!titularesUnicos.contains(p)) titularesUnicos.add(p);
+        }
+        eq.getPilotosTitulares().clear();
+        eq.getPilotosTitulares().addAll(titularesUnicos);
+
+        // B. Remove da lista de Reservas se já estiver nos Titulares
+        List<Piloto> reservasValidos = new ArrayList<>();
+        for (Piloto p : eq.getPilotosReservas()) {
+            boolean jaEhTitular = eq.getPilotosTitulares().contains(p); // Checa objeto
+            // Checa nome também para garantir
+            for (Piloto tit : eq.getPilotosTitulares()) {
+                if (tit.getNome().equalsIgnoreCase(p.getNome())) {
+                    jaEhTitular = true; break;
+                }
+            }
+            
+            if (!jaEhTitular && !reservasValidos.contains(p)) {
+                reservasValidos.add(p);
+            }
+        }
+        eq.getPilotosReservas().clear();
+        eq.getPilotosReservas().addAll(reservasValidos);
     }
     
     private void inicializarFabricas() {
@@ -151,15 +235,17 @@ public class DadosDoJogo {
     }
 
     private Piloto buscarPilotoPorNome(String nome) {
+        if (nome == null) return null;
+        String nomeNormalizado = nome.trim();
         for (Piloto p : todosOsPilotos) {
-            if (p.getNome().equalsIgnoreCase(nome)) {
+            if (p.getNome().equalsIgnoreCase(nomeNormalizado)) {
                 return p;
             }
         }
         return null;
     }
     
-    // --- SALVAMENTO ---
+    // --- SALVAMENTO E CARREGAMENTO ---
     
     public boolean verificarSeSaveExiste(String nomeArquivo) {
         File f = new File("saves/" + nomeArquivo + ".save");
@@ -171,17 +257,11 @@ public class DadosDoJogo {
             for (Equipe eq : todasAsEquipes) {
                 eq.sincronizarDadosParaSalvar();
             }
-            
             File folder = new File("saves");
             if (!folder.exists()) folder.mkdirs();
-            
-            String caminhoCompleto = "saves/" + nomeArquivo + ".save";
-            
-            try (Writer writer = new FileWriter(caminhoCompleto, StandardCharsets.UTF_8)) {
-                Gson gson = new GsonBuilder().setPrettyPrinting().create();
-                gson.toJson(this, writer);
+            try (Writer writer = new FileWriter("saves/" + nomeArquivo + ".save", StandardCharsets.UTF_8)) {
+                new GsonBuilder().setPrettyPrinting().create().toJson(this, writer);
             }
-            
             this.arquivoAtual = nomeArquivo;
             return true;
         } catch (Exception e) {
@@ -190,19 +270,12 @@ public class DadosDoJogo {
         }
     }
     
-    // --- CARREGAMENTO ---
-    
     public static DadosDoJogo carregarJogo(String nomeArquivoCompleto) {
         try (Reader reader = new FileReader("saves/" + nomeArquivoCompleto)) {
-            Gson gson = new Gson();
-            DadosDoJogo dadosCarregados = gson.fromJson(reader, DadosDoJogo.class);
-            
-            String nomeSemExtensao = nomeArquivoCompleto.replace(".save", "");
-            dadosCarregados.setArquivoAtual(nomeSemExtensao);
-            
-            dadosCarregados.reconstruirPosLoad();
-            
-            return dadosCarregados;
+            DadosDoJogo dados = new Gson().fromJson(reader, DadosDoJogo.class);
+            dados.setArquivoAtual(nomeArquivoCompleto.replace(".save", ""));
+            dados.reconstruirPosLoad();
+            return dados;
         } catch (Exception e) {
             e.printStackTrace();
             return null;
@@ -210,8 +283,14 @@ public class DadosDoJogo {
     }
     
     private void reconstruirPosLoad() {
+        // Ao carregar save, também precisamos sanitizar a lista mestra de pilotos
+        this.todosOsPilotos = CarregadorJSON.carregarPilotos(categoriaKey, anoAtual);
+        sanitizarListaMestraDePilotos();
+        
         List<Motor> motores = CarregadorJSON.carregarMotores(categoriaKey, anoAtual);
         vincularMotores(motores);
+        
+        // Recalcula os vínculos para garantir integridade
         vincularPilotosAsEquipes();
         
         if (this.equipeDoJogador != null) {
@@ -222,18 +301,14 @@ public class DadosDoJogo {
                 }
             }
         }
-        
-        // Recarrega a economia baseado na categoria/ano salvos
         carregarConfiguracaoEconomia();
     }
     
     // --- GETTERS E SETTERS ---
-    
     public ConfiguracaoEconomia getConfigEconomia() {
         if (configEconomia == null) carregarConfiguracaoEconomia();
         return configEconomia;
     }
-
     public String getArquivoAtual() { return arquivoAtual; }
     public void setArquivoAtual(String arq) { this.arquivoAtual = arq; }
     
@@ -246,7 +321,6 @@ public class DadosDoJogo {
             }
         }
     }
-
     public List<Equipe> getTodasAsEquipes() { return todasAsEquipes; }
     public List<Piloto> getTodosOsPilotos() { return todosOsPilotos; }
     public CampeonatoService getCampeonato() { return campeonato; }

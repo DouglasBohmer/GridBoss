@@ -219,9 +219,6 @@ public class TelaPrincipal extends JFrame {
         mntmPatrocinios.addActionListener(e -> {
             TelaPatrocinador tela = new TelaPatrocinador(dadosDoJogo);
             tela.setVisible(true);
-            
-            // Adiciona um ouvinte para atualizar o saldo na tela principal
-            // assim que a tela de patrocínios for fechada
             tela.addWindowListener(new WindowAdapter() {
                 @Override
                 public void windowClosed(WindowEvent e) {
@@ -234,7 +231,12 @@ public class TelaPrincipal extends JFrame {
         JMenu Menu_Piloto = new JMenu("Pilotos");
         menuBar.add(Menu_Piloto);
         Menu_Piloto.add(new JMenuItem("Meus Pilotos"));
-        Menu_Piloto.add(new JMenuItem("Mercado de Pilotos"));
+        JMenuItem mntmMercado = new JMenuItem("Mercado de Pilotos");
+        mntmMercado.addActionListener(e -> {
+            TelaMercadoPilotos tela = new TelaMercadoPilotos(dadosDoJogo);
+            tela.setVisible(true);
+        });
+        Menu_Piloto.add(mntmMercado);
 
         JMenu Menu_Financeiro = new JMenu("Financeiro");
         menuBar.add(Menu_Financeiro);

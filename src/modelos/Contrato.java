@@ -27,7 +27,11 @@ public class Contrato {
         return mesesRestantes <= 0;
     }
 
+    // --- GETTERS ---
     public double getSalarioMensal() { return salarioMensal; }
     public Equipe getEquipeAtual() { return equipeAtual; }
     public TipoContrato getTipo() { return tipo; }
+    
+    // MÉTODO QUE FALTAVA:
+    public int getMesesRestantes() { return mesesRestantes; }
 }

@@ -120,6 +120,7 @@ public class Piloto {
     public int getIdade() { return idade; }
     public double getOverall() { return overall; }
     public void setOverall(double over) { this.overall = over; }
+    public int getExigenciaMinimaDeEquipe() { return exigenciaMinimaDeEquipe; } // NOVO MÉTODO ADICIONADO
     public List<Contrato> getContratos() { return contratosAtivos; }
     
     // Stats da Temporada

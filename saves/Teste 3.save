@@ -75,7 +75,7 @@
       "sede": "Maranello, Itália",
       "motor": "Ferrari",
       "fundacao": 1929,
-      "saldoFinanceiro": 145.2,
+      "saldoFinanceiro": 162.5499999999997,
       "reputacao": 97,
       "pontos": 0,
       "vitorias": 0,
@@ -85,10 +85,10 @@
       "nivelAero": 5,
       "nivelChassi": 5,
       "nivelConfiabilidade": 5,
-      "staffMotor": 1,
-      "staffAero": 1,
-      "staffChassi": 1,
-      "staffConfiabilidade": 1,
+      "staffMotor": 10,
+      "staffAero": 8,
+      "staffChassi": 6,
+      "staffConfiabilidade": 4,
       "arquivos": {
         "logo": "/resource/Equipe F1 Ferrari.svg",
         "bandeiraSede": "/resource/Bandeira Italia.svg",
@@ -151,6 +151,54 @@
             "bandeira": "/resource/Bandeira Japao.svg"
           },
           "duracaoRestante": 12
+        },
+        {
+          "nome": "Aramco",
+          "segmento": "Petróleo e Gás",
+          "pais": "Arabia Saudita",
+          "reputacaoMinima": 85,
+          "valorBase": 1.8,
+          "bonusAssinatura": 8.0,
+          "bonusVitoria": 0.8,
+          "bonusPodio": 0.4,
+          "bonusTop10": 0.1,
+          "arquivos": {
+            "logo": "/resource/Logo Aramco.svg",
+            "bandeira": "/resource/Bandeira Arabia Saudita.svg"
+          },
+          "duracaoRestante": 24
+        },
+        {
+          "nome": "Emirates",
+          "segmento": "Aviação",
+          "pais": "Emirados Arabes Unidos",
+          "reputacaoMinima": 80,
+          "valorBase": 1.4,
+          "bonusAssinatura": 4.5,
+          "bonusVitoria": 0.7,
+          "bonusPodio": 0.4,
+          "bonusTop10": 0.1,
+          "arquivos": {
+            "logo": "/resource/Logo Emirates.svg",
+            "bandeira": "/resource/Bandeira Emirados Arabes Unidos.svg"
+          },
+          "duracaoRestante": 24
+        },
+        {
+          "nome": "Oracle",
+          "segmento": "Tecnologia",
+          "pais": "EUA",
+          "reputacaoMinima": 80,
+          "valorBase": 1.4,
+          "bonusAssinatura": 6.0,
+          "bonusVitoria": 0.7,
+          "bonusPodio": 0.4,
+          "bonusTop10": 0.1,
+          "arquivos": {
+            "logo": "/resource/Logo Oracle.svg",
+            "bandeira": "/resource/Bandeira EUA.svg"
+          },
+          "duracaoRestante": 24
         }
       ]
     },
@@ -692,7 +740,7 @@
             "sede": "Maranello, Itália",
             "motor": "Ferrari",
             "fundacao": 1929,
-            "saldoFinanceiro": 145.2,
+            "saldoFinanceiro": 162.5499999999997,
             "reputacao": 97,
             "pontos": 0,
             "vitorias": 0,
@@ -702,10 +750,10 @@
             "nivelAero": 5,
             "nivelChassi": 5,
             "nivelConfiabilidade": 5,
-            "staffMotor": 1,
-            "staffAero": 1,
-            "staffChassi": 1,
-            "staffConfiabilidade": 1,
+            "staffMotor": 10,
+            "staffAero": 8,
+            "staffChassi": 6,
+            "staffConfiabilidade": 4,
             "arquivos": {
               "logo": "/resource/Equipe F1 Ferrari.svg",
               "bandeiraSede": "/resource/Bandeira Italia.svg",
@@ -768,6 +816,54 @@
                   "bandeira": "/resource/Bandeira Japao.svg"
                 },
                 "duracaoRestante": 12
+              },
+              {
+                "nome": "Aramco",
+                "segmento": "Petróleo e Gás",
+                "pais": "Arabia Saudita",
+                "reputacaoMinima": 85,
+                "valorBase": 1.8,
+                "bonusAssinatura": 8.0,
+                "bonusVitoria": 0.8,
+                "bonusPodio": 0.4,
+                "bonusTop10": 0.1,
+                "arquivos": {
+                  "logo": "/resource/Logo Aramco.svg",
+                  "bandeira": "/resource/Bandeira Arabia Saudita.svg"
+                },
+                "duracaoRestante": 24
+              },
+              {
+                "nome": "Emirates",
+                "segmento": "Aviação",
+                "pais": "Emirados Arabes Unidos",
+                "reputacaoMinima": 80,
+                "valorBase": 1.4,
+                "bonusAssinatura": 4.5,
+                "bonusVitoria": 0.7,
+                "bonusPodio": 0.4,
+                "bonusTop10": 0.1,
+                "arquivos": {
+                  "logo": "/resource/Logo Emirates.svg",
+                  "bandeira": "/resource/Bandeira Emirados Arabes Unidos.svg"
+                },
+                "duracaoRestante": 24
+              },
+              {
+                "nome": "Oracle",
+                "segmento": "Tecnologia",
+                "pais": "EUA",
+                "reputacaoMinima": 80,
+                "valorBase": 1.4,
+                "bonusAssinatura": 6.0,
+                "bonusVitoria": 0.7,
+                "bonusPodio": 0.4,
+                "bonusTop10": 0.1,
+                "arquivos": {
+                  "logo": "/resource/Logo Oracle.svg",
+                  "bandeira": "/resource/Bandeira EUA.svg"
+                },
+                "duracaoRestante": 24
               }
             ]
           },
@@ -807,7 +903,7 @@
             "sede": "Maranello, Itália",
             "motor": "Ferrari",
             "fundacao": 1929,
-            "saldoFinanceiro": 145.2,
+            "saldoFinanceiro": 162.5499999999997,
             "reputacao": 97,
             "pontos": 0,
             "vitorias": 0,
@@ -817,10 +913,10 @@
             "nivelAero": 5,
             "nivelChassi": 5,
             "nivelConfiabilidade": 5,
-            "staffMotor": 1,
-            "staffAero": 1,
-            "staffChassi": 1,
-            "staffConfiabilidade": 1,
+            "staffMotor": 10,
+            "staffAero": 8,
+            "staffChassi": 6,
+            "staffConfiabilidade": 4,
             "arquivos": {
               "logo": "/resource/Equipe F1 Ferrari.svg",
               "bandeiraSede": "/resource/Bandeira Italia.svg",
@@ -883,6 +979,54 @@
                   "bandeira": "/resource/Bandeira Japao.svg"
                 },
                 "duracaoRestante": 12
+              },
+              {
+                "nome": "Aramco",
+                "segmento": "Petróleo e Gás",
+                "pais": "Arabia Saudita",
+                "reputacaoMinima": 85,
+                "valorBase": 1.8,
+                "bonusAssinatura": 8.0,
+                "bonusVitoria": 0.8,
+                "bonusPodio": 0.4,
+                "bonusTop10": 0.1,
+                "arquivos": {
+                  "logo": "/resource/Logo Aramco.svg",
+                  "bandeira": "/resource/Bandeira Arabia Saudita.svg"
+                },
+                "duracaoRestante": 24
+              },
+              {
+                "nome": "Emirates",
+                "segmento": "Aviação",
+                "pais": "Emirados Arabes Unidos",
+                "reputacaoMinima": 80,
+                "valorBase": 1.4,
+                "bonusAssinatura": 4.5,
+                "bonusVitoria": 0.7,
+                "bonusPodio": 0.4,
+                "bonusTop10": 0.1,
+                "arquivos": {
+                  "logo": "/resource/Logo Emirates.svg",
+                  "bandeira": "/resource/Bandeira Emirados Arabes Unidos.svg"
+                },
+                "duracaoRestante": 24
+              },
+              {
+                "nome": "Oracle",
+                "segmento": "Tecnologia",
+                "pais": "EUA",
+                "reputacaoMinima": 80,
+                "valorBase": 1.4,
+                "bonusAssinatura": 6.0,
+                "bonusVitoria": 0.7,
+                "bonusPodio": 0.4,
+                "bonusTop10": 0.1,
+                "arquivos": {
+                  "logo": "/resource/Logo Oracle.svg",
+                  "bandeira": "/resource/Bandeira EUA.svg"
+                },
+                "duracaoRestante": 24
               }
             ]
           },
@@ -1953,35 +2097,36 @@
           "salarioMensal": 0.5,
           "mesesRestantes": 12,
           "equipeAtual": {
-            "id": "racingbulls",
-            "nome": "Racing Bulls",
-            "sede": "Faença, Itália",
+            "id": "redbull",
+            "nome": "Red Bull Racing",
+            "sede": "Milton Keynes, UK",
             "motor": "Honda RBPT",
-            "fundacao": 2024,
-            "saldoFinanceiro": 55.0,
-            "reputacao": 60,
+            "fundacao": 2005,
+            "saldoFinanceiro": 140.0,
+            "reputacao": 98,
             "pontos": 0,
             "vitorias": 0,
             "podios": 0,
             "poles": 0,
-            "nivelMotor": 3,
-            "nivelAero": 3,
-            "nivelChassi": 3,
-            "nivelConfiabilidade": 3,
+            "nivelMotor": 5,
+            "nivelAero": 5,
+            "nivelChassi": 5,
+            "nivelConfiabilidade": 5,
             "staffMotor": 1,
             "staffAero": 1,
             "staffChassi": 1,
             "staffConfiabilidade": 1,
             "arquivos": {
-              "logo": "/resource/Equipe F1 RB.svg",
-              "bandeiraSede": "/resource/Bandeira Italia.svg",
+              "logo": "/resource/Equipe F1 RBR.svg",
+              "bandeiraSede": "/resource/Bandeira Austria.svg",
               "bandeiraMotor": "/resource/Bandeira Japao.svg",
               "logoMotor": "/resource/Logo Honda.svg"
             },
             "pilotosContratadosIDs": [
-              "Yuki Tsunoda",
-              "Daniel Ricciardo",
-              "Liam Lawson"
+              "Max Verstappen",
+              "Sergio Perez",
+              "Liam Lawson",
+              "Sebastien Buemi"
             ],
             "anosConsecutivosNoVermelho": 0,
             "patrocinadoresAtivos": []
@@ -2086,7 +2231,7 @@
             "sede": "Maranello, Itália",
             "motor": "Ferrari",
             "fundacao": 1929,
-            "saldoFinanceiro": 145.2,
+            "saldoFinanceiro": 162.5499999999997,
             "reputacao": 97,
             "pontos": 0,
             "vitorias": 0,
@@ -2096,10 +2241,10 @@
             "nivelAero": 5,
             "nivelChassi": 5,
             "nivelConfiabilidade": 5,
-            "staffMotor": 1,
-            "staffAero": 1,
-            "staffChassi": 1,
-            "staffConfiabilidade": 1,
+            "staffMotor": 10,
+            "staffAero": 8,
+            "staffChassi": 6,
+            "staffConfiabilidade": 4,
             "arquivos": {
               "logo": "/resource/Equipe F1 Ferrari.svg",
               "bandeiraSede": "/resource/Bandeira Italia.svg",
@@ -2162,6 +2307,54 @@
                   "bandeira": "/resource/Bandeira Japao.svg"
                 },
                 "duracaoRestante": 12
+              },
+              {
+                "nome": "Aramco",
+                "segmento": "Petróleo e Gás",
+                "pais": "Arabia Saudita",
+                "reputacaoMinima": 85,
+                "valorBase": 1.8,
+                "bonusAssinatura": 8.0,
+                "bonusVitoria": 0.8,
+                "bonusPodio": 0.4,
+                "bonusTop10": 0.1,
+                "arquivos": {
+                  "logo": "/resource/Logo Aramco.svg",
+                  "bandeira": "/resource/Bandeira Arabia Saudita.svg"
+                },
+                "duracaoRestante": 24
+              },
+              {
+                "nome": "Emirates",
+                "segmento": "Aviação",
+                "pais": "Emirados Arabes Unidos",
+                "reputacaoMinima": 80,
+                "valorBase": 1.4,
+                "bonusAssinatura": 4.5,
+                "bonusVitoria": 0.7,
+                "bonusPodio": 0.4,
+                "bonusTop10": 0.1,
+                "arquivos": {
+                  "logo": "/resource/Logo Emirates.svg",
+                  "bandeira": "/resource/Bandeira Emirados Arabes Unidos.svg"
+                },
+                "duracaoRestante": 24
+              },
+              {
+                "nome": "Oracle",
+                "segmento": "Tecnologia",
+                "pais": "EUA",
+                "reputacaoMinima": 80,
+                "valorBase": 1.4,
+                "bonusAssinatura": 6.0,
+                "bonusVitoria": 0.7,
+                "bonusPodio": 0.4,
+                "bonusTop10": 0.1,
+                "arquivos": {
+                  "logo": "/resource/Logo Oracle.svg",
+                  "bandeira": "/resource/Bandeira EUA.svg"
+                },
+                "duracaoRestante": 24
               }
             ]
           },
@@ -2266,7 +2459,7 @@
             "sede": "Maranello, Itália",
             "motor": "Ferrari",
             "fundacao": 1929,
-            "saldoFinanceiro": 145.2,
+            "saldoFinanceiro": 162.5499999999997,
             "reputacao": 97,
             "pontos": 0,
             "vitorias": 0,
@@ -2276,10 +2469,10 @@
             "nivelAero": 5,
             "nivelChassi": 5,
             "nivelConfiabilidade": 5,
-            "staffMotor": 1,
-            "staffAero": 1,
-            "staffChassi": 1,
-            "staffConfiabilidade": 1,
+            "staffMotor": 10,
+            "staffAero": 8,
+            "staffChassi": 6,
+            "staffConfiabilidade": 4,
             "arquivos": {
               "logo": "/resource/Equipe F1 Ferrari.svg",
               "bandeiraSede": "/resource/Bandeira Italia.svg",
@@ -2342,6 +2535,54 @@
                   "bandeira": "/resource/Bandeira Japao.svg"
                 },
                 "duracaoRestante": 12
+              },
+              {
+                "nome": "Aramco",
+                "segmento": "Petróleo e Gás",
+                "pais": "Arabia Saudita",
+                "reputacaoMinima": 85,
+                "valorBase": 1.8,
+                "bonusAssinatura": 8.0,
+                "bonusVitoria": 0.8,
+                "bonusPodio": 0.4,
+                "bonusTop10": 0.1,
+                "arquivos": {
+                  "logo": "/resource/Logo Aramco.svg",
+                  "bandeira": "/resource/Bandeira Arabia Saudita.svg"
+                },
+                "duracaoRestante": 24
+              },
+              {
+                "nome": "Emirates",
+                "segmento": "Aviação",
+                "pais": "Emirados Arabes Unidos",
+                "reputacaoMinima": 80,
+                "valorBase": 1.4,
+                "bonusAssinatura": 4.5,
+                "bonusVitoria": 0.7,
+                "bonusPodio": 0.4,
+                "bonusTop10": 0.1,
+                "arquivos": {
+                  "logo": "/resource/Logo Emirates.svg",
+                  "bandeira": "/resource/Bandeira Emirados Arabes Unidos.svg"
+                },
+                "duracaoRestante": 24
+              },
+              {
+                "nome": "Oracle",
+                "segmento": "Tecnologia",
+                "pais": "EUA",
+                "reputacaoMinima": 80,
+                "valorBase": 1.4,
+                "bonusAssinatura": 6.0,
+                "bonusVitoria": 0.7,
+                "bonusPodio": 0.4,
+                "bonusTop10": 0.1,
+                "arquivos": {
+                  "logo": "/resource/Logo Oracle.svg",
+                  "bandeira": "/resource/Bandeira EUA.svg"
+                },
+                "duracaoRestante": 24
               }
             ]
           },
@@ -3369,7 +3610,7 @@
     "sede": "Maranello, Itália",
     "motor": "Ferrari",
     "fundacao": 1929,
-    "saldoFinanceiro": 145.2,
+    "saldoFinanceiro": 162.5499999999997,
     "reputacao": 97,
     "pontos": 0,
     "vitorias": 0,
@@ -3379,10 +3620,10 @@
     "nivelAero": 5,
     "nivelChassi": 5,
     "nivelConfiabilidade": 5,
-    "staffMotor": 1,
-    "staffAero": 1,
-    "staffChassi": 1,
-    "staffConfiabilidade": 1,
+    "staffMotor": 10,
+    "staffAero": 8,
+    "staffChassi": 6,
+    "staffConfiabilidade": 4,
     "arquivos": {
       "logo": "/resource/Equipe F1 Ferrari.svg",
       "bandeiraSede": "/resource/Bandeira Italia.svg",
@@ -3445,6 +3686,54 @@
           "bandeira": "/resource/Bandeira Japao.svg"
         },
         "duracaoRestante": 12
+      },
+      {
+        "nome": "Aramco",
+        "segmento": "Petróleo e Gás",
+        "pais": "Arabia Saudita",
+        "reputacaoMinima": 85,
+        "valorBase": 1.8,
+        "bonusAssinatura": 8.0,
+        "bonusVitoria": 0.8,
+        "bonusPodio": 0.4,
+        "bonusTop10": 0.1,
+        "arquivos": {
+          "logo": "/resource/Logo Aramco.svg",
+          "bandeira": "/resource/Bandeira Arabia Saudita.svg"
+        },
+        "duracaoRestante": 24
+      },
+      {
+        "nome": "Emirates",
+        "segmento": "Aviação",
+        "pais": "Emirados Arabes Unidos",
+        "reputacaoMinima": 80,
+        "valorBase": 1.4,
+        "bonusAssinatura": 4.5,
+        "bonusVitoria": 0.7,
+        "bonusPodio": 0.4,
+        "bonusTop10": 0.1,
+        "arquivos": {
+          "logo": "/resource/Logo Emirates.svg",
+          "bandeira": "/resource/Bandeira Emirados Arabes Unidos.svg"
+        },
+        "duracaoRestante": 24
+      },
+      {
+        "nome": "Oracle",
+        "segmento": "Tecnologia",
+        "pais": "EUA",
+        "reputacaoMinima": 80,
+        "valorBase": 1.4,
+        "bonusAssinatura": 6.0,
+        "bonusVitoria": 0.7,
+        "bonusPodio": 0.4,
+        "bonusTop10": 0.1,
+        "arquivos": {
+          "logo": "/resource/Logo Oracle.svg",
+          "bandeira": "/resource/Bandeira EUA.svg"
+        },
+        "duracaoRestante": 24
       }
     ]
   },

@@ -73,7 +73,7 @@ public class TelaInicialCarregar extends JFrame {
         lblBanner.setBounds(10, 56, 451, 170);
         
         // 2. Carrega o Banner em SVG com redimensionamento automático
-        carregarImagem(lblBanner, "/resource/Banner F1_OK.svg");
+        carregarImagem(lblBanner, "/resource/Banner Jogo.svg");
         
         contentPane.add(lblBanner);
 

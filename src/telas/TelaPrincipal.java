@@ -737,16 +737,16 @@ public class TelaPrincipal extends JFrame {
         carregarImagem(LB_CategoriaEscolhida, logoPath);
 
         if (catKey.contains("f1")) {
-            carregarImagem(LB_CarrosCat, "/resource/Banner F1_OK.svg");
+            carregarImagem(LB_CarrosCat, "/resource/Banner Jogo.svg");
             LB_TipoPista.setForeground(Color.BLACK);
         } else if (catKey.contains("indy")) {
-            carregarImagem(LB_CarrosCat, "/resource/Banner F1_OK.svg"); 
+            carregarImagem(LB_CarrosCat, "/resource/Banner Jogo.svg"); 
             LB_TipoPista.setForeground(Color.BLUE);
         } else if (catKey.contains("nascar")) {
-            carregarImagem(LB_CarrosCat, "/resource/Banner F1_OK.svg"); 
+            carregarImagem(LB_CarrosCat, "/resource/Banner Jogo.svg"); 
             LB_TipoPista.setForeground(Color.BLUE);
         } else {
-            carregarImagem(LB_CarrosCat, "/resource/Banner F1_OK.svg");
+            carregarImagem(LB_CarrosCat, "/resource/Banner Jogo.svg");
             LB_TipoPista.setForeground(Color.BLACK);
         }
 

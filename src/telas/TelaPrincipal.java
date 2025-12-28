@@ -366,7 +366,7 @@ public class TelaPrincipal extends JFrame {
         LB_NomeEtapa.setForeground(new Color(0, 0, 0));
         LB_NomeEtapa.setHorizontalAlignment(SwingConstants.LEFT);
         LB_NomeEtapa.setFont(new Font("Arial Rounded MT Bold", Font.ITALIC, 12));
-        LB_NomeEtapa.setBounds(900, 203, 309, 60);
+        LB_NomeEtapa.setBounds(900, 203, 309, 33);
         contentPane.add(LB_NomeEtapa);
 
         LB_DesgastePneu = new JLabel("Desgaste Pneu");

@@ -1,7 +1,6 @@
 package modelos;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.Objects;
 
 public class Piloto {
     private String nome;
@@ -11,7 +10,7 @@ public class Piloto {
     private double overall; 
     private int exigenciaMinimaDeEquipe; 
     
-    // --- ESTATÍSTICAS DA TEMPORADA (Adicionadas) ---
+    // --- ESTATÍSTICAS DA TEMPORADA ---
     private int pontos;
     private int vitorias;
     private int podios;
@@ -28,102 +27,72 @@ public class Piloto {
     
     // Habilidades Específicas de Terreno
     private double habilidadeChuva; 
-    private double habilidadeRua;   // Mônaco, Long Beach, Rovals
-    private double habilidadeMisto; // Interlagos, Spa (Padrão F1)
-    private double habilidadeOval;  // Indianápolis, Daytona (Padrão Indy/Nascar)
+    private double habilidadeRua;   
+    private double habilidadeMisto; 
+    private double habilidadeOval;  
     
-    // Campo auxiliar para exibição em tabelas (não salvo no JSON)
+    // Campo auxiliar para exibição em tabelas
     private transient String nomeEquipeAtual;
 
-    private List<Contrato> contratosAtivos;
+    // --- SISTEMA DE CONTRATOS (Atualizado) ---
+    // Substituímos a lista genérica por campos específicos para facilitar a lógica de "Ano que vem"
+    private Contrato contrato;       // Contrato VIGENTE (Ano atual)
+    private Contrato contratoFuturo; // PRÉ-CONTRATO (Assinado para o próximo ano)
 
-    // --- CONSTRUTOR PADRÃO (Necessário para o Gson) ---
-    public Piloto() {
-        this.contratosAtivos = new ArrayList<>();
-    }
+    // --- CONSTRUTORES ---
+    public Piloto() {}
 
-    // Construtor completo
-    public Piloto(String nome, String pais, int numero, int idade, double overall, int exigencia) {
-        this(); 
+    public Piloto(String nome, String nacionalidade, int idade, double overall) {
         this.nome = nome;
-        this.nacionalidade = pais;
-        this.numero = numero;
+        this.nacionalidade = nacionalidade;
         this.idade = idade;
         this.overall = overall;
-        this.exigenciaMinimaDeEquipe = exigencia;
     }
 
-    // --- LÓGICA DE CONTRATO ---
-    public String receberProposta(Equipe equipeInteressada, double ofertaSalarial, TipoContrato tipoVaga) {
-        if (contratosAtivos == null) contratosAtivos = new ArrayList<>();
-
-        if (equipeInteressada.getReputacao() < this.exigenciaMinimaDeEquipe) {
-            return "RECUSADO: Reputação baixa.";
+    // --- LÓGICA DE NEGOCIAÇÃO (Usada pelo Mercado) ---
+    
+    public String receberProposta(Equipe equipe, double salarioOferecido, TipoContrato tipoVaga) {
+        // 1. Verifica Reputação
+        if (equipe.getReputacao() < exigenciaMinimaDeEquipe) {
+            return "RECUSADO: Reputação da equipe muito baixa para mim.";
         }
-
-        if (tipoVaga == TipoContrato.TITULAR) {
-            if (isTitular()) {
-                Contrato atual = getContratoTitular();
-                double multa = atual.calcularMultaRescisoria();
-                
-                if (isReservaDaEquipe(equipeInteressada)) return "ACEITO_PROMOCAO"; 
-
-                if (equipeInteressada.getSaldoFinanceiro() < multa) {
-                    return "RECUSADO: Sem dinheiro para multa (" + multa + ")";
-                }
-                return "ACEITO_COM_MULTA: " + multa;
-            }
-        } else {
-            if (isTitular()) return "RECUSADO: Já sou titular.";
-            if (contratosAtivos.size() >= 3) return "RECUSADO: Já sou reserva de 3 equipes.";
+        
+        // 2. Verifica Salário (Lógica simplificada baseada no Overall)
+        // Ex: Over 80 pede ~3.2mi, Over 90 pede ~4.0mi
+        double salarioMinimoEsperado = (overall * overall) / 2000.0; 
+        
+        if (tipoVaga == TipoContrato.RESERVA) {
+            salarioMinimoEsperado *= 0.7; // Aceita ganhar 30% menos para ser reserva
         }
+        
+        if (salarioOferecido < salarioMinimoEsperado) {
+            return "RECUSADO: Proposta financeira insatisfatória (Pede: " + String.format("%.2f", salarioMinimoEsperado) + "mi).";
+        }
+        
         return "ACEITO";
     }
 
-    public void assinarContrato(Contrato novoContrato) {
-        if (contratosAtivos == null) contratosAtivos = new ArrayList<>(); 
-        if (novoContrato.getTipo() == TipoContrato.TITULAR) contratosAtivos.clear(); 
-        contratosAtivos.add(novoContrato);
-    }
-
-    // --- MÉTODOS AUXILIARES ---
-    public boolean isTitular() {
-        if (contratosAtivos == null) return false;
-        for (Contrato c : contratosAtivos) if (c.getTipo() == TipoContrato.TITULAR) return true;
-        return false;
-    }
-    
-    public Contrato getContratoTitular() {
-        if (contratosAtivos == null) return null;
-        for (Contrato c : contratosAtivos) if (c.getTipo() == TipoContrato.TITULAR) return c;
-        return null;
-    }
-
-    public Contrato getContrato() {
-        if (contratosAtivos == null || contratosAtivos.isEmpty()) return null;
-        Contrato titular = getContratoTitular();
-        return (titular != null) ? titular : contratosAtivos.get(0);
-    }
-
-    public boolean isReservaDaEquipe(Equipe e) {
-        if (contratosAtivos == null) return false;
-        for (Contrato c : contratosAtivos) {
-            if (c.getTipo() == TipoContrato.RESERVA && c.getEquipeAtual() == e) return true;
-        }
-        return false;
-    }
-
     // --- GETTERS E SETTERS ---
+
     public String getNome() { return nome; }
+    public void setNome(String nome) { this.nome = nome; }
+
     public String getNacionalidade() { return nacionalidade; }
+    public void setNacionalidade(String nacionalidade) { this.nacionalidade = nacionalidade; }
+
     public int getNumero() { return numero; }
+    public void setNumero(int numero) { this.numero = numero; }
+
     public int getIdade() { return idade; }
+    public void setIdade(int idade) { this.idade = idade; }
+
     public double getOverall() { return overall; }
-    public void setOverall(double over) { this.overall = over; }
-    public int getExigenciaMinimaDeEquipe() { return exigenciaMinimaDeEquipe; } // NOVO MÉTODO ADICIONADO
-    public List<Contrato> getContratos() { return contratosAtivos; }
-    
-    // Stats da Temporada
+    public void setOverall(double overall) { this.overall = overall; }
+
+    public int getExigenciaMinimaDeEquipe() { return exigenciaMinimaDeEquipe; }
+    public void setExigenciaMinimaDeEquipe(int exigenciaMinimaDeEquipe) { this.exigenciaMinimaDeEquipe = exigenciaMinimaDeEquipe; }
+
+    // Stats Temporada
     public int getPontos() { return pontos; }
     public void setPontos(int pontos) { this.pontos = pontos; }
     public void adicionarPontos(int pontos) { this.pontos += pontos; }
@@ -139,21 +108,82 @@ public class Piloto {
     public int getPoles() { return poles; }
     public void setPoles(int poles) { this.poles = poles; }
     public void adicionarPole() { this.poles++; }
-    
-    // Setter Auxiliar para Tabela
-    public void setNomeEquipeAtual(String nome) { this.nomeEquipeAtual = nome; }
-    public String getNomeEquipeAtual() { return nomeEquipeAtual; }
 
-    // Stats de Corrida
+    // Stats Habilidades
     public double getRitmo() { return ritmo; }
+    public void setRitmo(double ritmo) { this.ritmo = ritmo; }
+
     public double getExperiencia() { return experiencia; }
+    public void setExperiencia(double experiencia) { this.experiencia = experiencia; }
+
     public double getAgressividade() { return agressividade; }
+    public void setAgressividade(double agressividade) { this.agressividade = agressividade; }
+
     public double getFisico() { return fisico; }
+    public void setFisico(double fisico) { this.fisico = fisico; }
+
     public double getLargada() { return largada; }
+    public void setLargada(double largada) { this.largada = largada; }
+
     public double getUltrapassagem() { return ultrapassagem; }
+    public void setUltrapassagem(double ultrapassagem) { this.ultrapassagem = ultrapassagem; }
+
     public double getDefesa() { return defesa; }
+    public void setDefesa(double defesa) { this.defesa = defesa; }
+
     public double getHabilidadeChuva() { return habilidadeChuva; }
+    public void setHabilidadeChuva(double habilidadeChuva) { this.habilidadeChuva = habilidadeChuva; }
+
     public double getHabilidadeRua() { return habilidadeRua; }
+    public void setHabilidadeRua(double habilidadeRua) { this.habilidadeRua = habilidadeRua; }
+
     public double getHabilidadeMisto() { return habilidadeMisto; }
+    public void setHabilidadeMisto(double habilidadeMisto) { this.habilidadeMisto = habilidadeMisto; }
+
     public double getHabilidadeOval() { return habilidadeOval; }
+    public void setHabilidadeOval(double habilidadeOval) { this.habilidadeOval = habilidadeOval; }
+
+    public String getNomeEquipeAtual() { return nomeEquipeAtual; }
+    public void setNomeEquipeAtual(String nomeEquipeAtual) { this.nomeEquipeAtual = nomeEquipeAtual; }
+
+    // --- CONTRATOS ---
+
+    public Contrato getContrato() {
+        return contrato;
+    }
+
+    public void setContrato(Contrato contrato) {
+        this.contrato = contrato;
+    }
+
+    public Contrato getContratoFuturo() {
+        return contratoFuturo;
+    }
+
+    public void setContratoFuturo(Contrato contratoFuturo) {
+        this.contratoFuturo = contratoFuturo;
+    }
+    
+    // Método auxiliar antigo (mantido para compatibilidade, se necessário)
+    public Contrato getContratoAtual() {
+        return contrato;
+    }
+
+    @Override
+    public String toString() {
+        return nome + " (" + (int)overall + ")";
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Piloto piloto = (Piloto) o;
+        return Objects.equals(nome, piloto.nome);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(nome);
+    }
 }

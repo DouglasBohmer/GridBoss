@@ -96,13 +96,11 @@ public class Equipe {
     }
 
     private int calcularStaffAposUpgrade(int nivelNovo, int staffAtual) {
-        // Regra: Sair do 1 pro 2 -> Mantém apenas 5
         if (nivelNovo == 2) return 5;
-        // Regra: Outros níveis -> Mínimo 10
         return Math.max(staffAtual, 10);
     }
 
-    // --- EVOLUIR NÍVEL (COM NOVA REGRA) ---
+    // --- EVOLUIR NÍVEL ---
     public boolean subirNivelMotor() { 
         if (nivelMotor < 5) { 
             nivelMotor++; 
@@ -219,17 +217,27 @@ public class Equipe {
             if (tipo == TipoContrato.TITULAR && pilotosTitulares.size() >= categoriaAtual.getMaxTitulares()) return false;
             if (tipo == TipoContrato.RESERVA && pilotosReservas.size() >= categoriaAtual.getMaxReservas()) return false;
         }
+        
         double custoFinalAssinatura = custoAssinatura;
-        if (tipo == TipoContrato.TITULAR && piloto.isReservaDaEquipe(this)) {
-            custoFinalAssinatura = custoAssinatura * 0.5;
+        
+        // CORREÇÃO: Verifica se o piloto já está na lista de reservas da PRÓPRIA equipe
+        if (tipo == TipoContrato.TITULAR && pilotosReservas.contains(piloto)) {
+            custoFinalAssinatura = custoAssinatura * 0.5; // Desconto na "taxa" se promovido
             pilotosReservas.remove(piloto);
         }
+        
         if (saldoFinanceiro >= custoFinalAssinatura) {
             this.saldoFinanceiro -= custoFinalAssinatura;
-            Contrato novoContrato = new Contrato(salario, meses, this, tipo);
-            piloto.assinarContrato(novoContrato);
+            
+            // CORREÇÃO: Ordem dos parâmetros do Contrato (Equipe, Salario, Meses, Tipo)
+            Contrato novoContrato = new Contrato(this, salario, meses, tipo);
+            
+            // CORREÇÃO: Método correto para associar contrato ao piloto
+            piloto.setContrato(novoContrato);
+            
             if (tipo == TipoContrato.TITULAR) pilotosTitulares.add(piloto);
             else pilotosReservas.add(piloto);
+            
             return true;
         }
         return false;
@@ -238,8 +246,12 @@ public class Equipe {
     public void adicionarPilotoDoLoad(Piloto p, TipoContrato tipo) {
         if (tipo == TipoContrato.TITULAR) pilotosTitulares.add(p);
         else pilotosReservas.add(p);
-        Contrato c = new Contrato(0.5, 12, this, tipo); 
-        p.assinarContrato(c);
+        
+        // CORREÇÃO: Ordem dos parâmetros
+        Contrato c = new Contrato(this, 0.5, 12, tipo); 
+        
+        // CORREÇÃO: Método correto
+        p.setContrato(c);
     }
 
     public void adicionarPatrocinador(Patrocinador p) {

@@ -235,6 +235,12 @@ public class TelaPrincipal extends JFrame {
         mntmMercado.addActionListener(e -> {
             TelaMercadoPilotos tela = new TelaMercadoPilotos(dadosDoJogo);
             tela.setVisible(true);
+            tela.addWindowListener(new java.awt.event.WindowAdapter() {
+                @Override
+                public void windowClosed(java.awt.event.WindowEvent e) {
+                    atualizarDados(); 
+                }
+            });
         });
         Menu_Piloto.add(mntmMercado);
 

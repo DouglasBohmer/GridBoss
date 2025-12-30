@@ -304,6 +304,7 @@ public class DadosDoJogo {
         carregarConfiguracaoEconomia();
     }
     
+    
     // --- GETTERS E SETTERS ---
     public ConfiguracaoEconomia getConfigEconomia() {
         if (configEconomia == null) carregarConfiguracaoEconomia();

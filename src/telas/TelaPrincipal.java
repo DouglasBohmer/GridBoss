@@ -281,7 +281,7 @@ public class TelaPrincipal extends JFrame {
 
         LB_SedeEquipe = new JLabel("Sede");
         LB_SedeEquipe.setHorizontalAlignment(SwingConstants.CENTER);
-        LB_SedeEquipe.setBounds(275, 9, 145, 33);
+        LB_SedeEquipe.setBounds(275, 9, 177, 33);
         contentPane.add(LB_SedeEquipe);
 
         // === INFO JOGO ===

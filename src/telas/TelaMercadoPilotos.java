@@ -73,7 +73,7 @@ public class TelaMercadoPilotos extends JDialog {
 
         setTitle("Mercado Global de Pilotos");
         setModal(true);
-        setSize(1200, 750); 
+        setSize(1250, 750); 
         setLocationRelativeTo(null);
         setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
 

@@ -370,12 +370,11 @@ public class TelaMercadoPilotos extends JDialog {
         btnContratarAgora.addActionListener(e -> executarContratacao(true));
         pnlFormProposta.add(btnContratarAgora);
         
-        // Texto do botão alterado conforme solicitação
         btnPreContrato = new JButton("CONTRATAR P/ " + (anoAtualJogo + 1));
         btnPreContrato.setFont(new Font("Segoe UI", Font.BOLD, 12));
         btnPreContrato.setBackground(new Color(0, 150, 100)); // Verde
         btnPreContrato.setForeground(Color.WHITE);
-        btnPreContrato.setBounds(420, 80, 160, 35); // Aumentado para caber o texto
+        btnPreContrato.setBounds(420, 80, 160, 35); 
         btnPreContrato.addActionListener(e -> executarContratacao(false));
         pnlFormProposta.add(btnPreContrato);
 
@@ -535,6 +534,10 @@ public class TelaMercadoPilotos extends JDialog {
         adicionarItemStat("Físico", String.valueOf((int)p.getFisico()), Color.BLACK);
         adicionarItemStat("Largada", String.valueOf((int)p.getLargada()), Color.BLACK);
         
+        // --- MOSTRA O SALÁRIO QUE O PILOTO QUER (FÓRMULA NOVA) ---
+        double valorDeMercado = p.calcularSalarioDesejado();
+        adicionarItemStat("Valor de Mercado", "€ " + formatarMoeda(valorDeMercado), new Color(0, 100, 0));
+        
         adicionarItemStat("Hab. Chuva", String.valueOf((int)p.getHabilidadeChuva()), Color.BLACK);
         adicionarItemStat("Hab. Rua", String.valueOf((int)p.getHabilidadeRua()), Color.BLACK);
         adicionarItemStat("Hab. Misto", String.valueOf((int)p.getHabilidadeMisto()), Color.BLACK);
@@ -559,7 +562,6 @@ public class TelaMercadoPilotos extends JDialog {
             adicionarItemStat("Situação", "Agente Livre", Color.BLACK);
         }
         
-        // Exibe informação se já tem contrato para ano seguinte
         if (temContratoFuturo) {
              adicionarItemStat("Futuro (" + (anoAtualJogo + 1) + ")", p.getContratoFuturo().getEquipeAtual().getNome(), new Color(0, 100, 0));
         }
@@ -573,14 +575,16 @@ public class TelaMercadoPilotos extends JDialog {
             btnContratarAgora.setText("RENOVAR CONTRATO");
             btnPreContrato.setVisible(false);
             
-            spinSalario.setValue(p.getContrato().getSalarioMensal());
+            // --- CORREÇÃO: Sugere o valor da NOVA fórmula, não do contrato velho ---
+            spinSalario.setValue(valorDeMercado);
             cbVagaInput.setSelectedItem(p.getContrato().getTipo());
         } else {
             lbTituloAcao.setText("Negociar: " + p.getNome());
             btnContratarAgora.setText("CONTRATAR AGORA");
             btnPreContrato.setVisible(true);
             
-            spinSalario.setValue(0.5);
+            // --- CORREÇÃO: Sugere o valor da NOVA fórmula ---
+            spinSalario.setValue(valorDeMercado);
         }
         
         spinSalario.setEnabled(true);
@@ -588,10 +592,6 @@ public class TelaMercadoPilotos extends JDialog {
         cbVagaInput.setEnabled(true);
         btnContratarAgora.setEnabled(true);
         
-        // Regra para habilitar Pré-Contrato:
-        // 1. Não é meu piloto
-        // 2. Piloto não tem contrato futuro assinado ainda
-        // 3. Se tiver contrato atual, deve faltar 12 meses ou menos
         boolean podePreContrato = !isMeu && !temContratoFuturo;
         
         if (podePreContrato && temContrato) {
@@ -634,7 +634,6 @@ public class TelaMercadoPilotos extends JDialog {
         boolean renovando = pilotosMinhaEquipe.contains(pilotoSelecionado);
         int totalPilotos = contarPilotosUnicosDaEquipe();
         
-        // Se for contratar AGORA e não for renovação, verifica limite
         if (contratarAgora && !renovando && totalPilotos >= 5) {
              JOptionPane.showMessageDialog(this, "Equipe Cheia (Máx 5)!", "Erro", JOptionPane.ERROR_MESSAGE);
              return;
@@ -658,7 +657,6 @@ public class TelaMercadoPilotos extends JDialog {
             
             double custoMulta = 0;
             
-            // Só cobra multa se for AGORA
             if (contratarAgora && pilotoSelecionado.getContrato() != null && !renovando) {
                 custoMulta = pilotoSelecionado.getContrato().calcularMultaRescisoria();
                 int confirm = JOptionPane.showConfirmDialog(this, 
@@ -672,7 +670,6 @@ public class TelaMercadoPilotos extends JDialog {
                 return;
             }
 
-            // Simulação
             String resp = pilotoSelecionado.receberProposta(minhaEquipe, salFinal, tipo);
             
             if (!contratarAgora && resp.startsWith("RECUSADO: Sem dinheiro")) {
@@ -682,7 +679,6 @@ public class TelaMercadoPilotos extends JDialog {
             if (resp.startsWith("ACEITO")) {
                 
                 if (contratarAgora) {
-                    // --- FLUXO 1: CONTRATAÇÃO IMEDIATA ---
                     boolean removidoTemp = false;
                     List<Piloto> listaOrigem = null;
                     
@@ -705,13 +701,14 @@ public class TelaMercadoPilotos extends JDialog {
                     }
                     
                 } else {
-                    // --- FLUXO 2: PRÉ-CONTRATO (FUTURO) ---
-                    // Não adiciona na equipe agora! Apenas salva no piloto.
-                    Contrato novoContrato = new Contrato(minhaEquipe, salFinal, meses, tipo);
-                    pilotoSelecionado.setContratoFuturo(novoContrato);
+                    boolean sucesso = minhaEquipe.assinarPreContrato(pilotoSelecionado, salFinal, 0.0, meses, tipo);
                     
-                    JOptionPane.showMessageDialog(this, "Pré-Contrato assinado para " + (anoAtualJogo + 1) + "!");
-                    recarregarTela();
+                    if (sucesso) {
+                        JOptionPane.showMessageDialog(this, "Pré-Contrato assinado para " + (anoAtualJogo + 1) + "!");
+                        recarregarTela();
+                    } else {
+                        JOptionPane.showMessageDialog(this, "Erro ao assinar pré-contrato (Saldo insuficiente?)");
+                    }
                 }
 
             } else {

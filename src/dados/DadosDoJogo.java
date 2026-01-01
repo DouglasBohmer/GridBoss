@@ -1,6 +1,7 @@
 package dados;
 
 import modelos.ConfiguracaoEconomia;
+import modelos.Contrato;
 import modelos.Equipe;
 import modelos.Motor; 
 import modelos.Piloto;
@@ -56,7 +57,7 @@ public class DadosDoJogo {
         this.todasAsEquipes = CarregadorJSON.carregarEquipes(categoriaKey, anoAtual);
         this.todosOsPilotos = CarregadorJSON.carregarPilotos(categoriaKey, anoAtual);
         
-        // 1. CORREÇÃO CRÍTICA: Remove pilotos duplicados vindo dos JSONs (ex: Kyle Larson em dois arquivos)
+        // Remove pilotos duplicados
         sanitizarListaMestraDePilotos();
 
         List<Motor> motores = CarregadorJSON.carregarMotores(categoriaKey, anoAtual);
@@ -68,10 +69,6 @@ public class DadosDoJogo {
         carregarConfiguracaoEconomia();
     }
     
-    /**
-     * Remove duplicatas da lista principal (todosOsPilotos).
-     * Se houver dois pilotos com o mesmo nome, mantém o que tiver maior Overall.
-     */
     private void sanitizarListaMestraDePilotos() {
         if (todosOsPilotos == null) return;
 
@@ -83,17 +80,15 @@ public class DadosDoJogo {
             String chave = p.getNome().trim().toLowerCase();
             
             if (mapaUnico.containsKey(chave)) {
-                // Se já existe, comparamos o Overall para manter o melhor (ou mais atual)
                 Piloto existente = mapaUnico.get(chave);
                 if (p.getOverall() > existente.getOverall()) {
-                    mapaUnico.put(chave, p); // Substitui pelo melhor
+                    mapaUnico.put(chave, p); 
                 }
             } else {
                 mapaUnico.put(chave, p);
             }
         }
         
-        // Reconstrói a lista apenas com os únicos
         this.todosOsPilotos = new ArrayList<>(mapaUnico.values());
     }
 
@@ -151,6 +146,7 @@ public class DadosDoJogo {
         boolean isF1 = categoriaKey != null && categoriaKey.toLowerCase().contains("f1");
 
         for (Equipe eq : todasAsEquipes) {
+            // 1. Vincula Pilotos Atuais
             List<String> idsContratados = eq.getPilotosContratadosIDs();
             
             eq.getPilotosTitulares().clear();
@@ -158,20 +154,16 @@ public class DadosDoJogo {
             
             if (idsContratados != null) {
                 int contador = 0;
-                
-                // Set para evitar adicionar o mesmo piloto (pelo nome) duas vezes na mesma equipe
                 Set<String> nomesProcessadosNestaEquipe = new HashSet<>();
                 
                 for (String idAlvo : idsContratados) {
                     Piloto pilotoEncontrado = buscarPilotoPorNome(idAlvo);
                     
                     if (pilotoEncontrado != null) {
-                        // Verifica duplicidade pelo NOME (resolve problemas de objetos diferentes mas mesma pessoa)
                         if (nomesProcessadosNestaEquipe.contains(pilotoEncontrado.getNome().toLowerCase())) {
                             continue;
                         }
 
-                        // Verifica se o objeto já está nas listas (segurança extra)
                         if (eq.getPilotosTitulares().contains(pilotoEncontrado) || 
                             eq.getPilotosReservas().contains(pilotoEncontrado)) {
                             continue;
@@ -191,16 +183,36 @@ public class DadosDoJogo {
                 }
             }
             
-            // 2. CORREÇÃO FINAL: Garante que um piloto não seja Titular e Reserva ao mesmo tempo
+            // 2. Vincula Contratos Futuros (CORRIGIDO)
+            List<String> idsFuturos = eq.getContratosFuturosIDs();
+            eq.getAssinaturasFuturas().clear(); 
+            
+            if (idsFuturos != null) {
+                for (String idAlvo : idsFuturos) {
+                    Piloto pilotoEncontrado = buscarPilotoPorNome(idAlvo);
+                    if (pilotoEncontrado != null) {
+                        // Adiciona na lista transiente da equipe (para controle interno da equipe)
+                        eq.adicionarContratoFuturoDoLoad(pilotoEncontrado);
+                        
+                        // Reconstrói o contrato no objeto Piloto para que ele apareça na tela
+                        if (pilotoEncontrado.getContratoFuturo() == null) {
+                            // Como salvamos apenas o ID, criamos um contrato padrão para restaurar o vínculo.
+                            // Obs: Detalhes como salário exato negociado são perdidos neste método de save simplificado.
+                            Contrato futuro = new Contrato(eq, 0.5, 12, TipoContrato.TITULAR);
+                            pilotoEncontrado.setContratoFuturo(futuro);
+                        } else {
+                            // Caso o contrato tenha sobrevivido (raro, mas possível dependendo do fluxo)
+                            pilotoEncontrado.getContratoFuturo().setEquipeAtual(eq);
+                        }
+                    }
+                }
+            }
+
             sanitizarEquipe(eq);
         }
     }
     
-    /**
-     * Remove inconsistências dentro da equipe (ex: piloto duplicado ou piloto que é titular e reserva ao mesmo tempo).
-     */
     private void sanitizarEquipe(Equipe eq) {
-        // A. Remove duplicatas exatas dentro da lista de Titulares
         List<Piloto> titularesUnicos = new ArrayList<>();
         for (Piloto p : eq.getPilotosTitulares()) {
             if (!titularesUnicos.contains(p)) titularesUnicos.add(p);
@@ -208,17 +220,14 @@ public class DadosDoJogo {
         eq.getPilotosTitulares().clear();
         eq.getPilotosTitulares().addAll(titularesUnicos);
 
-        // B. Remove da lista de Reservas se já estiver nos Titulares
         List<Piloto> reservasValidos = new ArrayList<>();
         for (Piloto p : eq.getPilotosReservas()) {
-            boolean jaEhTitular = eq.getPilotosTitulares().contains(p); // Checa objeto
-            // Checa nome também para garantir
+            boolean jaEhTitular = eq.getPilotosTitulares().contains(p); 
             for (Piloto tit : eq.getPilotosTitulares()) {
                 if (tit.getNome().equalsIgnoreCase(p.getNome())) {
                     jaEhTitular = true; break;
                 }
             }
-            
             if (!jaEhTitular && !reservasValidos.contains(p)) {
                 reservasValidos.add(p);
             }
@@ -283,14 +292,14 @@ public class DadosDoJogo {
     }
     
     private void reconstruirPosLoad() {
-        // Ao carregar save, também precisamos sanitizar a lista mestra de pilotos
+        // Recarrega pilotos 'limpos' do JSON base para garantir dados atualizados (imagens, stats)
         this.todosOsPilotos = CarregadorJSON.carregarPilotos(categoriaKey, anoAtual);
         sanitizarListaMestraDePilotos();
         
         List<Motor> motores = CarregadorJSON.carregarMotores(categoriaKey, anoAtual);
         vincularMotores(motores);
         
-        // Recalcula os vínculos para garantir integridade
+        // Aqui reconectamos os pilotos às equipes baseados nos IDs salvos
         vincularPilotosAsEquipes();
         
         if (this.equipeDoJogador != null) {
@@ -303,7 +312,6 @@ public class DadosDoJogo {
         }
         carregarConfiguracaoEconomia();
     }
-    
     
     // --- GETTERS E SETTERS ---
     public ConfiguracaoEconomia getConfigEconomia() {

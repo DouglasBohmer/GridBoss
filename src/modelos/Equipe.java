@@ -34,11 +34,18 @@ public class Equipe {
     private Arquivos arquivos;
     private List<String> pilotosContratadosIDs = new ArrayList<>();
     
+    // --- NOVO: LISTA DE IDs PARA O SAVE ---
+    private List<String> contratosFuturosIDs = new ArrayList<>();
+    
     // Lógica
     private int anosConsecutivosNoVermelho = 0;
     
     private transient List<Piloto> pilotosTitulares = new ArrayList<>();
     private transient List<Piloto> pilotosReservas = new ArrayList<>();
+    
+    // --- NOVO: LISTA DE OBJETOS TRANSIENT (RUNTIME) ---
+    private transient List<Piloto> assinaturasFuturas = new ArrayList<>();
+    
     private List<Patrocinador> patrocinadoresAtivos = new ArrayList<>();
     private transient Categoria categoriaAtual;
     private transient Motor motorObjeto; 
@@ -57,6 +64,13 @@ public class Equipe {
         this.pilotosContratadosIDs.clear();
         for (Piloto p : pilotosTitulares) this.pilotosContratadosIDs.add(p.getNome());
         for (Piloto p : pilotosReservas) this.pilotosContratadosIDs.add(p.getNome());
+        
+        // --- NOVO: SALVAR CONTRATOS FUTUROS ---
+        this.contratosFuturosIDs.clear();
+        for (Piloto p : assinaturasFuturas) {
+            this.contratosFuturosIDs.add(p.getNome());
+        }
+        
         if (this.motorObjeto != null) this.motor = this.motorObjeto.getId();
     }
     
@@ -220,19 +234,16 @@ public class Equipe {
         
         double custoFinalAssinatura = custoAssinatura;
         
-        // CORREÇÃO: Verifica se o piloto já está na lista de reservas da PRÓPRIA equipe
         if (tipo == TipoContrato.TITULAR && pilotosReservas.contains(piloto)) {
-            custoFinalAssinatura = custoAssinatura * 0.5; // Desconto na "taxa" se promovido
+            custoFinalAssinatura = custoAssinatura * 0.5; 
             pilotosReservas.remove(piloto);
         }
         
         if (saldoFinanceiro >= custoFinalAssinatura) {
             this.saldoFinanceiro -= custoFinalAssinatura;
             
-            // CORREÇÃO: Ordem dos parâmetros do Contrato (Equipe, Salario, Meses, Tipo)
             Contrato novoContrato = new Contrato(this, salario, meses, tipo);
             
-            // CORREÇÃO: Método correto para associar contrato ao piloto
             piloto.setContrato(novoContrato);
             
             if (tipo == TipoContrato.TITULAR) pilotosTitulares.add(piloto);
@@ -247,11 +258,30 @@ public class Equipe {
         if (tipo == TipoContrato.TITULAR) pilotosTitulares.add(p);
         else pilotosReservas.add(p);
         
-        // CORREÇÃO: Ordem dos parâmetros
         Contrato c = new Contrato(this, 0.5, 12, tipo); 
-        
-        // CORREÇÃO: Método correto
         p.setContrato(c);
+    }
+    
+    // --- NOVO: MÉTODO PARA LOAD DE CONTRATOS FUTUROS ---
+    public void adicionarContratoFuturoDoLoad(Piloto p) {
+        if (!assinaturasFuturas.contains(p)) {
+            assinaturasFuturas.add(p);
+        }
+    }
+    
+    // --- NOVO: MÉTODO PARA CONTRATAÇÃO FUTURA (VIA MERCADO) ---
+    public boolean assinarPreContrato(Piloto piloto, double salario, double luvas, int meses, TipoContrato tipo) {
+        // Verifica dinheiro apenas para as luvas (assinatura)
+        if (saldoFinanceiro >= luvas) {
+            this.saldoFinanceiro -= luvas;
+            
+            Contrato futuro = new Contrato(this, salario, meses, tipo);
+            piloto.setContratoFuturo(futuro);
+            
+            assinaturasFuturas.add(piloto);
+            return true;
+        }
+        return false;
     }
 
     public void adicionarPatrocinador(Patrocinador p) {
@@ -322,6 +352,10 @@ public class Equipe {
     public List<Piloto> getPilotosTitulares() { return pilotosTitulares; }
     public List<Piloto> getPilotosReservas() { return pilotosReservas; }
     public List<String> getPilotosContratadosIDs() { return pilotosContratadosIDs; }
+    
+    // --- NOVO: GETTERS ---
+    public List<String> getContratosFuturosIDs() { return contratosFuturosIDs; }
+    public List<Piloto> getAssinaturasFuturas() { return assinaturasFuturas; }
     
     public void setCategoriaAtual(Categoria categoriaAtual) { this.categoriaAtual = categoriaAtual; }
     

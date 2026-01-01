@@ -1,0 +1,17 @@
+	Formação da equipe
+		Máximo:
+			Titulares: 2
+			Reservas:3
+		Mínimo:
+			Titulares: 2
+			Reservas:0
+	
+	Multiplacador de salário
+		Base:3x
+		Teto:3x
+	
+	Pitstop
+		Sem abastecimento
+		4 pneus - sempre iguais (Ex: Todos os pneus do carro precisam sem médios ao mesmo tempo)
+		Permite reparo (10s extra no pitstop)
+	

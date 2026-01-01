@@ -31,6 +31,7 @@
         "Esteban Ocon",
         "Jack Doohan"
       ],
+      "contratosFuturosIDs": [],
       "anosConsecutivosNoVermelho": 0,
       "patrocinadoresAtivos": []
     },
@@ -66,6 +67,7 @@
         "Felipe Drugovich",
         "Stoffel Vandoorne"
       ],
+      "contratosFuturosIDs": [],
       "anosConsecutivosNoVermelho": 0,
       "patrocinadoresAtivos": []
     },
@@ -102,6 +104,7 @@
         "Oliver Bearman",
         "Antonio Giovinazzi"
       ],
+      "contratosFuturosIDs": [],
       "anosConsecutivosNoVermelho": 0,
       "patrocinadoresAtivos": []
     },
@@ -137,6 +140,7 @@
         "Pietro Fittipaldi",
         "Oliver Bearman"
       ],
+      "contratosFuturosIDs": [],
       "anosConsecutivosNoVermelho": 0,
       "patrocinadoresAtivos": []
     },
@@ -174,6 +178,7 @@
         "Mick Schumacher",
         "Felipe Drugovich"
       ],
+      "contratosFuturosIDs": [],
       "anosConsecutivosNoVermelho": 0,
       "patrocinadoresAtivos": []
     },
@@ -209,6 +214,7 @@
         "Mick Schumacher",
         "Frederik Vesti"
       ],
+      "contratosFuturosIDs": [],
       "anosConsecutivosNoVermelho": 0,
       "patrocinadoresAtivos": []
     },
@@ -243,6 +249,7 @@
         "Daniel Ricciardo",
         "Liam Lawson"
       ],
+      "contratosFuturosIDs": [],
       "anosConsecutivosNoVermelho": 0,
       "patrocinadoresAtivos": []
     },
@@ -278,6 +285,7 @@
         "Liam Lawson",
         "Sebastien Buemi"
       ],
+      "contratosFuturosIDs": [],
       "anosConsecutivosNoVermelho": 0,
       "patrocinadoresAtivos": []
     },
@@ -312,8 +320,11 @@
         "Guanyu Zhou",
         "Zane Maloney",
         "Théo Pourchaire",
-        "Josh Berry",
-        "Josh Berry"
+        "Daniel Hemric",
+        "Daniel Hemric"
+      ],
+      "contratosFuturosIDs": [
+        "Daniel Hemric"
       ],
       "anosConsecutivosNoVermelho": 0,
       "patrocinadoresAtivos": []
@@ -348,6 +359,7 @@
         "Alexander Albon",
         "Logan Sargeant"
       ],
+      "contratosFuturosIDs": [],
       "anosConsecutivosNoVermelho": 0,
       "patrocinadoresAtivos": []
     }
@@ -376,40 +388,7 @@
       "habilidadeMisto": 82.0,
       "habilidadeOval": 55.0,
       "contrato": {
-        "equipeAtual": {
-          "id": "racingbulls",
-          "nome": "Racing Bulls",
-          "sede": "Faença, Itália",
-          "motor": "Honda RBPT",
-          "fundacao": 2024,
-          "saldoFinanceiro": 55.0,
-          "reputacao": 60,
-          "pontos": 0,
-          "vitorias": 0,
-          "podios": 0,
-          "poles": 0,
-          "nivelMotor": 3,
-          "nivelAero": 3,
-          "nivelChassi": 3,
-          "nivelConfiabilidade": 3,
-          "staffMotor": 1,
-          "staffAero": 1,
-          "staffChassi": 1,
-          "staffConfiabilidade": 1,
-          "arquivos": {
-            "logo": "/resource/Equipe F1 RB.svg",
-            "bandeiraSede": "/resource/Bandeira Italia.svg",
-            "bandeiraMotor": "/resource/Bandeira Japao.svg",
-            "logoMotor": "/resource/Logo Honda.svg"
-          },
-          "pilotosContratadosIDs": [
-            "Yuki Tsunoda",
-            "Daniel Ricciardo",
-            "Liam Lawson"
-          ],
-          "anosConsecutivosNoVermelho": 0,
-          "patrocinadoresAtivos": []
-        },
+        "nomeEquipeSalva": "Racing Bulls",
         "salarioMensal": 0.5,
         "mesesRestantes": 12,
         "tipo": "TITULAR"
@@ -461,41 +440,7 @@
       "habilidadeMisto": 76.0,
       "habilidadeOval": 50.0,
       "contrato": {
-        "equipeAtual": {
-          "id": "mercedes",
-          "nome": "Mercedes",
-          "sede": "Brackley, UK",
-          "motor": "Mercedes",
-          "fundacao": 1954,
-          "saldoFinanceiro": 135.0,
-          "reputacao": 95,
-          "pontos": 0,
-          "vitorias": 0,
-          "podios": 0,
-          "poles": 0,
-          "nivelMotor": 5,
-          "nivelAero": 5,
-          "nivelChassi": 5,
-          "nivelConfiabilidade": 5,
-          "staffMotor": 1,
-          "staffAero": 1,
-          "staffChassi": 1,
-          "staffConfiabilidade": 1,
-          "arquivos": {
-            "logo": "/resource/Equipe F1 Mercedes.svg",
-            "bandeiraSede": "/resource/Bandeira Alemanha.svg",
-            "bandeiraMotor": "/resource/Bandeira Alemanha.svg",
-            "logoMotor": "/resource/Logo Mercedes.svg"
-          },
-          "pilotosContratadosIDs": [
-            "Lewis Hamilton",
-            "George Russell",
-            "Mick Schumacher",
-            "Frederik Vesti"
-          ],
-          "anosConsecutivosNoVermelho": 0,
-          "patrocinadoresAtivos": []
-        },
+        "nomeEquipeSalva": "Mercedes",
         "salarioMensal": 0.5,
         "mesesRestantes": 12,
         "tipo": "RESERVA"
@@ -593,41 +538,7 @@
       "habilidadeMisto": 93.0,
       "habilidadeOval": 75.0,
       "contrato": {
-        "equipeAtual": {
-          "id": "astonmartin",
-          "nome": "Aston Martin",
-          "sede": "Silverstone, UK",
-          "motor": "Mercedes",
-          "fundacao": 2021,
-          "saldoFinanceiro": 110.0,
-          "reputacao": 85,
-          "pontos": 0,
-          "vitorias": 0,
-          "podios": 0,
-          "poles": 0,
-          "nivelMotor": 4,
-          "nivelAero": 4,
-          "nivelChassi": 4,
-          "nivelConfiabilidade": 4,
-          "staffMotor": 1,
-          "staffAero": 1,
-          "staffChassi": 1,
-          "staffConfiabilidade": 1,
-          "arquivos": {
-            "logo": "/resource/Equipe F1 Aston Martin.svg",
-            "bandeiraSede": "/resource/Bandeira Reino Unido.svg",
-            "bandeiraMotor": "/resource/Bandeira Alemanha.svg",
-            "logoMotor": "/resource/Logo Mercedes.svg"
-          },
-          "pilotosContratadosIDs": [
-            "Fernando Alonso",
-            "Lance Stroll",
-            "Felipe Drugovich",
-            "Stoffel Vandoorne"
-          ],
-          "anosConsecutivosNoVermelho": 0,
-          "patrocinadoresAtivos": []
-        },
+        "nomeEquipeSalva": "Aston Martin",
         "salarioMensal": 0.5,
         "mesesRestantes": 12,
         "tipo": "TITULAR"
@@ -769,49 +680,7 @@
       "habilidadeChuva": 60.0,
       "habilidadeRua": 65.0,
       "habilidadeMisto": 68.0,
-      "habilidadeOval": 82.0,
-      "contrato": {
-        "equipeAtual": {
-          "id": "stake",
-          "nome": "Stake Kick",
-          "sede": "Hinwil, Suíça",
-          "motor": "Ferrari",
-          "fundacao": 2024,
-          "saldoFinanceiro": 990.0,
-          "reputacao": 55,
-          "pontos": 0,
-          "vitorias": 0,
-          "podios": 0,
-          "poles": 0,
-          "nivelMotor": 3,
-          "nivelAero": 3,
-          "nivelChassi": 3,
-          "nivelConfiabilidade": 3,
-          "staffMotor": 1,
-          "staffAero": 1,
-          "staffChassi": 1,
-          "staffConfiabilidade": 1,
-          "arquivos": {
-            "logo": "/resource/Equipe F1 Stake.svg",
-            "bandeiraSede": "/resource/Bandeira Suica.svg",
-            "bandeiraMotor": "/resource/Bandeira Italia.svg",
-            "logoMotor": "/resource/Logo Ferrari.svg"
-          },
-          "pilotosContratadosIDs": [
-            "Valtteri Bottas",
-            "Guanyu Zhou",
-            "Zane Maloney",
-            "Théo Pourchaire",
-            "Josh Berry",
-            "Josh Berry"
-          ],
-          "anosConsecutivosNoVermelho": 0,
-          "patrocinadoresAtivos": []
-        },
-        "salarioMensal": 2.2,
-        "mesesRestantes": 12,
-        "tipo": "RESERVA"
-      }
+      "habilidadeOval": 82.0
     },
     {
       "nome": "Zane Smith",
@@ -949,49 +818,7 @@
       "habilidadeChuva": 90.0,
       "habilidadeRua": 94.0,
       "habilidadeMisto": 92.0,
-      "habilidadeOval": 78.0,
-      "contratoFuturo": {
-        "equipeAtual": {
-          "id": "stake",
-          "nome": "Stake Kick",
-          "sede": "Hinwil, Suíça",
-          "motor": "Ferrari",
-          "fundacao": 2024,
-          "saldoFinanceiro": 990.0,
-          "reputacao": 55,
-          "pontos": 0,
-          "vitorias": 0,
-          "podios": 0,
-          "poles": 0,
-          "nivelMotor": 3,
-          "nivelAero": 3,
-          "nivelChassi": 3,
-          "nivelConfiabilidade": 3,
-          "staffMotor": 1,
-          "staffAero": 1,
-          "staffChassi": 1,
-          "staffConfiabilidade": 1,
-          "arquivos": {
-            "logo": "/resource/Equipe F1 Stake.svg",
-            "bandeiraSede": "/resource/Bandeira Suica.svg",
-            "bandeiraMotor": "/resource/Bandeira Italia.svg",
-            "logoMotor": "/resource/Logo Ferrari.svg"
-          },
-          "pilotosContratadosIDs": [
-            "Valtteri Bottas",
-            "Guanyu Zhou",
-            "Zane Maloney",
-            "Théo Pourchaire",
-            "Josh Berry",
-            "Josh Berry"
-          ],
-          "anosConsecutivosNoVermelho": 0,
-          "patrocinadoresAtivos": []
-        },
-        "salarioMensal": 4.0,
-        "mesesRestantes": 12,
-        "tipo": "TITULAR"
-      }
+      "habilidadeOval": 78.0
     },
     {
       "nome": "Joey Logano",
@@ -1039,43 +866,7 @@
       "habilidadeMisto": 93.0,
       "habilidadeOval": 50.0,
       "contrato": {
-        "equipeAtual": {
-          "id": "mclaren",
-          "nome": "McLaren",
-          "sede": "Woking, UK",
-          "motor": "Mercedes",
-          "fundacao": 1963,
-          "saldoFinanceiro": 120.0,
-          "reputacao": 90,
-          "pontos": 0,
-          "vitorias": 0,
-          "podios": 0,
-          "poles": 0,
-          "nivelMotor": 5,
-          "nivelAero": 5,
-          "nivelChassi": 5,
-          "nivelConfiabilidade": 5,
-          "staffMotor": 1,
-          "staffAero": 1,
-          "staffChassi": 1,
-          "staffConfiabilidade": 1,
-          "arquivos": {
-            "logo": "/resource/Equipe F1 McLaren.svg",
-            "bandeiraSede": "/resource/Bandeira Reino Unido.svg",
-            "bandeiraMotor": "/resource/Bandeira Alemanha.svg",
-            "logoMotor": "/resource/Logo Mercedes.svg"
-          },
-          "pilotosContratadosIDs": [
-            "Lando Norris",
-            "Oscar Piastri",
-            "Pato O\u0027Ward",
-            "Ryo Hirakawa",
-            "Mick Schumacher",
-            "Felipe Drugovich"
-          ],
-          "anosConsecutivosNoVermelho": 0,
-          "patrocinadoresAtivos": []
-        },
+        "nomeEquipeSalva": "McLaren",
         "salarioMensal": 0.5,
         "mesesRestantes": 12,
         "tipo": "TITULAR"
@@ -1196,43 +987,7 @@
       "habilidadeMisto": 75.0,
       "habilidadeOval": 60.0,
       "contrato": {
-        "equipeAtual": {
-          "id": "mclaren",
-          "nome": "McLaren",
-          "sede": "Woking, UK",
-          "motor": "Mercedes",
-          "fundacao": 1963,
-          "saldoFinanceiro": 120.0,
-          "reputacao": 90,
-          "pontos": 0,
-          "vitorias": 0,
-          "podios": 0,
-          "poles": 0,
-          "nivelMotor": 5,
-          "nivelAero": 5,
-          "nivelChassi": 5,
-          "nivelConfiabilidade": 5,
-          "staffMotor": 1,
-          "staffAero": 1,
-          "staffChassi": 1,
-          "staffConfiabilidade": 1,
-          "arquivos": {
-            "logo": "/resource/Equipe F1 McLaren.svg",
-            "bandeiraSede": "/resource/Bandeira Reino Unido.svg",
-            "bandeiraMotor": "/resource/Bandeira Alemanha.svg",
-            "logoMotor": "/resource/Logo Mercedes.svg"
-          },
-          "pilotosContratadosIDs": [
-            "Lando Norris",
-            "Oscar Piastri",
-            "Pato O\u0027Ward",
-            "Ryo Hirakawa",
-            "Mick Schumacher",
-            "Felipe Drugovich"
-          ],
-          "anosConsecutivosNoVermelho": 0,
-          "patrocinadoresAtivos": []
-        },
+        "nomeEquipeSalva": "McLaren",
         "salarioMensal": 0.5,
         "mesesRestantes": 12,
         "tipo": "RESERVA"
@@ -1330,40 +1085,7 @@
       "habilidadeMisto": 77.0,
       "habilidadeOval": 45.0,
       "contrato": {
-        "equipeAtual": {
-          "id": "racingbulls",
-          "nome": "Racing Bulls",
-          "sede": "Faença, Itália",
-          "motor": "Honda RBPT",
-          "fundacao": 2024,
-          "saldoFinanceiro": 55.0,
-          "reputacao": 60,
-          "pontos": 0,
-          "vitorias": 0,
-          "podios": 0,
-          "poles": 0,
-          "nivelMotor": 3,
-          "nivelAero": 3,
-          "nivelChassi": 3,
-          "nivelConfiabilidade": 3,
-          "staffMotor": 1,
-          "staffAero": 1,
-          "staffChassi": 1,
-          "staffConfiabilidade": 1,
-          "arquivos": {
-            "logo": "/resource/Equipe F1 RB.svg",
-            "bandeiraSede": "/resource/Bandeira Italia.svg",
-            "bandeiraMotor": "/resource/Bandeira Japao.svg",
-            "logoMotor": "/resource/Logo Honda.svg"
-          },
-          "pilotosContratadosIDs": [
-            "Yuki Tsunoda",
-            "Daniel Ricciardo",
-            "Liam Lawson"
-          ],
-          "anosConsecutivosNoVermelho": 0,
-          "patrocinadoresAtivos": []
-        },
+        "nomeEquipeSalva": "Red Bull Racing",
         "salarioMensal": 0.5,
         "mesesRestantes": 12,
         "tipo": "RESERVA"
@@ -1392,43 +1114,7 @@
       "habilidadeMisto": 83.0,
       "habilidadeOval": 50.0,
       "contrato": {
-        "equipeAtual": {
-          "id": "stake",
-          "nome": "Stake Kick",
-          "sede": "Hinwil, Suíça",
-          "motor": "Ferrari",
-          "fundacao": 2024,
-          "saldoFinanceiro": 990.0,
-          "reputacao": 55,
-          "pontos": 0,
-          "vitorias": 0,
-          "podios": 0,
-          "poles": 0,
-          "nivelMotor": 3,
-          "nivelAero": 3,
-          "nivelChassi": 3,
-          "nivelConfiabilidade": 3,
-          "staffMotor": 1,
-          "staffAero": 1,
-          "staffChassi": 1,
-          "staffConfiabilidade": 1,
-          "arquivos": {
-            "logo": "/resource/Equipe F1 Stake.svg",
-            "bandeiraSede": "/resource/Bandeira Suica.svg",
-            "bandeiraMotor": "/resource/Bandeira Italia.svg",
-            "logoMotor": "/resource/Logo Ferrari.svg"
-          },
-          "pilotosContratadosIDs": [
-            "Valtteri Bottas",
-            "Guanyu Zhou",
-            "Zane Maloney",
-            "Théo Pourchaire",
-            "Josh Berry",
-            "Josh Berry"
-          ],
-          "anosConsecutivosNoVermelho": 0,
-          "patrocinadoresAtivos": []
-        },
+        "nomeEquipeSalva": "Stake Kick",
         "salarioMensal": 0.5,
         "mesesRestantes": 12,
         "tipo": "TITULAR"
@@ -1503,41 +1189,7 @@
       "habilidadeMisto": 79.0,
       "habilidadeOval": 55.0,
       "contrato": {
-        "equipeAtual": {
-          "id": "redbull",
-          "nome": "Red Bull Racing",
-          "sede": "Milton Keynes, UK",
-          "motor": "Honda RBPT",
-          "fundacao": 2005,
-          "saldoFinanceiro": 140.0,
-          "reputacao": 98,
-          "pontos": 0,
-          "vitorias": 0,
-          "podios": 0,
-          "poles": 0,
-          "nivelMotor": 5,
-          "nivelAero": 5,
-          "nivelChassi": 5,
-          "nivelConfiabilidade": 5,
-          "staffMotor": 1,
-          "staffAero": 1,
-          "staffChassi": 1,
-          "staffConfiabilidade": 1,
-          "arquivos": {
-            "logo": "/resource/Equipe F1 RBR.svg",
-            "bandeiraSede": "/resource/Bandeira Austria.svg",
-            "bandeiraMotor": "/resource/Bandeira Japao.svg",
-            "logoMotor": "/resource/Logo Honda.svg"
-          },
-          "pilotosContratadosIDs": [
-            "Max Verstappen",
-            "Sergio Perez",
-            "Liam Lawson",
-            "Sebastien Buemi"
-          ],
-          "anosConsecutivosNoVermelho": 0,
-          "patrocinadoresAtivos": []
-        },
+        "nomeEquipeSalva": "Red Bull Racing",
         "salarioMensal": 0.5,
         "mesesRestantes": 12,
         "tipo": "RESERVA"
@@ -1612,41 +1264,7 @@
       "habilidadeMisto": 80.0,
       "habilidadeOval": 50.0,
       "contrato": {
-        "equipeAtual": {
-          "id": "astonmartin",
-          "nome": "Aston Martin",
-          "sede": "Silverstone, UK",
-          "motor": "Mercedes",
-          "fundacao": 2021,
-          "saldoFinanceiro": 110.0,
-          "reputacao": 85,
-          "pontos": 0,
-          "vitorias": 0,
-          "podios": 0,
-          "poles": 0,
-          "nivelMotor": 4,
-          "nivelAero": 4,
-          "nivelChassi": 4,
-          "nivelConfiabilidade": 4,
-          "staffMotor": 1,
-          "staffAero": 1,
-          "staffChassi": 1,
-          "staffConfiabilidade": 1,
-          "arquivos": {
-            "logo": "/resource/Equipe F1 Aston Martin.svg",
-            "bandeiraSede": "/resource/Bandeira Reino Unido.svg",
-            "bandeiraMotor": "/resource/Bandeira Alemanha.svg",
-            "logoMotor": "/resource/Logo Mercedes.svg"
-          },
-          "pilotosContratadosIDs": [
-            "Fernando Alonso",
-            "Lance Stroll",
-            "Felipe Drugovich",
-            "Stoffel Vandoorne"
-          ],
-          "anosConsecutivosNoVermelho": 0,
-          "patrocinadoresAtivos": []
-        },
+        "nomeEquipeSalva": "Aston Martin",
         "salarioMensal": 0.5,
         "mesesRestantes": 12,
         "tipo": "RESERVA"
@@ -1675,39 +1293,7 @@
       "habilidadeMisto": 86.0,
       "habilidadeOval": 50.0,
       "contrato": {
-        "equipeAtual": {
-          "id": "williams",
-          "nome": "Williams",
-          "sede": "Grove, UK",
-          "motor": "Mercedes",
-          "fundacao": 1977,
-          "saldoFinanceiro": 60.0,
-          "reputacao": 65,
-          "pontos": 0,
-          "vitorias": 0,
-          "podios": 0,
-          "poles": 0,
-          "nivelMotor": 3,
-          "nivelAero": 3,
-          "nivelChassi": 3,
-          "nivelConfiabilidade": 3,
-          "staffMotor": 1,
-          "staffAero": 1,
-          "staffChassi": 1,
-          "staffConfiabilidade": 1,
-          "arquivos": {
-            "logo": "/resource/Equipe F1 Williams.svg",
-            "bandeiraSede": "/resource/Bandeira Reino Unido.svg",
-            "bandeiraMotor": "/resource/Bandeira Alemanha.svg",
-            "logoMotor": "/resource/Logo Mercedes.svg"
-          },
-          "pilotosContratadosIDs": [
-            "Alexander Albon",
-            "Logan Sargeant"
-          ],
-          "anosConsecutivosNoVermelho": 0,
-          "patrocinadoresAtivos": []
-        },
+        "nomeEquipeSalva": "Williams",
         "salarioMensal": 0.5,
         "mesesRestantes": 12,
         "tipo": "TITULAR"
@@ -1805,41 +1391,7 @@
       "habilidadeMisto": 73.0,
       "habilidadeOval": 60.0,
       "contrato": {
-        "equipeAtual": {
-          "id": "haas",
-          "nome": "Haas",
-          "sede": "Kannapolis, EUA",
-          "motor": "Ferrari",
-          "fundacao": 2016,
-          "saldoFinanceiro": 45.0,
-          "reputacao": 50,
-          "pontos": 0,
-          "vitorias": 0,
-          "podios": 0,
-          "poles": 0,
-          "nivelMotor": 3,
-          "nivelAero": 3,
-          "nivelChassi": 3,
-          "nivelConfiabilidade": 3,
-          "staffMotor": 1,
-          "staffAero": 1,
-          "staffChassi": 1,
-          "staffConfiabilidade": 1,
-          "arquivos": {
-            "logo": "/resource/Equipe F1 Haas.svg",
-            "bandeiraSede": "/resource/Bandeira EUA.svg",
-            "bandeiraMotor": "/resource/Bandeira Italia.svg",
-            "logoMotor": "/resource/Logo Ferrari.svg"
-          },
-          "pilotosContratadosIDs": [
-            "Nico Hulkenberg",
-            "Kevin Magnussen",
-            "Pietro Fittipaldi",
-            "Oliver Bearman"
-          ],
-          "anosConsecutivosNoVermelho": 0,
-          "patrocinadoresAtivos": []
-        },
+        "nomeEquipeSalva": "Haas",
         "salarioMensal": 0.5,
         "mesesRestantes": 12,
         "tipo": "RESERVA"
@@ -1891,41 +1443,7 @@
       "habilidadeMisto": 79.0,
       "habilidadeOval": 45.0,
       "contrato": {
-        "equipeAtual": {
-          "id": "astonmartin",
-          "nome": "Aston Martin",
-          "sede": "Silverstone, UK",
-          "motor": "Mercedes",
-          "fundacao": 2021,
-          "saldoFinanceiro": 110.0,
-          "reputacao": 85,
-          "pontos": 0,
-          "vitorias": 0,
-          "podios": 0,
-          "poles": 0,
-          "nivelMotor": 4,
-          "nivelAero": 4,
-          "nivelChassi": 4,
-          "nivelConfiabilidade": 4,
-          "staffMotor": 1,
-          "staffAero": 1,
-          "staffChassi": 1,
-          "staffConfiabilidade": 1,
-          "arquivos": {
-            "logo": "/resource/Equipe F1 Aston Martin.svg",
-            "bandeiraSede": "/resource/Bandeira Reino Unido.svg",
-            "bandeiraMotor": "/resource/Bandeira Alemanha.svg",
-            "logoMotor": "/resource/Logo Mercedes.svg"
-          },
-          "pilotosContratadosIDs": [
-            "Fernando Alonso",
-            "Lance Stroll",
-            "Felipe Drugovich",
-            "Stoffel Vandoorne"
-          ],
-          "anosConsecutivosNoVermelho": 0,
-          "patrocinadoresAtivos": []
-        },
+        "nomeEquipeSalva": "Aston Martin",
         "salarioMensal": 0.5,
         "mesesRestantes": 12,
         "tipo": "TITULAR"
@@ -1977,41 +1495,7 @@
       "habilidadeMisto": 95.0,
       "habilidadeOval": 50.0,
       "contrato": {
-        "equipeAtual": {
-          "id": "mercedes",
-          "nome": "Mercedes",
-          "sede": "Brackley, UK",
-          "motor": "Mercedes",
-          "fundacao": 1954,
-          "saldoFinanceiro": 135.0,
-          "reputacao": 95,
-          "pontos": 0,
-          "vitorias": 0,
-          "podios": 0,
-          "poles": 0,
-          "nivelMotor": 5,
-          "nivelAero": 5,
-          "nivelChassi": 5,
-          "nivelConfiabilidade": 5,
-          "staffMotor": 1,
-          "staffAero": 1,
-          "staffChassi": 1,
-          "staffConfiabilidade": 1,
-          "arquivos": {
-            "logo": "/resource/Equipe F1 Mercedes.svg",
-            "bandeiraSede": "/resource/Bandeira Alemanha.svg",
-            "bandeiraMotor": "/resource/Bandeira Alemanha.svg",
-            "logoMotor": "/resource/Logo Mercedes.svg"
-          },
-          "pilotosContratadosIDs": [
-            "Lewis Hamilton",
-            "George Russell",
-            "Mick Schumacher",
-            "Frederik Vesti"
-          ],
-          "anosConsecutivosNoVermelho": 0,
-          "patrocinadoresAtivos": []
-        },
+        "nomeEquipeSalva": "Mercedes",
         "salarioMensal": 0.5,
         "mesesRestantes": 12,
         "tipo": "TITULAR"
@@ -2040,42 +1524,7 @@
       "habilidadeMisto": 94.0,
       "habilidadeOval": 50.0,
       "contrato": {
-        "equipeAtual": {
-          "id": "ferrari",
-          "nome": "Ferrari",
-          "sede": "Maranello, Itália",
-          "motor": "Ferrari",
-          "fundacao": 1929,
-          "saldoFinanceiro": 138.0,
-          "reputacao": 97,
-          "pontos": 0,
-          "vitorias": 0,
-          "podios": 0,
-          "poles": 0,
-          "nivelMotor": 5,
-          "nivelAero": 5,
-          "nivelChassi": 5,
-          "nivelConfiabilidade": 5,
-          "staffMotor": 1,
-          "staffAero": 1,
-          "staffChassi": 1,
-          "staffConfiabilidade": 1,
-          "arquivos": {
-            "logo": "/resource/Equipe F1 Ferrari.svg",
-            "bandeiraSede": "/resource/Bandeira Italia.svg",
-            "bandeiraMotor": "/resource/Bandeira Italia.svg",
-            "logoMotor": "/resource/Logo Ferrari.svg"
-          },
-          "pilotosContratadosIDs": [
-            "Charles Leclerc",
-            "Carlos Sainz Jr",
-            "Robert Shwartzman",
-            "Oliver Bearman",
-            "Antonio Giovinazzi"
-          ],
-          "anosConsecutivosNoVermelho": 0,
-          "patrocinadoresAtivos": []
-        },
+        "nomeEquipeSalva": "Ferrari",
         "salarioMensal": 0.5,
         "mesesRestantes": 12,
         "tipo": "TITULAR"
@@ -2104,41 +1553,7 @@
       "habilidadeMisto": 86.0,
       "habilidadeOval": 55.0,
       "contrato": {
-        "equipeAtual": {
-          "id": "redbull",
-          "nome": "Red Bull Racing",
-          "sede": "Milton Keynes, UK",
-          "motor": "Honda RBPT",
-          "fundacao": 2005,
-          "saldoFinanceiro": 140.0,
-          "reputacao": 98,
-          "pontos": 0,
-          "vitorias": 0,
-          "podios": 0,
-          "poles": 0,
-          "nivelMotor": 5,
-          "nivelAero": 5,
-          "nivelChassi": 5,
-          "nivelConfiabilidade": 5,
-          "staffMotor": 1,
-          "staffAero": 1,
-          "staffChassi": 1,
-          "staffConfiabilidade": 1,
-          "arquivos": {
-            "logo": "/resource/Equipe F1 RBR.svg",
-            "bandeiraSede": "/resource/Bandeira Austria.svg",
-            "bandeiraMotor": "/resource/Bandeira Japao.svg",
-            "logoMotor": "/resource/Logo Honda.svg"
-          },
-          "pilotosContratadosIDs": [
-            "Max Verstappen",
-            "Sergio Perez",
-            "Liam Lawson",
-            "Sebastien Buemi"
-          ],
-          "anosConsecutivosNoVermelho": 0,
-          "patrocinadoresAtivos": []
-        },
+        "nomeEquipeSalva": "Red Bull Racing",
         "salarioMensal": 0.5,
         "mesesRestantes": 12,
         "tipo": "TITULAR"
@@ -2167,42 +1582,7 @@
       "habilidadeMisto": 75.0,
       "habilidadeOval": 45.0,
       "contrato": {
-        "equipeAtual": {
-          "id": "ferrari",
-          "nome": "Ferrari",
-          "sede": "Maranello, Itália",
-          "motor": "Ferrari",
-          "fundacao": 1929,
-          "saldoFinanceiro": 138.0,
-          "reputacao": 97,
-          "pontos": 0,
-          "vitorias": 0,
-          "podios": 0,
-          "poles": 0,
-          "nivelMotor": 5,
-          "nivelAero": 5,
-          "nivelChassi": 5,
-          "nivelConfiabilidade": 5,
-          "staffMotor": 1,
-          "staffAero": 1,
-          "staffChassi": 1,
-          "staffConfiabilidade": 1,
-          "arquivos": {
-            "logo": "/resource/Equipe F1 Ferrari.svg",
-            "bandeiraSede": "/resource/Bandeira Italia.svg",
-            "bandeiraMotor": "/resource/Bandeira Italia.svg",
-            "logoMotor": "/resource/Logo Ferrari.svg"
-          },
-          "pilotosContratadosIDs": [
-            "Charles Leclerc",
-            "Carlos Sainz Jr",
-            "Robert Shwartzman",
-            "Oliver Bearman",
-            "Antonio Giovinazzi"
-          ],
-          "anosConsecutivosNoVermelho": 0,
-          "patrocinadoresAtivos": []
-        },
+        "nomeEquipeSalva": "Ferrari",
         "salarioMensal": 0.5,
         "mesesRestantes": 12,
         "tipo": "RESERVA"
@@ -2254,42 +1634,7 @@
       "habilidadeMisto": 90.0,
       "habilidadeOval": 50.0,
       "contrato": {
-        "equipeAtual": {
-          "id": "ferrari",
-          "nome": "Ferrari",
-          "sede": "Maranello, Itália",
-          "motor": "Ferrari",
-          "fundacao": 1929,
-          "saldoFinanceiro": 138.0,
-          "reputacao": 97,
-          "pontos": 0,
-          "vitorias": 0,
-          "podios": 0,
-          "poles": 0,
-          "nivelMotor": 5,
-          "nivelAero": 5,
-          "nivelChassi": 5,
-          "nivelConfiabilidade": 5,
-          "staffMotor": 1,
-          "staffAero": 1,
-          "staffChassi": 1,
-          "staffConfiabilidade": 1,
-          "arquivos": {
-            "logo": "/resource/Equipe F1 Ferrari.svg",
-            "bandeiraSede": "/resource/Bandeira Italia.svg",
-            "bandeiraMotor": "/resource/Bandeira Italia.svg",
-            "logoMotor": "/resource/Logo Ferrari.svg"
-          },
-          "pilotosContratadosIDs": [
-            "Charles Leclerc",
-            "Carlos Sainz Jr",
-            "Robert Shwartzman",
-            "Oliver Bearman",
-            "Antonio Giovinazzi"
-          ],
-          "anosConsecutivosNoVermelho": 0,
-          "patrocinadoresAtivos": []
-        },
+        "nomeEquipeSalva": "Ferrari",
         "salarioMensal": 0.5,
         "mesesRestantes": 12,
         "tipo": "TITULAR"
@@ -2339,7 +1684,19 @@
       "habilidadeChuva": 60.0,
       "habilidadeRua": 65.0,
       "habilidadeMisto": 68.0,
-      "habilidadeOval": 75.0
+      "habilidadeOval": 75.0,
+      "contrato": {
+        "nomeEquipeSalva": "Stake Kick",
+        "salarioMensal": 2.0,
+        "mesesRestantes": 12,
+        "tipo": "RESERVA"
+      },
+      "contratoFuturo": {
+        "nomeEquipeSalva": "Stake Kick",
+        "salarioMensal": 0.5,
+        "mesesRestantes": 12,
+        "tipo": "TITULAR"
+      }
     },
     {
       "nome": "Christopher Bell",
@@ -2410,41 +1767,7 @@
       "habilidadeMisto": 72.0,
       "habilidadeOval": 45.0,
       "contrato": {
-        "equipeAtual": {
-          "id": "mercedes",
-          "nome": "Mercedes",
-          "sede": "Brackley, UK",
-          "motor": "Mercedes",
-          "fundacao": 1954,
-          "saldoFinanceiro": 135.0,
-          "reputacao": 95,
-          "pontos": 0,
-          "vitorias": 0,
-          "podios": 0,
-          "poles": 0,
-          "nivelMotor": 5,
-          "nivelAero": 5,
-          "nivelChassi": 5,
-          "nivelConfiabilidade": 5,
-          "staffMotor": 1,
-          "staffAero": 1,
-          "staffChassi": 1,
-          "staffConfiabilidade": 1,
-          "arquivos": {
-            "logo": "/resource/Equipe F1 Mercedes.svg",
-            "bandeiraSede": "/resource/Bandeira Alemanha.svg",
-            "bandeiraMotor": "/resource/Bandeira Alemanha.svg",
-            "logoMotor": "/resource/Logo Mercedes.svg"
-          },
-          "pilotosContratadosIDs": [
-            "Lewis Hamilton",
-            "George Russell",
-            "Mick Schumacher",
-            "Frederik Vesti"
-          ],
-          "anosConsecutivosNoVermelho": 0,
-          "patrocinadoresAtivos": []
-        },
+        "nomeEquipeSalva": "Mercedes",
         "salarioMensal": 0.5,
         "mesesRestantes": 12,
         "tipo": "RESERVA"
@@ -2588,41 +1911,7 @@
       "habilidadeMisto": 92.0,
       "habilidadeOval": 50.0,
       "contrato": {
-        "equipeAtual": {
-          "id": "mercedes",
-          "nome": "Mercedes",
-          "sede": "Brackley, UK",
-          "motor": "Mercedes",
-          "fundacao": 1954,
-          "saldoFinanceiro": 135.0,
-          "reputacao": 95,
-          "pontos": 0,
-          "vitorias": 0,
-          "podios": 0,
-          "poles": 0,
-          "nivelMotor": 5,
-          "nivelAero": 5,
-          "nivelChassi": 5,
-          "nivelConfiabilidade": 5,
-          "staffMotor": 1,
-          "staffAero": 1,
-          "staffChassi": 1,
-          "staffConfiabilidade": 1,
-          "arquivos": {
-            "logo": "/resource/Equipe F1 Mercedes.svg",
-            "bandeiraSede": "/resource/Bandeira Alemanha.svg",
-            "bandeiraMotor": "/resource/Bandeira Alemanha.svg",
-            "logoMotor": "/resource/Logo Mercedes.svg"
-          },
-          "pilotosContratadosIDs": [
-            "Lewis Hamilton",
-            "George Russell",
-            "Mick Schumacher",
-            "Frederik Vesti"
-          ],
-          "anosConsecutivosNoVermelho": 0,
-          "patrocinadoresAtivos": []
-        },
+        "nomeEquipeSalva": "Mercedes",
         "salarioMensal": 0.5,
         "mesesRestantes": 12,
         "tipo": "TITULAR"
@@ -2651,43 +1940,7 @@
       "habilidadeMisto": 76.0,
       "habilidadeOval": 50.0,
       "contrato": {
-        "equipeAtual": {
-          "id": "stake",
-          "nome": "Stake Kick",
-          "sede": "Hinwil, Suíça",
-          "motor": "Ferrari",
-          "fundacao": 2024,
-          "saldoFinanceiro": 990.0,
-          "reputacao": 55,
-          "pontos": 0,
-          "vitorias": 0,
-          "podios": 0,
-          "poles": 0,
-          "nivelMotor": 3,
-          "nivelAero": 3,
-          "nivelChassi": 3,
-          "nivelConfiabilidade": 3,
-          "staffMotor": 1,
-          "staffAero": 1,
-          "staffChassi": 1,
-          "staffConfiabilidade": 1,
-          "arquivos": {
-            "logo": "/resource/Equipe F1 Stake.svg",
-            "bandeiraSede": "/resource/Bandeira Suica.svg",
-            "bandeiraMotor": "/resource/Bandeira Italia.svg",
-            "logoMotor": "/resource/Logo Ferrari.svg"
-          },
-          "pilotosContratadosIDs": [
-            "Valtteri Bottas",
-            "Guanyu Zhou",
-            "Zane Maloney",
-            "Théo Pourchaire",
-            "Josh Berry",
-            "Josh Berry"
-          ],
-          "anosConsecutivosNoVermelho": 0,
-          "patrocinadoresAtivos": []
-        },
+        "nomeEquipeSalva": "Stake Kick",
         "salarioMensal": 0.5,
         "mesesRestantes": 12,
         "tipo": "RESERVA"
@@ -2716,43 +1969,7 @@
       "habilidadeMisto": 78.0,
       "habilidadeOval": 88.0,
       "contrato": {
-        "equipeAtual": {
-          "id": "mclaren",
-          "nome": "McLaren",
-          "sede": "Woking, UK",
-          "motor": "Mercedes",
-          "fundacao": 1963,
-          "saldoFinanceiro": 120.0,
-          "reputacao": 90,
-          "pontos": 0,
-          "vitorias": 0,
-          "podios": 0,
-          "poles": 0,
-          "nivelMotor": 5,
-          "nivelAero": 5,
-          "nivelChassi": 5,
-          "nivelConfiabilidade": 5,
-          "staffMotor": 1,
-          "staffAero": 1,
-          "staffChassi": 1,
-          "staffConfiabilidade": 1,
-          "arquivos": {
-            "logo": "/resource/Equipe F1 McLaren.svg",
-            "bandeiraSede": "/resource/Bandeira Reino Unido.svg",
-            "bandeiraMotor": "/resource/Bandeira Alemanha.svg",
-            "logoMotor": "/resource/Logo Mercedes.svg"
-          },
-          "pilotosContratadosIDs": [
-            "Lando Norris",
-            "Oscar Piastri",
-            "Pato O\u0027Ward",
-            "Ryo Hirakawa",
-            "Mick Schumacher",
-            "Felipe Drugovich"
-          ],
-          "anosConsecutivosNoVermelho": 0,
-          "patrocinadoresAtivos": []
-        },
+        "nomeEquipeSalva": "McLaren",
         "salarioMensal": 0.5,
         "mesesRestantes": 12,
         "tipo": "RESERVA"
@@ -2804,43 +2021,7 @@
       "habilidadeMisto": 70.0,
       "habilidadeOval": 40.0,
       "contrato": {
-        "equipeAtual": {
-          "id": "stake",
-          "nome": "Stake Kick",
-          "sede": "Hinwil, Suíça",
-          "motor": "Ferrari",
-          "fundacao": 2024,
-          "saldoFinanceiro": 990.0,
-          "reputacao": 55,
-          "pontos": 0,
-          "vitorias": 0,
-          "podios": 0,
-          "poles": 0,
-          "nivelMotor": 3,
-          "nivelAero": 3,
-          "nivelChassi": 3,
-          "nivelConfiabilidade": 3,
-          "staffMotor": 1,
-          "staffAero": 1,
-          "staffChassi": 1,
-          "staffConfiabilidade": 1,
-          "arquivos": {
-            "logo": "/resource/Equipe F1 Stake.svg",
-            "bandeiraSede": "/resource/Bandeira Suica.svg",
-            "bandeiraMotor": "/resource/Bandeira Italia.svg",
-            "logoMotor": "/resource/Logo Ferrari.svg"
-          },
-          "pilotosContratadosIDs": [
-            "Valtteri Bottas",
-            "Guanyu Zhou",
-            "Zane Maloney",
-            "Théo Pourchaire",
-            "Josh Berry",
-            "Josh Berry"
-          ],
-          "anosConsecutivosNoVermelho": 0,
-          "patrocinadoresAtivos": []
-        },
+        "nomeEquipeSalva": "Stake Kick",
         "salarioMensal": 0.5,
         "mesesRestantes": 12,
         "tipo": "RESERVA"
@@ -2892,41 +2073,7 @@
       "habilidadeMisto": 75.0,
       "habilidadeOval": 40.0,
       "contrato": {
-        "equipeAtual": {
-          "id": "haas",
-          "nome": "Haas",
-          "sede": "Kannapolis, EUA",
-          "motor": "Ferrari",
-          "fundacao": 2016,
-          "saldoFinanceiro": 45.0,
-          "reputacao": 50,
-          "pontos": 0,
-          "vitorias": 0,
-          "podios": 0,
-          "poles": 0,
-          "nivelMotor": 3,
-          "nivelAero": 3,
-          "nivelChassi": 3,
-          "nivelConfiabilidade": 3,
-          "staffMotor": 1,
-          "staffAero": 1,
-          "staffChassi": 1,
-          "staffConfiabilidade": 1,
-          "arquivos": {
-            "logo": "/resource/Equipe F1 Haas.svg",
-            "bandeiraSede": "/resource/Bandeira EUA.svg",
-            "bandeiraMotor": "/resource/Bandeira Italia.svg",
-            "logoMotor": "/resource/Logo Ferrari.svg"
-          },
-          "pilotosContratadosIDs": [
-            "Nico Hulkenberg",
-            "Kevin Magnussen",
-            "Pietro Fittipaldi",
-            "Oliver Bearman"
-          ],
-          "anosConsecutivosNoVermelho": 0,
-          "patrocinadoresAtivos": []
-        },
+        "nomeEquipeSalva": "Haas",
         "salarioMensal": 0.5,
         "mesesRestantes": 12,
         "tipo": "RESERVA"
@@ -2955,43 +2102,7 @@
       "habilidadeMisto": 78.0,
       "habilidadeOval": 45.0,
       "contrato": {
-        "equipeAtual": {
-          "id": "stake",
-          "nome": "Stake Kick",
-          "sede": "Hinwil, Suíça",
-          "motor": "Ferrari",
-          "fundacao": 2024,
-          "saldoFinanceiro": 990.0,
-          "reputacao": 55,
-          "pontos": 0,
-          "vitorias": 0,
-          "podios": 0,
-          "poles": 0,
-          "nivelMotor": 3,
-          "nivelAero": 3,
-          "nivelChassi": 3,
-          "nivelConfiabilidade": 3,
-          "staffMotor": 1,
-          "staffAero": 1,
-          "staffChassi": 1,
-          "staffConfiabilidade": 1,
-          "arquivos": {
-            "logo": "/resource/Equipe F1 Stake.svg",
-            "bandeiraSede": "/resource/Bandeira Suica.svg",
-            "bandeiraMotor": "/resource/Bandeira Italia.svg",
-            "logoMotor": "/resource/Logo Ferrari.svg"
-          },
-          "pilotosContratadosIDs": [
-            "Valtteri Bottas",
-            "Guanyu Zhou",
-            "Zane Maloney",
-            "Théo Pourchaire",
-            "Josh Berry",
-            "Josh Berry"
-          ],
-          "anosConsecutivosNoVermelho": 0,
-          "patrocinadoresAtivos": []
-        },
+        "nomeEquipeSalva": "Stake Kick",
         "salarioMensal": 0.5,
         "mesesRestantes": 12,
         "tipo": "TITULAR"
@@ -3020,42 +2131,7 @@
       "habilidadeMisto": 78.0,
       "habilidadeOval": 50.0,
       "contrato": {
-        "equipeAtual": {
-          "id": "ferrari",
-          "nome": "Ferrari",
-          "sede": "Maranello, Itália",
-          "motor": "Ferrari",
-          "fundacao": 1929,
-          "saldoFinanceiro": 138.0,
-          "reputacao": 97,
-          "pontos": 0,
-          "vitorias": 0,
-          "podios": 0,
-          "poles": 0,
-          "nivelMotor": 5,
-          "nivelAero": 5,
-          "nivelChassi": 5,
-          "nivelConfiabilidade": 5,
-          "staffMotor": 1,
-          "staffAero": 1,
-          "staffChassi": 1,
-          "staffConfiabilidade": 1,
-          "arquivos": {
-            "logo": "/resource/Equipe F1 Ferrari.svg",
-            "bandeiraSede": "/resource/Bandeira Italia.svg",
-            "bandeiraMotor": "/resource/Bandeira Italia.svg",
-            "logoMotor": "/resource/Logo Ferrari.svg"
-          },
-          "pilotosContratadosIDs": [
-            "Charles Leclerc",
-            "Carlos Sainz Jr",
-            "Robert Shwartzman",
-            "Oliver Bearman",
-            "Antonio Giovinazzi"
-          ],
-          "anosConsecutivosNoVermelho": 0,
-          "patrocinadoresAtivos": []
-        },
+        "nomeEquipeSalva": "Ferrari",
         "salarioMensal": 0.5,
         "mesesRestantes": 12,
         "tipo": "RESERVA"
@@ -3176,40 +2252,7 @@
       "habilidadeMisto": 82.0,
       "habilidadeOval": 50.0,
       "contrato": {
-        "equipeAtual": {
-          "id": "racingbulls",
-          "nome": "Racing Bulls",
-          "sede": "Faença, Itália",
-          "motor": "Honda RBPT",
-          "fundacao": 2024,
-          "saldoFinanceiro": 55.0,
-          "reputacao": 60,
-          "pontos": 0,
-          "vitorias": 0,
-          "podios": 0,
-          "poles": 0,
-          "nivelMotor": 3,
-          "nivelAero": 3,
-          "nivelChassi": 3,
-          "nivelConfiabilidade": 3,
-          "staffMotor": 1,
-          "staffAero": 1,
-          "staffChassi": 1,
-          "staffConfiabilidade": 1,
-          "arquivos": {
-            "logo": "/resource/Equipe F1 RB.svg",
-            "bandeiraSede": "/resource/Bandeira Italia.svg",
-            "bandeiraMotor": "/resource/Bandeira Japao.svg",
-            "logoMotor": "/resource/Logo Honda.svg"
-          },
-          "pilotosContratadosIDs": [
-            "Yuki Tsunoda",
-            "Daniel Ricciardo",
-            "Liam Lawson"
-          ],
-          "anosConsecutivosNoVermelho": 0,
-          "patrocinadoresAtivos": []
-        },
+        "nomeEquipeSalva": "Racing Bulls",
         "salarioMensal": 0.5,
         "mesesRestantes": 12,
         "tipo": "TITULAR"
@@ -3261,43 +2304,7 @@
       "habilidadeMisto": 89.0,
       "habilidadeOval": 50.0,
       "contrato": {
-        "equipeAtual": {
-          "id": "mclaren",
-          "nome": "McLaren",
-          "sede": "Woking, UK",
-          "motor": "Mercedes",
-          "fundacao": 1963,
-          "saldoFinanceiro": 120.0,
-          "reputacao": 90,
-          "pontos": 0,
-          "vitorias": 0,
-          "podios": 0,
-          "poles": 0,
-          "nivelMotor": 5,
-          "nivelAero": 5,
-          "nivelChassi": 5,
-          "nivelConfiabilidade": 5,
-          "staffMotor": 1,
-          "staffAero": 1,
-          "staffChassi": 1,
-          "staffConfiabilidade": 1,
-          "arquivos": {
-            "logo": "/resource/Equipe F1 McLaren.svg",
-            "bandeiraSede": "/resource/Bandeira Reino Unido.svg",
-            "bandeiraMotor": "/resource/Bandeira Alemanha.svg",
-            "logoMotor": "/resource/Logo Mercedes.svg"
-          },
-          "pilotosContratadosIDs": [
-            "Lando Norris",
-            "Oscar Piastri",
-            "Pato O\u0027Ward",
-            "Ryo Hirakawa",
-            "Mick Schumacher",
-            "Felipe Drugovich"
-          ],
-          "anosConsecutivosNoVermelho": 0,
-          "patrocinadoresAtivos": []
-        },
+        "nomeEquipeSalva": "McLaren",
         "salarioMensal": 0.5,
         "mesesRestantes": 12,
         "tipo": "TITULAR"
@@ -3395,43 +2402,7 @@
       "habilidadeMisto": 76.0,
       "habilidadeOval": 40.0,
       "contrato": {
-        "equipeAtual": {
-          "id": "mclaren",
-          "nome": "McLaren",
-          "sede": "Woking, UK",
-          "motor": "Mercedes",
-          "fundacao": 1963,
-          "saldoFinanceiro": 120.0,
-          "reputacao": 90,
-          "pontos": 0,
-          "vitorias": 0,
-          "podios": 0,
-          "poles": 0,
-          "nivelMotor": 5,
-          "nivelAero": 5,
-          "nivelChassi": 5,
-          "nivelConfiabilidade": 5,
-          "staffMotor": 1,
-          "staffAero": 1,
-          "staffChassi": 1,
-          "staffConfiabilidade": 1,
-          "arquivos": {
-            "logo": "/resource/Equipe F1 McLaren.svg",
-            "bandeiraSede": "/resource/Bandeira Reino Unido.svg",
-            "bandeiraMotor": "/resource/Bandeira Alemanha.svg",
-            "logoMotor": "/resource/Logo Mercedes.svg"
-          },
-          "pilotosContratadosIDs": [
-            "Lando Norris",
-            "Oscar Piastri",
-            "Pato O\u0027Ward",
-            "Ryo Hirakawa",
-            "Mick Schumacher",
-            "Felipe Drugovich"
-          ],
-          "anosConsecutivosNoVermelho": 0,
-          "patrocinadoresAtivos": []
-        },
+        "nomeEquipeSalva": "McLaren",
         "salarioMensal": 0.5,
         "mesesRestantes": 12,
         "tipo": "RESERVA"
@@ -3529,39 +2500,7 @@
       "habilidadeMisto": 72.0,
       "habilidadeOval": 60.0,
       "contrato": {
-        "equipeAtual": {
-          "id": "williams",
-          "nome": "Williams",
-          "sede": "Grove, UK",
-          "motor": "Mercedes",
-          "fundacao": 1977,
-          "saldoFinanceiro": 60.0,
-          "reputacao": 65,
-          "pontos": 0,
-          "vitorias": 0,
-          "podios": 0,
-          "poles": 0,
-          "nivelMotor": 3,
-          "nivelAero": 3,
-          "nivelChassi": 3,
-          "nivelConfiabilidade": 3,
-          "staffMotor": 1,
-          "staffAero": 1,
-          "staffChassi": 1,
-          "staffConfiabilidade": 1,
-          "arquivos": {
-            "logo": "/resource/Equipe F1 Williams.svg",
-            "bandeiraSede": "/resource/Bandeira Reino Unido.svg",
-            "bandeiraMotor": "/resource/Bandeira Alemanha.svg",
-            "logoMotor": "/resource/Logo Mercedes.svg"
-          },
-          "pilotosContratadosIDs": [
-            "Alexander Albon",
-            "Logan Sargeant"
-          ],
-          "anosConsecutivosNoVermelho": 0,
-          "patrocinadoresAtivos": []
-        },
+        "nomeEquipeSalva": "Williams",
         "salarioMensal": 0.5,
         "mesesRestantes": 12,
         "tipo": "TITULAR"
@@ -3590,40 +2529,7 @@
       "habilidadeMisto": 85.0,
       "habilidadeOval": 50.0,
       "contrato": {
-        "equipeAtual": {
-          "id": "alpine",
-          "nome": "Alpine",
-          "sede": "Enstone, UK",
-          "motor": "Renault",
-          "fundacao": 2021,
-          "saldoFinanceiro": 95.0,
-          "reputacao": 75,
-          "pontos": 0,
-          "vitorias": 0,
-          "podios": 0,
-          "poles": 0,
-          "nivelMotor": 4,
-          "nivelAero": 4,
-          "nivelChassi": 4,
-          "nivelConfiabilidade": 4,
-          "staffMotor": 1,
-          "staffAero": 1,
-          "staffChassi": 1,
-          "staffConfiabilidade": 1,
-          "arquivos": {
-            "logo": "/resource/Equipe F1 Alpine.svg",
-            "bandeiraSede": "/resource/Bandeira Franca.svg",
-            "bandeiraMotor": "/resource/Bandeira Franca.svg",
-            "logoMotor": "/resource/Logo Renault.svg"
-          },
-          "pilotosContratadosIDs": [
-            "Pierre Gasly",
-            "Esteban Ocon",
-            "Jack Doohan"
-          ],
-          "anosConsecutivosNoVermelho": 0,
-          "patrocinadoresAtivos": []
-        },
+        "nomeEquipeSalva": "Alpine",
         "salarioMensal": 0.5,
         "mesesRestantes": 12,
         "tipo": "TITULAR"
@@ -3721,41 +2627,7 @@
       "habilidadeMisto": 79.0,
       "habilidadeOval": 50.0,
       "contrato": {
-        "equipeAtual": {
-          "id": "haas",
-          "nome": "Haas",
-          "sede": "Kannapolis, EUA",
-          "motor": "Ferrari",
-          "fundacao": 2016,
-          "saldoFinanceiro": 45.0,
-          "reputacao": 50,
-          "pontos": 0,
-          "vitorias": 0,
-          "podios": 0,
-          "poles": 0,
-          "nivelMotor": 3,
-          "nivelAero": 3,
-          "nivelChassi": 3,
-          "nivelConfiabilidade": 3,
-          "staffMotor": 1,
-          "staffAero": 1,
-          "staffChassi": 1,
-          "staffConfiabilidade": 1,
-          "arquivos": {
-            "logo": "/resource/Equipe F1 Haas.svg",
-            "bandeiraSede": "/resource/Bandeira EUA.svg",
-            "bandeiraMotor": "/resource/Bandeira Italia.svg",
-            "logoMotor": "/resource/Logo Ferrari.svg"
-          },
-          "pilotosContratadosIDs": [
-            "Nico Hulkenberg",
-            "Kevin Magnussen",
-            "Pietro Fittipaldi",
-            "Oliver Bearman"
-          ],
-          "anosConsecutivosNoVermelho": 0,
-          "patrocinadoresAtivos": []
-        },
+        "nomeEquipeSalva": "Haas",
         "salarioMensal": 0.5,
         "mesesRestantes": 12,
         "tipo": "TITULAR"
@@ -3876,40 +2748,7 @@
       "habilidadeMisto": 73.0,
       "habilidadeOval": 40.0,
       "contrato": {
-        "equipeAtual": {
-          "id": "alpine",
-          "nome": "Alpine",
-          "sede": "Enstone, UK",
-          "motor": "Renault",
-          "fundacao": 2021,
-          "saldoFinanceiro": 95.0,
-          "reputacao": 75,
-          "pontos": 0,
-          "vitorias": 0,
-          "podios": 0,
-          "poles": 0,
-          "nivelMotor": 4,
-          "nivelAero": 4,
-          "nivelChassi": 4,
-          "nivelConfiabilidade": 4,
-          "staffMotor": 1,
-          "staffAero": 1,
-          "staffChassi": 1,
-          "staffConfiabilidade": 1,
-          "arquivos": {
-            "logo": "/resource/Equipe F1 Alpine.svg",
-            "bandeiraSede": "/resource/Bandeira Franca.svg",
-            "bandeiraMotor": "/resource/Bandeira Franca.svg",
-            "logoMotor": "/resource/Logo Renault.svg"
-          },
-          "pilotosContratadosIDs": [
-            "Pierre Gasly",
-            "Esteban Ocon",
-            "Jack Doohan"
-          ],
-          "anosConsecutivosNoVermelho": 0,
-          "patrocinadoresAtivos": []
-        },
+        "nomeEquipeSalva": "Alpine",
         "salarioMensal": 0.5,
         "mesesRestantes": 12,
         "tipo": "RESERVA"
@@ -4007,41 +2846,7 @@
       "habilidadeMisto": 82.0,
       "habilidadeOval": 50.0,
       "contrato": {
-        "equipeAtual": {
-          "id": "haas",
-          "nome": "Haas",
-          "sede": "Kannapolis, EUA",
-          "motor": "Ferrari",
-          "fundacao": 2016,
-          "saldoFinanceiro": 45.0,
-          "reputacao": 50,
-          "pontos": 0,
-          "vitorias": 0,
-          "podios": 0,
-          "poles": 0,
-          "nivelMotor": 3,
-          "nivelAero": 3,
-          "nivelChassi": 3,
-          "nivelConfiabilidade": 3,
-          "staffMotor": 1,
-          "staffAero": 1,
-          "staffChassi": 1,
-          "staffConfiabilidade": 1,
-          "arquivos": {
-            "logo": "/resource/Equipe F1 Haas.svg",
-            "bandeiraSede": "/resource/Bandeira EUA.svg",
-            "bandeiraMotor": "/resource/Bandeira Italia.svg",
-            "logoMotor": "/resource/Logo Ferrari.svg"
-          },
-          "pilotosContratadosIDs": [
-            "Nico Hulkenberg",
-            "Kevin Magnussen",
-            "Pietro Fittipaldi",
-            "Oliver Bearman"
-          ],
-          "anosConsecutivosNoVermelho": 0,
-          "patrocinadoresAtivos": []
-        },
+        "nomeEquipeSalva": "Haas",
         "salarioMensal": 0.5,
         "mesesRestantes": 12,
         "tipo": "TITULAR"
@@ -4070,40 +2875,7 @@
       "habilidadeMisto": 84.0,
       "habilidadeOval": 50.0,
       "contrato": {
-        "equipeAtual": {
-          "id": "alpine",
-          "nome": "Alpine",
-          "sede": "Enstone, UK",
-          "motor": "Renault",
-          "fundacao": 2021,
-          "saldoFinanceiro": 95.0,
-          "reputacao": 75,
-          "pontos": 0,
-          "vitorias": 0,
-          "podios": 0,
-          "poles": 0,
-          "nivelMotor": 4,
-          "nivelAero": 4,
-          "nivelChassi": 4,
-          "nivelConfiabilidade": 4,
-          "staffMotor": 1,
-          "staffAero": 1,
-          "staffChassi": 1,
-          "staffConfiabilidade": 1,
-          "arquivos": {
-            "logo": "/resource/Equipe F1 Alpine.svg",
-            "bandeiraSede": "/resource/Bandeira Franca.svg",
-            "bandeiraMotor": "/resource/Bandeira Franca.svg",
-            "logoMotor": "/resource/Logo Renault.svg"
-          },
-          "pilotosContratadosIDs": [
-            "Pierre Gasly",
-            "Esteban Ocon",
-            "Jack Doohan"
-          ],
-          "anosConsecutivosNoVermelho": 0,
-          "patrocinadoresAtivos": []
-        },
+        "nomeEquipeSalva": "Alpine",
         "salarioMensal": 0.5,
         "mesesRestantes": 12,
         "tipo": "TITULAR"
@@ -4132,41 +2904,7 @@
       "habilidadeMisto": 99.0,
       "habilidadeOval": 60.0,
       "contrato": {
-        "equipeAtual": {
-          "id": "redbull",
-          "nome": "Red Bull Racing",
-          "sede": "Milton Keynes, UK",
-          "motor": "Honda RBPT",
-          "fundacao": 2005,
-          "saldoFinanceiro": 140.0,
-          "reputacao": 98,
-          "pontos": 0,
-          "vitorias": 0,
-          "podios": 0,
-          "poles": 0,
-          "nivelMotor": 5,
-          "nivelAero": 5,
-          "nivelChassi": 5,
-          "nivelConfiabilidade": 5,
-          "staffMotor": 1,
-          "staffAero": 1,
-          "staffChassi": 1,
-          "staffConfiabilidade": 1,
-          "arquivos": {
-            "logo": "/resource/Equipe F1 RBR.svg",
-            "bandeiraSede": "/resource/Bandeira Austria.svg",
-            "bandeiraMotor": "/resource/Bandeira Japao.svg",
-            "logoMotor": "/resource/Logo Honda.svg"
-          },
-          "pilotosContratadosIDs": [
-            "Max Verstappen",
-            "Sergio Perez",
-            "Liam Lawson",
-            "Sebastien Buemi"
-          ],
-          "anosConsecutivosNoVermelho": 0,
-          "patrocinadoresAtivos": []
-        },
+        "nomeEquipeSalva": "Red Bull Racing",
         "salarioMensal": 0.5,
         "mesesRestantes": 12,
         "tipo": "TITULAR"
@@ -4737,8 +3475,11 @@
       "Guanyu Zhou",
       "Zane Maloney",
       "Théo Pourchaire",
-      "Josh Berry",
-      "Josh Berry"
+      "Daniel Hemric",
+      "Daniel Hemric"
+    ],
+    "contratosFuturosIDs": [
+      "Daniel Hemric"
     ],
     "anosConsecutivosNoVermelho": 0,
     "patrocinadoresAtivos": []

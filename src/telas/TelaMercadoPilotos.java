@@ -847,6 +847,6 @@ public class TelaMercadoPilotos extends JDialog {
     }
     private String formatarMoeda(double v) {
         if(v < 1) return (int)(v*1000) + " k";
-        return new DecimalFormat("#,##0.00").format(v) + " mi";
+        return new DecimalFormat("#,#0.0").format(v) + " mi";
     }
 }

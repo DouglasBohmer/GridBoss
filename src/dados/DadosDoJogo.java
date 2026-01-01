@@ -183,7 +183,7 @@ public class DadosDoJogo {
                 }
             }
             
-            // 2. Vincula Contratos Futuros (CORRIGIDO)
+            // 2. Vincula Contratos Futuros
             List<String> idsFuturos = eq.getContratosFuturosIDs();
             eq.getAssinaturasFuturas().clear(); 
             
@@ -191,17 +191,14 @@ public class DadosDoJogo {
                 for (String idAlvo : idsFuturos) {
                     Piloto pilotoEncontrado = buscarPilotoPorNome(idAlvo);
                     if (pilotoEncontrado != null) {
-                        // Adiciona na lista transiente da equipe (para controle interno da equipe)
                         eq.adicionarContratoFuturoDoLoad(pilotoEncontrado);
                         
-                        // Reconstrói o contrato no objeto Piloto para que ele apareça na tela
                         if (pilotoEncontrado.getContratoFuturo() == null) {
-                            // Como salvamos apenas o ID, criamos um contrato padrão para restaurar o vínculo.
-                            // Obs: Detalhes como salário exato negociado são perdidos neste método de save simplificado.
-                            Contrato futuro = new Contrato(eq, 0.5, 12, TipoContrato.TITULAR);
+                            // CORREÇÃO: Usa a fórmula de salário também para restaurar contratos futuros
+                            double salarioCalc = pilotoEncontrado.calcularSalarioDesejado();
+                            Contrato futuro = new Contrato(eq, salarioCalc, 12, TipoContrato.TITULAR);
                             pilotoEncontrado.setContratoFuturo(futuro);
                         } else {
-                            // Caso o contrato tenha sobrevivido (raro, mas possível dependendo do fluxo)
                             pilotoEncontrado.getContratoFuturo().setEquipeAtual(eq);
                         }
                     }
@@ -292,14 +289,12 @@ public class DadosDoJogo {
     }
     
     private void reconstruirPosLoad() {
-        // Recarrega pilotos 'limpos' do JSON base para garantir dados atualizados (imagens, stats)
         this.todosOsPilotos = CarregadorJSON.carregarPilotos(categoriaKey, anoAtual);
         sanitizarListaMestraDePilotos();
         
         List<Motor> motores = CarregadorJSON.carregarMotores(categoriaKey, anoAtual);
         vincularMotores(motores);
         
-        // Aqui reconectamos os pilotos às equipes baseados nos IDs salvos
         vincularPilotosAsEquipes();
         
         if (this.equipeDoJogador != null) {

@@ -34,7 +34,7 @@ public class Equipe {
     private Arquivos arquivos;
     private List<String> pilotosContratadosIDs = new ArrayList<>();
     
-    // --- NOVO: LISTA DE IDs PARA O SAVE ---
+    // --- LISTA DE IDs PARA O SAVE (FUTURO) ---
     private List<String> contratosFuturosIDs = new ArrayList<>();
     
     // Lógica
@@ -43,7 +43,7 @@ public class Equipe {
     private transient List<Piloto> pilotosTitulares = new ArrayList<>();
     private transient List<Piloto> pilotosReservas = new ArrayList<>();
     
-    // --- NOVO: LISTA DE OBJETOS TRANSIENT (RUNTIME) ---
+    // --- LISTA DE OBJETOS TRANSIENT (RUNTIME) ---
     private transient List<Piloto> assinaturasFuturas = new ArrayList<>();
     
     private List<Patrocinador> patrocinadoresAtivos = new ArrayList<>();
@@ -65,7 +65,7 @@ public class Equipe {
         for (Piloto p : pilotosTitulares) this.pilotosContratadosIDs.add(p.getNome());
         for (Piloto p : pilotosReservas) this.pilotosContratadosIDs.add(p.getNome());
         
-        // --- NOVO: SALVAR CONTRATOS FUTUROS ---
+        // Salvar Contratos Futuros
         this.contratosFuturosIDs.clear();
         for (Piloto p : assinaturasFuturas) {
             this.contratosFuturosIDs.add(p.getNome());
@@ -254,24 +254,24 @@ public class Equipe {
         return false;
     }
     
+    // --- LOAD DE PILOTOS (Corrigido para usar salário calculado) ---
     public void adicionarPilotoDoLoad(Piloto p, TipoContrato tipo) {
         if (tipo == TipoContrato.TITULAR) pilotosTitulares.add(p);
         else pilotosReservas.add(p);
         
-        Contrato c = new Contrato(this, 0.5, 12, tipo); 
+        // CORREÇÃO: Usa a fórmula de salário do piloto em vez de fixo 0.5
+        double salarioCalculado = p.calcularSalarioDesejado();
+        Contrato c = new Contrato(this, salarioCalculado, 12, tipo); 
         p.setContrato(c);
     }
     
-    // --- NOVO: MÉTODO PARA LOAD DE CONTRATOS FUTUROS ---
     public void adicionarContratoFuturoDoLoad(Piloto p) {
         if (!assinaturasFuturas.contains(p)) {
             assinaturasFuturas.add(p);
         }
     }
     
-    // --- NOVO: MÉTODO PARA CONTRATAÇÃO FUTURA (VIA MERCADO) ---
     public boolean assinarPreContrato(Piloto piloto, double salario, double luvas, int meses, TipoContrato tipo) {
-        // Verifica dinheiro apenas para as luvas (assinatura)
         if (saldoFinanceiro >= luvas) {
             this.saldoFinanceiro -= luvas;
             
@@ -353,7 +353,6 @@ public class Equipe {
     public List<Piloto> getPilotosReservas() { return pilotosReservas; }
     public List<String> getPilotosContratadosIDs() { return pilotosContratadosIDs; }
     
-    // --- NOVO: GETTERS ---
     public List<String> getContratosFuturosIDs() { return contratosFuturosIDs; }
     public List<Piloto> getAssinaturasFuturas() { return assinaturasFuturas; }
     

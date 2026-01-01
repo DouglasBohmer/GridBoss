@@ -59,6 +59,7 @@ public class Piloto {
      * Calcula o salário base anual desejado (em Milhões)
      * Fórmula: Base 1M + Curva Quadrática baseada no Overall acima de 60.
      * Ajustes: Idade (Jovens < 22 desconto, Veteranos > 33 acréscimo).
+     * ARREDONDAMENTO: Sempre para cima com 1 casa decimal.
      */
     public double calcularSalarioDesejado() {
         double fatorCategoria = 1.0; // Preparado para ler de regras.json futuramente
@@ -83,7 +84,11 @@ public class Piloto {
             multiplicadorIdade = 1.10; // Veteranos cobram pela experiência/marketing
         }
         
-        return salarioBase * multiplicadorIdade * fatorCategoria;
+        double valorBruto = salarioBase * multiplicadorIdade * fatorCategoria;
+        
+        // --- ARREDONDAMENTO (TETO 1 CASA DECIMAL) ---
+        // Ex: 1.23 vira 1.3
+        return Math.ceil(valorBruto * 10.0) / 10.0;
     }
 
     /**
@@ -101,14 +106,17 @@ public class Piloto {
         else if (equipe.getReputacao() < 40) fatorInteresse = 1.2; 
         
         double salarioMinimoAceitavel = valorDeMercado * fatorInteresse;
+        
+        // Arredonda o mínimo aceitável também para facilitar a negociação exata
+        salarioMinimoAceitavel = Math.ceil(salarioMinimoAceitavel * 10.0) / 10.0;
 
         // --- 2. Validação Financeira ---
-        if (salarioOferecido < salarioMinimoAceitavel) {
-            return "RECUSADO: Proposta financeira abaixo do esperado (" + String.format("%.2f", salarioMinimoAceitavel) + " mi).";
+        // Usa uma tolerância mínima para evitar erros de ponto flutuante (ex: 1.29999 vs 1.3)
+        if (salarioOferecido < salarioMinimoAceitavel - 0.01) {
+            return "RECUSADO: Proposta financeira abaixo do esperado (" + String.format("%.1f", salarioMinimoAceitavel) + " mi).";
         }
         
         // --- 3. Validação de Prestígio (Exigência Mínima) ---
-        // Se a exigência estiver zerada, calculamos uma dinâmica baseada no overall
         int exigenciaEfetiva = this.exigenciaMinimaDeEquipe;
         if (exigenciaEfetiva == 0) {
             if (overall >= 90) exigenciaEfetiva = 80;      // Só aceita Top Teams
@@ -128,7 +136,6 @@ public class Piloto {
         }
         
         // --- 4. Validação de Função (Reserva vs Titular) ---
-        // Se a vaga for RESERVA e o piloto for muito bom (>80), ele recusa
         if (tipoVaga == TipoContrato.RESERVA && overall > 80) {
             return "RECUSADO: Sou um piloto de elite, não aceito ser reserva.";
         }

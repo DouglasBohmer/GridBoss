@@ -1,0 +1,38 @@
+{
+  "info": {
+    "nome": "Formula 1 2024",
+    "nomeCurto": "F1",
+    "temPlayoffs": false
+  },
+  "equipe": {
+    "minTitulares": 2,
+    "maxTitulares": 2,
+    "minReservas": 0,
+    "maxReservas": 3
+  },
+  "economia": {
+    "tetoOrcamentario": 135000000.0,
+    "multiplicadorSalarioBase": 3.0,
+    "multiplicadorSalarioTeto": 3.0,
+    "premioPorPonto": 500000.0
+  },
+  "corrida": {
+    "reabastecimentoPermitido": false,
+    "combustivelInicialKg": 110.0,
+    "trocaPneusObrigatoria": true,
+    "compostosDiferentesObrigatorios": true,
+    "permiteReparos": true,
+    "tempoExtraReparo": 10.0
+  },
+  "pontuacao": {
+    "sistema": [25, 18, 15, 12, 10, 8, 6, 4, 2, 1],
+    "pontoVoltaMaisRapida": 1,
+    "pontoPolePosition": 0,
+    "apenasTop10VoltaRapida": true
+  },
+  "qualificacao": {
+    "formato": "ELIMINATORIA", 
+    "partes": 3,
+    "qtdEliminadosPorParte": 5
+  }
+}

@@ -1,0 +1,40 @@
+{
+  "info": {
+    "nome": "NTT IndyCar Series 2024",
+    "nomeCurto": "Indy",
+    "temPlayoffs": false
+  },
+  "equipe": {
+    "minTitulares": 1,
+    "maxTitulares": 5,
+    "minReservas": 0,
+    "maxReservas": 0
+  },
+  "economia": {
+    "tetoOrcamentario": 15000000.0,
+    "multiplicadorSalarioBase": 2.0,
+    "multiplicadorSalarioTeto": 2.0,
+    "premioPorPonto": 25000.0
+  },
+  "corrida": {
+    "reabastecimentoPermitido": true,
+    "tempoExtraAbastecimentoCompleto": 10.0
+    "tempoExtraAbastecimentoMeio": 5.0
+    "combustivelInicialKg": 85.0,
+    "trocaPneusObrigatoria": true,
+    "compostosDiferentesObrigatorios": true,
+    "permiteReparos": true,
+    "tempoExtraReparo": 8.0
+  },
+  "pontuacao": {
+    "sistema": [50, 40, 35, 32, 30, 28, 26, 24, 22, 20, 19, 18, 17, 16, 15, 14, 13, 12, 11, 10, 9, 8, 7, 6, 5],
+    "pontoVoltaMaisRapida": 1,
+    "pontoPolePosition": 1,
+    "apenasTop10VoltaRapida": false
+  },
+  "qualificacao": {
+    "formato": "FAST_SIX", 
+    "partes": 3,
+    "qtdEliminadosPorParte": 6
+  }
+}
